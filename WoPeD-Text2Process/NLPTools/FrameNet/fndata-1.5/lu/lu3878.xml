@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="year.n" ID="3878" frame="Measure_duration" frameID="224" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Process"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Unit"/>
+        </frame>
+    </header>
+    <definition>FN: (of an event or state) lasting (approximately) 365 days</definition>
+    <lexeme POS="N" name="year"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Count"/>
+            <pattern total="1">
+                <valenceUnit GF="Quant" PT="Num" FE="Count"/>
+                <annoSet ID="1952957"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Process"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Process"/>
+                <annoSet ID="1952957"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Count"/>
+            <FE name="Process"/>
+            <pattern total="1">
+                <valenceUnit GF="Quant" PT="Num" FE="Count"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Process"/>
+                <annoSet ID="1952957"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="2" aPos="0" ID="239739">
+            <text>A federal magistrate informed Pickett of the charges against him --assaulting a federal officer with a deadly weapon , which carries a maximum 10 years in prison .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125958">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="8" start="2" name="AJ0"/>
+                    <label end="19" start="10" name="NN1"/>
+                    <label end="28" start="21" name="VVD"/>
+                    <label end="36" start="30" name="NP0"/>
+                    <label end="39" start="38" name="PRF"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="51" start="45" name="NN2"/>
+                    <label end="59" start="53" name="PRP"/>
+                    <label end="63" start="61" name="PNP"/>
+                    <label end="76" start="65" name="AJ0"/>
+                    <label end="78" start="78" name="AT0"/>
+                    <label end="86" start="80" name="AJ0"/>
+                    <label end="94" start="88" name="NN1"/>
+                    <label end="99" start="96" name="PRP"/>
+                    <label end="101" start="101" name="AT0"/>
+                    <label end="108" start="103" name="AJ0"/>
+                    <label end="115" start="110" name="NN1"/>
+                    <label end="117" start="117" name="PUN"/>
+                    <label end="123" start="119" name="DTQ"/>
+                    <label end="131" start="125" name="VVZ"/>
+                    <label end="133" start="133" name="AT0"/>
+                    <label end="141" start="135" name="NN1"/>
+                    <label end="144" start="143" name="CRD"/>
+                    <label end="150" start="146" name="NN2"/>
+                    <label end="153" start="152" name="PRP"/>
+                    <label end="160" start="155" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/22/2004 04:35:21 PST Thu" status="MANUAL" ID="1952957">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="150" start="146" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1807" end="160" start="152" name="Process"/>
+                    <label cBy="664" feID="1805" end="144" start="143" name="Count"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="160" start="152" name="Dep"/>
+                    <label end="144" start="143" name="Quant"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="160" start="152" name="PP"/>
+                    <label end="144" start="143" name="Num"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

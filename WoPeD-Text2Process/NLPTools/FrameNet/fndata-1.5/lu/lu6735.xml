@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="at.prep" ID="6735" frame="Locative_relation" frameID="199" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: expressing location or arrival in a particular place or position. </definition>
+    <lexeme POS="PREP" name="at"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Figure"/>
+                <annoSet ID="2598426"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="VPfin" FE="Figure"/>
+                <annoSet ID="2600217"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Ground"/>
+                <annoSet ID="2598426"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2600217"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Figure"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Ground"/>
+                <annoSet ID="2598426"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="VPfin" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2600217"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="2" paragNo="2" aPos="0" ID="312904">
+            <text>At one end of it a coloured poster , too large for indoor display , had been tacked to the wall .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269180">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="CRD"/>
+                    <label end="9" start="7" name="NN1"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="17" start="17" name="AT0"/>
+                    <label end="26" start="19" name="AJ0"/>
+                    <label end="33" start="28" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="AV0"/>
+                    <label end="45" start="41" name="AJ0"/>
+                    <label end="49" start="47" name="PRP"/>
+                    <label end="56" start="51" name="AJ0"/>
+                    <label end="64" start="58" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="70" start="68" name="VHD"/>
+                    <label end="75" start="72" name="VBN"/>
+                    <label end="82" start="77" name="VVN"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2010 06:22:40 PDT Fri" status="MANUAL" ID="2598426">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="1" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1621" end="15" start="3" name="Ground"/>
+                    <label cBy="664" feID="1622" end="94" start="17" name="Figure"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="3" name="Dep"/>
+                    <label end="94" start="17" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="3" name="NP"/>
+                    <label end="94" start="17" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="1" aPos="0" ID="239738">
+            <text>Alleged White House gunman Robert Pickett was arraigned Wednesday at a federal court in Washington and ordered held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:38 PST Mon" status="UNANN" ID="125957">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="25" start="20" name="NN1"/>
+                    <label end="32" start="27" name="NP0"/>
+                    <label end="40" start="34" name="NP0"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="54" start="46" name="AJ0"/>
+                    <label end="64" start="56" name="NP0"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="86" start="85" name="PRP"/>
+                    <label end="97" start="88" name="NP0"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="109" start="103" name="VVD"/>
+                    <label end="114" start="111" name="VVN"/>
+                    <label end="122" start="116" name="PRP"/>
+                    <label end="127" start="124" name="NN1"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:14:01 PDT Fri" status="MANUAL" ID="2600217">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="67" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1622" end="64" start="42" name="Figure"/>
+                    <label cBy="664" feID="1621" end="97" start="69" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="42" name="Head"/>
+                    <label end="97" start="69" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="42" name="VPfin"/>
+                    <label end="97" start="69" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

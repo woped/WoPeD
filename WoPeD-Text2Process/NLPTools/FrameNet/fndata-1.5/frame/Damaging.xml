@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="10/17/2002 03:00:34 PDT Thu" name="Damaging" ID="415" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; affects a &lt;fen&gt;Patient&lt;/fen&gt; in such a way that the &lt;fen&gt;Patient&lt;/fen&gt; (or some &lt;fen&gt;Subregion&lt;/fen&gt; of the &lt;fen&gt;Patient&lt;/fen&gt;) ends up in a non-canonical state.  Often this non-canonical state is undesirable, and some lexical units (marked with the Negative semantic type) specifically indicate that the &lt;fen&gt;Patient&lt;/fen&gt; is negatively affected.
+
+Compare this frame with Destroying, Cause_to_fragment, and Render_nonfunctional.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;That idiot&lt;/fex&gt; just &lt;t&gt;dented&lt;/t&gt; &lt;fex name="Patient"&gt;my car&lt;/fex&gt;!&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Some ne'er-do-wells&lt;/fex&gt; &lt;t&gt;defaced&lt;/t&gt; &lt;fex name="Patient"&gt;the Park's wall&lt;/fex&gt; &lt;fex name="Instrument"&gt;with spray paint&lt;/fex&gt; &lt;fex name="Purpose"&gt;to show their anger at local natural resources allocation policy&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Please don't &lt;t&gt;damage&lt;/t&gt; &lt;fex name="Patient"&gt;the goods&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2002 03:02:06 PDT Thu" abbrev="Agt" name="Agent" ID="3817">
+        <definition>&lt;def-root&gt;The conscious entity, generally a person, that performs the intentional action that results in the damage to the &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="9821"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:06 PDT Thu" abbrev="Degr" name="Degree" ID="3818">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Patient&lt;/fen&gt; is damaged.
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:08 PDT Thu" abbrev="Ins" name="Instrument" ID="3819">
+        <definition>&lt;def-root&gt;An entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that interacts with a &lt;fen&gt;Patient&lt;/fen&gt; to accomplish the damage. &lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:08 PDT Thu" abbrev="Mnr" name="Manner" ID="3820">
+        <definition>&lt;def-root&gt;Any description of the action of damaging which is not covered by more specific FEs, including epistemic modification (&lt;ment&gt;probably, presumably, mysteriously&lt;/ment&gt;), force (&lt;ment&gt;hard, softly&lt;/ment&gt;), secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:08 PDT Thu" abbrev="Mns" name="Means" ID="3821">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the damage. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:09 PDT Thu" abbrev="Place" name="Place" ID="3823">
+        <definition>&lt;def-root&gt;This FE identifies the location of the scene where a &lt;fen&gt;Agent&lt;/fen&gt; damages a &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2002 03:02:09 PDT Thu" abbrev="Purp" name="Purpose" ID="3824">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; causes the damage to the &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;ex&gt;The dock workers &lt;t&gt;keyed&lt;/t&gt; their manager's car &lt;fex name="Purp"&gt;to protest their working conditions&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2002 03:02:11 PDT Thu" abbrev="Reason" name="Reason" ID="3825">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in performing the action.
+&lt;ex&gt;He &lt;t&gt;rent&lt;/t&gt; his garment &lt;fex name="Reason"&gt;out of the despair that only biblical character can feel&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="10/17/2002 03:02:11 PDT Thu" abbrev="Subr" name="Subregion" ID="3826">
+        <definition>&lt;def-root&gt;The part of the &lt;fen&gt;Patient&lt;/fen&gt; which is directly affected by the damaging.
+&lt;ex&gt;The dog &lt;t&gt;tore&lt;/t&gt; his pants &lt;fex name="Subr"&gt;just below the seat&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2002 03:02:11 PDT Thu" abbrev="Time" name="Time" ID="3827">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; damages the &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2002 03:02:11 PDT Thu" abbrev="Pat" name="Patient" ID="3828">
+        <definition>&lt;def-root&gt;The entity which is affected by the &lt;fen&gt;Agent&lt;/fen&gt; so that it is damaged.
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="01/06/2005 06:03:37 PST Thu" abbrev="cha" name="Character_of_end_state" ID="7418">
+        <definition>&lt;def-root&gt;A description of the state of the &lt;fen&gt;Patient&lt;/fen&gt; after the damaging has taken place, including descriptions of the severity and the permanence of the damaged condition.
+
+&lt;ex&gt;To a all appearances, she had &lt;fex name="cha"&gt;permanently&lt;/fex&gt; &lt;t&gt;damaged&lt;/t&gt; her right clavicle.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="395" cDate="01/24/2005 12:29:18 PST Mon" abbrev="res" name="Result" ID="7452">
+        <definition>&lt;def-root&gt;Result of the &lt;fen&gt;Agent&lt;/fen&gt;'s action.
+
+&lt;ex&gt;She &lt;t&gt;tore&lt;/t&gt; the sugar packet &lt;fex name="Result"&gt;open&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/03/2006 06:29:26 PST Tue" abbrev="cau" name="Cause" ID="9821">
+        <definition>&lt;def-root&gt;An event which leads to the damage of the &lt;fen&gt;Patient&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The crash&lt;/fex&gt; &lt;t&gt;dented&lt;/t&gt; my car pretty bad.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Reshaping</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="damage.v" ID="7594" lemmaID="9500" cBy="664" cDate="10/17/2002 03:29:45 PDT Thu">
+        <definition>FN: to cause harm to an object</definition>
+        <sentenceCount annotated="19" total="472"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="damage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="mar.v" ID="7595" lemmaID="23459" cBy="664" cDate="10/17/2002 03:30:03 PDT Thu">
+        <definition>FN: to damage the surface of something, esp. so as to render it unattractive</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mar"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="deface.v" ID="7596" lemmaID="9890" cBy="664" cDate="10/17/2002 05:10:51 PDT Thu">
+        <definition>FN: to damage the front surface of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deface"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="nick.v" ID="7597" lemmaID="25811" cBy="664" cDate="10/17/2002 05:11:18 PDT Thu">
+        <definition>FN: to make a small cut or groove in something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nick"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dent.v" ID="7599" lemmaID="10185" cBy="664" cDate="10/17/2002 05:11:48 PDT Thu">
+        <definition>FN: to hit something so as to cause a small depression in the surface</definition>
+        <sentenceCount annotated="20" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="vandalise.v" ID="7600" lemmaID="42696" cBy="664" cDate="10/17/2002 05:12:32 PDT Thu">
+        <definition>FN: to deliberately damage or deface</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vandalise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scratch.v" ID="7605" lemmaID="34544" cBy="664" cDate="10/17/2002 06:15:55 PDT Thu">
+        <definition>FN: to create small grooves in the surface of something by sliding contact</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scratch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="chip.v" ID="7606" lemmaID="6349" cBy="664" cDate="10/17/2002 06:16:12 PDT Thu">
+        <definition>FN: to strike in such a way that a small chip is detached from a larger object</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="score.v" ID="7607" lemmaID="34479" cBy="664" cDate="10/17/2002 06:16:28 PDT Thu">
+        <definition>FN: to scratch or cut, often repeatedly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="score"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sabotage.v" ID="7608" lemmaID="33865" cBy="664" cDate="10/17/2002 06:16:47 PDT Thu">
+        <definition>FN: to deliberately damage something in order to impede some activity</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sabotage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="key.v" ID="7609" lemmaID="21267" cBy="664" cDate="10/17/2002 06:17:26 PDT Thu">
+        <definition>FN: damage (esp. a car) by scraping (with a key or other metal object).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="key"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="vandalism.n" ID="7610" lemmaID="42695" cBy="664" cDate="10/17/2002 06:18:30 PDT Thu">
+        <definition>FN: the act of vandalising</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vandalism"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rend.v" ID="11161" lemmaID="32616" cBy="303" cDate="11/18/2004 01:00:26 PST Thu">
+        <definition>COD: tear to pieces.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tear.v" ID="11162" lemmaID="39664" cBy="303" cDate="11/18/2004 01:02:49 PST Thu">
+        <definition>COD: rip a hole or split in.</definition>
+        <sentenceCount annotated="15" total="239"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rip.v" ID="11494" lemmaID="33318" cBy="664" cDate="01/07/2005 11:35:34 PST Fri">
+        <definition>COD: tear.</definition>
+        <sentenceCount annotated="17" total="456"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="damage.n" ID="14650" lemmaID="9499" cBy="361" cDate="01/15/2008 12:22:46 PST Tue">
+        <definition>FN: harm or direpair inflicted upon something; the result of the act of damaging something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="damage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scrape.v" ID="15579" lemmaID="34535" cBy="618" cDate="01/25/2010 10:10:29 PST Mon">
+        <definition>FN: rub with a rough object so as to damage the surface of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrape"/>
+    </lexUnit>
+</frame>

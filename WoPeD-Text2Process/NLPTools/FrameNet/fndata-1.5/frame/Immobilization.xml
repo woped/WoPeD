@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/14/2001 02:15:49 PST Fri" name="Immobilization" ID="250" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; immobilizes a &lt;fen&gt;Patient&lt;/fen&gt; optionally,  to an &lt;fen&gt;Anchor&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;The junior officer&lt;/fex&gt; &lt;t&gt;handcuffed&lt;/t&gt; &lt;fex name="Patient"&gt;his commanding officer&lt;/fex&gt; &lt;fex name="Anchor"&gt;to his desk&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/15/2001 10:23:03 PST Sat" abbrev="Agt" name="Agent" ID="2182">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; immobilizes the &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;Lisa&lt;/fex&gt; &lt;t&gt;handcuffed&lt;/t&gt; Mike to the refridgerator.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/15/2001 10:23:06 PST Sat" abbrev="Ins" name="Instrument" ID="2183">
+        <definition>&lt;def-root&gt;The instrument with which an intentional act is performed.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/15/2001 10:23:13 PST Sat" abbrev="Pat" name="Patient" ID="2184">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Patient&lt;/fen&gt; is immobilized by the &lt;fen&gt;Agent&lt;/fen&gt;, optionally to an &lt;fen&gt;Anchor&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/15/2001 10:23:16 PST Sat" abbrev="Mns" name="Means" ID="2186">
+        <definition>&lt;def-root&gt;An act performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the immobilization.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/15/2001 10:23:19 PST Sat" abbrev="Purp" name="Purpose" ID="2187">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which an &lt;fen&gt;Agent&lt;/fen&gt; immobilizes a &lt;fen&gt;Patient&lt;/fen&gt;.
+
+&lt;ex&gt;Lisa &lt;t&gt;handcuffed&lt;/t&gt; Mike to the refridgerator &lt;fex name="Purp"&gt;to reduce the mess&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/15/2001 10:23:24 PST Sat" abbrev="Time" name="Time" ID="2188">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/15/2001 10:23:28 PST Sat" abbrev="Place" name="Place" ID="2189">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/27/2002 09:57:07 PDT Sat" abbrev="Anchor" name="Anchor" ID="2696">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; attaches the &lt;fen&gt;Patient&lt;/fen&gt; to an &lt;fen&gt;Anchor&lt;/fen&gt;, generally, an immobile object.
+Lisa &lt;t&gt;handcuffed&lt;/t&gt; Mike &lt;fex name="Anchor"&gt;to the refridgerator&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Degr" name="Degree" ID="5383">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Patient&lt;/fen&gt; is immobilized as a result.
+
+&lt;ex&gt;The policman &lt;t&gt;tied&lt;/t&gt; &lt;t&gt;up&lt;/t&gt; the burglar &lt;fex name="Degree"&gt;completely&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Mnr" name="Manner" ID="5384">
+        <definition>&lt;def-root&gt;Any description of the immobilizing event which is not covered by more specific FEs, including secondary effects (quietly, loudly) and general descriptions comparing events (the same way). This FE also covers expressions that indicate salient characteristics of the Agent which also affect the action (carefully, eagerly).
+
+&lt;ex&gt;Brian grabbed Kim's arm and &lt;t&gt;handcuffed&lt;/t&gt; him &lt;fex name="Manner"&gt;quickly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="tie up.v" ID="4512" lemmaID="45301" cBy="664" cDate="12/14/2001 02:16:42 PST Fri">
+        <definition>FN: immobilize someone or something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tie"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="lock up.v" ID="4760" lemmaID="45417" cBy="664" cDate="01/25/2002 05:33:42 PST Fri">
+        <definition>FN: make or become rigidly fixed or immovable by locking</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lock"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="handcuff.v" ID="4761" lemmaID="17343" cBy="664" cDate="01/25/2002 05:34:48 PST Fri">
+        <definition>COD: put handcuffs on. </definition>
+        <sentenceCount annotated="4" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="handcuff"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="shackle.v" ID="5669" lemmaID="35310" cBy="664" cDate="04/27/2002 09:43:24 PDT Sat">
+        <definition>COD: chain with shackles. </definition>
+        <sentenceCount annotated="2" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shackle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="straitjacket.v" ID="15611" lemmaID="51060" cBy="618" cDate="02/08/2010 01:07:10 PST Mon">
+        <definition>FN: confine in a straitjacket.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="straitjacket"/>
+    </lexUnit>
+</frame>

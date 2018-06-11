@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Configuration" POS="V" name="justify.v" ID="15319" frame="Arranging" frameID="921" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Con" name="Configuration"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="The" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: align text to both the left and right margins</definition>
+    <lexeme POS="V" name="justify"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="2465930"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Configuration"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Configuration"/>
+                <annoSet ID="2465930"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="2465930"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Configuration"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Configuration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="2465930"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wmargin-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="140" aPos="66097887" ID="1509888">
+            <text>Just as with word processing type can be set flush with the left-hand margin , centred or justified .</text>
+            <annotationSet cDate="04/03/2009 12:57:04 PDT Fri" status="UNANN" ID="2465929">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="6" start="5" name="rb"/>
+                    <label end="11" start="8" name="in"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="27" start="18" name="nn"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="36" start="34" name="md"/>
+                    <label end="39" start="38" name="vb"/>
+                    <label end="43" start="41" name="VVN"/>
+                    <label end="49" start="45" name="jj"/>
+                    <label end="54" start="51" name="in"/>
+                    <label end="58" start="56" name="dt"/>
+                    <label end="68" start="60" name="jj"/>
+                    <label end="75" start="70" name="nn"/>
+                    <label end="77" start="77" name=","/>
+                    <label end="85" start="79" name="VVN"/>
+                    <label end="88" start="87" name="cc"/>
+                    <label end="98" start="90" name="VVN"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/03/2009 12:57:04 PDT Fri" status="MANUAL" ID="2465930">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="98" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5819" itype="CNI" name="Agent"/>
+                    <label cBy="597" feID="5820" end="32" start="29" name="Theme"/>
+                    <label cBy="589" feID="5822" end="98" start="90" name="Configuration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="29" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="29" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="awful.a" ID="9120" frame="Expertise" frameID="136" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950328.0361" ID="10488"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Behavior_product"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Focal_participant" name="Focal_participant"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Knowledge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Skill" name="Skill"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: very bad or unpleasant</definition>
+    <lexeme POS="A" name="awful"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Behavior_product"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="NP" FE="Behavior_product"/>
+                <annoSet ID="2076075"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1368497"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Protagonist"/>
+            <pattern total="2">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="1368497"/>
+                <annoSet ID="1368973"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1368573"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Skill"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="1368497"/>
+                <annoSet ID="1368973"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Skill"/>
+                <annoSet ID="1368573"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Behavior_product"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="NP" FE="Behavior_product"/>
+                <annoSet ID="2076075"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Protagonist"/>
+            <FE name="Skill"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="1368497"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Protagonist"/>
+            <FE name="Skill"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="1368973"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Skill"/>
+                <annoSet ID="1368573"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-002-s20-rcoll-at">
+        <sentence sentNo="0" aPos="61376601" ID="957598">
+            <text>She was awful at school . </text>
+            <annotationSet cDate="01/07/2003 08:57:13 PST Tue" status="UNANN" ID="1368572">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="12" start="8" name="AJ0"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="22" start="17" name="NN1"/>
+                    <label end="24" start="24" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:57:13 PST Tue" status="MANUAL" ID="1368573">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="893" end="2" start="0" name="Protagonist"/>
+                    <label cBy="618" feID="894" end="22" start="14" name="Skill"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="22" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="22" start="14" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="6" start="4" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-001-s20-lcoll-pretty">
+        <sentence sentNo="0" aPos="46369148" ID="957560">
+            <text>I am , in fact , a pretty awful driver , which is a peculiarly difficult confession for a man to make . </text>
+            <annotationSet cDate="01/07/2003 08:57:07 PST Tue" status="UNANN" ID="1368496">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="3" start="2" name="VBB"/>
+                    <label end="5" start="5" name="PUN"/>
+                    <label end="8" start="7" name="PRP"/>
+                    <label end="13" start="10" name="NN1"/>
+                    <label end="15" start="15" name="PUN"/>
+                    <label end="17" start="17" name="AT0"/>
+                    <label end="24" start="19" name="AJ0-AV0"/>
+                    <label end="30" start="26" name="AJ0"/>
+                    <label end="37" start="32" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="45" start="41" name="DTQ"/>
+                    <label end="48" start="47" name="VBZ"/>
+                    <label end="50" start="50" name="AT0"/>
+                    <label end="61" start="52" name="AV0"/>
+                    <label end="71" start="63" name="AJ0"/>
+                    <label end="82" start="73" name="NN1"/>
+                    <label end="86" start="84" name="PRP"/>
+                    <label end="88" start="88" name="AT0"/>
+                    <label end="92" start="90" name="NN1"/>
+                    <label end="95" start="94" name="TO0"/>
+                    <label end="100" start="97" name="VVI"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:57:07 PST Tue" status="MANUAL" ID="1368497">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="901" end="24" start="19" name="Degree"/>
+                    <label cBy="618" feID="893" end="37" start="32" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="19" name="Dep"/>
+                    <label end="37" start="32" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="19" name="AVP"/>
+                    <label end="37" start="32" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="30" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="894" end="37" start="32" name="Skill"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-170-s20-prenom">
+        <sentence sentNo="0" aPos="117548032" ID="957798">
+            <text>It 's , he is such an awful actor ! </text>
+            <annotationSet cDate="01/07/2003 08:57:41 PST Tue" status="UNANN" ID="1368972">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="PUN"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="17" start="14" name="DT0"/>
+                    <label end="20" start="19" name="AT0"/>
+                    <label end="26" start="22" name="AJ0"/>
+                    <label end="32" start="28" name="NN1"/>
+                    <label end="34" start="34" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:57:41 PST Tue" status="MANUAL" ID="1368973">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="893" end="32" start="28" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="28" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="28" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="894" end="32" start="28" name="Skill"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-XPdriver,gaolkeeping,job-(1)"/>
+    <subCorpus name="02-T-PPchoose,your,preps-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="113" docID="10488" sentNo="2" paragNo="7" aPos="47842032" ID="1313967">
+            <text>They do n't need to make awful imitations of Western films to be successful , '' said Rasim Dargah-Zade , director of the Moskva movie theater .</text>
+            <annotationSet cDate="02/20/2005 12:11:22 PST Sun" status="UNANN" ID="2076074">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="6" start="5" name="VVP"/>
+                    <label end="10" start="8" name="rb"/>
+                    <label end="15" start="12" name="VV"/>
+                    <label end="18" start="17" name="to"/>
+                    <label end="23" start="20" name="VV"/>
+                    <label end="29" start="25" name="jj"/>
+                    <label end="40" start="31" name="nns"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="51" start="45" name="jj"/>
+                    <label end="57" start="53" name="nns"/>
+                    <label end="60" start="59" name="to"/>
+                    <label end="63" start="62" name="vb"/>
+                    <label end="74" start="65" name="jj"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="79" start="78" name="''"/>
+                    <label end="84" start="81" name="VVD"/>
+                    <label end="90" start="86" name="NP"/>
+                    <label end="102" start="92" name="NP"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="113" start="106" name="nn"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="120" start="118" name="dt"/>
+                    <label end="127" start="122" name="NP"/>
+                    <label end="133" start="129" name="nn"/>
+                    <label end="141" start="135" name="nn"/>
+                    <label end="143" start="143" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/20/2005 12:11:23 PST Sun" status="MANUAL" ID="2076075">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="29" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1078" end="57" start="31" name="Behavior_product"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="31" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="31" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-XPdriver,goalkeeping,job-(2)"/>
+    <subCorpus name="02-T-PPat-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

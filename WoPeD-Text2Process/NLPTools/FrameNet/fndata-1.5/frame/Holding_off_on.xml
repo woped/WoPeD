@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" name="Holding_off_on" ID="1576" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; decides temporarily not to perform a &lt;fen&gt;Desirable_action&lt;/fen&gt; or not to interact with a &lt;fen&gt;Salient_entity&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;I&lt;/fex&gt; have actually &lt;t&gt;held off&lt;/t&gt; &lt;fex name="Desirable_action"&gt;on buying some movies by WB&lt;/fex&gt; &lt;fex name="Explanation"&gt;because of those damned cases&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;We&lt;/fex&gt; &lt;t&gt;held off&lt;/t&gt; &lt;fex name="Desirable_action"&gt;on reporting this&lt;/fex&gt; &lt;fex name="Explanation"&gt;because, by all accounts, the young Oscar-nominee has NOT been offered the role&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;This meant &lt;t&gt;waiting&lt;/t&gt; &lt;fex name="Desirable_action"&gt;with dinner&lt;/fex&gt; until late. &lt;fex name="Agent"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;I&lt;/fex&gt; &lt;t&gt;waited&lt;/t&gt; &lt;fex name="Desirable_action"&gt;with going to him&lt;/fex&gt; and in retrospect think that that was a mistake.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="age" name="Agent" ID="8630">
+        <definition>&lt;def-root&gt;
+The&lt;fen&gt;Agent&lt;/fen&gt; decides not to engage in a &lt;fen&gt;Desirable_action&lt;/fen&gt; for a while or not to interact with a &lt;fen&gt;Salient_entity&lt;/fen&gt;.
+
+&lt;ex&gt;Instead, &lt;fex name="Agent"&gt;he&lt;/fex&gt; &lt;t&gt;held off&lt;/t&gt; on a public announcement of his decision for more than a year.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="Des" name="Desirable_action" ID="8631">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Desirable_action&lt;/fen&gt; identifies the event or activity in which the &lt;fen&gt;Agent&lt;/fen&gt; does not engage for a while.
+
+&lt;ex&gt;The board also &lt;t&gt;waited&lt;/t&gt; &lt;fex name="Des"&gt;with the appointment of seven members to the planning and zoning commission&lt;/fex&gt; until a policy is set regarding requirements.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Salient_entity" ID="8640"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="Deg" name="Degree" ID="8632">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the temporary forgoing occurs.
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="Man" name="Manner" ID="8633">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the temporary forgoing occurs.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="mea" name="Means" ID="8634">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the temporary forgoing occurs.
+
+&lt;ex&gt;Portland General Electric, for example, has &lt;t&gt;held off&lt;/t&gt; on retail rate increases &lt;fex name="Means"&gt;by
+selling some excess power at high wholesale prices&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="" name="Place" ID="8635">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the temporary forgoing occurs.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="" name="Time" ID="8636">
+        <definition>&lt;def-root&gt;This FE identifies the interval of &lt;fen&gt;Time&lt;/fen&gt; during which the the forgoing occurs.
+
+&lt;ex&gt;Saskatchewan teachers are not a happy lot as they had voted for a strike in June
+&lt;fex name="Time"&gt;then&lt;/fex&gt; &lt;t&gt;held off&lt;/t&gt; on it to give negotiations a chance during the summer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="Purp" name="Purpose" ID="8637">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which the temporary forgoing occurs.
+
+
+&lt;ex&gt;We &lt;t&gt;held off&lt;/t&gt; on taking him out &lt;fex name="Purp"&gt;so as to not disrupt the plans for the invasion of Iraq&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="exp" name="Explanation" ID="8638">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the &lt;fen&gt;Agent&lt;/fen&gt;'s decision to temporarily forgo a &lt;fen&gt;Desirable_action&lt;/fen&gt; or to not interact with a &lt;fen&gt;Salient_entity&lt;/fen&gt; logically follows. 
+
+&lt;ex&gt;Yes yes I saw them, but I &lt;t&gt;waited&lt;/t&gt; with a reply for sometime &lt;fex name="exp"&gt;because I wanted first to show them to my guildmates&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/18/2005 10:21:49 PDT Mon" abbrev="cir" name="Circumstances" ID="8639">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the &lt;fen&gt;Agent&lt;/fen&gt; does not engage in the &lt;fen&gt;Desirable_action&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 10:29:59 PDT Mon" abbrev="sal" name="Salient_entity" ID="8640">
+        <definition>&lt;def-root&gt;An entity that evokes a contextually inferrable &lt;fen&gt;Desirable_action&lt;/fen&gt; that the &lt;fen&gt;Agent&lt;/fen&gt; is temporarily forgoing.
+
+&lt;ex&gt;I ordered the blackberry cobbler with ice cream for dessert and &lt;t&gt;held off&lt;/t&gt; &lt;fex name="sal"&gt;on another pint&lt;/fex&gt; as the rain kept coming down.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:32:22 PDT Mon" abbrev="dur" name="Duration" ID="8641">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Duration&lt;/fen&gt; denotes the length of time from the beginning of the &lt;fen&gt;Agent&lt;/fen&gt;'s decision to forgo a &lt;fen&gt;Desirable_action&lt;/fen&gt; to the point in time when the &lt;fen&gt;Agent&lt;/fen&gt; engages in the action.
+
+&lt;ex&gt;The United Arab Emirates (UAE) &lt;t&gt;waited&lt;/t&gt; with the deal &lt;fex name="dur"&gt;for nearly five years&lt;/fex&gt; because of a dispute with the Pentagon about the avionics.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 10:44:25 PDT Mon" abbrev="end" name="End_point" ID="8642">
+        <definition>&lt;def-root&gt;The point in time, defined either as a clock time or in terms of an event that takes place, at which the &lt;fen&gt;Agent&lt;/fen&gt; engages in the &lt;fen&gt;Desirable_action&lt;/fen&gt; or interacts with the &lt;fen&gt;Salient_entity&lt;/fen&gt;.
+
+&lt;ex&gt;We &lt;t&gt;waited&lt;/t&gt; on technology development &lt;fex name="End_point"&gt;until we had made instructional plans&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Forgoing</relatedFrame>
+        <relatedFrame>Change_event_time</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Waiting</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Needs_SCs" POS="V" name="hold off.v" ID="12502" lemmaID="50186" cBy="605" cDate="07/18/2005 10:48:35 PDT Mon">
+        <definition>FN: temporarily forgo </definition>
+        <sentenceCount annotated="2" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hold"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="wait.v" ID="12503" lemmaID="43348" cBy="605" cDate="07/18/2005 10:49:35 PDT Mon">
+        <definition>FN: temporarily refrain from</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wait"/>
+    </lexUnit>
+</frame>

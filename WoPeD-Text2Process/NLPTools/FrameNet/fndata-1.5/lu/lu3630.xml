@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="eyot.n" ID="3630" frame="Natural_features" frameID="191" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cnst" name="Constituent_parts"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="ContP" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="FormC" name="Formational_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Lcl" name="Locale"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="RelLoc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a small island in a river. </definition>
+    <lexeme POS="N" name="eyot"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Constituent_parts"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Constituent_parts"/>
+                <annoSet ID="1050370"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Locale"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="1050370"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Constituent_parts"/>
+            <FE name="Locale"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Constituent_parts"/>
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="1050370"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="17287347" ID="795852">
+            <text>The little stream wound among floating eyots of water flowers that looked like day stars reflecting a mystical heaven . </text>
+            <annotationSet cDate="01/07/2003 02:53:03 PST Tue" status="UNANN" ID="1050369">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="16" start="11" name="NN1"/>
+                    <label end="22" start="18" name="VVD-VVN"/>
+                    <label end="28" start="24" name="PRP"/>
+                    <label end="37" start="30" name="AJ0-VVG"/>
+                    <label end="43" start="39" name="NN2"/>
+                    <label end="46" start="45" name="PRF"/>
+                    <label end="52" start="48" name="NN1"/>
+                    <label end="60" start="54" name="NN2-VVZ"/>
+                    <label end="65" start="62" name="CJT"/>
+                    <label end="72" start="67" name="VVD-VVN"/>
+                    <label end="77" start="74" name="PRP"/>
+                    <label end="81" start="79" name="NN1"/>
+                    <label end="87" start="83" name="NN2"/>
+                    <label end="98" start="89" name="VVG"/>
+                    <label end="100" start="100" name="AT0"/>
+                    <label end="109" start="102" name="AJ0"/>
+                    <label end="116" start="111" name="NN1"/>
+                    <label end="118" start="118" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:53:03 PST Tue" status="MANUAL" ID="1050370">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1573" end="43" start="39" name="Locale"/>
+                    <label cBy="669" feID="1570" end="60" start="45" name="Constituent_parts"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

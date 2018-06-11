@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:17 PST Wed" name="Self_motion" ID="64" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Self_mover&lt;/fen&gt;, a living being, moves under its own power in a directed fashion, i.e. along what could be described as a &lt;fen&gt;Path&lt;/fen&gt;, with no separate vehicle.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="SMov" name="Self_mover" ID="285">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Self_mover&lt;/fen&gt; is the living being which moves under its own power. Normally it is expressed as an external argument.
+&lt;ex&gt;&lt;fex name="Self_mover"&gt;Fred&lt;/fex&gt; &lt;t&gt;crawled&lt;/t&gt; the narrow passage.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Src" name="Source" ID="286">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; is used for any expression which implies a definite starting-point of motion.
+In prepositional phrases, the prepositional object expresses the starting point of motion.  With particles, the starting point of motion is understood from context.
+&lt;ex&gt;The cat &lt;t&gt;ran&lt;/t&gt; &lt;fex name="Source"&gt;out of the house&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The cat &lt;t&gt;ran&lt;/t&gt; &lt;fex name="Source"&gt;out&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The cat &lt;t&gt;ran&lt;/t&gt; &lt;fex name="Source"&gt;away&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The cat &lt;t&gt;ran&lt;/t&gt; &lt;fex name="Source"&gt;off&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="291"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Path" name="Path" ID="287">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Path&lt;/fen&gt; is used for any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt;.  This includes "middle of path'' expressions.
+
+&lt;ex&gt;The scouts &lt;t&gt;hiked&lt;/t&gt; &lt;fex name="Path"&gt;through the desert&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The scouts &lt;t&gt;hiked&lt;/t&gt; &lt;fex name="Path"&gt;along the river&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Path" ID="152"/>
+        <excludesFE name="Area" ID="291"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Goal" name="Goal" ID="288">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is used for any expression which tells where the &lt;fen&gt;Self_mover&lt;/fen&gt; ends up as a result of the motion. 
+&lt;ex&gt;The children &lt;t&gt;skipped&lt;/t&gt; &lt;fex name="Goal"&gt;into the park&lt;/fex&gt;.&lt;/ex&gt;
+Some particles imply the existence of a &lt;fen&gt;Goal&lt;/fen&gt; which is understood in the context of utterance.
+&lt;ex&gt;The principal &lt;t&gt;walked&lt;/t&gt; &lt;fex name="Goal"&gt;over&lt;/fex&gt; and sat down.&lt;/ex&gt;
+&lt;ex&gt;A dog &lt;t&gt;ran&lt;/t&gt; &lt;fex name="Goal"&gt;up&lt;/fex&gt; and licked our hands.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="291"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Manr" name="Manner" ID="289">
+        <definition>&lt;def-root&gt;Any expression which describes a property of motion which is not directly related to the trajectory or rate of motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of steadiness, grace, means of motion, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions. 
+&lt;ex&gt;We &lt;t&gt;slithered&lt;/t&gt; &lt;fex name="Manner"&gt;smoothly&lt;/fex&gt; through the crowd.&lt;/ex&gt;
+&lt;ex&gt;They had to &lt;t&gt;trek&lt;/t&gt; &lt;fex name="Manner"&gt;on foot&lt;/fex&gt; through the desert.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Dist" name="Distance" ID="290">
+        <definition>&lt;def-root&gt;Any expression which characterizes the extent of motion expresses the frame element &lt;fen&gt;Distance&lt;/fen&gt;. 
+&lt;ex&gt;I barely &lt;t&gt;hobbled&lt;/t&gt; &lt;fex name="Distance"&gt;six feet&lt;/fex&gt; before collapsing.&lt;/ex&gt;
+&lt;ex&gt;We &lt;t&gt;hiked&lt;/t&gt; &lt;fex name="Distance"&gt;a short distance&lt;/fex&gt; into the forest and sat down.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Quantity" ID="59"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Area" name="Area" ID="291">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular and not to consist of a single linear path.  Note that this FE should not be used for cases when the same phrase could be used with the same meaning with a non-motion target, since these should be annotated with the &lt;fen&gt;Place&lt;/fen&gt; FE.
+
+&lt;ex&gt;The mouse &lt;t&gt;scurried&lt;/t&gt; &lt;fex name="Area"&gt;about&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Stop &lt;t&gt;running&lt;/t&gt; &lt;fex name="Area"&gt;around the room&lt;/fex&gt; and sit down!&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:46:01 PDT Tue" abbrev="Time" name="Time" ID="1977">
+        <definition>&lt;def-root&gt;The time when the motion occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:46:01 PDT Tue" abbrev="Thm_c" name="Cotheme" ID="1978">
+        <definition>&lt;def-root&gt;An entity whose motion is correlated with that of the &lt;fen&gt;Self_mover&lt;/fen&gt;, following and tracking the &lt;fen&gt;Self_mover&lt;/fen&gt;, being followed and tracked, or with both parties mutually matching &lt;fen&gt;Path&lt;/fen&gt;s.
+
+&lt;ex&gt;We &lt;t&gt;clomped&lt;/t&gt; down to the shore &lt;fex name="Cotheme"&gt;with a whole troop of younglings&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;I had little hope of catching up, but I &lt;t&gt;crawled&lt;/t&gt; &lt;fex name="Cotheme"&gt;after her&lt;/fex&gt; as fast as I could.&lt;/ex&gt;
+&lt;ex&gt;The troops &lt;t&gt;marching&lt;/t&gt; &lt;fex name="Cotheme"&gt;in front of him&lt;/fex&gt; paid no attention to the beggar by the roadside.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:46:01 PDT Tue" abbrev="Spd" name="Speed" ID="1979">
+        <definition>&lt;def-root&gt;The rate at which the location of the &lt;fen&gt;Self_mover&lt;/fen&gt; changes with respect to time.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:47:25 PDT Tue" abbrev="Dep" name="Depictive" ID="1982">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action
+&lt;ex&gt;We &lt;t&gt;wandered&lt;/t&gt; around &lt;fex name="Depictive"&gt;naked&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State" ID="77"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:47:25 PDT Tue" abbrev="Mns" name="Means" ID="1983">
+        <definition>&lt;def-root&gt;An act whereby the &lt;fen&gt;Self_mover&lt;/fen&gt; achieves movement.
+&lt;ex&gt;He &lt;t&gt;walked&lt;/t&gt; back to the village &lt;fex name="Mns"&gt;by dragging his mangled foot behind&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:47:25 PDT Tue" abbrev="Result" name="Result" ID="1984">
+        <definition>&lt;def-root&gt;Result of an event&lt;/def-root&gt;</definition>
+        <semType name="Event" ID="75"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:55:59 PDT Tue" abbrev="Cause" name="Internal_cause" ID="1987">
+        <definition>&lt;def-root&gt;The emotional or mental state of the &lt;fen&gt;Self_mover&lt;/fen&gt; which motivates them toward motion or the particular manner of motion.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/21/2002 06:20:53 PDT Fri" abbrev="Dur" name="Duration" ID="3164">
+        <definition>&lt;def-root&gt;The amount of time for which a state holds or a process is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/21/2002 06:21:57 PDT Fri" abbrev="Purp" name="Purpose" ID="3165">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which a &lt;fen&gt;Self_mover&lt;/fen&gt; moves.
+&lt;ex&gt;John &lt;t&gt;walked&lt;/t&gt; with her every day &lt;fex name="Purpose"&gt;to relieve the boredom&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/31/2003 10:02:30 PDT Thu" abbrev="" name="Place" ID="4890">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the location within which a defined motion takes place.  Any specified or implied  &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt; should designate a location contained with the &lt;fen&gt;Place&lt;/fen&gt;.  This FE can be differentiated from &lt;fen&gt;Area&lt;/fen&gt; by the fact that the annotated phrase can be used in the same meaning with non-motion targets.
+
+&lt;ex&gt;The hitchhikers &lt;t&gt;walked&lt;/t&gt; &lt;fex name="Place"&gt;in the middle of the road&lt;/fex&gt;.&lt;/ex&gt; 
+&lt;ex&gt;&lt;/ex&gt;
+ &lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/10/2003 07:11:33 PDT Wed" abbrev="" name="Reason" ID="5054">
+        <definition>&lt;def-root&gt;The state of affairs that leads to the particular motion that the &lt;fen&gt;Self_mover&lt;/fen&gt; adopts.
+
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/11/2004 01:15:20 PDT Fri" abbrev="ext" name="External_cause" ID="6505">
+        <definition>&lt;def-root&gt;&lt;fen&gt;External_cause&lt;/fen&gt; is something in the external environment that causes the &lt;fen&gt;Self_mover&lt;/fen&gt;  to move. 
+
+&lt;ex&gt;They &lt;t&gt;danced&lt;/t&gt; &lt;fex name="ext"&gt;at the sound of her voice&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Core" cBy="664" cDate="11/16/2005 06:47:38 PST Wed" abbrev="dir" name="Direction" ID="9348">
+        <definition>&lt;def-root&gt;The direction that the &lt;fen&gt;Self_mover&lt;/fen&gt; heads in during the motion.
+
+&lt;ex&gt;You should &lt;t&gt;walk&lt;/t&gt; &lt;fex name="Direction"&gt;south&lt;/fex&gt; about a block .&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="291"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/22/2005 08:34:02 PST Tue" abbrev="coo" name="Coordinated_event" ID="9475">
+        <definition>&lt;def-root&gt;The label &lt;fen&gt;Coordinated_event&lt;/fen&gt; is to be used for phrases denoting an event-it does not allow states-that the Traversing is rhythmically aligned with. The &lt;fen&gt;Coordinated_event&lt;/fen&gt; is conceived of as independent: it would occur regardless of the event expressed by the target, which is not even an incidental or optional sub-part of the &lt;fen&gt;Coordinated_event&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="000000" coreType="Peripheral" cBy="303" cDate="01/20/2006 04:21:48 PST Fri" abbrev="" name="Path_shape" ID="9871">
+        <definition>&lt;def-root&gt;The shape of the overall &lt;fen&gt;Path&lt;/fen&gt; travelled by the &lt;fen&gt;Self_mover&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="07/23/2010 05:42:01 PDT Fri" abbrev="" name="Concessive" ID="14071">
+        <definition>&lt;def-root&gt;An event or circumstance that would not be expected given the nature of the particular Self_motion event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="288"/>
+        <memberFE name="Direction" ID="9348"/>
+        <memberFE name="Path" ID="287"/>
+        <memberFE name="Source" ID="286"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Cotheme</relatedFrame>
+        <relatedFrame>Intentional_traversing</relatedFrame>
+        <relatedFrame>Travel</relatedFrame>
+        <relatedFrame>Fleeing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Quitting_a_place</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <lexUnit status="FN1_Sent" POS="V" name="amble.v" ID="1152" lemmaID="1212" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>COD: walk or move at a leisurely pace.</definition>
+        <sentenceCount annotated="29" total="148"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="amble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Direction" POS="V" name="back.v" ID="1153" lemmaID="2589" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>FN: move backwards</definition>
+        <sentenceCount annotated="41" total="668"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="back"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="barge.v" ID="1154" lemmaID="2906" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>COD: move forcefully or roughly</definition>
+        <sentenceCount annotated="27" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="barge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bop.v" ID="1156" lemmaID="4218" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>FN: to go quickly or unceremoniously; shuffle along as if to bop music</definition>
+        <sentenceCount annotated="4" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bound.v" ID="1157" lemmaID="4303" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>FN: to move by leaping or jumping</definition>
+        <sentenceCount annotated="21" total="211"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bound"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="burrow.v" ID="1158" lemmaID="5005" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>COD: dig into or through something solid.</definition>
+        <sentenceCount annotated="18" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="burrow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bustle.v" ID="1159" lemmaID="5044" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>COD: move energetically or noisily</definition>
+        <sentenceCount annotated="55" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bustle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="canter.v" ID="1160" lemmaID="5413" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>COD: move at the pace of a horse between a trot and a gallop</definition>
+        <sentenceCount annotated="15" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="canter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="caper.v" ID="1161" lemmaID="5442" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: skip or dance about in a lively or playful way</definition>
+        <sentenceCount annotated="9" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="caper"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clamber.v" ID="1162" lemmaID="6620" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: climb or move in an awkward and laborious way</definition>
+        <sentenceCount annotated="73" total="244"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clamber"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="climb.v" ID="1163" lemmaID="6789" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>FN: to move vertically usually upwards, usually with effort</definition>
+        <sentenceCount annotated="114" total="584"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="climb"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clomp.v" ID="1164" lemmaID="17" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: walk with a heavy tread</definition>
+        <sentenceCount annotated="6" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clomp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crawl.v" ID="1165" lemmaID="8824" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: move forward on the hands and knees or by dragging the body close to the ground</definition>
+        <sentenceCount annotated="143" total="482"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crawl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="creep.v" ID="1166" lemmaID="8883" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: move forward on the hands and knees or by dragging the body close to the ground.</definition>
+        <sentenceCount annotated="58" total="485"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="creep"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="dance.v" ID="1167" lemmaID="9534" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD:  move rhythmically to music, typically following a set sequence of steps. 2a: move in a quick and light or lively way.</definition>
+        <sentenceCount annotated="82" total="573"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dance"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="dart.v" ID="1168" lemmaID="9592" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: move suddenly or rapidly.</definition>
+        <sentenceCount annotated="72" total="339"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dart"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="dash.n" ID="1169" lemmaID="9596" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: an act of dashing</definition>
+        <sentenceCount annotated="37" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dash"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="dash.v" ID="1170" lemmaID="9597" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: run or travel in a great hurry.</definition>
+        <sentenceCount annotated="63" total="395"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dash"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="flit.v" ID="1171" lemmaID="14740" cBy="731" cDate="02/08/2001 01:29:23 PST Thu">
+        <definition>COD: move swiftly and lightly.</definition>
+        <sentenceCount annotated="41" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flit"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="flounce.v" ID="1172" lemmaID="14782" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: move in an exaggeratedly impatient or angry manner.</definition>
+        <sentenceCount annotated="33" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flounce"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="frolic.v" ID="1173" lemmaID="15535" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: play or move about in a cheerful and lively way.</definition>
+        <sentenceCount annotated="13" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="frolic"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gallivant.v" ID="1174" lemmaID="27" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: go from place to place in pursuit of pleasure.</definition>
+        <sentenceCount annotated="7" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gallivant"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gambol.v" ID="1175" lemmaID="15862" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: run or jump about playfully.</definition>
+        <sentenceCount annotated="13" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gambol"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hasten.v" ID="1176" lemmaID="17534" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: be quick to do something; move quickly. no appropriate definitions in COD</definition>
+        <sentenceCount annotated="41" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hasten"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="hike.n" ID="1177" lemmaID="18087" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: a long walk or walking tour.</definition>
+        <sentenceCount annotated="25" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hike"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hike.v" ID="1178" lemmaID="18088" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: go on a hike.</definition>
+        <sentenceCount annotated="17" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hike"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hitchhike.v" ID="1179" lemmaID="18158" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>FN: to travel by asking motorists for  free rides</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hitchhike"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hobble.v" ID="1180" lemmaID="18183" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: walk awkwardly, typically because of pain</definition>
+        <sentenceCount annotated="73" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hobble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hop.v" ID="1181" lemmaID="18375" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>FN: move by jumping primarily upward </definition>
+        <sentenceCount annotated="112" total="332"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hurry.v" ID="1182" lemmaID="18706" cBy="731" cDate="02/08/2001 01:29:24 PST Thu">
+        <definition>COD: move or act quickly or more quickly.</definition>
+        <sentenceCount annotated="77" total="743"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hurry"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="jaunt.n" ID="1183" lemmaID="20852" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: a short excursion for pleasure.</definition>
+        <sentenceCount annotated="27" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jaunt"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="jog.v" ID="1184" lemmaID="21007" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD:  run at a steady, gentle pace, especially as a form of exercise.</definition>
+        <sentenceCount annotated="51" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jog"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="jump.v" ID="1185" lemmaID="21138" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: push oneself off the ground using the muscles in one's legs and feet</definition>
+        <sentenceCount annotated="32" total="312"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jump"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="leap.v" ID="1186" lemmaID="21941" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD:  jump or spring a long way.</definition>
+        <sentenceCount annotated="87" total="650"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="leap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="limp.v" ID="1187" lemmaID="22393" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: walk with difficulty because of an injured leg or foot.</definition>
+        <sentenceCount annotated="64" total="265"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="limp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lope.v" ID="1188" lemmaID="22772" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: run with a long bounding stride.</definition>
+        <sentenceCount annotated="50" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lope"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lumber.v" ID="1189" lemmaID="22947" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: move in a slow, heavy, awkward way.</definition>
+        <sentenceCount annotated="66" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lumber"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lunge.v" ID="1190" lemmaID="22975" cBy="731" cDate="02/08/2001 01:29:25 PST Thu">
+        <definition>COD: make a lunge.</definition>
+        <sentenceCount annotated="32" total="114"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lunge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lurch.v" ID="1191" lemmaID="22981" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: make such a movement; stagger.</definition>
+        <sentenceCount annotated="61" total="261"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lurch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="march.n" ID="1192" lemmaID="23470" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: an act or instance of marching.</definition>
+        <sentenceCount annotated="61" total="249"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="march"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="march.v" ID="1193" lemmaID="23471" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: walk in a military manner with a regular measured tread.</definition>
+        <sentenceCount annotated="101" total="614"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="march"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="meander.v" ID="1194" lemmaID="23797" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: wander aimlessly.</definition>
+        <sentenceCount annotated="10" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meander"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="mince.v" ID="1195" lemmaID="24354" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD:  walk in an affected manner with short, quick steps and swinging hips.</definition>
+        <sentenceCount annotated="8" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mince"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="mosey.v" ID="1196" lemmaID="24985" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD:  walk or move in a leisurely manner.</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mosey"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pace.v" ID="1197" lemmaID="27469" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: walk at a steady speed, especially without a particular destination and as an expression of anxiety</definition>
+        <sentenceCount annotated="68" total="401"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pace"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pad.v" ID="1198" lemmaID="27497" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: walk with steady steps making a soft, dull sound.</definition>
+        <sentenceCount annotated="76" total="329"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pad"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="parade.v" ID="1199" lemmaID="27750" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD:  walk, march, or display in a parade.</definition>
+        <sentenceCount annotated="12" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="parade"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="plod.v" ID="1200" lemmaID="29402" cBy="731" cDate="02/08/2001 01:29:26 PST Thu">
+        <definition>COD: walk doggedly and slowly with heavy steps.</definition>
+        <sentenceCount annotated="82" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plod"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pounce.v" ID="1201" lemmaID="29972" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD: spring or swoop suddenly to catch or as if to catch prey.</definition>
+        <sentenceCount annotated="27" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pounce"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="prance.v" ID="1202" lemmaID="30035" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>FN: walk or move around with high, springy steps, or ostentatious, exaggerated movements</definition>
+        <sentenceCount annotated="37" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prance"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="promenade.v" ID="1203" lemmaID="30686" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD:  take a promenade.</definition>
+        <sentenceCount annotated="14" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="promenade"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="prowl.v" ID="1204" lemmaID="30932" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD:  move about stealthily or restlessly in search of or as if in search of prey.</definition>
+        <sentenceCount annotated="43" total="141"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prowl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="roam.v" ID="1205" lemmaID="33392" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>FN: wander aimlessly over, through, or about (a place).</definition>
+        <sentenceCount annotated="72" total="261"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roam"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="romp.v" ID="1206" lemmaID="33486" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD:  play about roughly and energetically.</definition>
+        <sentenceCount annotated="31" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="romp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="run.v" ID="1207" lemmaID="33776" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD: move at a speed faster than a walk, never having both or all feet on the ground at the same time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="run"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rush.v" ID="1208" lemmaID="33810" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>FN: move someplace with urgent haste</definition>
+        <sentenceCount annotated="149" total="844"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rush"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sashay.v" ID="1209" lemmaID="34162" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD: walk ostentatiously, with exaggerated hip and shoulder movements.</definition>
+        <sentenceCount annotated="5" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sashay"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="saunter.v" ID="1210" lemmaID="34222" cBy="731" cDate="02/08/2001 01:29:27 PST Thu">
+        <definition>COD: walk in a slow, relaxed manner.</definition>
+        <sentenceCount annotated="74" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="saunter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scamper.v" ID="1211" lemmaID="34312" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>COD: run with quick light steps, especially through fear or excitement.</definition>
+        <sentenceCount annotated="73" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scamper"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scoot.v" ID="1212" lemmaID="34469" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>COD: move quickly with a rapid, darting motion</definition>
+        <sentenceCount annotated="22" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scoot"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="scramble.n" ID="1213" lemmaID="34528" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>COD: a walk up steep terrain involving the use of one's hands. </definition>
+        <sentenceCount annotated="29" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scramble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scramble.v" ID="1214" lemmaID="34529" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>FN: move or climb hurriedly, possibly using one's hand</definition>
+        <sentenceCount annotated="88" total="370"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scramble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scurry.v" ID="1215" lemmaID="34651" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>COD: move hurriedly with short quick steps.</definition>
+        <sentenceCount annotated="91" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scurry"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scuttle.v" ID="1216" lemmaID="34658" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>COD:  run hurriedly or furtively with short quick steps.</definition>
+        <sentenceCount annotated="72" total="222"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scuttle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="shuffle.n" ID="1217" lemmaID="35746" cBy="731" cDate="02/08/2001 01:29:28 PST Thu">
+        <definition>FN: a shuffling movement, walk </definition>
+        <sentenceCount annotated="9" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shuffle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shuffle.v" ID="1218" lemmaID="35747" cBy="731" cDate="02/08/2001 01:29:29 PST Thu">
+        <definition>COD: walk by dragging one's feet along or without lifting them fully from the ground.</definition>
+        <sentenceCount annotated="92" total="329"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shuffle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="skip.v" ID="1219" lemmaID="36164" cBy="731" cDate="02/08/2001 01:29:29 PST Thu">
+        <definition>COD: move along lightly, stepping from one foot to the other with a hop or bounce.</definition>
+        <sentenceCount annotated="92" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skip"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="skulk.v" ID="1220" lemmaID="36187" cBy="731" cDate="02/08/2001 01:29:29 PST Thu">
+        <definition>COD:  hide or move around secretly, typically with a sinister or cowardly motive.</definition>
+        <sentenceCount annotated="35" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skulk"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="slalom.v" ID="1221" lemmaID="51" cBy="731" cDate="02/08/2001 01:29:29 PST Thu">
+        <definition>COD: move or race in a winding path, avoiding obstacles.</definition>
+        <sentenceCount annotated="2" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slalom"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sleepwalk.v" ID="1222" lemmaID="36306" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: walk around and sometimes perform other actions while asleep.</definition>
+        <sentenceCount annotated="12" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sleepwalk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="slink.v" ID="1223" lemmaID="36357" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>FN: move in a quiet, furtive manner</definition>
+        <sentenceCount annotated="49" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slink"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="slither.v" ID="1224" lemmaID="36381" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: move smoothly over a surface with a twisting or oscillating motion.</definition>
+        <sentenceCount annotated="82" total="184"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slither"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="slog.n" ID="1225" lemmaID="36391" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>FN: a difficult, exhausting march or hike</definition>
+        <sentenceCount annotated="13" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slog"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="slog.v" ID="1226" lemmaID="36390" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: walk or move with difficulty or effort</definition>
+        <sentenceCount annotated="14" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slog"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sneak.v" ID="1227" lemmaID="36617" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD:  move, go, or convey in a furtive or stealthy manner</definition>
+        <sentenceCount annotated="72" total="252"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sneak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="spring.v" ID="1228" lemmaID="37532" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: move suddenly or rapidly upwards or forwards</definition>
+        <sentenceCount annotated="71" total="439"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spring"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="sprint.n" ID="1229" lemmaID="37549" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: a short, fast race in cycling, horse racing, etc.</definition>
+        <sentenceCount annotated="11" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sprint"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sprint.v" ID="1230" lemmaID="37550" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: run at full speed over a short distance.</definition>
+        <sentenceCount annotated="75" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sprint"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stagger.v" ID="1231" lemmaID="37709" cBy="731" cDate="02/08/2001 01:29:30 PST Thu">
+        <definition>COD: walk or move unsteadily, as if about to fall.</definition>
+        <sentenceCount annotated="138" total="401"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stagger"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="steal.v" ID="1233" lemmaID="37916" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD: move somewhere quietly or surreptitiously</definition>
+        <sentenceCount annotated="53" total="414"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="steal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="step.n" ID="1234" lemmaID="37971" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>FN: a motion of the foot and leg which results in overall motion of a body.</definition>
+        <sentenceCount annotated="52" total="449"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="step"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="step.v" ID="1235" lemmaID="37972" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD:  lift and set down one's foot or one foot after the other in order to walk somewhere or move to a new position.</definition>
+        <sentenceCount annotated="156" total="844"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="step"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stomp.v" ID="1236" lemmaID="38157" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD: tread heavily and noisily, typically in order to show anger.</definition>
+        <sentenceCount annotated="40" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stomp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="straggle.v" ID="1237" lemmaID="38237" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD: move along slowly so as to trail behind the person or people in front</definition>
+        <sentenceCount annotated="18" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="straggle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stride.v" ID="1238" lemmaID="38341" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD: walk with long, decisive steps.</definition>
+        <sentenceCount annotated="116" total="557"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stride"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="stroll.n" ID="1239" lemmaID="38379" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD: a short leisurely walk.</definition>
+        <sentenceCount annotated="58" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stroll"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stroll.v" ID="1240" lemmaID="38380" cBy="731" cDate="02/08/2001 01:29:31 PST Thu">
+        <definition>COD:  walk in a leisurely way.</definition>
+        <sentenceCount annotated="90" total="504"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stroll"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="strut.v" ID="1241" lemmaID="38409" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD: walk with a stiff, erect, and conceited gait.</definition>
+        <sentenceCount annotated="68" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="strut"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stumble.v" ID="1242" lemmaID="38444" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD: trip or momentarily lose one\'s bala</definition>
+        <sentenceCount annotated="71" total="447"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stumble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swagger.v" ID="1243" lemmaID="39056" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD:  walk or behave arrogantly or self-importantly.</definition>
+        <sentenceCount annotated="42" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swagger"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="swim.n" ID="1244" lemmaID="39158" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD: an act or period of swimming</definition>
+        <sentenceCount annotated="31" total="159"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="swim"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swim.v" ID="1245" lemmaID="39159" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD: propel oneself through water by bodily movement</definition>
+        <sentenceCount annotated="276" total="493"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swim"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tiptoe.v" ID="1246" lemmaID="40524" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>COD: walk quietly and carefully with one's heels raised and one's weight on the balls of the feet.</definition>
+        <sentenceCount annotated="115" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tiptoe"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="toddle.v" ID="1247" lemmaID="40597" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>FN: walk or go in a casual or unsteady way, as a child learning to walk</definition>
+        <sentenceCount annotated="27" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toddle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="totter.v" ID="1248" lemmaID="40815" cBy="731" cDate="02/08/2001 01:29:32 PST Thu">
+        <definition>FN: move in an unsteady way, such that the moving entity seems ready to fall over </definition>
+        <sentenceCount annotated="42" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="totter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="traipse.v" ID="1249" lemmaID="40950" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD: walk or move wearily, reluctantly, or aimlessly.</definition>
+        <sentenceCount annotated="29" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="traipse"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tramp.v" ID="1250" lemmaID="40963" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD:  walk heavily or noisily.</definition>
+        <sentenceCount annotated="82" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tramp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tread.v" ID="1251" lemmaID="41121" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD:  walk on or along</definition>
+        <sentenceCount annotated="42" total="283"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tread"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trek.v" ID="1252" lemmaID="41150" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD: go on a trek.</definition>
+        <sentenceCount annotated="36" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trek"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trip.v" ID="1253" lemmaID="41259" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD: catch one's foot on something and stumble or fall.</definition>
+        <sentenceCount annotated="26" total="443"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trip"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="troop.v" ID="1254" lemmaID="41313" cBy="731" cDate="02/08/2001 01:29:33 PST Thu">
+        <definition>COD: (of a group of people) come or go together or in large numbers.</definition>
+        <sentenceCount annotated="41" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="troop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trot.v" ID="1255" lemmaID="41324" cBy="731" cDate="02/08/2001 01:29:34 PST Thu">
+        <definition>FN: walk briskly</definition>
+        <sentenceCount annotated="61" total="301"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trot"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trudge.v" ID="1256" lemmaID="41365" cBy="731" cDate="02/08/2001 01:29:34 PST Thu">
+        <definition>COD: walk slowly and with heavy steps, typically because of exhaustion or harsh conditions.</definition>
+        <sentenceCount annotated="58" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trudge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trundle.v" ID="1257" lemmaID="41388" cBy="731" cDate="02/08/2001 01:29:34 PST Thu">
+        <definition>COD: move slowly and unevenly on or as if on wheels. </definition>
+        <sentenceCount annotated="42" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trundle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="vault.v" ID="1258" lemmaID="42755" cBy="731" cDate="02/08/2001 01:29:34 PST Thu">
+        <definition>COD:  leap or spring while supporting or propelling oneself with the hands or a pole.</definition>
+        <sentenceCount annotated="25" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vault"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="waddle.v" ID="1259" lemmaID="43304" cBy="731" cDate="02/08/2001 01:29:34 PST Thu">
+        <definition>COD: walk with short steps and a clumsy swaying motion.</definition>
+        <sentenceCount annotated="55" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="waddle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wade.v" ID="1260" lemmaID="43305" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD:  walk through a liquid or viscous substance.</definition>
+        <sentenceCount annotated="61" total="176"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wade"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="walk.n" ID="1261" lemmaID="43362" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: an excursion or act of travelling on foot.</definition>
+        <sentenceCount annotated="53" total="314"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="walk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="waltz.v" ID="1262" lemmaID="43393" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: move or act lightly, casually, or inconsiderately:</definition>
+        <sentenceCount annotated="23" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="waltz"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wander.v" ID="1263" lemmaID="43397" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: walk or move in a leisurely, casual, or aimless way.</definition>
+        <sentenceCount annotated="84" total="730"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wander"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wriggle.v" ID="1264" lemmaID="44580" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: move with wriggling movements. </definition>
+        <sentenceCount annotated="14" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wriggle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="slosh.v" ID="3921" lemmaID="36405" cBy="605" cDate="09/11/2001 02:58:29 PDT Tue">
+        <definition>COD: move through liquid with a splashing sound</definition>
+        <sentenceCount annotated="5" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slosh"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="slop.v" ID="3923" lemmaID="36396" cBy="605" cDate="09/11/2001 03:02:03 PDT Tue">
+        <definition>COD: wade through (a wet or muddy area)</definition>
+        <sentenceCount annotated="4" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slop"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="skim.v" ID="4336" lemmaID="36147" cBy="605" cDate="10/24/2001 05:03:15 PDT Wed">
+        <definition>COD: move quickly and lightly over or on a surface or through the air.</definition>
+        <sentenceCount annotated="6" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skim"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="goose-step.v" ID="4472" lemmaID="16561" cBy="605" cDate="11/27/2001 12:21:59 PST Tue">
+        <definition>FN: march with a military marching step in which the legs are not bent at the knee</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="goose-step"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="crawl.n" ID="4779" lemmaID="8823" cBy="664" cDate="01/28/2002 06:47:05 PST Mon">
+        <definition>COD: an act of crawling. </definition>
+        <sentenceCount annotated="4" total="206"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crawl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="proceed.v" ID="6053" lemmaID="30540" cBy="605" cDate="06/08/2002 04:55:45 PDT Sat">
+        <definition>COD: move forward.</definition>
+        <sentenceCount annotated="41" total="319"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="proceed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sidle.v" ID="6055" lemmaID="35843" cBy="605" cDate="06/09/2002 06:42:23 PDT Sun">
+        <definition>COD: walk in a furtive or stealthy manner, especially sideways or obliquely</definition>
+        <sentenceCount annotated="30" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sidle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="6266" lemmaID="14858" cBy="296" cDate="06/27/2002 12:30:26 PDT Thu">
+        <definition>COD: (of a winged creature or aircraft) move through the air under control. </definition>
+        <sentenceCount annotated="29" total="341"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="head.v" ID="6387" lemmaID="17625" cBy="605" cDate="07/04/2002 10:34:08 PDT Thu">
+        <definition>COD: move in a specified direction</definition>
+        <sentenceCount annotated="56" total="418"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="head"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="repair.v" ID="6403" lemmaID="32655" cBy="605" cDate="07/05/2002 12:12:09 PDT Fri">
+        <definition>COD: go to (a place)</definition>
+        <sentenceCount annotated="9" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="repair"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="make.v" ID="6404" lemmaID="23215" cBy="605" cDate="07/05/2002 12:47:46 PDT Fri">
+        <definition>COD: prepare to go in a particular direction or do a particular thing</definition>
+        <sentenceCount annotated="22" total="424"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stalk.v" ID="6449" lemmaID="37751" cBy="605" cDate="07/05/2002 04:05:32 PDT Fri">
+        <definition>COD: stride in a proud, stiff, or angry manner</definition>
+        <sentenceCount annotated="29" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stalk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="venture.v" ID="6646" lemmaID="42842" cBy="605" cDate="07/15/2002 02:47:40 PDT Mon">
+        <definition>COD: undertake a risky or daring journey or course of action</definition>
+        <sentenceCount annotated="27" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="venture"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="storm.v" ID="6649" lemmaID="38208" cBy="605" cDate="07/15/2002 03:44:09 PDT Mon">
+        <definition>COD: move angrily or forcefully in a specified direction.</definition>
+        <sentenceCount annotated="33" total="234"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="storm"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="make a beeline.v" ID="8221" lemmaID="47321" cBy="605" cDate="01/27/2003 06:40:34 PST Mon">
+        <definition>COD: hurry directly to</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="beeline"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="walk.v" ID="8350" lemmaID="43363" cBy="664" cDate="02/25/2003 02:28:38 PST Tue">
+        <definition>COD:  move at a regular and fairly slow pace by lifting and setting down each foot in turn. </definition>
+        <sentenceCount annotated="77" total="759"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="walk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drive.v" ID="8772" lemmaID="11795" cBy="296" cDate="06/12/2003 10:58:09 PDT Thu">
+        <definition>FN: (of a vehicle) move under its own power or directed by a driver</definition>
+        <sentenceCount annotated="23" total="716"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sail.v" ID="8774" lemmaID="33959" cBy="296" cDate="06/12/2003 11:04:15 PDT Thu">
+        <definition>FN: (of watercraft) move across water.</definition>
+        <sentenceCount annotated="13" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sail"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="coast.v" ID="8775" lemmaID="6969" cBy="296" cDate="06/12/2003 11:05:56 PDT Thu">
+        <definition>FN: (of a vehicle) move smoothly without using power</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coast"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cruise.v" ID="8859" lemmaID="9119" cBy="296" cDate="06/16/2003 12:38:58 PDT Mon">
+        <definition>FN: (of a vehicle) move smoothly and rapidly.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cruise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="tack.v" ID="8883" lemmaID="39364" cBy="296" cDate="06/17/2003 09:31:37 PDT Tue">
+        <definition>FN: (of a watercraft) move into and through a wind</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tack"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="taxi.v" ID="8884" lemmaID="39633" cBy="296" cDate="06/17/2003 09:33:16 PDT Tue">
+        <definition>FN: (of an aircraft) move slowly on the ground after landing or before take-off.</definition>
+        <sentenceCount annotated="8" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="taxi"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shoulder.v" ID="9951" lemmaID="35672" cBy="605" cDate="11/26/2003 03:55:56 PST Wed">
+        <definition>FN: move while pushing aside obstacles or bystanders with one's shoulder</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoulder"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="nance.v" ID="11900" lemmaID="49960" cBy="605" cDate="04/22/2005 12:04:00 PDT Fri">
+        <definition>FN: to move in a markedly effeminate fashion</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nance"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swing.v" ID="12992" lemmaID="39170" cBy="664" cDate="11/22/2005 08:22:23 PST Tue">
+        <definition>FN: move quickly changing direction</definition>
+        <sentenceCount annotated="15" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="edge.v" ID="12993" lemmaID="12216" cBy="664" cDate="11/22/2005 08:33:43 PST Tue">
+        <definition>FN: to go along the edge of; move carefully</definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="edge"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rove.v" ID="14010" lemmaID="33646" cBy="361" cDate="03/21/2007 09:22:47 PDT Wed">
+        <definition>COD: travel constantly without a fixed destination; wander.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rove"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="way.n" ID="14180" lemmaID="43603" cBy="361" cDate="03/28/2007 12:25:25 PDT Wed">
+        <definition>COD: used with a verb and adverbial phrase to intensify the force of an action or to denote movement or progress.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="way"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Direction" POS="V" name="advance.v" ID="14836" lemmaID="587" cBy="361" cDate="03/05/2008 02:36:53 PST Wed">
+        <definition>FN: physcially move foward</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="advance"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="file.v" ID="15044" lemmaID="14341" cBy="597" cDate="06/05/2008 05:06:23 PDT Thu">
+        <definition>FN: to move oneself in a line with others</definition>
+        <sentenceCount annotated="20" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="file"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="take to the air.v" ID="15211" lemmaID="50935" cBy="361" cDate="07/25/2008 05:35:48 PDT Fri">
+        <definition>FN: to begin to fly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="to"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="air"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rip.v" ID="15318" lemmaID="33318" cBy="597" cDate="04/03/2009 12:08:05 PDT Fri">
+        <definition>FN: move quickly and aggressively</definition>
+        <sentenceCount annotated="15" total="407"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="slouch.v" ID="15674" lemmaID="36414" cBy="618" cDate="03/08/2010 04:17:51 PST Mon">
+        <definition>FN: move while stooped over, awkwardly or lazily.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slouch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="slip.v" ID="15926" lemmaID="36361" cBy="664" cDate="07/23/2010 05:39:22 PDT Fri">
+        <definition>FN: to move stealthily.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slip"/>
+    </lexUnit>
+</frame>

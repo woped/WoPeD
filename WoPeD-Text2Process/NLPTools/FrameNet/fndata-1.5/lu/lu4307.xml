@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="thermos.n" ID="4307" frame="Containers" frameID="78" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Cons" name="Construction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cont" name="Contents"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Own" name="Owner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Rel_loc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: (trademark) a vacuum flask. </definition>
+    <lexeme POS="N" name="thermos"/>
+    <semType name="Container" ID="15"/>
+    <valences>
+        <governor type="Gov" lemma="pour">
+            <annoSet ID="858293"/>
+        </governor>
+        <governor type="Gov" lemma="put">
+            <annoSet ID="858399"/>
+        </governor>
+        <FERealization total="10">
+            <FE name="Container"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="858293"/>
+                <annoSet ID="858299"/>
+                <annoSet ID="858309"/>
+                <annoSet ID="858311"/>
+                <annoSet ID="858315"/>
+                <annoSet ID="858323"/>
+                <annoSet ID="858325"/>
+                <annoSet ID="858335"/>
+                <annoSet ID="858379"/>
+                <annoSet ID="858399"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Contents"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Contents"/>
+                <annoSet ID="858309"/>
+                <annoSet ID="858315"/>
+                <annoSet ID="858335"/>
+                <annoSet ID="858379"/>
+                <annoSet ID="858399"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Owner"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Owner"/>
+                <annoSet ID="858299"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="858399"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Use"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="858323"/>
+                <annoSet ID="858325"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Container"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="858293"/>
+                <annoSet ID="858311"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Container"/>
+            <FE name="Contents"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Contents"/>
+                <annoSet ID="858309"/>
+                <annoSet ID="858315"/>
+                <annoSet ID="858335"/>
+                <annoSet ID="858379"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Contents"/>
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Contents"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="858399"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Owner"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Owner"/>
+                <annoSet ID="858299"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Container"/>
+            <FE name="Use"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="858323"/>
+                <annoSet ID="858325"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="787718" ID="690503">
+            <text>She took it out of the knapsack , poured coffee from the thermos and ate and drank . </text>
+            <annotationSet cDate="01/07/2003 10:58:06 PST Tue" status="UNANN" ID="858292">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="10" start="9" name="PNP"/>
+                    <label end="14" start="12" name="PRP"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="30" start="23" name="NN1"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="39" start="34" name="AJ0-VVD"/>
+                    <label end="46" start="41" name="NN1"/>
+                    <label end="51" start="48" name="PRP"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="71" start="69" name="VVD"/>
+                    <label end="75" start="73" name="CJC"/>
+                    <label end="81" start="77" name="VVD"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:06 PST Tue" status="MANUAL" ID="858293">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="63" start="57" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="39" start="34" name="Gov"/>
+                    <label end="63" start="48" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="7276253" ID="690506">
+            <text>` Do n't forget your Thermos and plastic spoons , &quot; said Bedelia . </text>
+            <annotationSet cDate="01/07/2003 10:58:07 PST Tue" status="UNANN" ID="858298">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="VDB"/>
+                    <label end="7" start="5" name="XX0"/>
+                    <label end="14" start="9" name="VVI"/>
+                    <label end="19" start="16" name="DPS"/>
+                    <label end="27" start="21" name="NN1"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="39" start="33" name="NN1"/>
+                    <label end="46" start="41" name="NN2"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="50" start="50" name="PUQ"/>
+                    <label end="55" start="52" name="VVD"/>
+                    <label end="63" start="57" name="NP0"/>
+                    <label end="65" start="65" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:07 PST Tue" status="MANUAL" ID="858299">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2043" end="19" start="16" name="Owner"/>
+                    <label cBy="669" feID="367" end="27" start="21" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="16" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="16" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="26921652" ID="690511">
+            <text>All the mothers carried thermoses of tea and one father brought a couple of ripe camemberts . </text>
+            <annotationSet cDate="01/07/2003 10:58:07 PST Tue" status="UNANN" ID="858308">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DT0"/>
+                    <label end="6" start="4" name="AT0"/>
+                    <label end="14" start="8" name="NN2"/>
+                    <label end="22" start="16" name="VVD-VVN"/>
+                    <label end="32" start="24" name="NN2"/>
+                    <label end="35" start="34" name="PRF"/>
+                    <label end="39" start="37" name="NN1"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="47" start="45" name="CRD"/>
+                    <label end="54" start="49" name="NN1"/>
+                    <label end="62" start="56" name="VVD-VVN"/>
+                    <label end="64" start="64" name="AT0"/>
+                    <label end="71" start="66" name="NN1"/>
+                    <label end="74" start="73" name="PRF"/>
+                    <label end="79" start="76" name="AJ0"/>
+                    <label end="90" start="81" name="NN2"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:07 PST Tue" status="MANUAL" ID="858309">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="32" start="24" name="Container"/>
+                    <label cBy="669" feID="368" end="39" start="34" name="Contents"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="26921888" ID="690512">
+            <text>Rosa strolled out of the hotel at ten to eleven with an armful of giant thermoses full of black coffee and a packet of sugar . </text>
+            <annotationSet cDate="01/07/2003 10:58:07 PST Tue" status="UNANN" ID="858310">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-NP0"/>
+                    <label end="12" start="5" name="VVD"/>
+                    <label end="16" start="14" name="PRP"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="36" start="34" name="CRD"/>
+                    <label end="39" start="38" name="PRP"/>
+                    <label end="46" start="41" name="CRD"/>
+                    <label end="51" start="48" name="PRP"/>
+                    <label end="54" start="53" name="AT0"/>
+                    <label end="61" start="56" name="NN1"/>
+                    <label end="64" start="63" name="PRF"/>
+                    <label end="70" start="66" name="AJ0-NN1"/>
+                    <label end="80" start="72" name="NN2-VVZ"/>
+                    <label end="85" start="82" name="AJ0"/>
+                    <label end="88" start="87" name="PRF"/>
+                    <label end="94" start="90" name="AJ0"/>
+                    <label end="101" start="96" name="NN1"/>
+                    <label end="105" start="103" name="CJC"/>
+                    <label end="107" start="107" name="AT0"/>
+                    <label end="114" start="109" name="NN1"/>
+                    <label end="117" start="116" name="PRF"/>
+                    <label end="123" start="119" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="MANUAL" ID="858311">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="80" start="72" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="29474329" ID="690514">
+            <text>Already aboard were a tommy-gun , grenades , a thermos of coffee laced with brandy -- they would need this -- and the infra-red signalling gear . </text>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="UNANN" ID="858314">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="13" start="8" name="AV0"/>
+                    <label end="18" start="15" name="VBD"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="30" start="22" name="AJ0-NN1"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="41" start="34" name="NN2-VVZ"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="53" start="47" name="NN1"/>
+                    <label end="56" start="55" name="PRF"/>
+                    <label end="63" start="58" name="NN1"/>
+                    <label end="69" start="65" name="VVD-VVN"/>
+                    <label end="74" start="71" name="PRP"/>
+                    <label end="81" start="76" name="NN1"/>
+                    <label end="84" start="83" name="PUN"/>
+                    <label end="89" start="86" name="PNP"/>
+                    <label end="95" start="91" name="VM0"/>
+                    <label end="100" start="97" name="VVI"/>
+                    <label end="105" start="102" name="DT0"/>
+                    <label end="108" start="107" name="PUN"/>
+                    <label end="112" start="110" name="CJC"/>
+                    <label end="116" start="114" name="AT0"/>
+                    <label end="126" start="118" name="AJ0"/>
+                    <label end="137" start="128" name="AJ0-NN1"/>
+                    <label end="142" start="139" name="NN1"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="MANUAL" ID="858315">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="53" start="47" name="Container"/>
+                    <label cBy="669" feID="368" end="81" start="55" name="Contents"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30843771" ID="690518">
+            <text>The coffee thermos and cups were fetched , the incense came again but this time it was passed more slowly , so that everyone could enjoy the sweet-smelling smoke to a greater extent . </text>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="UNANN" ID="858322">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="17" start="11" name="NN1"/>
+                    <label end="21" start="19" name="CJC"/>
+                    <label end="26" start="23" name="NN2"/>
+                    <label end="31" start="28" name="VBD"/>
+                    <label end="39" start="33" name="AJ0-VVN"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="53" start="47" name="NN1"/>
+                    <label end="58" start="55" name="VVD"/>
+                    <label end="64" start="60" name="AV0"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="73" start="70" name="DT0"/>
+                    <label end="78" start="75" name="NN1"/>
+                    <label end="81" start="80" name="PNP"/>
+                    <label end="85" start="83" name="VBD"/>
+                    <label end="92" start="87" name="VVN"/>
+                    <label end="97" start="94" name="AV0"/>
+                    <label end="104" start="99" name="AV0"/>
+                    <label end="106" start="106" name="PUN"/>
+                    <label end="109" start="108" name="CJS"/>
+                    <label end="114" start="111" name="CJS"/>
+                    <label end="123" start="116" name="PNI"/>
+                    <label end="129" start="125" name="VM0"/>
+                    <label end="135" start="131" name="VVI"/>
+                    <label end="139" start="137" name="AT0"/>
+                    <label end="154" start="141" name="AJ0-NN1"/>
+                    <label end="160" start="156" name="NN1"/>
+                    <label end="163" start="162" name="PRP"/>
+                    <label end="165" start="165" name="AT0"/>
+                    <label end="173" start="167" name="AJC"/>
+                    <label end="180" start="175" name="NN1"/>
+                    <label end="182" start="182" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="MANUAL" ID="858323">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="17" start="11" name="Container"/>
+                    <label cBy="669" feID="2064" end="9" start="4" name="Use"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="4" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="4" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="669" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30850999" ID="690519">
+            <text>Coffee thermoses , incense pots , boxes of fruit , trays to serve it on , suitcases , prayer mats . </text>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="UNANN" ID="858324">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="15" start="7" name="NN2-VVZ"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="25" start="19" name="NN1-VVB"/>
+                    <label end="30" start="27" name="NN2"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="38" start="34" name="NN2"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="47" start="43" name="NN0"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="55" start="51" name="NN2"/>
+                    <label end="58" start="57" name="TO0"/>
+                    <label end="64" start="60" name="VVI"/>
+                    <label end="67" start="66" name="PNP"/>
+                    <label end="70" start="69" name="AVP"/>
+                    <label end="72" start="72" name="PUN"/>
+                    <label end="82" start="74" name="NN2"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="91" start="86" name="NN1"/>
+                    <label end="96" start="93" name="NN2"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:08 PST Tue" status="MANUAL" ID="858325">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="15" start="7" name="Container"/>
+                    <label cBy="669" feID="2064" end="5" start="0" name="Use"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="669" end="15" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35367473" ID="690524">
+            <text>I 've got a packed lunch , a thermos of ice-cold martinis , and some beer and Coke . </text>
+            <annotationSet cDate="01/07/2003 10:58:09 PST Tue" status="UNANN" ID="858334">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VHB"/>
+                    <label end="8" start="6" name="VVN"/>
+                    <label end="10" start="10" name="AT0"/>
+                    <label end="17" start="12" name="AJ0"/>
+                    <label end="23" start="19" name="NN1"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="35" start="29" name="NN1"/>
+                    <label end="38" start="37" name="PRF"/>
+                    <label end="47" start="40" name="AJ0"/>
+                    <label end="56" start="49" name="NN2"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="67" start="64" name="DT0"/>
+                    <label end="72" start="69" name="NN1"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="81" start="78" name="NN1-NP0"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:09 PST Tue" status="MANUAL" ID="858335">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="35" start="29" name="Container"/>
+                    <label cBy="669" feID="368" end="56" start="37" name="Contents"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="37" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="73564309" ID="690546">
+            <text>A thermos of soup , cups , a plate of sandwiches waited on an ugly silver tray in the hall ; a domestic attention marking the end of the party . </text>
+            <annotationSet cDate="01/07/2003 10:58:12 PST Tue" status="UNANN" ID="858378">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="8" start="2" name="NN1"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="16" start="13" name="NN1"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="23" start="20" name="NN2"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="47" start="38" name="NN2"/>
+                    <label end="54" start="49" name="VVD-VVN"/>
+                    <label end="57" start="56" name="PRP"/>
+                    <label end="60" start="59" name="AT0"/>
+                    <label end="65" start="62" name="AJ0"/>
+                    <label end="72" start="67" name="NN1"/>
+                    <label end="77" start="74" name="NN1"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="84" start="82" name="AT0"/>
+                    <label end="89" start="86" name="NN1"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="93" start="93" name="AT0"/>
+                    <label end="102" start="95" name="AJ0"/>
+                    <label end="112" start="104" name="NN1"/>
+                    <label end="120" start="114" name="VVG"/>
+                    <label end="124" start="122" name="AT0"/>
+                    <label end="128" start="126" name="NN1"/>
+                    <label end="131" start="130" name="PRF"/>
+                    <label end="135" start="133" name="AT0"/>
+                    <label end="141" start="137" name="NN0"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:12 PST Tue" status="MANUAL" ID="858379">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="8" start="2" name="Container"/>
+                    <label cBy="669" feID="368" end="16" start="10" name="Contents"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="10" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101346598" ID="690556">
+            <text>I 've put the Thermos of water in your pack -- use it sparingly . </text>
+            <annotationSet cDate="01/07/2003 10:58:13 PST Tue" status="UNANN" ID="858398">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VHB"/>
+                    <label end="8" start="6" name="VVN"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="20" start="14" name="NN1"/>
+                    <label end="23" start="22" name="PRF"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="37" start="34" name="DPS"/>
+                    <label end="42" start="39" name="NN1"/>
+                    <label end="45" start="44" name="PUN"/>
+                    <label end="49" start="47" name="VVB"/>
+                    <label end="52" start="51" name="PNP"/>
+                    <label end="62" start="54" name="AV0"/>
+                    <label end="64" start="64" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:58:13 PST Tue" status="MANUAL" ID="858399">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="20" start="14" name="Container"/>
+                    <label cBy="669" feID="368" end="29" start="22" name="Contents"/>
+                    <label cBy="669" feID="2013" end="42" start="31" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="22" name="Dep"/>
+                    <label end="42" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="22" name="PP"/>
+                    <label end="42" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="8" start="6" name="Gov"/>
+                    <label end="42" start="10" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

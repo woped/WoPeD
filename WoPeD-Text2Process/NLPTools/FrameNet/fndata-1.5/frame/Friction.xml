@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="09/19/2003 07:04:39 PDT Fri" name="Friction" ID="820" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt; A &lt;fen&gt;Theme&lt;/fen&gt; moves on or against the surface of a &lt;fen&gt;Static_object&lt;/fen&gt;. (Alternatively, &lt;fen&gt;Themes&lt;/fen&gt;  moves against each other simultaneously). The &lt;fen&gt;Theme&lt;/fen&gt; exerts pressure on the surface and experiences resistance to its movement. 
+
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;Smithers' boots&lt;/fex&gt; &lt;t&gt;scraped&lt;/t&gt; &lt;fex name="Static_object"&gt;on the floor&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/19/2003 07:06:24 PDT Fri" abbrev="" name="Theme" ID="5092">
+        <definition>&lt;def-root&gt;The physical entity which moves over the suface of the &lt;fen&gt;Static_object&lt;/fen&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;His backpack&lt;/fex&gt; &lt;t&gt;grated&lt;/t&gt; against the wall&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+        <requiresFE name="Static_object" ID="5093"/>
+        <excludesFE name="Themes" ID="5094"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/19/2003 07:08:38 PDT Fri" abbrev="" name="Static_object" ID="5093">
+        <definition>&lt;def-root&gt;A non-moving physical object over a surface of which the &lt;fen&gt;Theme&lt;/fen&gt; moves.
+
+&lt;ex&gt; The spout &lt;t&gt;grates&lt;/t&gt; &lt;fex name="Static_object"&gt;against the tap&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Theme" ID="5092"/>
+        <excludesFE name="Themes" ID="5094"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/19/2003 07:11:07 PDT Fri" abbrev="" name="Themes" ID="5094">
+        <definition>&lt;def-root&gt;Two moving entities whose surfaces move against each other.
+
+&lt;ex&gt;He felt &lt;fex name="Themes"&gt;his teeth&lt;/fex&gt; &lt;t&gt;scrape&lt;/t&gt; against the plaster &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/22/2003 04:57:55 PDT Mon" abbrev="" name="Manner" ID="5103">
+        <definition>&lt;def-root&gt;The way in which the &lt;fen&gt;Theme&lt;/fen&gt; moves against the &lt;fen&gt;Static_object&lt;/fen&gt;
+
+&lt;ex&gt;is steel helmet &lt;t&gt;grated&lt;/t&gt; &lt;fex name="Manner"&gt;gently&lt;/fex&gt; against the top of the door&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/22/2003 05:00:57 PDT Mon" abbrev="" name="Place" ID="5104">
+        <definition>&lt;def-root&gt;The setting in which the motion of the &lt;fen&gt;Theme&lt;/fen&gt; happens
+
+&lt;ex&gt;&lt;fex name="Place"&gt;In the hallway&lt;/fex&gt; a key &lt;t&gt;grated&lt;/t&gt; in the lock&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/24/2003 06:22:50 PDT Wed" abbrev="" name="Degree" ID="5120">
+        <definition>&lt;def-root&gt;The amount of friction produced in the &lt;fen&gt;Theme&lt;/fen&gt;'s motion.
+
+&lt;ex&gt;The steel helment &lt;t&gt;grated&lt;/t&gt; &lt;fex name="Degree"&gt;faintly&lt;/fex&gt; against the top of the &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Impact</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Make_noise</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="V" name="grate.v" ID="9504" lemmaID="16719" cBy="605" cDate="09/22/2003 05:07:51 PDT Mon">
+        <definition>COD: make an unpleasant rasping sound.</definition>
+        <sentenceCount annotated="13" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="squeal.v" ID="9566" lemmaID="37638" cBy="605" cDate="09/30/2003 08:43:18 PDT Tue">
+        <definition>COD: to make or utter a long, high-pitched cry or noise</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squeal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scrunch.v" ID="9567" lemmaID="34612" cBy="605" cDate="09/30/2003 08:56:40 PDT Tue">
+        <definition>COD: a loud crunching noise.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrunch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="screech.v" ID="9570" lemmaID="34557" cBy="605" cDate="10/01/2003 09:37:08 PDT Wed">
+        <definition>FN: make a high-pitched, shrill sound</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="screech"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scrape.v" ID="9573" lemmaID="34535" cBy="605" cDate="10/01/2003 11:38:32 PDT Wed">
+        <definition>COD: rub or cause to rub against a rough or hard surface.</definition>
+        <sentenceCount annotated="14" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrape"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rasp.v" ID="9750" lemmaID="31854" cBy="605" cDate="10/15/2003 05:22:32 PDT Wed">
+        <definition>FN: scrape harshly over or against a surface or object</definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rasp"/>
+    </lexUnit>
+</frame>

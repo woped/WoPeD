@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="penitentiary.n" ID="6958" frame="Prison" frameID="387" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Inmates" name="Inmates"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Location" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Operator" name="Operator"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="pen" name="Penal_institution"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Sec" name="Security"/>
+        </frame>
+    </header>
+    <definition>COD: a prison for people convicted of serious crimes. </definition>
+    <lexeme POS="N" name="penitentiary"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Location"/>
+                <annoSet ID="1553996"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Location"/>
+                <annoSet ID="1554000"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Location"/>
+                <annoSet ID="1553994"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Operator"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Operator"/>
+                <annoSet ID="1553996"/>
+                <annoSet ID="1554000"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Operator"/>
+                <annoSet ID="1553994"/>
+                <annoSet ID="1554002"/>
+                <annoSet ID="1554008"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Penal_institution"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1553994"/>
+                <annoSet ID="1553996"/>
+                <annoSet ID="1554000"/>
+                <annoSet ID="1554002"/>
+                <annoSet ID="1554008"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Location"/>
+            <FE name="Operator"/>
+            <FE name="Penal_institution"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Location"/>
+                <valenceUnit GF="Dep" PT="N" FE="Operator"/>
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1553996"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Location"/>
+                <valenceUnit GF="Dep" PT="N" FE="Operator"/>
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1554000"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Location"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Operator"/>
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1553994"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Operator"/>
+            <FE name="Penal_institution"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Operator"/>
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1554002"/>
+                <annoSet ID="1554008"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="9655812" ID="1051274">
+            <text>Legal sources said an underground cell was being prepared for him on a maximum security row at the federal penitentiary in Marion , Illinois , America 's most chilling jail . </text>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="UNANN" ID="1553993">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AJ0"/>
+                    <label end="12" start="6" name="NN2"/>
+                    <label end="17" start="14" name="VVD"/>
+                    <label end="20" start="19" name="AT0"/>
+                    <label end="32" start="22" name="AJ0"/>
+                    <label end="37" start="34" name="NN1"/>
+                    <label end="41" start="39" name="VBD"/>
+                    <label end="47" start="43" name="VBG"/>
+                    <label end="56" start="49" name="VVN"/>
+                    <label end="60" start="58" name="PRP"/>
+                    <label end="64" start="62" name="PNP"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="86" start="79" name="NN1"/>
+                    <label end="90" start="88" name="NN1-VVB"/>
+                    <label end="93" start="92" name="PRP"/>
+                    <label end="97" start="95" name="AT0"/>
+                    <label end="105" start="99" name="AJ0"/>
+                    <label end="118" start="107" name="NN1"/>
+                    <label end="121" start="120" name="PRP"/>
+                    <label end="128" start="123" name="NP0"/>
+                    <label end="130" start="130" name="PUN"/>
+                    <label end="139" start="132" name="NP0"/>
+                    <label end="141" start="141" name="PUN"/>
+                    <label end="149" start="143" name="NP0"/>
+                    <label end="152" start="151" name="POS"/>
+                    <label end="157" start="154" name="AV0"/>
+                    <label end="166" start="159" name="AJ0-VVG"/>
+                    <label end="171" start="168" name="NN1"/>
+                    <label end="173" start="173" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="MANUAL" ID="1553994">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3481" end="105" start="99" name="Operator"/>
+                    <label cBy="618" feID="3484" end="139" start="120" name="Location"/>
+                    <label cBy="571" feID="9768" end="118" start="107" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="99" name="Dep"/>
+                    <label end="139" start="120" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="99" name="AJP"/>
+                    <label end="139" start="120" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="118" start="107" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30337121" ID="1051275">
+            <text>He was sentenced to six months at the Narcotics Rehabilitation Center of the Chino State Penitentiary . </text>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="UNANN" ID="1553995">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="VVN"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="22" start="20" name="CRD"/>
+                    <label end="29" start="24" name="NN2"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="46" start="38" name="NN1-NP0"/>
+                    <label end="61" start="48" name="NN1"/>
+                    <label end="68" start="63" name="NN1"/>
+                    <label end="71" start="70" name="PRF"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="81" start="77" name="NN1-NP0"/>
+                    <label end="87" start="83" name="NP0"/>
+                    <label end="100" start="89" name="NN1-NP0"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="MANUAL" ID="1553996">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="3484" end="81" start="77" name="Location"/>
+                    <label cBy="605" feID="3481" end="87" start="83" name="Operator"/>
+                    <label cBy="571" feID="9768" end="100" start="89" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="77" name="Dep"/>
+                    <label end="87" start="83" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="77" name="N"/>
+                    <label end="87" start="83" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48697822" ID="1051277">
+            <text>Ward and Kassebaum studied the Californian State Penitentiary at Alderson and Giallombardo the Federal Penitentiary , and later three state institutions for delinquent girls ( Giallombardo , 1966 , 1974 ) . </text>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="UNANN" ID="1553999">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-NP0"/>
+                    <label end="7" start="5" name="CJC"/>
+                    <label end="17" start="9" name="NP0"/>
+                    <label end="25" start="19" name="VVD"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="41" start="31" name="AJ0"/>
+                    <label end="47" start="43" name="NN1"/>
+                    <label end="60" start="49" name="NN1"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="72" start="65" name="NP0"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="89" start="78" name="NN1-NP0"/>
+                    <label end="93" start="91" name="AT0"/>
+                    <label end="101" start="95" name="AJ0"/>
+                    <label end="114" start="103" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="126" start="122" name="AV0"/>
+                    <label end="132" start="128" name="CRD"/>
+                    <label end="138" start="134" name="NN1"/>
+                    <label end="151" start="140" name="NN2"/>
+                    <label end="155" start="153" name="PRP"/>
+                    <label end="166" start="157" name="AJ0"/>
+                    <label end="172" start="168" name="NN2"/>
+                    <label end="174" start="174" name="PUL"/>
+                    <label end="187" start="176" name="NN1-NP0"/>
+                    <label end="189" start="189" name="PUN"/>
+                    <label end="194" start="191" name="CRD"/>
+                    <label end="196" start="196" name="PUN"/>
+                    <label end="201" start="198" name="CRD"/>
+                    <label end="203" start="203" name="PUR"/>
+                    <label end="205" start="205" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="MANUAL" ID="1554000">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3484" end="72" start="62" name="Location"/>
+                    <label cBy="618" feID="3481" end="47" start="31" name="Operator"/>
+                    <label cBy="571" feID="9768" end="60" start="49" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="62" name="Dep"/>
+                    <label end="47" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="62" name="PP"/>
+                    <label end="47" start="31" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48697829" ID="1051278">
+            <text>Ward and Kassebaum studied the Californian State Penitentiary at Alderson and Giallombardo the Federal Penitentiary , and later three state institutions for delinquent girls ( Giallombardo , 1966 , 1974 ) . </text>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="UNANN" ID="1554001">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-NP0"/>
+                    <label end="7" start="5" name="CJC"/>
+                    <label end="17" start="9" name="NP0"/>
+                    <label end="25" start="19" name="VVD"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="41" start="31" name="AJ0"/>
+                    <label end="47" start="43" name="NN1"/>
+                    <label end="60" start="49" name="NN1"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="72" start="65" name="NP0"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="89" start="78" name="NN1-NP0"/>
+                    <label end="93" start="91" name="AT0"/>
+                    <label end="101" start="95" name="AJ0"/>
+                    <label end="114" start="103" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="126" start="122" name="AV0"/>
+                    <label end="132" start="128" name="CRD"/>
+                    <label end="138" start="134" name="NN1"/>
+                    <label end="151" start="140" name="NN2"/>
+                    <label end="155" start="153" name="PRP"/>
+                    <label end="166" start="157" name="AJ0"/>
+                    <label end="172" start="168" name="NN2"/>
+                    <label end="174" start="174" name="PUL"/>
+                    <label end="187" start="176" name="NN1-NP0"/>
+                    <label end="189" start="189" name="PUN"/>
+                    <label end="194" start="191" name="CRD"/>
+                    <label end="196" start="196" name="PUN"/>
+                    <label end="201" start="198" name="CRD"/>
+                    <label end="203" start="203" name="PUR"/>
+                    <label end="205" start="205" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:52 PST Wed" status="MANUAL" ID="1554002">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3481" end="101" start="95" name="Operator"/>
+                    <label cBy="571" feID="9768" end="114" start="103" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="95" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="95" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="114" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79836036" ID="1051281">
+            <text>They catch any gay guy with AZT , they throw him in the federal penitentiary like Jimmy fucking Cagney , and then they throw us out of the country . </text>
+            <annotationSet cDate="01/08/2003 12:27:53 PST Wed" status="UNANN" ID="1554007">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="9" start="5" name="VVB"/>
+                    <label end="13" start="11" name="DT0"/>
+                    <label end="17" start="15" name="AJ0"/>
+                    <label end="21" start="19" name="NN1"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="30" start="28" name="NN1-NP0"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="37" start="34" name="PNP"/>
+                    <label end="43" start="39" name="VVB"/>
+                    <label end="47" start="45" name="PNP"/>
+                    <label end="50" start="49" name="PRP"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="62" start="56" name="AJ0"/>
+                    <label end="75" start="64" name="NN1"/>
+                    <label end="80" start="77" name="PRP"/>
+                    <label end="86" start="82" name="NP0"/>
+                    <label end="94" start="88" name="AJ0-AV0"/>
+                    <label end="101" start="96" name="NN1-NP0"/>
+                    <label end="103" start="103" name="PUN"/>
+                    <label end="107" start="105" name="CJC"/>
+                    <label end="112" start="109" name="AV0"/>
+                    <label end="117" start="114" name="PNP"/>
+                    <label end="123" start="119" name="VVB"/>
+                    <label end="126" start="125" name="PNP"/>
+                    <label end="130" start="128" name="PRP"/>
+                    <label end="133" start="132" name="PRP"/>
+                    <label end="137" start="135" name="AT0"/>
+                    <label end="145" start="139" name="NN1"/>
+                    <label end="147" start="147" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:53 PST Wed" status="MANUAL" ID="1554008">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3481" end="62" start="56" name="Operator"/>
+                    <label cBy="571" feID="9768" end="75" start="64" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="56" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

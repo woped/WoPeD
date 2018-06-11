@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="handcuff.v" ID="4761" frame="Immobilization" frameID="250" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Anchor" name="Anchor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: put handcuffs on. </definition>
+    <lexeme POS="V" name="handcuff"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1203597"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1203577"/>
+                <annoSet ID="1203609"/>
+                <annoSet ID="1203617"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Patient"/>
+                <annoSet ID="1203597"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Patient"/>
+                <annoSet ID="1203577"/>
+                <annoSet ID="1203609"/>
+                <annoSet ID="1203617"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Agent"/>
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Patient"/>
+                <annoSet ID="1203597"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Patient"/>
+                <annoSet ID="1203577"/>
+                <annoSet ID="1203609"/>
+                <annoSet ID="1203617"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="30358880" ID="874347">
+            <text>Los Angeles police handcuffed him and hauled him off to jail . </text>
+            <annotationSet cDate="01/07/2003 05:48:36 PST Tue" status="UNANN" ID="1203576">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="10" start="4" name="NP0"/>
+                    <label end="17" start="12" name="NN2"/>
+                    <label end="28" start="19" name="VVD"/>
+                    <label end="32" start="30" name="PNP"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="43" start="38" name="VVD"/>
+                    <label end="47" start="45" name="PNP"/>
+                    <label end="51" start="49" name="AVP"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="59" start="56" name="VVI"/>
+                    <label end="61" start="61" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:48:36 PST Tue" status="MANUAL" ID="1203577">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2182" end="17" start="0" name="Agent"/>
+                    <label cBy="669" feID="2184" end="32" start="30" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Ext"/>
+                    <label end="32" start="30" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="NP"/>
+                    <label end="32" start="30" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34782652" ID="874357">
+            <text>He was handcuffed and taken to a locker room where he was chained to a metal grille by the arms and legs . </text>
+            <annotationSet cDate="01/07/2003 05:48:37 PST Tue" status="UNANN" ID="1203596">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="16" start="7" name="VVN"/>
+                    <label end="20" start="18" name="CJC"/>
+                    <label end="26" start="22" name="VVN"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="49" start="45" name="AVQ-CJS"/>
+                    <label end="52" start="51" name="PNP"/>
+                    <label end="56" start="54" name="VBD"/>
+                    <label end="64" start="58" name="VVN"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="75" start="71" name="NN1"/>
+                    <label end="82" start="77" name="NN1"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="94" start="91" name="NN2"/>
+                    <label end="98" start="96" name="CJC"/>
+                    <label end="103" start="100" name="NN2"/>
+                    <label end="105" start="105" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:48:37 PST Tue" status="MANUAL" ID="1203597">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2184" end="1" start="0" name="Patient"/>
+                    <label cBy="669" feID="2182" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="39715199" ID="874363">
+            <text>Then they handcuffed us . </text>
+            <annotationSet cDate="01/07/2003 05:48:38 PST Tue" status="UNANN" ID="1203608">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="8" start="5" name="PNP"/>
+                    <label end="19" start="10" name="VVD"/>
+                    <label end="22" start="21" name="PNP"/>
+                    <label end="24" start="24" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:48:38 PST Tue" status="MANUAL" ID="1203609">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2182" end="8" start="5" name="Agent"/>
+                    <label cBy="669" feID="2184" end="22" start="21" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="5" name="Ext"/>
+                    <label end="22" start="21" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="5" name="NP"/>
+                    <label end="22" start="21" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="40941691" ID="874367">
+            <text>The police had once again handcuffed Leslie . </text>
+            <annotationSet cDate="01/07/2003 05:48:38 PST Tue" status="UNANN" ID="1203616">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="13" start="11" name="VHD"/>
+                    <label end="18" start="15" name="AV0"/>
+                    <label end="24" start="20" name="AV0"/>
+                    <label end="35" start="26" name="VVN"/>
+                    <label end="42" start="37" name="NP0"/>
+                    <label end="44" start="44" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:48:38 PST Tue" status="MANUAL" ID="1203617">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2182" end="9" start="0" name="Agent"/>
+                    <label cBy="669" feID="2184" end="42" start="37" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="42" start="37" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="42" start="37" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

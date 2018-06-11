@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="beyond compare.prep" ID="6207" frame="Beyond_compare" frameID="356" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Compet" name="Competitors"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Stndrd" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Vrble" name="Variable"/>
+        </frame>
+    </header>
+    <definition>FN: unmatched, unequalled</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="PREP" name="beyond"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="V" name="compare"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Competitors"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="2nd" FE="Competitors"/>
+                <annoSet ID="1963283"/>
+                <annoSet ID="1963285"/>
+                <annoSet ID="1963287"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Standard"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Standard"/>
+                <annoSet ID="1963283"/>
+                <annoSet ID="1963285"/>
+                <annoSet ID="1963287"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Variable"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Variable"/>
+                <annoSet ID="1963283"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Competitors"/>
+            <FE name="Standard"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Competitors"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Standard"/>
+                <annoSet ID="1963285"/>
+                <annoSet ID="1963287"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Competitors"/>
+            <FE name="Standard"/>
+            <FE name="Variable"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Competitors"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Standard"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Variable"/>
+                <annoSet ID="1963283"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wbeyond-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="94" aPos="0" ID="1258148">
+            <text>Around her neck she wore the famous ` Regent &quot; , the diamond beyond compare in its beauty which is part of the Crown jewels , while on her head sparkled a magnificent tiara .</text>
+            <annotationSet cDate="05/24/2004 10:27:25 PDT Mon" status="UNANN" ID="1963282">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="in"/>
+                    <label end="9" start="7" name="PP$"/>
+                    <label end="14" start="11" name="nn"/>
+                    <label end="18" start="16" name="PP"/>
+                    <label end="23" start="20" name="VVD"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="34" start="29" name="jj"/>
+                    <label end="43" start="38" name="NP"/>
+                    <label end="47" start="47" name=","/>
+                    <label end="51" start="49" name="dt"/>
+                    <label end="59" start="53" name="nn"/>
+                    <label end="66" start="61" name="in"/>
+                    <label end="74" start="68" name="VV"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="81" start="79" name="PP$"/>
+                    <label end="88" start="83" name="nn"/>
+                    <label end="94" start="90" name="wdt"/>
+                    <label end="97" start="96" name="VBZ"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="115" start="111" name="NP"/>
+                    <label end="122" start="117" name="nns"/>
+                    <label end="124" start="124" name=","/>
+                    <label end="130" start="126" name="in"/>
+                    <label end="133" start="132" name="in"/>
+                    <label end="137" start="135" name="PP$"/>
+                    <label end="142" start="139" name="nn"/>
+                    <label end="151" start="144" name="VVD"/>
+                    <label end="153" start="153" name="dt"/>
+                    <label end="165" start="155" name="jj"/>
+                    <label end="171" start="167" name="nn"/>
+                    <label end="173" start="173" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/24/2004 10:27:26 PDT Mon" status="AUTO_EDITED" ID="1963283">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="74" start="68" name="Target"/>
+                    <label cBy="605" end="66" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="3089" end="88" start="76" name="Variable"/>
+                    <label cBy="303" feID="3088" end="59" start="49" name="Standard"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="88" start="76" name="Dep"/>
+                    <label end="59" start="49" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="88" start="76" name="PP"/>
+                    <label end="59" start="49" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+                <layer rank="2" name="FE">
+                    <label cBy="303" feID="3090" end="59" start="53" name="Competitors"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="303" aPos="0" ID="1258149">
+            <text>A parlourmaid beyond compare .</text>
+            <annotationSet cDate="05/24/2004 10:27:26 PDT Mon" status="UNANN" ID="1963284">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="12" start="2" name="nn"/>
+                    <label end="19" start="14" name="in"/>
+                    <label end="27" start="21" name="VV"/>
+                    <label end="29" start="29" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/24/2004 10:27:27 PDT Mon" status="AUTO_EDITED" ID="1963285">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="27" start="21" name="Target"/>
+                    <label cBy="605" end="19" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="3088" end="12" start="0" name="Standard"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+                <layer rank="2" name="FE">
+                    <label cBy="303" feID="3090" end="12" start="2" name="Competitors"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="396" aPos="0" ID="1258150">
+            <text>` Art , history and a rolling landscape beyond compare .</text>
+            <annotationSet cDate="05/24/2004 10:27:27 PDT Mon" status="UNANN" ID="1963286">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="NP"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="14" start="8" name="nn"/>
+                    <label end="18" start="16" name="cc"/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="28" start="22" name="jj"/>
+                    <label end="38" start="30" name="nn"/>
+                    <label end="45" start="40" name="in"/>
+                    <label end="53" start="47" name="VV"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/24/2004 10:27:27 PDT Mon" status="AUTO_EDITED" ID="1963287">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="53" start="47" name="Target"/>
+                    <label cBy="605" end="45" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="3088" end="38" start="20" name="Standard"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="20" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+                <layer rank="2" name="FE">
+                    <label cBy="303" feID="3090" end="38" start="20" name="Competitors"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="time.n" ID="15398" frame="Temporal_pattern" frameID="1040" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="dsc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="pt" name="Pattern"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pr" name="Process"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="se" name="Subevent"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tp" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: the rhythm of a song</definition>
+    <lexeme POS="N" name="time"/>
+    <valences>
+        <governor type="Ctrlr" lemma="keep">
+            <annoSet ID="2515163"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Pattern"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Pattern"/>
+                <annoSet ID="2515163"/>
+                <annoSet ID="2515169"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Process"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Process"/>
+                <annoSet ID="2515163"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Process"/>
+                <annoSet ID="2515169"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Subevent"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Subevent"/>
+                <annoSet ID="2515163"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Subevent"/>
+                <annoSet ID="2515169"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Pattern"/>
+            <FE name="Process"/>
+            <FE name="Subevent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Pattern"/>
+                <valenceUnit GF="" PT="DNI" FE="Process"/>
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Subevent"/>
+                <annoSet ID="2515163"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Pattern"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Process"/>
+                <valenceUnit GF="" PT="DNI" FE="Subevent"/>
+                <annoSet ID="2515169"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-PPin-T-PPwith-(1)"/>
+    <subCorpus name="02-Wsingle,duple,triple-T-(1)"/>
+    <subCorpus name="03-Wcut,common-T-(1)"/>
+    <subCorpus name="04-T-PPin-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-Wkeep-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="362" aPos="84305786" ID="1536071">
+            <text>Sometimes the waltzer whirls in a graveyard , sometimes in an empty house , encircled by a ring of shadows , who flap their wings to keep time .</text>
+            <annotationSet cDate="08/21/2009 02:51:46 PDT Fri" status="UNANN" ID="2515162">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="rb"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="20" start="14" name="nn"/>
+                    <label end="27" start="22" name="VVZ"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="32" start="32" name="dt"/>
+                    <label end="42" start="34" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="54" start="46" name="rb"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="60" start="59" name="dt"/>
+                    <label end="66" start="62" name="jj"/>
+                    <label end="72" start="68" name="nn"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="84" start="76" name="VVN"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="89" start="89" name="dt"/>
+                    <label end="94" start="91" name="nn"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="105" start="99" name="nns"/>
+                    <label end="107" start="107" name=","/>
+                    <label end="111" start="109" name="wp"/>
+                    <label end="116" start="113" name="nn"/>
+                    <label end="122" start="118" name="PP$"/>
+                    <label end="128" start="124" name="nns"/>
+                    <label end="131" start="130" name="to"/>
+                    <label end="136" start="133" name="VV"/>
+                    <label end="141" start="138" name="nn"/>
+                    <label end="143" start="143" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/21/2009 02:51:47 PDT Fri" status="MANUAL" ID="2515163">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="141" start="138" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6164" end="128" start="113" name="Subevent"/>
+                    <label cBy="589" feID="6166" end="141" start="138" name="Pattern"/>
+                    <label cBy="589" feID="6163" itype="DNI" name="Process"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="128" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="128" start="113" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="136" start="133" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPwith-(2)">
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="385" aPos="27253136" ID="1536074">
+            <text>Wooden dolls are slid up and down a pole in time with the music , and castanets and bells , on the dolls ' backs , make a percussion sound .</text>
+            <annotationSet cDate="08/21/2009 02:51:47 PDT Fri" status="UNANN" ID="2515168">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="jj"/>
+                    <label end="11" start="7" name="nns"/>
+                    <label end="15" start="13" name="vbp"/>
+                    <label end="20" start="17" name="VVN"/>
+                    <label end="23" start="22" name="rb"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="32" start="29" name="rb"/>
+                    <label end="34" start="34" name="dt"/>
+                    <label end="39" start="36" name="nn"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="47" start="44" name="nn"/>
+                    <label end="52" start="49" name="in"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="62" start="58" name="nn"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="78" start="70" name="nn"/>
+                    <label end="82" start="80" name="cc"/>
+                    <label end="88" start="84" name="nns"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="103" start="99" name="nns"/>
+                    <label end="105" start="105" name="POS"/>
+                    <label end="111" start="107" name="nns"/>
+                    <label end="113" start="113" name=","/>
+                    <label end="118" start="115" name="VVP"/>
+                    <label end="120" start="120" name="dt"/>
+                    <label end="131" start="122" name="nn"/>
+                    <label end="137" start="133" name="nn"/>
+                    <label end="139" start="139" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/21/2009 02:51:47 PDT Fri" status="MANUAL" ID="2515169">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="47" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6166" end="47" start="44" name="Pattern"/>
+                    <label cBy="589" feID="6163" end="62" start="49" name="Process"/>
+                    <label cBy="589" feID="6164" itype="DNI" name="Subevent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="49" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="49" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="manually-added"/>
+</lexUnit>

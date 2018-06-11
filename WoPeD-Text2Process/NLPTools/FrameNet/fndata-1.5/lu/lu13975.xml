@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="room.v" ID="13975" frame="Temporary_stay" frameID="1885" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950810.0474" ID="4870"/>
+            <document description="apwsE951222.0279" ID="4871"/>
+            <document description="apwsE941217.0331" ID="4872"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="cor" name="Co-guest"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="con" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pro" name="Guest"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="res" name="Host"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: temporarily live at another's residence.</definition>
+    <lexeme POS="V" name="room"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Co-guest"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Co-guest"/>
+                <annoSet ID="2287525"/>
+                <annoSet ID="2287527"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Co-guest"/>
+                <annoSet ID="2287533"/>
+                <annoSet ID="2287537"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Containing_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Containing_event"/>
+                <annoSet ID="2287527"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Duration"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Duration"/>
+                <annoSet ID="2287525"/>
+                <annoSet ID="2287527"/>
+                <annoSet ID="2287533"/>
+                <annoSet ID="2287537"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Duration"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Explanation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Explanation"/>
+                <annoSet ID="2287533"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Guest"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <annoSet ID="2287525"/>
+                <annoSet ID="2287527"/>
+                <annoSet ID="2287533"/>
+                <annoSet ID="2287537"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Location"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <annoSet ID="2287527"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Location"/>
+                <annoSet ID="2287525"/>
+                <annoSet ID="2287537"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Location"/>
+                <annoSet ID="2287533"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2287525"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Co-guest"/>
+            <FE name="Containing_event"/>
+            <FE name="Duration"/>
+            <FE name="Guest"/>
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Co-guest"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Containing_event"/>
+                <valenceUnit GF="" PT="INI" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <annoSet ID="2287527"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Co-guest"/>
+            <FE name="Duration"/>
+            <FE name="Explanation"/>
+            <FE name="Guest"/>
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Co-guest"/>
+                <valenceUnit GF="" PT="INI" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Explanation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="" PT="DNI" FE="Location"/>
+                <annoSet ID="2287533"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Co-guest"/>
+            <FE name="Duration"/>
+            <FE name="Guest"/>
+            <FE name="Guest"/>
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Co-guest"/>
+                <valenceUnit GF="" PT="INI" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Location"/>
+                <annoSet ID="2287537"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Co-guest"/>
+            <FE name="Duration"/>
+            <FE name="Guest"/>
+            <FE name="Location"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Co-guest"/>
+                <valenceUnit GF="" PT="INI" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Location"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2287525"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Co-guest"/>
+                <valenceUnit GF="" PT="2nd" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Guest"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2287539"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="462" aPos="963048" ID="1419852">
+            <text>When Jim Courier and Andre Agassi roomed together at Nick Bolletieri 's tennis academy in Florida , one of them just had to leave the door ajar .</text>
+            <annotationSet cDate="04/26/2007 01:43:18 PDT Thu" status="UNANN" ID="2287524">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wrb"/>
+                    <label end="7" start="5" name="NP"/>
+                    <label end="15" start="9" name="NP"/>
+                    <label end="19" start="17" name="cc"/>
+                    <label end="25" start="21" name="NP"/>
+                    <label end="32" start="27" name="NP"/>
+                    <label end="39" start="34" name="VVD"/>
+                    <label end="48" start="41" name="rb"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="56" start="53" name="NP"/>
+                    <label end="67" start="58" name="NP"/>
+                    <label end="70" start="69" name="POS"/>
+                    <label end="77" start="72" name="nn"/>
+                    <label end="85" start="79" name="nn"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="96" start="90" name="NP"/>
+                    <label end="98" start="98" name=","/>
+                    <label end="102" start="100" name="cd"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="110" start="107" name="PP"/>
+                    <label end="115" start="112" name="rb"/>
+                    <label end="119" start="117" name="VHD"/>
+                    <label end="122" start="121" name="to"/>
+                    <label end="128" start="124" name="VV"/>
+                    <label end="132" start="130" name="dt"/>
+                    <label end="137" start="134" name="nn"/>
+                    <label end="142" start="139" name="rb"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/26/2007 01:43:19 PDT Thu" status="MANUAL" ID="2287525">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="39" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11174" end="32" start="5" name="Guest"/>
+                    <label cBy="618" feID="11181" end="48" start="41" name="Co-guest"/>
+                    <label cBy="618" feID="11183" end="3" start="0" name="Time"/>
+                    <label cBy="618" feID="11175" end="96" start="50" name="Location"/>
+                    <label cBy="618" feID="11176" itype="INI" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="5" name="Ext"/>
+                    <label end="48" start="41" name="Dep"/>
+                    <label end="3" start="0" name="Dep"/>
+                    <label end="96" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="5" name="NP"/>
+                    <label end="48" start="41" name="AVP"/>
+                    <label end="3" start="0" name="AVP"/>
+                    <label end="96" start="50" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="6201" aPos="110958794" ID="1419853">
+            <text>In fact , we roomed together on away trips .</text>
+            <annotationSet cDate="04/26/2007 01:43:19 PDT Thu" status="UNANN" ID="2287526">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="nn"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="18" start="13" name="VVD"/>
+                    <label end="27" start="20" name="rb"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="35" start="32" name="rb"/>
+                    <label end="41" start="37" name="nns"/>
+                    <label end="43" start="43" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/26/2007 01:43:19 PDT Thu" status="MANUAL" ID="2287527">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="18" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11174" end="11" start="10" name="Guest"/>
+                    <label cBy="618" feID="11181" end="27" start="20" name="Co-guest"/>
+                    <label cBy="618" feID="11712" end="41" start="29" name="Containing_event"/>
+                    <label cBy="618" feID="11175" itype="INI" name="Location"/>
+                    <label cBy="618" feID="11176" itype="INI" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="10" name="Ext"/>
+                    <label end="27" start="20" name="Dep"/>
+                    <label end="41" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="10" name="NP"/>
+                    <label end="27" start="20" name="AVP"/>
+                    <label end="41" start="29" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="113" docID="4871" sentNo="1" paragNo="17" aPos="27043339" ID="1419856">
+            <text>One of the patients roomed with the war casualties because there was no other space for him .</text>
+            <annotationSet cDate="04/26/2007 01:50:46 PDT Thu" status="UNANN" ID="2287532">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="18" start="11" name="nns"/>
+                    <label end="25" start="20" name="VVN"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="38" start="36" name="nn"/>
+                    <label end="49" start="40" name="nns"/>
+                    <label end="57" start="51" name="in"/>
+                    <label end="63" start="59" name="ex"/>
+                    <label end="67" start="65" name="VBD"/>
+                    <label end="70" start="69" name="dt"/>
+                    <label end="76" start="72" name="jj"/>
+                    <label end="82" start="78" name="nn"/>
+                    <label end="86" start="84" name="in"/>
+                    <label end="90" start="88" name="PP"/>
+                    <label end="92" start="92" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/26/2007 01:50:46 PDT Thu" status="MANUAL" ID="2287533">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="25" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11174" end="18" start="0" name="Guest"/>
+                    <label cBy="618" feID="11181" end="49" start="27" name="Co-guest"/>
+                    <label cBy="618" feID="11175" itype="DNI" name="Location"/>
+                    <label cBy="618" feID="11711" end="90" start="51" name="Explanation"/>
+                    <label cBy="618" feID="11176" itype="INI" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Ext"/>
+                    <label end="49" start="27" name="Dep"/>
+                    <label end="90" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="NP"/>
+                    <label end="49" start="27" name="PP"/>
+                    <label end="90" start="51" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="4872" sentNo="2" paragNo="32" aPos="8608001" ID="1419858">
+            <text>So who better than Tommy Lee Jones , the Academy Award-winning enigma who roomed with Al Gore at Harvard University while making the All-Ivy League football team as an offensive lineman .</text>
+            <annotationSet cDate="04/26/2007 01:50:47 PDT Thu" status="UNANN" ID="2287536">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="rb"/>
+                    <label end="5" start="3" name="wp"/>
+                    <label end="12" start="7" name="rbr"/>
+                    <label end="17" start="14" name="in"/>
+                    <label end="23" start="19" name="NP"/>
+                    <label end="27" start="25" name="NP"/>
+                    <label end="33" start="29" name="NP"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="47" start="41" name="NP"/>
+                    <label end="61" start="49" name="jj"/>
+                    <label end="68" start="63" name="nn"/>
+                    <label end="72" start="70" name="wp"/>
+                    <label end="79" start="74" name="VVD"/>
+                    <label end="84" start="81" name="in"/>
+                    <label end="87" start="86" name="NP"/>
+                    <label end="92" start="89" name="NP"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="103" start="97" name="NP"/>
+                    <label end="114" start="105" name="NP"/>
+                    <label end="120" start="116" name="in"/>
+                    <label end="127" start="122" name="VVG"/>
+                    <label end="131" start="129" name="dt"/>
+                    <label end="139" start="133" name="NP"/>
+                    <label end="146" start="141" name="NP"/>
+                    <label end="155" start="148" name="nn"/>
+                    <label end="160" start="157" name="nn"/>
+                    <label end="163" start="162" name="in"/>
+                    <label end="166" start="165" name="dt"/>
+                    <label end="176" start="168" name="jj"/>
+                    <label end="184" start="178" name="nn"/>
+                    <label end="186" start="186" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/26/2007 01:50:47 PDT Thu" status="MANUAL" ID="2287537">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="79" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11174" end="68" start="19" name="Guest"/>
+                    <label cBy="618" feID="11174" end="72" start="70" name="Guest"/>
+                    <label cBy="618" feID="11181" end="92" start="81" name="Co-guest"/>
+                    <label cBy="618" feID="11175" end="114" start="94" name="Location"/>
+                    <label cBy="618" feID="11176" itype="INI" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="19" name="Ext"/>
+                    <label end="72" start="70" name="Ext"/>
+                    <label end="92" start="81" name="Dep"/>
+                    <label end="114" start="94" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="19" name="NP"/>
+                    <label end="72" start="70" name="NP"/>
+                    <label end="92" start="81" name="PP"/>
+                    <label end="114" start="94" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="68" start="19" name="Ant"/>
+                    <label end="72" start="70" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="4870" sentNo="1" paragNo="16" aPos="81559162" ID="1419859">
+            <text>Though Belgrade is in Serbian territory , Mamula and Simic said that they have faced no negative reaction from people opposed to that side 's military actions even though Simic roomed with two Muslim roommates last year .</text>
+            <annotationSet cDate="04/26/2007 01:50:47 PDT Thu" status="UNANN" ID="2287538">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="14" start="7" name="NP"/>
+                    <label end="17" start="16" name="VBZ"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="28" start="22" name="jj"/>
+                    <label end="38" start="30" name="nn"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="47" start="42" name="NP"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="57" start="53" name="NP"/>
+                    <label end="62" start="59" name="VVD"/>
+                    <label end="67" start="64" name="in"/>
+                    <label end="72" start="69" name="PP"/>
+                    <label end="77" start="74" name="VHP"/>
+                    <label end="83" start="79" name="VVN"/>
+                    <label end="86" start="85" name="dt"/>
+                    <label end="95" start="88" name="jj"/>
+                    <label end="104" start="97" name="nn"/>
+                    <label end="109" start="106" name="in"/>
+                    <label end="116" start="111" name="nns"/>
+                    <label end="124" start="118" name="VVN"/>
+                    <label end="127" start="126" name="to"/>
+                    <label end="132" start="129" name="dt"/>
+                    <label end="137" start="134" name="nn"/>
+                    <label end="140" start="139" name="POS"/>
+                    <label end="149" start="142" name="jj"/>
+                    <label end="157" start="151" name="nns"/>
+                    <label end="162" start="159" name="rb"/>
+                    <label end="169" start="164" name="in"/>
+                    <label end="175" start="171" name="NP"/>
+                    <label end="182" start="177" name="VVD"/>
+                    <label end="187" start="184" name="in"/>
+                    <label end="191" start="189" name="cd"/>
+                    <label end="198" start="193" name="jj"/>
+                    <label end="208" start="200" name="nns"/>
+                    <label end="213" start="210" name="jj"/>
+                    <label end="218" start="215" name="nn"/>
+                    <label end="220" start="220" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/26/2007 01:50:47 PDT Thu" status="MANUAL" ID="2287539">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="182" start="177" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11174" end="175" start="171" name="Guest"/>
+                    <label cBy="618" feID="11181" end="208" start="184" name="Co-guest"/>
+                    <label cBy="618" feID="11183" end="218" start="210" name="Time"/>
+                    <label cBy="589" feID="11175" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="175" start="171" name="Ext"/>
+                    <label end="208" start="184" name="Dep"/>
+                    <label end="218" start="210" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="175" start="171" name="NP"/>
+                    <label end="208" start="184" name="PP"/>
+                    <label end="218" start="210" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="11176" end="218" start="210" name="Duration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

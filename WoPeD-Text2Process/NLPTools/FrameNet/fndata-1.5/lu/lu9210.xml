@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="twinkle.v" ID="9210" frame="Light_movement" frameID="131" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Beam"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emit" name="Emitter"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+        </frame>
+    </header>
+    <definition>COD: shine with a gleam that changes constantly from bright to faint. </definition>
+    <lexeme POS="V" name="twinkle"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Emitter"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Emitter"/>
+                <annoSet ID="510249"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="510249"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Emitter"/>
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Emitter"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="510249"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-780-s20-ppother">
+        <sentence sentNo="0" aPos="53644476" ID="435341">
+            <text>Our first sight of the restaurant was one of lanterns twinkling through the dusk . </text>
+            <annotationSet cDate="01/07/2003 03:48:33 PST Tue" status="UNANN" ID="510248">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="8" start="4" name="ORD"/>
+                    <label end="14" start="10" name="NN1"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="32" start="23" name="NN1"/>
+                    <label end="36" start="34" name="VBD"/>
+                    <label end="40" start="38" name="CRD"/>
+                    <label end="43" start="42" name="PRF"/>
+                    <label end="52" start="45" name="NN2"/>
+                    <label end="62" start="54" name="VVG"/>
+                    <label end="70" start="64" name="PRP"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="79" start="76" name="NN1"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:48:33 PST Tue" status="MANUAL" ID="510249">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="839" end="52" start="45" name="Emitter"/>
+                    <label cBy="296" feID="4526" end="79" start="64" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="64" name="Dep"/>
+                    <label end="52" start="45" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="64" name="PP"/>
+                    <label end="52" start="45" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="N" name="perception.n" ID="1534" frame="Perception_experience" frameID="70" totalAnnotated="16" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Extra-Thematic" abbrev="" name="Concessive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="con" name="Contrastive_context"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="State" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="00008B" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Peripheral" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Loc_perc" name="Location_of_perceiver"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="" name="Obscuring_medium"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Perc-Pass" name="Perceiver_passive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: the process of becoming aware of something through the senses.</definition>
+    <lexeme POS="N" name="perception"/>
+    <semType name="Sensory_modality" ID="92"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Body_part"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Body_part"/>
+                <annoSet ID="433050"/>
+                <annoSet ID="433342"/>
+                <annoSet ID="433500"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="432884"/>
+                <annoSet ID="432912"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Perceiver_passive"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Perceiver_passive"/>
+                <annoSet ID="432902"/>
+                <annoSet ID="432912"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_passive"/>
+                <annoSet ID="433138"/>
+                <annoSet ID="433178"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Phenomenon"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <annoSet ID="432884"/>
+                <annoSet ID="432912"/>
+                <annoSet ID="433346"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="433142"/>
+                <annoSet ID="433150"/>
+                <annoSet ID="433154"/>
+                <annoSet ID="433158"/>
+                <annoSet ID="433170"/>
+                <annoSet ID="433174"/>
+                <annoSet ID="433314"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="State"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="State"/>
+                <annoSet ID="432912"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Body_part"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Body_part"/>
+                <annoSet ID="433050"/>
+                <annoSet ID="433342"/>
+                <annoSet ID="433500"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Perceiver_passive"/>
+            <FE name="Phenomenon"/>
+            <FE name="State"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Perceiver_passive"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="State"/>
+                <annoSet ID="432912"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <annoSet ID="432884"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Perceiver_passive"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_passive"/>
+                <annoSet ID="433138"/>
+                <annoSet ID="433178"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Perceiver_passive"/>
+                <annoSet ID="432902"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="8">
+            <FE name="Phenomenon"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="433142"/>
+                <annoSet ID="433150"/>
+                <annoSet ID="433154"/>
+                <annoSet ID="433158"/>
+                <annoSet ID="433170"/>
+                <annoSet ID="433174"/>
+                <annoSet ID="433314"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <annoSet ID="433346"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-200-sthat"/>
+    <subCorpus name="N-240-of-ing">
+        <sentence sentNo="0" aPos="37868945" ID="395228">
+            <text>Even in the later stages of his boxing career , he held a most acute perception of the problems besetting black people and he continued to carry such a perception to the ring . </text>
+            <annotationSet cDate="01/07/2003 02:14:03 PST Tue" status="UNANN" ID="432883">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="PRP"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="16" start="12" name="AJC"/>
+                    <label end="23" start="18" name="NN2"/>
+                    <label end="26" start="25" name="PRF"/>
+                    <label end="30" start="28" name="DPS"/>
+                    <label end="37" start="32" name="NN1"/>
+                    <label end="44" start="39" name="NN1"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="54" start="51" name="VVD"/>
+                    <label end="56" start="56" name="AT0"/>
+                    <label end="61" start="58" name="AV0"/>
+                    <label end="67" start="63" name="AJ0"/>
+                    <label end="78" start="69" name="NN1"/>
+                    <label end="81" start="80" name="PRF"/>
+                    <label end="85" start="83" name="AT0"/>
+                    <label end="94" start="87" name="NN2"/>
+                    <label end="104" start="96" name="VVG"/>
+                    <label end="110" start="106" name="AJ0"/>
+                    <label end="117" start="112" name="NN0"/>
+                    <label end="121" start="119" name="CJC"/>
+                    <label end="124" start="123" name="PNP"/>
+                    <label end="134" start="126" name="VVD"/>
+                    <label end="137" start="136" name="TO0"/>
+                    <label end="143" start="139" name="VVI"/>
+                    <label end="148" start="145" name="DT0"/>
+                    <label end="150" start="150" name="AT0"/>
+                    <label end="161" start="152" name="NN1"/>
+                    <label end="164" start="163" name="PRP"/>
+                    <label end="168" start="166" name="AT0"/>
+                    <label end="173" start="170" name="NN1"/>
+                    <label end="175" start="175" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:03 PST Tue" status="MANUAL" ID="432884">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="338" end="67" start="58" name="Manner"/>
+                    <label cBy="103" feID="332" end="117" start="80" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="58" name="Dep"/>
+                    <label end="117" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="58" name="AJP"/>
+                    <label end="117" start="80" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="78" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-ppby">
+        <sentence sentNo="0" aPos="6372602" ID="395237">
+            <text>If the continuity of real things consists in their actual perception by God , in what does their publicity ( to us , and also to God ) consist ? </text>
+            <annotationSet cDate="01/07/2003 02:14:04 PST Tue" status="UNANN" ID="432901">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="16" start="7" name="NN1"/>
+                    <label end="19" start="18" name="PRF"/>
+                    <label end="24" start="21" name="AJ0"/>
+                    <label end="31" start="26" name="NN2"/>
+                    <label end="40" start="33" name="VVZ"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="49" start="45" name="DPS"/>
+                    <label end="56" start="51" name="AJ0"/>
+                    <label end="67" start="58" name="NN1"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="74" start="72" name="NP0"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="79" start="78" name="PRP"/>
+                    <label end="84" start="81" name="DTQ"/>
+                    <label end="89" start="86" name="VDZ"/>
+                    <label end="95" start="91" name="DPS"/>
+                    <label end="105" start="97" name="NN1"/>
+                    <label end="107" start="107" name="PUL"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="113" start="112" name="PNP"/>
+                    <label end="115" start="115" name="PUN"/>
+                    <label end="119" start="117" name="CJC"/>
+                    <label end="124" start="121" name="AV0"/>
+                    <label end="127" start="126" name="PRP"/>
+                    <label end="131" start="129" name="NP0"/>
+                    <label end="133" start="133" name="PUR"/>
+                    <label end="141" start="135" name="VVB"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:05 PST Tue" status="MANUAL" ID="432902">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="331" end="74" start="69" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21446309" ID="395242">
+            <text>Direct perception by psychics of energy manifestations in the landscape has a very long history . </text>
+            <annotationSet cDate="01/07/2003 02:14:05 PST Tue" status="UNANN" ID="432911">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="16" start="7" name="NN1"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="28" start="21" name="NN1"/>
+                    <label end="31" start="30" name="PRF"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="53" start="40" name="NN2"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="70" start="62" name="NN1"/>
+                    <label end="74" start="72" name="VHZ"/>
+                    <label end="76" start="76" name="AT0"/>
+                    <label end="81" start="78" name="AJ0-AV0"/>
+                    <label end="86" start="83" name="AJ0"/>
+                    <label end="94" start="88" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:05 PST Tue" status="MANUAL" ID="432912">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="338" end="5" start="0" name="Manner"/>
+                    <label cBy="103" feID="331" end="28" start="18" name="Perceiver_passive"/>
+                    <label cBy="103" feID="332" end="53" start="30" name="Phenomenon"/>
+                    <label cBy="103" feID="337" end="70" start="55" name="State"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                    <label end="28" start="18" name="Dep"/>
+                    <label end="53" start="30" name="Dep"/>
+                    <label end="70" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="AJP"/>
+                    <label end="28" start="18" name="PP"/>
+                    <label end="53" start="30" name="PP"/>
+                    <label end="70" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-ppof"/>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="21666219" ID="395311">
+            <text>Their sensory perception as well as their motor responses -- their behaviour -- are thus totally consonant with their bodily form and function . </text>
+            <annotationSet cDate="01/07/2003 02:14:16 PST Tue" status="UNANN" ID="433049">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DPS"/>
+                    <label end="12" start="6" name="AJ0"/>
+                    <label end="23" start="14" name="NN1"/>
+                    <label end="26" start="25" name="CJC"/>
+                    <label end="31" start="28" name="CJC"/>
+                    <label end="34" start="33" name="CJC"/>
+                    <label end="40" start="36" name="DPS"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="56" start="48" name="NN2"/>
+                    <label end="59" start="58" name="PUN"/>
+                    <label end="65" start="61" name="DPS"/>
+                    <label end="75" start="67" name="NN1"/>
+                    <label end="78" start="77" name="PUN"/>
+                    <label end="82" start="80" name="VBB"/>
+                    <label end="87" start="84" name="AV0"/>
+                    <label end="95" start="89" name="AV0"/>
+                    <label end="105" start="97" name="AJ0"/>
+                    <label end="110" start="107" name="PRP"/>
+                    <label end="116" start="112" name="DPS"/>
+                    <label end="123" start="118" name="AJ0"/>
+                    <label end="128" start="125" name="NN1"/>
+                    <label end="132" start="130" name="CJC"/>
+                    <label end="141" start="134" name="NN1"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:16 PST Tue" status="MANUAL" ID="433050">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="333" end="12" start="6" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="6" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="6" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="21667988" ID="395355">
+            <text>Just as we find animal perception hard to imagine because we have a different mind structure to other creatures , so too do we have difficulty understanding their language . </text>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="UNANN" ID="433137">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="CJS"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="14" start="11" name="VVB"/>
+                    <label end="21" start="16" name="NN1"/>
+                    <label end="32" start="23" name="NN1"/>
+                    <label end="37" start="34" name="AJ0-AV0"/>
+                    <label end="40" start="39" name="TO0"/>
+                    <label end="48" start="42" name="VVI"/>
+                    <label end="56" start="50" name="CJS"/>
+                    <label end="59" start="58" name="PNP"/>
+                    <label end="64" start="61" name="VHB"/>
+                    <label end="66" start="66" name="AT0"/>
+                    <label end="76" start="68" name="AJ0"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="91" start="83" name="NN1"/>
+                    <label end="94" start="93" name="PRP"/>
+                    <label end="100" start="96" name="AJ0"/>
+                    <label end="110" start="102" name="NN2"/>
+                    <label end="112" start="112" name="PUN"/>
+                    <label end="115" start="114" name="CJS"/>
+                    <label end="119" start="117" name="AV0"/>
+                    <label end="122" start="121" name="VDB"/>
+                    <label end="125" start="124" name="PNP"/>
+                    <label end="130" start="127" name="VHI"/>
+                    <label end="141" start="132" name="NN1"/>
+                    <label end="155" start="143" name="VVG"/>
+                    <label end="161" start="157" name="DPS"/>
+                    <label end="170" start="163" name="NN1"/>
+                    <label end="172" start="172" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="MANUAL" ID="433138">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="331" end="21" start="16" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="16" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="16" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="39615281" ID="395357">
+            <text>The theory also has difficulty in coping with colour perception when a particular object may come in a number of colours . </text>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="UNANN" ID="433141">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="14" start="11" name="AV0"/>
+                    <label end="18" start="16" name="VHZ"/>
+                    <label end="29" start="20" name="NN1"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="39" start="34" name="VVG"/>
+                    <label end="44" start="41" name="PRP"/>
+                    <label end="51" start="46" name="NN1"/>
+                    <label end="62" start="53" name="NN1"/>
+                    <label end="67" start="64" name="AVQ-CJS"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="80" start="71" name="AJ0"/>
+                    <label end="87" start="82" name="NN1"/>
+                    <label end="91" start="89" name="VM0"/>
+                    <label end="96" start="93" name="VVI"/>
+                    <label end="99" start="98" name="PRP"/>
+                    <label end="101" start="101" name="AT0"/>
+                    <label end="108" start="103" name="NN1"/>
+                    <label end="111" start="110" name="PRF"/>
+                    <label end="119" start="113" name="NN2"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="MANUAL" ID="433142">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="51" start="46" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="46" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="55712525" ID="395361">
+            <text>Dimond , Bures , Farrington and Brouwers ( 1975 ) , using a different technique , also claimed a right hemisphere dominance for stereoscopic depth perception . </text>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="UNANN" ID="433149">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="13" start="9" name="NP0"/>
+                    <label end="15" start="15" name="PUN"/>
+                    <label end="26" start="17" name="NP0"/>
+                    <label end="30" start="28" name="CJC"/>
+                    <label end="39" start="32" name="NP0"/>
+                    <label end="41" start="41" name="PUL"/>
+                    <label end="46" start="43" name="CRD"/>
+                    <label end="48" start="48" name="PUR"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="56" start="52" name="VVG"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="68" start="60" name="AJ0"/>
+                    <label end="78" start="70" name="NN1"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="85" start="82" name="AV0"/>
+                    <label end="93" start="87" name="VVD"/>
+                    <label end="95" start="95" name="AT0"/>
+                    <label end="101" start="97" name="AJ0"/>
+                    <label end="112" start="103" name="NN1"/>
+                    <label end="122" start="114" name="NN1"/>
+                    <label end="126" start="124" name="PRP"/>
+                    <label end="139" start="128" name="AJ0"/>
+                    <label end="145" start="141" name="NN1"/>
+                    <label end="156" start="147" name="NN1"/>
+                    <label end="158" start="158" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:22 PST Tue" status="MANUAL" ID="433150">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="145" start="128" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="128" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="128" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="156" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11284857" ID="395363">
+            <text>Vision , distance perception , maps our world and its analogue within is the experience of ` seeing &quot; . </text>
+            <annotationSet cDate="01/07/2003 02:14:24 PST Tue" status="UNANN" ID="433153">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="16" start="9" name="NN1"/>
+                    <label end="27" start="18" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="34" start="31" name="VVZ"/>
+                    <label end="38" start="36" name="DPS"/>
+                    <label end="44" start="40" name="NN1"/>
+                    <label end="48" start="46" name="CJC"/>
+                    <label end="52" start="50" name="DPS"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="68" start="63" name="PRP"/>
+                    <label end="71" start="70" name="VBZ"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="86" start="77" name="NN1"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="91" start="91" name="PUQ"/>
+                    <label end="98" start="93" name="VVG"/>
+                    <label end="100" start="100" name="PUQ"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:24 PST Tue" status="MANUAL" ID="433154">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="16" start="9" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="9" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="9" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="38297078" ID="395365">
+            <text>This makes , therefore , for the very tempting prediction that sign language perception should show a RHA , since it appears to be spatially organised . </text>
+            <annotationSet cDate="01/07/2003 02:14:24 PST Tue" status="UNANN" ID="433157">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="VVZ"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="21" start="13" name="AV0"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="27" start="25" name="PRP"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="36" start="33" name="AV0"/>
+                    <label end="45" start="38" name="AJ0"/>
+                    <label end="56" start="47" name="NN1"/>
+                    <label end="61" start="58" name="CJT-DT0"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="75" start="68" name="NN1"/>
+                    <label end="86" start="77" name="NN1"/>
+                    <label end="93" start="88" name="VM0"/>
+                    <label end="98" start="95" name="VVI"/>
+                    <label end="100" start="100" name="AT0"/>
+                    <label end="104" start="102" name="NN1-NP0"/>
+                    <label end="106" start="106" name="PUN"/>
+                    <label end="112" start="108" name="CJS"/>
+                    <label end="115" start="114" name="PNP"/>
+                    <label end="123" start="117" name="VVZ"/>
+                    <label end="126" start="125" name="TO0"/>
+                    <label end="129" start="128" name="VBI"/>
+                    <label end="139" start="131" name="AV0"/>
+                    <label end="149" start="141" name="VVN"/>
+                    <label end="151" start="151" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:24 PST Tue" status="MANUAL" ID="433158">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="75" start="63" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="63" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="86" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="82721893" ID="395371">
+            <text>Pain perception is traditionally an area of psychological expertise and the principal aim of this project is to initiate a significant sociological contribution to the study of pain perception , building on the post-holder 's doctoral research . </text>
+            <annotationSet cDate="01/07/2003 02:14:25 PST Tue" status="UNANN" ID="433169">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1"/>
+                    <label end="14" start="5" name="NN1"/>
+                    <label end="17" start="16" name="VBZ"/>
+                    <label end="31" start="19" name="AV0"/>
+                    <label end="34" start="33" name="AT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="42" start="41" name="PRF"/>
+                    <label end="56" start="44" name="AJ0"/>
+                    <label end="66" start="58" name="NN1"/>
+                    <label end="70" start="68" name="CJC"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="84" start="76" name="AJ0"/>
+                    <label end="88" start="86" name="NN1"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="96" start="93" name="DT0"/>
+                    <label end="104" start="98" name="NN1"/>
+                    <label end="107" start="106" name="VBZ"/>
+                    <label end="110" start="109" name="TO0"/>
+                    <label end="119" start="112" name="VVI"/>
+                    <label end="121" start="121" name="AT0"/>
+                    <label end="133" start="123" name="AJ0"/>
+                    <label end="146" start="135" name="AJ0"/>
+                    <label end="159" start="148" name="NN1"/>
+                    <label end="162" start="161" name="PRP"/>
+                    <label end="166" start="164" name="AT0"/>
+                    <label end="172" start="168" name="NN1"/>
+                    <label end="175" start="174" name="PRF"/>
+                    <label end="180" start="177" name="NN1"/>
+                    <label end="191" start="182" name="NN1"/>
+                    <label end="193" start="193" name="PUN"/>
+                    <label end="202" start="195" name="NN1-VVG"/>
+                    <label end="205" start="204" name="PRP"/>
+                    <label end="209" start="207" name="AT0"/>
+                    <label end="221" start="211" name="NN1"/>
+                    <label end="224" start="223" name="POS"/>
+                    <label end="233" start="226" name="AJ0"/>
+                    <label end="242" start="235" name="NN1"/>
+                    <label end="244" start="244" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:25 PST Tue" status="MANUAL" ID="433170">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="3" start="0" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="826765" ID="395373">
+            <text>The still influential contribution of Köhler and the other Gestalt psychologists to elucidating the rules underlying pattern perception is a major example . </text>
+            <annotationSet cDate="01/07/2003 02:14:25 PST Tue" status="UNANN" ID="433173">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="AJ0-AV0"/>
+                    <label end="20" start="10" name="AJ0"/>
+                    <label end="33" start="22" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="43" start="38" name="NN1-NP0"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="57" start="53" name="AJ0"/>
+                    <label end="65" start="59" name="NN1"/>
+                    <label end="79" start="67" name="NN2"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="94" start="84" name="VVG"/>
+                    <label end="98" start="96" name="AT0"/>
+                    <label end="104" start="100" name="NN2"/>
+                    <label end="115" start="106" name="VVG"/>
+                    <label end="123" start="117" name="NN1"/>
+                    <label end="134" start="125" name="NN1"/>
+                    <label end="137" start="136" name="VBZ"/>
+                    <label end="139" start="139" name="AT0"/>
+                    <label end="145" start="141" name="AJ0"/>
+                    <label end="153" start="147" name="NN1"/>
+                    <label end="155" start="155" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:26 PST Tue" status="MANUAL" ID="433174">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="123" start="117" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="123" start="117" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="123" start="117" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="134" start="125" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21647884" ID="395375">
+            <text>Plant perception is largely of a chemical nature , a diffuse comprehension and awareness of a chemical reality , combined with an inward sensitivity to the subtle watery tattvic vibration . </text>
+            <annotationSet cDate="01/07/2003 02:14:26 PST Tue" status="UNANN" ID="433177">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN1-VVB"/>
+                    <label end="15" start="6" name="NN1"/>
+                    <label end="18" start="17" name="VBZ"/>
+                    <label end="26" start="20" name="AV0"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="40" start="33" name="AJ0-NN1"/>
+                    <label end="47" start="42" name="NN1"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="51" start="51" name="AT0"/>
+                    <label end="59" start="53" name="AJ0"/>
+                    <label end="73" start="61" name="NN1"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="87" start="79" name="NN1"/>
+                    <label end="90" start="89" name="PRF"/>
+                    <label end="92" start="92" name="AT0"/>
+                    <label end="101" start="94" name="AJ0-NN1"/>
+                    <label end="109" start="103" name="NN1"/>
+                    <label end="111" start="111" name="PUN"/>
+                    <label end="120" start="113" name="VVD-VVN"/>
+                    <label end="125" start="122" name="PRP"/>
+                    <label end="128" start="127" name="AT0"/>
+                    <label end="135" start="130" name="AJ0"/>
+                    <label end="147" start="137" name="NN1"/>
+                    <label end="150" start="149" name="PRP"/>
+                    <label end="154" start="152" name="AT0"/>
+                    <label end="161" start="156" name="AJ0"/>
+                    <label end="168" start="163" name="AJ0"/>
+                    <label end="176" start="170" name="AJ0"/>
+                    <label end="186" start="178" name="NN1"/>
+                    <label end="188" start="188" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:26 PST Tue" status="MANUAL" ID="433178">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="331" end="4" start="0" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-320-ingcmpd"/>
+    <subCorpus name="N-340-ppother">
+        <sentence sentNo="0" aPos="55721116" ID="395443">
+            <text>Thus although Kimura 's original findings related ear asymmetry to the hemispheric side of speech production it is possible that differences between the ears reflect asymmetry between the hemispheres in speech perception rather than production . </text>
+            <annotationSet cDate="01/07/2003 02:14:34 PST Tue" status="UNANN" ID="433313">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="12" start="5" name="CJS"/>
+                    <label end="19" start="14" name="NP0"/>
+                    <label end="22" start="21" name="POS"/>
+                    <label end="31" start="24" name="AJ0"/>
+                    <label end="40" start="33" name="NN2"/>
+                    <label end="48" start="42" name="AJ0-VVD"/>
+                    <label end="52" start="50" name="NN1"/>
+                    <label end="62" start="54" name="NN1"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="81" start="71" name="AJ0"/>
+                    <label end="86" start="83" name="NN1"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="96" start="91" name="NN1"/>
+                    <label end="107" start="98" name="NN1"/>
+                    <label end="110" start="109" name="PNP"/>
+                    <label end="113" start="112" name="VBZ"/>
+                    <label end="122" start="115" name="AJ0"/>
+                    <label end="127" start="124" name="CJT"/>
+                    <label end="139" start="129" name="NN2"/>
+                    <label end="147" start="141" name="PRP"/>
+                    <label end="151" start="149" name="AT0"/>
+                    <label end="156" start="153" name="NN2"/>
+                    <label end="164" start="158" name="VVB"/>
+                    <label end="174" start="166" name="NN1"/>
+                    <label end="182" start="176" name="PRP"/>
+                    <label end="186" start="184" name="AT0"/>
+                    <label end="198" start="188" name="NN2"/>
+                    <label end="201" start="200" name="PRP"/>
+                    <label end="208" start="203" name="NN1"/>
+                    <label end="219" start="210" name="NN1"/>
+                    <label end="226" start="221" name="PRP"/>
+                    <label end="231" start="228" name="PRP"/>
+                    <label end="242" start="233" name="NN1"/>
+                    <label end="244" start="244" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:34 PST Tue" status="MANUAL" ID="433314">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="208" start="203" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="208" start="203" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="208" start="203" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="219" start="210" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108967925" ID="395457">
+            <text>Improvisation of any kind typifies Medau accompaniment -- it encourages class members to feel and appreciate for themselves the many-sidedness of movement , and learn through aural perception rather than mere visual mimicry . </text>
+            <annotationSet cDate="01/07/2003 02:14:36 PST Tue" status="UNANN" ID="433341">
+                <layer rank="1" name="BNC">
+                    <label end="12" start="0" name="NN1"/>
+                    <label end="15" start="14" name="PRF"/>
+                    <label end="19" start="17" name="DT0"/>
+                    <label end="24" start="21" name="NN1"/>
+                    <label end="33" start="26" name="VVZ"/>
+                    <label end="39" start="35" name="NN1-NP0"/>
+                    <label end="53" start="41" name="NN1"/>
+                    <label end="56" start="55" name="PUN"/>
+                    <label end="59" start="58" name="PNP"/>
+                    <label end="70" start="61" name="VVZ"/>
+                    <label end="76" start="72" name="NN1"/>
+                    <label end="84" start="78" name="NN2"/>
+                    <label end="87" start="86" name="TO0"/>
+                    <label end="92" start="89" name="VVI"/>
+                    <label end="96" start="94" name="CJC"/>
+                    <label end="107" start="98" name="VVI"/>
+                    <label end="111" start="109" name="PRP"/>
+                    <label end="122" start="113" name="PNX"/>
+                    <label end="126" start="124" name="AT0"/>
+                    <label end="141" start="128" name="NN1"/>
+                    <label end="144" start="143" name="PRF"/>
+                    <label end="153" start="146" name="NN1"/>
+                    <label end="155" start="155" name="PUN"/>
+                    <label end="159" start="157" name="CJC"/>
+                    <label end="165" start="161" name="VVB"/>
+                    <label end="173" start="167" name="PRP"/>
+                    <label end="179" start="175" name="AJ0"/>
+                    <label end="190" start="181" name="NN1"/>
+                    <label end="197" start="192" name="PRP"/>
+                    <label end="202" start="199" name="PRP"/>
+                    <label end="207" start="204" name="AJ0"/>
+                    <label end="214" start="209" name="AJ0"/>
+                    <label end="222" start="216" name="NN1"/>
+                    <label end="224" start="224" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:36 PST Tue" status="MANUAL" ID="433342">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="333" end="179" start="175" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="179" start="175" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="179" start="175" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="190" start="181" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-pother">
+        <sentence sentNo="0" aPos="13012769" ID="395459">
+            <text>Establishing A-X and B-Y associations will mean , therefore , that the perception of A will be changed in one way and that of B in a different way . </text>
+            <annotationSet cDate="01/07/2003 02:14:36 PST Tue" status="UNANN" ID="433345">
+                <layer rank="1" name="BNC">
+                    <label end="11" start="0" name="VVG"/>
+                    <label end="15" start="13" name="ZZ0"/>
+                    <label end="19" start="17" name="CJC"/>
+                    <label end="23" start="21" name="PRP"/>
+                    <label end="36" start="25" name="NN2"/>
+                    <label end="41" start="38" name="VM0"/>
+                    <label end="46" start="43" name="VVI"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="58" start="50" name="AV0"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="65" start="62" name="CJT"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="80" start="71" name="NN1"/>
+                    <label end="83" start="82" name="PRF"/>
+                    <label end="85" start="85" name="ZZ0"/>
+                    <label end="90" start="87" name="VM0"/>
+                    <label end="93" start="92" name="VBI"/>
+                    <label end="101" start="95" name="VVN"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="108" start="106" name="CRD"/>
+                    <label end="112" start="110" name="NN1"/>
+                    <label end="116" start="114" name="CJC"/>
+                    <label end="121" start="118" name="DT0"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="126" start="126" name="ZZ0"/>
+                    <label end="129" start="128" name="PRP"/>
+                    <label end="131" start="131" name="AT0"/>
+                    <label end="141" start="133" name="AJ0"/>
+                    <label end="145" start="143" name="NN1"/>
+                    <label end="147" start="147" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:36 PST Tue" status="MANUAL" ID="433346">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="332" end="85" start="82" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="82" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="107481106" ID="395536">
+            <text>Well how is she supposed to find out from you what her job is , tarot cards , reading the leaves in your empty tea cups , extra-sensory perception ? </text>
+            <annotationSet cDate="01/07/2003 02:14:48 PST Tue" status="UNANN" ID="433499">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="7" start="5" name="AVQ"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="14" start="12" name="PNP"/>
+                    <label end="23" start="16" name="AJ0"/>
+                    <label end="26" start="25" name="TO0"/>
+                    <label end="31" start="28" name="VVI"/>
+                    <label end="35" start="33" name="AVP"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="44" start="42" name="PNP"/>
+                    <label end="49" start="46" name="DTQ"/>
+                    <label end="53" start="51" name="DPS"/>
+                    <label end="57" start="55" name="NN1"/>
+                    <label end="60" start="59" name="VBZ"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="68" start="64" name="NN1-VVB"/>
+                    <label end="74" start="70" name="NN2"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="84" start="78" name="VVG"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="95" start="90" name="NN2"/>
+                    <label end="98" start="97" name="PRP"/>
+                    <label end="103" start="100" name="DPS"/>
+                    <label end="109" start="105" name="AJ0"/>
+                    <label end="113" start="111" name="NN1"/>
+                    <label end="118" start="115" name="NN2"/>
+                    <label end="120" start="120" name="PUN"/>
+                    <label end="134" start="122" name="AJ0"/>
+                    <label end="145" start="136" name="NN1"/>
+                    <label end="147" start="147" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:14:48 PST Tue" status="MANUAL" ID="433500">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="333" end="134" start="122" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="134" start="122" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="134" start="122" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="145" start="136" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

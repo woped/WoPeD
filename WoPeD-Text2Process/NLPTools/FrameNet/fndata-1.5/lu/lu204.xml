@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="translate.v" ID="204" frame="Categorization" frameID="21" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Cat" name="Category"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Concessive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Crit" name="Criteria"/>
+            <FE fgColor="000000" bgColor="008000" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tm" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: express the sense of (words or text) in another language.</definition>
+    <lexeme POS="V" name="translate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Category"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Category"/>
+                <annoSet ID="340941"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="340941"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="340941"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Category"/>
+            <FE name="Cognizer"/>
+            <FE name="Item"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Category"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="340941"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-adverbfreely"/>
+    <subCorpus name="V-intrans-adverb"/>
+    <subCorpus name="V-np-pother"/>
+    <subCorpus name="V-np-ppas"/>
+    <subCorpus name="V-np-ppinto"/>
+    <subCorpus name="V-np-ppother"/>
+    <subCorpus name="V-other"/>
+    <subCorpus name="V-pass"/>
+    <subCorpus name="V-pass-by"/>
+    <subCorpus name="V-pother"/>
+    <subCorpus name="V-ppas">
+        <sentence sentNo="0" aPos="29649730" ID="349098">
+            <text>Denise Harriman , the senator 's aide , uttered a barely audible sigh which I translated as an expression of relief that her responsibility for the twins was ending . </text>
+            <annotationSet cDate="01/07/2003 12:18:32 PST Tue" status="UNANN" ID="340940">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="14" start="7" name="NP0"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="28" start="22" name="NN1"/>
+                    <label end="31" start="30" name="POS"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="46" start="40" name="VVD"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="55" start="50" name="AV0"/>
+                    <label end="63" start="57" name="AJ0"/>
+                    <label end="68" start="65" name="NN1"/>
+                    <label end="74" start="70" name="DTQ"/>
+                    <label end="76" start="76" name="PNP"/>
+                    <label end="87" start="78" name="VVD"/>
+                    <label end="90" start="89" name="PRP"/>
+                    <label end="93" start="92" name="AT0"/>
+                    <label end="104" start="95" name="NN1"/>
+                    <label end="107" start="106" name="PRF"/>
+                    <label end="114" start="109" name="NN1"/>
+                    <label end="119" start="116" name="CJT"/>
+                    <label end="123" start="121" name="DPS"/>
+                    <label end="138" start="125" name="NN1"/>
+                    <label end="142" start="140" name="PRP"/>
+                    <label end="146" start="144" name="AT0"/>
+                    <label end="152" start="148" name="NN2"/>
+                    <label end="156" start="154" name="VBD"/>
+                    <label end="163" start="158" name="VVG"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 12:18:32 PST Tue" status="MANUAL" ID="340941">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="93" end="68" start="48" name="Item"/>
+                    <label cBy="103" feID="92" end="76" start="76" name="Cognizer"/>
+                    <label cBy="103" feID="94" end="163" start="89" name="Category"/>
+                    <label cBy="309" feID="93" end="74" start="70" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="48" name="Obj"/>
+                    <label end="76" start="76" name="Ext"/>
+                    <label end="163" start="89" name="Dep"/>
+                    <label end="74" start="70" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="48" name="NP"/>
+                    <label end="76" start="76" name="NP"/>
+                    <label end="163" start="89" name="PP"/>
+                    <label end="74" start="70" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="68" start="48" name="Ant"/>
+                    <label end="74" start="70" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="87" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-ppfrom"/>
+    <subCorpus name="V-ppinto"/>
+    <subCorpus name="V-ppother"/>
+    <subCorpus name="V-trans-other"/>
+    <subCorpus name="V-trans-simple"/>
+</lexUnit>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="demand.v" ID="12201" frame="Have_as_requirement" frameID="1491" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="con" name="Condition"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="dep" name="Dependent"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="800080" bgColor="d0d0d0" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="reqe" name="Required_entity"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="reqi" name="Required_individual"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="req" name="Requirement"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: require; need.</definition>
+    <lexeme POS="V" name="demand"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Dependent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Dependent"/>
+                <annoSet ID="2595967"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Required_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Required_entity"/>
+                <annoSet ID="2595967"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Requirement"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Requirement"/>
+                <annoSet ID="2595967"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Dependent"/>
+            <FE name="Required_entity"/>
+            <FE name="Requirement"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Dependent"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Required_entity"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Requirement"/>
+                <annoSet ID="2595967"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="87" aPos="25108703" ID="1580673">
+            <text>It goes without saying that such developments demand fundamental changes of attitude on behalf of drivers .</text>
+            <annotationSet cDate="07/16/2010 05:33:45 PDT Fri" status="UNANN" ID="2595966">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVZ"/>
+                    <label end="14" start="8" name="in"/>
+                    <label end="21" start="16" name="VVG"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="31" start="28" name="jj"/>
+                    <label end="44" start="33" name="nns"/>
+                    <label end="51" start="46" name="VVP"/>
+                    <label end="63" start="53" name="jj"/>
+                    <label end="71" start="65" name="nns"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="83" start="76" name="nn"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="93" start="88" name="nn"/>
+                    <label end="96" start="95" name="in"/>
+                    <label end="104" start="98" name="nns"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 05:33:45 PDT Fri" status="MANUAL" ID="2595967">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="51" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8110" end="44" start="28" name="Dependent"/>
+                    <label cBy="571" feID="8111" end="83" start="53" name="Requirement"/>
+                    <label cBy="571" feID="8117" end="104" start="85" name="Required_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="28" name="Ext"/>
+                    <label end="83" start="53" name="Obj"/>
+                    <label end="104" start="85" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="28" name="NP"/>
+                    <label end="83" start="53" name="NP"/>
+                    <label end="104" start="85" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-(1)"/>
+    <subCorpus name="03-NP-T-(1)"/>
+    <subCorpus name="04-NP-T-NP-PPof-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

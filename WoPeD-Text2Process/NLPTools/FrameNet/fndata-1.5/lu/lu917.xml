@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="N" name="sensitivity.n" ID="917" frame="Health_response" frameID="52" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Trig" name="Trigger"/>
+        </frame>
+    </header>
+    <definition>COD: the quality or condition of being sensitive to slight changes or influences</definition>
+    <lexeme POS="N" name="sensitivity"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="390324"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Body_part"/>
+                <annoSet ID="390324"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Body_part"/>
+                <annoSet ID="390444"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Body_part"/>
+                <annoSet ID="390510"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="390324"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Protagonist"/>
+                <annoSet ID="390408"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Trigger"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Trigger"/>
+                <annoSet ID="390324"/>
+                <annoSet ID="390328"/>
+                <annoSet ID="390330"/>
+                <annoSet ID="390510"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Trigger"/>
+                <annoSet ID="390296"/>
+                <annoSet ID="390408"/>
+                <annoSet ID="390414"/>
+                <annoSet ID="390430"/>
+                <annoSet ID="390440"/>
+                <annoSet ID="390450"/>
+                <annoSet ID="390634"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Trigger"/>
+                <annoSet ID="390638"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Body_part"/>
+                <annoSet ID="390444"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Protagonist"/>
+            <FE name="Trigger"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Body_part"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Trigger"/>
+                <annoSet ID="390324"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Trigger"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Body_part"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Trigger"/>
+                <annoSet ID="390510"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Protagonist"/>
+            <FE name="Trigger"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Protagonist"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Trigger"/>
+                <annoSet ID="390408"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="9">
+            <FE name="Trigger"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Trigger"/>
+                <annoSet ID="390296"/>
+                <annoSet ID="390414"/>
+                <annoSet ID="390430"/>
+                <annoSet ID="390440"/>
+                <annoSet ID="390450"/>
+                <annoSet ID="390634"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Trigger"/>
+                <annoSet ID="390328"/>
+                <annoSet ID="390330"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Trigger"/>
+                <annoSet ID="390638"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppfor"/>
+    <subCorpus name="N-250-ppin">
+        <sentence sentNo="0" aPos="45369735" ID="373934">
+            <text>We studied 101 family members of 47 non-insulin dependent diabetic subjects to determine the relation of birth weight with β cell function and insulin sensitivity in adult life . </text>
+            <annotationSet cDate="01/07/2003 01:16:37 PST Tue" status="UNANN" ID="390295">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="13" start="11" name="CRD"/>
+                    <label end="20" start="15" name="NN0"/>
+                    <label end="28" start="22" name="NN2"/>
+                    <label end="31" start="30" name="PRF"/>
+                    <label end="34" start="33" name="CRD"/>
+                    <label end="46" start="36" name="AJ0"/>
+                    <label end="56" start="48" name="AJ0"/>
+                    <label end="65" start="58" name="AJ0-NN1"/>
+                    <label end="74" start="67" name="NN2"/>
+                    <label end="77" start="76" name="TO0"/>
+                    <label end="87" start="79" name="VVI"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="100" start="93" name="NN1"/>
+                    <label end="103" start="102" name="PRF"/>
+                    <label end="109" start="105" name="NN1"/>
+                    <label end="116" start="111" name="NN1"/>
+                    <label end="121" start="118" name="PRP"/>
+                    <label end="128" start="125" name="NN1"/>
+                    <label end="137" start="130" name="NN1"/>
+                    <label end="141" start="139" name="CJC"/>
+                    <label end="149" start="143" name="NN1"/>
+                    <label end="161" start="151" name="NN1"/>
+                    <label end="164" start="163" name="PRP"/>
+                    <label end="170" start="166" name="AJ0-NN1"/>
+                    <label end="175" start="172" name="NN1"/>
+                    <label end="177" start="177" name="PUN"/>
+                    <label end="123" start="123" name="UNC"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:37 PST Tue" status="MANUAL" ID="390296">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="149" start="143" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="149" start="143" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="149" start="143" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="161" start="151" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-ppto">
+        <sentence sentNo="0" aPos="16731782" ID="373948">
+            <text>It has also been reported that diabetics may have increased vascular sensitivity to angiotensin II ( Christlieb , 1976 ; Weidmann et al , 1979 ) . </text>
+            <annotationSet cDate="01/07/2003 01:16:38 PST Tue" status="UNANN" ID="390323">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VHZ"/>
+                    <label end="10" start="7" name="AV0"/>
+                    <label end="15" start="12" name="VBN"/>
+                    <label end="24" start="17" name="VVN"/>
+                    <label end="29" start="26" name="CJT-DT0"/>
+                    <label end="39" start="31" name="NN2"/>
+                    <label end="43" start="41" name="VM0"/>
+                    <label end="48" start="45" name="VHI"/>
+                    <label end="58" start="50" name="VVN"/>
+                    <label end="67" start="60" name="AJ0"/>
+                    <label end="79" start="69" name="NN1"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="94" start="84" name="NN1"/>
+                    <label end="97" start="96" name="CRD"/>
+                    <label end="99" start="99" name="PUL"/>
+                    <label end="110" start="101" name="NP0"/>
+                    <label end="112" start="112" name="PUN"/>
+                    <label end="117" start="114" name="CRD"/>
+                    <label end="119" start="119" name="PUN"/>
+                    <label end="128" start="121" name="NP0"/>
+                    <label end="131" start="130" name="AV0"/>
+                    <label end="134" start="133" name="AV0"/>
+                    <label end="136" start="136" name="PUN"/>
+                    <label end="141" start="138" name="CRD"/>
+                    <label end="143" start="143" name="PUR"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:39 PST Tue" status="MANUAL" ID="390324">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="216" end="39" start="31" name="Protagonist"/>
+                    <label cBy="103" feID="1465" end="67" start="60" name="Body_part"/>
+                    <label cBy="103" feID="217" end="97" start="81" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="31" name="Ext"/>
+                    <label end="67" start="60" name="Dep"/>
+                    <label end="97" start="81" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="31" name="NP"/>
+                    <label end="67" start="60" name="AJP"/>
+                    <label end="97" start="81" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="79" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="48" start="45" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="18278553" ID="373950">
+            <text>What instrumental techniques can not do is evaluate the sensory attributes of an odour , in particular its acceptability , nor can they compete with the human nose as far as sensitivity to most odours is concerned . </text>
+            <annotationSet cDate="01/07/2003 01:16:39 PST Tue" status="UNANN" ID="390327">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DTQ"/>
+                    <label end="16" start="5" name="AJ0"/>
+                    <label end="27" start="18" name="NN2"/>
+                    <label end="31" start="29" name="VM0"/>
+                    <label end="35" start="33" name="XX0"/>
+                    <label end="38" start="37" name="VDI"/>
+                    <label end="41" start="40" name="VBZ"/>
+                    <label end="50" start="43" name="VVB"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="62" start="56" name="AJ0"/>
+                    <label end="73" start="64" name="NN2"/>
+                    <label end="76" start="75" name="PRF"/>
+                    <label end="79" start="78" name="AT0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="90" start="89" name="AV0"/>
+                    <label end="101" start="92" name="AV0"/>
+                    <label end="105" start="103" name="DPS"/>
+                    <label end="119" start="107" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="125" start="123" name="CJC"/>
+                    <label end="129" start="127" name="VM0"/>
+                    <label end="134" start="131" name="PNP"/>
+                    <label end="142" start="136" name="VVI"/>
+                    <label end="147" start="144" name="PRP"/>
+                    <label end="151" start="149" name="AT0"/>
+                    <label end="157" start="153" name="AJ0-NN1"/>
+                    <label end="162" start="159" name="NN1"/>
+                    <label end="165" start="164" name="CJS"/>
+                    <label end="169" start="167" name="CJS"/>
+                    <label end="172" start="171" name="CJS"/>
+                    <label end="184" start="174" name="NN1"/>
+                    <label end="187" start="186" name="PRP"/>
+                    <label end="192" start="189" name="DT0"/>
+                    <label end="199" start="194" name="NN2-VVZ"/>
+                    <label end="202" start="201" name="VBZ"/>
+                    <label end="212" start="204" name="AJ0-VVN"/>
+                    <label end="214" start="214" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:39 PST Tue" status="MANUAL" ID="390328">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="199" start="186" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="199" start="186" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="199" start="186" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="184" start="174" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20488393" ID="373951">
+            <text>It may be that they have developed new sensitivities to foods , or that they are becoming chemical-sensitive . </text>
+            <annotationSet cDate="01/07/2003 01:16:39 PST Tue" status="UNANN" ID="390329">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VM0"/>
+                    <label end="8" start="7" name="VBI"/>
+                    <label end="13" start="10" name="CJT"/>
+                    <label end="18" start="15" name="PNP"/>
+                    <label end="23" start="20" name="VHB"/>
+                    <label end="33" start="25" name="VVN"/>
+                    <label end="37" start="35" name="AJ0"/>
+                    <label end="51" start="39" name="NN2"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="60" start="56" name="NN2"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="65" start="64" name="CJC"/>
+                    <label end="70" start="67" name="CJT"/>
+                    <label end="75" start="72" name="PNP"/>
+                    <label end="79" start="77" name="VBB"/>
+                    <label end="88" start="81" name="VVG"/>
+                    <label end="107" start="90" name="AJ0"/>
+                    <label end="109" start="109" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:39 PST Tue" status="MANUAL" ID="390330">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="60" start="53" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="53" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-260-pingto"/>
+    <subCorpus name="N-280-poss"/>
+    <subCorpus name="N-290-posscmpd">
+        <sentence sentNo="0" aPos="20458554" ID="373990">
+            <text>This reaction in no way invalidates their food sensitivity -- it is real , even if the symptoms of the moment are mentally generated or psychogenic . </text>
+            <annotationSet cDate="01/07/2003 01:16:44 PST Tue" status="UNANN" ID="390407">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="12" start="5" name="NN1"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="18" start="17" name="AT0"/>
+                    <label end="22" start="20" name="NN1"/>
+                    <label end="34" start="24" name="VVZ"/>
+                    <label end="40" start="36" name="DPS"/>
+                    <label end="45" start="42" name="NN1"/>
+                    <label end="57" start="47" name="NN1"/>
+                    <label end="60" start="59" name="PUN"/>
+                    <label end="63" start="62" name="PNP"/>
+                    <label end="66" start="65" name="VBZ"/>
+                    <label end="71" start="68" name="AJ0"/>
+                    <label end="73" start="73" name="PUN"/>
+                    <label end="78" start="75" name="CJS"/>
+                    <label end="81" start="80" name="CJS"/>
+                    <label end="85" start="83" name="AT0"/>
+                    <label end="94" start="87" name="NN2"/>
+                    <label end="97" start="96" name="PRF"/>
+                    <label end="101" start="99" name="AT0"/>
+                    <label end="108" start="103" name="NN1"/>
+                    <label end="112" start="110" name="VBB"/>
+                    <label end="121" start="114" name="AV0"/>
+                    <label end="131" start="123" name="AJ0-VVD"/>
+                    <label end="134" start="133" name="CJC"/>
+                    <label end="146" start="136" name="AJ0"/>
+                    <label end="148" start="148" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:44 PST Tue" status="MANUAL" ID="390408">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="216" end="40" start="36" name="Protagonist"/>
+                    <label cBy="103" feID="217" end="45" start="42" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="36" name="Gen"/>
+                    <label end="45" start="42" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="36" name="Poss"/>
+                    <label end="45" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="20472269" ID="373993">
+            <text>For those with severe chemical sensitivity , creating a chemical-free ` oasis &quot; in the house can be very valuable . </text>
+            <annotationSet cDate="01/07/2003 01:16:44 PST Tue" status="UNANN" ID="390413">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="8" start="4" name="DT0"/>
+                    <label end="13" start="10" name="PRP"/>
+                    <label end="20" start="15" name="AJ0"/>
+                    <label end="29" start="22" name="NN1"/>
+                    <label end="41" start="31" name="NN1"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="52" start="45" name="VVG"/>
+                    <label end="54" start="54" name="AT0"/>
+                    <label end="68" start="56" name="AJ0"/>
+                    <label end="70" start="70" name="PUQ"/>
+                    <label end="76" start="72" name="NN1"/>
+                    <label end="78" start="78" name="PUQ"/>
+                    <label end="81" start="80" name="PRP"/>
+                    <label end="85" start="83" name="AT0"/>
+                    <label end="91" start="87" name="NN1"/>
+                    <label end="95" start="93" name="VM0"/>
+                    <label end="98" start="97" name="VBI"/>
+                    <label end="103" start="100" name="AV0"/>
+                    <label end="112" start="105" name="AJ0"/>
+                    <label end="114" start="114" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:44 PST Tue" status="MANUAL" ID="390414">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="29" start="22" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="22" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="22" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="91154062" ID="374001">
+            <text>Seventeen of the patients who identified food sensitivities had an open rechallenge with recurrence of symptoms in 10 ( 24% of total ) . </text>
+            <annotationSet cDate="01/07/2003 01:16:45 PST Tue" status="UNANN" ID="390429">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="CRD"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="24" start="17" name="NN2"/>
+                    <label end="28" start="26" name="PNQ"/>
+                    <label end="39" start="30" name="VVD"/>
+                    <label end="44" start="41" name="NN1"/>
+                    <label end="58" start="46" name="NN2"/>
+                    <label end="62" start="60" name="VHD"/>
+                    <label end="65" start="64" name="AT0"/>
+                    <label end="70" start="67" name="AJ0"/>
+                    <label end="82" start="72" name="NN1"/>
+                    <label end="87" start="84" name="PRP"/>
+                    <label end="98" start="89" name="NN1"/>
+                    <label end="101" start="100" name="PRF"/>
+                    <label end="110" start="103" name="NN2"/>
+                    <label end="113" start="112" name="PRP"/>
+                    <label end="116" start="115" name="CRD"/>
+                    <label end="118" start="118" name="PUL"/>
+                    <label end="122" start="120" name="NN0"/>
+                    <label end="125" start="124" name="PRF"/>
+                    <label end="131" start="127" name="AJ0-NN1"/>
+                    <label end="133" start="133" name="PUR"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:45 PST Tue" status="MANUAL" ID="390430">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="44" start="41" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="41" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="41" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="58" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="45371125" ID="374006">
+            <text>No significant correlation was found between centile group for birth weight and insulin sensitivity ( fig 2 ) , body mass index , fasting plasma glucose concentration , or blood pressure . </text>
+            <annotationSet cDate="01/07/2003 01:16:46 PST Tue" status="UNANN" ID="390439">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="13" start="3" name="AJ0"/>
+                    <label end="25" start="15" name="NN1"/>
+                    <label end="29" start="27" name="VBD"/>
+                    <label end="35" start="31" name="VVN"/>
+                    <label end="43" start="37" name="PRP"/>
+                    <label end="51" start="45" name="AJ0"/>
+                    <label end="57" start="53" name="NN0"/>
+                    <label end="61" start="59" name="PRP"/>
+                    <label end="67" start="63" name="NN1"/>
+                    <label end="74" start="69" name="NN1"/>
+                    <label end="78" start="76" name="CJC"/>
+                    <label end="86" start="80" name="NN1"/>
+                    <label end="98" start="88" name="NN1"/>
+                    <label end="100" start="100" name="PUL"/>
+                    <label end="104" start="102" name="NN1"/>
+                    <label end="106" start="106" name="CRD"/>
+                    <label end="108" start="108" name="PUR"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="115" start="112" name="NN1"/>
+                    <label end="120" start="117" name="AJ0-NN1"/>
+                    <label end="126" start="122" name="NN1"/>
+                    <label end="128" start="128" name="PUN"/>
+                    <label end="136" start="130" name="VVG"/>
+                    <label end="143" start="138" name="NN1"/>
+                    <label end="151" start="145" name="NN1"/>
+                    <label end="165" start="153" name="NN1"/>
+                    <label end="167" start="167" name="PUN"/>
+                    <label end="170" start="169" name="CJC"/>
+                    <label end="176" start="172" name="NN1"/>
+                    <label end="185" start="178" name="NN1"/>
+                    <label end="187" start="187" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:46 PST Tue" status="MANUAL" ID="390440">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="86" start="80" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="80" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="80" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="98" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46348661" ID="374008">
+            <text>Fluctuating hormone levels can affect skin sensitivity . </text>
+            <annotationSet cDate="01/07/2003 01:16:46 PST Tue" status="UNANN" ID="390443">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="AJ0-VVG"/>
+                    <label end="18" start="12" name="NN1"/>
+                    <label end="25" start="20" name="NN2"/>
+                    <label end="29" start="27" name="VM0"/>
+                    <label end="36" start="31" name="VVI"/>
+                    <label end="41" start="38" name="NN1"/>
+                    <label end="53" start="43" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:46 PST Tue" status="MANUAL" ID="390444">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="1465" end="41" start="38" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="38" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20477577" ID="374011">
+            <text>If there is little or no improvement on the Step 2 diet , then it may be because there is a general yeast sensitivity , due to candidiasis ( see p 184 ) . </text>
+            <annotationSet cDate="01/07/2003 01:16:46 PST Tue" status="UNANN" ID="390449">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="7" start="3" name="EX0"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="17" start="12" name="AJ0-AV0"/>
+                    <label end="20" start="19" name="CJC"/>
+                    <label end="23" start="22" name="AT0"/>
+                    <label end="35" start="25" name="NN1"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="47" start="44" name="NN1"/>
+                    <label end="49" start="49" name="CRD"/>
+                    <label end="54" start="51" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="61" start="58" name="AV0"/>
+                    <label end="64" start="63" name="PNP"/>
+                    <label end="68" start="66" name="VM0"/>
+                    <label end="71" start="70" name="VBI"/>
+                    <label end="79" start="73" name="CJS"/>
+                    <label end="85" start="81" name="EX0"/>
+                    <label end="88" start="87" name="VBZ"/>
+                    <label end="90" start="90" name="AT0"/>
+                    <label end="98" start="92" name="AJ0-NN1"/>
+                    <label end="104" start="100" name="NN1"/>
+                    <label end="116" start="106" name="NN1"/>
+                    <label end="118" start="118" name="PUN"/>
+                    <label end="122" start="120" name="PRP"/>
+                    <label end="125" start="124" name="PRP"/>
+                    <label end="137" start="127" name="NN1"/>
+                    <label end="139" start="139" name="PUL"/>
+                    <label end="143" start="141" name="VVB"/>
+                    <label end="145" start="145" name="NN0"/>
+                    <label end="149" start="147" name="CRD"/>
+                    <label end="151" start="151" name="PUR"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:47 PST Tue" status="MANUAL" ID="390450">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="104" start="100" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="100" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="100" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="116" start="106" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-ppother">
+        <sentence sentNo="0" aPos="91143239" ID="374041">
+            <text>the main purpose of our present study was to determine whether chronic infection with H pylori alters the sensitivity of the parietal cells to gastrin . </text>
+            <annotationSet cDate="01/07/2003 01:16:52 PST Tue" status="UNANN" ID="390509">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="AJ0"/>
+                    <label end="15" start="9" name="NN1"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="22" start="20" name="DPS"/>
+                    <label end="30" start="24" name="AJ0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="40" start="38" name="VBD"/>
+                    <label end="43" start="42" name="TO0"/>
+                    <label end="53" start="45" name="VVI"/>
+                    <label end="61" start="55" name="CJS"/>
+                    <label end="69" start="63" name="AJ0"/>
+                    <label end="79" start="71" name="NN1"/>
+                    <label end="84" start="81" name="PRP"/>
+                    <label end="86" start="86" name="ZZ0"/>
+                    <label end="93" start="88" name="NN1"/>
+                    <label end="100" start="95" name="VVZ"/>
+                    <label end="104" start="102" name="AT0"/>
+                    <label end="116" start="106" name="NN1"/>
+                    <label end="119" start="118" name="PRF"/>
+                    <label end="123" start="121" name="AT0"/>
+                    <label end="132" start="125" name="AJ0"/>
+                    <label end="138" start="134" name="NN2"/>
+                    <label end="141" start="140" name="PRP"/>
+                    <label end="149" start="143" name="NN1"/>
+                    <label end="151" start="151" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:16:52 PST Tue" status="MANUAL" ID="390510">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="1465" end="138" start="118" name="Body_part"/>
+                    <label cBy="103" feID="217" end="149" start="140" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="118" name="Dep"/>
+                    <label end="149" start="140" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="118" name="PP"/>
+                    <label end="149" start="140" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="116" start="106" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-350-pingother"/>
+    <subCorpus name="N-360-pwhother"/>
+    <subCorpus name="N-370-pother"/>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="20453622" ID="374103">
+            <text>Since then , many other doctors who treat food intolerance and chemical sensitivity have claimed that such sensitivity can produce a wide range of mental problems . </text>
+            <annotationSet cDate="01/07/2003 01:17:00 PST Tue" status="UNANN" ID="390633">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS"/>
+                    <label end="9" start="6" name="AV0"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="16" start="13" name="DT0"/>
+                    <label end="22" start="18" name="AJ0"/>
+                    <label end="30" start="24" name="NN2"/>
+                    <label end="34" start="32" name="PNQ"/>
+                    <label end="40" start="36" name="VVB"/>
+                    <label end="45" start="42" name="NN1"/>
+                    <label end="57" start="47" name="NN1"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="70" start="63" name="AJ0-NN1"/>
+                    <label end="82" start="72" name="NN1"/>
+                    <label end="87" start="84" name="VHB"/>
+                    <label end="95" start="89" name="VVN"/>
+                    <label end="100" start="97" name="CJT"/>
+                    <label end="105" start="102" name="DT0"/>
+                    <label end="117" start="107" name="NN1"/>
+                    <label end="121" start="119" name="VM0"/>
+                    <label end="129" start="123" name="VVI"/>
+                    <label end="131" start="131" name="AT0"/>
+                    <label end="136" start="133" name="AJ0"/>
+                    <label end="142" start="138" name="NN1"/>
+                    <label end="145" start="144" name="PRF"/>
+                    <label end="152" start="147" name="AJ0"/>
+                    <label end="161" start="154" name="NN2"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:17:00 PST Tue" status="MANUAL" ID="390634">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="70" start="63" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="63" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20488714" ID="374105">
+            <text>In general , there is evidence that children who have developed a sensitivity to cow 's milk may become sensitive to soya proteins as well , if they consume them in large quantities . </text>
+            <annotationSet cDate="01/07/2003 01:17:00 PST Tue" status="UNANN" ID="390637">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="9" start="3" name="AV0"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="17" start="13" name="EX0"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="29" start="22" name="NN1"/>
+                    <label end="34" start="31" name="CJT-DT0"/>
+                    <label end="43" start="36" name="NN2"/>
+                    <label end="47" start="45" name="PNQ"/>
+                    <label end="52" start="49" name="VHB"/>
+                    <label end="62" start="54" name="VVN"/>
+                    <label end="64" start="64" name="AT0"/>
+                    <label end="76" start="66" name="NN1"/>
+                    <label end="79" start="78" name="TO0"/>
+                    <label end="83" start="81" name="VVI"/>
+                    <label end="86" start="85" name="POS"/>
+                    <label end="91" start="88" name="NN1"/>
+                    <label end="95" start="93" name="VM0"/>
+                    <label end="102" start="97" name="VVI"/>
+                    <label end="112" start="104" name="AJ0"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="120" start="117" name="NN1"/>
+                    <label end="129" start="122" name="NN2"/>
+                    <label end="132" start="131" name="AV0"/>
+                    <label end="137" start="134" name="AV0"/>
+                    <label end="139" start="139" name="PUN"/>
+                    <label end="142" start="141" name="CJS"/>
+                    <label end="147" start="144" name="PNP"/>
+                    <label end="155" start="149" name="VVB"/>
+                    <label end="160" start="157" name="PNP"/>
+                    <label end="163" start="162" name="PRP"/>
+                    <label end="169" start="165" name="AJ0"/>
+                    <label end="180" start="171" name="NN2"/>
+                    <label end="182" start="182" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 01:17:00 PST Tue" status="MANUAL" ID="390638">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="217" end="91" start="78" name="Trigger"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="91" start="78" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="91" start="78" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="76" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

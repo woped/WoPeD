@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="one and only.a" ID="6154" frame="Sole_instance" frameID="355" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Itm" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: unique; single</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="NUM" name="one"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="C" name="and"/>
+    <lexeme order="3" headword="true" breakBefore="false" POS="A" name="only"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="2582979"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2582979"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Item"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2582979"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-Wbe-T-(1)"/>
+    <subCorpus name="02-NP-Wbe-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="122" aPos="28324062" ID="1574181">
+            <text>That 's the one and only test .</text>
+            <annotationSet cDate="07/15/2010 10:25:08 PDT Thu" status="UNANN" ID="2582978">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="14" start="12" name="nn"/>
+                    <label end="18" start="16" name="cc"/>
+                    <label end="23" start="20" name="jj"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="30" start="30" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 10:25:09 PDT Thu" status="MANUAL" ID="2582979">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="23" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3657" end="28" start="25" name="Type"/>
+                    <label cBy="589" feID="3656" end="3" start="0" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="25" name="Head"/>
+                    <label end="3" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="25" name="N"/>
+                    <label end="3" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="6" start="5" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

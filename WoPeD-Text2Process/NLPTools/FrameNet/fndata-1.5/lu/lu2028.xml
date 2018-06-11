@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="widower.n" ID="2028" frame="Personal_relationship" frameID="102" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Partners"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Partner_1" name="Partner_1"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Partner_2" name="Partner_2"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="rel" name="Relationship"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="Src" name="Source_of_relationship"/>
+        </frame>
+    </header>
+    <definition>COD: a man who has lost his wife by death and has not married again</definition>
+    <lexeme POS="N" name="widower"/>
+    <valences>
+        <FERealization total="12">
+            <FE name="Partner_1"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <annoSet ID="66587"/>
+                <annoSet ID="66591"/>
+                <annoSet ID="66595"/>
+                <annoSet ID="66609"/>
+                <annoSet ID="66621"/>
+                <annoSet ID="66625"/>
+                <annoSet ID="66669"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_1"/>
+                <annoSet ID="66631"/>
+                <annoSet ID="66643"/>
+                <annoSet ID="66647"/>
+                <annoSet ID="66657"/>
+                <annoSet ID="66663"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Partner_2"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="INI" FE="Partner_2"/>
+                <annoSet ID="66595"/>
+                <annoSet ID="66609"/>
+                <annoSet ID="66621"/>
+                <annoSet ID="66625"/>
+                <annoSet ID="66631"/>
+                <annoSet ID="66643"/>
+                <annoSet ID="66647"/>
+                <annoSet ID="66657"/>
+                <annoSet ID="66663"/>
+                <annoSet ID="66669"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Partner_2"/>
+                <annoSet ID="66587"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Partner_1"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <annoSet ID="66591"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Partner_1"/>
+            <FE name="Partner_2"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <valenceUnit GF="" PT="INI" FE="Partner_2"/>
+                <annoSet ID="66595"/>
+                <annoSet ID="66609"/>
+                <annoSet ID="66621"/>
+                <annoSet ID="66625"/>
+                <annoSet ID="66669"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Partner_2"/>
+                <annoSet ID="66587"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_1"/>
+                <valenceUnit GF="" PT="INI" FE="Partner_2"/>
+                <annoSet ID="66631"/>
+                <annoSet ID="66643"/>
+                <annoSet ID="66647"/>
+                <annoSet ID="66657"/>
+                <annoSet ID="66663"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="48376142" ID="209749">
+            <text>Her widower , Sir Walter , rose in power and influence . </text>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="UNANN" ID="66586">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="16" start="14" name="NP0"/>
+                    <label end="23" start="18" name="NP0"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="30" start="27" name="VVD"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="39" start="35" name="NN1"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="53" start="45" name="NN1-VVB"/>
+                    <label end="55" start="55" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="MANUAL" ID="66587">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="488" end="2" start="0" name="Partner_2"/>
+                    <label cBy="296" feID="487" end="10" start="4" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="61684474" ID="209751">
+            <text>Long term pensions for widows widowers and children . </text>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="UNANN" ID="66590">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AJ0-AV0"/>
+                    <label end="8" start="5" name="NN1"/>
+                    <label end="17" start="10" name="NN2"/>
+                    <label end="21" start="19" name="PRP"/>
+                    <label end="28" start="23" name="NN2"/>
+                    <label end="37" start="30" name="NN2"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="50" start="43" name="NN2"/>
+                    <label end="52" start="52" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="MANUAL" ID="66591">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="37" start="30" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="19248631" ID="209753">
+            <text>A widower 's pension as a right used to be very rare in the public sector , although the civil service has now introduced one . </text>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="UNANN" ID="66594">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="8" start="2" name="NN1"/>
+                    <label end="11" start="10" name="POS"/>
+                    <label end="19" start="13" name="NN1"/>
+                    <label end="22" start="21" name="PRP"/>
+                    <label end="24" start="24" name="AT0"/>
+                    <label end="30" start="26" name="NN0"/>
+                    <label end="35" start="32" name="VM0"/>
+                    <label end="38" start="37" name="TO0"/>
+                    <label end="41" start="40" name="VBI"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="51" start="48" name="AJ0"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="58" start="56" name="AT0"/>
+                    <label end="65" start="60" name="AJ0"/>
+                    <label end="72" start="67" name="NN1"/>
+                    <label end="74" start="74" name="PUN"/>
+                    <label end="83" start="76" name="CJS"/>
+                    <label end="87" start="85" name="AT0"/>
+                    <label end="93" start="89" name="AJ0"/>
+                    <label end="101" start="95" name="NN1"/>
+                    <label end="105" start="103" name="VHZ"/>
+                    <label end="109" start="107" name="AV0"/>
+                    <label end="120" start="111" name="VVN"/>
+                    <label end="124" start="122" name="CRD-PNI"/>
+                    <label end="126" start="126" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:26 PST Mon" status="MANUAL" ID="66595">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="8" start="2" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="37417896" ID="209760">
+            <text>Widows , however , greatly outnumber widowers ( Figure I.3 ) . </text>
+            <annotationSet cDate="01/06/2003 07:02:27 PST Mon" status="UNANN" ID="66608">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN2"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="15" start="9" name="AV0"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="25" start="19" name="AV0"/>
+                    <label end="35" start="27" name="VVB"/>
+                    <label end="44" start="37" name="NN2"/>
+                    <label end="46" start="46" name="PUL"/>
+                    <label end="53" start="48" name="NN1-VVB"/>
+                    <label end="57" start="55" name="UNC"/>
+                    <label end="59" start="59" name="PUR"/>
+                    <label end="61" start="61" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:27 PST Mon" status="MANUAL" ID="66609">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="44" start="37" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79542349" ID="209766">
+            <text>Unmarried nephews are spoken of , as if by chance , and the names of youthful widowers off-handedly mentioned . </text>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="UNANN" ID="66620">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AJ0"/>
+                    <label end="16" start="10" name="NN2"/>
+                    <label end="20" start="18" name="VBB"/>
+                    <label end="27" start="22" name="VVN"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="35" start="34" name="CJS"/>
+                    <label end="38" start="37" name="CJS"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="54" start="52" name="CJC"/>
+                    <label end="58" start="56" name="AT0"/>
+                    <label end="64" start="60" name="NN2"/>
+                    <label end="67" start="66" name="PRF"/>
+                    <label end="76" start="69" name="AJ0"/>
+                    <label end="85" start="78" name="NN2"/>
+                    <label end="98" start="87" name="AV0"/>
+                    <label end="108" start="100" name="VVD-VVN"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="MANUAL" ID="66621">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="85" start="78" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="85" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="96199187" ID="209768">
+            <text>A forty year old Glasgow widower who admitted sex offences against children has been sent to jail for five years . </text>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="UNANN" ID="66624">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="6" start="2" name="CRD"/>
+                    <label end="11" start="8" name="NN1"/>
+                    <label end="15" start="13" name="AJ0"/>
+                    <label end="23" start="17" name="NP0"/>
+                    <label end="31" start="25" name="NN1"/>
+                    <label end="35" start="33" name="PNQ"/>
+                    <label end="44" start="37" name="VVD"/>
+                    <label end="48" start="46" name="NN1"/>
+                    <label end="57" start="50" name="NN2"/>
+                    <label end="65" start="59" name="PRP"/>
+                    <label end="74" start="67" name="NN2"/>
+                    <label end="78" start="76" name="VHZ"/>
+                    <label end="83" start="80" name="VBN"/>
+                    <label end="88" start="85" name="VVN"/>
+                    <label end="91" start="90" name="TO0"/>
+                    <label end="96" start="93" name="VVI"/>
+                    <label end="100" start="98" name="PRP"/>
+                    <label end="105" start="102" name="CRD"/>
+                    <label end="111" start="107" name="NN2"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="MANUAL" ID="66625">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="31" start="25" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108446411" ID="209771">
+            <text>Bill , a widower , said he was secretly revelling in his new-found fame . </text>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="UNANN" ID="66630">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="5" start="5" name="PUN"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="15" start="9" name="NN1"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="22" start="19" name="VVD"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="29" start="27" name="VBD"/>
+                    <label end="38" start="31" name="AV0"/>
+                    <label end="48" start="40" name="VVG"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="55" start="53" name="DPS"/>
+                    <label end="65" start="57" name="AJ0"/>
+                    <label end="70" start="67" name="NN1"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:28 PST Mon" status="MANUAL" ID="66631">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="3" start="0" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-lcoll-be">
+        <sentence sentNo="0" aPos="31296722" ID="209777">
+            <text>“ He 's a widower . </text>
+            <annotationSet cDate="01/06/2003 07:02:29 PST Mon" status="UNANN" ID="66642">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="8" start="8" name="AT0"/>
+                    <label end="16" start="10" name="NN1"/>
+                    <label end="18" start="18" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:29 PST Mon" status="MANUAL" ID="66643">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="3" start="2" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="5" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35553427" ID="209779">
+            <text>Mr Charlwood was a widower with two teenage daughters and did not want to leave them for longer than necessary . </text>
+            <annotationSet cDate="01/06/2003 07:02:29 PST Mon" status="UNANN" ID="66646">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="NP0"/>
+                    <label end="11" start="3" name="NP0"/>
+                    <label end="15" start="13" name="VBD"/>
+                    <label end="17" start="17" name="AT0"/>
+                    <label end="25" start="19" name="NN1"/>
+                    <label end="30" start="27" name="PRP"/>
+                    <label end="34" start="32" name="CRD"/>
+                    <label end="42" start="36" name="AJ0"/>
+                    <label end="52" start="44" name="NN2"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="60" start="58" name="VDD"/>
+                    <label end="64" start="62" name="XX0"/>
+                    <label end="69" start="66" name="VVI"/>
+                    <label end="72" start="71" name="TO0"/>
+                    <label end="78" start="74" name="VVI"/>
+                    <label end="83" start="80" name="PNP"/>
+                    <label end="87" start="85" name="PRP"/>
+                    <label end="94" start="89" name="AJC"/>
+                    <label end="99" start="96" name="CJS"/>
+                    <label end="109" start="101" name="AJ0"/>
+                    <label end="111" start="111" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:29 PST Mon" status="MANUAL" ID="66647">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="11" start="0" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="13" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69974745" ID="209784">
+            <text>` Bernard 's a widower in his early fifties and he 's a rector , not a monk . </text>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="UNANN" ID="66656">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="8" start="2" name="NN1-NP0"/>
+                    <label end="11" start="10" name="VBZ"/>
+                    <label end="13" start="13" name="AT0"/>
+                    <label end="21" start="15" name="NN1"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="DPS"/>
+                    <label end="34" start="30" name="AJ0"/>
+                    <label end="42" start="36" name="CRD"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="52" start="51" name="VBZ"/>
+                    <label end="54" start="54" name="AT0"/>
+                    <label end="61" start="56" name="NN1"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="67" start="65" name="XX0"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="74" start="71" name="NN1"/>
+                    <label end="76" start="76" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="MANUAL" ID="66657">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="8" start="2" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="11" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="80754701" ID="209787">
+            <text>` By this time Fabien was a widower , you understand . </text>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="UNANN" ID="66662">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PRP"/>
+                    <label end="8" start="5" name="DT0"/>
+                    <label end="13" start="10" name="NN1"/>
+                    <label end="20" start="15" name="NN1-NP0"/>
+                    <label end="24" start="22" name="VBD"/>
+                    <label end="26" start="26" name="AT0"/>
+                    <label end="34" start="28" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="PNP"/>
+                    <label end="51" start="42" name="VVB"/>
+                    <label end="53" start="53" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="MANUAL" ID="66663">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="20" start="15" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="15" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="15" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="24" start="22" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="102934652" ID="209790">
+            <text>A man is still being questioned tonight after the body of an elderly widower was found with shotgun wounds . </text>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="UNANN" ID="66668">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="4" start="2" name="NN1"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="13" start="9" name="AV0"/>
+                    <label end="19" start="15" name="VBG"/>
+                    <label end="30" start="21" name="VVN"/>
+                    <label end="38" start="32" name="AV0"/>
+                    <label end="44" start="40" name="CJS-PRP"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="56" start="55" name="PRF"/>
+                    <label end="59" start="58" name="AT0"/>
+                    <label end="67" start="61" name="AJ0"/>
+                    <label end="75" start="69" name="NN1"/>
+                    <label end="79" start="77" name="VBD"/>
+                    <label end="85" start="81" name="VVN"/>
+                    <label end="90" start="87" name="PRP"/>
+                    <label end="98" start="92" name="NN1"/>
+                    <label end="105" start="100" name="NN2"/>
+                    <label end="107" start="107" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:02:30 PST Mon" status="MANUAL" ID="66669">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="487" end="75" start="69" name="Partner_1"/>
+                    <label cBy="296" feID="488" itype="INI" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

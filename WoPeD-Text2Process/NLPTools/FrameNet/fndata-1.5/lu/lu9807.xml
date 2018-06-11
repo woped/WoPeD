@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="representation.n" ID="9807" frame="Communicate_categorization" frameID="796" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="" name="Category"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="" name="Criteria"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: an image, model, or other depiction of something.</definition>
+    <lexeme POS="N" name="representation"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Category"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Category"/>
+                <annoSet ID="339927"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[of]" FE="Item"/>
+                <annoSet ID="339927"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Category"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Category"/>
+                <valenceUnit GF="Dep" PT="PPing[of]" FE="Item"/>
+                <annoSet ID="339927"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-cmpd"/>
+    <subCorpus name="N-other"/>
+    <subCorpus name="N-pingof">
+        <sentence sentNo="0" aPos="52373207" ID="348591">
+            <text>Both the representation of learning to write as a universal performance hierarchy , and the ordering of the specific items in Profiles of Development are at odds with such studies . </text>
+            <annotationSet cDate="01/07/2003 12:17:15 PST Tue" status="UNANN" ID="339926">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="22" start="9" name="NN1"/>
+                    <label end="25" start="24" name="PRF"/>
+                    <label end="34" start="27" name="VVG"/>
+                    <label end="37" start="36" name="TO0"/>
+                    <label end="43" start="39" name="VVI"/>
+                    <label end="46" start="45" name="CJS-PRP"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="58" start="50" name="AJ0"/>
+                    <label end="70" start="60" name="NN1"/>
+                    <label end="80" start="72" name="NN1"/>
+                    <label end="82" start="82" name="PUN"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="90" start="88" name="AT0"/>
+                    <label end="99" start="92" name="NN1"/>
+                    <label end="102" start="101" name="PRF"/>
+                    <label end="106" start="104" name="AT0"/>
+                    <label end="115" start="108" name="AJ0"/>
+                    <label end="121" start="117" name="NN2"/>
+                    <label end="124" start="123" name="PRP"/>
+                    <label end="133" start="126" name="NN2"/>
+                    <label end="136" start="135" name="PRF"/>
+                    <label end="148" start="138" name="NN1"/>
+                    <label end="152" start="150" name="VBB"/>
+                    <label end="155" start="154" name="PRP"/>
+                    <label end="160" start="157" name="NN2"/>
+                    <label end="165" start="162" name="PRP"/>
+                    <label end="170" start="167" name="DT0"/>
+                    <label end="178" start="172" name="NN2"/>
+                    <label end="180" start="180" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 12:17:15 PST Tue" status="MANUAL" ID="339927">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5632" end="43" start="24" name="Item"/>
+                    <label cBy="103" feID="5631" end="80" start="45" name="Category"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="24" name="Dep"/>
+                    <label end="80" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="24" name="PPing"/>
+                    <label end="80" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-pingother"/>
+    <subCorpus name="N-poss"/>
+    <subCorpus name="N-posscmpd"/>
+    <subCorpus name="N-pother"/>
+    <subCorpus name="N-ppas"/>
+    <subCorpus name="N-ppby"/>
+    <subCorpus name="N-ppin"/>
+    <subCorpus name="N-ppof"/>
+    <subCorpus name="N-ppon"/>
+    <subCorpus name="N-ppother"/>
+    <subCorpus name="N-ppthrough"/>
+    <subCorpus name="N-pwhof"/>
+    <subCorpus name="N-pwhother"/>
+</lexUnit>

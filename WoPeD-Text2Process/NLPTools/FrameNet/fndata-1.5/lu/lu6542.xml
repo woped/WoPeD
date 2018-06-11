@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="treat.v" ID="6542" frame="Topic" frameID="373" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Communicator" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manner" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Status" name="Status"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Text" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Topic" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: deal with some topic</definition>
+    <lexeme POS="V" name="treat"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Communicator"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Communicator"/>
+                <annoSet ID="1848655"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Degree"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1848655"/>
+                <annoSet ID="1848725"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <annoSet ID="1848739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Text"/>
+                <annoSet ID="1848655"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Text"/>
+                <annoSet ID="1848725"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Text"/>
+                <annoSet ID="1848673"/>
+                <annoSet ID="1848739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Topic"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Topic"/>
+                <annoSet ID="1848655"/>
+                <annoSet ID="1848725"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Topic"/>
+                <annoSet ID="1848673"/>
+                <annoSet ID="1848739"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Communicator"/>
+            <FE name="Degree"/>
+            <FE name="Text"/>
+            <FE name="Topic"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Text"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Topic"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Topic"/>
+                <annoSet ID="1848655"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Text"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Text"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Topic"/>
+                <annoSet ID="1848725"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Text"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Text"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Topic"/>
+                <annoSet ID="1848739"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Text"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Text"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Topic"/>
+                <annoSet ID="1848673"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-NPtheory,subject,author-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="503" aPos="0" ID="1200747">
+            <text>This book has concentrated on the selection of library materials rather than their acquisition -- a subject which is fully treated in books by Chapman for the UK and Magrill for the United States .</text>
+            <annotationSet cDate="04/02/2003 02:20:26 PST Wed" status="UNANN" ID="1848654">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="nn"/>
+                    <label end="12" start="10" name="VHZ"/>
+                    <label end="25" start="14" name="VVN"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="42" start="34" name="nn"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="53" start="47" name="nn"/>
+                    <label end="63" start="55" name="nns"/>
+                    <label end="70" start="65" name="rb"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="81" start="77" name="PP$"/>
+                    <label end="93" start="83" name="nn"/>
+                    <label end="96" start="95" name=":"/>
+                    <label end="98" start="98" name="dt"/>
+                    <label end="106" start="100" name="nn"/>
+                    <label end="112" start="108" name="wdt"/>
+                    <label end="115" start="114" name="VBZ"/>
+                    <label end="121" start="117" name="rb"/>
+                    <label end="129" start="123" name="VVN"/>
+                    <label end="132" start="131" name="in"/>
+                    <label end="138" start="134" name="nns"/>
+                    <label end="141" start="140" name="in"/>
+                    <label end="149" start="143" name="nn"/>
+                    <label end="153" start="151" name="in"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="160" start="159" name="NP"/>
+                    <label end="164" start="162" name="cc"/>
+                    <label end="172" start="166" name="NP"/>
+                    <label end="176" start="174" name="in"/>
+                    <label end="180" start="178" name="dt"/>
+                    <label end="187" start="182" name="NP"/>
+                    <label end="194" start="189" name="NPS"/>
+                    <label end="196" start="196" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/02/2003 02:20:26 PST Wed" status="MANUAL" ID="1848655">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="129" start="123" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="3347" end="138" start="131" name="Text"/>
+                    <label cBy="840" feID="3346" end="106" start="98" name="Topic"/>
+                    <label cBy="840" feID="3348" end="149" start="140" name="Communicator"/>
+                    <label cBy="664" feID="3349" end="121" start="117" name="Degree"/>
+                    <label cBy="309" feID="3346" end="112" start="108" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="131" name="Dep"/>
+                    <label end="106" start="98" name="Ext"/>
+                    <label end="149" start="140" name="Dep"/>
+                    <label end="121" start="117" name="Dep"/>
+                    <label end="112" start="108" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="131" name="PP"/>
+                    <label end="106" start="98" name="NP"/>
+                    <label end="149" start="140" name="PP"/>
+                    <label end="121" start="117" name="AVP"/>
+                    <label end="112" start="108" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="106" start="98" name="Ant"/>
+                    <label end="112" start="108" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="145" aPos="0" ID="1200756">
+            <text>Chapter 8 treats the educational disadvantages of women amongst other topics .</text>
+            <annotationSet cDate="04/02/2003 02:20:30 PST Wed" status="UNANN" ID="1848672">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="8" start="8" name="cd"/>
+                    <label end="15" start="10" name="VVZ"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="31" start="21" name="jj"/>
+                    <label end="45" start="33" name="nns"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="54" start="50" name="nns"/>
+                    <label end="62" start="56" name="in"/>
+                    <label end="68" start="64" name="jj"/>
+                    <label end="75" start="70" name="nns"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/02/2003 02:20:30 PST Wed" status="MANUAL" ID="1848673">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="15" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="3346" end="75" start="17" name="Topic"/>
+                    <label cBy="840" feID="3347" end="8" start="0" name="Text"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="17" name="Obj"/>
+                    <label end="8" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="17" name="NP"/>
+                    <label end="8" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PPin-(1)"/>
+    <subCorpus name="06-T-NPtheory,subject,matter-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="7" aPos="0" ID="1200782">
+            <text>However , in treating the subject as fully as possible , the book does contain specimen clauses .</text>
+            <annotationSet cDate="04/02/2003 02:20:47 PST Wed" status="UNANN" ID="1848724">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="20" start="13" name="VVG"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="32" start="26" name="nn"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="41" start="37" name="rb"/>
+                    <label end="44" start="43" name="rb"/>
+                    <label end="53" start="46" name="jj"/>
+                    <label end="55" start="55" name=","/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="64" start="61" name="nn"/>
+                    <label end="69" start="66" name="VVZ"/>
+                    <label end="77" start="71" name="VV"/>
+                    <label end="86" start="79" name="nn"/>
+                    <label end="94" start="88" name="nns"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/02/2003 02:20:47 PST Wed" status="MANUAL" ID="1848725">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="20" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="3346" end="32" start="22" name="Topic"/>
+                    <label cBy="840" feID="3347" end="64" start="57" name="Text"/>
+                    <label cBy="664" feID="3349" end="53" start="34" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="22" name="Ext"/>
+                    <label end="64" start="57" name="Obj"/>
+                    <label end="53" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="22" name="NP"/>
+                    <label end="64" start="57" name="NP"/>
+                    <label end="53" start="34" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="655" aPos="0" ID="1200789">
+            <text>It is an immensely readable book , yet it treats its important subject with insight and responsibility .</text>
+            <annotationSet cDate="04/02/2003 02:20:50 PST Wed" status="UNANN" ID="1848738">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="7" start="6" name="dt"/>
+                    <label end="17" start="9" name="rb"/>
+                    <label end="26" start="19" name="jj"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="33" start="33" name=","/>
+                    <label end="37" start="35" name="cc"/>
+                    <label end="40" start="39" name="PP"/>
+                    <label end="47" start="42" name="VVZ"/>
+                    <label end="51" start="49" name="PP$"/>
+                    <label end="61" start="53" name="jj"/>
+                    <label end="69" start="63" name="nn"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="82" start="76" name="nn"/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="101" start="88" name="nn"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/02/2003 02:20:50 PST Wed" status="MANUAL" ID="1848739">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="47" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="3347" end="40" start="39" name="Text"/>
+                    <label cBy="840" feID="3346" end="69" start="49" name="Topic"/>
+                    <label cBy="840" feID="3353" end="101" start="71" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="39" name="Ext"/>
+                    <label end="69" start="49" name="Obj"/>
+                    <label end="101" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="39" name="NP"/>
+                    <label end="69" start="49" name="NP"/>
+                    <label end="101" start="71" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-T-Wrb-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

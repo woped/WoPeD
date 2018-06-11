@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="intermix.v" ID="9550" frame="Amalgamation" frameID="790" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Parts"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="" name="Part_1"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Part_2"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Res" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: mix together. with obj. </definition>
+    <lexeme POS="V" name="intermix"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Part_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Part_1"/>
+                <annoSet ID="1048886"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Part_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Part_2"/>
+                <annoSet ID="1048886"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[along]" FE="Place"/>
+                <annoSet ID="1048886"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Whole"/>
+                <annoSet ID="1048886"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Part_1"/>
+            <FE name="Part_2"/>
+            <FE name="Place"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Part_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Part_2"/>
+                <valenceUnit GF="Dep" PT="PP[along]" FE="Place"/>
+                <valenceUnit GF="" PT="INI" FE="Whole"/>
+                <annoSet ID="1048886"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="64569770" ID="795110">
+            <text>Along its southern edge stands of low trees intermix with the shrubs , in places grading insensibly into forest . </text>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="UNANN" ID="1048885">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="PRP"/>
+                    <label end="8" start="6" name="DPS"/>
+                    <label end="17" start="10" name="AJ0"/>
+                    <label end="22" start="19" name="NN1"/>
+                    <label end="29" start="24" name="NN2"/>
+                    <label end="32" start="31" name="PRF"/>
+                    <label end="36" start="34" name="AJ0"/>
+                    <label end="42" start="38" name="NN2"/>
+                    <label end="51" start="44" name="VVB"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="67" start="62" name="NN2"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="79" start="74" name="NN2"/>
+                    <label end="87" start="81" name="VVG"/>
+                    <label end="98" start="89" name="AV0"/>
+                    <label end="103" start="100" name="PRP"/>
+                    <label end="110" start="105" name="NN1"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="MANUAL" ID="1048886">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="4929" end="67" start="53" name="Part_2"/>
+                    <label cBy="664" feID="4928" end="42" start="24" name="Part_1"/>
+                    <label cBy="664" feID="5112" end="22" start="0" name="Place"/>
+                    <label cBy="153" feID="4927" itype="INI" name="Whole"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="53" name="Dep"/>
+                    <label end="42" start="24" name="Ext"/>
+                    <label end="22" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="53" name="PP"/>
+                    <label end="42" start="24" name="NP"/>
+                    <label end="22" start="0" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

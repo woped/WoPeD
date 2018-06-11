@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="mature.v" ID="15992" frame="Bond_maturation" frameID="2371" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="mature" ID="21977"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Financial_instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Holder"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Interest"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Issuer"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Principle"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Value"/>
+        </frame>
+    </header>
+    <definition>FN: be due for payment</definition>
+    <lexeme POS="V" name="mature"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Financial_instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Financial_instrument"/>
+                <annoSet ID="2608584"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Time"/>
+                <annoSet ID="2608584"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Financial_instrument"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Financial_instrument"/>
+                <valenceUnit GF="" PT="DNI" FE="Time"/>
+                <annoSet ID="2608584"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="21977" sentNo="10" paragNo="8" aPos="0" ID="1565499">
+            <text>yeah yeah like those E-bonds there 's something called an E-bond that you can buy and it and it you do n't have to pay taxes on it and it 's for the child and then when they turn it in when it matures</text>
+            <annotationSet cDate="06/09/2010 02:21:09 PDT Wed" status="UNANN" ID="2570779">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="8" start="5" name="rb"/>
+                    <label end="13" start="10" name="in"/>
+                    <label end="19" start="15" name="dt"/>
+                    <label end="27" start="21" name="NPS"/>
+                    <label end="33" start="29" name="ex"/>
+                    <label end="36" start="35" name="VBZ"/>
+                    <label end="46" start="38" name="nn"/>
+                    <label end="53" start="48" name="VVD"/>
+                    <label end="56" start="55" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="72" start="70" name="PP"/>
+                    <label end="76" start="74" name="md"/>
+                    <label end="80" start="78" name="VV"/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="87" start="86" name="PP"/>
+                    <label end="91" start="89" name="cc"/>
+                    <label end="94" start="93" name="PP"/>
+                    <label end="98" start="96" name="PP"/>
+                    <label end="101" start="100" name="VVP"/>
+                    <label end="105" start="103" name="rb"/>
+                    <label end="110" start="107" name="VH"/>
+                    <label end="113" start="112" name="to"/>
+                    <label end="117" start="115" name="VV"/>
+                    <label end="123" start="119" name="nns"/>
+                    <label end="126" start="125" name="in"/>
+                    <label end="129" start="128" name="PP"/>
+                    <label end="133" start="131" name="cc"/>
+                    <label end="136" start="135" name="PP"/>
+                    <label end="139" start="138" name="VBZ"/>
+                    <label end="143" start="141" name="in"/>
+                    <label end="147" start="145" name="dt"/>
+                    <label end="153" start="149" name="nn"/>
+                    <label end="157" start="155" name="cc"/>
+                    <label end="162" start="159" name="rb"/>
+                    <label end="167" start="164" name="wrb"/>
+                    <label end="172" start="169" name="PP"/>
+                    <label end="177" start="174" name="VVP"/>
+                    <label end="180" start="179" name="PP"/>
+                    <label end="183" start="182" name="in"/>
+                    <label end="188" start="185" name="wrb"/>
+                    <label end="191" start="190" name="PP"/>
+                    <label end="199" start="193" name="VVZ"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="3" start="0" name="NT"/>
+                    <label end="8" start="5" name="NT"/>
+                    <label end="13" start="10" name="NT"/>
+                    <label end="19" start="15" name="NT"/>
+                    <label end="27" start="21" name="NT"/>
+                    <label end="33" start="29" name="NT"/>
+                    <label end="36" start="35" name="NT"/>
+                    <label end="56" start="55" name="NT"/>
+                    <label end="72" start="70" name="NT"/>
+                    <label end="76" start="74" name="NT"/>
+                    <label end="84" start="82" name="NT"/>
+                    <label end="87" start="86" name="NT"/>
+                    <label end="91" start="89" name="NT"/>
+                    <label end="94" start="93" name="NT"/>
+                    <label end="98" start="96" name="NT"/>
+                    <label end="101" start="100" name="NT"/>
+                    <label end="105" start="103" name="NT"/>
+                    <label end="113" start="112" name="NT"/>
+                    <label end="126" start="125" name="NT"/>
+                    <label end="129" start="128" name="NT"/>
+                    <label end="133" start="131" name="NT"/>
+                    <label end="136" start="135" name="NT"/>
+                    <label end="139" start="138" name="NT"/>
+                    <label end="143" start="141" name="NT"/>
+                    <label end="147" start="145" name="NT"/>
+                    <label end="157" start="155" name="NT"/>
+                    <label end="162" start="159" name="NT"/>
+                    <label end="167" start="164" name="NT"/>
+                    <label end="172" start="169" name="NT"/>
+                    <label end="180" start="179" name="NT"/>
+                    <label end="183" start="182" name="NT"/>
+                    <label end="188" start="185" name="NT"/>
+                    <label end="191" start="190" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/19/2010 04:13:42 PDT Thu" status="MANUAL" ID="2608584">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="199" start="193" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="14126" end="191" start="190" name="Financial_instrument"/>
+                    <label cBy="571" feID="14127" itype="DNI" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="191" start="190" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="191" start="190" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

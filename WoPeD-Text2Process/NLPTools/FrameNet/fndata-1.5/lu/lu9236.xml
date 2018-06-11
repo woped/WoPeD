@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="glint.n" ID="9236" frame="Light_movement" frameID="131" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Beam"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emit" name="Emitter"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+        </frame>
+    </header>
+    <definition>COD: a small flash of light, especially a reflected one. </definition>
+    <lexeme POS="N" name="glint"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Beam"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Beam"/>
+                <annoSet ID="516635"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="516635"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Beam"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Beam"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="516635"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s20-ppfrom">
+        <sentence sentNo="0" aPos="15186577" ID="438534">
+            <text>But I was sitting on the sands of Ke Iki at midnight with a fairy-tale princess , a Botticelli Venus whose long blonde tresses reflected golden glints from the fire . </text>
+            <annotationSet cDate="01/07/2003 03:56:08 PST Tue" status="UNANN" ID="516634">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="4" start="4" name="PNP"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="16" start="10" name="VVG"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="29" start="25" name="NN2"/>
+                    <label end="32" start="31" name="PRF"/>
+                    <label end="35" start="34" name="NP0"/>
+                    <label end="39" start="37" name="NN1-NP0"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="51" start="44" name="NN1"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="69" start="60" name="AJ0"/>
+                    <label end="78" start="71" name="NN1"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="82" start="82" name="AT0"/>
+                    <label end="93" start="84" name="NP0"/>
+                    <label end="99" start="95" name="NP0"/>
+                    <label end="105" start="101" name="DTQ"/>
+                    <label end="110" start="107" name="AV0"/>
+                    <label end="117" start="112" name="AJ0"/>
+                    <label end="125" start="119" name="NN2"/>
+                    <label end="135" start="127" name="VVD"/>
+                    <label end="142" start="137" name="AJ0"/>
+                    <label end="149" start="144" name="NN2"/>
+                    <label end="154" start="151" name="PRP"/>
+                    <label end="158" start="156" name="AT0"/>
+                    <label end="163" start="160" name="NN1"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:56:08 PST Tue" status="MANUAL" ID="516635">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="4524" end="163" start="151" name="Source"/>
+                    <label cBy="669" feID="4525" end="149" start="144" name="Beam"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="163" start="151" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="163" start="151" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="149" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

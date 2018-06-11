@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="snap.v" ID="15873" frame="Breaking_off" frameID="1860" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2241" ID="19856"/>
+            <document description="bncp=1862" ID="20139"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="cri" name="Criterion"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="sub" name="Sub_part"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="who" name="Whole"/>
+        </frame>
+    </header>
+    <definition>FN: break quickly, often with a sharp sound (off of an object).</definition>
+    <lexeme POS="V" name="snap"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Sub_part"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Sub_part"/>
+                <annoSet ID="2585313"/>
+                <annoSet ID="2585321"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2585321"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Whole"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Whole"/>
+                <annoSet ID="2585313"/>
+                <annoSet ID="2585321"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Sub_part"/>
+            <FE name="Sub_part"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sub_part"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sub_part"/>
+                <valenceUnit GF="" PT="DNI" FE="Whole"/>
+                <annoSet ID="2585313"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Sub_part"/>
+            <FE name="Time"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sub_part"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <valenceUnit GF="" PT="DNI" FE="Whole"/>
+                <annoSet ID="2585321"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-part_intrans-(1)"/>
+    <subCorpus name="02-off-(1)">
+        <sentence corpID="111" docID="19856" sentNo="1" paragNo="380" aPos="0" ID="1575347">
+            <text>The base can no longer support the half-span which snaps off .</text>
+            <annotationSet cDate="07/15/2010 01:09:01 PDT Thu" status="UNANN" ID="2585312">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="11" start="9" name="md"/>
+                    <label end="14" start="13" name="rb"/>
+                    <label end="21" start="16" name="rb"/>
+                    <label end="29" start="23" name="VV"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="43" start="35" name="nn"/>
+                    <label end="49" start="45" name="wdt"/>
+                    <label end="55" start="51" name="VVZ"/>
+                    <label end="59" start="57" name="rp"/>
+                    <label end="61" start="61" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:09:01 PDT Thu" status="MANUAL" ID="2585313">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="55" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="10865" end="43" start="31" name="Sub_part"/>
+                    <label cBy="976" feID="10865" end="49" start="45" name="Sub_part"/>
+                    <label cBy="976" feID="10866" itype="DNI" name="Whole"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="31" name="Ext"/>
+                    <label end="49" start="45" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="31" name="NP"/>
+                    <label end="49" start="45" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="43" start="31" name="Ant"/>
+                    <label end="49" start="45" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="20139" sentNo="6" paragNo="34" aPos="0" ID="1575351">
+            <text>` Last week , '' she said , ` my nail snapped off .</text>
+            <annotationSet cDate="07/15/2010 01:09:02 PDT Thu" status="UNANN" ID="2585320">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="jj"/>
+                    <label end="10" start="7" name="nn"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="19" start="17" name="PP"/>
+                    <label end="24" start="21" name="VVD"/>
+                    <label end="26" start="26" name=","/>
+                    <label end="31" start="30" name="PP$"/>
+                    <label end="36" start="33" name="nn"/>
+                    <label end="44" start="38" name="VVD"/>
+                    <label end="48" start="46" name="rp"/>
+                    <label end="50" start="50" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:09:02 PDT Thu" status="MANUAL" ID="2585321">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="44" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="10865" end="36" start="30" name="Sub_part"/>
+                    <label cBy="976" feID="10866" itype="DNI" name="Whole"/>
+                    <label cBy="976" feID="10888" end="10" start="2" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="30" name="Ext"/>
+                    <label end="10" start="2" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="30" name="NP"/>
+                    <label end="10" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

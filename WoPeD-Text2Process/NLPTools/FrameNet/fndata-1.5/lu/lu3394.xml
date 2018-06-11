@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="ball.n" ID="3394" frame="Social_event" frameID="125" totalAnnotated="18" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Att" name="Attendee"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="00008B" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Duration" name="Duration"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Hon" name="Honoree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="Host" name="Host"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Occ" name="Occasion"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Ref" name="Refreshment"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core-Unexpressed" abbrev="Soc" name="Social_event"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD:  a formal social gathering for dancing. </definition>
+    <lexeme POS="N" name="ball"/>
+    <valences>
+        <governor type="Sup" lemma="attend">
+            <annoSet ID="534083"/>
+        </governor>
+        <governor type="Sup" lemma="hold">
+            <annoSet ID="534127"/>
+            <annoSet ID="534225"/>
+        </governor>
+        <FERealization total="5">
+            <FE name="Attendee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Attendee"/>
+                <annoSet ID="534225"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Attendee"/>
+                <annoSet ID="534083"/>
+                <annoSet ID="534393"/>
+                <annoSet ID="534401"/>
+                <annoSet ID="534405"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Honoree"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Honoree"/>
+                <annoSet ID="534369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Honoree"/>
+                <annoSet ID="534371"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Host"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <annoSet ID="534127"/>
+                <annoSet ID="534225"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <annoSet ID="534161"/>
+                <annoSet ID="534175"/>
+                <annoSet ID="534225"/>
+                <annoSet ID="534367"/>
+                <annoSet ID="534369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Host"/>
+                <annoSet ID="534083"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Host"/>
+                <annoSet ID="534213"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Occasion"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Occasion"/>
+                <annoSet ID="534369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Occasion"/>
+                <annoSet ID="534371"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Occasion"/>
+                <annoSet ID="534127"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Occasion"/>
+                <annoSet ID="534161"/>
+                <annoSet ID="534199"/>
+                <annoSet ID="534201"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Place"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="534083"/>
+                <annoSet ID="534085"/>
+                <annoSet ID="534369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <annoSet ID="534357"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Place"/>
+                <annoSet ID="534377"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="18">
+            <FE name="Social_event"/>
+            <pattern total="18">
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534083"/>
+                <annoSet ID="534085"/>
+                <annoSet ID="534127"/>
+                <annoSet ID="534135"/>
+                <annoSet ID="534161"/>
+                <annoSet ID="534175"/>
+                <annoSet ID="534199"/>
+                <annoSet ID="534201"/>
+                <annoSet ID="534213"/>
+                <annoSet ID="534225"/>
+                <annoSet ID="534357"/>
+                <annoSet ID="534367"/>
+                <annoSet ID="534369"/>
+                <annoSet ID="534371"/>
+                <annoSet ID="534377"/>
+                <annoSet ID="534393"/>
+                <annoSet ID="534401"/>
+                <annoSet ID="534405"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Style"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Style"/>
+                <annoSet ID="534127"/>
+                <annoSet ID="534401"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Style"/>
+                <annoSet ID="534175"/>
+                <annoSet ID="534377"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="534225"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="534225"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="534393"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="534369"/>
+                <annoSet ID="534371"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Time"/>
+                <annoSet ID="534135"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attendee"/>
+            <FE name="Host"/>
+            <FE name="Host"/>
+            <FE name="Social_event"/>
+            <FE name="Time"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Attendee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="534225"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attendee"/>
+            <FE name="Host"/>
+            <FE name="Place"/>
+            <FE name="Social_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attendee"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Host"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534083"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attendee"/>
+            <FE name="Social_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attendee"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534405"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attendee"/>
+            <FE name="Social_event"/>
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attendee"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Style"/>
+                <annoSet ID="534401"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attendee"/>
+            <FE name="Social_event"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attendee"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="534393"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Honoree"/>
+            <FE name="Host"/>
+            <FE name="Occasion"/>
+            <FE name="Place"/>
+            <FE name="Social_event"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Honoree"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Occasion"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="534369"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Honoree"/>
+            <FE name="Occasion"/>
+            <FE name="Social_event"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Honoree"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Occasion"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="534371"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Host"/>
+            <FE name="Occasion"/>
+            <FE name="Social_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="Dep" PT="N" FE="Occasion"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534161"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Host"/>
+            <FE name="Occasion"/>
+            <FE name="Social_event"/>
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Occasion"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Style"/>
+                <annoSet ID="534127"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Host"/>
+            <FE name="Social_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Host"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534213"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534367"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Host"/>
+            <FE name="Social_event"/>
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="N" FE="Style"/>
+                <annoSet ID="534175"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Occasion"/>
+            <FE name="Social_event"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Occasion"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534199"/>
+                <annoSet ID="534201"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Place"/>
+            <FE name="Social_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534357"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <annoSet ID="534085"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Social_event"/>
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Place"/>
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Dep" PT="N" FE="Style"/>
+                <annoSet ID="534377"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Social_event"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Social_event"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Time"/>
+                <annoSet ID="534135"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s20-ppat">
+        <sentence sentNo="0" aPos="2328549" ID="447420">
+            <text>The Duchess of Gloucester , attends an Anglo-Danish Society Ball at The Savoy Hotel , Strand , London WC2 . </text>
+            <annotationSet cDate="01/07/2003 04:17:27 PST Tue" status="UNANN" ID="534082">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NP0"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="24" start="15" name="NP0"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="34" start="28" name="VVZ"/>
+                    <label end="37" start="36" name="AT0"/>
+                    <label end="50" start="39" name="AJ0"/>
+                    <label end="58" start="52" name="NN0"/>
+                    <label end="63" start="60" name="NN1-NP0"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="76" start="72" name="NN1-NP0"/>
+                    <label end="82" start="78" name="NP0"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="91" start="86" name="NP0"/>
+                    <label end="93" start="93" name="PUN"/>
+                    <label end="100" start="95" name="NP0"/>
+                    <label end="104" start="102" name="UNC"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:27 PST Tue" status="MANUAL" ID="534083">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="767" end="24" start="0" name="Attendee"/>
+                    <label cBy="296" feID="764" end="58" start="39" name="Host"/>
+                    <label cBy="296" feID="760" end="63" start="60" name="Social_event"/>
+                    <label cBy="296" feID="761" end="104" start="65" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Ext"/>
+                    <label end="58" start="39" name="Obj"/>
+                    <label end="104" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="NP"/>
+                    <label end="58" start="39" name="NP"/>
+                    <label end="104" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="28" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="12471651" ID="447421">
+            <text>The Salle des Maréchaux : scene of the great receptions and balls at the Tuileries . </text>
+            <annotationSet cDate="01/07/2003 04:17:27 PST Tue" status="UNANN" ID="534084">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NP0"/>
+                    <label end="12" start="10" name="NP0"/>
+                    <label end="22" start="14" name="NN1-NP0"/>
+                    <label end="24" start="24" name="PUN"/>
+                    <label end="30" start="26" name="NN1"/>
+                    <label end="33" start="32" name="PRF"/>
+                    <label end="37" start="35" name="AT0"/>
+                    <label end="43" start="39" name="AJ0"/>
+                    <label end="54" start="45" name="NN2"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="64" start="60" name="NN2"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="71" start="69" name="AT0"/>
+                    <label end="81" start="73" name="NN2"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:27 PST Tue" status="MANUAL" ID="534085">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="760" end="64" start="60" name="Social_event"/>
+                    <label cBy="296" feID="761" end="81" start="66" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="66" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="32357274" ID="447442">
+            <text>It had a long , narrow study , a bedroom , an antechamber , and a big kitchen , and there was enough room for them to hold a private New Year 's ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:29 PST Tue" status="UNANN" ID="534126">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="12" start="9" name="AJ0-AV0"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="21" start="16" name="AJ0"/>
+                    <label end="27" start="23" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="39" start="33" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="44" start="43" name="AT0"/>
+                    <label end="56" start="46" name="NN1"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="64" start="64" name="AT0"/>
+                    <label end="68" start="66" name="AJ0"/>
+                    <label end="76" start="70" name="NN1"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="82" start="80" name="CJC"/>
+                    <label end="88" start="84" name="EX0"/>
+                    <label end="92" start="90" name="VBD"/>
+                    <label end="99" start="94" name="DT0"/>
+                    <label end="104" start="101" name="NN1"/>
+                    <label end="108" start="106" name="PRP"/>
+                    <label end="113" start="110" name="PNP"/>
+                    <label end="116" start="115" name="TO0"/>
+                    <label end="121" start="118" name="VVI"/>
+                    <label end="123" start="123" name="AT0"/>
+                    <label end="131" start="125" name="AJ0"/>
+                    <label end="135" start="133" name="AJ0"/>
+                    <label end="140" start="137" name="NN1"/>
+                    <label end="143" start="142" name="POS"/>
+                    <label end="148" start="145" name="NN1"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:29 PST Tue" status="MANUAL" ID="534127">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="113" start="110" name="Host"/>
+                    <label cBy="296" feID="1545" end="131" start="125" name="Style"/>
+                    <label cBy="296" feID="766" end="143" start="133" name="Occasion"/>
+                    <label cBy="296" feID="760" end="148" start="145" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="113" start="110" name="Ext"/>
+                    <label end="131" start="125" name="Dep"/>
+                    <label end="143" start="133" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="113" start="110" name="NP"/>
+                    <label end="131" start="125" name="AJP"/>
+                    <label end="143" start="133" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="148" start="145" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="121" start="118" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="65667843" ID="447446">
+            <text>Lady Walters , looking very pretty in a pale blue sequinned satin dress was the very able Chairman of this year 's ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:30 PST Tue" status="UNANN" ID="534134">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="11" start="5" name="NP0"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="21" start="15" name="VVG"/>
+                    <label end="26" start="23" name="AV0"/>
+                    <label end="33" start="28" name="AJ0-AV0"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="38" start="38" name="AT0"/>
+                    <label end="43" start="40" name="AJ0"/>
+                    <label end="48" start="45" name="AJ0"/>
+                    <label end="58" start="50" name="AJ0"/>
+                    <label end="64" start="60" name="NN1"/>
+                    <label end="70" start="66" name="NN1"/>
+                    <label end="74" start="72" name="VBD"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="83" start="80" name="AV0"/>
+                    <label end="88" start="85" name="AJ0"/>
+                    <label end="97" start="90" name="NN1"/>
+                    <label end="100" start="99" name="PRF"/>
+                    <label end="105" start="102" name="DT0"/>
+                    <label end="110" start="107" name="NN1"/>
+                    <label end="113" start="112" name="POS"/>
+                    <label end="118" start="115" name="NN1"/>
+                    <label end="120" start="120" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:30 PST Tue" status="MANUAL" ID="534135">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="763" end="113" start="102" name="Time"/>
+                    <label cBy="296" feID="760" end="118" start="115" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="113" start="102" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="113" start="102" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="118" start="115" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-s20-posscmpd">
+        <sentence sentNo="0" aPos="22929611" ID="447459">
+            <text>That was it , Henry 's charity ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:31 PST Tue" status="UNANN" ID="534160">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="7" start="5" name="VBD"/>
+                    <label end="10" start="9" name="PNP"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="18" start="14" name="NP0"/>
+                    <label end="21" start="20" name="POS"/>
+                    <label end="29" start="23" name="NN1"/>
+                    <label end="34" start="31" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:31 PST Tue" status="MANUAL" ID="534161">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="21" start="14" name="Host"/>
+                    <label cBy="296" feID="766" end="29" start="23" name="Occasion"/>
+                    <label cBy="296" feID="760" end="34" start="31" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="14" name="Gen"/>
+                    <label end="29" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="14" name="Poss"/>
+                    <label end="29" start="23" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="29970013" ID="447466">
+            <text>The parts of the fashion feast that seemed most relevant were those that were concerned with the here and now : such as Susanne Bartsch 's Love Ball , which raised $750,000 for French Aids charities . </text>
+            <annotationSet cDate="01/07/2003 04:17:33 PST Tue" status="UNANN" ID="534174">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN2"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="23" start="17" name="NN1"/>
+                    <label end="29" start="25" name="NN1-VVB"/>
+                    <label end="34" start="31" name="CJT"/>
+                    <label end="41" start="36" name="VVD"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="55" start="48" name="AJ0"/>
+                    <label end="60" start="57" name="VBD"/>
+                    <label end="66" start="62" name="DT0"/>
+                    <label end="71" start="68" name="CJT-DT0"/>
+                    <label end="76" start="73" name="VBD"/>
+                    <label end="86" start="78" name="AJ0"/>
+                    <label end="91" start="88" name="PRP"/>
+                    <label end="95" start="93" name="AT0"/>
+                    <label end="100" start="97" name="AV0"/>
+                    <label end="104" start="102" name="CJC"/>
+                    <label end="108" start="106" name="AV0"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="115" start="112" name="PRP"/>
+                    <label end="118" start="117" name="PRP"/>
+                    <label end="126" start="120" name="NP0"/>
+                    <label end="134" start="128" name="NP0"/>
+                    <label end="137" start="136" name="POS"/>
+                    <label end="142" start="139" name="NN1"/>
+                    <label end="147" start="144" name="NN1"/>
+                    <label end="149" start="149" name="PUN"/>
+                    <label end="155" start="151" name="DTQ"/>
+                    <label end="162" start="157" name="AJ0-VVD"/>
+                    <label end="171" start="164" name="NN0"/>
+                    <label end="175" start="173" name="PRP"/>
+                    <label end="182" start="177" name="AJ0-NN1"/>
+                    <label end="187" start="184" name="NN2-VVZ"/>
+                    <label end="197" start="189" name="NN2"/>
+                    <label end="199" start="199" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:34 PST Tue" status="MANUAL" ID="534175">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="137" start="120" name="Host"/>
+                    <label cBy="296" feID="760" end="147" start="144" name="Social_event"/>
+                    <label cBy="296" feID="1545" end="142" start="139" name="Style"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="137" start="120" name="Gen"/>
+                    <label end="142" start="139" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="137" start="120" name="Poss"/>
+                    <label end="142" start="139" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="147" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-s20-cmpd">
+        <sentence sentNo="0" aPos="48579177" ID="447478">
+            <text>Heads would have turned at a diplomatic reception , a society cocktail party , even a charity ball , but at a chess tournament . </text>
+            <annotationSet cDate="01/07/2003 04:17:35 PST Tue" status="UNANN" ID="534198">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN2"/>
+                    <label end="10" start="6" name="VM0"/>
+                    <label end="15" start="12" name="VHI"/>
+                    <label end="22" start="17" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="38" start="29" name="AJ0"/>
+                    <label end="48" start="40" name="NN1"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="60" start="54" name="NN0"/>
+                    <label end="69" start="62" name="NN1"/>
+                    <label end="75" start="71" name="NN0"/>
+                    <label end="77" start="77" name="PUN"/>
+                    <label end="82" start="79" name="AV0"/>
+                    <label end="84" start="84" name="AT0"/>
+                    <label end="92" start="86" name="NN1"/>
+                    <label end="97" start="94" name="NN1"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="103" start="101" name="CJC"/>
+                    <label end="106" start="105" name="PRP"/>
+                    <label end="108" start="108" name="AT0"/>
+                    <label end="114" start="110" name="NN1"/>
+                    <label end="125" start="116" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:35 PST Tue" status="MANUAL" ID="534199">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="766" end="92" start="86" name="Occasion"/>
+                    <label cBy="296" feID="760" end="97" start="94" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="92" start="86" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="92" start="86" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="97" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46339775" ID="447479">
+            <text>An inevitable part of fund-raising is the charity ball : Clarissa recently hosted A Night At The Dogs at The Park Lane Hotel . </text>
+            <annotationSet cDate="01/07/2003 04:17:35 PST Tue" status="UNANN" ID="534200">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="12" start="3" name="AJ0"/>
+                    <label end="17" start="14" name="NN1"/>
+                    <label end="20" start="19" name="PRF"/>
+                    <label end="33" start="22" name="NN1"/>
+                    <label end="36" start="35" name="VBZ"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="48" start="42" name="NN1"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="64" start="57" name="NP0"/>
+                    <label end="73" start="66" name="AV0"/>
+                    <label end="80" start="75" name="VVD"/>
+                    <label end="82" start="82" name="AT0"/>
+                    <label end="88" start="84" name="NN1"/>
+                    <label end="91" start="90" name="PRP"/>
+                    <label end="95" start="93" name="AT0"/>
+                    <label end="100" start="97" name="NN2"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="107" start="105" name="AT0"/>
+                    <label end="112" start="109" name="NP0"/>
+                    <label end="117" start="114" name="NP0"/>
+                    <label end="123" start="119" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:35 PST Tue" status="MANUAL" ID="534201">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="766" end="48" start="42" name="Occasion"/>
+                    <label cBy="296" feID="760" end="53" start="50" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="42" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34849547" ID="447485">
+            <text>The latest posters advertise the police ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:36 PST Tue" status="UNANN" ID="534212">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJS"/>
+                    <label end="17" start="11" name="NN2"/>
+                    <label end="27" start="19" name="VVB"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="38" start="33" name="NN2"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="45" start="45" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:36 PST Tue" status="MANUAL" ID="534213">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="38" start="33" name="Host"/>
+                    <label cBy="296" feID="760" end="43" start="40" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="33" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="15971688" ID="447491">
+            <text>` On Saturday Bohunt School held its annual fifth year ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:37 PST Tue" status="UNANN" ID="534224">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PRP"/>
+                    <label end="12" start="5" name="NP0"/>
+                    <label end="19" start="14" name="NP0"/>
+                    <label end="26" start="21" name="NN1"/>
+                    <label end="31" start="28" name="VVD-VVN"/>
+                    <label end="35" start="33" name="DPS"/>
+                    <label end="42" start="37" name="AJ0"/>
+                    <label end="48" start="44" name="ORD"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="58" start="55" name="NN1"/>
+                    <label end="60" start="60" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:37 PST Tue" status="MANUAL" ID="534225">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="763" end="12" start="2" name="Time"/>
+                    <label cBy="296" feID="764" end="26" start="14" name="Host"/>
+                    <label cBy="296" feID="764" end="35" start="33" name="Host"/>
+                    <label cBy="296" feID="763" end="42" start="37" name="Time"/>
+                    <label cBy="296" feID="767" end="53" start="44" name="Attendee"/>
+                    <label cBy="296" feID="760" end="58" start="55" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="2" name="Dep"/>
+                    <label end="26" start="14" name="Ext"/>
+                    <label end="35" start="33" name="Gen"/>
+                    <label end="42" start="37" name="Dep"/>
+                    <label end="53" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="2" name="PP"/>
+                    <label end="26" start="14" name="NP"/>
+                    <label end="35" start="33" name="Poss"/>
+                    <label end="42" start="37" name="AJP"/>
+                    <label end="53" start="44" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="58" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="28" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-s20-ppother"/>
+    <subCorpus name="N-370-s20-pother"/>
+    <subCorpus name="N-380-s20-other-s20"/>
+    <subCorpus name="N-429-s20-lgov-at">
+        <sentence sentNo="0" aPos="31319282" ID="447557">
+            <text>The language too , in front of ladies and children , I mean … and some of the behaviour at hunt balls . </text>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="UNANN" ID="534356">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="15" start="13" name="AV0"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="20" start="19" name="PRP"/>
+                    <label end="26" start="22" name="PRP"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="36" start="31" name="NN2"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="49" start="42" name="NN2"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="53" start="53" name="CRD"/>
+                    <label end="58" start="55" name="AJ0"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="69" start="66" name="DT0"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="86" start="78" name="NN1"/>
+                    <label end="89" start="88" name="PRP"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="100" start="96" name="NN2"/>
+                    <label end="102" start="102" name="PUN"/>
+                    <label end="60" start="60" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="MANUAL" ID="534357">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="760" end="100" start="96" name="Social_event"/>
+                    <label cBy="296" feID="761" end="94" start="91" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="94" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="94" start="91" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="39840703" ID="447562">
+            <text>The bloody ones always left a livid mark on his sallow skin , and Slender Billy particularly wanted to look his best at the Duchess of Richmond 's ball . </text>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="UNANN" ID="534366">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="14" start="11" name="NN2"/>
+                    <label end="21" start="16" name="AV0"/>
+                    <label end="26" start="23" name="VVD-VVN"/>
+                    <label end="28" start="28" name="AT0"/>
+                    <label end="34" start="30" name="AJ0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="46" start="44" name="DPS"/>
+                    <label end="53" start="48" name="AJ0"/>
+                    <label end="58" start="55" name="NN1"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="72" start="66" name="AJ0"/>
+                    <label end="78" start="74" name="NP0"/>
+                    <label end="91" start="80" name="AV0"/>
+                    <label end="98" start="93" name="VVD-VVN"/>
+                    <label end="101" start="100" name="TO0"/>
+                    <label end="106" start="103" name="VVI"/>
+                    <label end="110" start="108" name="DPS"/>
+                    <label end="115" start="112" name="AJS"/>
+                    <label end="118" start="117" name="PRP"/>
+                    <label end="122" start="120" name="AT0"/>
+                    <label end="130" start="124" name="NP0"/>
+                    <label end="133" start="132" name="PRF"/>
+                    <label end="142" start="135" name="NP0"/>
+                    <label end="145" start="144" name="POS"/>
+                    <label end="150" start="147" name="NN1"/>
+                    <label end="152" start="152" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="MANUAL" ID="534367">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="145" start="120" name="Host"/>
+                    <label cBy="296" feID="760" end="150" start="147" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="120" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="120" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="150" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="44972856" ID="447563">
+            <text>` Billy was extraordinarily generous to his friends &quot; , says Henderson , who was a guest at McCarty-Cooper 's $250,000 ball at Miami 's Viscaya for his parents ' Golden Wedding anniversary in 1985 . </text>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="UNANN" ID="534368">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="6" start="2" name="NP0"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="26" start="12" name="AV0"/>
+                    <label end="35" start="28" name="AJ0"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="50" start="44" name="NN2"/>
+                    <label end="52" start="52" name="PUQ"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="59" start="56" name="VVZ"/>
+                    <label end="69" start="61" name="NP0"/>
+                    <label end="71" start="71" name="PUN"/>
+                    <label end="75" start="73" name="PNQ"/>
+                    <label end="79" start="77" name="VBD"/>
+                    <label end="81" start="81" name="AT0"/>
+                    <label end="87" start="83" name="NN1"/>
+                    <label end="90" start="89" name="PRP"/>
+                    <label end="105" start="92" name="NP0"/>
+                    <label end="108" start="107" name="POS"/>
+                    <label end="117" start="110" name="NN0"/>
+                    <label end="122" start="119" name="NN1"/>
+                    <label end="125" start="124" name="PRP"/>
+                    <label end="131" start="127" name="NP0"/>
+                    <label end="134" start="133" name="POS"/>
+                    <label end="142" start="136" name="NN1-NP0"/>
+                    <label end="146" start="144" name="PRP"/>
+                    <label end="150" start="148" name="DPS"/>
+                    <label end="158" start="152" name="NN2"/>
+                    <label end="160" start="160" name="POS"/>
+                    <label end="167" start="162" name="AJ0"/>
+                    <label end="175" start="169" name="NN1"/>
+                    <label end="187" start="177" name="NN1"/>
+                    <label end="190" start="189" name="PRP"/>
+                    <label end="195" start="192" name="CRD"/>
+                    <label end="197" start="197" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:44 PST Tue" status="MANUAL" ID="534369">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="764" end="108" start="92" name="Host"/>
+                    <label cBy="296" feID="760" end="122" start="119" name="Social_event"/>
+                    <label cBy="296" feID="761" end="142" start="124" name="Place"/>
+                    <label cBy="296" feID="766" end="187" start="144" name="Occasion"/>
+                    <label cBy="296" feID="763" end="195" start="189" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="108" start="92" name="Gen"/>
+                    <label end="142" start="124" name="Dep"/>
+                    <label end="187" start="144" name="Dep"/>
+                    <label end="195" start="189" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="108" start="92" name="Poss"/>
+                    <label end="142" start="124" name="PP"/>
+                    <label end="187" start="144" name="PP"/>
+                    <label end="195" start="189" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="122" start="119" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="296" feID="765" end="160" start="148" name="Honoree"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="45844637" ID="447564">
+            <text>Indeed Diana 's parents had met at her mother 's coming-out ball in April 1953 , while in her day Raine , Countess Spencer was voted ` Deb of the Year &quot; . </text>
+            <annotationSet cDate="01/07/2003 04:17:45 PST Tue" status="UNANN" ID="534370">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AV0"/>
+                    <label end="11" start="7" name="NP0"/>
+                    <label end="14" start="13" name="POS"/>
+                    <label end="22" start="16" name="NN2"/>
+                    <label end="26" start="24" name="VHN"/>
+                    <label end="30" start="28" name="VVN"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="37" start="35" name="DPS"/>
+                    <label end="44" start="39" name="NN1"/>
+                    <label end="47" start="46" name="POS"/>
+                    <label end="58" start="49" name="AJ0-NN1"/>
+                    <label end="63" start="60" name="NN1"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="72" start="68" name="NP0"/>
+                    <label end="77" start="74" name="CRD"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="85" start="81" name="CJS"/>
+                    <label end="88" start="87" name="PRP"/>
+                    <label end="92" start="90" name="DPS"/>
+                    <label end="96" start="94" name="NN1"/>
+                    <label end="102" start="98" name="NN1-NP0"/>
+                    <label end="104" start="104" name="PUN"/>
+                    <label end="113" start="106" name="NP0"/>
+                    <label end="121" start="115" name="NP0"/>
+                    <label end="125" start="123" name="VBD"/>
+                    <label end="131" start="127" name="AJ0-VVN"/>
+                    <label end="133" start="133" name="PUQ"/>
+                    <label end="137" start="135" name="NN1"/>
+                    <label end="140" start="139" name="PRF"/>
+                    <label end="144" start="142" name="AT0"/>
+                    <label end="149" start="146" name="NN1"/>
+                    <label end="151" start="151" name="PUQ"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:46 PST Tue" status="MANUAL" ID="534371">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="765" end="47" start="35" name="Honoree"/>
+                    <label cBy="296" feID="766" end="58" start="49" name="Occasion"/>
+                    <label cBy="296" feID="760" end="63" start="60" name="Social_event"/>
+                    <label cBy="296" feID="763" end="77" start="65" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="35" name="Gen"/>
+                    <label end="58" start="49" name="Dep"/>
+                    <label end="77" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="35" name="Poss"/>
+                    <label end="58" start="49" name="AJP"/>
+                    <label end="77" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52403396" ID="447567">
+            <text>Never one to opt out , Minton starred at the boat 's fancy-dress ball when he appeared as the Mysterious Guest in female dress . </text>
+            <annotationSet cDate="01/07/2003 04:17:47 PST Tue" status="UNANN" ID="534376">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="8" start="6" name="CRD-PNI"/>
+                    <label end="11" start="10" name="TO0"/>
+                    <label end="15" start="13" name="VVI"/>
+                    <label end="19" start="17" name="AVP"/>
+                    <label end="21" start="21" name="PUN"/>
+                    <label end="28" start="23" name="NP0"/>
+                    <label end="36" start="30" name="VVD"/>
+                    <label end="39" start="38" name="PRP"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="48" start="45" name="NN1"/>
+                    <label end="51" start="50" name="POS"/>
+                    <label end="63" start="53" name="NN1"/>
+                    <label end="68" start="65" name="NN1"/>
+                    <label end="73" start="70" name="AVQ-CJS"/>
+                    <label end="76" start="75" name="PNP"/>
+                    <label end="85" start="78" name="VVD"/>
+                    <label end="88" start="87" name="PRP"/>
+                    <label end="92" start="90" name="AT0"/>
+                    <label end="103" start="94" name="AJ0"/>
+                    <label end="109" start="105" name="NN1"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="119" start="114" name="AJ0"/>
+                    <label end="125" start="121" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:47 PST Tue" status="MANUAL" ID="534377">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="761" end="51" start="41" name="Place"/>
+                    <label cBy="296" feID="1545" end="63" start="53" name="Style"/>
+                    <label cBy="296" feID="760" end="68" start="65" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="41" name="Gen"/>
+                    <label end="63" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="41" name="Poss"/>
+                    <label end="63" start="53" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="68" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-go">
+        <sentence sentNo="0" aPos="4463987" ID="447575">
+            <text>I 'm going to a ball this summer and I have to wear a formal full-length dress . </text>
+            <annotationSet cDate="01/07/2003 04:17:48 PST Tue" status="UNANN" ID="534392">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="3" start="2" name="VBB"/>
+                    <label end="9" start="5" name="VVG"/>
+                    <label end="12" start="11" name="PRP"/>
+                    <label end="14" start="14" name="AT0"/>
+                    <label end="19" start="16" name="NN1"/>
+                    <label end="24" start="21" name="DT0"/>
+                    <label end="31" start="26" name="NN1"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="37" start="37" name="PNP"/>
+                    <label end="42" start="39" name="VHB"/>
+                    <label end="45" start="44" name="TO0"/>
+                    <label end="50" start="47" name="VVI"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="59" start="54" name="AJ0"/>
+                    <label end="71" start="61" name="AJ0"/>
+                    <label end="77" start="73" name="NN1"/>
+                    <label end="79" start="79" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:48 PST Tue" status="MANUAL" ID="534393">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="767" end="0" start="0" name="Attendee"/>
+                    <label cBy="296" feID="760" end="19" start="16" name="Social_event"/>
+                    <label cBy="296" feID="763" end="31" start="21" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="31" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="31" start="21" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="9" start="5" name="Supp"/>
+                    <label end="12" start="11" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30536354" ID="447579">
+            <text>` Will you be going to the Edwardian Ball ? &quot; she asked . </text>
+            <annotationSet cDate="01/07/2003 04:17:48 PST Tue" status="UNANN" ID="534400">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="5" start="2" name="VM0"/>
+                    <label end="9" start="7" name="PNP"/>
+                    <label end="12" start="11" name="VBI"/>
+                    <label end="18" start="14" name="VVG"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="35" start="27" name="AJ0"/>
+                    <label end="40" start="37" name="NN1-NP0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="44" start="44" name="PUQ"/>
+                    <label end="48" start="46" name="PNP"/>
+                    <label end="54" start="50" name="VVD"/>
+                    <label end="56" start="56" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:48 PST Tue" status="MANUAL" ID="534401">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="767" end="9" start="7" name="Attendee"/>
+                    <label cBy="296" feID="1545" end="35" start="27" name="Style"/>
+                    <label cBy="296" feID="760" end="40" start="37" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="7" name="Ext"/>
+                    <label end="35" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="7" name="NP"/>
+                    <label end="35" start="27" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="14" name="Supp"/>
+                    <label end="21" start="20" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="33332151" ID="447581">
+            <text>They go to the ball , she is indeed admired by everyone there but when they get home she realises she has lost the necklace . </text>
+            <annotationSet cDate="01/07/2003 04:17:49 PST Tue" status="UNANN" ID="534404">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="6" start="5" name="VVB"/>
+                    <label end="9" start="8" name="PRP"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="18" start="15" name="NN1"/>
+                    <label end="20" start="20" name="PUN"/>
+                    <label end="24" start="22" name="PNP"/>
+                    <label end="27" start="26" name="VBZ"/>
+                    <label end="34" start="29" name="AV0"/>
+                    <label end="42" start="36" name="VVN"/>
+                    <label end="45" start="44" name="PRP"/>
+                    <label end="54" start="47" name="PNI"/>
+                    <label end="60" start="56" name="AV0"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="69" start="66" name="AVQ-CJS"/>
+                    <label end="74" start="71" name="PNP"/>
+                    <label end="78" start="76" name="VVB"/>
+                    <label end="83" start="80" name="AV0"/>
+                    <label end="87" start="85" name="PNP"/>
+                    <label end="96" start="89" name="VVZ"/>
+                    <label end="100" start="98" name="PNP"/>
+                    <label end="104" start="102" name="VHZ"/>
+                    <label end="109" start="106" name="VVN"/>
+                    <label end="113" start="111" name="AT0"/>
+                    <label end="122" start="115" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:17:49 PST Tue" status="MANUAL" ID="534405">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="767" end="3" start="0" name="Attendee"/>
+                    <label cBy="296" feID="760" end="18" start="15" name="Social_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="5" name="Supp"/>
+                    <label end="9" start="8" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

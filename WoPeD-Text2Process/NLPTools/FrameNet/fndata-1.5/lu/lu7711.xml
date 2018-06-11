@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="importation.n" ID="7711" frame="Import_export" frameID="422" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Exporting_area"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Goods" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Importing_area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>FN: the action of moving goods into an area.</definition>
+    <lexeme POS="N" name="importation"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Exporting_area"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exporting_area"/>
+                <annoSet ID="1811871"/>
+                <annoSet ID="1811875"/>
+                <annoSet ID="1811907"/>
+                <annoSet ID="1812001"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Goods"/>
+            <pattern total="11">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="1811871"/>
+                <annoSet ID="1811875"/>
+                <annoSet ID="1811881"/>
+                <annoSet ID="1811907"/>
+                <annoSet ID="1811931"/>
+                <annoSet ID="1811945"/>
+                <annoSet ID="1811983"/>
+                <annoSet ID="1812001"/>
+                <annoSet ID="1812007"/>
+                <annoSet ID="1812013"/>
+                <annoSet ID="1812051"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Importing_area"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Importing_area"/>
+                <annoSet ID="1811881"/>
+                <annoSet ID="1811983"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Importing_area"/>
+                <annoSet ID="1812007"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1811945"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1812013"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Exporting_area"/>
+            <FE name="Goods"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exporting_area"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="1811871"/>
+                <annoSet ID="1811875"/>
+                <annoSet ID="1811907"/>
+                <annoSet ID="1812001"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Goods"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="1811931"/>
+                <annoSet ID="1812051"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Goods"/>
+            <FE name="Importing_area"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Importing_area"/>
+                <annoSet ID="1811881"/>
+                <annoSet ID="1811983"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Importing_area"/>
+                <annoSet ID="1812007"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goods"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1811945"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goods"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1812013"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="9186459" ID="1180861">
+            <text>BILLY ROY DANIELS was convicted in January 1990 of ` being knowingly concerned in the importation of cannabis &quot; from Spain . </text>
+            <annotationSet cDate="01/08/2003 05:44:08 PST Wed" status="UNANN" ID="1811870">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="8" start="6" name="NP0"/>
+                    <label end="16" start="10" name="NP0"/>
+                    <label end="20" start="18" name="VBD"/>
+                    <label end="30" start="22" name="VVN"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="41" start="35" name="NP0"/>
+                    <label end="46" start="43" name="CRD"/>
+                    <label end="49" start="48" name="PRF"/>
+                    <label end="51" start="51" name="PUQ"/>
+                    <label end="57" start="53" name="VBG"/>
+                    <label end="67" start="59" name="AV0"/>
+                    <label end="77" start="69" name="AJ0"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="84" start="82" name="AT0"/>
+                    <label end="96" start="86" name="NN1"/>
+                    <label end="99" start="98" name="PRF"/>
+                    <label end="108" start="101" name="NN1"/>
+                    <label end="110" start="110" name="PUQ"/>
+                    <label end="115" start="112" name="PRP"/>
+                    <label end="121" start="117" name="NP0"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:08 PST Wed" status="MANUAL" ID="1811871">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="108" start="98" name="Goods"/>
+                    <label cBy="351" feID="3892" end="121" start="112" name="Exporting_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="108" start="98" name="Dep"/>
+                    <label end="121" start="112" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="108" start="98" name="PP"/>
+                    <label end="121" start="112" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="96" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11090647" ID="1180863">
+            <text>We have successfully pressed for an EC ban on the importation of baby seal products and of furs from those countries which permit leghold traps . </text>
+            <annotationSet cDate="01/08/2003 05:44:08 PST Wed" status="UNANN" ID="1811874">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VHB"/>
+                    <label end="19" start="8" name="AV0"/>
+                    <label end="27" start="21" name="VVN"/>
+                    <label end="31" start="29" name="PRP"/>
+                    <label end="34" start="33" name="AT0"/>
+                    <label end="37" start="36" name="NN0"/>
+                    <label end="41" start="39" name="NN1-VVB"/>
+                    <label end="44" start="43" name="PRP"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="60" start="50" name="NN1"/>
+                    <label end="63" start="62" name="PRF"/>
+                    <label end="68" start="65" name="NN1"/>
+                    <label end="73" start="70" name="NN1"/>
+                    <label end="82" start="75" name="NN2"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="94" start="91" name="NN2"/>
+                    <label end="99" start="96" name="PRP"/>
+                    <label end="105" start="101" name="DT0"/>
+                    <label end="115" start="107" name="NN2"/>
+                    <label end="121" start="117" name="DTQ"/>
+                    <label end="128" start="123" name="NN1-VVB"/>
+                    <label end="136" start="130" name="NN1"/>
+                    <label end="142" start="138" name="NN2-VVZ"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:08 PST Wed" status="MANUAL" ID="1811875">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="94" start="62" name="Goods"/>
+                    <label cBy="351" feID="3892" end="142" start="96" name="Exporting_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="94" start="62" name="Dep"/>
+                    <label end="142" start="96" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="94" start="62" name="PP"/>
+                    <label end="142" start="96" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14675183" ID="1180866">
+            <text>When the pickets tried to prevent the importation of coal into the country , or its movement into major steelworks like Port Talbot and Ravenscraig , they once more found lines of constables in their way . </text>
+            <annotationSet cDate="01/08/2003 05:44:08 PST Wed" status="UNANN" ID="1811880">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="CJS"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="15" start="9" name="NN2"/>
+                    <label end="21" start="17" name="VVD-VVN"/>
+                    <label end="24" start="23" name="TO0"/>
+                    <label end="32" start="26" name="VVI"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="48" start="38" name="NN1"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="56" start="53" name="NN1"/>
+                    <label end="61" start="58" name="PRP"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="73" start="67" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                    <label end="78" start="77" name="CJC"/>
+                    <label end="82" start="80" name="DPS"/>
+                    <label end="91" start="84" name="NN1"/>
+                    <label end="96" start="93" name="PRP"/>
+                    <label end="102" start="98" name="AJ0"/>
+                    <label end="113" start="104" name="NN2"/>
+                    <label end="118" start="115" name="PRP"/>
+                    <label end="123" start="120" name="NP0"/>
+                    <label end="130" start="125" name="NP0"/>
+                    <label end="134" start="132" name="CJC"/>
+                    <label end="146" start="136" name="NN1-NP0"/>
+                    <label end="148" start="148" name="PUN"/>
+                    <label end="153" start="150" name="PNP"/>
+                    <label end="158" start="155" name="AV0"/>
+                    <label end="163" start="160" name="AV0"/>
+                    <label end="169" start="165" name="VVD-VVN"/>
+                    <label end="175" start="171" name="NN2"/>
+                    <label end="178" start="177" name="PRF"/>
+                    <label end="189" start="180" name="NN2"/>
+                    <label end="192" start="191" name="PRP"/>
+                    <label end="198" start="194" name="DPS"/>
+                    <label end="202" start="200" name="NN1"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:09 PST Wed" status="MANUAL" ID="1811881">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="56" start="50" name="Goods"/>
+                    <label cBy="351" feID="3890" end="73" start="58" name="Importing_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="50" name="Dep"/>
+                    <label end="73" start="58" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="50" name="PP"/>
+                    <label end="73" start="58" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24481082" ID="1180879">
+            <text>Already there are restrictions on the importation of hard corals from many countries and other invertebrates such as tridacnid clams are not ranked as an endangered species and banned from importation . </text>
+            <annotationSet cDate="01/08/2003 05:44:10 PST Wed" status="UNANN" ID="1811906">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="12" start="8" name="EX0"/>
+                    <label end="16" start="14" name="VBB"/>
+                    <label end="29" start="18" name="NN2"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="48" start="38" name="NN1"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="56" start="53" name="AJ0"/>
+                    <label end="63" start="58" name="NN2"/>
+                    <label end="68" start="65" name="PRP"/>
+                    <label end="73" start="70" name="DT0"/>
+                    <label end="83" start="75" name="NN2"/>
+                    <label end="87" start="85" name="CJC"/>
+                    <label end="93" start="89" name="AJ0"/>
+                    <label end="107" start="95" name="NN2"/>
+                    <label end="112" start="109" name="PRP"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="125" start="117" name="AJ0"/>
+                    <label end="131" start="127" name="NN2"/>
+                    <label end="135" start="133" name="VBB"/>
+                    <label end="139" start="137" name="XX0"/>
+                    <label end="146" start="141" name="VVN"/>
+                    <label end="149" start="148" name="PRP"/>
+                    <label end="152" start="151" name="AT0"/>
+                    <label end="163" start="154" name="AJ0"/>
+                    <label end="171" start="165" name="NN0"/>
+                    <label end="175" start="173" name="CJC"/>
+                    <label end="182" start="177" name="VVD-VVN"/>
+                    <label end="187" start="184" name="PRP"/>
+                    <label end="199" start="189" name="NN1"/>
+                    <label end="201" start="201" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:11 PST Wed" status="MANUAL" ID="1811907">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="63" start="50" name="Goods"/>
+                    <label cBy="351" feID="3892" end="83" start="65" name="Exporting_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="50" name="Dep"/>
+                    <label end="83" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="50" name="PP"/>
+                    <label end="83" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32672663" ID="1180891">
+            <text>The Ugandan government has announced plans to encourage the production of videos in rural areas throughout the country to counteract the importation of ` morally retrogressive films &quot; . </text>
+            <annotationSet cDate="01/08/2003 05:44:12 PST Wed" status="UNANN" ID="1811930">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0-NN1"/>
+                    <label end="21" start="12" name="NN0"/>
+                    <label end="25" start="23" name="VHZ"/>
+                    <label end="35" start="27" name="VVN"/>
+                    <label end="41" start="37" name="NN2-VVZ"/>
+                    <label end="44" start="43" name="TO0"/>
+                    <label end="54" start="46" name="VVI"/>
+                    <label end="58" start="56" name="AT0"/>
+                    <label end="69" start="60" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="79" start="74" name="NN2"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="88" start="84" name="AJ0"/>
+                    <label end="94" start="90" name="NN2"/>
+                    <label end="105" start="96" name="PRP"/>
+                    <label end="109" start="107" name="AT0"/>
+                    <label end="117" start="111" name="NN1"/>
+                    <label end="120" start="119" name="TO0"/>
+                    <label end="131" start="122" name="VVI"/>
+                    <label end="135" start="133" name="AT0"/>
+                    <label end="147" start="137" name="NN1"/>
+                    <label end="150" start="149" name="PRF"/>
+                    <label end="152" start="152" name="PUQ"/>
+                    <label end="160" start="154" name="AV0"/>
+                    <label end="174" start="162" name="AJ0"/>
+                    <label end="180" start="176" name="NN2"/>
+                    <label end="182" start="182" name="PUQ"/>
+                    <label end="184" start="184" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:12 PST Wed" status="MANUAL" ID="1811931">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="182" start="149" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="182" start="149" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="182" start="149" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="147" start="137" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="38539703" ID="1180898">
+            <text>The common ground Chamerovzow sketched out was a commitment to working for the importation of free-labour cotton for the Lancashire mills and a shared desire to isolate American churchmen who were not firmly antislavery . </text>
+            <annotationSet cDate="01/08/2003 05:44:15 PST Wed" status="UNANN" ID="1811944">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="16" start="11" name="NN1"/>
+                    <label end="28" start="18" name="NN1-NP0"/>
+                    <label end="37" start="30" name="VVD"/>
+                    <label end="41" start="39" name="AVP"/>
+                    <label end="45" start="43" name="VBD"/>
+                    <label end="47" start="47" name="AT0"/>
+                    <label end="58" start="49" name="NN1"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="69" start="63" name="VVG"/>
+                    <label end="73" start="71" name="PRP"/>
+                    <label end="77" start="75" name="AT0"/>
+                    <label end="89" start="79" name="NN1"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="104" start="94" name="AJ0"/>
+                    <label end="111" start="106" name="NN1"/>
+                    <label end="115" start="113" name="PRP"/>
+                    <label end="119" start="117" name="AT0"/>
+                    <label end="130" start="121" name="NP0"/>
+                    <label end="136" start="132" name="NN2"/>
+                    <label end="140" start="138" name="CJC"/>
+                    <label end="142" start="142" name="AT0"/>
+                    <label end="149" start="144" name="AJ0"/>
+                    <label end="156" start="151" name="NN1"/>
+                    <label end="159" start="158" name="TO0"/>
+                    <label end="167" start="161" name="VVI"/>
+                    <label end="176" start="169" name="AJ0"/>
+                    <label end="186" start="178" name="NN2"/>
+                    <label end="190" start="188" name="PNQ"/>
+                    <label end="195" start="192" name="VBD"/>
+                    <label end="199" start="197" name="XX0"/>
+                    <label end="206" start="201" name="AV0"/>
+                    <label end="218" start="208" name="AJ0-NN1"/>
+                    <label end="220" start="220" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:15 PST Wed" status="MANUAL" ID="1811945">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="111" start="91" name="Goods"/>
+                    <label cBy="351" feID="3886" end="136" start="113" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="111" start="91" name="Dep"/>
+                    <label end="136" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="111" start="91" name="PP"/>
+                    <label end="136" start="113" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="55412847" ID="1180917">
+            <text>In 1989 , the Swedish government commenced proceedings for the extradition of the applicant from this country on charges relating to the importation of cannabis into Sweden , and the distribution of cannabis in Sweden . </text>
+            <annotationSet cDate="01/08/2003 05:44:19 PST Wed" status="UNANN" ID="1811982">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="20" start="14" name="AJ0"/>
+                    <label end="31" start="22" name="NN0"/>
+                    <label end="41" start="33" name="AJ0-VVD"/>
+                    <label end="53" start="43" name="NN2"/>
+                    <label end="57" start="55" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="73" start="63" name="NN1"/>
+                    <label end="76" start="75" name="PRF"/>
+                    <label end="80" start="78" name="AT0"/>
+                    <label end="90" start="82" name="AJ0-NN1"/>
+                    <label end="95" start="92" name="PRP"/>
+                    <label end="100" start="97" name="DT0"/>
+                    <label end="108" start="102" name="NN1"/>
+                    <label end="111" start="110" name="PRP"/>
+                    <label end="119" start="113" name="NN2"/>
+                    <label end="128" start="121" name="VVG"/>
+                    <label end="131" start="130" name="PRP"/>
+                    <label end="135" start="133" name="AT0"/>
+                    <label end="147" start="137" name="NN1"/>
+                    <label end="150" start="149" name="PRF"/>
+                    <label end="159" start="152" name="NN1"/>
+                    <label end="164" start="161" name="PRP"/>
+                    <label end="171" start="166" name="NP0"/>
+                    <label end="173" start="173" name="PUN"/>
+                    <label end="177" start="175" name="CJC"/>
+                    <label end="181" start="179" name="AT0"/>
+                    <label end="194" start="183" name="NN1"/>
+                    <label end="197" start="196" name="PRF"/>
+                    <label end="206" start="199" name="NN1"/>
+                    <label end="209" start="208" name="PRP"/>
+                    <label end="216" start="211" name="NP0"/>
+                    <label end="218" start="218" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:19 PST Wed" status="MANUAL" ID="1811983">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="159" start="149" name="Goods"/>
+                    <label cBy="351" feID="3890" end="171" start="161" name="Importing_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="159" start="149" name="Dep"/>
+                    <label end="171" start="161" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="159" start="149" name="PP"/>
+                    <label end="171" start="161" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="147" start="137" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="80518040" ID="1180926">
+            <text>Nigeria has led African countries in banning the importation of waste from industrialized countries . </text>
+            <annotationSet cDate="01/08/2003 05:44:20 PST Wed" status="UNANN" ID="1812000">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="10" start="8" name="VHZ"/>
+                    <label end="14" start="12" name="VVN"/>
+                    <label end="22" start="16" name="AJ0"/>
+                    <label end="32" start="24" name="NN2"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="43" start="37" name="VVG"/>
+                    <label end="47" start="45" name="AT0"/>
+                    <label end="59" start="49" name="NN1"/>
+                    <label end="62" start="61" name="PRF"/>
+                    <label end="68" start="64" name="AJ0-NN1"/>
+                    <label end="73" start="70" name="PRP"/>
+                    <label end="88" start="75" name="AJ0"/>
+                    <label end="98" start="90" name="NN2"/>
+                    <label end="100" start="100" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:20 PST Wed" status="MANUAL" ID="1812001">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="68" start="61" name="Goods"/>
+                    <label cBy="351" feID="3892" end="98" start="70" name="Exporting_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="61" name="Dep"/>
+                    <label end="98" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="61" name="PP"/>
+                    <label end="98" start="70" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="85494004" ID="1180929">
+            <text>President Özal reportedly sought increased military aid and the lifting of restrictions on the importation of Turkish goods to the USA . </text>
+            <annotationSet cDate="01/08/2003 05:44:21 PST Wed" status="UNANN" ID="1812006">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NP0"/>
+                    <label end="13" start="10" name="NP0"/>
+                    <label end="24" start="15" name="AV0"/>
+                    <label end="31" start="26" name="VVD-VVN"/>
+                    <label end="41" start="33" name="AJ0-VVN"/>
+                    <label end="50" start="43" name="AJ0"/>
+                    <label end="54" start="52" name="NN1"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="70" start="64" name="NN1"/>
+                    <label end="73" start="72" name="PRF"/>
+                    <label end="86" start="75" name="NN2"/>
+                    <label end="89" start="88" name="PRP"/>
+                    <label end="93" start="91" name="AT0"/>
+                    <label end="105" start="95" name="NN1"/>
+                    <label end="108" start="107" name="PRF"/>
+                    <label end="116" start="110" name="AJ0"/>
+                    <label end="122" start="118" name="NN2"/>
+                    <label end="125" start="124" name="PRP"/>
+                    <label end="129" start="127" name="AT0"/>
+                    <label end="133" start="131" name="NP0"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:21 PST Wed" status="MANUAL" ID="1812007">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="122" start="107" name="Goods"/>
+                    <label cBy="351" feID="3890" end="133" start="124" name="Importing_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="122" start="107" name="Dep"/>
+                    <label end="133" start="124" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="122" start="107" name="PP"/>
+                    <label end="133" start="124" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="105" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="85726554" ID="1180932">
+            <text>Reports of the importation of 2,000 Israeli Uzi submachine guns and Galil assault rifles three weeks before the coup , and which were widely used by rebel soldiers , lent credence to this view . </text>
+            <annotationSet cDate="01/08/2003 05:44:21 PST Wed" status="UNANN" ID="1812012">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN2"/>
+                    <label end="9" start="8" name="PRF"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="25" start="15" name="NN1"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="34" start="30" name="CRD"/>
+                    <label end="42" start="36" name="NP0"/>
+                    <label end="46" start="44" name="NP0"/>
+                    <label end="57" start="48" name="NN1-VVB"/>
+                    <label end="62" start="59" name="NN2"/>
+                    <label end="66" start="64" name="CJC"/>
+                    <label end="72" start="68" name="NP0"/>
+                    <label end="80" start="74" name="NN1-VVB"/>
+                    <label end="87" start="82" name="NN2"/>
+                    <label end="93" start="89" name="CRD"/>
+                    <label end="99" start="95" name="NN2"/>
+                    <label end="106" start="101" name="PRP"/>
+                    <label end="110" start="108" name="AT0"/>
+                    <label end="115" start="112" name="NN1"/>
+                    <label end="117" start="117" name="PUN"/>
+                    <label end="121" start="119" name="CJC"/>
+                    <label end="127" start="123" name="DTQ"/>
+                    <label end="132" start="129" name="VBD"/>
+                    <label end="139" start="134" name="AV0"/>
+                    <label end="144" start="141" name="VVN"/>
+                    <label end="147" start="146" name="PRP"/>
+                    <label end="153" start="149" name="NN1"/>
+                    <label end="162" start="155" name="NN2"/>
+                    <label end="164" start="164" name="PUN"/>
+                    <label end="169" start="166" name="VVD-VVN"/>
+                    <label end="178" start="171" name="NN1"/>
+                    <label end="181" start="180" name="PRP"/>
+                    <label end="186" start="183" name="DT0"/>
+                    <label end="191" start="188" name="NN1"/>
+                    <label end="193" start="193" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:21 PST Wed" status="MANUAL" ID="1812013">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="87" start="27" name="Goods"/>
+                    <label cBy="351" feID="3888" end="115" start="89" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="27" name="Dep"/>
+                    <label end="115" start="89" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="27" name="PP"/>
+                    <label end="115" start="89" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108042212" ID="1180951">
+            <text>This is because domestic inflationary pressures generally lead to the diversion of foreign currency meant to be spent on imported plant and equipment to the importation of foodstuffs and other consumer goods . </text>
+            <annotationSet cDate="01/08/2003 05:44:23 PST Wed" status="UNANN" ID="1812050">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="14" start="8" name="CJS"/>
+                    <label end="23" start="16" name="AJ0"/>
+                    <label end="36" start="25" name="AJ0"/>
+                    <label end="46" start="38" name="NN2"/>
+                    <label end="56" start="48" name="AV0"/>
+                    <label end="61" start="58" name="VVB"/>
+                    <label end="64" start="63" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="78" start="70" name="NN1"/>
+                    <label end="81" start="80" name="PRF"/>
+                    <label end="89" start="83" name="AJ0"/>
+                    <label end="98" start="91" name="NN1"/>
+                    <label end="104" start="100" name="VVD-VVN"/>
+                    <label end="107" start="106" name="TO0"/>
+                    <label end="110" start="109" name="VBI"/>
+                    <label end="116" start="112" name="VVN"/>
+                    <label end="119" start="118" name="PRP"/>
+                    <label end="128" start="121" name="AJ0"/>
+                    <label end="134" start="130" name="NN1"/>
+                    <label end="138" start="136" name="CJC"/>
+                    <label end="148" start="140" name="NN1"/>
+                    <label end="151" start="150" name="PRP"/>
+                    <label end="155" start="153" name="AT0"/>
+                    <label end="167" start="157" name="NN1"/>
+                    <label end="170" start="169" name="PRF"/>
+                    <label end="181" start="172" name="NN2"/>
+                    <label end="185" start="183" name="CJC"/>
+                    <label end="191" start="187" name="AJ0"/>
+                    <label end="200" start="193" name="NN1"/>
+                    <label end="206" start="202" name="NN2"/>
+                    <label end="208" start="208" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:23 PST Wed" status="MANUAL" ID="1812051">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3884" end="206" start="169" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="206" start="169" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="206" start="169" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="167" start="157" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

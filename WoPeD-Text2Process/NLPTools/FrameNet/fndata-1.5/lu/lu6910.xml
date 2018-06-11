@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="drag.n" ID="6910" frame="Ingest_substance" frameID="386" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="D_device" name="Delivery_device"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="E_path" name="Entry_path"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ing" name="Ingestor"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="2E8B57" bgColor="00008B" type="Core" abbrev="Sub" name="Substance"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: an act of inhaling smoke from a cigarette. </definition>
+    <lexeme POS="N" name="drag"/>
+    <valences>
+        <governor type="Sup" lemma="take">
+            <annoSet ID="1523975"/>
+            <annoSet ID="1523977"/>
+            <annoSet ID="1523985"/>
+            <annoSet ID="1523989"/>
+            <annoSet ID="1523995"/>
+            <annoSet ID="1524001"/>
+            <annoSet ID="1524007"/>
+            <annoSet ID="1524013"/>
+            <annoSet ID="1524017"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Duration"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <annoSet ID="1523985"/>
+                <annoSet ID="1523995"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Ingestor"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <annoSet ID="1523975"/>
+                <annoSet ID="1523977"/>
+                <annoSet ID="1523985"/>
+                <annoSet ID="1523989"/>
+                <annoSet ID="1523995"/>
+                <annoSet ID="1524001"/>
+                <annoSet ID="1524007"/>
+                <annoSet ID="1524013"/>
+                <annoSet ID="1524017"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Manner"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="1523977"/>
+                <annoSet ID="1524001"/>
+                <annoSet ID="1524013"/>
+                <annoSet ID="1524017"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Substance"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Substance"/>
+                <annoSet ID="1523995"/>
+                <annoSet ID="1524017"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Substance"/>
+                <annoSet ID="1523975"/>
+                <annoSet ID="1523985"/>
+                <annoSet ID="1524001"/>
+                <annoSet ID="1524007"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Substance"/>
+                <annoSet ID="1524013"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Substance"/>
+                <annoSet ID="1523989"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Duration"/>
+            <FE name="Ingestor"/>
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="" PT="DNI" FE="Substance"/>
+                <annoSet ID="1523995"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Substance"/>
+                <annoSet ID="1523985"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Ingestor"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="1523977"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Ingestor"/>
+            <FE name="Manner"/>
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Substance"/>
+                <annoSet ID="1524017"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Substance"/>
+                <annoSet ID="1524001"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Substance"/>
+                <annoSet ID="1524013"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Ingestor"/>
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Substance"/>
+                <annoSet ID="1523989"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Substance"/>
+                <annoSet ID="1523975"/>
+                <annoSet ID="1524007"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss"/>
+    <subCorpus name="N-330-s20-period"/>
+    <subCorpus name="N-380-s20-other"/>
+    <subCorpus name="N-429-s20-lcoll-deep"/>
+    <subCorpus name="N-429-s20-lcoll-long"/>
+    <subCorpus name="N-429-s50-lgov-take">
+        <sentence sentNo="0" aPos="12662532" ID="1036162">
+            <text>He takes a drag on his cigarette and taps the ash between his legs , hearing a faint hiss as it hits the water . </text>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="UNANN" ID="1523974">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="9" start="9" name="AT0"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="DPS"/>
+                    <label end="31" start="23" name="NN1"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="40" start="37" name="VVZ"/>
+                    <label end="44" start="42" name="AT0"/>
+                    <label end="48" start="46" name="NN1"/>
+                    <label end="56" start="50" name="PRP"/>
+                    <label end="60" start="58" name="DPS"/>
+                    <label end="65" start="62" name="NN2"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="75" start="69" name="VVG"/>
+                    <label end="77" start="77" name="AT0"/>
+                    <label end="83" start="79" name="AJ0"/>
+                    <label end="88" start="85" name="NN1"/>
+                    <label end="91" start="90" name="CJS"/>
+                    <label end="94" start="93" name="PNP"/>
+                    <label end="99" start="96" name="VVZ"/>
+                    <label end="103" start="101" name="AT0"/>
+                    <label end="109" start="105" name="NN1"/>
+                    <label end="111" start="111" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="MANUAL" ID="1523975">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="1" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3460" end="31" start="16" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="31" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="31" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="7" start="3" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13330533" ID="1036163">
+            <text>Someone passed her a fresh joint and she took a deep drag , feeling the smoke burn her throat . </text>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="UNANN" ID="1523976">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="PNI"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="17" start="15" name="PNP"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="25" start="21" name="AJ0"/>
+                    <label end="31" start="27" name="AJ0-NN1"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="39" start="37" name="PNP"/>
+                    <label end="44" start="41" name="VVD"/>
+                    <label end="46" start="46" name="AT0"/>
+                    <label end="51" start="48" name="AJ0"/>
+                    <label end="56" start="53" name="NN1"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="66" start="60" name="VVG"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="76" start="72" name="NN1"/>
+                    <label end="81" start="78" name="VVB"/>
+                    <label end="85" start="83" name="DPS"/>
+                    <label end="92" start="87" name="NN1"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="MANUAL" ID="1523977">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="39" start="37" name="Ingestor"/>
+                    <label cBy="532" feID="3453" end="51" start="48" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="37" name="Ext"/>
+                    <label end="51" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="37" name="NP"/>
+                    <label end="51" start="48" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="44" start="41" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22946291" ID="1036167">
+            <text>Reg Butler took a long drag on his cigar and glanced up from his newspaper . </text>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="UNANN" ID="1523984">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="9" start="4" name="NP0"/>
+                    <label end="14" start="11" name="VVD"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="21" start="18" name="AJ0"/>
+                    <label end="26" start="23" name="NN1"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="33" start="31" name="DPS"/>
+                    <label end="39" start="35" name="NN1"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="51" start="45" name="VVD-VVN"/>
+                    <label end="54" start="53" name="AVP"/>
+                    <label end="59" start="56" name="PRP"/>
+                    <label end="63" start="61" name="DPS"/>
+                    <label end="73" start="65" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:25 PST Tue" status="MANUAL" ID="1523985">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="9" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3460" end="39" start="28" name="Substance"/>
+                    <label cBy="532" feID="3466" end="21" start="18" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="39" start="28" name="Dep"/>
+                    <label end="21" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="39" start="28" name="PP"/>
+                    <label end="21" start="18" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="14" start="11" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25849932" ID="1036169">
+            <text>She took another drag of her cigarette . </text>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="UNANN" ID="1523988">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="15" start="9" name="DT0"/>
+                    <label end="20" start="17" name="NN1"/>
+                    <label end="23" start="22" name="PRF"/>
+                    <label end="27" start="25" name="DPS"/>
+                    <label end="37" start="29" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="MANUAL" ID="1523989">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="2" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3460" end="37" start="22" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="37" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="37" start="22" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="7" start="4" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="40181170" ID="1036172">
+            <text>He lit a cigarette , took a long drag . </text>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="UNANN" ID="1523994">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VVD"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="17" start="9" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="24" start="21" name="VVD"/>
+                    <label end="26" start="26" name="AT0"/>
+                    <label end="31" start="28" name="AJ0"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="38" start="38" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="MANUAL" ID="1523995">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="1" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3466" end="31" start="28" name="Duration"/>
+                    <label cBy="296" feID="3460" itype="DNI" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="31" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="31" start="28" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="36" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="24" start="21" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="40929617" ID="1036175">
+            <text>He sat at the desk , his head hanging forward on his chest , taking quick drags on his cigarette . </text>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="UNANN" ID="1524000">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VVD"/>
+                    <label end="8" start="7" name="PRP"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="17" start="14" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="23" start="21" name="DPS"/>
+                    <label end="28" start="25" name="NN1"/>
+                    <label end="36" start="30" name="NN1-VVG"/>
+                    <label end="44" start="38" name="AV0"/>
+                    <label end="47" start="46" name="PRP"/>
+                    <label end="51" start="49" name="DPS"/>
+                    <label end="57" start="53" name="NN1"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="66" start="61" name="VVG"/>
+                    <label end="72" start="68" name="AJ0-AV0"/>
+                    <label end="78" start="74" name="NN2"/>
+                    <label end="81" start="80" name="PRP"/>
+                    <label end="85" start="83" name="DPS"/>
+                    <label end="95" start="87" name="NN1"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:26 PST Tue" status="MANUAL" ID="1524001">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="1" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3453" end="72" start="68" name="Manner"/>
+                    <label cBy="532" feID="3460" end="95" start="80" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="72" start="68" name="Dep"/>
+                    <label end="95" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="72" start="68" name="AJP"/>
+                    <label end="95" start="80" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="78" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="66" start="61" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="57299168" ID="1036178">
+            <text>I take another drag on the fag . </text>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="UNANN" ID="1524006">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVB"/>
+                    <label end="13" start="7" name="DT0"/>
+                    <label end="18" start="15" name="NN1"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="29" start="27" name="NN1"/>
+                    <label end="31" start="31" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="MANUAL" ID="1524007">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="0" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3460" end="29" start="20" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="29" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="29" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="5" start="2" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64212171" ID="1036181">
+            <text>The sergeant took a languid drag at his cigarette . </text>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="UNANN" ID="1524012">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="16" start="13" name="VVD"/>
+                    <label end="18" start="18" name="AT0"/>
+                    <label end="26" start="20" name="AJ0"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="38" start="36" name="DPS"/>
+                    <label end="48" start="40" name="NN1"/>
+                    <label end="50" start="50" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="MANUAL" ID="1524013">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="11" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3453" end="26" start="20" name="Manner"/>
+                    <label cBy="532" feID="3460" end="48" start="33" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="26" start="20" name="Dep"/>
+                    <label end="48" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="26" start="20" name="AJP"/>
+                    <label end="48" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="13" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69123810" ID="1036183">
+            <text>Maggie relit her cigarette and took a deep drag . </text>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="UNANN" ID="1524016">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="11" start="7" name="AJ0"/>
+                    <label end="15" start="13" name="DPS"/>
+                    <label end="25" start="17" name="NN1"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="34" start="31" name="VVD"/>
+                    <label end="36" start="36" name="AT0"/>
+                    <label end="41" start="38" name="AJ0"/>
+                    <label end="46" start="43" name="NN1"/>
+                    <label end="48" start="48" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:53:27 PST Tue" status="MANUAL" ID="1524017">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3459" end="5" start="0" name="Ingestor"/>
+                    <label cBy="532" feID="3453" end="41" start="38" name="Manner"/>
+                    <label cBy="296" feID="3460" itype="DNI" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="41" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="41" start="38" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="31" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

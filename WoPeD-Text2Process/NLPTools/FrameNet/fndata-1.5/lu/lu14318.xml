@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="decay.v" ID="14318" frame="Nuclear_process" frameID="1926" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Element"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="finc" name="Final_element"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="inic" name="Initial_element"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="006400" bgColor="FFFF00" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: (of a radioactive substance, particle, etc.) undergo change to a different form by emitting radiation.</definition>
+    <lexeme POS="V" name="decay"/>
+    <valences>
+        <FERealization total="8">
+            <FE name="Element"/>
+            <pattern total="8">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <annoSet ID="2317709"/>
+                <annoSet ID="2317711"/>
+                <annoSet ID="2317717"/>
+                <annoSet ID="2317725"/>
+                <annoSet ID="2317765"/>
+                <annoSet ID="2317801"/>
+                <annoSet ID="2317803"/>
+                <annoSet ID="2317807"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Final_element"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Final_element"/>
+                <annoSet ID="2317765"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Final_element"/>
+                <annoSet ID="2317717"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_element"/>
+                <annoSet ID="2317709"/>
+                <annoSet ID="2317711"/>
+                <annoSet ID="2317725"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_element"/>
+                <annoSet ID="2317801"/>
+                <annoSet ID="2317803"/>
+                <annoSet ID="2317807"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Initial_element"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DNI" FE="Initial_element"/>
+                <annoSet ID="2317709"/>
+                <annoSet ID="2317765"/>
+                <annoSet ID="2317801"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <annoSet ID="2317711"/>
+                <annoSet ID="2317717"/>
+                <annoSet ID="2317725"/>
+                <annoSet ID="2317803"/>
+                <annoSet ID="2317807"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Manner"/>
+                <annoSet ID="2317717"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2317725"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2317765"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2317807"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2317803"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Element"/>
+            <FE name="Final_element"/>
+            <FE name="Initial_element"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_element"/>
+                <valenceUnit GF="" PT="DNI" FE="Initial_element"/>
+                <annoSet ID="2317709"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_element"/>
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <annoSet ID="2317711"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_element"/>
+                <valenceUnit GF="" PT="DNI" FE="Initial_element"/>
+                <annoSet ID="2317801"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Element"/>
+            <FE name="Final_element"/>
+            <FE name="Initial_element"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="" PT="INI" FE="Final_element"/>
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Manner"/>
+                <annoSet ID="2317717"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_element"/>
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2317725"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Element"/>
+            <FE name="Final_element"/>
+            <FE name="Initial_element"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="" PT="DNI" FE="Final_element"/>
+                <valenceUnit GF="" PT="DNI" FE="Initial_element"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2317765"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Element"/>
+            <FE name="Final_element"/>
+            <FE name="Initial_element"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_element"/>
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2317807"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Element"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_element"/>
+                <valenceUnit GF="" PT="INI" FE="Initial_element"/>
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2317803"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NPneutron,particle,element-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="140" aPos="77640531" ID="1434976">
+            <text>The remaining neutrons would have decayed into protons , which are the nuclei of ordinary hydrogen atoms .</text>
+            <annotationSet cDate="07/13/2007 12:52:49 PDT Fri" status="UNANN" ID="2317708">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="jj"/>
+                    <label end="21" start="14" name="nns"/>
+                    <label end="27" start="23" name="md"/>
+                    <label end="32" start="29" name="VH"/>
+                    <label end="40" start="34" name="VVN"/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="53" start="47" name="nns"/>
+                    <label end="55" start="55" name=","/>
+                    <label end="61" start="57" name="wdt"/>
+                    <label end="65" start="63" name="vbp"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="76" start="71" name="nns"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="88" start="81" name="jj"/>
+                    <label end="97" start="90" name="nn"/>
+                    <label end="103" start="99" name="nns"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:52:50 PDT Fri" status="MANUAL" ID="2317709">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="40" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="21" start="0" name="Element"/>
+                    <label cBy="361" feID="11598" end="103" start="42" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="DNI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Ext"/>
+                    <label end="103" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="NP"/>
+                    <label end="103" start="42" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="175" aPos="20720534" ID="1434977">
+            <text>A neutron decays into a proton , electron and neutrino .</text>
+            <annotationSet cDate="07/13/2007 12:52:50 PDT Fri" status="UNANN" ID="2317710">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="nn"/>
+                    <label end="15" start="10" name="VVZ"/>
+                    <label end="20" start="17" name="in"/>
+                    <label end="22" start="22" name="dt"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="40" start="33" name="nn"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="53" start="46" name="nn"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:52:50 PDT Fri" status="MANUAL" ID="2317711">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="15" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="8" start="0" name="Element"/>
+                    <label cBy="361" feID="11598" end="53" start="17" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="INI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="53" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="53" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="15" aPos="51897071" ID="1434980">
+            <text>Since there are several such pairs of elements decaying at different speeds , it is possible to make cross-checks .</text>
+            <annotationSet cDate="07/13/2007 12:52:51 PDT Fri" status="UNANN" ID="2317716">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="10" start="6" name="ex"/>
+                    <label end="14" start="12" name="vbp"/>
+                    <label end="22" start="16" name="jj"/>
+                    <label end="27" start="24" name="jj"/>
+                    <label end="33" start="29" name="nns"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="45" start="38" name="nns"/>
+                    <label end="54" start="47" name="VVG"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="67" start="59" name="jj"/>
+                    <label end="74" start="69" name="nns"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="79" start="78" name="PP"/>
+                    <label end="82" start="81" name="VBZ"/>
+                    <label end="91" start="84" name="jj"/>
+                    <label end="94" start="93" name="to"/>
+                    <label end="99" start="96" name="VV"/>
+                    <label end="112" start="101" name="nns"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:52:51 PDT Fri" status="MANUAL" ID="2317717">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="54" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="45" start="16" name="Element"/>
+                    <label cBy="361" feID="11604" end="74" start="56" name="Manner"/>
+                    <label cBy="361" feID="11598" itype="INI" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="INI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="16" name="Ext"/>
+                    <label end="74" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="16" name="NP"/>
+                    <label end="74" start="56" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="45" start="16" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="887" aPos="6646306" ID="1434984">
+            <text>That means the heavy neutrinos must decay into something far less massive , quite quickly .</text>
+            <annotationSet cDate="07/13/2007 12:52:52 PDT Fri" status="UNANN" ID="2317724">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wdt"/>
+                    <label end="9" start="5" name="VVZ"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="19" start="15" name="jj"/>
+                    <label end="29" start="21" name="nns"/>
+                    <label end="34" start="31" name="md"/>
+                    <label end="40" start="36" name="VV"/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="55" start="47" name="nn"/>
+                    <label end="59" start="57" name="rb"/>
+                    <label end="64" start="61" name="rbr"/>
+                    <label end="72" start="66" name="jj"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="80" start="76" name="rb"/>
+                    <label end="88" start="82" name="rb"/>
+                    <label end="90" start="90" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:52:52 PDT Fri" status="MANUAL" ID="2317725">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="40" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="29" start="11" name="Element"/>
+                    <label cBy="361" feID="11598" end="72" start="42" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="INI" name="Initial_element"/>
+                    <label cBy="361" feID="11604" end="88" start="76" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="11" name="Ext"/>
+                    <label end="72" start="42" name="Dep"/>
+                    <label end="88" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="11" name="NP"/>
+                    <label end="72" start="42" name="PP"/>
+                    <label end="88" start="76" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PPover,at,after-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="33" aPos="26025063" ID="1435004">
+            <text>Earth 's warmth , like Venus 's , also came from its interior , as heat-producing radioactive minerals decayed at the mantle , reaching nearly 5000°C at the molten centre .</text>
+            <annotationSet cDate="07/13/2007 12:52:58 PDT Fri" status="UNANN" ID="2317764">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="7" start="6" name="POS"/>
+                    <label end="14" start="9" name="nn"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="27" start="23" name="NP"/>
+                    <label end="30" start="29" name="POS"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="37" start="34" name="rb"/>
+                    <label end="42" start="39" name="VVD"/>
+                    <label end="47" start="44" name="in"/>
+                    <label end="51" start="49" name="PP$"/>
+                    <label end="60" start="53" name="nn"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="80" start="67" name="VVG"/>
+                    <label end="92" start="82" name="jj"/>
+                    <label end="101" start="94" name="nns"/>
+                    <label end="109" start="103" name="VVN"/>
+                    <label end="112" start="111" name="in"/>
+                    <label end="116" start="114" name="dt"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="125" start="125" name=","/>
+                    <label end="134" start="127" name="VVG"/>
+                    <label end="141" start="136" name="rb"/>
+                    <label end="148" start="143" name="jj"/>
+                    <label end="151" start="150" name="in"/>
+                    <label end="155" start="153" name="dt"/>
+                    <label end="162" start="157" name="jj"/>
+                    <label end="169" start="164" name="nn"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:52:58 PDT Fri" status="MANUAL" ID="2317765">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="109" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="101" start="67" name="Element"/>
+                    <label cBy="361" feID="11905" end="123" start="111" name="Place"/>
+                    <label cBy="361" feID="11598" itype="DNI" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="DNI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="67" name="Ext"/>
+                    <label end="123" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="67" name="NP"/>
+                    <label end="123" start="111" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-T-PPto-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="175" aPos="20720581" ID="1435022">
+            <text>The W then decays to an electron and a neutrino .</text>
+            <annotationSet cDate="07/13/2007 12:53:04 PDT Fri" status="UNANN" ID="2317800">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="4" start="4" name="NP"/>
+                    <label end="9" start="6" name="rb"/>
+                    <label end="16" start="11" name="VVZ"/>
+                    <label end="19" start="18" name="to"/>
+                    <label end="22" start="21" name="dt"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="37" start="37" name="dt"/>
+                    <label end="46" start="39" name="nn"/>
+                    <label end="48" start="48" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:53:04 PDT Fri" status="MANUAL" ID="2317801">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="16" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="4" start="0" name="Element"/>
+                    <label cBy="361" feID="11598" end="46" start="18" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="DNI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="46" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="46" start="18" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="128" aPos="21107619" ID="1435023">
+            <text>` Most of the radioactive nuclides would have decayed to stable atoms before they could possibly be released to the environment by the slow corrosion process . &quot;</text>
+            <annotationSet cDate="07/13/2007 12:53:04 PDT Fri" status="UNANN" ID="2317802">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="jjs"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="24" start="14" name="jj"/>
+                    <label end="33" start="26" name="nns"/>
+                    <label end="39" start="35" name="md"/>
+                    <label end="44" start="41" name="VH"/>
+                    <label end="52" start="46" name="VVN"/>
+                    <label end="55" start="54" name="to"/>
+                    <label end="62" start="57" name="jj"/>
+                    <label end="68" start="64" name="nns"/>
+                    <label end="75" start="70" name="in"/>
+                    <label end="80" start="77" name="PP"/>
+                    <label end="86" start="82" name="md"/>
+                    <label end="95" start="88" name="rb"/>
+                    <label end="98" start="97" name="vb"/>
+                    <label end="107" start="100" name="VVN"/>
+                    <label end="110" start="109" name="to"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="126" start="116" name="nn"/>
+                    <label end="129" start="128" name="in"/>
+                    <label end="133" start="131" name="dt"/>
+                    <label end="138" start="135" name="jj"/>
+                    <label end="148" start="140" name="nn"/>
+                    <label end="156" start="150" name="nn"/>
+                    <label end="158" start="158" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:53:04 PDT Fri" status="MANUAL" ID="2317803">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="52" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="33" start="2" name="Element"/>
+                    <label cBy="361" feID="11598" end="68" start="54" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="INI" name="Initial_element"/>
+                    <label cBy="361" feID="11600" end="156" start="70" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="2" name="Ext"/>
+                    <label end="68" start="54" name="Dep"/>
+                    <label end="156" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="2" name="NP"/>
+                    <label end="68" start="54" name="PP"/>
+                    <label end="156" start="70" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="230" aPos="20780819" ID="1435025">
+            <text>One prediction of many of these schemes is that the proton must be unstable , decaying eventually to electrons and protons .</text>
+            <annotationSet cDate="07/13/2007 12:53:05 PDT Fri" status="UNANN" ID="2317806">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="21" start="18" name="jj"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="30" start="26" name="dt"/>
+                    <label end="38" start="32" name="nns"/>
+                    <label end="41" start="40" name="VBZ"/>
+                    <label end="46" start="43" name="in"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="62" start="59" name="md"/>
+                    <label end="65" start="64" name="vb"/>
+                    <label end="74" start="67" name="jj"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="85" start="78" name="VVG"/>
+                    <label end="96" start="87" name="rb"/>
+                    <label end="99" start="98" name="to"/>
+                    <label end="109" start="101" name="nns"/>
+                    <label end="113" start="111" name="cc"/>
+                    <label end="121" start="115" name="nns"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:53:05 PDT Fri" status="MANUAL" ID="2317807">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="85" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="57" start="48" name="Element"/>
+                    <label cBy="361" feID="11600" end="96" start="87" name="Time"/>
+                    <label cBy="361" feID="11598" end="121" start="98" name="Final_element"/>
+                    <label cBy="361" feID="11599" itype="INI" name="Initial_element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="48" name="Ext"/>
+                    <label end="96" start="87" name="Dep"/>
+                    <label end="121" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="48" name="NP"/>
+                    <label end="96" start="87" name="AVP"/>
+                    <label end="121" start="98" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

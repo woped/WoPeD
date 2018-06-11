@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="A" name="a good.a" ID="14274" frame="Relational_quantity" frameID="1923" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Denoted_quantity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="M" name="Mass"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="" name="Q_Prop"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="ref" name="Reference_quantity"/>
+        </frame>
+    </header>
+    <definition>FN: close, confident approximation of (some value)</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="A" name="good"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Denoted_quantity"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="--" FE="Denoted_quantity"/>
+                <annoSet ID="2611696"/>
+                <annoSet ID="2611700"/>
+                <annoSet ID="2611766"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Individuals"/>
+            <pattern total="3">
+                <valenceUnit GF="Head" PT="N" FE="Individuals"/>
+                <annoSet ID="2611696"/>
+                <annoSet ID="2611700"/>
+                <annoSet ID="2611766"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Reference_quantity"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="2nd" FE="Reference_quantity"/>
+                <annoSet ID="2611696"/>
+                <annoSet ID="2611700"/>
+                <annoSet ID="2611766"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Denoted_quantity"/>
+            <FE name="Individuals"/>
+            <FE name="Reference_quantity"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="--" FE="Denoted_quantity"/>
+                <valenceUnit GF="Head" PT="N" FE="Individuals"/>
+                <valenceUnit GF="" PT="2nd" FE="Reference_quantity"/>
+                <annoSet ID="2611696"/>
+                <annoSet ID="2611700"/>
+                <annoSet ID="2611766"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wsecond,minute,hour-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="187" aPos="32495364" ID="1587773">
+            <text>She fought him tooth and nail for a good 20 minutes , screaming at the top of her voice , until he eventually beat her senseless and killed her .</text>
+            <annotationSet cDate="08/27/2010 03:07:15 PDT Fri" status="UNANN" ID="2611695">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="13" start="11" name="PP"/>
+                    <label end="19" start="15" name="nn"/>
+                    <label end="23" start="21" name="cc"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="32" start="30" name="in"/>
+                    <label end="34" start="34" name="dt"/>
+                    <label end="39" start="36" name="jj"/>
+                    <label end="42" start="41" name="cd"/>
+                    <label end="50" start="44" name="nns"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="62" start="54" name="VVG"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="73" start="71" name="nn"/>
+                    <label end="76" start="75" name="in"/>
+                    <label end="80" start="78" name="PP$"/>
+                    <label end="86" start="82" name="nn"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="94" start="90" name="in"/>
+                    <label end="97" start="96" name="PP"/>
+                    <label end="108" start="99" name="rb"/>
+                    <label end="113" start="110" name="VVD"/>
+                    <label end="117" start="115" name="PP$"/>
+                    <label end="127" start="119" name="jj"/>
+                    <label end="131" start="129" name="cc"/>
+                    <label end="138" start="133" name="VVD"/>
+                    <label end="142" start="140" name="PP"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 03:07:15 PDT Fri" status="MANUAL" ID="2611696">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="39" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="11575" end="50" start="41" name="Individuals"/>
+                    <label cBy="589" feID="11573" end="39" start="34" name="Denoted_quantity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="41" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="41" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="11577" end="50" start="41" name="Reference_quantity"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="91" aPos="95828879" ID="1587775">
+            <text>It was a good three minutes before Koogan reappeared .</text>
+            <annotationSet cDate="08/27/2010 03:07:15 PDT Fri" status="UNANN" ID="2611699">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="12" start="9" name="jj"/>
+                    <label end="18" start="14" name="cd"/>
+                    <label end="26" start="20" name="nns"/>
+                    <label end="33" start="28" name="in"/>
+                    <label end="40" start="35" name="NP"/>
+                    <label end="51" start="42" name="VVD"/>
+                    <label end="53" start="53" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 03:07:15 PDT Fri" status="MANUAL" ID="2611700">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="12" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="11573" end="12" start="7" name="Denoted_quantity"/>
+                    <label cBy="589" feID="11575" end="26" start="14" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="14" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="14" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="11577" end="26" start="14" name="Reference_quantity"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wamount,number-(1)"/>
+    <subCorpus name="03-T-Wcd-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="601" aPos="55587225" ID="1587808">
+            <text>But not your place , of course : we 're a good four hundred light years from your usual stamping grounds .</text>
+            <annotationSet cDate="08/27/2010 03:07:22 PDT Fri" status="UNANN" ID="2611765">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="rb"/>
+                    <label end="11" start="8" name="PP$"/>
+                    <label end="17" start="13" name="nn"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="31" start="31" name=":"/>
+                    <label end="34" start="33" name="PP"/>
+                    <label end="38" start="36" name="vbp"/>
+                    <label end="40" start="40" name="dt"/>
+                    <label end="45" start="42" name="jj"/>
+                    <label end="50" start="47" name="cd"/>
+                    <label end="58" start="52" name="cd"/>
+                    <label end="64" start="60" name="jj"/>
+                    <label end="70" start="66" name="nns"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="80" start="77" name="PP$"/>
+                    <label end="86" start="82" name="jj"/>
+                    <label end="95" start="88" name="VVG"/>
+                    <label end="103" start="97" name="nns"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 03:07:22 PDT Fri" status="MANUAL" ID="2611766">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="45" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="11573" end="45" start="40" name="Denoted_quantity"/>
+                    <label cBy="589" feID="11575" end="70" start="47" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="47" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="47" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="11577" end="70" start="47" name="Reference_quantity"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-AVP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

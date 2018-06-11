@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="freebase.n" ID="7066" frame="Intoxicants" frameID="390" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Co" name="Country_of_origin"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Int" name="Intoxicant"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: cocaine that has been purified by heating with ether, taken by inhaling the fumes or smoking the residue.</definition>
+    <lexeme POS="N" name="freebase"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1563725"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1563725"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="54614493" ID="1056160">
+            <text>From clinical and pharmacological viewpoints crack and freebase are the same . </text>
+            <annotationSet cDate="01/08/2003 12:39:03 PST Wed" status="UNANN" ID="1563724">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PRP"/>
+                    <label end="12" start="5" name="AJ0"/>
+                    <label end="16" start="14" name="CJC"/>
+                    <label end="32" start="18" name="AJ0"/>
+                    <label end="43" start="34" name="NN2"/>
+                    <label end="49" start="45" name="VVB"/>
+                    <label end="53" start="51" name="CJC"/>
+                    <label end="62" start="55" name="NN1-VVB"/>
+                    <label end="66" start="64" name="VBB"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="75" start="72" name="DT0"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:03 PST Wed" status="MANUAL" ID="1563725">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="62" start="55" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

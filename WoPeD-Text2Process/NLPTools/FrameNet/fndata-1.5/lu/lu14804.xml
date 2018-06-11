@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="takeover.n" ID="14804" frame="Conquering" frameID="2021" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Con" name="Conqueror"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="The" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: The seizing of a land, its people, and its goverment by force.</definition>
+    <lexeme POS="N" name="take_over"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Conqueror"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="A" FE="Conqueror"/>
+                <annoSet ID="2377677"/>
+                <annoSet ID="2377705"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Conqueror"/>
+                <annoSet ID="2377671"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Conqueror"/>
+                <annoSet ID="2378483"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Conqueror"/>
+                <annoSet ID="2377675"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="2377731"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="2377677"/>
+                <annoSet ID="2378483"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Theme"/>
+                <annoSet ID="2377671"/>
+                <annoSet ID="2377675"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2377705"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Conqueror"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Conqueror"/>
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="2377677"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Conqueror"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Theme"/>
+                <annoSet ID="2377671"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Conqueror"/>
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="2378483"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Conqueror"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Theme"/>
+                <annoSet ID="2377675"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Conqueror"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Conqueror"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2377705"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="2377731"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Whostile,military-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="75" aPos="90383555" ID="1464969">
+            <text>Opposition parties described the involvement of US military personnel in relief efforts as an &quot; American takeover of Bangladesh 's defences &quot; .</text>
+            <annotationSet cDate="03/04/2008 02:05:41 PST Tue" status="UNANN" ID="2377670">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="nn"/>
+                    <label end="17" start="11" name="nns"/>
+                    <label end="27" start="19" name="VVD"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="43" start="33" name="nn"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="49" start="48" name="NP"/>
+                    <label end="58" start="51" name="jj"/>
+                    <label end="68" start="60" name="nns"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="78" start="73" name="nn"/>
+                    <label end="86" start="80" name="nns"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="92" start="91" name="dt"/>
+                    <label end="103" start="96" name="jj"/>
+                    <label end="112" start="105" name="nn"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="126" start="117" name="NP"/>
+                    <label end="129" start="128" name="POS"/>
+                    <label end="138" start="131" name="nns"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:05:42 PST Tue" status="MANUAL" ID="2377671">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="112" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12265" end="103" start="96" name="Conqueror"/>
+                    <label cBy="597" feID="12266" end="138" start="114" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="96" name="Dep"/>
+                    <label end="138" start="114" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="96" name="N"/>
+                    <label end="138" start="114" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wchinese,american,communist-(1)">
+        <sentence corpID="111" docID="421" sentNo="16" paragNo="112" aPos="50336593" ID="1464971">
+            <text>The Versailles peace conference acceded to Japan 's takeover of the former German concessions , but the Chinese refused to sign any treaty which did not return them to China , and Japan remained in occupation .</text>
+            <annotationSet cDate="03/04/2008 02:05:42 PST Tue" status="UNANN" ID="2377674">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="NP"/>
+                    <label end="19" start="15" name="nn"/>
+                    <label end="30" start="21" name="nn"/>
+                    <label end="38" start="32" name="VVD"/>
+                    <label end="41" start="40" name="to"/>
+                    <label end="47" start="43" name="NP"/>
+                    <label end="50" start="49" name="POS"/>
+                    <label end="59" start="52" name="nn"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="73" start="68" name="jj"/>
+                    <label end="80" start="75" name="jj"/>
+                    <label end="92" start="82" name="nns"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="98" start="96" name="cc"/>
+                    <label end="102" start="100" name="dt"/>
+                    <label end="110" start="104" name="NPS"/>
+                    <label end="118" start="112" name="VVD"/>
+                    <label end="121" start="120" name="to"/>
+                    <label end="126" start="123" name="VV"/>
+                    <label end="130" start="128" name="dt"/>
+                    <label end="137" start="132" name="nn"/>
+                    <label end="143" start="139" name="wdt"/>
+                    <label end="147" start="145" name="VVD"/>
+                    <label end="151" start="149" name="rb"/>
+                    <label end="158" start="153" name="VV"/>
+                    <label end="163" start="160" name="PP"/>
+                    <label end="166" start="165" name="to"/>
+                    <label end="172" start="168" name="NP"/>
+                    <label end="174" start="174" name=","/>
+                    <label end="178" start="176" name="cc"/>
+                    <label end="184" start="180" name="NP"/>
+                    <label end="193" start="186" name="VVD"/>
+                    <label end="196" start="195" name="in"/>
+                    <label end="207" start="198" name="nn"/>
+                    <label end="209" start="209" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:05:42 PST Tue" status="MANUAL" ID="2377675">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="59" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12265" end="50" start="43" name="Conqueror"/>
+                    <label cBy="597" feID="12266" end="92" start="61" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="43" name="Gen"/>
+                    <label end="92" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="43" name="Poss"/>
+                    <label end="92" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="291" aPos="5508773" ID="1464972">
+            <text>William Shawcross says clearly , with simple words in only 57 pages of fairly large print , why Britain should take Hong Kong refugees after the Chinese takeover if needed .</text>
+            <annotationSet cDate="03/04/2008 02:05:42 PST Tue" status="UNANN" ID="2377676">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="16" start="8" name="NP"/>
+                    <label end="21" start="18" name="VVZ"/>
+                    <label end="29" start="23" name="rb"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="43" start="38" name="jj"/>
+                    <label end="49" start="45" name="nns"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="57" start="54" name="rb"/>
+                    <label end="60" start="59" name="cd"/>
+                    <label end="66" start="62" name="nns"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="76" start="71" name="rb"/>
+                    <label end="82" start="78" name="jj"/>
+                    <label end="88" start="84" name="nn"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="94" start="92" name="wrb"/>
+                    <label end="102" start="96" name="NP"/>
+                    <label end="109" start="104" name="md"/>
+                    <label end="114" start="111" name="VV"/>
+                    <label end="119" start="116" name="NP"/>
+                    <label end="124" start="121" name="NP"/>
+                    <label end="133" start="126" name="nns"/>
+                    <label end="139" start="135" name="in"/>
+                    <label end="143" start="141" name="dt"/>
+                    <label end="151" start="145" name="jj"/>
+                    <label end="160" start="153" name="nn"/>
+                    <label end="163" start="162" name="in"/>
+                    <label end="170" start="165" name="VVN"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:05:42 PST Tue" status="MANUAL" ID="2377677">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="160" start="153" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12265" end="151" start="145" name="Conqueror"/>
+                    <label cBy="597" feID="12266" itype="DNI" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="151" start="145" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="151" start="145" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="165" aPos="69678133" ID="1464986">
+            <text>It is unlikely that the West could have done anything , at that stage , to prevent the communist takeovers in the late-1940s .</text>
+            <annotationSet cDate="03/04/2008 02:05:45 PST Tue" status="UNANN" ID="2377704">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="13" start="6" name="jj"/>
+                    <label end="18" start="15" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="27" start="24" name="NP"/>
+                    <label end="33" start="29" name="md"/>
+                    <label end="38" start="35" name="VH"/>
+                    <label end="43" start="40" name="VVN"/>
+                    <label end="52" start="45" name="nn"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="62" start="59" name="dt"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="81" start="75" name="VV"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="95" start="87" name="jj"/>
+                    <label end="105" start="97" name="nns"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="112" start="110" name="dt"/>
+                    <label end="123" start="114" name="nns"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:05:45 PST Tue" status="MANUAL" ID="2377705">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="105" start="97" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12265" end="95" start="87" name="Conqueror"/>
+                    <label cBy="597" feID="12272" end="123" start="107" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="95" start="87" name="Dep"/>
+                    <label end="123" start="107" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="95" start="87" name="A"/>
+                    <label end="123" start="107" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="347" aPos="24210732" ID="1464999">
+            <text>They generally present a greater barrier to takeovers in EC member states than technical barriers , in particular in Spain , Italy and France .</text>
+            <annotationSet cDate="03/04/2008 02:05:48 PST Tue" status="UNANN" ID="2377730">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="13" start="5" name="rb"/>
+                    <label end="21" start="15" name="VV"/>
+                    <label end="23" start="23" name="dt"/>
+                    <label end="31" start="25" name="jjr"/>
+                    <label end="39" start="33" name="nn"/>
+                    <label end="42" start="41" name="to"/>
+                    <label end="52" start="44" name="nns"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="58" start="57" name="NP"/>
+                    <label end="65" start="60" name="nn"/>
+                    <label end="72" start="67" name="nns"/>
+                    <label end="77" start="74" name="in"/>
+                    <label end="87" start="79" name="jj"/>
+                    <label end="96" start="89" name="nns"/>
+                    <label end="98" start="98" name=","/>
+                    <label end="101" start="100" name="in"/>
+                    <label end="112" start="103" name="jj"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="121" start="117" name="NP"/>
+                    <label end="123" start="123" name=","/>
+                    <label end="129" start="125" name="NP"/>
+                    <label end="133" start="131" name="cc"/>
+                    <label end="140" start="135" name="NP"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:05:48 PST Tue" status="MANUAL" ID="2377731">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="52" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="12271" end="72" start="54" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="54" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="05-T-PPof,by-(3)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="11" aPos="1575252" ID="1465375">
+            <text>Nor would they welcome a takeover by the Tigrayans .</text>
+            <annotationSet cDate="03/04/2008 02:25:37 PST Tue" status="UNANN" ID="2378482">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="md"/>
+                    <label end="13" start="10" name="PP"/>
+                    <label end="21" start="15" name="VV"/>
+                    <label end="23" start="23" name="dt"/>
+                    <label end="32" start="25" name="nn"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="49" start="41" name="NP"/>
+                    <label end="51" start="51" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/04/2008 02:25:37 PST Tue" status="MANUAL" ID="2378483">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="32" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12265" end="49" start="34" name="Conqueror"/>
+                    <label cBy="597" feID="12266" itype="DNI" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

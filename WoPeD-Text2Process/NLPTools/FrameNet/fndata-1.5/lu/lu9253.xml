@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="superb.a" ID="9253" frame="Expertise" frameID="136" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Behavior_product"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Focal_participant" name="Focal_participant"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Knowledge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Skill" name="Skill"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: excellent</definition>
+    <lexeme POS="A" name="superb"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="1370827"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Skill"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="1370827"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Protagonist"/>
+            <FE name="Skill"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="1370827"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-170-s20-prenom">
+        <sentence sentNo="0" aPos="46676403" ID="958823">
+            <text>Nicky Haslam is generally acknowledged as a superb story-teller , who judges his audience beautifully . </text>
+            <annotationSet cDate="01/07/2003 08:59:36 PST Tue" status="UNANN" ID="1370826">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="11" start="6" name="NN1-NP0"/>
+                    <label end="14" start="13" name="VBZ"/>
+                    <label end="24" start="16" name="AV0"/>
+                    <label end="37" start="26" name="VVN"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="42" start="42" name="AT0"/>
+                    <label end="49" start="44" name="AJ0"/>
+                    <label end="62" start="51" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="68" start="66" name="PNQ"/>
+                    <label end="75" start="70" name="VVZ"/>
+                    <label end="79" start="77" name="DPS"/>
+                    <label end="88" start="81" name="NN0"/>
+                    <label end="100" start="90" name="AV0"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:59:36 PST Tue" status="MANUAL" ID="1370827">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="893" end="100" start="51" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="51" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="51" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="894" end="62" start="51" name="Skill"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

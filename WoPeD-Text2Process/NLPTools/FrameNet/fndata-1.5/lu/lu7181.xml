@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="beat.a" ID="7181" frame="Biological_urge" frameID="394" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Expressor" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Stat" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: completely exhausted.</definition>
+    <lexeme POS="A" name="beat"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Degree"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1854603"/>
+                <annoSet ID="1854605"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Experiencer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1854603"/>
+                <annoSet ID="1854605"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Reason"/>
+                <annoSet ID="1854605"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1854603"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Reason"/>
+                <annoSet ID="1854605"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-s20-lgov-be"/>
+    <subCorpus name="01-XPbe-XPdead-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-Wdead-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="850" aPos="0" ID="1203731">
+            <text>“ I 'm dead beat !</text>
+            <annotationSet cDate="04/15/2003 08:49:11 PDT Tue" status="UNANN" ID="1854602">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="PP"/>
+                    <label end="5" start="4" name="vbp"/>
+                    <label end="10" start="7" name="rb"/>
+                    <label end="15" start="12" name="jj"/>
+                    <label end="17" start="17" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 08:49:12 PDT Tue" status="MANUAL" ID="1854603">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="15" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="2" start="2" name="Experiencer"/>
+                    <label cBy="618" feID="3519" end="10" start="7" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="7" name="Dep"/>
+                    <label end="2" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="7" name="AVP"/>
+                    <label end="2" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="5" start="4" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="44" aPos="0" ID="1203732">
+            <text>` You must be dead beat with everything -- and me going on and on . &quot;</text>
+            <annotationSet cDate="04/15/2003 08:49:13 PDT Tue" status="UNANN" ID="1854604">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="9" start="6" name="md"/>
+                    <label end="12" start="11" name="vb"/>
+                    <label end="17" start="14" name="jj"/>
+                    <label end="22" start="19" name="nn"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="38" start="29" name="nn"/>
+                    <label end="41" start="40" name=":"/>
+                    <label end="45" start="43" name="cc"/>
+                    <label end="48" start="47" name="PP"/>
+                    <label end="54" start="50" name="VVG"/>
+                    <label end="57" start="56" name="rp"/>
+                    <label end="61" start="59" name="cc"/>
+                    <label end="64" start="63" name="rp"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 08:49:13 PDT Tue" status="MANUAL" ID="1854605">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="22" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="4" start="2" name="Experiencer"/>
+                    <label cBy="618" feID="3519" end="17" start="14" name="Degree"/>
+                    <label cBy="618" feID="3530" end="38" start="24" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Ext"/>
+                    <label end="17" start="14" name="Dep"/>
+                    <label end="38" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="NP"/>
+                    <label end="17" start="14" name="AVP"/>
+                    <label end="38" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="12" start="11" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

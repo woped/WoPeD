@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="glimpse.n" ID="15133" frame="Punctual_perception" frameID="2075" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="State" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="00008B" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Loc_perc" name="Location_of_perceiver"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Perc-Pass" name="Perceiver"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: the event or fact of briefly seeing.</definition>
+    <lexeme POS="N" name="glimpse"/>
+    <valences>
+        <governor type="Ctrlr" lemma="catch">
+            <annoSet ID="2587487"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Perceiver"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver"/>
+                <annoSet ID="2587487"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <annoSet ID="2587487"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Perceiver"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon"/>
+                <annoSet ID="2587487"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="390" aPos="49358674" ID="1576434">
+            <text>Feet crunched past me , I caught a glimpse of a brown boot , the tongue flapping , the sole tied on with string .</text>
+            <annotationSet cDate="07/15/2010 02:51:39 PDT Thu" status="UNANN" ID="2587486">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="nns"/>
+                    <label end="12" start="5" name="VVD"/>
+                    <label end="17" start="14" name="in"/>
+                    <label end="20" start="19" name="PP"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="24" start="24" name="PP"/>
+                    <label end="31" start="26" name="VVD"/>
+                    <label end="33" start="33" name="dt"/>
+                    <label end="41" start="35" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="46" start="46" name="dt"/>
+                    <label end="52" start="48" name="jj"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="70" start="65" name="nn"/>
+                    <label end="79" start="72" name="VVG"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="95" start="92" name="VVN"/>
+                    <label end="98" start="97" name="in"/>
+                    <label end="103" start="100" name="in"/>
+                    <label end="110" start="105" name="nn"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:51:39 PDT Thu" status="MANUAL" ID="2587487">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="41" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="12846" end="24" start="24" name="Perceiver"/>
+                    <label cBy="571" feID="12847" end="57" start="43" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="24" name="Ext"/>
+                    <label end="57" start="43" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="24" name="NP"/>
+                    <label end="57" start="43" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="26" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

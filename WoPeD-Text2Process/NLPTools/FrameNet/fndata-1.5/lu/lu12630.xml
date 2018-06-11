@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="issue.n" ID="12630" frame="Point_of_dispute" frameID="1608" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="con" name="Context"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="gro" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="poi" name="Point_of_view"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="que" name="Question"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="sta" name="Status"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: an important topic for debate or resolution.</definition>
+    <lexeme POS="N" name="issue"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Question"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Question"/>
+                <annoSet ID="2585813"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Status"/>
+                <annoSet ID="2585813"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Question"/>
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Question"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Status"/>
+                <annoSet ID="2585813"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPOF-(1)"/>
+    <subCorpus name="02-T-PPin-(1)"/>
+    <subCorpus name="03-T-PPabout-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="845" aPos="67633878" ID="1575597">
+            <text>2.1 Ensuring discussion at the conference raised several key issues about the development and direction of the research project .</text>
+            <annotationSet cDate="07/15/2010 01:40:39 PDT Thu" status="UNANN" ID="2585812">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="11" start="4" name="VVG"/>
+                    <label end="22" start="13" name="nn"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="40" start="31" name="nn"/>
+                    <label end="47" start="42" name="VVD"/>
+                    <label end="55" start="49" name="jj"/>
+                    <label end="59" start="57" name="jj"/>
+                    <label end="66" start="61" name="nns"/>
+                    <label end="72" start="68" name="in"/>
+                    <label end="76" start="74" name="dt"/>
+                    <label end="88" start="78" name="nn"/>
+                    <label end="92" start="90" name="cc"/>
+                    <label end="102" start="94" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="118" start="111" name="nn"/>
+                    <label end="126" start="120" name="nn"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:40:39 PDT Thu" status="MANUAL" ID="2585813">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="66" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8847" end="126" start="68" name="Question"/>
+                    <label cBy="571" feID="8852" end="59" start="57" name="Status"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="68" name="Dep"/>
+                    <label end="59" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="68" name="PP"/>
+                    <label end="59" start="57" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

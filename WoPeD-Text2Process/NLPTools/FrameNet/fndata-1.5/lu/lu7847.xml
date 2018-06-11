@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="burglary.n" ID="7847" frame="Offenses" frameID="432" totalAnnotated="22" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+            <document description="bncp=1754" ID="21837"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Off" name="Offense"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Pun" name="Punishment"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Spec" name="Specification"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Vic" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: illegal entry into a building with intent to commit a crime such as theft</definition>
+    <lexeme POS="N" name="burglary"/>
+    <valences>
+        <governor type="Gov" lemma="accuse">
+            <annoSet ID="1871675"/>
+        </governor>
+        <governor type="Gov" lemma="admit">
+            <annoSet ID="1871721"/>
+            <annoSet ID="1871727"/>
+            <annoSet ID="1871751"/>
+            <annoSet ID="1871769"/>
+        </governor>
+        <governor type="Gov" lemma="after">
+            <annoSet ID="1871729"/>
+        </governor>
+        <governor type="Gov" lemma="charge">
+            <annoSet ID="1871621"/>
+            <annoSet ID="1871623"/>
+        </governor>
+        <governor type="Gov" lemma="commit">
+            <annoSet ID="1871655"/>
+            <annoSet ID="1871795"/>
+        </governor>
+        <governor type="Gov" lemma="conviction">
+            <annoSet ID="1871625"/>
+        </governor>
+        <governor type="Gov" lemma="frame">
+            <annoSet ID="1871791"/>
+        </governor>
+        <governor type="Gov" lemma="investigate">
+            <annoSet ID="1871735"/>
+        </governor>
+        <governor type="Gov" lemma="plead">
+            <annoSet ID="1871749"/>
+        </governor>
+        <governor type="Gov" lemma="steal">
+            <annoSet ID="1871661"/>
+            <annoSet ID="1871685"/>
+            <annoSet ID="1871717"/>
+        </governor>
+        <FERealization total="6">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <annoSet ID="1871721"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="2563103"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Degree"/>
+                <annoSet ID="1871655"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <annoSet ID="1871651"/>
+                <annoSet ID="1871723"/>
+                <annoSet ID="1871821"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="21">
+            <FE name="Offense"/>
+            <pattern total="21">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871621"/>
+                <annoSet ID="1871623"/>
+                <annoSet ID="1871625"/>
+                <annoSet ID="1871651"/>
+                <annoSet ID="1871661"/>
+                <annoSet ID="1871675"/>
+                <annoSet ID="1871685"/>
+                <annoSet ID="1871717"/>
+                <annoSet ID="1871721"/>
+                <annoSet ID="1871723"/>
+                <annoSet ID="1871727"/>
+                <annoSet ID="1871729"/>
+                <annoSet ID="1871735"/>
+                <annoSet ID="1871749"/>
+                <annoSet ID="1871751"/>
+                <annoSet ID="1871769"/>
+                <annoSet ID="1871787"/>
+                <annoSet ID="1871791"/>
+                <annoSet ID="1871795"/>
+                <annoSet ID="1871821"/>
+                <annoSet ID="2563103"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Perpetrator"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Perpetrator"/>
+                <annoSet ID="2563103"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2563103"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Degree"/>
+                <annoSet ID="1871655"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871721"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871651"/>
+                <annoSet ID="1871723"/>
+                <annoSet ID="1871821"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <FE name="Perpetrator"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Perpetrator"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2563103"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="16">
+            <FE name="Offense"/>
+            <pattern total="16">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871621"/>
+                <annoSet ID="1871623"/>
+                <annoSet ID="1871625"/>
+                <annoSet ID="1871661"/>
+                <annoSet ID="1871675"/>
+                <annoSet ID="1871685"/>
+                <annoSet ID="1871717"/>
+                <annoSet ID="1871727"/>
+                <annoSet ID="1871729"/>
+                <annoSet ID="1871735"/>
+                <annoSet ID="1871749"/>
+                <annoSet ID="1871751"/>
+                <annoSet ID="1871769"/>
+                <annoSet ID="1871787"/>
+                <annoSet ID="1871791"/>
+                <annoSet ID="1871795"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-XPadmit,convict,charge-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="66" aPos="0" ID="1212260">
+            <text>They removed files of documents and tape prepared for his defence to charges of burglary .</text>
+            <annotationSet cDate="04/30/2003 06:23:59 PDT Wed" status="UNANN" ID="1871620">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="11" start="5" name="VVD"/>
+                    <label end="17" start="13" name="nns"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="30" start="22" name="nns"/>
+                    <label end="34" start="32" name="cc"/>
+                    <label end="39" start="36" name="nn"/>
+                    <label end="48" start="41" name="VVN"/>
+                    <label end="52" start="50" name="in"/>
+                    <label end="56" start="54" name="PP$"/>
+                    <label end="64" start="58" name="nn"/>
+                    <label end="67" start="66" name="to"/>
+                    <label end="75" start="69" name="nns"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="87" start="80" name="nn"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:23:59 PDT Wed" status="MANUAL" ID="1871621">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="87" start="80" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="87" start="80" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="75" start="69" name="Gov"/>
+                    <label end="87" start="77" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1203" aPos="0" ID="1212261">
+            <text>Spowart faces charges of theft , criminal damage and burglary while Howard is charged with burglary , possession of class B drugs with intent to supply and dishonestly obtaining and receiving goods .</text>
+            <annotationSet cDate="04/30/2003 06:23:59 PDT Wed" status="UNANN" ID="1871622">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="12" start="8" name="VVZ"/>
+                    <label end="20" start="14" name="nns"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="29" start="25" name="nn"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="40" start="33" name="jj"/>
+                    <label end="47" start="42" name="nn"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="60" start="53" name="nn"/>
+                    <label end="66" start="62" name="in"/>
+                    <label end="73" start="68" name="NP"/>
+                    <label end="76" start="75" name="VBZ"/>
+                    <label end="84" start="78" name="VVN"/>
+                    <label end="89" start="86" name="in"/>
+                    <label end="98" start="91" name="nn"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="111" start="102" name="nn"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="122" start="122" name="nn"/>
+                    <label end="128" start="124" name="nns"/>
+                    <label end="133" start="130" name="in"/>
+                    <label end="140" start="135" name="nn"/>
+                    <label end="143" start="142" name="to"/>
+                    <label end="150" start="145" name="VV"/>
+                    <label end="154" start="152" name="cc"/>
+                    <label end="166" start="156" name="rb"/>
+                    <label end="176" start="168" name="VVG"/>
+                    <label end="180" start="178" name="cc"/>
+                    <label end="190" start="182" name="VVG"/>
+                    <label end="196" start="192" name="nns"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:00 PDT Wed" status="MANUAL" ID="1871623">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="98" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="98" start="91" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="84" start="78" name="Gov"/>
+                    <label end="98" start="86" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="308" aPos="0" ID="1212262">
+            <text>He had a conviction for burglary in South Africa .</text>
+            <annotationSet cDate="04/30/2003 06:24:00 PDT Wed" status="UNANN" ID="1871624">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="18" start="9" name="nn"/>
+                    <label end="22" start="20" name="in"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="40" start="36" name="NP"/>
+                    <label end="47" start="42" name="NP"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:00 PDT Wed" status="MANUAL" ID="1871625">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="31" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="31" start="24" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="9" name="Gov"/>
+                    <label end="31" start="20" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-XPcharge-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="825" aPos="0" ID="1212275">
+            <text>William Swain collapsed and died after a distraction burglary at his home .</text>
+            <annotationSet cDate="04/30/2003 06:24:07 PDT Wed" status="UNANN" ID="1871650">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="12" start="8" name="NP"/>
+                    <label end="22" start="14" name="VVD"/>
+                    <label end="26" start="24" name="cc"/>
+                    <label end="31" start="28" name="VVD"/>
+                    <label end="37" start="33" name="in"/>
+                    <label end="39" start="39" name="dt"/>
+                    <label end="51" start="41" name="nn"/>
+                    <label end="60" start="53" name="nn"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="67" start="65" name="PP$"/>
+                    <label end="72" start="69" name="nn"/>
+                    <label end="74" start="74" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:07 PDT Wed" status="MANUAL" ID="1871651">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="60" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3968" end="51" start="41" name="Degree"/>
+                    <label cBy="268" feID="3971" end="60" start="53" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="41" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="119" aPos="0" ID="1212277">
+            <text>He once defended a racist skinhead who 'd committed a burglary while on parole .</text>
+            <annotationSet cDate="04/30/2003 06:24:08 PDT Wed" status="UNANN" ID="1871654">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="rb"/>
+                    <label end="15" start="8" name="VVD"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="24" start="19" name="jj"/>
+                    <label end="33" start="26" name="nn"/>
+                    <label end="37" start="35" name="wp"/>
+                    <label end="40" start="39" name="VHD"/>
+                    <label end="50" start="42" name="VVN"/>
+                    <label end="52" start="52" name="dt"/>
+                    <label end="61" start="54" name="nn"/>
+                    <label end="67" start="63" name="in"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="77" start="72" name="nn"/>
+                    <label end="79" start="79" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:08 PDT Wed" status="MANUAL" ID="1871655">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3968" end="61" start="54" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="50" start="42" name="Gov"/>
+                    <label end="61" start="52" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2426" aPos="0" ID="1212280">
+            <text>A video recorder , a kettle , an iron and ten ornamental cottages were stolen in a burglary from a house in Deepdale Way , Darlington .</text>
+            <annotationSet cDate="04/30/2003 06:24:09 PDT Wed" status="UNANN" ID="1871660">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="jj"/>
+                    <label end="15" start="8" name="nn"/>
+                    <label end="17" start="17" name=","/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="26" start="21" name="nn"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="31" start="30" name="dt"/>
+                    <label end="36" start="33" name="nn"/>
+                    <label end="40" start="38" name="cc"/>
+                    <label end="44" start="42" name="cd"/>
+                    <label end="55" start="46" name="jj"/>
+                    <label end="64" start="57" name="nns"/>
+                    <label end="69" start="66" name="VBD"/>
+                    <label end="76" start="71" name="VVN"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="81" start="81" name="dt"/>
+                    <label end="90" start="83" name="nn"/>
+                    <label end="95" start="92" name="in"/>
+                    <label end="97" start="97" name="dt"/>
+                    <label end="103" start="99" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="115" start="108" name="NP"/>
+                    <label end="119" start="117" name="NP"/>
+                    <label end="121" start="121" name=","/>
+                    <label end="132" start="123" name="NP"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:09 PDT Wed" status="MANUAL" ID="1871661">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="90" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="90" start="83" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="76" start="71" name="Gov"/>
+                    <label end="90" start="78" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="666" aPos="0" ID="1212287">
+            <text>The boy is also accused of burglary at the woman 's home in Nantwich on Monday .</text>
+            <annotationSet cDate="04/30/2003 06:24:12 PDT Wed" status="UNANN" ID="1871674">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="9" start="8" name="VBZ"/>
+                    <label end="14" start="11" name="rb"/>
+                    <label end="22" start="16" name="VVN"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="34" start="27" name="nn"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="47" start="43" name="nn"/>
+                    <label end="50" start="49" name="POS"/>
+                    <label end="55" start="52" name="nn"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="67" start="60" name="NP"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="77" start="72" name="NP"/>
+                    <label end="79" start="79" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:12 PDT Wed" status="MANUAL" ID="1871675">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="34" start="27" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="16" name="Gov"/>
+                    <label end="34" start="24" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="123" aPos="0" ID="1212292">
+            <text>A video recorder was stolen during a burglary at a house in Woodcrest Road , Darlington , on Thursday .</text>
+            <annotationSet cDate="04/30/2003 06:24:14 PDT Wed" status="UNANN" ID="1871684">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="jj"/>
+                    <label end="15" start="8" name="nn"/>
+                    <label end="19" start="17" name="VBD"/>
+                    <label end="26" start="21" name="VVN"/>
+                    <label end="33" start="28" name="in"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="44" start="37" name="nn"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="49" start="49" name="dt"/>
+                    <label end="55" start="51" name="nn"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="68" start="60" name="NP"/>
+                    <label end="73" start="70" name="NP"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="86" start="77" name="NP"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="100" start="93" name="NP"/>
+                    <label end="102" start="102" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:14 PDT Wed" status="MANUAL" ID="1871685">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="44" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="44" start="37" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="26" start="21" name="Gov"/>
+                    <label end="44" start="28" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5897" aPos="0" ID="1212308">
+            <text>A video recorder , a hi-fi , a computer and equipment worth £1,779 have been stolen in a burglary at a house in West Auckland Road , Darlington .</text>
+            <annotationSet cDate="04/30/2003 06:24:21 PDT Wed" status="UNANN" ID="1871716">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="jj"/>
+                    <label end="15" start="8" name="nn"/>
+                    <label end="17" start="17" name=","/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="25" start="21" name="nn"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="29" start="29" name="dt"/>
+                    <label end="38" start="31" name="nn"/>
+                    <label end="42" start="40" name="cc"/>
+                    <label end="52" start="44" name="nn"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="65" start="60" name="nns"/>
+                    <label end="70" start="67" name="VHP"/>
+                    <label end="75" start="72" name="VBN"/>
+                    <label end="82" start="77" name="VVN"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="87" start="87" name="dt"/>
+                    <label end="96" start="89" name="nn"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="101" start="101" name="dt"/>
+                    <label end="107" start="103" name="nn"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="115" start="112" name="NP"/>
+                    <label end="124" start="117" name="NP"/>
+                    <label end="129" start="126" name="NP"/>
+                    <label end="131" start="131" name=","/>
+                    <label end="142" start="133" name="NP"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:21 PDT Wed" status="MANUAL" ID="1871717">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="96" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="96" start="89" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="82" start="77" name="Gov"/>
+                    <label end="96" start="84" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5764" aPos="0" ID="1212310">
+            <text>Fenton admitted aggravated burglary at a house in Roseberry Road , Billingham , where Graham Watson , 20 , and Dolan admitted burglary .</text>
+            <annotationSet cDate="04/30/2003 06:24:22 PDT Wed" status="UNANN" ID="1871720">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="14" start="7" name="VVD"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="34" start="27" name="nn"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="39" start="39" name="dt"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="58" start="50" name="NP"/>
+                    <label end="63" start="60" name="NP"/>
+                    <label end="65" start="65" name=","/>
+                    <label end="76" start="67" name="NP"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="84" start="80" name="wrb"/>
+                    <label end="91" start="86" name="NP"/>
+                    <label end="98" start="93" name="NP"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="103" start="102" name="cd"/>
+                    <label end="105" start="105" name=","/>
+                    <label end="109" start="107" name="cc"/>
+                    <label end="115" start="111" name="NP"/>
+                    <label end="124" start="117" name="VVD"/>
+                    <label end="133" start="126" name="nn"/>
+                    <label end="135" start="135" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:22 PDT Wed" status="MANUAL" ID="1871721">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="34" start="27" name="Offense"/>
+                    <label cBy="268" feID="3968" end="25" start="16" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="16" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="14" start="7" name="Gov"/>
+                    <label end="34" start="16" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="0" ID="1212311">
+            <text>The best deterrent against house burglaries at the moment is an alarm system .</text>
+            <annotationSet cDate="04/30/2003 06:24:22 PDT Wed" status="UNANN" ID="1871722">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jjs"/>
+                    <label end="17" start="9" name="nn"/>
+                    <label end="25" start="19" name="in"/>
+                    <label end="31" start="27" name="nn"/>
+                    <label end="42" start="33" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="59" start="58" name="VBZ"/>
+                    <label end="62" start="61" name="dt"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="75" start="70" name="nn"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:22 PDT Wed" status="MANUAL" ID="1871723">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="42" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="42" start="33" name="Offense"/>
+                    <label cBy="268" feID="3968" end="31" start="27" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="27" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="8796" aPos="0" ID="1212313">
+            <text>Nicholas Higgs also admitted burglary at another house in Kensington Road .</text>
+            <annotationSet cDate="04/30/2003 06:24:23 PDT Wed" status="UNANN" ID="1871726">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="13" start="9" name="NP"/>
+                    <label end="18" start="15" name="rb"/>
+                    <label end="27" start="20" name="VVD"/>
+                    <label end="36" start="29" name="nn"/>
+                    <label end="39" start="38" name="in"/>
+                    <label end="47" start="41" name="dt"/>
+                    <label end="53" start="49" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="67" start="58" name="NP"/>
+                    <label end="72" start="69" name="NP"/>
+                    <label end="74" start="74" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:23 PDT Wed" status="MANUAL" ID="1871727">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="36" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="36" start="29" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="27" start="20" name="Gov"/>
+                    <label end="36" start="29" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="689" aPos="0" ID="1212314">
+            <text>A TERRIFIED pensioner had to wait an hour for police to arrive after an attempted burglary at her Teesside home .</text>
+            <annotationSet cDate="04/30/2003 06:24:23 PDT Wed" status="UNANN" ID="1871728">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="10" start="2" name="VVN"/>
+                    <label end="20" start="12" name="nn"/>
+                    <label end="24" start="22" name="VHD"/>
+                    <label end="27" start="26" name="to"/>
+                    <label end="32" start="29" name="VV"/>
+                    <label end="35" start="34" name="dt"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="44" start="42" name="in"/>
+                    <label end="51" start="46" name="nns"/>
+                    <label end="54" start="53" name="to"/>
+                    <label end="61" start="56" name="VV"/>
+                    <label end="67" start="63" name="in"/>
+                    <label end="70" start="69" name="dt"/>
+                    <label end="80" start="72" name="jj"/>
+                    <label end="89" start="82" name="nn"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="96" start="94" name="PP$"/>
+                    <label end="105" start="98" name="NP"/>
+                    <label end="110" start="107" name="nn"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:23 PDT Wed" status="MANUAL" ID="1871729">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="89" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="89" start="82" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="67" start="63" name="Gov"/>
+                    <label end="89" start="69" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1365" aPos="0" ID="1212317">
+            <text>Scarborough police are also investigating a burglary at the Citadel Salvation Army building in the town where thieves made off with an Atari computer worth £520 .</text>
+            <annotationSet cDate="04/30/2003 06:24:24 PDT Wed" status="UNANN" ID="1871734">
+                <layer rank="1" name="PENN">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="17" start="12" name="nns"/>
+                    <label end="21" start="19" name="vbp"/>
+                    <label end="26" start="23" name="rb"/>
+                    <label end="40" start="28" name="VVG"/>
+                    <label end="42" start="42" name="dt"/>
+                    <label end="51" start="44" name="nn"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="58" start="56" name="dt"/>
+                    <label end="66" start="60" name="NP"/>
+                    <label end="76" start="68" name="NP"/>
+                    <label end="81" start="78" name="NP"/>
+                    <label end="90" start="83" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="108" start="104" name="wrb"/>
+                    <label end="116" start="110" name="nns"/>
+                    <label end="121" start="118" name="VVD"/>
+                    <label end="125" start="123" name="rp"/>
+                    <label end="130" start="127" name="in"/>
+                    <label end="133" start="132" name="dt"/>
+                    <label end="139" start="135" name="NP"/>
+                    <label end="148" start="141" name="nn"/>
+                    <label end="154" start="150" name="nn"/>
+                    <label end="159" start="156" name="nn"/>
+                    <label end="161" start="161" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:24 PDT Wed" status="MANUAL" ID="1871735">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="51" start="44" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="40" start="28" name="Gov"/>
+                    <label end="51" start="42" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="5764" aPos="0" ID="1212324">
+            <text>Fenton also pleaded guilty to a burglary in Station Road , Billingham .</text>
+            <annotationSet cDate="04/30/2003 06:24:27 PDT Wed" status="UNANN" ID="1871748">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="10" start="7" name="rb"/>
+                    <label end="18" start="12" name="VVD"/>
+                    <label end="25" start="20" name="jj"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="30" start="30" name="dt"/>
+                    <label end="39" start="32" name="nn"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="50" start="44" name="NP"/>
+                    <label end="55" start="52" name="NP"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="68" start="59" name="NP"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:27 PDT Wed" status="MANUAL" ID="1871749">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="39" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="39" start="32" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="12" name="Gov"/>
+                    <label end="39" start="27" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="8411" aPos="0" ID="1212325">
+            <text>Wild , also of Park Avenue , Teesville , admitted a second burglary and an attempted burglary .</text>
+            <annotationSet cDate="04/30/2003 06:24:27 PDT Wed" status="UNANN" ID="1871750">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="5" start="5" name=","/>
+                    <label end="10" start="7" name="rb"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="18" start="15" name="NP"/>
+                    <label end="25" start="20" name="NP"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="37" start="29" name="NP"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="48" start="41" name="VVD"/>
+                    <label end="50" start="50" name="dt"/>
+                    <label end="57" start="52" name="jj"/>
+                    <label end="66" start="59" name="nn"/>
+                    <label end="70" start="68" name="cc"/>
+                    <label end="73" start="72" name="dt"/>
+                    <label end="83" start="75" name="jj"/>
+                    <label end="92" start="85" name="nn"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:27 PDT Wed" status="MANUAL" ID="1871751">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="66" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="66" start="59" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="48" start="41" name="Gov"/>
+                    <label end="66" start="50" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3446" aPos="0" ID="1212334">
+            <text>James Butt , 36 , appeared before Teesside Crown Court and admitted burglary and handling stolen goods .</text>
+            <annotationSet cDate="04/30/2003 06:24:30 PDT Wed" status="UNANN" ID="1871768">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="9" start="6" name="NP"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="14" start="13" name="cd"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="25" start="18" name="VVN"/>
+                    <label end="32" start="27" name="in"/>
+                    <label end="41" start="34" name="NP"/>
+                    <label end="47" start="43" name="NP"/>
+                    <label end="53" start="49" name="NP"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="66" start="59" name="VVN"/>
+                    <label end="75" start="68" name="nn"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="88" start="81" name="VVG"/>
+                    <label end="95" start="90" name="jj"/>
+                    <label end="101" start="97" name="nns"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:31 PDT Wed" status="MANUAL" ID="1871769">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="75" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="75" start="68" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="66" start="59" name="Gov"/>
+                    <label end="75" start="68" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="3328" aPos="0" ID="1212343">
+            <text>Some two thirds to three quarters of all solved burglaries are committed by young men under the age of 21 .</text>
+            <annotationSet cDate="04/30/2003 06:24:33 PDT Wed" status="UNANN" ID="1871786">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="7" start="5" name="cd"/>
+                    <label end="14" start="9" name="nns"/>
+                    <label end="17" start="16" name="to"/>
+                    <label end="23" start="19" name="cd"/>
+                    <label end="32" start="25" name="nns"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="46" start="41" name="VVN"/>
+                    <label end="57" start="48" name="nns"/>
+                    <label end="61" start="59" name="vbp"/>
+                    <label end="71" start="63" name="VVN"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="80" start="76" name="jj"/>
+                    <label end="84" start="82" name="nns"/>
+                    <label end="90" start="86" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="98" start="96" name="nn"/>
+                    <label end="101" start="100" name="in"/>
+                    <label end="104" start="103" name="cd"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:34 PDT Wed" status="MANUAL" ID="1871787">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="57" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="57" start="48" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="524" aPos="0" ID="1212345">
+            <text>` One is that , like I said , I could probably frame you for the kiosk and the burglary .</text>
+            <annotationSet cDate="04/30/2003 06:24:34 PDT Wed" status="UNANN" ID="1871790">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="12" start="9" name="in"/>
+                    <label end="14" start="14" name=","/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="21" start="21" name="PP"/>
+                    <label end="26" start="23" name="VVD"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="30" start="30" name="PP"/>
+                    <label end="36" start="32" name="md"/>
+                    <label end="45" start="38" name="rb"/>
+                    <label end="51" start="47" name="VV"/>
+                    <label end="55" start="53" name="PP"/>
+                    <label end="59" start="57" name="in"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="69" start="65" name="nn"/>
+                    <label end="73" start="71" name="cc"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="86" start="79" name="nn"/>
+                    <label end="88" start="88" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:34 PDT Wed" status="MANUAL" ID="1871791">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="86" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="86" start="79" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="51" start="47" name="Gov"/>
+                    <label end="86" start="57" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="42" aPos="0" ID="1212347">
+            <text>At a later meeting , Hinkin was asked by the others , as he had a motor vehicle , to go out with them and commit burglaries .</text>
+            <annotationSet cDate="04/30/2003 06:24:35 PDT Wed" status="UNANN" ID="1871794">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="3" start="3" name="dt"/>
+                    <label end="9" start="5" name="jj"/>
+                    <label end="17" start="11" name="nn"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="26" start="21" name="NP"/>
+                    <label end="30" start="28" name="VBD"/>
+                    <label end="36" start="32" name="VVN"/>
+                    <label end="39" start="38" name="in"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="50" start="45" name="nns"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="58" start="57" name="PP"/>
+                    <label end="62" start="60" name="VHD"/>
+                    <label end="64" start="64" name="dt"/>
+                    <label end="70" start="66" name="nn"/>
+                    <label end="78" start="72" name="nn"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="86" start="85" name="VV"/>
+                    <label end="90" start="88" name="rp"/>
+                    <label end="95" start="92" name="in"/>
+                    <label end="100" start="97" name="PP"/>
+                    <label end="104" start="102" name="cc"/>
+                    <label end="111" start="106" name="VV"/>
+                    <label end="122" start="113" name="nns"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:35 PDT Wed" status="MANUAL" ID="1871795">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="122" start="113" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="122" start="113" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="111" start="106" name="Gov"/>
+                    <label end="122" start="113" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6530" aPos="0" ID="1212360">
+            <text>Senior officers have targeted car thefts and house burglaries as the two biggest problem areas and a new team has been put in place to spearhead the campaign .</text>
+            <annotationSet cDate="04/30/2003 06:24:40 PDT Wed" status="UNANN" ID="1871820">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="jj"/>
+                    <label end="14" start="7" name="nns"/>
+                    <label end="19" start="16" name="VHP"/>
+                    <label end="28" start="21" name="VVN"/>
+                    <label end="32" start="30" name="nn"/>
+                    <label end="39" start="34" name="nns"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="49" start="45" name="nn"/>
+                    <label end="60" start="51" name="nns"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="67" start="65" name="dt"/>
+                    <label end="71" start="69" name="cd"/>
+                    <label end="79" start="73" name="jjs"/>
+                    <label end="87" start="81" name="nn"/>
+                    <label end="93" start="89" name="nns"/>
+                    <label end="97" start="95" name="cc"/>
+                    <label end="99" start="99" name="dt"/>
+                    <label end="103" start="101" name="jj"/>
+                    <label end="108" start="105" name="nn"/>
+                    <label end="112" start="110" name="VHZ"/>
+                    <label end="117" start="114" name="VBN"/>
+                    <label end="121" start="119" name="VVN"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="130" start="126" name="nn"/>
+                    <label end="133" start="132" name="to"/>
+                    <label end="143" start="135" name="nn"/>
+                    <label end="147" start="145" name="dt"/>
+                    <label end="156" start="149" name="nn"/>
+                    <label end="158" start="158" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:24:41 PDT Wed" status="MANUAL" ID="1871821">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="60" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3968" end="49" start="45" name="Degree"/>
+                    <label cBy="268" feID="3971" end="60" start="51" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="45" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-pp_by-p-(2)">
+        <sentence corpID="111" docID="21837" sentNo="5" paragNo="288" aPos="0" ID="1560171">
+            <text>McCann , in which the Court of Appeal reduced the sentence for a relatively minor burglary by an offender who had only one distant previous conviction , from two years ' imprisonment to nine months .</text>
+            <annotationSet cDate="05/25/2010 11:14:57 PDT Tue" status="UNANN" ID="2563102">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="10" start="9" name="in"/>
+                    <label end="16" start="12" name="wdt"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="26" start="22" name="NP"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="36" start="31" name="nn"/>
+                    <label end="44" start="38" name="VVD"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="57" start="50" name="nn"/>
+                    <label end="61" start="59" name="in"/>
+                    <label end="63" start="63" name="dt"/>
+                    <label end="74" start="65" name="rb"/>
+                    <label end="80" start="76" name="jj"/>
+                    <label end="89" start="82" name="nn"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="95" start="94" name="dt"/>
+                    <label end="104" start="97" name="nn"/>
+                    <label end="108" start="106" name="wp"/>
+                    <label end="112" start="110" name="VHD"/>
+                    <label end="117" start="114" name="rb"/>
+                    <label end="121" start="119" name="cd"/>
+                    <label end="129" start="123" name="jj"/>
+                    <label end="138" start="131" name="jj"/>
+                    <label end="149" start="140" name="nn"/>
+                    <label end="151" start="151" name=","/>
+                    <label end="156" start="153" name="in"/>
+                    <label end="160" start="158" name="cd"/>
+                    <label end="166" start="162" name="nns"/>
+                    <label end="168" start="168" name="POS"/>
+                    <label end="181" start="170" name="nn"/>
+                    <label end="184" start="183" name="to"/>
+                    <label end="189" start="186" name="cd"/>
+                    <label end="196" start="191" name="nns"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2010 11:14:57 PDT Tue" status="MANUAL" ID="2563103">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="89" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="9160" end="149" start="91" name="Perpetrator"/>
+                    <label cBy="571" feID="3968" end="80" start="65" name="Degree"/>
+                    <label cBy="571" feID="3971" end="89" start="82" name="Offense"/>
+                    <label cBy="571" feID="4652" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="149" start="91" name="Dep"/>
+                    <label end="80" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="149" start="91" name="PP"/>
+                    <label end="80" start="65" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(2)"/>
+    <subCorpus name="03-other-unmatched-(2)"/>
+</lexUnit>

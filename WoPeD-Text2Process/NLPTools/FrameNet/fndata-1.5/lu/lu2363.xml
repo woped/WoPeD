@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="room-mate.n" ID="2363" frame="Residence" frameID="110" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Co-resident" name="Co_resident"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Location" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Res" name="Resident"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: A person with whom one shares a room or rooms in a house</definition>
+    <lexeme POS="N" name="room-mate"/>
+    <valences>
+        <FERealization total="8">
+            <FE name="Co_resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Co_resident"/>
+                <annoSet ID="121474"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <annoSet ID="121476"/>
+                <annoSet ID="121478"/>
+                <annoSet ID="121480"/>
+                <annoSet ID="121490"/>
+                <annoSet ID="121496"/>
+                <annoSet ID="121498"/>
+                <annoSet ID="121500"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Location"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <annoSet ID="121474"/>
+                <annoSet ID="121476"/>
+                <annoSet ID="121478"/>
+                <annoSet ID="121498"/>
+                <annoSet ID="121500"/>
+                <annoSet ID="121502"/>
+                <annoSet ID="121510"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Location"/>
+                <annoSet ID="121490"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Resident"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Resident"/>
+                <annoSet ID="121474"/>
+                <annoSet ID="121476"/>
+                <annoSet ID="121490"/>
+                <annoSet ID="121496"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Resident"/>
+                <annoSet ID="121478"/>
+                <annoSet ID="121510"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <annoSet ID="121480"/>
+                <annoSet ID="121498"/>
+                <annoSet ID="121500"/>
+                <annoSet ID="121502"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Co_resident"/>
+            <FE name="Location"/>
+            <FE name="Resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Co_resident"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="" PT="DEN" FE="Resident"/>
+                <annoSet ID="121474"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="DNI" FE="Location"/>
+                <valenceUnit GF="" PT="DEN" FE="Resident"/>
+                <annoSet ID="121490"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="" PT="DEN" FE="Resident"/>
+                <annoSet ID="121476"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Resident"/>
+                <annoSet ID="121478"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <annoSet ID="121498"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Co_resident"/>
+            <FE name="Location"/>
+            <FE name="Resident"/>
+            <FE name="Resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <annoSet ID="121500"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Co_resident"/>
+            <FE name="Resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="" PT="DEN" FE="Resident"/>
+                <annoSet ID="121496"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Co_resident"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <annoSet ID="121480"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Location"/>
+            <FE name="Resident"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Resident"/>
+                <annoSet ID="121510"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Resident"/>
+                <annoSet ID="121502"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="mate-N-250-ppof">
+        <sentence sentNo="0" aPos="29630862" ID="237474">
+            <text>` A boyfriend hooked her on drugs , and that boyfriend was a room-mate of Rickie 's . &quot; </text>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="UNANN" ID="121473">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="19" start="14" name="VVD"/>
+                    <label end="23" start="21" name="PNP"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="32" start="28" name="NN2"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="43" start="40" name="DT0"/>
+                    <label end="53" start="45" name="NN1"/>
+                    <label end="57" start="55" name="VBD"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="69" start="61" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="79" start="74" name="NP0"/>
+                    <label end="82" start="81" name="POS"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="86" start="86" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="MANUAL" ID="121474">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="82" start="71" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="69" start="61" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="71" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="mate-N-280-poss">
+        <sentence sentNo="0" aPos="17525021" ID="237475">
+            <text>My room-mate happening to be a policeman , I was at a loss whether to look upon it as a special honour or a special precaution , mine host putting into my room a representative of the force . </text>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="UNANN" ID="121475">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="11" start="3" name="NN1"/>
+                    <label end="21" start="13" name="NN1-VVG"/>
+                    <label end="24" start="23" name="TO0"/>
+                    <label end="27" start="26" name="VBI"/>
+                    <label end="29" start="29" name="AT0"/>
+                    <label end="39" start="31" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="43" start="43" name="PNP"/>
+                    <label end="47" start="45" name="VBD"/>
+                    <label end="50" start="49" name="PRP"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="57" start="54" name="NN1"/>
+                    <label end="65" start="59" name="CJS"/>
+                    <label end="68" start="67" name="TO0"/>
+                    <label end="73" start="70" name="VVI"/>
+                    <label end="78" start="75" name="PRP"/>
+                    <label end="81" start="80" name="PNP"/>
+                    <label end="84" start="83" name="CJS-PRP"/>
+                    <label end="86" start="86" name="AT0"/>
+                    <label end="94" start="88" name="AJ0"/>
+                    <label end="101" start="96" name="NN1"/>
+                    <label end="104" start="103" name="CJC"/>
+                    <label end="106" start="106" name="AT0"/>
+                    <label end="114" start="108" name="AJ0"/>
+                    <label end="125" start="116" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                    <label end="132" start="129" name="PNP"/>
+                    <label end="137" start="134" name="VVB"/>
+                    <label end="145" start="139" name="VVG"/>
+                    <label end="150" start="147" name="PRP"/>
+                    <label end="153" start="152" name="DPS"/>
+                    <label end="158" start="155" name="NN1"/>
+                    <label end="160" start="160" name="AT0"/>
+                    <label end="175" start="162" name="NN1"/>
+                    <label end="178" start="177" name="PRF"/>
+                    <label end="182" start="180" name="AT0"/>
+                    <label end="188" start="184" name="NN1"/>
+                    <label end="190" start="190" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="MANUAL" ID="121476">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="1" start="0" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="11" start="3" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30333981" ID="237476">
+            <text>She introduced them to her room-mate Vicki Evans . </text>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="UNANN" ID="121477">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="13" start="4" name="VVD"/>
+                    <label end="18" start="15" name="PNP"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="25" start="23" name="DPS"/>
+                    <label end="35" start="27" name="NN1"/>
+                    <label end="41" start="37" name="NN1-NP0"/>
+                    <label end="47" start="43" name="NP0"/>
+                    <label end="49" start="49" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:30 PST Mon" status="MANUAL" ID="121478">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="25" start="23" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="47" start="37" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="23" name="Gen"/>
+                    <label end="47" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="23" name="Poss"/>
+                    <label end="47" start="37" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32137066" ID="237477">
+            <text>He 's my room-mate and we 'll be celebrating in our pyjamas on Sunday if we win . </text>
+            <annotationSet cDate="01/06/2003 08:03:31 PST Mon" status="UNANN" ID="121479">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="7" start="6" name="DPS"/>
+                    <label end="17" start="9" name="NN1"/>
+                    <label end="21" start="19" name="CJC"/>
+                    <label end="24" start="23" name="PNP"/>
+                    <label end="28" start="26" name="VM0"/>
+                    <label end="31" start="30" name="VBI"/>
+                    <label end="43" start="33" name="VVG"/>
+                    <label end="46" start="45" name="PRP"/>
+                    <label end="50" start="48" name="DPS"/>
+                    <label end="58" start="52" name="NN2"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="68" start="63" name="NP0"/>
+                    <label end="71" start="70" name="CJS"/>
+                    <label end="74" start="73" name="PNP"/>
+                    <label end="78" start="76" name="VVB"/>
+                    <label end="80" start="80" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:31 PST Mon" status="MANUAL" ID="121480">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="535" end="1" start="0" name="Resident"/>
+                    <label cBy="428" feID="537" end="7" start="6" name="Co_resident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="7" start="6" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="7" start="6" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="4" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101240523" ID="237482">
+            <text>` I hate to bring the real world into this , but is your room-mate going to pop in at any second ? &quot; </text>
+            <annotationSet cDate="01/06/2003 08:03:32 PST Mon" status="UNANN" ID="121489">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="PNP"/>
+                    <label end="7" start="4" name="VVB"/>
+                    <label end="10" start="9" name="TO0"/>
+                    <label end="16" start="12" name="VVI"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="25" start="22" name="AJ0"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="36" start="33" name="PRP"/>
+                    <label end="41" start="38" name="DT0"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="50" start="49" name="VBZ"/>
+                    <label end="55" start="52" name="DPS"/>
+                    <label end="65" start="57" name="NN1"/>
+                    <label end="71" start="67" name="VVG"/>
+                    <label end="74" start="73" name="TO0"/>
+                    <label end="78" start="76" name="VVI"/>
+                    <label end="81" start="80" name="AVP"/>
+                    <label end="84" start="83" name="PRP"/>
+                    <label end="88" start="86" name="DT0"/>
+                    <label end="95" start="90" name="NN1"/>
+                    <label end="97" start="97" name="PUN"/>
+                    <label end="99" start="99" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:32 PST Mon" status="MANUAL" ID="121490">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="55" start="52" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="65" start="57" name="Resident"/>
+                    <label cBy="428" feID="536" itype="DNI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="52" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="52" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101264391" ID="237485">
+            <text>Some girls show a guy they 're terrific cooks -- and my room-mate shows him she can make friends with his granny ! </text>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="UNANN" ID="121495">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="NN2"/>
+                    <label end="14" start="11" name="VVB"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="20" start="18" name="NN1"/>
+                    <label end="25" start="22" name="PNP"/>
+                    <label end="29" start="27" name="VBB"/>
+                    <label end="38" start="31" name="AJ0"/>
+                    <label end="44" start="40" name="NN2"/>
+                    <label end="47" start="46" name="PUN"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="54" start="53" name="DPS"/>
+                    <label end="64" start="56" name="NN1"/>
+                    <label end="70" start="66" name="VVZ"/>
+                    <label end="74" start="72" name="PNP"/>
+                    <label end="78" start="76" name="PNP"/>
+                    <label end="82" start="80" name="VM0"/>
+                    <label end="87" start="84" name="VVI"/>
+                    <label end="95" start="89" name="NN2"/>
+                    <label end="100" start="97" name="PRP"/>
+                    <label end="104" start="102" name="DPS"/>
+                    <label end="111" start="106" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="MANUAL" ID="121496">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="54" start="53" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="64" start="56" name="Resident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="53" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="53" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="mate-N-340-ppother">
+        <sentence sentNo="0" aPos="21191343" ID="237486">
+            <text>Aunt Elena was Mother 's room-mate at school in Switzerland and they 've been best friends ever since . </text>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="UNANN" ID="121497">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="9" start="5" name="NP0"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="20" start="15" name="NP0"/>
+                    <label end="23" start="22" name="POS"/>
+                    <label end="33" start="25" name="NN1"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="43" start="38" name="NN1"/>
+                    <label end="46" start="45" name="PRP"/>
+                    <label end="58" start="48" name="NP0"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="67" start="64" name="PNP"/>
+                    <label end="71" start="69" name="VHB"/>
+                    <label end="76" start="73" name="VBN"/>
+                    <label end="81" start="78" name="AJS"/>
+                    <label end="89" start="83" name="NN2"/>
+                    <label end="94" start="91" name="AV0"/>
+                    <label end="100" start="96" name="AV0"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="MANUAL" ID="121498">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="537" end="23" start="15" name="Co_resident"/>
+                    <label cBy="428" feID="535" end="9" start="0" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="15" name="Gen"/>
+                    <label end="9" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="15" name="Poss"/>
+                    <label end="9" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="13" start="11" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="26030116" ID="237487">
+            <text>Single White Female star JENNIFER JASON LEIGH once dated ERIC STOLTZ , the current boyfriend of BRIDGIT FONDA , who is Ms Leigh 's room-mate in SWF . </text>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="UNANN" ID="121499">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="11" start="7" name="AJ0"/>
+                    <label end="18" start="13" name="AJ0-NN1"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="32" start="25" name="NP0"/>
+                    <label end="38" start="34" name="NP0"/>
+                    <label end="44" start="40" name="NP0"/>
+                    <label end="49" start="46" name="AV0"/>
+                    <label end="55" start="51" name="VVD"/>
+                    <label end="60" start="57" name="NP0"/>
+                    <label end="67" start="62" name="NP0"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="81" start="75" name="AJ0"/>
+                    <label end="91" start="83" name="NN1"/>
+                    <label end="94" start="93" name="PRF"/>
+                    <label end="102" start="96" name="NP0"/>
+                    <label end="108" start="104" name="NN1-NP0"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="114" start="112" name="PNQ"/>
+                    <label end="117" start="116" name="VBZ"/>
+                    <label end="120" start="119" name="NP0"/>
+                    <label end="126" start="122" name="NP0"/>
+                    <label end="129" start="128" name="POS"/>
+                    <label end="139" start="131" name="NN1"/>
+                    <label end="142" start="141" name="PRP"/>
+                    <label end="146" start="144" name="NP0"/>
+                    <label end="148" start="148" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="MANUAL" ID="121500">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="535" end="108" start="96" name="Resident"/>
+                    <label cBy="428" feID="537" end="129" start="119" name="Co_resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                    <label cBy="309" feID="535" end="114" start="112" name="Resident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="108" start="96" name="Ext"/>
+                    <label end="129" start="119" name="Gen"/>
+                    <label end="114" start="112" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="108" start="96" name="NP"/>
+                    <label end="129" start="119" name="Poss"/>
+                    <label end="114" start="112" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="108" start="96" name="Ant"/>
+                    <label end="114" start="112" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="139" start="131" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="mate-N-380-other">
+        <sentence sentNo="0" aPos="17459962" ID="237488">
+            <text>Players on tour are normally paired together as room-mates , a simple organisational expedient that over the years has created an explosive chemistry of scandal and misbehaviour . </text>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="UNANN" ID="121501">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="9" start="8" name="PRP"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="18" start="16" name="VBB"/>
+                    <label end="27" start="20" name="AV0"/>
+                    <label end="34" start="29" name="VVN"/>
+                    <label end="43" start="36" name="AV0"/>
+                    <label end="46" start="45" name="CJS"/>
+                    <label end="57" start="48" name="NN2"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="61" start="61" name="AT0"/>
+                    <label end="68" start="63" name="AJ0"/>
+                    <label end="83" start="70" name="AJ0"/>
+                    <label end="93" start="85" name="NN1"/>
+                    <label end="98" start="95" name="CJT"/>
+                    <label end="103" start="100" name="PRP"/>
+                    <label end="107" start="105" name="AT0"/>
+                    <label end="113" start="109" name="NN2"/>
+                    <label end="117" start="115" name="VHZ"/>
+                    <label end="125" start="119" name="VVN"/>
+                    <label end="128" start="127" name="AT0"/>
+                    <label end="138" start="130" name="AJ0"/>
+                    <label end="148" start="140" name="NN1"/>
+                    <label end="151" start="150" name="PRF"/>
+                    <label end="159" start="153" name="NN1"/>
+                    <label end="163" start="161" name="CJC"/>
+                    <label end="176" start="165" name="NN1-VVB"/>
+                    <label end="178" start="178" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:33 PST Mon" status="MANUAL" ID="121502">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="535" end="14" start="0" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="103779230" ID="237492">
+            <text>Room-mates Ian Wright and Paul Ince are manager Graham Taylor 's key characters as he seeks to recharge morale and confidence against the USA tomorrow in a stadium that , aptly , usually hosts the New England Patriots . </text>
+            <annotationSet cDate="01/06/2003 08:03:34 PST Mon" status="UNANN" ID="121509">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NN2"/>
+                    <label end="13" start="11" name="NP0"/>
+                    <label end="20" start="15" name="NP0"/>
+                    <label end="24" start="22" name="CJC"/>
+                    <label end="29" start="26" name="NP0"/>
+                    <label end="34" start="31" name="NP0"/>
+                    <label end="38" start="36" name="VBB"/>
+                    <label end="46" start="40" name="NN1"/>
+                    <label end="53" start="48" name="NP0"/>
+                    <label end="60" start="55" name="NP0"/>
+                    <label end="63" start="62" name="POS"/>
+                    <label end="67" start="65" name="AJ0-NN1"/>
+                    <label end="78" start="69" name="NN2"/>
+                    <label end="81" start="80" name="CJS"/>
+                    <label end="84" start="83" name="PNP"/>
+                    <label end="90" start="86" name="VVZ"/>
+                    <label end="93" start="92" name="TO0"/>
+                    <label end="102" start="95" name="VVI"/>
+                    <label end="109" start="104" name="NN1"/>
+                    <label end="113" start="111" name="CJC"/>
+                    <label end="124" start="115" name="NN1"/>
+                    <label end="132" start="126" name="PRP"/>
+                    <label end="136" start="134" name="AT0"/>
+                    <label end="140" start="138" name="NP0"/>
+                    <label end="149" start="142" name="AV0"/>
+                    <label end="152" start="151" name="PRP"/>
+                    <label end="154" start="154" name="AT0"/>
+                    <label end="162" start="156" name="NN1"/>
+                    <label end="167" start="164" name="CJT"/>
+                    <label end="169" start="169" name="PUN"/>
+                    <label end="175" start="171" name="AV0"/>
+                    <label end="177" start="177" name="PUN"/>
+                    <label end="185" start="179" name="AV0"/>
+                    <label end="191" start="187" name="VVZ"/>
+                    <label end="195" start="193" name="AT0"/>
+                    <label end="199" start="197" name="NP0"/>
+                    <label end="207" start="201" name="NP0"/>
+                    <label end="216" start="209" name="NP0"/>
+                    <label end="218" start="218" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:03:34 PST Mon" status="MANUAL" ID="121510">
+                <layer rank="1" name="FE">
+                    <label cBy="428" feID="535" end="34" start="11" name="Resident"/>
+                    <label cBy="428" feID="536" itype="INI" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="11" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

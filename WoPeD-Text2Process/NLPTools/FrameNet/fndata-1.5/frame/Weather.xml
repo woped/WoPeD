@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/12/2002 05:17:10 PDT Fri" name="Weather" ID="303" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Ambient conditions of temperature, precipitation, windiness, and sunniness pertain at a certain &lt;fen&gt;Place&lt;/fen&gt; and &lt;fen&gt;Time&lt;/fen&gt;.  Further &lt;fen&gt;Specification&lt;/fen&gt; of the conditions that pertain may also be indicated.
+&lt;ex&gt;&lt;x&gt;A &lt;fex name="Specification"&gt;blustery&lt;/fex&gt; &lt;t&gt;storm&lt;/t&gt;&lt;/x&gt; &lt;gov&gt;blew&lt;/gov&gt; &lt;gov&gt;in&lt;/gov&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;m&gt;There&lt;/m&gt; &lt;m&gt;was&lt;/m&gt; a &lt;fex name="Spec"&gt;thick&lt;/fex&gt; &lt;t&gt;blizzard&lt;/t&gt; &lt;fex name="Time"&gt;last night&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;x&gt;An armada of &lt;t&gt;hailstorms&lt;/t&gt;&lt;/x&gt; &lt;gov&gt;swept&lt;/gov&gt; through the region.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/15/2002 12:09:52 PDT Thu" abbrev="P" name="Place" ID="3557">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the weather occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/15/2002 12:10:15 PDT Thu" abbrev="T" name="Time" ID="3558">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the weather occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/15/2002 01:01:27 PDT Thu" abbrev="Spec" name="Specification" ID="3560">
+        <definition>&lt;def-root&gt;This FE identifies a further &lt;fen&gt;Specification&lt;/fen&gt; of the weather conditions.
+&lt;ex&gt;An &lt;fex name="Spec"&gt;icy&lt;/fex&gt; &lt;t&gt;storm&lt;/t&gt; hit the Northeast last night.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Precipitation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="stormy.a" ID="5688" lemmaID="38217" cBy="664" cDate="05/02/2002 03:02:40 PDT Thu">
+        <definition>COD: affected or disturbed by a storm. </definition>
+        <sentenceCount annotated="13" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="stormy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="snowy.a" ID="5689" lemmaID="36715" cBy="664" cDate="05/02/2002 03:02:50 PDT Thu">
+        <definition>FN: marked by or covered by snow or looking as if it were</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="snowy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="blizzard.n" ID="5690" lemmaID="3863" cBy="664" cDate="05/02/2002 03:03:16 PDT Thu">
+        <definition>COD: a severe snowstorm with high winds. </definition>
+        <sentenceCount annotated="22" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blizzard"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="storm.n" ID="5691" lemmaID="38207" cBy="664" cDate="05/02/2002 03:03:33 PDT Thu">
+        <definition>COD: a violent disturbance of the atmosphere with strong winds and usually rain, thunder, lightning, or snow. </definition>
+        <sentenceCount annotated="44" total="352"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="storm"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="storm.v" ID="5692" lemmaID="38208" cBy="664" cDate="05/02/2002 03:03:55 PDT Thu">
+        <definition>COD:  be stormy. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="storm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hailstorm.n" ID="5693" lemmaID="17208" cBy="664" cDate="05/02/2002 03:04:06 PDT Thu">
+        <definition>FN: an event where large pellets of frozen water fall amidst modest to high winds and possibly other precipitation. </definition>
+        <sentenceCount annotated="4" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hailstorm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="rainstorm.n" ID="5694" lemmaID="31730" cBy="664" cDate="05/02/2002 03:04:38 PDT Thu">
+        <definition>COD: a storm with heavy rain. </definition>
+        <sentenceCount annotated="14" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rainstorm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="snowstorm.n" ID="5695" lemmaID="36713" cBy="664" cDate="05/02/2002 03:05:01 PDT Thu">
+        <definition>COD: a heavy fall of snow accompanied by a high wind.</definition>
+        <sentenceCount annotated="8" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snowstorm"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="weather.n" ID="5696" lemmaID="43642" cBy="664" cDate="05/02/2002 03:05:23 PDT Thu">
+        <definition>COD: the state of the atmosphere at a place and time as regards temperature, wind, rain, etc.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weather"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="thunderstorm.n" ID="13476" lemmaID="40339" cBy="618" cDate="08/15/2006 04:53:51 PDT Tue">
+        <definition>COD: a storm with thunder and lightning and typically also heavy rain or hail.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thunderstorm"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="climate.n" ID="13818" lemmaID="6781" cBy="664" cDate="02/25/2007 01:24:03 PST Sun">
+        <definition>COD: the general weather conditions prevailing in an area over a long period.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="climate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="lowering sky.n" ID="13834" lemmaID="50517" cBy="664" cDate="02/25/2007 02:52:10 PST Sun">
+        <definition>FN: weather in which dark, low clouds presage a storm.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lowering"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="sky"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sunshine.n" ID="14208" lemmaID="38826" cBy="361" cDate="03/28/2007 03:12:05 PDT Wed">
+        <definition>COD: sunlight unbroken by cloud.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sunshine"/>
+    </lexUnit>
+    <lexUnit status="New" POS="A" name="fair.a" ID="15351" lemmaID="13840" cBy="597" cDate="06/11/2009 12:48:51 PDT Thu">
+        <definition>FN: generally nice weather</definition>
+        <sentenceCount annotated="0" total="184"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fair"/>
+    </lexUnit>
+</frame>

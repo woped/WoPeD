@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" incorporatedFE="Attribute" POS="V" name="take.v" ID="10042" frame="Taking_time" frameID="967" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Time_length"/>
+        </frame>
+    </header>
+    <definition>COD: require or use up (a specified amount of time)</definition>
+    <lexeme POS="V" name="take"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Activity"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <annoSet ID="2560143"/>
+                <annoSet ID="2560173"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time_length"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Time_length"/>
+                <annoSet ID="2560143"/>
+                <annoSet ID="2560173"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Activity"/>
+            <FE name="Time_length"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time_length"/>
+                <annoSet ID="2560143"/>
+                <annoSet ID="2560173"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wcd-(2)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="305" aPos="55764470" ID="1558691">
+            <text>In serious cases results can be produced more quickly , but in the case of organic pollutions the analysis itself takes five days .</text>
+            <annotationSet cDate="05/24/2010 01:16:39 PDT Mon" status="UNANN" ID="2560142">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="9" start="3" name="jj"/>
+                    <label end="15" start="11" name="nns"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="27" start="25" name="md"/>
+                    <label end="30" start="29" name="vb"/>
+                    <label end="39" start="32" name="VVN"/>
+                    <label end="44" start="41" name="rbr"/>
+                    <label end="52" start="46" name="rb"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="58" start="56" name="cc"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="70" start="67" name="nn"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="81" start="75" name="jj"/>
+                    <label end="92" start="83" name="nns"/>
+                    <label end="96" start="94" name="dt"/>
+                    <label end="105" start="98" name="nn"/>
+                    <label end="112" start="107" name="PP"/>
+                    <label end="118" start="114" name="VVZ"/>
+                    <label end="123" start="120" name="cd"/>
+                    <label end="128" start="125" name="nns"/>
+                    <label end="130" start="130" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 01:16:39 PDT Mon" status="MANUAL" ID="2560143">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="118" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="5908" end="112" start="94" name="Activity"/>
+                    <label cBy="589" feID="5910" end="128" start="120" name="Time_length"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="94" name="Ext"/>
+                    <label end="128" start="120" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="94" name="NP"/>
+                    <label end="128" start="120" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="638" aPos="67127911" ID="1558706">
+            <text>The whole action must take no more than five seconds .</text>
+            <annotationSet cDate="05/24/2010 01:16:42 PDT Mon" status="UNANN" ID="2560172">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="15" start="10" name="nn"/>
+                    <label end="20" start="17" name="md"/>
+                    <label end="25" start="22" name="VV"/>
+                    <label end="28" start="27" name="rb"/>
+                    <label end="33" start="30" name="jjr"/>
+                    <label end="38" start="35" name="in"/>
+                    <label end="43" start="40" name="cd"/>
+                    <label end="51" start="45" name="nns"/>
+                    <label end="53" start="53" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 01:16:42 PDT Mon" status="MANUAL" ID="2560173">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="25" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="5908" end="15" start="0" name="Activity"/>
+                    <label cBy="589" feID="5910" end="51" start="27" name="Time_length"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="51" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="51" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Wcd-(2)"/>
+    <subCorpus name="03-Whow-(2)"/>
+    <subCorpus name="04-Wonly-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

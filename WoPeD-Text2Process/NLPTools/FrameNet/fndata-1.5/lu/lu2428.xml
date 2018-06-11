@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="order.v" ID="2428" frame="Bail_decision" frameID="121" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Acc" name="Accused"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Judge" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Stat" name="Status"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: A judge's decision with regard to confinement or bail for a defendant.</definition>
+    <lexeme POS="V" name="order"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Accused"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <annoSet ID="1952951"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Accused"/>
+                <annoSet ID="1952960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Judge"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <annoSet ID="1952951"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1952960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Status"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Status"/>
+                <annoSet ID="1952951"/>
+                <annoSet ID="1952960"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Accused"/>
+            <FE name="Judge"/>
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Status"/>
+                <annoSet ID="1952951"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Accused"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Status"/>
+                <annoSet ID="1952960"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="1" aPos="0" ID="239738">
+            <text>Alleged White House gunman Robert Pickett was arraigned Wednesday at a federal court in Washington and ordered held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:38 PST Mon" status="UNANN" ID="125957">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="25" start="20" name="NN1"/>
+                    <label end="32" start="27" name="NP0"/>
+                    <label end="40" start="34" name="NP0"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="54" start="46" name="AJ0"/>
+                    <label end="64" start="56" name="NP0"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="86" start="85" name="PRP"/>
+                    <label end="97" start="88" name="NP0"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="109" start="103" name="VVD"/>
+                    <label end="114" start="111" name="VVN"/>
+                    <label end="122" start="116" name="PRP"/>
+                    <label end="127" start="124" name="NN1"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/22/2004 03:40:20 PST Thu" status="MANUAL" ID="1952951">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="109" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="620" end="40" start="0" name="Accused"/>
+                    <label cBy="664" feID="622" end="127" start="111" name="Status"/>
+                    <label cBy="664" feID="621" itype="CNI" name="Judge"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="0" name="Ext"/>
+                    <label end="127" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="0" name="NP"/>
+                    <label end="127" start="111" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="3" aPos="0" ID="239740">
+            <text>The magistrate set a preliminary hearing for next Tuesday and ordered Pickett held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125959">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="17" start="15" name="VVD"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="31" start="21" name="AJ0"/>
+                    <label end="39" start="33" name="NN1"/>
+                    <label end="43" start="41" name="PRP"/>
+                    <label end="48" start="45" name="ORD"/>
+                    <label end="56" start="50" name="NP0"/>
+                    <label end="60" start="58" name="CJC"/>
+                    <label end="68" start="62" name="VVD"/>
+                    <label end="76" start="70" name="NP0"/>
+                    <label end="81" start="78" name="VVD"/>
+                    <label end="89" start="83" name="PRP"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/22/2004 04:45:26 PST Thu" status="MANUAL" ID="1952960">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="68" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="620" end="76" start="70" name="Accused"/>
+                    <label cBy="664" feID="622" end="94" start="78" name="Status"/>
+                    <label cBy="664" feID="621" end="13" start="0" name="Judge"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="70" name="Obj"/>
+                    <label end="94" start="78" name="Dep"/>
+                    <label end="13" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="70" name="NP"/>
+                    <label end="94" start="78" name="AJP"/>
+                    <label end="13" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

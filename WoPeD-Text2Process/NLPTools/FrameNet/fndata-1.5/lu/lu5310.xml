@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="parade.v" ID="5310" frame="Mass_motion" frameID="284" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Mass_theme"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="MoT" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: move as a groop (as if) on display</definition>
+    <lexeme POS="V" name="parade"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Area"/>
+                <annoSet ID="1140654"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Mass_theme"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <annoSet ID="1140650"/>
+                <annoSet ID="1140654"/>
+                <annoSet ID="1140688"/>
+                <annoSet ID="1140690"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Path"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1140650"/>
+                <annoSet ID="1140688"/>
+                <annoSet ID="1140690"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1140690"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Mass_theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <annoSet ID="1140654"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Mass_theme"/>
+            <FE name="Path"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1140650"/>
+                <annoSet ID="1140688"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Mass_theme"/>
+            <FE name="Path"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1140690"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb">
+        <sentence sentNo="0" aPos="57515582" ID="842079">
+            <text>At eleven o'clock , the demonstrators formed a line in front of the abbey and prepared to parade slowly through the streets of the historic Georgian city . </text>
+            <annotationSet cDate="01/07/2003 04:36:51 PST Tue" status="UNANN" ID="1140649">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="8" start="3" name="CRD"/>
+                    <label end="16" start="10" name="AV0"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="36" start="24" name="NN2"/>
+                    <label end="43" start="38" name="VVD-VVN"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="53" start="52" name="PRP"/>
+                    <label end="59" start="55" name="PRP"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="66" start="64" name="AT0"/>
+                    <label end="72" start="68" name="NN1"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="85" start="78" name="VVD-VVN"/>
+                    <label end="88" start="87" name="TO0"/>
+                    <label end="95" start="90" name="VVI"/>
+                    <label end="102" start="97" name="AV0"/>
+                    <label end="110" start="104" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="122" start="116" name="NN2"/>
+                    <label end="125" start="124" name="PRF"/>
+                    <label end="129" start="127" name="AT0"/>
+                    <label end="138" start="131" name="AJ0"/>
+                    <label end="147" start="140" name="AJ0"/>
+                    <label end="152" start="149" name="NN1"/>
+                    <label end="154" start="154" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:36:51 PST Tue" status="MANUAL" ID="1140650">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2464" end="152" start="104" name="Path"/>
+                    <label cBy="669" feID="2458" end="36" start="20" name="Mass_theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="104" name="Dep"/>
+                    <label end="36" start="20" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="104" name="PP"/>
+                    <label end="36" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-900-s20-other">
+        <sentence sentNo="0" aPos="12295322" ID="842081">
+            <text>Witnesses willing to be paid for their services would parade outside courthouses . </text>
+            <annotationSet cDate="01/07/2003 04:36:51 PST Tue" status="UNANN" ID="1140653">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN2-VVZ"/>
+                    <label end="16" start="10" name="AJ0"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="22" start="21" name="VBI"/>
+                    <label end="27" start="24" name="VVN"/>
+                    <label end="31" start="29" name="PRP"/>
+                    <label end="37" start="33" name="DPS"/>
+                    <label end="46" start="39" name="NN2"/>
+                    <label end="52" start="48" name="VM0"/>
+                    <label end="59" start="54" name="VVI"/>
+                    <label end="67" start="61" name="AJ0"/>
+                    <label end="79" start="69" name="NN2"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:36:51 PST Tue" status="MANUAL" ID="1140654">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2458" end="46" start="0" name="Mass_theme"/>
+                    <label cBy="669" feID="2460" end="79" start="61" name="Area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="0" name="Ext"/>
+                    <label end="79" start="61" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="0" name="NP"/>
+                    <label end="79" start="61" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108533190" ID="842098">
+            <text>The teams will again parade through the city with a police escort back to the Albert Dock , before returning to the Blundellsands Hotel in Crosby for the evening awards party . </text>
+            <annotationSet cDate="01/07/2003 04:36:53 PST Tue" status="UNANN" ID="1140687">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN2"/>
+                    <label end="13" start="10" name="VM0"/>
+                    <label end="19" start="15" name="AV0"/>
+                    <label end="26" start="21" name="VVI"/>
+                    <label end="34" start="28" name="PRP"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="48" start="45" name="PRP"/>
+                    <label end="50" start="50" name="AT0"/>
+                    <label end="57" start="52" name="NN2"/>
+                    <label end="64" start="59" name="VVB"/>
+                    <label end="69" start="66" name="AVP"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="83" start="78" name="NP0"/>
+                    <label end="88" start="85" name="NP0"/>
+                    <label end="90" start="90" name="PUN"/>
+                    <label end="97" start="92" name="PRP"/>
+                    <label end="107" start="99" name="VVG"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="128" start="116" name="NP0"/>
+                    <label end="134" start="130" name="NN1"/>
+                    <label end="137" start="136" name="PRP"/>
+                    <label end="144" start="139" name="NP0"/>
+                    <label end="148" start="146" name="PRP"/>
+                    <label end="152" start="150" name="AT0"/>
+                    <label end="160" start="154" name="NN1"/>
+                    <label end="167" start="162" name="NN2"/>
+                    <label end="173" start="169" name="NN0"/>
+                    <label end="175" start="175" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:36:54 PST Tue" status="MANUAL" ID="1140688">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2464" end="43" start="28" name="Path"/>
+                    <label cBy="669" feID="2458" end="8" start="0" name="Mass_theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="28" name="Dep"/>
+                    <label end="8" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="28" name="PP"/>
+                    <label end="8" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108572179" ID="842099">
+            <text>UP TO 10,000 people are expected to parade through St Helens tomorrow in a Coal Not Dole rally . </text>
+            <annotationSet cDate="01/07/2003 04:36:54 PST Tue" status="UNANN" ID="1140689">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="4" start="3" name="AV0"/>
+                    <label end="11" start="6" name="CRD"/>
+                    <label end="18" start="13" name="NN0"/>
+                    <label end="22" start="20" name="VBB"/>
+                    <label end="31" start="24" name="AJ0-VVN"/>
+                    <label end="34" start="33" name="TO0"/>
+                    <label end="41" start="36" name="VVI"/>
+                    <label end="49" start="43" name="PRP"/>
+                    <label end="52" start="51" name="NP0"/>
+                    <label end="59" start="54" name="NP0"/>
+                    <label end="68" start="61" name="AV0"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="73" start="73" name="AT0"/>
+                    <label end="78" start="75" name="NN1"/>
+                    <label end="82" start="80" name="XX0"/>
+                    <label end="87" start="84" name="NN1-NP0"/>
+                    <label end="93" start="89" name="NN1"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:36:54 PST Tue" status="MANUAL" ID="1140690">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2464" end="59" start="43" name="Path"/>
+                    <label cBy="669" feID="2461" end="68" start="61" name="Time"/>
+                    <label cBy="669" feID="2458" end="18" start="6" name="Mass_theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="43" name="Dep"/>
+                    <label end="68" start="61" name="Dep"/>
+                    <label end="18" start="6" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="43" name="PP"/>
+                    <label end="68" start="61" name="AVP"/>
+                    <label end="18" start="6" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

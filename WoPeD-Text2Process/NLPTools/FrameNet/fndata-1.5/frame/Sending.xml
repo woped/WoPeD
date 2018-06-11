@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/07/2001 06:51:44 PST Fri" name="Sending" ID="243" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Sender&lt;/fen&gt; plans the &lt;fen&gt;Path&lt;/fen&gt; (along with &lt;fen&gt;Source&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt;) of a &lt;fen&gt;Theme&lt;/fen&gt; and places it in circumstances such that it travels along this &lt;fen&gt;Path&lt;/fen&gt; under the power of some entity other than the &lt;fen&gt;Sender&lt;/fen&gt;.  This frame also has a &lt;fen&gt;Recipient&lt;/fen&gt; distinct from the &lt;fen&gt;Goal&lt;/fen&gt;, as both can be present:
+&lt;ex&gt;I &lt;t&gt;sent&lt;/t&gt; the manuscript &lt;fex name="Goal"&gt;to England&lt;/fex&gt; &lt;fex name="Recipient"&gt;to Bill&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;I &lt;t&gt;forwarded&lt;/t&gt; the grain &lt;fex name="Recipient"&gt;to a dealer&lt;/fex&gt; &lt;fex name="Goal"&gt;in Frankfurt&lt;/fex&gt;.&lt;/ex&gt;
+
+This frame contains verbs that participate in the ditransitive construction, with a recipient as the direct object, as in the following: &lt;ex&gt;I &lt;t&gt;sent&lt;/t&gt; &lt;fex name="Recipient"&gt;Bill&lt;/fex&gt; the manuscript.&lt;/ex&gt;
+Certain Verbs in this Frame focus on the initial sending act, while others do not.  For example, &lt;ment&gt;I sent it rapidly&lt;/ment&gt; can either mean the act of sending was initiated quickly or that it moved quickly.
+However, the in following sentence: &lt;ment&gt;I exported/dispatched it rapidly&lt;/ment&gt;, meaning that the act was begun quickly, both types of verbs are included.&lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="" name="Sender" ID="2212">
+        <definition>&lt;def-root&gt;This is the person who initiates the movement of the &lt;fen&gt;Theme&lt;/fen&gt; and, unlike Carrying, does not accompany it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="" name="Path" ID="2213">
+        <definition>&lt;def-root&gt;Path along which movement occurs.
+I  shipped the books &lt;fex name="Path"&gt;along Interstate 65&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="" name="Goal" ID="2214">
+        <definition>&lt;def-root&gt;The end of the path and intended goal of the sending.
+I &lt;t&gt;sent&lt;/t&gt; the logs &lt;fex name="Goal"&gt;to the shed&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Source" name="Source" ID="2215">
+        <definition>&lt;def-root&gt;The beginning of the path, similar to source except that it serves to define the path.
+I sent wood &lt;fex name="Source"&gt;from Illinois&lt;/fex&gt; &lt;fex name="Goal"&gt;to California&lt;/fex&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Theme" name="Theme" ID="2216">
+        <definition>&lt;def-root&gt;The objects being sent.
+I mailed &lt;fex name="Theme"&gt;the books&lt;/fex&gt; &lt;fex name="Goal"&gt;to Alaska&lt;/fex&gt;.
+Note that &lt;fen&gt;Theme&lt;/fen&gt; may be multiply instantiated.
+They &lt;t&gt;mailed&lt;/t&gt;&lt;fex name="Theme"&gt;a questionnaire&lt;/fex&gt; &lt;fex name="Theme"&gt;with a return envelope&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Transport_means" name="Transport_means" ID="2217">
+        <definition>&lt;def-root&gt;The mode of sending employed.
+I &lt;t&gt;shipped&lt;/t&gt; &lt;fex name="Theme"&gt;the crops&lt;/fex&gt; &lt;fex name="Transport_means"&gt;by bigrig &lt;/fex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Degr" name="Degree" ID="2219">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="dep" name="Depictive" ID="2220">
+        <definition>&lt;def-root&gt;Depictive phrase describing the &lt;fen&gt;Sender&lt;/fen&gt; or &lt;fen&gt;Theme&lt;/fen&gt;
+&lt;ex&gt;He &lt;t&gt;faxed&lt;/t&gt; his order &lt;fex name="dep"&gt;while brushing his teeth&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Dist" name="Distance" ID="2221">
+        <definition>&lt;def-root&gt;This FE is any expression characterizing the extent of motion of the Theme. Pat &lt;t&gt;threw&lt;/t&gt; the Javelin &lt;fex name="Distance"&gt;50 meters&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/07/2002 10:47:52 PST Mon" abbrev="Manr" name="Manner" ID="2222">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 01:17:17 PST Mon" abbrev="Rec" name="Recipient" ID="2223">
+        <definition>&lt;def-root&gt;This is the recipient of the sent &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;fex name="Sender"&gt;Tess&lt;/fex&gt; &lt;t&gt;mailed&lt;/t&gt; &lt;fex name="Theme"&gt;a letter&lt;/fex&gt; &lt;fex name="Recipient"&gt; to Abby&lt;/fex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/30/2003 12:44:28 PDT Mon" abbrev="Purp" name="Purpose" ID="4701">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Purpose&lt;/fen&gt; of the sending.
+&lt;ex&gt;Rachel &lt;t&gt;sent&lt;/t&gt; the letter to her mother &lt;fex name="Purpose"&gt;to let her know about the marriage&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="618" cDate="06/30/2003 12:46:53 PDT Mon" abbrev="Reas" name="Reason" ID="4702">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for the sending.
+&lt;ex&gt;Letters are generally &lt;t&gt;forwarded&lt;/t&gt; for several months &lt;fex name="Reason"&gt;because people are lazy about telling people their new location&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/30/2003 01:03:58 PDT Mon" abbrev="Time" name="Time" ID="4703">
+        <definition>&lt;def-root&gt;When the sending takes place
+&lt;ex&gt;I &lt;t&gt;sent&lt;/t&gt; the letter to you &lt;fex name="Time"&gt;last week&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="07/25/2003 03:18:48 PDT Fri" abbrev="CT" name="Co_theme" ID="4843">
+        <definition>&lt;def-root&gt;An additional theme sent along with the main &lt;fen&gt;Theme&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="07/25/2003 03:30:30 PDT Fri" abbrev="Cont" name="Container" ID="4844">
+        <definition>&lt;def-root&gt;A container in which the &lt;fen&gt;Theme&lt;/fen&gt; is sent.
+&lt;ex&gt;Please send in the request &lt;fex name="Cont"&gt;in a self-addressed stamped envelope&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:40:52 PDT Thu" abbrev="Place" name="Place" ID="5456">
+        <definition>&lt;def-root&gt;A spatial setting encomnpassing the Source location, where the Sending event takes place.
+
+&lt;ex&gt;Barney &lt;t&gt;posted&lt;/t&gt; the letter on Monday &lt;fex name="Place"&gt;in Athens&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Recipient" ID="2223"/>
+        <memberFE name="Goal" ID="2214"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Transport_means" ID="2217"/>
+        <memberFE name="Sender" ID="2212"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Bringing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Delivery</relatedFrame>
+        <relatedFrame>Sent_items</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Bringing</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="V" name="send.v" ID="4491" lemmaID="35050" cBy="664" cDate="12/07/2001 06:52:58 PST Fri">
+        <definition>COD: with obj. cause to go or be taken or delivered to a particular destination. </definition>
+        <sentenceCount annotated="22" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="send"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="mail.v" ID="4492" lemmaID="23177" cBy="664" cDate="12/07/2001 06:53:21 PST Fri">
+        <definition>COD: with obj. send (a letter or parcel) by post. </definition>
+        <sentenceCount annotated="15" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ship.v" ID="4494" lemmaID="35541" cBy="664" cDate="12/07/2001 06:54:28 PST Fri">
+        <definition>FN: cause to be transported (esp. on a ship).</definition>
+        <sentenceCount annotated="31" total="291"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ship"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="post.v" ID="4606" lemmaID="29869" cBy="296" cDate="01/02/2002 03:28:33 PST Wed">
+        <definition>COD: with obj. chiefly Brit. send via the postal system. </definition>
+        <sentenceCount annotated="18" total="276"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="post"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="export.v" ID="4607" lemmaID="13586" cBy="296" cDate="01/02/2002 04:39:17 PST Wed">
+        <definition>COD: send (goods or services) to another country for sale. </definition>
+        <sentenceCount annotated="24" total="285"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="export"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="forward.v" ID="4608" lemmaID="15208" cBy="296" cDate="01/02/2002 04:39:41 PST Wed">
+        <definition>COD: dispatch; send. </definition>
+        <sentenceCount annotated="18" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="forward"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="route.v" ID="4609" lemmaID="33642" cBy="296" cDate="01/02/2002 04:39:55 PST Wed">
+        <definition>COD: v.1.routeing or routing with obj. and adverbial of direction send or direct along a specified course. </definition>
+        <sentenceCount annotated="4" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="route"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dispatch.v" ID="4657" lemmaID="11079" cBy="296" cDate="01/10/2002 01:08:06 PST Thu">
+        <definition>COD: send off promptly to a destination or for a purpose. </definition>
+        <sentenceCount annotated="21" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dispatch"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Transport_means" POS="V" name="fax.v" ID="9000" lemmaID="48100" cBy="296" cDate="07/09/2003 11:56:54 PDT Wed">
+        <definition>COD: send (a document) by fax. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fax"/>
+    </lexUnit>
+    <lexUnit status="In_Use" incorporatedFE="Transport_means" POS="V" name="telex.v" ID="9001" lemmaID="39771" cBy="296" cDate="07/09/2003 11:57:36 PDT Wed">
+        <definition>FN: send via telex</definition>
+        <sentenceCount annotated="10" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="telex"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Theme" POS="N" name="shipment_((items)).n" ID="10694" lemmaID="35549" cBy="605" cDate="06/30/2004 10:17:45 PDT Wed">
+        <definition>COD: a consignment of goods shipped.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shipment"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shipment_((act)).n" ID="12164" lemmaID="35549" cBy="605" cDate="06/02/2005 03:26:46 PDT Thu">
+        <definition>COD: the action of shipping goods.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shipment"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Transport_means" POS="V" name="express.v" ID="14835" lemmaID="13598" cBy="361" cDate="03/05/2008 02:28:50 PST Wed">
+        <definition>FN: send in the post with a short delivery time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="express"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Transport_means" POS="V" name="barge.v" ID="14838" lemmaID="2906" cBy="361" cDate="03/05/2008 02:58:02 PST Wed">
+        <definition>FN: send via a vessell that travels through the water</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="barge"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Transport_means" POS="V" name="wire.v" ID="15085" lemmaID="44276" cBy="597" cDate="06/10/2008 10:48:00 PDT Tue">
+        <definition>FN: send by telegram or electronically</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wire"/>
+    </lexUnit>
+</frame>

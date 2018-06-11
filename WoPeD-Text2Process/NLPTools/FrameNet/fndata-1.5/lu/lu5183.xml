@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="torch.v" ID="5183" frame="Setting_fire" frameID="283" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Containing_event"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Flame" name="Flame"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Flambls" name="Flammables"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kindler" name="Kindler"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: set fire to. "The shops had been looted and torched."</definition>
+    <lexeme POS="V" name="torch"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Flammables"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <annoSet ID="1107565"/>
+                <annoSet ID="1107575"/>
+                <annoSet ID="1107579"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Flammables"/>
+                <annoSet ID="1107577"/>
+                <annoSet ID="1107591"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Kindler"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Kindler"/>
+                <annoSet ID="1107565"/>
+                <annoSet ID="1107579"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Kindler"/>
+                <annoSet ID="1107575"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Kindler"/>
+                <annoSet ID="1107577"/>
+                <annoSet ID="1107591"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1107579"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Flammables"/>
+            <FE name="Kindler"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="" PT="CNI" FE="Kindler"/>
+                <annoSet ID="1107565"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Kindler"/>
+                <annoSet ID="1107575"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Kindler"/>
+                <annoSet ID="1107577"/>
+                <annoSet ID="1107591"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Flammables"/>
+            <FE name="Kindler"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="" PT="CNI" FE="Kindler"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1107579"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="29928037" ID="825512">
+            <text>According to Eric , one of the residents , some two weeks before our visit there was a dispute over drugs and one of the shacks had been torched . </text>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="UNANN" ID="1107564">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="PRP"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="16" start="13" name="NP0"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="22" start="20" name="CRD"/>
+                    <label end="25" start="24" name="PRF"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="39" start="31" name="NN2"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="46" start="43" name="DT0"/>
+                    <label end="50" start="48" name="CRD"/>
+                    <label end="56" start="52" name="NN2"/>
+                    <label end="63" start="58" name="PRP"/>
+                    <label end="67" start="65" name="DPS"/>
+                    <label end="73" start="69" name="NN1"/>
+                    <label end="79" start="75" name="EX0"/>
+                    <label end="83" start="81" name="VBD"/>
+                    <label end="85" start="85" name="AT0"/>
+                    <label end="93" start="87" name="NN1"/>
+                    <label end="98" start="95" name="PRP"/>
+                    <label end="104" start="100" name="NN2"/>
+                    <label end="108" start="106" name="CJC"/>
+                    <label end="112" start="110" name="CRD"/>
+                    <label end="115" start="114" name="PRF"/>
+                    <label end="119" start="117" name="AT0"/>
+                    <label end="126" start="121" name="NN2"/>
+                    <label end="130" start="128" name="VHD"/>
+                    <label end="135" start="132" name="VBN"/>
+                    <label end="143" start="137" name="VVN"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="MANUAL" ID="1107565">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2451" end="126" start="110" name="Flammables"/>
+                    <label cBy="893" feID="2449" itype="CNI" name="Kindler"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="110" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="110" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="143" start="137" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34475054" ID="825517">
+            <text>Shattered homes were ablaze and trees torched by flaming aviation fuel . </text>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="UNANN" ID="1107574">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AJ0"/>
+                    <label end="14" start="10" name="NN2"/>
+                    <label end="19" start="16" name="VBD"/>
+                    <label end="26" start="21" name="AJ0"/>
+                    <label end="30" start="28" name="CJC"/>
+                    <label end="36" start="32" name="NN2"/>
+                    <label end="44" start="38" name="VVD-VVN"/>
+                    <label end="47" start="46" name="PRP"/>
+                    <label end="55" start="49" name="AJ0"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="69" start="66" name="NN1"/>
+                    <label end="71" start="71" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="MANUAL" ID="1107575">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2451" end="36" start="32" name="Flammables"/>
+                    <label cBy="893" feID="2449" end="69" start="46" name="Kindler"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="46" name="Dep"/>
+                    <label end="36" start="32" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="46" name="PP"/>
+                    <label end="36" start="32" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34859546" ID="825518">
+            <text>Mobs of Right-wing thugs set ablaze a tent city housing refugees outside Leipzig and torched a hostel in Zielitz . </text>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="UNANN" ID="1107576">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN2"/>
+                    <label end="6" start="5" name="PRF"/>
+                    <label end="17" start="8" name="AJ0"/>
+                    <label end="23" start="19" name="NN2"/>
+                    <label end="27" start="25" name="VVB"/>
+                    <label end="34" start="29" name="AJ0"/>
+                    <label end="36" start="36" name="AT0"/>
+                    <label end="41" start="38" name="NN1"/>
+                    <label end="46" start="43" name="NN1"/>
+                    <label end="54" start="48" name="NN1-VVG"/>
+                    <label end="63" start="56" name="NN2"/>
+                    <label end="71" start="65" name="PRP"/>
+                    <label end="79" start="73" name="NP0"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="91" start="85" name="VVD"/>
+                    <label end="93" start="93" name="AT0"/>
+                    <label end="100" start="95" name="NN1"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="111" start="105" name="NP0"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="MANUAL" ID="1107577">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2449" end="23" start="0" name="Kindler"/>
+                    <label cBy="893" feID="2451" end="111" start="93" name="Flammables"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="0" name="Ext"/>
+                    <label end="111" start="93" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="0" name="NP"/>
+                    <label end="111" start="93" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="91" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35202542" ID="825519">
+            <text>An Indian woman being torched at a bus-stop . </text>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="UNANN" ID="1107578">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="8" start="3" name="AJ0"/>
+                    <label end="14" start="10" name="NN1"/>
+                    <label end="20" start="16" name="VBG"/>
+                    <label end="28" start="22" name="VVN"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="42" start="35" name="AJ0-NN1"/>
+                    <label end="44" start="44" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:34 PST Tue" status="MANUAL" ID="1107579">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2451" end="14" start="0" name="Flammables"/>
+                    <label cBy="893" feID="2449" itype="CNI" name="Kindler"/>
+                    <label cBy="664" feID="2457" end="42" start="30" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="42" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="42" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64714799" ID="825525">
+            <text>The crowds burned one police car , destroyed five others , threw bottles at helmeted police , torched an overturned taxi , and ripped sod from the playing field at Tiger Stadium . </text>
+            <annotationSet cDate="01/07/2003 03:58:35 PST Tue" status="UNANN" ID="1107590">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="16" start="11" name="VVD"/>
+                    <label end="20" start="18" name="CRD-PNI"/>
+                    <label end="27" start="22" name="VVZ"/>
+                    <label end="31" start="29" name="NN1"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="43" start="35" name="VVD"/>
+                    <label end="48" start="45" name="CRD"/>
+                    <label end="55" start="50" name="NN2"/>
+                    <label end="57" start="57" name="PUN"/>
+                    <label end="63" start="59" name="VVD"/>
+                    <label end="71" start="65" name="NN2"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="83" start="76" name="AJ0"/>
+                    <label end="90" start="85" name="NN2"/>
+                    <label end="92" start="92" name="PUN"/>
+                    <label end="100" start="94" name="VVD"/>
+                    <label end="103" start="102" name="AT0"/>
+                    <label end="114" start="105" name="AJ0"/>
+                    <label end="119" start="116" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="125" start="123" name="CJC"/>
+                    <label end="132" start="127" name="AJ0-VVD"/>
+                    <label end="136" start="134" name="NN1"/>
+                    <label end="141" start="138" name="PRP"/>
+                    <label end="145" start="143" name="AT0"/>
+                    <label end="153" start="147" name="AJ0"/>
+                    <label end="159" start="155" name="NN1"/>
+                    <label end="162" start="161" name="PRP"/>
+                    <label end="168" start="164" name="NN1-NP0"/>
+                    <label end="176" start="170" name="NN1"/>
+                    <label end="178" start="178" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:35 PST Tue" status="MANUAL" ID="1107591">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2449" end="9" start="0" name="Kindler"/>
+                    <label cBy="893" feID="2451" end="119" start="102" name="Flammables"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="119" start="102" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="119" start="102" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

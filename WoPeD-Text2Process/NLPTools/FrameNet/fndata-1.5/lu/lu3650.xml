@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="cottons.n" ID="3650" frame="Clothing" frameID="134" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>FN: garments made of cotton.</definition>
+    <lexeme POS="N" name="cottons"/>
+    <valences>
+        <governor type="Gov" lemma="prefer">
+            <annoSet ID="581626"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="581664"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Garment"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="581618"/>
+                <annoSet ID="581626"/>
+                <annoSet ID="581664"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Style"/>
+                <annoSet ID="581618"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Garment"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="581664"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="581626"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Style"/>
+                <annoSet ID="581618"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="4419087" ID="471364">
+            <text>Ribbed cottons are decorated with pastel florals and shell motifs -- available at branches of Hennes from the end of February . </text>
+            <annotationSet cDate="01/07/2003 05:15:13 PST Tue" status="UNANN" ID="581617">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="13" start="7" name="NN2"/>
+                    <label end="17" start="15" name="VBB"/>
+                    <label end="27" start="19" name="VVN"/>
+                    <label end="32" start="29" name="PRP"/>
+                    <label end="39" start="34" name="AJ0-NN1"/>
+                    <label end="47" start="41" name="NN2"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="57" start="53" name="NN1-VVB"/>
+                    <label end="64" start="59" name="NN2"/>
+                    <label end="67" start="66" name="PUN"/>
+                    <label end="77" start="69" name="AJ0"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="89" start="82" name="NN2"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="99" start="94" name="NP0"/>
+                    <label end="104" start="101" name="PRP"/>
+                    <label end="108" start="106" name="AT0"/>
+                    <label end="112" start="110" name="NN1"/>
+                    <label end="115" start="114" name="PRF"/>
+                    <label end="124" start="117" name="NP0"/>
+                    <label end="126" start="126" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:15:13 PST Tue" status="MANUAL" ID="581618">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="871" end="5" start="0" name="Style"/>
+                    <label cBy="669" feID="869" end="13" start="7" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="13" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25359067" ID="471368">
+            <text>I know they used silks and damasks , but I prefer cottons and chintzes . </text>
+            <annotationSet cDate="01/07/2003 05:15:13 PST Tue" status="UNANN" ID="581625">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVB"/>
+                    <label end="10" start="7" name="PNP"/>
+                    <label end="15" start="12" name="AJ0-VVD"/>
+                    <label end="21" start="17" name="NN2"/>
+                    <label end="25" start="23" name="CJC"/>
+                    <label end="33" start="27" name="NN2-VVZ"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="41" start="41" name="PNP"/>
+                    <label end="48" start="43" name="VVB"/>
+                    <label end="56" start="50" name="NN2"/>
+                    <label end="60" start="58" name="CJC"/>
+                    <label end="69" start="62" name="NN2"/>
+                    <label end="71" start="71" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:15:13 PST Tue" status="MANUAL" ID="581626">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="56" start="50" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="48" start="43" name="Gov"/>
+                    <label end="69" start="50" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="107577870" ID="471387">
+            <text>The saleswoman went over to a rack of ankle-length cottons in different colours . </text>
+            <annotationSet cDate="01/07/2003 05:15:16 PST Tue" status="UNANN" ID="581663">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="18" start="15" name="VVD"/>
+                    <label end="23" start="20" name="AVP"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="28" start="28" name="AT0"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="49" start="38" name="AJ0"/>
+                    <label end="57" start="51" name="NN2"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="70" start="62" name="AJ0"/>
+                    <label end="78" start="72" name="NN2"/>
+                    <label end="80" start="80" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:15:16 PST Tue" status="MANUAL" ID="581664">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="873" end="49" start="38" name="Descriptor"/>
+                    <label cBy="669" feID="869" end="57" start="51" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="38" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

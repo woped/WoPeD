@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="stop.v" ID="11292" frame="Preventing" frameID="516" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Event" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Pre" name="Preventing_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: prevent an event from occurring.</definition>
+    <lexeme POS="V" name="stop"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Event"/>
+                <annoSet ID="2566999"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Event"/>
+                <annoSet ID="2566997"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Preventing_cause"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Preventing_cause"/>
+                <annoSet ID="2566997"/>
+                <annoSet ID="2566999"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Event"/>
+            <FE name="Preventing_cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Event"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Preventing_cause"/>
+                <annoSet ID="2566999"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Event"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Preventing_cause"/>
+                <annoSet ID="2566997"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="05-pp_in-p-(1)"/>
+    <subCorpus name="06-other-matched-(1)"/>
+    <subCorpus name="07-other-unmatched-(1)"/>
+    <subCorpus name="01-T-PPfrom-(3)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="264" aPos="80632675" ID="1562123">
+            <text>Belinda knew it would be Tom Russell , but that did n't stop her from flushing foolishly at the sight of him standing in the doorway , jiggling his car keys in his hand .</text>
+            <annotationSet cDate="06/02/2010 01:28:20 PDT Wed" status="UNANN" ID="2566996">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="11" start="8" name="VVD"/>
+                    <label end="14" start="13" name="PP"/>
+                    <label end="20" start="16" name="md"/>
+                    <label end="23" start="22" name="vb"/>
+                    <label end="27" start="25" name="NP"/>
+                    <label end="35" start="29" name="NP"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="41" start="39" name="cc"/>
+                    <label end="46" start="43" name="wdt"/>
+                    <label end="50" start="48" name="VVD"/>
+                    <label end="54" start="52" name="rb"/>
+                    <label end="59" start="56" name="VV"/>
+                    <label end="63" start="61" name="PP"/>
+                    <label end="68" start="65" name="in"/>
+                    <label end="77" start="70" name="VVG"/>
+                    <label end="87" start="79" name="rb"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="107" start="105" name="PP"/>
+                    <label end="116" start="109" name="VVG"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="131" start="125" name="nn"/>
+                    <label end="133" start="133" name=","/>
+                    <label end="142" start="135" name="VVG"/>
+                    <label end="146" start="144" name="PP$"/>
+                    <label end="150" start="148" name="nn"/>
+                    <label end="155" start="152" name="nns"/>
+                    <label end="158" start="157" name="in"/>
+                    <label end="162" start="160" name="PP$"/>
+                    <label end="167" start="164" name="nn"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/02/2010 01:28:20 PDT Wed" status="MANUAL" ID="2566997">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="59" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="4114" end="46" start="43" name="Preventing_cause"/>
+                    <label cBy="571" feID="4115" end="167" start="65" name="Event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="43" name="Ext"/>
+                    <label end="167" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="43" name="NP"/>
+                    <label end="167" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1440" aPos="108252118" ID="1562124">
+            <text>It was done on the receivers orders to stop disgruntled workers taking demonstration vehicles from the site .</text>
+            <annotationSet cDate="06/02/2010 01:28:20 PDT Wed" status="UNANN" ID="2566998">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="VVN"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="27" start="19" name="nns"/>
+                    <label end="34" start="29" name="nns"/>
+                    <label end="37" start="36" name="to"/>
+                    <label end="42" start="39" name="VV"/>
+                    <label end="54" start="44" name="jj"/>
+                    <label end="62" start="56" name="nns"/>
+                    <label end="69" start="64" name="VVG"/>
+                    <label end="83" start="71" name="nn"/>
+                    <label end="92" start="85" name="nns"/>
+                    <label end="97" start="94" name="in"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="106" start="103" name="nn"/>
+                    <label end="108" start="108" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/02/2010 01:28:20 PDT Wed" status="MANUAL" ID="2566999">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="42" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="4115" end="106" start="44" name="Event"/>
+                    <label cBy="571" feID="4114" end="34" start="15" name="Preventing_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="44" name="Dep"/>
+                    <label end="34" start="15" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="44" name="NP"/>
+                    <label end="34" start="15" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+</lexUnit>

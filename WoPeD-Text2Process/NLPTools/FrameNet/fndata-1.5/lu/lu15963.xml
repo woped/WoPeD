@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="cold.n" ID="15963" frame="Ambient_temperature" frameID="1052" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="con" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pl" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Weather"/>
+        </frame>
+    </header>
+    <definition>FN: low temperature, usually below freezing.</definition>
+    <lexeme POS="N" name="cold"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Temperature"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Temperature"/>
+                <annoSet ID="2600198"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Time"/>
+                <annoSet ID="2600198"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Temperature"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Temperature"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Time"/>
+                <annoSet ID="2600198"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="6" paragNo="3" aPos="0" ID="312919">
+            <text>His hair was very fair , his face naturally sanguine , his skin roughened by coarse soap and blunt razor blades and the cold of the winter that had just ended .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269195">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="16" start="13" name="AV0"/>
+                    <label end="21" start="18" name="AJ0"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="27" start="25" name="DPS"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="42" start="34" name="AV0"/>
+                    <label end="51" start="44" name="AJ0"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="57" start="55" name="DPS"/>
+                    <label end="62" start="59" name="NN1"/>
+                    <label end="72" start="64" name="VVN"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="82" start="77" name="AJ0"/>
+                    <label end="87" start="84" name="NN1"/>
+                    <label end="91" start="89" name="CJC"/>
+                    <label end="97" start="93" name="AJ0"/>
+                    <label end="103" start="99" name="NN1"/>
+                    <label end="110" start="105" name="NN2"/>
+                    <label end="114" start="112" name="CJC"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="123" start="120" name="NN1"/>
+                    <label end="126" start="125" name="PRF"/>
+                    <label end="130" start="128" name="AT0"/>
+                    <label end="137" start="132" name="NN1"/>
+                    <label end="142" start="139" name="CJT"/>
+                    <label end="146" start="144" name="VHD"/>
+                    <label end="151" start="148" name="AV0"/>
+                    <label end="157" start="153" name="VVN"/>
+                    <label end="159" start="159" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 05:34:38 PDT Fri" status="MANUAL" ID="2600198">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="123" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6192" end="157" start="125" name="Time"/>
+                    <label cBy="664" feID="6190" end="123" start="120" name="Temperature"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="157" start="125" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="157" start="125" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

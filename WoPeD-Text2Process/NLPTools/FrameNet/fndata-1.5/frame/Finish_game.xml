@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="976" cDate="01/29/2010 01:43:19 PST Fri" name="Finish_game" ID="2193" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Player&lt;/fen&gt; finishes a &lt;fen&gt;Game&lt;/fen&gt;, possibly with an outcome of winning or losing. A &lt;fen&gt;Game&lt;/fen&gt; is an activity that is considered recreational, and is valued for associated pleasure, as well as social interaction, material reward, or status. Not all games can be won or lost. Those that are specifically competitions are defined in the inheriting frame Finish_competition. In some LUs, the &lt;fen&gt;Game&lt;/fen&gt; is DNI.
+
+&lt;ex&gt; &lt;fex name="Player"&gt;John&lt;/fex&gt; &lt;t&gt;won&lt;/t&gt; &lt;fex name="Game"&gt;the lottery&lt;/fex&gt;! &lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Player"&gt;John&lt;/fex&gt; &lt;t&gt;lost&lt;/t&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="976" cDate="02/01/2010 10:50:11 PST Mon" abbrev="" name="Game" ID="13503">
+        <definition>&lt;def-root&gt;An activity the &lt;fen&gt;Player&lt;/fen&gt; participates in.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="976" cDate="02/01/2010 10:52:22 PST Mon" abbrev="" name="Player" ID="13504">
+        <definition>&lt;def-root&gt;The individual participating in a &lt;fen&gt;Game&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="976" cDate="02/01/2010 10:53:22 PST Mon" abbrev="" name="Manner" ID="13505">
+        <definition>&lt;def-root&gt;Any description of the &lt;fen&gt;Game&lt;/fen&gt; which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of a &lt;fen&gt;Player&lt;/fen&gt; that also affect their action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="976" cDate="02/01/2010 10:56:38 PST Mon" abbrev="" name="Means" ID="13506">
+        <definition>&lt;def-root&gt;An action of the &lt;fen&gt;Player&lt;/fen&gt; that results in the outcome of the &lt;fen&gt;Game&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="976" cDate="02/01/2010 11:04:40 PST Mon" abbrev="" name="Time" ID="13507">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Game&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Finish_competition</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="win.v" ID="15593" lemmaID="44198" cBy="976" cDate="02/01/2010 11:08:37 PST Mon">
+        <definition>FN: complete a game with a favorable outcome</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="win"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="lose.v" ID="15594" lemmaID="22797" cBy="976" cDate="02/01/2010 11:09:33 PST Mon">
+        <definition>FN: complete a game with an unfavorable outcome</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lose"/>
+    </lexUnit>
+</frame>

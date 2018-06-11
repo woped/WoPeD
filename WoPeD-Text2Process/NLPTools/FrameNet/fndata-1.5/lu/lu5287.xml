@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="fool.v" ID="5287" frame="Prevarication" frameID="287" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD: trick, deceive, or dupe. </definition>
+    <lexeme POS="V" name="fool"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Addressee"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <annoSet ID="1133936"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Speaker"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1133936"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Topic"/>
+                <annoSet ID="1133936"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Addressee"/>
+            <FE name="Speaker"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Topic"/>
+                <annoSet ID="1133936"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-people"/>
+    <subCorpus name="V-570-s20-np-ppby"/>
+    <subCorpus name="V-570-s20-np-ppin"/>
+    <subCorpus name="V-570-s20-np-ppinto"/>
+    <subCorpus name="V-570-s20-np-ppwith">
+        <sentence sentNo="0" aPos="101147332" ID="838722">
+            <text>` You 're fooling no one with that line , &quot; Candy scoffed . </text>
+            <annotationSet cDate="01/07/2003 04:28:56 PST Tue" status="UNANN" ID="1133935">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="PNP"/>
+                    <label end="8" start="6" name="VBB"/>
+                    <label end="16" start="10" name="VVG"/>
+                    <label end="19" start="18" name="PNI"/>
+                    <label end="23" start="21" name="PNI"/>
+                    <label end="28" start="25" name="PRP"/>
+                    <label end="33" start="30" name="DT0"/>
+                    <label end="38" start="35" name="NN1"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="42" start="42" name="PUQ"/>
+                    <label end="48" start="44" name="NN1"/>
+                    <label end="56" start="50" name="VVD"/>
+                    <label end="58" start="58" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:28:56 PST Tue" status="MANUAL" ID="1133936">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2490" end="4" start="2" name="Speaker"/>
+                    <label cBy="669" feID="2491" end="23" start="18" name="Addressee"/>
+                    <label cBy="669" feID="2492" end="38" start="25" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Ext"/>
+                    <label end="23" start="18" name="Obj"/>
+                    <label end="38" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="NP"/>
+                    <label end="23" start="18" name="NP"/>
+                    <label end="38" start="25" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-650-s20-np-pother"/>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-690-s20-trans-other"/>
+    <subCorpus name="V-730-s20-ppwith"/>
+    <subCorpus name="V-730-s40-ppby"/>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

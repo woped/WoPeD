@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="sell short.v" ID="15511" frame="Long_or_short_selling" frameID="2180" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Assets"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Intermediary"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Lender"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Market"/>
+        </frame>
+    </header>
+    <definition>FN: the intermediary profits from selling stocks high and buy them back lower then he/she bought them.</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="sell"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="A" name="short"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Assets"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Assets"/>
+                <annoSet ID="2593911"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Intermediary"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Intermediary"/>
+                <annoSet ID="2593911"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Lender"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Lender"/>
+                <annoSet ID="2593911"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Market"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Market"/>
+                <annoSet ID="2593911"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Assets"/>
+            <FE name="Intermediary"/>
+            <FE name="Lender"/>
+            <FE name="Market"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Assets"/>
+                <valenceUnit GF="" PT="INI" FE="Intermediary"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Lender"/>
+                <valenceUnit GF="" PT="INI" FE="Market"/>
+                <annoSet ID="2593911"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-(1)"/>
+    <subCorpus name="02-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="713" aPos="6184997" ID="1579646">
+            <text>Such exposures are destroying long-held notions that it is somehow unpatriotic for American investors to sell short the shares of American companies .</text>
+            <annotationSet cDate="07/16/2010 04:02:25 PDT Fri" status="UNANN" ID="2593910">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="13" start="5" name="nns"/>
+                    <label end="17" start="15" name="vbp"/>
+                    <label end="28" start="19" name="VVG"/>
+                    <label end="38" start="30" name="jj"/>
+                    <label end="46" start="40" name="nns"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="54" start="53" name="PP"/>
+                    <label end="57" start="56" name="VBZ"/>
+                    <label end="65" start="59" name="rb"/>
+                    <label end="77" start="67" name="jj"/>
+                    <label end="81" start="79" name="in"/>
+                    <label end="90" start="83" name="jj"/>
+                    <label end="100" start="92" name="nns"/>
+                    <label end="103" start="102" name="to"/>
+                    <label end="108" start="105" name="VV"/>
+                    <label end="114" start="110" name="jj"/>
+                    <label end="118" start="116" name="dt"/>
+                    <label end="125" start="120" name="nns"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="137" start="130" name="jj"/>
+                    <label end="147" start="139" name="nns"/>
+                    <label end="149" start="149" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 04:02:25 PDT Fri" status="MANUAL" ID="2593911">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="108" start="105" name="Target"/>
+                    <label cBy="571" end="114" start="110" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="13390" end="100" start="83" name="Lender"/>
+                    <label cBy="571" feID="13391" end="147" start="116" name="Assets"/>
+                    <label cBy="571" feID="13392" itype="INI" name="Intermediary"/>
+                    <label cBy="571" feID="13393" itype="INI" name="Market"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="83" name="Ext"/>
+                    <label end="147" start="116" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="83" name="NP"/>
+                    <label end="147" start="116" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

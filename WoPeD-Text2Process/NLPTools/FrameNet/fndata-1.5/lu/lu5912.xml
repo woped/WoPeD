@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="refrigerate.v" ID="5912" frame="Cause_temperature_change" frameID="334" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="H/C" name="Hot_Cold_source"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Temperature_change"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Temperature_goal" name="Temperature_goal"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Temperature_start" name="Temperature_start"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: subject (food or drink) to cold in order to chill or preserve it. </definition>
+    <lexeme POS="V" name="refrigerate"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Agent"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1285734"/>
+                <annoSet ID="1285754"/>
+                <annoSet ID="1285764"/>
+                <annoSet ID="1285770"/>
+                <annoSet ID="1285780"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1285776"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Duration"/>
+                <annoSet ID="1285770"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Hot_Cold_source"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <annoSet ID="1285734"/>
+                <annoSet ID="1285754"/>
+                <annoSet ID="1285764"/>
+                <annoSet ID="1285770"/>
+                <annoSet ID="1285776"/>
+                <annoSet ID="1285780"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Item"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1285734"/>
+                <annoSet ID="1285770"/>
+                <annoSet ID="1285780"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Item"/>
+                <annoSet ID="1285764"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="1285754"/>
+                <annoSet ID="1285776"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1285734"/>
+                <annoSet ID="1285754"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1285764"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Purpose"/>
+                <annoSet ID="1285734"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[after]" FE="Time"/>
+                <annoSet ID="1285780"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="1285776"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Duration"/>
+            <FE name="Hot_Cold_source"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Duration"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1285770"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Hot_Cold_source"/>
+            <FE name="Item"/>
+            <FE name="Item"/>
+            <FE name="Manner"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Purpose"/>
+                <annoSet ID="1285734"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Hot_Cold_source"/>
+            <FE name="Item"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1285754"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Hot_Cold_source"/>
+            <FE name="Item"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="" PT="CNI" FE="Item"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1285764"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Hot_Cold_source"/>
+            <FE name="Item"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PPing[after]" FE="Time"/>
+                <annoSet ID="1285780"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Hot_Cold_source"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="1285776"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="3932133" ID="915833">
+            <text>One advantage of such a site , however , is that samples of blood and urine that are required for analysis of rhythms are readily refrigerated so that deterioration is less of a problem than in other environments . </text>
+            <annotationSet cDate="01/07/2003 07:22:14 PST Tue" status="UNANN" ID="1285733">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="15" start="14" name="PRF"/>
+                    <label end="20" start="17" name="DT0"/>
+                    <label end="22" start="22" name="AT0"/>
+                    <label end="27" start="24" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="37" start="31" name="AV0"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="42" start="41" name="VBZ"/>
+                    <label end="47" start="44" name="CJT-DT0"/>
+                    <label end="55" start="49" name="NN2"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="64" start="60" name="NN1"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="79" start="76" name="CJT"/>
+                    <label end="83" start="81" name="VBB"/>
+                    <label end="92" start="85" name="VVN"/>
+                    <label end="96" start="94" name="PRP"/>
+                    <label end="105" start="98" name="NN1"/>
+                    <label end="108" start="107" name="PRF"/>
+                    <label end="116" start="110" name="NN2"/>
+                    <label end="120" start="118" name="VBB"/>
+                    <label end="128" start="122" name="AV0"/>
+                    <label end="141" start="130" name="VVD-VVN"/>
+                    <label end="144" start="143" name="CJS"/>
+                    <label end="149" start="146" name="CJS"/>
+                    <label end="163" start="151" name="NN1"/>
+                    <label end="166" start="165" name="VBZ"/>
+                    <label end="171" start="168" name="DT0"/>
+                    <label end="174" start="173" name="PRF"/>
+                    <label end="176" start="176" name="AT0"/>
+                    <label end="184" start="178" name="NN1"/>
+                    <label end="189" start="186" name="CJS"/>
+                    <label end="192" start="191" name="PRP"/>
+                    <label end="198" start="194" name="AJ0"/>
+                    <label end="211" start="200" name="NN2"/>
+                    <label end="213" start="213" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:14 PST Tue" status="MANUAL" ID="1285734">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2913" end="211" start="143" name="Purpose"/>
+                    <label cBy="268" feID="2910" end="128" start="122" name="Manner"/>
+                    <label cBy="268" feID="2889" end="74" start="49" name="Item"/>
+                    <label cBy="268" feID="2887" itype="CNI" name="Agent"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                    <label cBy="309" feID="2889" end="79" start="76" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="211" start="143" name="Dep"/>
+                    <label end="128" start="122" name="Dep"/>
+                    <label end="74" start="49" name="Ext"/>
+                    <label end="79" start="76" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="211" start="143" name="Sub"/>
+                    <label end="128" start="122" name="AVP"/>
+                    <label end="74" start="49" name="NP"/>
+                    <label end="79" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="74" start="49" name="Ant"/>
+                    <label end="79" start="76" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="141" start="130" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24749292" ID="915843">
+            <text>Be careful with leftovers -- refrigerate or freeze them quickly . </text>
+            <annotationSet cDate="01/07/2003 07:22:15 PST Tue" status="UNANN" ID="1285753">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="VBB"/>
+                    <label end="9" start="3" name="AJ0"/>
+                    <label end="14" start="11" name="PRP"/>
+                    <label end="24" start="16" name="NN2"/>
+                    <label end="27" start="26" name="PUN"/>
+                    <label end="39" start="29" name="VVB"/>
+                    <label end="42" start="41" name="CJC"/>
+                    <label end="49" start="44" name="VVB"/>
+                    <label end="54" start="51" name="PNP"/>
+                    <label end="62" start="56" name="AV0"/>
+                    <label end="64" start="64" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:15 PST Tue" status="MANUAL" ID="1285754">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2889" end="54" start="51" name="Item"/>
+                    <label cBy="268" feID="2910" end="62" start="56" name="Manner"/>
+                    <label cBy="268" feID="2887" itype="CNI" name="Agent"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="51" name="Obj"/>
+                    <label end="62" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="51" name="NP"/>
+                    <label end="62" start="56" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30608083" ID="915848">
+            <text>Refrigerate to chill and set . </text>
+            <annotationSet cDate="01/07/2003 07:22:15 PST Tue" status="UNANN" ID="1285763">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="VVB"/>
+                    <label end="13" start="12" name="TO0"/>
+                    <label end="19" start="15" name="VVI"/>
+                    <label end="23" start="21" name="CJC"/>
+                    <label end="27" start="25" name="VVD"/>
+                    <label end="29" start="29" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:15 PST Tue" status="MANUAL" ID="1285764">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2913" end="27" start="12" name="Purpose"/>
+                    <label cBy="268" feID="2887" itype="CNI" name="Agent"/>
+                    <label cBy="268" feID="2889" itype="CNI" name="Item"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="12" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="12" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46383519" ID="915851">
+            <text>This smooth , creamy cheesecake is best if refrigerated overnight . </text>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="UNANN" ID="1285769">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="AJ0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="19" start="14" name="AJ0"/>
+                    <label end="30" start="21" name="NN1"/>
+                    <label end="33" start="32" name="VBZ"/>
+                    <label end="38" start="35" name="AV0"/>
+                    <label end="41" start="40" name="CJS"/>
+                    <label end="54" start="43" name="VVD-VVN"/>
+                    <label end="64" start="56" name="AV0"/>
+                    <label end="66" start="66" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="MANUAL" ID="1285770">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3023" end="64" start="56" name="Duration"/>
+                    <label cBy="268" feID="2887" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="2889" end="30" start="0" name="Item"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="56" name="Dep"/>
+                    <label end="30" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="56" name="AVP"/>
+                    <label end="30" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76104607" ID="915854">
+            <text>There was little reason to stay on in an empty house , Belinda decided as she covered and refrigerated the kedgeree after her father had left . </text>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="UNANN" ID="1285775">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="15" start="10" name="AJ0"/>
+                    <label end="22" start="17" name="NN1"/>
+                    <label end="25" start="24" name="TO0"/>
+                    <label end="30" start="27" name="VVI"/>
+                    <label end="33" start="32" name="AVP"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="39" start="38" name="AT0"/>
+                    <label end="45" start="41" name="AJ0"/>
+                    <label end="51" start="47" name="NN1"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="61" start="55" name="NP0"/>
+                    <label end="69" start="63" name="VVD"/>
+                    <label end="72" start="71" name="CJS"/>
+                    <label end="76" start="74" name="PNP"/>
+                    <label end="84" start="78" name="VVD"/>
+                    <label end="88" start="86" name="CJC"/>
+                    <label end="101" start="90" name="VVD"/>
+                    <label end="105" start="103" name="AT0"/>
+                    <label end="114" start="107" name="NN1"/>
+                    <label end="120" start="116" name="PRP"/>
+                    <label end="124" start="122" name="DPS"/>
+                    <label end="131" start="126" name="NN1"/>
+                    <label end="135" start="133" name="VHD"/>
+                    <label end="140" start="137" name="VVN"/>
+                    <label end="142" start="142" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="MANUAL" ID="1285776">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2889" end="114" start="103" name="Item"/>
+                    <label cBy="268" feID="2887" end="76" start="74" name="Agent"/>
+                    <label cBy="268" feID="2914" end="140" start="116" name="Time"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="103" name="Obj"/>
+                    <label end="76" start="74" name="Ext"/>
+                    <label end="140" start="116" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="103" name="NP"/>
+                    <label end="76" start="74" name="NP"/>
+                    <label end="140" start="116" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="101" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="77886863" ID="915856">
+            <text>Without preservatives , fat goes rancid , bread goes mouldy and anything not ` refrigerated after opening &quot; feeds food poisoning bacteria and microfungi that produce mycotoxins . </text>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="UNANN" ID="1285779">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="PRP"/>
+                    <label end="20" start="8" name="NN2"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="26" start="24" name="NN1"/>
+                    <label end="31" start="28" name="VVZ"/>
+                    <label end="38" start="33" name="AJ0"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="51" start="48" name="VVZ"/>
+                    <label end="58" start="53" name="AJ0"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="71" start="64" name="PNI"/>
+                    <label end="75" start="73" name="XX0"/>
+                    <label end="77" start="77" name="PUQ"/>
+                    <label end="90" start="79" name="VVN"/>
+                    <label end="96" start="92" name="PRP"/>
+                    <label end="104" start="98" name="NN1-VVG"/>
+                    <label end="106" start="106" name="PUQ"/>
+                    <label end="112" start="108" name="NN2-VVZ"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="127" start="119" name="VVG"/>
+                    <label end="136" start="129" name="NN2"/>
+                    <label end="140" start="138" name="CJC"/>
+                    <label end="151" start="142" name="NN1"/>
+                    <label end="156" start="153" name="CJT"/>
+                    <label end="164" start="158" name="VVB"/>
+                    <label end="175" start="166" name="NN2"/>
+                    <label end="177" start="177" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:16 PST Tue" status="MANUAL" ID="1285780">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2914" end="104" start="92" name="Time"/>
+                    <label cBy="268" feID="2889" end="71" start="64" name="Item"/>
+                    <label cBy="268" feID="2887" itype="CNI" name="Agent"/>
+                    <label cBy="153" feID="3046" itype="INI" name="Hot_Cold_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="92" name="Dep"/>
+                    <label end="71" start="64" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="92" name="PPing"/>
+                    <label end="71" start="64" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="90" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

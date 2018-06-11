@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="brace.v" ID="13536" frame="Change_resistance" frameID="1782" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1937" ID="20273"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Attack"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core-Unexpressed" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make stronger or firmer with wood, iron, etc.</definition>
+    <lexeme POS="V" name="brace"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2599113"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Attack"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Attack"/>
+                <annoSet ID="2599113"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Patient"/>
+                <annoSet ID="2599113"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Attack"/>
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Attack"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Patient"/>
+                <annoSet ID="2599113"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object+pp_for-p-(2)"/>
+    <subCorpus name="02-other-matched-(2)">
+        <sentence corpID="111" docID="20273" sentNo="4" paragNo="325" aPos="0" ID="1582051">
+            <text>He braced the top of his head against a section of partly-demolished brickwork , and heaved with laughter , his face slick with tears , his limbs weak with the effort .</text>
+            <annotationSet cDate="07/26/2010 11:01:38 PDT Mon" status="UNANN" ID="2599112">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="16" start="14" name="nn"/>
+                    <label end="19" start="18" name="in"/>
+                    <label end="23" start="21" name="PP$"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="36" start="30" name="in"/>
+                    <label end="38" start="38" name="dt"/>
+                    <label end="46" start="40" name="nn"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="67" start="51" name="VVN"/>
+                    <label end="77" start="69" name="nn"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="83" start="81" name="cc"/>
+                    <label end="90" start="85" name="VVD"/>
+                    <label end="95" start="92" name="in"/>
+                    <label end="104" start="97" name="nn"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="110" start="108" name="PP$"/>
+                    <label end="115" start="112" name="nn"/>
+                    <label end="121" start="117" name="nn"/>
+                    <label end="126" start="123" name="in"/>
+                    <label end="132" start="128" name="nns"/>
+                    <label end="134" start="134" name=","/>
+                    <label end="138" start="136" name="PP$"/>
+                    <label end="144" start="140" name="nns"/>
+                    <label end="149" start="146" name="jj"/>
+                    <label end="154" start="151" name="in"/>
+                    <label end="158" start="156" name="dt"/>
+                    <label end="165" start="160" name="nn"/>
+                    <label end="167" start="167" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/26/2010 11:01:39 PDT Mon" status="MANUAL" ID="2599113">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="8" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10550" end="1" start="0" name="Agent"/>
+                    <label cBy="589" feID="10551" end="28" start="10" name="Patient"/>
+                    <label cBy="589" feID="14080" end="77" start="30" name="Attack"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="28" start="10" name="Obj"/>
+                    <label end="77" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="28" start="10" name="NP"/>
+                    <label end="77" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-unmatched-(2)"/>
+</lexUnit>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="SCON" name="though.scon" ID="15424" frame="Concessive" frameID="2150" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Main_statement"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Msg" name="Statement"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>in spite of the fact that</definition>
+    <lexeme POS="SCON" name="though"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Main_statement"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Main_statement"/>
+                <annoSet ID="2600205"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Main_statement"/>
+                <annoSet ID="2600213"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Statement"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Statement"/>
+                <annoSet ID="2600205"/>
+                <annoSet ID="2600213"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Main_statement"/>
+            <FE name="Statement"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Main_statement"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Statement"/>
+                <annoSet ID="2600205"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Main_statement"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Statement"/>
+                <annoSet ID="2600213"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="2" paragNo="1" aPos="0" ID="312902">
+            <text>Winston Smith , his chin nuzzled into his breast in an effort to escape the vile wind , slipped quickly through the glass doors of Victory Mansions , though not quickly enough to prevent a swirl of gritty dust from entering along with him .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269178">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="18" start="16" name="DPS"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="31" start="25" name="VVD"/>
+                    <label end="36" start="33" name="PRP"/>
+                    <label end="40" start="38" name="DPS"/>
+                    <label end="47" start="42" name="NN1"/>
+                    <label end="50" start="49" name="PRP"/>
+                    <label end="53" start="52" name="AT0"/>
+                    <label end="60" start="55" name="NN1"/>
+                    <label end="63" start="62" name="TO0"/>
+                    <label end="70" start="65" name="VVI"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="79" start="76" name="AJ0"/>
+                    <label end="84" start="81" name="NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="94" start="88" name="VVD"/>
+                    <label end="102" start="96" name="AV0"/>
+                    <label end="110" start="104" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="120" start="116" name="NN1"/>
+                    <label end="126" start="122" name="NN2"/>
+                    <label end="129" start="128" name="PRF"/>
+                    <label end="137" start="131" name="NN1"/>
+                    <label end="146" start="139" name="NN2"/>
+                    <label end="148" start="148" name="PUN"/>
+                    <label end="155" start="150" name="CJS"/>
+                    <label end="159" start="157" name="XX0"/>
+                    <label end="167" start="161" name="AV0"/>
+                    <label end="174" start="169" name="AV0"/>
+                    <label end="177" start="176" name="TO0"/>
+                    <label end="185" start="179" name="VVI"/>
+                    <label end="187" start="187" name="AT0"/>
+                    <label end="193" start="189" name="NN1"/>
+                    <label end="196" start="195" name="PRF"/>
+                    <label end="203" start="198" name="AJ0"/>
+                    <label end="208" start="205" name="NN1"/>
+                    <label end="213" start="210" name="PRP"/>
+                    <label end="222" start="215" name="VVG"/>
+                    <label end="237" start="235" name="PNP"/>
+                    <label end="239" start="239" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 06:01:50 PDT Fri" status="MANUAL" ID="2600205">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="155" start="150" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="13312" end="146" start="0" name="Main_statement"/>
+                    <label cBy="664" feID="13302" end="237" start="157" name="Statement"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="146" start="0" name="Dep"/>
+                    <label end="237" start="157" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="146" start="0" name="Sfin"/>
+                    <label end="237" start="157" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="3" docID="7" sentNo="3" paragNo="3" aPos="0" ID="312916">
+            <text>Winston turned a switch and the voice sank somewhat , though the words were still distinguishable .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269192">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="15" start="15" name="AT0"/>
+                    <label end="22" start="17" name="NN1"/>
+                    <label end="26" start="24" name="CJC"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="41" start="38" name="VVD"/>
+                    <label end="50" start="43" name="AV0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="59" start="54" name="CJS"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="74" start="71" name="VBD"/>
+                    <label end="80" start="76" name="AV0"/>
+                    <label end="96" start="82" name="AJ0"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 06:58:25 PDT Fri" status="MANUAL" ID="2600213">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="59" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="13302" end="96" start="61" name="Statement"/>
+                    <label cBy="664" feID="13312" end="50" start="0" name="Main_statement"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="61" name="Dep"/>
+                    <label end="50" start="0" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="61" name="Sfin"/>
+                    <label end="50" start="0" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

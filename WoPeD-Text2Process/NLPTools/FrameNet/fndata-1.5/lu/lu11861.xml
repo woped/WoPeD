@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Heating_instrument" POS="V" name="barbecue.v" ID="11861" frame="Apply_heat" frameID="236" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980220.0607" ID="15211"/>
+            <document description="apwsE951026.0060" ID="15213"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cook" name="Cook"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Co_participant"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Food" name="Food"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Heat_instr" name="Heating_instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Temp" name="Temperature_setting"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: cook (food) on a barbecue.</definition>
+    <lexeme POS="V" name="barbecue"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Cook"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <annoSet ID="2168913"/>
+                <annoSet ID="2168923"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Food"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Food"/>
+                <annoSet ID="2168913"/>
+                <annoSet ID="2168923"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Heating_instrument"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Heating_instrument"/>
+                <annoSet ID="2168913"/>
+                <annoSet ID="2168923"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="2168913"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cook"/>
+            <FE name="Food"/>
+            <FE name="Heating_instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Food"/>
+                <valenceUnit GF="" PT="INC" FE="Heating_instrument"/>
+                <annoSet ID="2168923"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cook"/>
+            <FE name="Food"/>
+            <FE name="Heating_instrument"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Food"/>
+                <valenceUnit GF="" PT="INC" FE="Heating_instrument"/>
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="2168913"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="15213" sentNo="2" paragNo="27" aPos="16137295" ID="1360471">
+            <text>After adding water , the beef can be barbecued or fried .</text>
+            <annotationSet cDate="05/25/2006 05:00:19 PDT Thu" status="UNANN" ID="2168912">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="11" start="6" name="VVG"/>
+                    <label end="17" start="13" name="nn"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="32" start="30" name="md"/>
+                    <label end="35" start="34" name="vb"/>
+                    <label end="45" start="37" name="VVN"/>
+                    <label end="48" start="47" name="cc"/>
+                    <label end="54" start="50" name="VVN"/>
+                    <label end="56" start="56" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2006 05:00:20 PDT Thu" status="MANUAL" ID="2168913">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="45" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2032" end="17" start="0" name="Time"/>
+                    <label cBy="361" feID="2030" end="28" start="21" name="Food"/>
+                    <label cBy="361" feID="2027" itype="CNI" name="Cook"/>
+                    <label cBy="589" feID="2028" end="45" start="37" name="Heating_instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Dep"/>
+                    <label end="28" start="21" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="PP"/>
+                    <label end="28" start="21" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="15211" sentNo="2" paragNo="41" aPos="124940175" ID="1360476">
+            <text>However , for the epitome of taste , they should be barbecued .</text>
+            <annotationSet cDate="05/25/2006 05:00:21 PDT Thu" status="UNANN" ID="2168922">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="12" start="10" name="in"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="24" start="18" name="nn"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="33" start="29" name="nn"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="40" start="37" name="PP"/>
+                    <label end="47" start="42" name="md"/>
+                    <label end="50" start="49" name="vb"/>
+                    <label end="60" start="52" name="VVN"/>
+                    <label end="62" start="62" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2006 05:00:21 PDT Thu" status="MANUAL" ID="2168923">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="60" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2030" end="40" start="37" name="Food"/>
+                    <label cBy="361" feID="2027" itype="CNI" name="Cook"/>
+                    <label cBy="589" feID="2028" end="60" start="52" name="Heating_instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="37" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="37" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

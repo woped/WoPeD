@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="cabbage.n" ID="15965" frame="Food" frameID="277" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="con" name="Constituent_parts"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Food"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: (the leaves of) a cruciferous vegetable, often eaten boiled.</definition>
+    <lexeme POS="N" name="cabbage"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Food"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Food"/>
+                <annoSet ID="2600204"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Food"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Food"/>
+                <annoSet ID="2600204"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="1" paragNo="2" aPos="0" ID="312903">
+            <text>The hallway smelt of boiled cabbage and old rag mats .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269179">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="16" start="12" name="NN1"/>
+                    <label end="19" start="18" name="PRF"/>
+                    <label end="26" start="21" name="AJ0"/>
+                    <label end="34" start="28" name="NN1"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="42" start="40" name="AJ0"/>
+                    <label end="46" start="44" name="NN1"/>
+                    <label end="51" start="48" name="NN2"/>
+                    <label end="53" start="53" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 06:00:20 PDT Fri" status="MANUAL" ID="2600204">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="34" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="9696" end="34" start="28" name="Food"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="pursuer.n" ID="4125" frame="Cotheme" frameID="56" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Thm_c" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="Evnt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="F_d" name="Following_distance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Hand" name="Handle"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="MoT" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Core" abbrev="Road" name="Road"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: somebody who follows another person in order to catch or attack</definition>
+    <lexeme POS="N" name="pursuer"/>
+    <valences>
+        <governor type="Gov" lemma="defend">
+            <annoSet ID="812729"/>
+        </governor>
+        <governor type="Gov" lemma="elude">
+            <annoSet ID="812703"/>
+            <annoSet ID="812787"/>
+        </governor>
+        <governor type="Gov" lemma="outwit">
+            <annoSet ID="812785"/>
+        </governor>
+        <governor type="Gov" lemma="throw">
+            <annoSet ID="812743"/>
+        </governor>
+        <FERealization total="11">
+            <FE name="Cotheme"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Cotheme"/>
+                <annoSet ID="812735"/>
+                <annoSet ID="812797"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Cotheme"/>
+                <annoSet ID="812677"/>
+                <annoSet ID="812681"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cotheme"/>
+                <annoSet ID="812685"/>
+                <annoSet ID="812695"/>
+                <annoSet ID="812699"/>
+                <annoSet ID="812703"/>
+                <annoSet ID="812751"/>
+                <annoSet ID="812785"/>
+                <annoSet ID="812787"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Distance"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Distance"/>
+                <annoSet ID="812685"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="13">
+            <FE name="Theme"/>
+            <pattern total="12">
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812677"/>
+                <annoSet ID="812685"/>
+                <annoSet ID="812695"/>
+                <annoSet ID="812699"/>
+                <annoSet ID="812703"/>
+                <annoSet ID="812729"/>
+                <annoSet ID="812735"/>
+                <annoSet ID="812743"/>
+                <annoSet ID="812751"/>
+                <annoSet ID="812785"/>
+                <annoSet ID="812787"/>
+                <annoSet ID="812797"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="812681"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cotheme"/>
+            <FE name="Distance"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cotheme"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Distance"/>
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812685"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="10">
+            <FE name="Cotheme"/>
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Cotheme"/>
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812735"/>
+                <annoSet ID="812797"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Cotheme"/>
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812677"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Cotheme"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="812681"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cotheme"/>
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812695"/>
+                <annoSet ID="812699"/>
+                <annoSet ID="812703"/>
+                <annoSet ID="812751"/>
+                <annoSet ID="812785"/>
+                <annoSet ID="812787"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Theme"/>
+                <annoSet ID="812729"/>
+                <annoSet ID="812743"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s40-ppof">
+        <sentence sentNo="0" aPos="6627362" ID="667569">
+            <text>If the pursuers of Robert the Bruce had been women , they 'd have known that cobwebs come overnight . </text>
+            <annotationSet cDate="01/07/2003 10:03:25 PST Tue" status="UNANN" ID="812676">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="14" start="7" name="NN2"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="24" start="19" name="NP0"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="34" start="30" name="NP0"/>
+                    <label end="38" start="36" name="VHD"/>
+                    <label end="43" start="40" name="VBN"/>
+                    <label end="49" start="45" name="NN2"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="56" start="53" name="PNP"/>
+                    <label end="59" start="58" name="VM0"/>
+                    <label end="64" start="61" name="VHI"/>
+                    <label end="70" start="66" name="VVN"/>
+                    <label end="75" start="72" name="CJT-DT0"/>
+                    <label end="83" start="77" name="NN2"/>
+                    <label end="88" start="85" name="VVB"/>
+                    <label end="98" start="90" name="AJ0-AV0"/>
+                    <label end="100" start="100" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:25 PST Tue" status="MANUAL" ID="812677">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="34" start="16" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="14" start="7" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46819110" ID="667571">
+            <text>Thus Realism was able to make a quick conquest by importing a neat and powerful idea of science and showing how an economics-style analysis of nation states as pursuers of national interest scored high as science . </text>
+            <annotationSet cDate="01/07/2003 10:03:25 PST Tue" status="UNANN" ID="812680">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="11" start="5" name="NN1"/>
+                    <label end="15" start="13" name="VBD"/>
+                    <label end="20" start="17" name="AJ0"/>
+                    <label end="23" start="22" name="TO0"/>
+                    <label end="28" start="25" name="VVI"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="36" start="32" name="AJ0"/>
+                    <label end="45" start="38" name="NN1"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="58" start="50" name="VVG"/>
+                    <label end="60" start="60" name="AT0"/>
+                    <label end="65" start="62" name="AJ0"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="78" start="71" name="AJ0"/>
+                    <label end="83" start="80" name="NN1"/>
+                    <label end="86" start="85" name="PRF"/>
+                    <label end="94" start="88" name="NN1"/>
+                    <label end="98" start="96" name="CJC"/>
+                    <label end="106" start="100" name="VVG"/>
+                    <label end="110" start="108" name="AVQ"/>
+                    <label end="113" start="112" name="AT0"/>
+                    <label end="129" start="115" name="AJ0"/>
+                    <label end="138" start="131" name="NN1"/>
+                    <label end="141" start="140" name="PRF"/>
+                    <label end="148" start="143" name="NN1"/>
+                    <label end="155" start="150" name="NN2-VVZ"/>
+                    <label end="158" start="157" name="AV0"/>
+                    <label end="167" start="160" name="NN2-VVZ"/>
+                    <label end="170" start="169" name="PRF"/>
+                    <label end="179" start="172" name="AJ0"/>
+                    <label end="188" start="181" name="NN1"/>
+                    <label end="195" start="190" name="VVD"/>
+                    <label end="200" start="197" name="AJ0-AV0"/>
+                    <label end="203" start="202" name="CJS-PRP"/>
+                    <label end="211" start="205" name="NN1"/>
+                    <label end="213" start="213" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:26 PST Tue" status="MANUAL" ID="812681">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="188" start="169" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="155" start="143" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="188" start="169" name="Dep"/>
+                    <label end="155" start="143" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="188" start="169" name="PP"/>
+                    <label end="155" start="143" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                    <label end="0" start="0" name="sense4"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="167" start="160" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="7861323" ID="667573">
+            <text>Richard Pitman stole a quick look round to assess the closeness of his nearest pursuer -- at least twenty lengths -- and shortened the reins to keep Crisp together for the final draining half mile . </text>
+            <annotationSet cDate="01/07/2003 10:03:27 PST Tue" status="UNANN" ID="812684">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="13" start="8" name="NP0"/>
+                    <label end="19" start="15" name="VVD"/>
+                    <label end="21" start="21" name="AT0"/>
+                    <label end="27" start="23" name="AJ0-AV0"/>
+                    <label end="32" start="29" name="NN1-VVB"/>
+                    <label end="38" start="34" name="AVP"/>
+                    <label end="41" start="40" name="TO0"/>
+                    <label end="48" start="43" name="VVI"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="62" start="54" name="NN1"/>
+                    <label end="65" start="64" name="PRF"/>
+                    <label end="69" start="67" name="DPS"/>
+                    <label end="77" start="71" name="AJS"/>
+                    <label end="85" start="79" name="NN1"/>
+                    <label end="88" start="87" name="PUN"/>
+                    <label end="91" start="90" name="AV0"/>
+                    <label end="97" start="93" name="AV0"/>
+                    <label end="104" start="99" name="CRD"/>
+                    <label end="112" start="106" name="NN2"/>
+                    <label end="115" start="114" name="PUN"/>
+                    <label end="119" start="117" name="CJC"/>
+                    <label end="129" start="121" name="VVD"/>
+                    <label end="133" start="131" name="AT0"/>
+                    <label end="139" start="135" name="NN2"/>
+                    <label end="142" start="141" name="TO0"/>
+                    <label end="147" start="144" name="VVI"/>
+                    <label end="153" start="149" name="AJ0-NN1"/>
+                    <label end="162" start="155" name="AV0"/>
+                    <label end="166" start="164" name="PRP"/>
+                    <label end="170" start="168" name="AT0"/>
+                    <label end="176" start="172" name="AJ0-NN1"/>
+                    <label end="185" start="178" name="NN1-VVG"/>
+                    <label end="190" start="187" name="DT0"/>
+                    <label end="195" start="192" name="NN1"/>
+                    <label end="197" start="197" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:28 PST Tue" status="MANUAL" ID="812685">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="69" start="67" name="Cotheme"/>
+                    <label cBy="664" feID="241" end="77" start="71" name="Distance"/>
+                    <label cBy="664" feID="235" end="85" start="79" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="67" name="Gen"/>
+                    <label end="77" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="67" name="Poss"/>
+                    <label end="77" start="71" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="85" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34868874" ID="667578">
+            <text>Singlewood , 17 , ran into the courtyard of Durham Castle in a desperate bid to shake off his pursuer . </text>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="UNANN" ID="812694">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NN1-NP0"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="14" start="13" name="CRD"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="20" start="18" name="VVD"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="39" start="31" name="NN1"/>
+                    <label end="42" start="41" name="PRF"/>
+                    <label end="49" start="44" name="NP0"/>
+                    <label end="56" start="51" name="NP0"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="61" start="61" name="AT0"/>
+                    <label end="71" start="63" name="AJ0"/>
+                    <label end="75" start="73" name="NN1"/>
+                    <label end="78" start="77" name="TO0"/>
+                    <label end="84" start="80" name="VVI"/>
+                    <label end="88" start="86" name="AVP-PRP"/>
+                    <label end="92" start="90" name="DPS"/>
+                    <label end="100" start="94" name="NN1"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="MANUAL" ID="812695">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="92" start="90" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="100" start="94" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="92" start="90" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="92" start="90" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="84" start="80" name="Gov"/>
+                    <label end="88" start="86" name="Gov"/>
+                    <label end="100" start="90" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41451819" ID="667580">
+            <text>As he turned away the second of his pursuers appeared on the pavement in front of him , drawing its hand from his pocket . </text>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="UNANN" ID="812698">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="4" start="3" name="PNP"/>
+                    <label end="11" start="6" name="VVD"/>
+                    <label end="16" start="13" name="AVP"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="27" start="22" name="ORD"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="34" start="32" name="DPS"/>
+                    <label end="43" start="36" name="NN2"/>
+                    <label end="52" start="45" name="VVD-VVN"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="68" start="61" name="NN1"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="77" start="73" name="PRP"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="84" start="82" name="PNP"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="94" start="88" name="VVG"/>
+                    <label end="98" start="96" name="DPS"/>
+                    <label end="103" start="100" name="NN1"/>
+                    <label end="108" start="105" name="PRP"/>
+                    <label end="112" start="110" name="DPS"/>
+                    <label end="119" start="114" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="MANUAL" ID="812699">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="34" start="32" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="43" start="36" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="32" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="32" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52603468" ID="667582">
+            <text>Desperately , the Doctor tries a series of random landings in the hope of eluding their pursuers . </text>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="UNANN" ID="812702">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="AV0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="23" start="18" name="NN1-NP0"/>
+                    <label end="29" start="25" name="VVZ"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="38" start="33" name="NN0"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="48" start="43" name="AJ0"/>
+                    <label end="57" start="50" name="NN2"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="69" start="66" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="80" start="74" name="VVG"/>
+                    <label end="86" start="82" name="DPS"/>
+                    <label end="95" start="88" name="NN2"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:29 PST Tue" status="MANUAL" ID="812703">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="86" start="82" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="95" start="88" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="82" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="82" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="80" start="74" name="Gov"/>
+                    <label end="95" start="82" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-330-s20-period">
+        <sentence sentNo="0" aPos="20354955" ID="667595">
+            <text>Clearly prey need to be both sprinters over short distances and marathon runners over longer ones , to be able to defend themselves against both types of pursuers . </text>
+            <annotationSet cDate="01/07/2003 10:03:30 PST Tue" status="UNANN" ID="812728">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="11" start="8" name="NN1-VVB"/>
+                    <label end="16" start="13" name="NN1-VVB"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="22" start="21" name="VBI"/>
+                    <label end="27" start="24" name="AV0"/>
+                    <label end="37" start="29" name="NN2-VVZ"/>
+                    <label end="42" start="39" name="AV0"/>
+                    <label end="48" start="44" name="AJ0"/>
+                    <label end="58" start="50" name="NN2"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="71" start="64" name="NN1"/>
+                    <label end="79" start="73" name="NN2"/>
+                    <label end="84" start="81" name="AV0"/>
+                    <label end="91" start="86" name="AV0"/>
+                    <label end="96" start="93" name="PNI"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="101" start="100" name="TO0"/>
+                    <label end="104" start="103" name="VBI"/>
+                    <label end="109" start="106" name="AJ0"/>
+                    <label end="112" start="111" name="TO0"/>
+                    <label end="119" start="114" name="VVI"/>
+                    <label end="130" start="121" name="PNX"/>
+                    <label end="138" start="132" name="PRP"/>
+                    <label end="143" start="140" name="DT0"/>
+                    <label end="149" start="145" name="NN2"/>
+                    <label end="152" start="151" name="PRF"/>
+                    <label end="161" start="154" name="NN2"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:31 PST Tue" status="MANUAL" ID="812729">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="235" end="161" start="154" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="161" start="154" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="119" start="114" name="Gov"/>
+                    <label end="161" start="132" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76378089" ID="667598">
+            <text>The freezing sleet , half snow , half rain-wrapped ice , made the pavements like skating rinks underfoot and blew into the eyes of the pursuers . </text>
+            <annotationSet cDate="01/07/2003 10:03:31 PST Tue" status="UNANN" ID="812734">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="AJ0"/>
+                    <label end="17" start="13" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="24" start="21" name="DT0"/>
+                    <label end="29" start="26" name="NN1"/>
+                    <label end="31" start="31" name="PUN"/>
+                    <label end="36" start="33" name="DT0"/>
+                    <label end="49" start="38" name="AJ0"/>
+                    <label end="53" start="51" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="60" start="57" name="VVD-VVN"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="74" start="66" name="NN2"/>
+                    <label end="79" start="76" name="PRP"/>
+                    <label end="87" start="81" name="NN1-VVG"/>
+                    <label end="93" start="89" name="NN2-VVZ"/>
+                    <label end="103" start="95" name="AV0"/>
+                    <label end="107" start="105" name="CJC"/>
+                    <label end="112" start="109" name="VVD"/>
+                    <label end="117" start="114" name="PRP"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="126" start="123" name="NN2"/>
+                    <label end="129" start="128" name="PRF"/>
+                    <label end="133" start="131" name="AT0"/>
+                    <label end="142" start="135" name="NN2"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:31 PST Tue" status="MANUAL" ID="812735">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="235" end="142" start="135" name="Theme"/>
+                    <label cBy="664" feID="236" itype="DNI" name="Cotheme"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="142" start="135" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-s20-ppother">
+        <sentence sentNo="0" aPos="12310549" ID="667602">
+            <text>Obviously this was a ruse to throw would-be pursuers off the scent . </text>
+            <annotationSet cDate="01/07/2003 10:03:31 PST Tue" status="UNANN" ID="812742">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AV0"/>
+                    <label end="13" start="10" name="DT0"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="24" start="21" name="NN1"/>
+                    <label end="27" start="26" name="TO0"/>
+                    <label end="33" start="29" name="VVI"/>
+                    <label end="42" start="35" name="AJ0"/>
+                    <label end="51" start="44" name="NN2"/>
+                    <label end="55" start="53" name="PRP"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="65" start="61" name="NN1"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:31 PST Tue" status="MANUAL" ID="812743">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="235" end="51" start="44" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="33" start="29" name="Gov"/>
+                    <label end="51" start="35" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="71243256" ID="667606">
+            <text>They could hear the squealing roars of their pursuers over the tumult of their mounts ' hoofs . </text>
+            <annotationSet cDate="01/07/2003 10:03:32 PST Tue" status="UNANN" ID="812750">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="9" start="5" name="VM0"/>
+                    <label end="14" start="11" name="VVI"/>
+                    <label end="18" start="16" name="AT0"/>
+                    <label end="28" start="20" name="AJ0"/>
+                    <label end="34" start="30" name="NN2"/>
+                    <label end="37" start="36" name="PRF"/>
+                    <label end="43" start="39" name="DPS"/>
+                    <label end="52" start="45" name="NN2"/>
+                    <label end="57" start="54" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="68" start="63" name="NN1"/>
+                    <label end="71" start="70" name="PRF"/>
+                    <label end="77" start="73" name="DPS"/>
+                    <label end="84" start="79" name="NN2"/>
+                    <label end="86" start="86" name="POS"/>
+                    <label end="92" start="88" name="NN2"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:32 PST Tue" status="MANUAL" ID="812751">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="43" start="39" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="52" start="45" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="39" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="39" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="52" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340a-s20-ppother"/>
+    <subCorpus name="N-370-s20-pother">
+        <sentence sentNo="0" aPos="3119643" ID="667623">
+            <text>I recall imitating a stunt performed by the obscure Buffalo Bill Jnr in a Poverty Kow serial , when he outwitted his pursuers by swinging at speed from saddle into tree . </text>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="UNANN" ID="812784">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="7" start="2" name="VVB"/>
+                    <label end="17" start="9" name="VVG"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="25" start="21" name="NN1"/>
+                    <label end="35" start="27" name="VVN"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="50" start="44" name="AJ0"/>
+                    <label end="58" start="52" name="NP0"/>
+                    <label end="63" start="60" name="NP0"/>
+                    <label end="67" start="65" name="NN1-NP0"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="72" start="72" name="AT0"/>
+                    <label end="80" start="74" name="NN1"/>
+                    <label end="84" start="82" name="NN1-VVB"/>
+                    <label end="91" start="86" name="NN1"/>
+                    <label end="93" start="93" name="PUN"/>
+                    <label end="98" start="95" name="AVQ-CJS"/>
+                    <label end="101" start="100" name="PNP"/>
+                    <label end="111" start="103" name="VVD"/>
+                    <label end="115" start="113" name="DPS"/>
+                    <label end="124" start="117" name="NN2"/>
+                    <label end="127" start="126" name="PRP"/>
+                    <label end="136" start="129" name="VVG"/>
+                    <label end="139" start="138" name="PRP"/>
+                    <label end="145" start="141" name="NN1"/>
+                    <label end="150" start="147" name="PRP"/>
+                    <label end="157" start="152" name="NN1"/>
+                    <label end="162" start="159" name="PRP"/>
+                    <label end="167" start="164" name="NN1"/>
+                    <label end="169" start="169" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="MANUAL" ID="812785">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="115" start="113" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="124" start="117" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="113" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="113" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="124" start="117" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="111" start="103" name="Gov"/>
+                    <label end="124" start="113" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="17754662" ID="667624">
+            <text>The fourth managed to elude his pursuers by escaping into a bog where no horse could follow . </text>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="UNANN" ID="812786">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="ORD"/>
+                    <label end="17" start="11" name="VVD-VVN"/>
+                    <label end="20" start="19" name="TO0"/>
+                    <label end="26" start="22" name="VVI"/>
+                    <label end="30" start="28" name="DPS"/>
+                    <label end="39" start="32" name="NN2"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="51" start="44" name="VVG"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="62" start="60" name="NN1"/>
+                    <label end="68" start="64" name="AVQ"/>
+                    <label end="71" start="70" name="AT0"/>
+                    <label end="77" start="73" name="NN1"/>
+                    <label end="83" start="79" name="VM0"/>
+                    <label end="90" start="85" name="VVI"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="MANUAL" ID="812787">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="236" end="30" start="28" name="Cotheme"/>
+                    <label cBy="664" feID="235" end="39" start="32" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="28" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="28" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="26" start="22" name="Gov"/>
+                    <label end="39" start="28" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other">
+        <sentence sentNo="0" aPos="49237718" ID="667629">
+            <text>Hard on his heels came the pursuit , and at the head of the pursuers was Richard . </text>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="UNANN" ID="812796">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="PRP"/>
+                    <label end="10" start="8" name="DPS"/>
+                    <label end="16" start="12" name="NN2"/>
+                    <label end="21" start="18" name="VVD"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="33" start="27" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="54" start="53" name="PRF"/>
+                    <label end="58" start="56" name="AT0"/>
+                    <label end="67" start="60" name="NN2"/>
+                    <label end="71" start="69" name="VBD"/>
+                    <label end="79" start="73" name="NP0"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:03:34 PST Tue" status="MANUAL" ID="812797">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="235" end="67" start="60" name="Theme"/>
+                    <label cBy="664" feID="236" itype="DNI" name="Cotheme"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

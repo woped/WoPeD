@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="crossbow.n" ID="7789" frame="Weapon" frameID="426" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="dep" name="Descriptor"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Typ" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Wep" name="Weapon"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wld" name="Wielder"/>
+        </frame>
+    </header>
+    <definition>FN: a bow attached to a stock which holds the arrow, which is release by means of a trigger</definition>
+    <lexeme POS="N" name="crossbow"/>
+    <valences>
+        <governor type="Gov" lemma="cock">
+            <annoSet ID="1827522"/>
+        </governor>
+        <governor type="Gov" lemma="fire">
+            <annoSet ID="1827444"/>
+        </governor>
+        <governor type="Gov" lemma="hold">
+            <annoSet ID="1827462"/>
+        </governor>
+        <governor type="Gov" lemma="raise">
+            <annoSet ID="1827518"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <annoSet ID="1827518"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Weapon"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1827444"/>
+                <annoSet ID="1827462"/>
+                <annoSet ID="1827518"/>
+                <annoSet ID="1827522"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wielder"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="1827444"/>
+                <annoSet ID="1827518"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Material"/>
+            <FE name="Weapon"/>
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="1827518"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Weapon"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1827462"/>
+                <annoSet ID="1827522"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Weapon"/>
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="1827444"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="40108861" ID="1190120">
+            <text>` All you have to do is stand back and fire your crossbow at those green-skinned devils . </text>
+            <annotationSet cDate="01/08/2003 06:03:34 PST Wed" status="UNANN" ID="1827443">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="DT0"/>
+                    <label end="8" start="6" name="PNP"/>
+                    <label end="13" start="10" name="VHB"/>
+                    <label end="16" start="15" name="TO0"/>
+                    <label end="19" start="18" name="VDI"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="28" start="24" name="NN1-VVB"/>
+                    <label end="33" start="30" name="AVP"/>
+                    <label end="37" start="35" name="CJC"/>
+                    <label end="42" start="39" name="VVB"/>
+                    <label end="47" start="44" name="DPS"/>
+                    <label end="56" start="49" name="NN1"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="65" start="61" name="DT0"/>
+                    <label end="79" start="67" name="AJ0"/>
+                    <label end="86" start="81" name="NN2"/>
+                    <label end="88" start="88" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 06:03:34 PST Wed" status="MANUAL" ID="1827444">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="56" start="49" name="Weapon"/>
+                    <label cBy="618" feID="3963" end="47" start="44" name="Wielder"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="44" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="44" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="56" start="44" name="X"/>
+                    <label end="42" start="39" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="75446261" ID="1190129">
+            <text>The man holding the crossbow approached ; his voice , muffled by the mask he wore , ordered me to dismount . </text>
+            <annotationSet cDate="01/08/2003 06:03:35 PST Wed" status="UNANN" ID="1827461">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="14" start="8" name="VVG"/>
+                    <label end="18" start="16" name="AT0"/>
+                    <label end="27" start="20" name="NN1"/>
+                    <label end="38" start="29" name="VVD-VVN"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="44" start="42" name="DPS"/>
+                    <label end="50" start="46" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="60" start="54" name="VVN"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="72" start="69" name="NN1"/>
+                    <label end="75" start="74" name="PNP"/>
+                    <label end="80" start="77" name="VVD"/>
+                    <label end="82" start="82" name="PUN"/>
+                    <label end="90" start="84" name="VVD-VVN"/>
+                    <label end="93" start="92" name="PNP"/>
+                    <label end="96" start="95" name="TO0"/>
+                    <label end="105" start="98" name="VVI"/>
+                    <label end="107" start="107" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 06:03:36 PST Wed" status="MANUAL" ID="1827462">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="27" start="20" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="27" start="16" name="X"/>
+                    <label end="14" start="8" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76894588" ID="1190157">
+            <text>Rerpf ducked , allowing a troll behind him to raise its huge iron crossbow and fire a spear-length quarrel into the nearest assassin . </text>
+            <annotationSet cDate="01/08/2003 06:03:39 PST Wed" status="UNANN" ID="1827517">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="11" start="6" name="VVD"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="22" start="15" name="VVG"/>
+                    <label end="24" start="24" name="AT0"/>
+                    <label end="30" start="26" name="NN1"/>
+                    <label end="37" start="32" name="PRP"/>
+                    <label end="41" start="39" name="PNP"/>
+                    <label end="44" start="43" name="TO0"/>
+                    <label end="50" start="46" name="VVI"/>
+                    <label end="54" start="52" name="DPS"/>
+                    <label end="59" start="56" name="AJ0"/>
+                    <label end="64" start="61" name="NN1"/>
+                    <label end="73" start="66" name="NN1"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="82" start="79" name="VVI"/>
+                    <label end="84" start="84" name="AT0"/>
+                    <label end="97" start="86" name="AJ0"/>
+                    <label end="105" start="99" name="NN1"/>
+                    <label end="110" start="107" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="122" start="116" name="AJS"/>
+                    <label end="131" start="124" name="NN1"/>
+                    <label end="133" start="133" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 06:03:39 PST Wed" status="MANUAL" ID="1827518">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="73" start="66" name="Weapon"/>
+                    <label cBy="618" feID="3956" end="64" start="61" name="Material"/>
+                    <label cBy="618" feID="3963" end="54" start="52" name="Wielder"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="61" name="Dep"/>
+                    <label end="54" start="52" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="61" name="N"/>
+                    <label end="54" start="52" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="73" start="52" name="X"/>
+                    <label end="50" start="46" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76919163" ID="1190159">
+            <text>There was a small expressive sound made by a number of crossbows being cocked . </text>
+            <annotationSet cDate="01/08/2003 06:03:39 PST Wed" status="UNANN" ID="1827521">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="10" start="10" name="AT0"/>
+                    <label end="16" start="12" name="AJ0"/>
+                    <label end="27" start="18" name="AJ0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="38" start="35" name="VVN"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="43" start="43" name="AT0"/>
+                    <label end="50" start="45" name="NN1"/>
+                    <label end="53" start="52" name="PRF"/>
+                    <label end="63" start="55" name="NN2"/>
+                    <label end="69" start="65" name="VBG"/>
+                    <label end="76" start="71" name="VVN"/>
+                    <label end="78" start="78" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 06:03:39 PST Wed" status="MANUAL" ID="1827522">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="63" start="55" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="76" start="71" name="Gov"/>
+                    <label end="63" start="43" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

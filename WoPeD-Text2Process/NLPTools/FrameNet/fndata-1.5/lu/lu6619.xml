@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="scarper.v" ID="6619" frame="Escaping" frameID="273" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="dis" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Esc" name="Escapee"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Und_loc" name="Undesirable_location"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>FN: flee, run away</definition>
+    <lexeme POS="V" name="scarper"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Depictive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Depictive"/>
+                <annoSet ID="2015415"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Escapee"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <annoSet ID="2015409"/>
+                <annoSet ID="2015411"/>
+                <annoSet ID="2015415"/>
+                <annoSet ID="2015421"/>
+                <annoSet ID="2015425"/>
+                <annoSet ID="2015429"/>
+                <annoSet ID="2015443"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="2015411"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2015429"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <annoSet ID="2015411"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="2015443"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Undesirable_location"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DNI" FE="Undesirable_location"/>
+                <annoSet ID="2015409"/>
+                <annoSet ID="2015415"/>
+                <annoSet ID="2015421"/>
+                <annoSet ID="2015425"/>
+                <annoSet ID="2015429"/>
+                <annoSet ID="2015443"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[off]" FE="Undesirable_location"/>
+                <annoSet ID="2015411"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Depictive"/>
+            <FE name="Escapee"/>
+            <FE name="Undesirable_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Depictive"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <valenceUnit GF="" PT="DNI" FE="Undesirable_location"/>
+                <annoSet ID="2015415"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Escapee"/>
+            <FE name="Goal"/>
+            <FE name="Path"/>
+            <FE name="Undesirable_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <valenceUnit GF="Dep" PT="PP[off]" FE="Undesirable_location"/>
+                <annoSet ID="2015411"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Escapee"/>
+            <FE name="Manner"/>
+            <FE name="Undesirable_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Undesirable_location"/>
+                <annoSet ID="2015429"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Escapee"/>
+            <FE name="Time"/>
+            <FE name="Undesirable_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <valenceUnit GF="" PT="DNI" FE="Undesirable_location"/>
+                <annoSet ID="2015443"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Escapee"/>
+            <FE name="Undesirable_location"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Escapee"/>
+                <valenceUnit GF="" PT="DNI" FE="Undesirable_location"/>
+                <annoSet ID="2015409"/>
+                <annoSet ID="2015421"/>
+                <annoSet ID="2015425"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="490" aPos="1525978" ID="1283609">
+            <text>He needed smartening up a bit ; his mother ought to look after him better , even if the dad had scarpered with this Sheila woman .</text>
+            <annotationSet cDate="10/25/2004 06:14:09 PDT Mon" status="UNANN" ID="2015408">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="19" start="10" name="VVG"/>
+                    <label end="22" start="21" name="rp"/>
+                    <label end="24" start="24" name="dt"/>
+                    <label end="28" start="26" name="nn"/>
+                    <label end="30" start="30" name=":"/>
+                    <label end="34" start="32" name="PP$"/>
+                    <label end="41" start="36" name="nn"/>
+                    <label end="47" start="43" name="md"/>
+                    <label end="50" start="49" name="to"/>
+                    <label end="55" start="52" name="VV"/>
+                    <label end="61" start="57" name="in"/>
+                    <label end="65" start="63" name="PP"/>
+                    <label end="72" start="67" name="rb"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="79" start="76" name="rb"/>
+                    <label end="82" start="81" name="in"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="90" start="88" name="nn"/>
+                    <label end="94" start="92" name="VHD"/>
+                    <label end="104" start="96" name="VVN"/>
+                    <label end="109" start="106" name="in"/>
+                    <label end="114" start="111" name="dt"/>
+                    <label end="121" start="116" name="NP"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:10 PDT Mon" status="MANUAL" ID="2015409">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="104" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="90" start="84" name="Escapee"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="84" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="84" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="210" aPos="22614653" ID="1283610">
+            <text>All the time knowing that while I 'm round the back of a lorry he 's probably scarpered off up the road into limbo .</text>
+            <annotationSet cDate="10/25/2004 06:14:10 PDT Mon" status="UNANN" ID="2015410">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="pdt"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="11" start="8" name="nn"/>
+                    <label end="19" start="13" name="VVG"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="30" start="26" name="in"/>
+                    <label end="32" start="32" name="PP"/>
+                    <label end="35" start="34" name="vbp"/>
+                    <label end="41" start="37" name="jj"/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="50" start="47" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="55" start="55" name="dt"/>
+                    <label end="61" start="57" name="nn"/>
+                    <label end="64" start="63" name="PP"/>
+                    <label end="67" start="66" name="VBZ"/>
+                    <label end="76" start="69" name="rb"/>
+                    <label end="86" start="78" name="VVN"/>
+                    <label end="90" start="88" name="rp"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="107" start="104" name="in"/>
+                    <label end="113" start="109" name="nn"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:10 PDT Mon" status="MANUAL" ID="2015411">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="86" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="64" start="63" name="Escapee"/>
+                    <label cBy="243" feID="2360" end="90" start="88" name="Undesirable_location"/>
+                    <label cBy="243" feID="4729" end="102" start="92" name="Path"/>
+                    <label cBy="243" feID="2357" end="113" start="104" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="63" name="Ext"/>
+                    <label end="90" start="88" name="Dep"/>
+                    <label end="102" start="92" name="Dep"/>
+                    <label end="113" start="104" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="63" name="NP"/>
+                    <label end="90" start="88" name="PP"/>
+                    <label end="102" start="92" name="PP"/>
+                    <label end="113" start="104" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1585" aPos="54790156" ID="1283612">
+            <text>For Uncle Titch had scarpered , horse , cart and all .</text>
+            <annotationSet cDate="10/25/2004 06:14:11 PDT Mon" status="UNANN" ID="2015414">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="8" start="4" name="NP"/>
+                    <label end="14" start="10" name="NP"/>
+                    <label end="18" start="16" name="VHD"/>
+                    <label end="28" start="20" name="VVN"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="36" start="32" name="nn"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="43" start="40" name="nn"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="51" start="49" name="pdt"/>
+                    <label end="53" start="53" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:11 PDT Mon" status="MANUAL" ID="2015415">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="28" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="14" start="4" name="Escapee"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                    <label cBy="243" feID="2367" end="51" start="32" name="Depictive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="4" name="Ext"/>
+                    <label end="51" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="4" name="NP"/>
+                    <label end="51" start="32" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="171" aPos="63398533" ID="1283615">
+            <text>He probably took one look at Zen and scarpered . )</text>
+            <annotationSet cDate="10/25/2004 06:14:12 PDT Mon" status="UNANN" ID="2015420">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="10" start="3" name="rb"/>
+                    <label end="15" start="12" name="VVD"/>
+                    <label end="19" start="17" name="cd"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="31" start="29" name="NP"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="45" start="37" name="VVN"/>
+                    <label end="47" start="47" name="sent"/>
+                    <label end="49" start="49" name=")"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:12 PDT Mon" status="MANUAL" ID="2015421">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="45" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="1" start="0" name="Escapee"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="116" aPos="39153133" ID="1283617">
+            <text>` It sounds as if the old man scarpered .</text>
+            <annotationSet cDate="10/25/2004 06:14:13 PDT Mon" status="UNANN" ID="2015424">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="PP"/>
+                    <label end="10" start="5" name="VVZ"/>
+                    <label end="13" start="12" name="rb"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="24" start="22" name="jj"/>
+                    <label end="28" start="26" name="nn"/>
+                    <label end="38" start="30" name="VVD"/>
+                    <label end="40" start="40" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:13 PDT Mon" status="MANUAL" ID="2015425">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="38" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="28" start="18" name="Escapee"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="18" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="33" aPos="38353256" ID="1283619">
+            <text>Both of the other boys promptly scarpered .</text>
+            <annotationSet cDate="10/25/2004 06:14:13 PDT Mon" status="UNANN" ID="2015428">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="cc"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="16" start="12" name="jj"/>
+                    <label end="21" start="18" name="nns"/>
+                    <label end="30" start="23" name="rb"/>
+                    <label end="40" start="32" name="VVD"/>
+                    <label end="42" start="42" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:13 PDT Mon" status="MANUAL" ID="2015429">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="40" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="21" start="0" name="Escapee"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                    <label cBy="243" feID="2359" end="30" start="23" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Ext"/>
+                    <label end="30" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="NP"/>
+                    <label end="30" start="23" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1104" aPos="98981512" ID="1283626">
+            <text>The band were last seen flogging their wares around Europe , with no less than ex-Angelic Upstarts drummer ` Stix &quot; behind the kit , former drummer Nigel having scarpered when the going got rough .</text>
+            <annotationSet cDate="10/25/2004 06:14:16 PDT Mon" status="UNANN" ID="2015442">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="12" start="9" name="VBD"/>
+                    <label end="17" start="14" name="rb"/>
+                    <label end="22" start="19" name="VVN"/>
+                    <label end="31" start="24" name="VVG"/>
+                    <label end="37" start="33" name="PP$"/>
+                    <label end="43" start="39" name="nns"/>
+                    <label end="50" start="45" name="in"/>
+                    <label end="57" start="52" name="NP"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="64" start="61" name="in"/>
+                    <label end="67" start="66" name="dt"/>
+                    <label end="72" start="69" name="jjr"/>
+                    <label end="77" start="74" name="in"/>
+                    <label end="88" start="79" name="NP"/>
+                    <label end="97" start="90" name="nns"/>
+                    <label end="105" start="99" name="nn"/>
+                    <label end="112" start="109" name="NP"/>
+                    <label end="121" start="116" name="in"/>
+                    <label end="125" start="123" name="dt"/>
+                    <label end="129" start="127" name="nn"/>
+                    <label end="131" start="131" name=","/>
+                    <label end="138" start="133" name="jj"/>
+                    <label end="146" start="140" name="nn"/>
+                    <label end="152" start="148" name="NP"/>
+                    <label end="169" start="161" name="VVN"/>
+                    <label end="174" start="171" name="wrb"/>
+                    <label end="178" start="176" name="dt"/>
+                    <label end="184" start="180" name="nn"/>
+                    <label end="188" start="186" name="VVD"/>
+                    <label end="194" start="190" name="jj"/>
+                    <label end="196" start="196" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/25/2004 06:14:16 PDT Mon" status="MANUAL" ID="2015443">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="169" start="161" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="2356" end="152" start="133" name="Escapee"/>
+                    <label cBy="243" feID="2364" end="194" start="171" name="Time"/>
+                    <label cBy="243" feID="2360" itype="DNI" name="Undesirable_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="133" name="Ext"/>
+                    <label end="194" start="171" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="133" name="NP"/>
+                    <label end="194" start="171" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

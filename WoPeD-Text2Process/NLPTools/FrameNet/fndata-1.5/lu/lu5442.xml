@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="grimoire.n" ID="5442" frame="Text" frameID="298" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Author" name="Author"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Cmpnt" name="Components"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Cont_text" name="Containing_text"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Genre" name="Genre"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Hon" name="Honoree"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Text" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Time" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Title" name="Title"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Top" name="Topic"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a book of magic spells and invocations. </definition>
+    <lexeme POS="N" name="grimoire"/>
+    <valences>
+        <governor type="Gov" lemma="inscribe">
+            <annoSet ID="1168223"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Components"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Components"/>
+                <annoSet ID="1168223"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Text"/>
+                <annoSet ID="1168223"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Components"/>
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Components"/>
+                <valenceUnit GF="" PT="DEN" FE="Text"/>
+                <annoSet ID="1168223"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="38983061" ID="856546">
+            <text>Mages inscribed grimoires of the most potent spells to be enshrined in its libraries . </text>
+            <annotationSet cDate="01/07/2003 05:08:19 PST Tue" status="UNANN" ID="1168222">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="14" start="6" name="VVD"/>
+                    <label end="24" start="16" name="NN2"/>
+                    <label end="27" start="26" name="PRF"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="36" start="33" name="AV0"/>
+                    <label end="43" start="38" name="AJ0"/>
+                    <label end="50" start="45" name="NN2"/>
+                    <label end="53" start="52" name="TO0"/>
+                    <label end="56" start="55" name="VBI"/>
+                    <label end="66" start="58" name="VVN"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="73" start="71" name="DPS"/>
+                    <label end="83" start="75" name="NN2"/>
+                    <label end="85" start="85" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:08:19 PST Tue" status="MANUAL" ID="1168223">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2545" end="24" start="16" name="Text"/>
+                    <label cBy="669" feID="2553" end="50" start="26" name="Components"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="14" start="6" name="Gov"/>
+                    <label end="50" start="16" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="fracture.v" ID="7578" frame="Cause_to_fragment" frameID="414" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Pieces" name="Pieces"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Res_surf" name="Resistant_surface"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Whole_patient"/>
+        </frame>
+    </header>
+    <definition>FN: cause to end up in multiple pieces.</definition>
+    <lexeme POS="V" name="fracture"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1795618"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1795514"/>
+                <annoSet ID="1795516"/>
+                <annoSet ID="1795518"/>
+                <annoSet ID="1795522"/>
+                <annoSet ID="1795570"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Instrument"/>
+                <annoSet ID="1795618"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Means"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Means"/>
+                <annoSet ID="1795514"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Pieces"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <annoSet ID="1795514"/>
+                <annoSet ID="1795516"/>
+                <annoSet ID="1795518"/>
+                <annoSet ID="1795522"/>
+                <annoSet ID="1795570"/>
+                <annoSet ID="1795618"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Time"/>
+                <annoSet ID="1795514"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1795618"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1795514"/>
+                <annoSet ID="1795516"/>
+                <annoSet ID="1795518"/>
+                <annoSet ID="1795522"/>
+                <annoSet ID="1795570"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Instrument"/>
+            <FE name="Pieces"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Instrument"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1795618"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Means"/>
+            <FE name="Pieces"/>
+            <FE name="Time"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="2nd" FE="Means"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Time"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1795514"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Agent"/>
+            <FE name="Pieces"/>
+            <FE name="Whole_patient"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1795516"/>
+                <annoSet ID="1795518"/>
+                <annoSet ID="1795522"/>
+                <annoSet ID="1795570"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-skull">
+        <sentence sentNo="0" aPos="44485447" ID="1172655">
+            <text>Former England Under-21 player Keith Benton fractured his son Seb 's skull when he hit the ball into the crowd during a match in Buckingham . </text>
+            <annotationSet cDate="01/08/2003 05:24:33 PST Wed" status="UNANN" ID="1795513">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="DT0"/>
+                    <label end="13" start="7" name="NP0"/>
+                    <label end="22" start="15" name="AJ0-NN1"/>
+                    <label end="29" start="24" name="NN1"/>
+                    <label end="35" start="31" name="NP0"/>
+                    <label end="42" start="37" name="NP0"/>
+                    <label end="52" start="44" name="VVD"/>
+                    <label end="56" start="54" name="DPS"/>
+                    <label end="60" start="58" name="NN1"/>
+                    <label end="64" start="62" name="NP0"/>
+                    <label end="67" start="66" name="POS"/>
+                    <label end="73" start="69" name="NN1"/>
+                    <label end="78" start="75" name="AVQ-CJS"/>
+                    <label end="81" start="80" name="PNP"/>
+                    <label end="85" start="83" name="VVD"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="99" start="96" name="PRP"/>
+                    <label end="103" start="101" name="AT0"/>
+                    <label end="109" start="105" name="NN0"/>
+                    <label end="116" start="111" name="PRP"/>
+                    <label end="118" start="118" name="AT0"/>
+                    <label end="124" start="120" name="NN1"/>
+                    <label end="127" start="126" name="PRP"/>
+                    <label end="138" start="129" name="NP0"/>
+                    <label end="140" start="140" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:33 PST Wed" status="MANUAL" ID="1795514">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="42" start="0" name="Agent"/>
+                    <label cBy="351" feID="3806" end="73" start="54" name="Whole_patient"/>
+                    <label cBy="351" feID="3810" end="138" start="75" name="Time"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="0" name="Ext"/>
+                    <label end="73" start="54" name="Obj"/>
+                    <label end="138" start="75" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="0" name="NP"/>
+                    <label end="73" start="54" name="NP"/>
+                    <label end="138" start="75" name="Sinterrog"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="52" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="351" feID="3805" end="138" start="75" name="Means"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46779951" ID="1172656">
+            <text>He hit a lamp-post and fractured Mike 's skull . </text>
+            <annotationSet cDate="01/08/2003 05:24:33 PST Wed" status="UNANN" ID="1795515">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VVD"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="17" start="9" name="AJ0-NN1"/>
+                    <label end="21" start="19" name="CJC"/>
+                    <label end="31" start="23" name="VVD"/>
+                    <label end="36" start="33" name="NP0"/>
+                    <label end="39" start="38" name="POS"/>
+                    <label end="45" start="41" name="NN1"/>
+                    <label end="47" start="47" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:33 PST Wed" status="MANUAL" ID="1795516">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="1" start="0" name="Agent"/>
+                    <label cBy="351" feID="3806" end="45" start="33" name="Whole_patient"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="45" start="33" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="45" start="33" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="54630239" ID="1172657">
+            <text>When he found the man he threw the acid into his face and beat him with the hammer , fracturing his skull and his thumb . </text>
+            <annotationSet cDate="01/08/2003 05:24:34 PST Wed" status="UNANN" ID="1795517">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="6" start="5" name="PNP"/>
+                    <label end="12" start="8" name="VVD"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="20" start="18" name="NN1"/>
+                    <label end="23" start="22" name="PNP"/>
+                    <label end="29" start="25" name="VVD"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="38" start="35" name="NN1"/>
+                    <label end="43" start="40" name="PRP"/>
+                    <label end="47" start="45" name="DPS"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="61" start="58" name="VVD"/>
+                    <label end="65" start="63" name="PNP"/>
+                    <label end="70" start="67" name="PRP"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="81" start="76" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="94" start="85" name="VVG"/>
+                    <label end="98" start="96" name="DPS"/>
+                    <label end="104" start="100" name="NN1"/>
+                    <label end="108" start="106" name="CJC"/>
+                    <label end="112" start="110" name="DPS"/>
+                    <label end="118" start="114" name="NN1"/>
+                    <label end="120" start="120" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:34 PST Wed" status="MANUAL" ID="1795518">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="104" start="96" name="Whole_patient"/>
+                    <label cBy="351" feID="3802" end="23" start="22" name="Agent"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="96" name="Obj"/>
+                    <label end="23" start="22" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="96" name="NP"/>
+                    <label end="23" start="22" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="94" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101921543" ID="1172659">
+            <text>A nanny has been jailed after fracturing the skulls of two new born babies in her care . </text>
+            <annotationSet cDate="01/08/2003 05:24:34 PST Wed" status="UNANN" ID="1795521">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="6" start="2" name="NN1"/>
+                    <label end="10" start="8" name="VHZ"/>
+                    <label end="15" start="12" name="VBN"/>
+                    <label end="22" start="17" name="VVN"/>
+                    <label end="28" start="24" name="PRP"/>
+                    <label end="39" start="30" name="VVG"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="50" start="45" name="NN2"/>
+                    <label end="53" start="52" name="PRF"/>
+                    <label end="57" start="55" name="CRD"/>
+                    <label end="61" start="59" name="AJ0"/>
+                    <label end="66" start="63" name="AJ0"/>
+                    <label end="73" start="68" name="NN2"/>
+                    <label end="76" start="75" name="PRP"/>
+                    <label end="80" start="78" name="DPS"/>
+                    <label end="85" start="82" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:34 PST Wed" status="MANUAL" ID="1795522">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="85" start="41" name="Whole_patient"/>
+                    <label cBy="351" feID="3802" end="6" start="0" name="Agent"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="41" name="Obj"/>
+                    <label end="6" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="41" name="NP"/>
+                    <label end="6" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-520-s20-np-vping"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-660-s20-trans-simple">
+        <sentence sentNo="0" aPos="104869077" ID="1172683">
+            <text>Then 17-year-old Lee Diaz , of North End Gardens , Bishop Auckland , attacked a second party-goer , Carl Gent , punching him in the face and fracturing his jaw . </text>
+            <annotationSet cDate="01/08/2003 05:24:36 PST Wed" status="UNANN" ID="1795569">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="15" start="5" name="AJ0"/>
+                    <label end="19" start="17" name="NP0"/>
+                    <label end="24" start="21" name="NP0"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="35" start="31" name="NP0"/>
+                    <label end="39" start="37" name="NP0"/>
+                    <label end="47" start="41" name="NP0"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="56" start="51" name="NP0"/>
+                    <label end="65" start="58" name="NP0"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="76" start="69" name="VVD"/>
+                    <label end="78" start="78" name="AT0"/>
+                    <label end="85" start="80" name="ORD"/>
+                    <label end="96" start="87" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="103" start="100" name="NP0"/>
+                    <label end="108" start="105" name="NN1"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="119" start="112" name="VVG"/>
+                    <label end="123" start="121" name="PNP"/>
+                    <label end="126" start="125" name="PRP"/>
+                    <label end="130" start="128" name="AT0"/>
+                    <label end="135" start="132" name="NN1"/>
+                    <label end="139" start="137" name="CJC"/>
+                    <label end="150" start="141" name="VVG"/>
+                    <label end="154" start="152" name="DPS"/>
+                    <label end="158" start="156" name="NN1"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:37 PST Wed" status="MANUAL" ID="1795570">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="65" start="0" name="Agent"/>
+                    <label cBy="351" feID="3806" end="158" start="152" name="Whole_patient"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="0" name="Ext"/>
+                    <label end="158" start="152" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="0" name="NP"/>
+                    <label end="158" start="152" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="150" start="141" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass">
+        <sentence sentNo="0" aPos="41841941" ID="1172707">
+            <text>It was fractured with a solvent-cleaned chisel , and the outer orange layer discarded . </text>
+            <annotationSet cDate="01/08/2003 05:24:39 PST Wed" status="UNANN" ID="1795617">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="VVN"/>
+                    <label end="20" start="17" name="PRP"/>
+                    <label end="22" start="22" name="AT0"/>
+                    <label end="38" start="24" name="AJ0"/>
+                    <label end="45" start="40" name="NN1"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="61" start="57" name="AJ0"/>
+                    <label end="68" start="63" name="AJ0-NN1"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="84" start="76" name="VVD"/>
+                    <label end="86" start="86" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:24:39 PST Wed" status="MANUAL" ID="1795618">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="1" start="0" name="Whole_patient"/>
+                    <label cBy="351" feID="3803" end="45" start="17" name="Instrument"/>
+                    <label cBy="351" feID="3802" itype="CNI" name="Agent"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="45" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="45" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-690-s20-trans-other"/>
+    <subCorpus name="V-730-s20-ppwith"/>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

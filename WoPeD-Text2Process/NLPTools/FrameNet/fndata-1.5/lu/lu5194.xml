@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="combust.v" ID="5194" frame="Setting_fire" frameID="283" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE960112.0194" ID="7236"/>
+            <document description="apwsE950630.0419" ID="8537"/>
+            <document description="apwsE951221.0077" ID="9243"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Containing_event"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Flame" name="Flame"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Flambls" name="Flammables"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kindler" name="Kindler"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: with obj. consume or be consumed by fire. </definition>
+    <lexeme POS="V" name="combust"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Cause"/>
+                <annoSet ID="2067345"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cause"/>
+                <annoSet ID="2067335"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Cause"/>
+                <annoSet ID="2067329"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Cause"/>
+                <annoSet ID="2067333"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Flammables"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <annoSet ID="1109923"/>
+                <annoSet ID="2067329"/>
+                <annoSet ID="2067333"/>
+                <annoSet ID="2067335"/>
+                <annoSet ID="2067345"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Kindler"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Kindler"/>
+                <annoSet ID="1109923"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="2067345"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Time"/>
+                <annoSet ID="2067345"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Time"/>
+                <annoSet ID="1109923"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Cause"/>
+            <FE name="Flammables"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <annoSet ID="2067335"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <annoSet ID="2067329"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <annoSet ID="2067333"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Flammables"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Time"/>
+                <annoSet ID="2067345"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Flammables"/>
+            <FE name="Flammables"/>
+            <FE name="Kindler"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Flammables"/>
+                <valenceUnit GF="" PT="CNI" FE="Kindler"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Time"/>
+                <annoSet ID="1109923"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="23056768" ID="826719">
+            <text>After that you wear paper overalls that get combusted at every stage . &quot; </text>
+            <annotationSet cDate="01/07/2003 04:01:23 PST Tue" status="UNANN" ID="1109922">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS-PRP"/>
+                    <label end="9" start="6" name="CJT-DT0"/>
+                    <label end="13" start="11" name="PNP"/>
+                    <label end="18" start="15" name="VVB"/>
+                    <label end="24" start="20" name="NN1"/>
+                    <label end="33" start="26" name="NN2"/>
+                    <label end="38" start="35" name="CJT"/>
+                    <label end="42" start="40" name="VVB"/>
+                    <label end="52" start="44" name="VVD-VVN"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="61" start="57" name="AT0"/>
+                    <label end="67" start="63" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="71" start="71" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:01:23 PST Tue" status="MANUAL" ID="1109923">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2451" end="33" start="20" name="Flammables"/>
+                    <label cBy="296" feID="2456" end="67" start="54" name="Time"/>
+                    <label cBy="296" feID="2449" itype="CNI" name="Kindler"/>
+                    <label cBy="309" feID="2451" end="38" start="35" name="Flammables"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="20" name="Ext"/>
+                    <label end="67" start="54" name="Dep"/>
+                    <label end="38" start="35" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="20" name="NP"/>
+                    <label end="67" start="54" name="PP"/>
+                    <label end="38" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="33" start="20" name="Ant"/>
+                    <label end="38" start="35" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="52" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="9243" sentNo="2" paragNo="5" aPos="26722154" ID="1309589">
+            <text>Large holes in pipes were visible , as well as burn marks left when the leaking sodium combusted on contact with air .</text>
+            <annotationSet cDate="01/31/2005 10:35:44 PST Mon" status="UNANN" ID="2067328">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="10" start="6" name="nns"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="19" start="15" name="nns"/>
+                    <label end="24" start="21" name="VBD"/>
+                    <label end="32" start="26" name="jj"/>
+                    <label end="34" start="34" name=","/>
+                    <label end="37" start="36" name="rb"/>
+                    <label end="42" start="39" name="rb"/>
+                    <label end="45" start="44" name="rb"/>
+                    <label end="50" start="47" name="VV"/>
+                    <label end="56" start="52" name="nns"/>
+                    <label end="61" start="58" name="VVN"/>
+                    <label end="66" start="63" name="wrb"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="78" start="72" name="VVG"/>
+                    <label end="85" start="80" name="nn"/>
+                    <label end="95" start="87" name="VVN"/>
+                    <label end="98" start="97" name="in"/>
+                    <label end="106" start="100" name="nn"/>
+                    <label end="111" start="108" name="in"/>
+                    <label end="115" start="113" name="nn"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/31/2005 10:35:45 PST Mon" status="MANUAL" ID="2067329">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="95" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2451" end="85" start="68" name="Flammables"/>
+                    <label cBy="395" feID="2455" end="115" start="97" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="68" name="Ext"/>
+                    <label end="115" start="97" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="68" name="NP"/>
+                    <label end="115" start="97" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="7236" sentNo="1" paragNo="4" aPos="96649855" ID="1309591">
+            <text>Tons of caustic sodium leaked from a plant cooling system in the accident and some of it combusted with the air .</text>
+            <annotationSet cDate="01/31/2005 10:35:46 PST Mon" status="UNANN" ID="2067332">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="nns"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="14" start="8" name="jj"/>
+                    <label end="21" start="16" name="nn"/>
+                    <label end="28" start="23" name="VVN"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="49" start="43" name="VVG"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="72" start="65" name="nn"/>
+                    <label end="76" start="74" name="cc"/>
+                    <label end="81" start="78" name="dt"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="87" start="86" name="PP"/>
+                    <label end="97" start="89" name="VVD"/>
+                    <label end="102" start="99" name="in"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="110" start="108" name="nn"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/31/2005 10:35:46 PST Mon" status="MANUAL" ID="2067333">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="97" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2451" end="87" start="78" name="Flammables"/>
+                    <label cBy="395" feID="2455" end="110" start="99" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="78" name="Ext"/>
+                    <label end="110" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="78" name="NP"/>
+                    <label end="110" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="8537" sentNo="1" paragNo="12" aPos="71410416" ID="1309592">
+            <text>Local trading inspectors said they were testing similar skirts to find out what caused the garment to combust .</text>
+            <annotationSet cDate="01/31/2005 10:35:46 PST Mon" status="UNANN" ID="2067334">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="12" start="6" name="nn"/>
+                    <label end="23" start="14" name="nns"/>
+                    <label end="28" start="25" name="VVD"/>
+                    <label end="33" start="30" name="PP"/>
+                    <label end="38" start="35" name="VBD"/>
+                    <label end="46" start="40" name="VVG"/>
+                    <label end="54" start="48" name="jj"/>
+                    <label end="61" start="56" name="VVZ"/>
+                    <label end="64" start="63" name="to"/>
+                    <label end="69" start="66" name="VV"/>
+                    <label end="73" start="71" name="rp"/>
+                    <label end="78" start="75" name="wp"/>
+                    <label end="85" start="80" name="VVD"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="97" start="91" name="nn"/>
+                    <label end="100" start="99" name="to"/>
+                    <label end="108" start="102" name="VV"/>
+                    <label end="110" start="110" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/31/2005 10:35:47 PST Mon" status="MANUAL" ID="2067335">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="108" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2451" end="97" start="87" name="Flammables"/>
+                    <label cBy="395" feID="2455" itype="CNI" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="87" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="87" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="122" aPos="69139251" ID="1309597">
+            <text>When Johnson 's Journey appeared , sensitivities combusted spontaneously in Scotland .</text>
+            <annotationSet cDate="01/31/2005 10:38:36 PST Mon" status="UNANN" ID="2067344">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wrb"/>
+                    <label end="11" start="5" name="NP"/>
+                    <label end="14" start="13" name="POS"/>
+                    <label end="22" start="16" name="NP"/>
+                    <label end="31" start="24" name="VVD"/>
+                    <label end="33" start="33" name=","/>
+                    <label end="47" start="35" name="nns"/>
+                    <label end="57" start="49" name="VVD"/>
+                    <label end="71" start="59" name="rb"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="83" start="76" name="NP"/>
+                    <label end="85" start="85" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/31/2005 10:38:36 PST Mon" status="MANUAL" ID="2067345">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="57" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2456" end="31" start="0" name="Time"/>
+                    <label cBy="395" feID="2451" end="47" start="35" name="Flammables"/>
+                    <label cBy="395" feID="2455" end="71" start="59" name="Cause"/>
+                    <label cBy="395" feID="2457" end="83" start="73" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="0" name="Dep"/>
+                    <label end="47" start="35" name="Ext"/>
+                    <label end="71" start="59" name="Dep"/>
+                    <label end="83" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="0" name="Sfin"/>
+                    <label end="47" start="35" name="NP"/>
+                    <label end="71" start="59" name="AVP"/>
+                    <label end="83" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

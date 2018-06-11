@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="hit.v" ID="14116" frame="Hit_or_miss" frameID="1902" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Deviation"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="" name="Instrument"/>
+            <FE fgColor="000000" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Otcm" name="Outcome"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core-Unexpressed" abbrev="Goal" name="Target"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="targ_loc" name="Target_location"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: strike (a target).</definition>
+    <lexeme POS="V" name="hit"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2595674"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Instrument"/>
+                <annoSet ID="2595674"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Target_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Target_location"/>
+                <annoSet ID="2595674"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Instrument"/>
+            <FE name="Target_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="DNI" FE="Instrument"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Target_location"/>
+                <annoSet ID="2595674"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-(1)"/>
+    <subCorpus name="02-T-(1)"/>
+    <subCorpus name="03-Wdirect-T-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="661" aPos="1292659" ID="1580527">
+            <text>This means the vet has hit the right spot , but , despite giving the appearance of a canine pin cushion , it is obviously not too unpleasant an experience .</text>
+            <annotationSet cDate="07/16/2010 05:16:50 PDT Fri" status="UNANN" ID="2595673">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="VVZ"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="17" start="15" name="nn"/>
+                    <label end="21" start="19" name="VHZ"/>
+                    <label end="25" start="23" name="VVN"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="35" start="31" name="jj"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="48" start="48" name=","/>
+                    <label end="56" start="50" name="in"/>
+                    <label end="63" start="58" name="VVG"/>
+                    <label end="67" start="65" name="dt"/>
+                    <label end="78" start="69" name="nn"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="90" start="85" name="jj"/>
+                    <label end="94" start="92" name="nn"/>
+                    <label end="102" start="96" name="nn"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="107" start="106" name="PP"/>
+                    <label end="110" start="109" name="VBZ"/>
+                    <label end="120" start="112" name="rb"/>
+                    <label end="124" start="122" name="rb"/>
+                    <label end="128" start="126" name="rb"/>
+                    <label end="139" start="130" name="jj"/>
+                    <label end="142" start="141" name="dt"/>
+                    <label end="153" start="144" name="nn"/>
+                    <label end="155" start="155" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 05:16:50 PDT Fri" status="MANUAL" ID="2595674">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="25" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="11334" end="17" start="11" name="Agent"/>
+                    <label cBy="571" feID="11348" end="40" start="27" name="Target_location"/>
+                    <label cBy="571" feID="11347" itype="DNI" name="Instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="11" name="Ext"/>
+                    <label end="40" start="27" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="11" name="NP"/>
+                    <label end="40" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

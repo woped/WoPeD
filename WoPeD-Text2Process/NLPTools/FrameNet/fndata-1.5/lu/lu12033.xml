@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="up to.prep" ID="12033" frame="Being_up_to_it" frameID="1440" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="act" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="rel" name="Relevant_feature"/>
+        </frame>
+    </header>
+    <definition>FN: capable of undertaking a specified difficult activity</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="PREP" name="to"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="VPing" FE="Activity"/>
+                <annoSet ID="2596737"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sabs" FE="Circumstances"/>
+                <annoSet ID="2596737"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2596737"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Activity"/>
+            <FE name="Circumstances"/>
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="VPing" FE="Activity"/>
+                <valenceUnit GF="Dep" PT="Sabs" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2596737"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-NP-Wbe-T-(2)"/>
+    <subCorpus name="02-T-Wvvg-(2)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="580" aPos="27737572" ID="1581030">
+            <text>Now a podgy , desperately unfit bar-fly , he simply was n't up to taking on the Man of Action role that he craved .</text>
+            <annotationSet cDate="07/20/2010 01:51:54 PDT Tue" status="UNANN" ID="2596736">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="rb"/>
+                    <label end="4" start="4" name="dt"/>
+                    <label end="10" start="6" name="jj"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="24" start="14" name="rb"/>
+                    <label end="30" start="26" name="jj"/>
+                    <label end="38" start="32" name="nn"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="43" start="42" name="PP"/>
+                    <label end="50" start="45" name="rb"/>
+                    <label end="54" start="52" name="VBD"/>
+                    <label end="58" start="56" name="rb"/>
+                    <label end="61" start="60" name="rb"/>
+                    <label end="64" start="63" name="to"/>
+                    <label end="71" start="66" name="VVG"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="78" start="76" name="dt"/>
+                    <label end="82" start="80" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="92" start="87" name="NP"/>
+                    <label end="97" start="94" name="nn"/>
+                    <label end="102" start="99" name="in"/>
+                    <label end="105" start="104" name="PP"/>
+                    <label end="112" start="107" name="VVD"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/20/2010 01:51:54 PDT Tue" status="MANUAL" ID="2596737">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="64" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="7949" end="43" start="42" name="Entity"/>
+                    <label cBy="589" feID="7950" end="112" start="66" name="Activity"/>
+                    <label cBy="589" feID="7952" end="38" start="0" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="42" name="Ext"/>
+                    <label end="112" start="66" name="Obj"/>
+                    <label end="38" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="42" name="NP"/>
+                    <label end="112" start="66" name="VPing"/>
+                    <label end="38" start="0" name="Sabs"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

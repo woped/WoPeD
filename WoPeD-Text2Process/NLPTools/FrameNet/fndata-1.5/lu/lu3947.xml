@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Unit" POS="N" name="week.n" ID="3947" frame="Calendric_unit" frameID="229" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cou" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="RelT" name="Relative_time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sal_eve" name="Salient_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="uni" name="Unit"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Whole" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: the period of seven days generally reckoned from and to midnight on Saturday night</definition>
+    <lexeme POS="N" name="week"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Salient_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Salient_event"/>
+                <annoSet ID="2599844"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="2599844"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Salient_event"/>
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Salient_event"/>
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="2599844"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="7" paragNo="2" aPos="0" ID="312909">
+            <text>It was part of the economy drive in preparation for Hate Week .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269185">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="25" start="19" name="NN1"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="46" start="36" name="NN1"/>
+                    <label end="50" start="48" name="PRP"/>
+                    <label end="55" start="52" name="NN1"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="62" start="62" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 02:45:45 PDT Tue" status="MANUAL" ID="2599844">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="60" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="10331" end="60" start="57" name="Unit"/>
+                    <label cBy="664" feID="11700" end="55" start="52" name="Salient_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="52" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="52" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

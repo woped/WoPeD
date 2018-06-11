@@ -15,6 +15,7 @@ import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.Constants;
 import org.woped.editor.controller.*;
@@ -1497,10 +1498,12 @@ private TokenGameController m_tokenGameController;
 
     public void mouseWheelMoved(MouseWheelEvent e) {
         int notches = e.getWheelRotation();
-        if ( notches < 0 ) {
-            zoom(+0.1, false);
-        } else {
-            zoom(-0.1, false);
+		if (!Platform.isMac()) {
+			if ( notches < 0 ) {
+				zoom(+0.1, false);
+			} else {
+				zoom(-0.1, false);
+			}
         }
     }
 

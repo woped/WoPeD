@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="11/03/2003 05:15:44 PST Mon" name="Being_in_operation" ID="880" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Device&lt;/fen&gt; or machine is in (or out of) service. Note that being broken or functional is a separate issue from being turned on or off. This latter notion is what the present frame is concerned with. &lt;br /&gt; The &lt;fen&gt;Time&lt;/fen&gt; when and the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Device&lt;/fen&gt; is in use may be specified, as may be the Purpose a backgrounded human User had in turning the Device on or off. 
+
+
+&lt;ex&gt;&lt;fex name="Device"&gt;The TV&lt;/fex&gt; is &lt;t&gt;on&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Device"&gt;The lights&lt;/fex&gt; were &lt;t&gt;off&lt;/t&gt; &lt;fex name="Time"&gt;when I came by&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/03/2003 05:40:14 PST Mon" abbrev="" name="Device" ID="5720">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Device&lt;/fen&gt; or machine that is in or out of operation.
+
+&lt;ex&gt;&lt;fex name="Device"&gt;Lights&lt;/fex&gt; &lt;m&gt;were&lt;/m&gt; &lt;t&gt;on&lt;/t&gt; in the primary school &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/03/2003 05:43:11 PST Mon" abbrev="" name="Time" ID="5721">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when a &lt;fen&gt;Device&lt;/fen&gt; is in or out of operation.
+
+&lt;ex&gt;I do n't want to turn round cos the lights &lt;m&gt;are&lt;/m&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Time"&gt;at the moment&lt;/fex&gt; &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/03/2003 05:44:51 PST Mon" abbrev="" name="Place" ID="5722">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; in which the &lt;fen&gt;Device&lt;/fen&gt; is or is not operating.
+
+&lt;ex&gt; Lights &lt;m&gt;were&lt;/m&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Place"&gt;on the Kingston road bridge&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="03/26/2007 12:44:51 PDT Mon" abbrev="dur" name="Duration" ID="11377">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Gizmo</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="PREP" name="on.prep" ID="9912" lemmaID="26702" cBy="605" cDate="11/11/2003 05:22:46 PST Tue">
+        <definition>FN: (of an electrical appliance or system): being functioning</definition>
+        <sentenceCount annotated="0" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="off.prep" ID="11109" lemmaID="26549" cBy="303" cDate="11/05/2004 05:22:34 PST Fri">
+        <definition>COD: (of an electrical appliance or power supply) not functioning or so as to cease to function.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="off"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="operate.v" ID="14070" lemmaID="26809" cBy="618" cDate="03/23/2007 09:06:50 PDT Fri">
+        <definition>FN: (of an artifact or machine) be active.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="operate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="operational.a" ID="14073" lemmaID="26813" cBy="618" cDate="03/23/2007 09:12:07 PDT Fri">
+        <definition>FN: be in use, active.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="operational"/>
+    </lexUnit>
+</frame>

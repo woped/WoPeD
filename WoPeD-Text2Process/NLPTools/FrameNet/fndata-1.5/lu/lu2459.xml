@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="nab.v" ID="2459" frame="Kidnapping" frameID="122" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="CA" name="Co_abductee"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FF0000" bgColor="FFFFFF" type="Peripheral" abbrev="" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="GOAL" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Perp" name="Perpetrator"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Vict" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: take or grab suddenly. </definition>
+    <lexeme POS="V" name="nab"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Perpetrator"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <annoSet ID="129163"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="129163"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Perpetrator"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="129163"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-rcoll-Mafia"/>
+    <subCorpus name="V-429-rcoll-burglar"/>
+    <subCorpus name="V-429-rcoll-man"/>
+    <subCorpus name="V-429-rcoll-police"/>
+    <subCorpus name="V-550-np-np"/>
+    <subCorpus name="V-570-np-ppfor">
+        <sentence sentNo="0" aPos="77575101" ID="241343">
+            <text>But when she read Brian 's application , she decided to nab him for herself . </text>
+            <annotationSet cDate="01/06/2003 08:12:22 PST Mon" status="UNANN" ID="129162">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="7" start="4" name="CJS"/>
+                    <label end="11" start="9" name="PNP"/>
+                    <label end="16" start="13" name="VVD"/>
+                    <label end="22" start="18" name="NP0"/>
+                    <label end="25" start="24" name="POS"/>
+                    <label end="37" start="27" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="43" start="41" name="PNP"/>
+                    <label end="51" start="45" name="VVD"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="58" start="56" name="VVI"/>
+                    <label end="62" start="60" name="PNP"/>
+                    <label end="66" start="64" name="PRP"/>
+                    <label end="74" start="68" name="PNX"/>
+                    <label end="76" start="76" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:12:22 PST Mon" status="MANUAL" ID="129163">
+                <layer rank="1" name="FE">
+                    <label cBy="599" feID="627" end="43" start="41" name="Perpetrator"/>
+                    <label cBy="599" feID="628" end="62" start="60" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="41" name="Ext"/>
+                    <label end="62" start="60" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="41" name="NP"/>
+                    <label end="62" start="60" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="58" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-630-np-pingother"/>
+    <subCorpus name="V-660-trans-simple"/>
+    <subCorpus name="V-670-pass-by"/>
+    <subCorpus name="V-680-pass"/>
+    <subCorpus name="V-690-trans-other"/>
+    <subCorpus name="V-730-ppby"/>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-900-other"/>
+</lexUnit>

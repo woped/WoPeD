@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="kohl.n" ID="5622" frame="Body_decoration" frameID="299" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="BodP" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Dec_ind" name="Decorated_individual"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Dec" name="Decoration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dec_desc" name="Decoration_desriptor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Pic" name="Picture"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a black powder, usually antimony sulphide or lead sulphide, used as eye make-up, especially in Eastern countries</definition>
+    <lexeme POS="N" name="kohl"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Decoration"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Decoration"/>
+                <annoSet ID="1196867"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Decoration"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Decoration"/>
+                <annoSet ID="1196867"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="55888653" ID="870992">
+            <text>She had a small mouth and large eyes , darkly outlined with kohl . </text>
+            <annotationSet cDate="01/07/2003 05:41:16 PST Tue" status="UNANN" ID="1196866">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VHD"/>
+                    <label end="8" start="8" name="AT0"/>
+                    <label end="14" start="10" name="AJ0"/>
+                    <label end="20" start="16" name="NN1"/>
+                    <label end="24" start="22" name="CJC"/>
+                    <label end="30" start="26" name="AJ0"/>
+                    <label end="35" start="32" name="NN2"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="44" start="39" name="AV0"/>
+                    <label end="53" start="46" name="VVD-VVN"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="63" start="60" name="NN1"/>
+                    <label end="65" start="65" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:16 PST Tue" status="MANUAL" ID="1196867">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2662" end="63" start="60" name="Decoration"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

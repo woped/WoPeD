@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="mature.v" ID="15358" frame="Cause_to_make_progress" frameID="1349" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="mature" ID="21977"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cau" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="dur" name="Duration"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Mea" name="Means"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="pos" name="Post_state"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pri" name="Prior_state"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="pro" name="Project"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="rat" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: develop</definition>
+    <lexeme POS="V" name="mature"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2608577"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Duration"/>
+                <annoSet ID="2608577"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Means"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Means"/>
+                <annoSet ID="2608577"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Project"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Project"/>
+                <annoSet ID="2608577"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Duration"/>
+            <FE name="Means"/>
+            <FE name="Project"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Means"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Project"/>
+                <annoSet ID="2608577"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="21977" sentNo="3" paragNo="3" aPos="0" ID="1565442">
+            <text>A growth plan is developed to mature the product 's reliability over time through reliability growth testing so that it has been demonstrated by the time production begins .</text>
+            <annotationSet cDate="06/09/2010 02:20:49 PDT Wed" status="UNANN" ID="2570722">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="7" start="2" name="nn"/>
+                    <label end="12" start="9" name="nn"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="25" start="17" name="VVN"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="35" start="30" name="VV"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="47" start="41" name="nn"/>
+                    <label end="50" start="49" name="POS"/>
+                    <label end="62" start="52" name="nn"/>
+                    <label end="67" start="64" name="in"/>
+                    <label end="72" start="69" name="nn"/>
+                    <label end="80" start="74" name="in"/>
+                    <label end="92" start="82" name="nn"/>
+                    <label end="99" start="94" name="nn"/>
+                    <label end="107" start="101" name="VVG"/>
+                    <label end="110" start="109" name="rb"/>
+                    <label end="118" start="117" name="PP"/>
+                    <label end="122" start="120" name="VHZ"/>
+                    <label end="127" start="124" name="VBN"/>
+                    <label end="140" start="129" name="VVN"/>
+                    <label end="143" start="142" name="in"/>
+                    <label end="147" start="145" name="dt"/>
+                    <label end="152" start="149" name="nn"/>
+                    <label end="163" start="154" name="nn"/>
+                    <label end="170" start="165" name="VVZ"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="0" start="0" name="NT"/>
+                    <label end="15" start="14" name="NT"/>
+                    <label end="28" start="27" name="NT"/>
+                    <label end="39" start="37" name="NT"/>
+                    <label end="50" start="49" name="NT"/>
+                    <label end="67" start="64" name="NT"/>
+                    <label end="80" start="74" name="NT"/>
+                    <label end="110" start="109" name="NT"/>
+                    <label end="118" start="117" name="NT"/>
+                    <label end="122" start="120" name="NT"/>
+                    <label end="127" start="124" name="NT"/>
+                    <label end="143" start="142" name="NT"/>
+                    <label end="147" start="145" name="NT"/>
+                    <label end="172" start="172" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/19/2010 03:18:20 PDT Thu" status="MANUAL" ID="2608577">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="35" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="7642" end="12" start="0" name="Agent"/>
+                    <label cBy="571" feID="7633" end="62" start="37" name="Project"/>
+                    <label cBy="571" feID="7639" end="72" start="64" name="Duration"/>
+                    <label cBy="571" feID="11916" end="107" start="74" name="Means"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="62" start="37" name="Obj"/>
+                    <label end="72" start="64" name="Dep"/>
+                    <label end="107" start="74" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="62" start="37" name="NP"/>
+                    <label end="72" start="64" name="PP"/>
+                    <label end="107" start="74" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="ermines.n" ID="3653" frame="Clothing" frameID="134" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>FN: garments made of ermine</definition>
+    <lexeme POS="N" name="ermines"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Garment"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="582436"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="582436"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="12839369" ID="471773">
+            <text>Kendal was known for ermines , coatings , duffel , blankets and much more , including a prosperous stocking trade . </text>
+            <annotationSet cDate="01/07/2003 05:16:13 PST Tue" status="UNANN" ID="582435">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="9" start="7" name="VBD"/>
+                    <label end="15" start="11" name="VVN"/>
+                    <label end="19" start="17" name="PRP"/>
+                    <label end="27" start="21" name="NN2"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="38" start="31" name="NN2"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="47" start="42" name="NN1-VVB"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="58" start="51" name="NN2-VVZ"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="67" start="64" name="AV0"/>
+                    <label end="72" start="69" name="AV0"/>
+                    <label end="74" start="74" name="PUN"/>
+                    <label end="84" start="76" name="PRP"/>
+                    <label end="86" start="86" name="AT0"/>
+                    <label end="97" start="88" name="AJ0"/>
+                    <label end="106" start="99" name="NN1"/>
+                    <label end="112" start="108" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:16:13 PST Tue" status="MANUAL" ID="582436">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="27" start="21" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

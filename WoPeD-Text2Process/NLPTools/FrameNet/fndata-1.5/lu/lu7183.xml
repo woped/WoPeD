@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="fatigued.a" ID="7183" frame="Biological_urge" frameID="394" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Expressor" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Stat" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: feeling a reduced capacity to exert due to depletion of bodily resources.</definition>
+    <lexeme POS="A" name="fatigued"/>
+    <valences>
+        <governor type="Sup" lemma="feel">
+            <annoSet ID="1607077"/>
+        </governor>
+        <governor type="Sup" lemma="look">
+            <annoSet ID="1607081"/>
+            <annoSet ID="1607093"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1607075"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Experiencer"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1607075"/>
+                <annoSet ID="1607077"/>
+                <annoSet ID="1607081"/>
+                <annoSet ID="1607093"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Experiencer"/>
+                <annoSet ID="1607077"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Experiencer"/>
+                <annoSet ID="1607083"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Expressor"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Expressor"/>
+                <annoSet ID="1607091"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1607075"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Experiencer"/>
+                <annoSet ID="1607083"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1607081"/>
+                <annoSet ID="1607093"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Experiencer"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Experiencer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1607077"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Expressor"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Expressor"/>
+                <annoSet ID="1607091"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="637390" ID="1077835">
+            <text>Usually , by the time they have lost enough weight , they are totally fatigued ! </text>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="UNANN" ID="1607074">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="20" start="17" name="NN1"/>
+                    <label end="25" start="22" name="PNP"/>
+                    <label end="30" start="27" name="VHB"/>
+                    <label end="35" start="32" name="VVN"/>
+                    <label end="42" start="37" name="DT0"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="56" start="53" name="PNP"/>
+                    <label end="60" start="58" name="VBB"/>
+                    <label end="68" start="62" name="AV0"/>
+                    <label end="77" start="70" name="AJ0-VVD"/>
+                    <label end="79" start="79" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="MANUAL" ID="1607075">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="56" start="53" name="Experiencer"/>
+                    <label cBy="618" feID="3519" end="68" start="62" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="53" name="Ext"/>
+                    <label end="68" start="62" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="53" name="NP"/>
+                    <label end="68" start="62" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="60" start="58" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="3930161" ID="1077836">
+            <text>Evenings are their weakest time since they soon begin to feel fatigued and want to go to sleep relatively early . </text>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="UNANN" ID="1607076">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN2"/>
+                    <label end="11" start="9" name="VBB"/>
+                    <label end="17" start="13" name="DPS"/>
+                    <label end="25" start="19" name="AJS"/>
+                    <label end="30" start="27" name="NN1"/>
+                    <label end="36" start="32" name="CJS"/>
+                    <label end="41" start="38" name="PNP"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="52" start="48" name="VVB"/>
+                    <label end="55" start="54" name="TO0"/>
+                    <label end="60" start="57" name="VVI"/>
+                    <label end="69" start="62" name="AJ0"/>
+                    <label end="73" start="71" name="CJC"/>
+                    <label end="78" start="75" name="VVB"/>
+                    <label end="81" start="80" name="TO0"/>
+                    <label end="84" start="83" name="VVI"/>
+                    <label end="87" start="86" name="TO0"/>
+                    <label end="93" start="89" name="VVI"/>
+                    <label end="104" start="95" name="AV0"/>
+                    <label end="110" start="106" name="AJ0-AV0"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="MANUAL" ID="1607077">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="46" start="43" name="Experiencer"/>
+                    <label cBy="395" feID="3520" end="41" start="38" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="43" name="Dep"/>
+                    <label end="41" start="38" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="43" name="AVP"/>
+                    <label end="41" start="38" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="60" start="57" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="8615505" ID="1077838">
+            <text>He came in the afternoon and he looked white , fatigued and many years older . </text>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="UNANN" ID="1607080">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="9" start="8" name="PRP"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="23" start="15" name="NN1"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="30" start="29" name="PNP"/>
+                    <label end="37" start="32" name="VVD"/>
+                    <label end="43" start="39" name="AJ0"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="54" start="47" name="AJ0-VVD"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="63" start="60" name="DT0"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="75" start="71" name="AJC"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="MANUAL" ID="1607081">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="30" start="29" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="29" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="29" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="37" start="32" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30590261" ID="1077839">
+            <text>They are inevitably stringent , but for obvious reasons : because fatigued drivers are a potential danger both to other users of the road and to the passengers whom they carry . </text>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="UNANN" ID="1607082">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="7" start="5" name="VBB"/>
+                    <label end="18" start="9" name="AV0"/>
+                    <label end="28" start="20" name="AJ0"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="PRP"/>
+                    <label end="38" start="36" name="PRP"/>
+                    <label end="46" start="40" name="AJ0"/>
+                    <label end="54" start="48" name="NN2"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="64" start="58" name="CJS"/>
+                    <label end="73" start="66" name="AJ0"/>
+                    <label end="81" start="75" name="NN2"/>
+                    <label end="85" start="83" name="VBB"/>
+                    <label end="87" start="87" name="AT0"/>
+                    <label end="97" start="89" name="AJ0-NN1"/>
+                    <label end="104" start="99" name="NN1"/>
+                    <label end="109" start="106" name="AV0"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="118" start="114" name="AJ0"/>
+                    <label end="124" start="120" name="NN2"/>
+                    <label end="127" start="126" name="PRF"/>
+                    <label end="131" start="129" name="AT0"/>
+                    <label end="136" start="133" name="NN1"/>
+                    <label end="140" start="138" name="CJC"/>
+                    <label end="143" start="142" name="PRP"/>
+                    <label end="147" start="145" name="AT0"/>
+                    <label end="158" start="149" name="NN2"/>
+                    <label end="163" start="160" name="PNQ"/>
+                    <label end="168" start="165" name="PNP"/>
+                    <label end="174" start="170" name="VVB"/>
+                    <label end="176" start="176" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="MANUAL" ID="1607083">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="81" start="75" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="75" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="75" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="53417281" ID="1077843">
+            <text>I look carefully at Fairfax 's moist , fatigued eyes , which have seen so much , for signs of irony . </text>
+            <annotationSet cDate="01/08/2003 01:31:05 PST Wed" status="UNANN" ID="1607090">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVB"/>
+                    <label end="15" start="7" name="AV0"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="26" start="20" name="NP0"/>
+                    <label end="29" start="28" name="POS"/>
+                    <label end="35" start="31" name="AJ0"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="46" start="39" name="AJ0-VVD"/>
+                    <label end="51" start="48" name="NN2"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="59" start="55" name="DTQ"/>
+                    <label end="64" start="61" name="VHB"/>
+                    <label end="69" start="66" name="VVN"/>
+                    <label end="72" start="71" name="AV0"/>
+                    <label end="77" start="74" name="AV0"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="83" start="81" name="PRP"/>
+                    <label end="89" start="85" name="NN2"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="98" start="94" name="NN1"/>
+                    <label end="100" start="100" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:06 PST Wed" status="MANUAL" ID="1607091">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3526" end="51" start="48" name="Expressor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="48" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="48" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58948646" ID="1077844">
+            <text>She looked fatigued and drawn . </text>
+            <annotationSet cDate="01/08/2003 01:31:06 PST Wed" status="UNANN" ID="1607092">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="18" start="11" name="AJ0-VVD"/>
+                    <label end="22" start="20" name="CJC"/>
+                    <label end="28" start="24" name="VVN"/>
+                    <label end="30" start="30" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:31:06 PST Wed" status="MANUAL" ID="1607093">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="2" start="0" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="9" start="4" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

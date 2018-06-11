@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="glimmer.n" ID="9238" frame="Light_movement" frameID="131" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Beam"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emit" name="Emitter"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+        </frame>
+    </header>
+    <definition>COD: a faint or wavering light. </definition>
+    <lexeme POS="N" name="glimmer"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Beam"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Beam"/>
+                <annoSet ID="517103"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Beam"/>
+                <annoSet ID="517103"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="517103"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="517103"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Beam"/>
+            <FE name="Beam"/>
+            <FE name="Manner"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Beam"/>
+                <valenceUnit GF="" PT="DEN" FE="Beam"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="517103"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s20-ppfrom"/>
+    <subCorpus name="N-250-s20-ppin"/>
+    <subCorpus name="N-250-s20-ppof"/>
+    <subCorpus name="N-340-s20-ppother"/>
+    <subCorpus name="N-370-s20-pother"/>
+    <subCorpus name="N-380-s20-other-s20"/>
+    <subCorpus name="N-429-s20-lcoll-faint">
+        <sentence sentNo="0" aPos="6953444" ID="438768">
+            <text>There was a faint glimmer of light from her window ; it was from the night-light which she kept burning . </text>
+            <annotationSet cDate="01/07/2003 03:56:42 PST Tue" status="UNANN" ID="517102">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="10" start="10" name="AT0"/>
+                    <label end="16" start="12" name="AJ0"/>
+                    <label end="24" start="18" name="NN1"/>
+                    <label end="27" start="26" name="PRF"/>
+                    <label end="33" start="29" name="AJ0-NN1"/>
+                    <label end="38" start="35" name="PRP"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="54" start="53" name="PNP"/>
+                    <label end="58" start="56" name="VBD"/>
+                    <label end="63" start="60" name="PRP"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="79" start="69" name="NN1"/>
+                    <label end="85" start="81" name="DTQ"/>
+                    <label end="89" start="87" name="PNP"/>
+                    <label end="94" start="91" name="VVD"/>
+                    <label end="102" start="96" name="AJ0-VVG"/>
+                    <label end="104" start="104" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:56:42 PST Tue" status="MANUAL" ID="517103">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="4525" end="33" start="26" name="Beam"/>
+                    <label cBy="669" feID="834" end="16" start="12" name="Manner"/>
+                    <label cBy="669" feID="4525" end="24" start="18" name="Beam"/>
+                    <label cBy="669" feID="4524" end="49" start="35" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="26" name="Dep"/>
+                    <label end="16" start="12" name="Dep"/>
+                    <label end="49" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="26" name="AJP"/>
+                    <label end="16" start="12" name="AJP"/>
+                    <label end="49" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-with"/>
+    <subCorpus name="N-429-s20-rcoll-light"/>
+</lexUnit>

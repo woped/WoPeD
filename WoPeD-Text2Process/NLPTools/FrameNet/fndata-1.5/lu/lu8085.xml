@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="indictable.a" ID="8085" frame="Severity_of_offense" frameID="517" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Cd" name="Code"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Off" name="Offense"/>
+        </frame>
+    </header>
+    <definition>COD: (of an offence) rendering a person who commits it liable to be charged with a serious crime that warrants a trial by jury. </definition>
+    <lexeme POS="A" name="indictable"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Code"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[under]" FE="Code"/>
+                <annoSet ID="1904723"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Offense"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="1904709"/>
+                <annoSet ID="1904723"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Offense"/>
+                <annoSet ID="1904677"/>
+                <annoSet ID="1904681"/>
+                <annoSet ID="1904687"/>
+                <annoSet ID="1904695"/>
+                <annoSet ID="1904705"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Code"/>
+            <FE name="Offense"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[under]" FE="Code"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="1904723"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Offense"/>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Offense"/>
+                <annoSet ID="1904677"/>
+                <annoSet ID="1904681"/>
+                <annoSet ID="1904687"/>
+                <annoSet ID="1904695"/>
+                <annoSet ID="1904705"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="1904709"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-XPoffence,offender,crime-(1)">
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="2" aPos="0" ID="1228818">
+            <text>These form the substance of the annual official criminal statistics on indictable offences ( or the Crime Index offences in America ) .</text>
+            <annotationSet cDate="06/18/2003 12:32:40 PDT Wed" status="UNANN" ID="1904676">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="9" start="6" name="nn"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="23" start="15" name="nn"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="37" start="32" name="jj"/>
+                    <label end="46" start="39" name="jj"/>
+                    <label end="55" start="48" name="jj"/>
+                    <label end="66" start="57" name="nns"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="80" start="71" name="jj"/>
+                    <label end="89" start="82" name="nns"/>
+                    <label end="91" start="91" name="("/>
+                    <label end="94" start="93" name="cc"/>
+                    <label end="98" start="96" name="dt"/>
+                    <label end="104" start="100" name="NP"/>
+                    <label end="110" start="106" name="NP"/>
+                    <label end="119" start="112" name="nns"/>
+                    <label end="122" start="121" name="in"/>
+                    <label end="130" start="124" name="NP"/>
+                    <label end="132" start="132" name=")"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:40 PDT Wed" status="MANUAL" ID="1904677">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="80" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="89" start="82" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="89" start="82" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="89" start="82" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="190" aPos="0" ID="1228820">
+            <text>Frauds comprise almost 5% of all recorded indictable ( serious ) crime in England and Wales , compared to only 0.5% in 1928 .</text>
+            <annotationSet cDate="06/18/2003 12:32:42 PDT Wed" status="UNANN" ID="1904680">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="14" start="7" name="VVP"/>
+                    <label end="21" start="16" name="rb"/>
+                    <label end="24" start="23" name="cd"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="40" start="33" name="VVN"/>
+                    <label end="51" start="42" name="jj"/>
+                    <label end="53" start="53" name="("/>
+                    <label end="61" start="55" name="jj"/>
+                    <label end="63" start="63" name=")"/>
+                    <label end="69" start="65" name="nn"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="80" start="74" name="NP"/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="90" start="86" name="NP"/>
+                    <label end="92" start="92" name=","/>
+                    <label end="101" start="94" name="VVN"/>
+                    <label end="104" start="103" name="to"/>
+                    <label end="109" start="106" name="rb"/>
+                    <label end="114" start="111" name="cd"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="122" start="119" name="cd"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:43 PDT Wed" status="MANUAL" ID="1904681">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="51" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="90" start="65" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="65" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="65" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5" aPos="0" ID="1228823">
+            <text>Certain acts , for example the re-organization of the higher courts in which indictable offences are tried , and the Police and Criminal Evidence Act 1984 , stemmed from Royal Commissions or similar forms of independent inquiry .</text>
+            <annotationSet cDate="06/18/2003 12:32:45 PDT Wed" status="UNANN" ID="1904686">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="jj"/>
+                    <label end="11" start="8" name="nns"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="17" start="15" name="in"/>
+                    <label end="25" start="19" name="nn"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="45" start="31" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="59" start="54" name="jjr"/>
+                    <label end="66" start="61" name="nns"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="75" start="71" name="wdt"/>
+                    <label end="86" start="77" name="jj"/>
+                    <label end="95" start="88" name="nns"/>
+                    <label end="99" start="97" name="vbp"/>
+                    <label end="105" start="101" name="VVN"/>
+                    <label end="107" start="107" name=","/>
+                    <label end="111" start="109" name="cc"/>
+                    <label end="115" start="113" name="dt"/>
+                    <label end="122" start="117" name="NP"/>
+                    <label end="126" start="124" name="cc"/>
+                    <label end="135" start="128" name="NP"/>
+                    <label end="144" start="137" name="nn"/>
+                    <label end="148" start="146" name="NP"/>
+                    <label end="153" start="150" name="cd"/>
+                    <label end="155" start="155" name=","/>
+                    <label end="163" start="157" name="VVN"/>
+                    <label end="168" start="165" name="in"/>
+                    <label end="174" start="170" name="NP"/>
+                    <label end="186" start="176" name="nns"/>
+                    <label end="189" start="188" name="cc"/>
+                    <label end="197" start="191" name="jj"/>
+                    <label end="203" start="199" name="nns"/>
+                    <label end="206" start="205" name="in"/>
+                    <label end="218" start="208" name="jj"/>
+                    <label end="226" start="220" name="nn"/>
+                    <label end="228" start="228" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:46 PDT Wed" status="MANUAL" ID="1904687">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="86" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="95" start="88" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="95" start="88" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="95" start="88" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="248" aPos="0" ID="1228827">
+            <text>The unit costs used in assessing expenditure needs for indictable offences were reduced overall during the three year period .</text>
+            <annotationSet cDate="06/18/2003 12:32:47 PDT Wed" status="UNANN" ID="1904694">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="13" start="9" name="nns"/>
+                    <label end="18" start="15" name="VVN"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="31" start="23" name="VVG"/>
+                    <label end="43" start="33" name="nn"/>
+                    <label end="49" start="45" name="nns"/>
+                    <label end="53" start="51" name="in"/>
+                    <label end="64" start="55" name="jj"/>
+                    <label end="73" start="66" name="nns"/>
+                    <label end="78" start="75" name="VBD"/>
+                    <label end="86" start="80" name="VVN"/>
+                    <label end="94" start="88" name="jj"/>
+                    <label end="101" start="96" name="in"/>
+                    <label end="105" start="103" name="dt"/>
+                    <label end="111" start="107" name="cd"/>
+                    <label end="116" start="113" name="nn"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:47 PDT Wed" status="MANUAL" ID="1904695">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="64" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="73" start="66" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="66" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="66" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="214" aPos="0" ID="1228832">
+            <text>Crime rates have risen even more dramatically over the same period : from 522,684 indictable crimes recorded by the police in 1948 , to 1,407,774 in 1968 , and by 1988 to 3,715,800 .</text>
+            <annotationSet cDate="06/18/2003 12:32:49 PDT Wed" status="UNANN" ID="1904704">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="10" start="6" name="nns"/>
+                    <label end="15" start="12" name="VHP"/>
+                    <label end="21" start="17" name="VVN"/>
+                    <label end="26" start="23" name="rb"/>
+                    <label end="31" start="28" name="rbr"/>
+                    <label end="44" start="33" name="rb"/>
+                    <label end="49" start="46" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="58" start="55" name="jj"/>
+                    <label end="65" start="60" name="nn"/>
+                    <label end="67" start="67" name=":"/>
+                    <label end="72" start="69" name="in"/>
+                    <label end="80" start="74" name="cd"/>
+                    <label end="91" start="82" name="jj"/>
+                    <label end="98" start="93" name="nns"/>
+                    <label end="107" start="100" name="VVN"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="121" start="116" name="nn"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="129" start="126" name="cd"/>
+                    <label end="131" start="131" name=","/>
+                    <label end="134" start="133" name="to"/>
+                    <label end="144" start="136" name="cd"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="152" start="149" name="cd"/>
+                    <label end="154" start="154" name=","/>
+                    <label end="158" start="156" name="cc"/>
+                    <label end="161" start="160" name="in"/>
+                    <label end="166" start="163" name="cd"/>
+                    <label end="169" start="168" name="to"/>
+                    <label end="179" start="171" name="cd"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:50 PDT Wed" status="MANUAL" ID="1904705">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="91" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="98" start="93" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="98" start="93" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="98" start="93" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="155" aPos="0" ID="1228834">
+            <text>Indictable offences are the most serious and are tried before a judge and jury .</text>
+            <annotationSet cDate="06/18/2003 12:32:51 PDT Wed" status="UNANN" ID="1904708">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="jj"/>
+                    <label end="18" start="11" name="nns"/>
+                    <label end="22" start="20" name="vbp"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="31" start="28" name="rbs"/>
+                    <label end="39" start="33" name="jj"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="47" start="45" name="vbp"/>
+                    <label end="53" start="49" name="VVN"/>
+                    <label end="60" start="55" name="in"/>
+                    <label end="62" start="62" name="dt"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="72" start="70" name="cc"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="79" start="79" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:32:51 PDT Wed" status="MANUAL" ID="1904709">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="18" start="11" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="11" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="792" aPos="0" ID="1228841">
+            <text>That murder is indictable under our laws , just like that murder on the cruise ship , Achille Lauro .</text>
+            <annotationSet cDate="06/18/2003 12:33:00 PDT Wed" status="UNANN" ID="1904722">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="10" start="5" name="nn"/>
+                    <label end="13" start="12" name="VBZ"/>
+                    <label end="24" start="15" name="jj"/>
+                    <label end="30" start="26" name="in"/>
+                    <label end="34" start="32" name="PP$"/>
+                    <label end="39" start="36" name="nns"/>
+                    <label end="41" start="41" name=","/>
+                    <label end="46" start="43" name="rb"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="56" start="53" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="77" start="72" name="nn"/>
+                    <label end="82" start="79" name="nn"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="92" start="86" name="NP"/>
+                    <label end="98" start="94" name="NP"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/18/2003 12:33:00 PDT Wed" status="MANUAL" ID="1904723">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="24" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4098" end="10" start="0" name="Offense"/>
+                    <label cBy="618" feID="4694" end="39" start="26" name="Code"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="39" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="39" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="13" start="12" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

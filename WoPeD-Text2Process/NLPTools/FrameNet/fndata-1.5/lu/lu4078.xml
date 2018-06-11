@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Unit" POS="N" name="calendar year.n" ID="4078" frame="Calendric_unit" frameID="229" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cou" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="RelT" name="Relative_time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sal_eve" name="Salient_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="uni" name="Unit"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Whole" name="Whole"/>
+        </frame>
+    </header>
+    <definition>FN: the period of time which begins on Janurary 1st and ends on December 31st.</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="calendar"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="year"/>
+    <valences>
+        <governor type="Gov" lemma="apply">
+            <annoSet ID="1915069"/>
+        </governor>
+        <governor type="Gov" lemma="base">
+            <annoSet ID="1915039"/>
+        </governor>
+        <governor type="Gov" lemma="be">
+            <annoSet ID="1914981"/>
+            <annoSet ID="1914989"/>
+        </governor>
+        <governor type="Gov" lemma="continue">
+            <annoSet ID="1915017"/>
+        </governor>
+        <governor type="Gov" lemma="cover">
+            <annoSet ID="1915033"/>
+        </governor>
+        <governor type="Gov" lemma="end">
+            <annoSet ID="1915031"/>
+        </governor>
+        <governor type="Gov" lemma="last">
+            <annoSet ID="1914977"/>
+        </governor>
+        <governor type="Gov" lemma="receive">
+            <annoSet ID="1915065"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Relative_time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Relative_time"/>
+                <annoSet ID="1915065"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Unit"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1914977"/>
+                <annoSet ID="1914981"/>
+                <annoSet ID="1914989"/>
+                <annoSet ID="1915017"/>
+                <annoSet ID="1915031"/>
+                <annoSet ID="1915033"/>
+                <annoSet ID="1915039"/>
+                <annoSet ID="1915065"/>
+                <annoSet ID="1915069"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Relative_time"/>
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Relative_time"/>
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1915065"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="8">
+            <FE name="Unit"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1914977"/>
+                <annoSet ID="1914981"/>
+                <annoSet ID="1914989"/>
+                <annoSet ID="1915017"/>
+                <annoSet ID="1915031"/>
+                <annoSet ID="1915033"/>
+                <annoSet ID="1915039"/>
+                <annoSet ID="1915069"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="391" aPos="0" ID="1233973">
+            <text>Copyright in a work lasts for fifty years from the end of the calendar year in which its author or composer dies .</text>
+            <annotationSet cDate="06/25/2003 01:51:40 PDT Wed" status="UNANN" ID="1914976">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="nn"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="13" start="13" name="dt"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="24" start="20" name="VVZ"/>
+                    <label end="28" start="26" name="in"/>
+                    <label end="34" start="30" name="cd"/>
+                    <label end="40" start="36" name="nns"/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="53" start="51" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="60" start="58" name="dt"/>
+                    <label end="69" start="62" name="nn"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="83" start="79" name="wdt"/>
+                    <label end="87" start="85" name="PP$"/>
+                    <label end="94" start="89" name="nn"/>
+                    <label end="97" start="96" name="cc"/>
+                    <label end="106" start="99" name="nn"/>
+                    <label end="111" start="108" name="VVZ"/>
+                    <label end="113" start="113" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:40 PDT Wed" status="MANUAL" ID="1914977">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="74" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="74" start="62" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="24" start="20" name="Gov"/>
+                    <label end="74" start="42" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="722" aPos="0" ID="1233975">
+            <text>` No , a calendar year is the time the Earth takes to orbit the sun .</text>
+            <annotationSet cDate="06/25/2003 01:51:41 PDT Wed" status="UNANN" ID="1914980">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="uh"/>
+                    <label end="5" start="5" name=","/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="16" start="9" name="nn"/>
+                    <label end="21" start="18" name="nn"/>
+                    <label end="24" start="23" name="VBZ"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="33" start="30" name="nn"/>
+                    <label end="37" start="35" name="dt"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="49" start="45" name="VVZ"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="62" start="60" name="dt"/>
+                    <label end="66" start="64" name="nn"/>
+                    <label end="68" start="68" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:41 PDT Wed" status="MANUAL" ID="1914981">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="21" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="21" start="9" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="21" start="7" name="X"/>
+                    <label end="24" start="23" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="173" aPos="0" ID="1233979">
+            <text>But there was a tiny mistake in their calculations , so by 1545 the calendar year was ten days behind the solar year .</text>
+            <annotationSet cDate="06/25/2003 01:51:43 PDT Wed" status="UNANN" ID="1914988">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="ex"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="14" start="14" name="dt"/>
+                    <label end="19" start="16" name="jj"/>
+                    <label end="27" start="21" name="nn"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="36" start="32" name="PP$"/>
+                    <label end="49" start="38" name="nns"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="54" start="53" name="rb"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="62" start="59" name="cd"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="75" start="68" name="nn"/>
+                    <label end="80" start="77" name="nn"/>
+                    <label end="84" start="82" name="VBD"/>
+                    <label end="88" start="86" name="cd"/>
+                    <label end="93" start="90" name="nns"/>
+                    <label end="100" start="95" name="in"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="110" start="106" name="jj"/>
+                    <label end="115" start="112" name="nn"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:43 PDT Wed" status="MANUAL" ID="1914989">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="80" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="80" start="68" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="80" start="64" name="X"/>
+                    <label end="84" start="82" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="391" aPos="0" ID="1233993">
+            <text>Typographical copyright continues until the end of the calendar year twenty-five years after the date of the first publication of a particular edition .</text>
+            <annotationSet cDate="06/25/2003 01:51:49 PDT Wed" status="UNANN" ID="1915016">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="0" name="jj"/>
+                    <label end="22" start="14" name="nn"/>
+                    <label end="32" start="24" name="VVZ"/>
+                    <label end="38" start="34" name="in"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="46" start="44" name="nn"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="62" start="55" name="nn"/>
+                    <label end="67" start="64" name="nn"/>
+                    <label end="79" start="69" name="cd"/>
+                    <label end="85" start="81" name="nns"/>
+                    <label end="91" start="87" name="in"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="100" start="97" name="nn"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="113" start="109" name="jj"/>
+                    <label end="125" start="115" name="nn"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="130" start="130" name="dt"/>
+                    <label end="141" start="132" name="jj"/>
+                    <label end="149" start="143" name="nn"/>
+                    <label end="151" start="151" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:50 PDT Wed" status="MANUAL" ID="1915017">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="67" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="67" start="55" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="32" start="24" name="Gov"/>
+                    <label end="67" start="34" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="248" aPos="0" ID="1234000">
+            <text>This date determines the date on which its accounting reference period ends in each calendar year .</text>
+            <annotationSet cDate="06/25/2003 01:51:53 PDT Wed" status="UNANN" ID="1915030">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="nn"/>
+                    <label end="19" start="10" name="VVZ"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="37" start="33" name="wdt"/>
+                    <label end="41" start="39" name="PP$"/>
+                    <label end="52" start="43" name="VVG"/>
+                    <label end="62" start="54" name="nn"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="74" start="71" name="VVZ"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="82" start="79" name="dt"/>
+                    <label end="91" start="84" name="nn"/>
+                    <label end="96" start="93" name="nn"/>
+                    <label end="98" start="98" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:53 PDT Wed" status="MANUAL" ID="1915031">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="96" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="96" start="84" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="74" start="71" name="Gov"/>
+                    <label end="96" start="76" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="812" aPos="0" ID="1234001">
+            <text>A maintenance contract covering the calendar year 1991 was not issued under invoice until April 1991 .</text>
+            <annotationSet cDate="06/25/2003 01:51:53 PDT Wed" status="UNANN" ID="1915032">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="12" start="2" name="nn"/>
+                    <label end="21" start="14" name="nn"/>
+                    <label end="30" start="23" name="VVG"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="43" start="36" name="nn"/>
+                    <label end="48" start="45" name="nn"/>
+                    <label end="53" start="50" name="cd"/>
+                    <label end="57" start="55" name="VBD"/>
+                    <label end="61" start="59" name="rb"/>
+                    <label end="68" start="63" name="VVN"/>
+                    <label end="74" start="70" name="in"/>
+                    <label end="82" start="76" name="nn"/>
+                    <label end="88" start="84" name="in"/>
+                    <label end="94" start="90" name="NP"/>
+                    <label end="99" start="96" name="cd"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:53 PDT Wed" status="MANUAL" ID="1915033">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="48" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="48" start="36" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="30" start="23" name="Gov"/>
+                    <label end="53" start="32" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="167" aPos="0" ID="1234004">
+            <text>Our calendar year is based on the solar year -- the number of days the earth takes to travel round the sun .</text>
+            <annotationSet cDate="06/25/2003 01:51:54 PDT Wed" status="UNANN" ID="1915038">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="19" start="18" name="VBZ"/>
+                    <label end="25" start="21" name="VVN"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="38" start="34" name="jj"/>
+                    <label end="43" start="40" name="nn"/>
+                    <label end="46" start="45" name=":"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="65" start="62" name="nns"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="75" start="71" name="nn"/>
+                    <label end="81" start="77" name="VVZ"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="91" start="86" name="VV"/>
+                    <label end="97" start="93" name="VV"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="105" start="103" name="nn"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:51:54 PDT Wed" status="MANUAL" ID="1915039">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="16" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="16" start="4" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="25" start="21" name="Gov"/>
+                    <label end="16" start="0" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="2410" aPos="0" ID="1234017">
+            <text>By the end of October we had received some 38,800 principal applications during this calendar year .</text>
+            <annotationSet cDate="06/25/2003 01:52:00 PDT Wed" status="UNANN" ID="1915064">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="9" start="7" name="nn"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="20" start="14" name="NP"/>
+                    <label end="23" start="22" name="PP"/>
+                    <label end="27" start="25" name="VHD"/>
+                    <label end="36" start="29" name="VVN"/>
+                    <label end="41" start="38" name="dt"/>
+                    <label end="48" start="43" name="cd"/>
+                    <label end="58" start="50" name="jj"/>
+                    <label end="71" start="60" name="nns"/>
+                    <label end="78" start="73" name="in"/>
+                    <label end="83" start="80" name="dt"/>
+                    <label end="92" start="85" name="nn"/>
+                    <label end="97" start="94" name="nn"/>
+                    <label end="99" start="99" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:52:00 PDT Wed" status="MANUAL" ID="1915065">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="97" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="1993" end="83" start="80" name="Relative_time"/>
+                    <label cBy="589" feID="10331" end="97" start="85" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="83" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="83" start="80" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="36" start="29" name="Gov"/>
+                    <label end="97" start="73" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1133" aPos="0" ID="1234019">
+            <text>If adopted , it would apply to calendar year 1993 statements .</text>
+            <annotationSet cDate="06/25/2003 01:52:01 PDT Wed" status="UNANN" ID="1915068">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="9" start="3" name="VVN"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="14" start="13" name="PP"/>
+                    <label end="20" start="16" name="md"/>
+                    <label end="26" start="22" name="VV"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="38" start="31" name="nn"/>
+                    <label end="43" start="40" name="nn"/>
+                    <label end="48" start="45" name="cd"/>
+                    <label end="59" start="50" name="nns"/>
+                    <label end="61" start="61" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/25/2003 01:52:01 PDT Wed" status="MANUAL" ID="1915069">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="43" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10331" end="43" start="31" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="26" start="22" name="Gov"/>
+                    <label end="59" start="28" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Unit" POS="N" name="eve.n" ID="4063" frame="Calendric_unit" frameID="229" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cou" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="RelT" name="Relative_time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sal_eve" name="Salient_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="uni" name="Unit"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Whole" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: the evening or day before a religious festival</definition>
+    <lexeme POS="N" name="eve"/>
+    <valences>
+        <governor type="Gov" lemma="come">
+            <annoSet ID="1078440"/>
+        </governor>
+        <governor type="Gov" lemma="spend">
+            <annoSet ID="1078432"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Name"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="1078432"/>
+                <annoSet ID="1078440"/>
+                <annoSet ID="1078444"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Unit"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1078432"/>
+                <annoSet ID="1078440"/>
+                <annoSet ID="1078444"/>
+                <annoSet ID="1078457"/>
+                <annoSet ID="1078469"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Whole"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Whole"/>
+                <annoSet ID="1078457"/>
+                <annoSet ID="1078469"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Name"/>
+            <FE name="Unit"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1078432"/>
+                <annoSet ID="1078440"/>
+                <annoSet ID="1078444"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Unit"/>
+            <FE name="Whole"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Whole"/>
+                <annoSet ID="1078457"/>
+                <annoSet ID="1078469"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-429-s20-lcoll-Christmas">
+        <sentence sentNo="0" aPos="65166102" ID="810882">
+            <text>` It 's nice that we can spend Christmas Eve together like this . &quot; </text>
+            <annotationSet cDate="01/07/2003 03:24:42 PST Tue" status="UNANN" ID="1078431">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="11" start="8" name="AJ0"/>
+                    <label end="16" start="13" name="CJT"/>
+                    <label end="19" start="18" name="PNP"/>
+                    <label end="23" start="21" name="VM0"/>
+                    <label end="29" start="25" name="VVI"/>
+                    <label end="39" start="31" name="NN1"/>
+                    <label end="43" start="41" name="NN1"/>
+                    <label end="52" start="45" name="AV0"/>
+                    <label end="57" start="54" name="PRP"/>
+                    <label end="62" start="59" name="DT0"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="66" start="66" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:24:42 PST Tue" status="MANUAL" ID="1078432">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1995" end="39" start="31" name="Name"/>
+                    <label cBy="589" feID="10331" end="43" start="41" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="31" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="29" start="25" name="Gov"/>
+                    <label end="43" start="31" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108896974" ID="810886">
+            <text>Santa comes on Christmas Eve , </text>
+            <annotationSet cDate="01/07/2003 03:24:43 PST Tue" status="UNANN" ID="1078439">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="10" start="6" name="VVZ"/>
+                    <label end="13" start="12" name="PRP"/>
+                    <label end="23" start="15" name="NN1"/>
+                    <label end="27" start="25" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:24:43 PST Tue" status="MANUAL" ID="1078440">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1995" end="23" start="15" name="Name"/>
+                    <label cBy="589" feID="10331" end="27" start="25" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="15" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="6" name="Gov"/>
+                    <label end="27" start="12" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-Passover">
+        <sentence sentNo="0" aPos="7170852" ID="810888">
+            <text>At the Passover Eve meal the stories of the plagues are recited , and with each one a finger is dipped in a glass of wine and a drop of the wine let fall on to a plate . </text>
+            <annotationSet cDate="01/07/2003 03:24:43 PST Tue" status="UNANN" ID="1078443">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="14" start="7" name="NN1"/>
+                    <label end="18" start="16" name="NN1-NP0"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="35" start="29" name="NN2"/>
+                    <label end="38" start="37" name="PRF"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="50" start="44" name="NN2"/>
+                    <label end="54" start="52" name="VBB"/>
+                    <label end="62" start="56" name="AJ0-VVN"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="73" start="70" name="PRP"/>
+                    <label end="78" start="75" name="DT0"/>
+                    <label end="82" start="80" name="PNI"/>
+                    <label end="84" start="84" name="AT0"/>
+                    <label end="91" start="86" name="NN1"/>
+                    <label end="94" start="93" name="VBZ"/>
+                    <label end="101" start="96" name="VVN"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="106" start="106" name="AT0"/>
+                    <label end="112" start="108" name="NN1"/>
+                    <label end="115" start="114" name="PRF"/>
+                    <label end="120" start="117" name="NN1"/>
+                    <label end="124" start="122" name="CJC"/>
+                    <label end="126" start="126" name="AT0"/>
+                    <label end="131" start="128" name="NN1"/>
+                    <label end="134" start="133" name="PRF"/>
+                    <label end="138" start="136" name="AT0"/>
+                    <label end="143" start="140" name="NN1"/>
+                    <label end="147" start="145" name="VVB"/>
+                    <label end="152" start="149" name="NN1-VVB"/>
+                    <label end="155" start="154" name="PRP"/>
+                    <label end="158" start="157" name="PRP"/>
+                    <label end="160" start="160" name="AT0"/>
+                    <label end="166" start="162" name="NN1"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:24:43 PST Tue" status="MANUAL" ID="1078444">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1995" end="14" start="7" name="Name"/>
+                    <label cBy="589" feID="10331" end="18" start="16" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="7" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="7" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-the">
+        <sentence sentNo="0" aPos="22725494" ID="810894">
+            <text>The following day was the eve of the Feast of St Nicholas . </text>
+            <annotationSet cDate="01/07/2003 03:24:44 PST Tue" status="UNANN" ID="1078456">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="AJ0"/>
+                    <label end="16" start="14" name="NN1"/>
+                    <label end="20" start="18" name="VBD"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="28" start="26" name="NN1"/>
+                    <label end="31" start="30" name="PRF"/>
+                    <label end="35" start="33" name="AT0"/>
+                    <label end="41" start="37" name="NN1"/>
+                    <label end="44" start="43" name="PRF"/>
+                    <label end="47" start="46" name="NP0"/>
+                    <label end="56" start="49" name="NP0"/>
+                    <label end="58" start="58" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:24:44 PST Tue" status="MANUAL" ID="1078457">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2016" end="56" start="30" name="Whole"/>
+                    <label cBy="589" feID="10331" end="28" start="26" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="61414950" ID="810900">
+            <text>On 29 April and 1 May the setting sun 's rays were scarcely differently placed , but an ancient tradition attached to the eve of May Day . </text>
+            <annotationSet cDate="01/07/2003 03:24:45 PST Tue" status="UNANN" ID="1078468">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="4" start="3" name="CRD"/>
+                    <label end="10" start="6" name="NP0"/>
+                    <label end="14" start="12" name="CJC"/>
+                    <label end="16" start="16" name="CRD"/>
+                    <label end="20" start="18" name="NP0"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="32" start="26" name="NN1"/>
+                    <label end="36" start="34" name="NN1-NP0"/>
+                    <label end="39" start="38" name="POS"/>
+                    <label end="44" start="41" name="NN2"/>
+                    <label end="49" start="46" name="VBD"/>
+                    <label end="58" start="51" name="AV0"/>
+                    <label end="70" start="60" name="AV0"/>
+                    <label end="77" start="72" name="VVD-VVN"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="86" start="85" name="AT0"/>
+                    <label end="94" start="88" name="AJ0"/>
+                    <label end="104" start="96" name="NN1"/>
+                    <label end="113" start="106" name="VVD-VVN"/>
+                    <label end="116" start="115" name="PRP"/>
+                    <label end="120" start="118" name="AT0"/>
+                    <label end="124" start="122" name="NN1"/>
+                    <label end="127" start="126" name="PRF"/>
+                    <label end="131" start="129" name="NP0"/>
+                    <label end="135" start="133" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:24:45 PST Tue" status="MANUAL" ID="1078469">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2016" end="135" start="126" name="Whole"/>
+                    <label cBy="589" feID="10331" end="124" start="122" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="135" start="126" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="135" start="126" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="124" start="122" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-other"/>
+</lexUnit>

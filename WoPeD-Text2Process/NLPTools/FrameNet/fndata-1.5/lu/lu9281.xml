@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="tremendous.a" ID="9281" frame="Usefulness" frameID="726" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: extremely good or impressive; excellent. </definition>
+    <lexeme POS="A" name="tremendous"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1403461"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1403461"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1403461"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-120-s20-pingfor">
+        <sentence sentNo="0" aPos="25539326" ID="975426">
+            <text>The result will be tremendous for travelling , it comes up smiling after washing and is extremely elegant for any occasion . </text>
+            <annotationSet cDate="01/07/2003 09:35:42 PST Tue" status="UNANN" ID="1403460">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="14" start="11" name="VM0"/>
+                    <label end="17" start="16" name="VBI"/>
+                    <label end="28" start="19" name="AJ0"/>
+                    <label end="32" start="30" name="PRP"/>
+                    <label end="43" start="34" name="NN1-VVG"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="48" start="47" name="PNP"/>
+                    <label end="54" start="50" name="VVZ"/>
+                    <label end="57" start="56" name="AVP"/>
+                    <label end="65" start="59" name="VVG"/>
+                    <label end="71" start="67" name="PRP"/>
+                    <label end="79" start="73" name="VVG"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="86" start="85" name="VBZ"/>
+                    <label end="96" start="88" name="AV0"/>
+                    <label end="104" start="98" name="AJ0"/>
+                    <label end="108" start="106" name="PRP"/>
+                    <label end="112" start="110" name="DT0"/>
+                    <label end="121" start="114" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:35:42 PST Tue" status="MANUAL" ID="1403461">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4783" end="9" start="0" name="Entity"/>
+                    <label cBy="618" feID="4784" end="43" start="30" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="43" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="43" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="17" start="16" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

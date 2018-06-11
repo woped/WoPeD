@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="PREP" name="at.prep" ID="14082" frame="Temporal_collocation" frameID="1895" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Eve" name="Event_description"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Core" abbrev="LEn" name="Landmark_entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="LEv" name="Landmark_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="LPe" name="Landmark_period"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="TEn" name="Trajector_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="TEv" name="Trajector_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="TPe" name="Trajector_period"/>
+        </frame>
+    </header>
+    <definition>COD: expressing the time when an event takes place.</definition>
+    <lexeme POS="PREP" name="at"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Landmark_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="2363513"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Landmark_period"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_period"/>
+                <annoSet ID="2363477"/>
+                <annoSet ID="2363493"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Trajector_event"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="Sfin" FE="Trajector_event"/>
+                <annoSet ID="2363477"/>
+                <annoSet ID="2363493"/>
+                <annoSet ID="2363513"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Landmark_event"/>
+            <FE name="Trajector_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <valenceUnit GF="Ext" PT="Sfin" FE="Trajector_event"/>
+                <annoSet ID="2363513"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Landmark_period"/>
+            <FE name="Trajector_event"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_period"/>
+                <valenceUnit GF="Ext" PT="Sfin" FE="Trajector_event"/>
+                <annoSet ID="2363477"/>
+                <annoSet ID="2363493"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-NPtime,o'clock,hour-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="23" aPos="25187001" ID="1457873">
+            <text>At the time of writing we are considering one particular estate .</text>
+            <annotationSet cDate="01/18/2008 03:49:27 PST Fri" status="UNANN" ID="2363476">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="10" start="7" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="21" start="15" name="VVG"/>
+                    <label end="24" start="23" name="PP"/>
+                    <label end="28" start="26" name="vbp"/>
+                    <label end="40" start="30" name="VVG"/>
+                    <label end="44" start="42" name="cd"/>
+                    <label end="55" start="46" name="jj"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="64" start="64" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/18/2008 03:49:27 PST Fri" status="MANUAL" ID="2363477">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="1" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="12063" end="21" start="3" name="Landmark_period"/>
+                    <label cBy="976" feID="12064" end="62" start="23" name="Trajector_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="3" name="Obj"/>
+                    <label end="62" start="23" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="3" name="NP"/>
+                    <label end="62" start="23" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="184" aPos="81585303" ID="1457881">
+            <text>` I 'll meet you in the foyer at seven o'clock this evening , and we 'll find somewhere to eat first .</text>
+            <annotationSet cDate="01/18/2008 03:49:29 PST Fri" status="UNANN" ID="2363492">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="PP"/>
+                    <label end="6" start="4" name="md"/>
+                    <label end="11" start="8" name="VV"/>
+                    <label end="15" start="13" name="PP"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="37" start="33" name="cd"/>
+                    <label end="45" start="39" name="rb"/>
+                    <label end="50" start="47" name="dt"/>
+                    <label end="58" start="52" name="nn"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="67" start="66" name="PP"/>
+                    <label end="71" start="69" name="md"/>
+                    <label end="76" start="73" name="VV"/>
+                    <label end="86" start="78" name="rb"/>
+                    <label end="89" start="88" name="to"/>
+                    <label end="93" start="91" name="VV"/>
+                    <label end="99" start="95" name="jj"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/18/2008 03:49:29 PST Fri" status="MANUAL" ID="2363493">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="31" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="12064" end="28" start="2" name="Trajector_event"/>
+                    <label cBy="976" feID="12063" end="58" start="33" name="Landmark_period"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="2" name="Ext"/>
+                    <label end="58" start="33" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="2" name="Sfin"/>
+                    <label end="58" start="33" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NPbreakfast,lunch,dinner-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="939" aPos="34326290" ID="1457891">
+            <text>I suppose we had too much to drink at lunch .</text>
+            <annotationSet cDate="01/18/2008 03:49:31 PST Fri" status="UNANN" ID="2363512">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="8" start="2" name="VVP"/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="15" start="13" name="VHD"/>
+                    <label end="19" start="17" name="rb"/>
+                    <label end="24" start="21" name="jj"/>
+                    <label end="27" start="26" name="to"/>
+                    <label end="33" start="29" name="VV"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="44" start="44" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/18/2008 03:49:31 PST Fri" status="MANUAL" ID="2363513">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="36" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="11269" end="42" start="38" name="Landmark_event"/>
+                    <label cBy="976" feID="12064" end="33" start="0" name="Trajector_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="38" name="Obj"/>
+                    <label end="33" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="38" name="NP"/>
+                    <label end="33" start="0" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-NPend,beginning,turn-(1)"/>
+    <subCorpus name="04-T-NP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

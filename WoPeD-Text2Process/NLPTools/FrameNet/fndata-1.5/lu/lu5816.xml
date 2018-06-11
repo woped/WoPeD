@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="replica.n" ID="5816" frame="Duplication" frameID="11" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="Char" name="Characterization"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Core" abbrev="Copy" name="Copy"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Creat" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Fid" name="Fidelity"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Iter" name="Iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Orig" name="Original"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: an exact copy or model of something, especially one on a smaller scale. </definition>
+    <lexeme POS="N" name="replica"/>
+    <valences>
+        <governor type="Gov" lemma="build">
+            <annoSet ID="1570719"/>
+        </governor>
+        <governor type="Gov" lemma="make">
+            <annoSet ID="1570717"/>
+        </governor>
+        <governor type="Gov" lemma="reproduce">
+            <annoSet ID="1570721"/>
+        </governor>
+        <FERealization total="7">
+            <FE name="Copy"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <annoSet ID="1570645"/>
+                <annoSet ID="1570655"/>
+                <annoSet ID="1570687"/>
+                <annoSet ID="1570717"/>
+                <annoSet ID="1570719"/>
+                <annoSet ID="1570721"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Copy"/>
+                <annoSet ID="1570679"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Creator"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Creator"/>
+                <annoSet ID="1570687"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <annoSet ID="1570645"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Fidelity"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Fidelity"/>
+                <annoSet ID="1570679"/>
+                <annoSet ID="1570721"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Fidelity"/>
+                <annoSet ID="1570719"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Original"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Original"/>
+                <annoSet ID="1570645"/>
+                <annoSet ID="1570717"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Original"/>
+                <annoSet ID="1570655"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Copy"/>
+            <FE name="Creator"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Creator"/>
+                <annoSet ID="1570687"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Copy"/>
+            <FE name="Degree"/>
+            <FE name="Original"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="N" FE="Original"/>
+                <annoSet ID="1570645"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Copy"/>
+            <FE name="Fidelity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Fidelity"/>
+                <annoSet ID="1570721"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Fidelity"/>
+                <annoSet ID="1570719"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Fidelity"/>
+                <annoSet ID="1570679"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Copy"/>
+            <FE name="Original"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="N" FE="Original"/>
+                <annoSet ID="1570717"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Copy"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Original"/>
+                <annoSet ID="1570655"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T"/>
+    <subCorpus name="02-W*ing-T"/>
+    <subCorpus name="03-XPgene-T"/>
+    <subCorpus name="04-XPfibreglass-T"/>
+    <subCorpus name="05-T-PPwith"/>
+    <subCorpus name="06-T-PPOF"/>
+    <subCorpus name="other-matched"/>
+    <subCorpus name="other-unmatched">
+        <sentence sentNo="0" aPos="0" ID="1059620">
+            <text>A fibreglass O2SU Kingfisher replica was also constructed for inclusion on the full-scale battleship Arizona replica being constructed .</text>
+            <annotationSet cDate="01/08/2003 12:46:54 PST Wed" status="UNANN" ID="1570644">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="dt-a"/>
+                    <label end="11" start="2" name="nn"/>
+                    <label end="16" start="13" name="NNP"/>
+                    <label end="27" start="18" name="NNP"/>
+                    <label end="35" start="29" name="nn"/>
+                    <label end="39" start="37" name="bedz"/>
+                    <label end="44" start="41" name="rb"/>
+                    <label end="56" start="46" name="VBN"/>
+                    <label end="60" start="58" name="in"/>
+                    <label end="70" start="62" name="nn"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="88" start="79" name="jj"/>
+                    <label end="99" start="90" name="nn"/>
+                    <label end="107" start="101" name="location"/>
+                    <label end="115" start="109" name="nn"/>
+                    <label end="121" start="117" name="VBG"/>
+                    <label end="133" start="123" name="VBN"/>
+                    <label end="135" start="135" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:54 PST Wed" status="MANUAL" ID="1570645">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="115" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="39" end="107" start="90" name="Original"/>
+                    <label cBy="865" feID="40" end="115" start="109" name="Copy"/>
+                    <label cBy="865" feID="1211" end="88" start="79" name="Degree"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="107" start="90" name="N"/>
+                    <label end="88" start="79" name="N"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="107" start="90" name="Dep"/>
+                    <label end="88" start="79" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059625">
+            <text>To celebrate 70 years of their product , Carnation has produced a model replica of its original 1922 Morris Delivery Van .</text>
+            <annotationSet cDate="01/08/2003 12:46:54 PST Wed" status="UNANN" ID="1570654">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="to"/>
+                    <label end="11" start="3" name="vb"/>
+                    <label end="14" start="13" name="cd"/>
+                    <label end="20" start="16" name="tunits"/>
+                    <label end="23" start="22" name="of"/>
+                    <label end="29" start="25" name="prps"/>
+                    <label end="37" start="31" name="nn"/>
+                    <label end="39" start="39" name="cma"/>
+                    <label end="49" start="41" name="person"/>
+                    <label end="53" start="51" name="hvz"/>
+                    <label end="62" start="55" name="VBN"/>
+                    <label end="64" start="64" name="dt-a"/>
+                    <label end="70" start="66" name="nn"/>
+                    <label end="78" start="72" name="nn"/>
+                    <label end="81" start="80" name="PRP"/>
+                    <label end="85" start="83" name="prps"/>
+                    <label end="94" start="87" name="jj"/>
+                    <label end="99" start="96" name="date"/>
+                    <label end="119" start="101" name="person"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:54 PST Wed" status="MANUAL" ID="1570655">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="78" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="39" end="119" start="80" name="Original"/>
+                    <label cBy="865" feID="40" end="78" start="72" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="119" start="80" name="PP"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="119" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059637">
+            <text>Even more encouragingly , a working replica , ` The Iron Duke &quot; was built for the GWR 150 celebrations in 1985 .</text>
+            <annotationSet cDate="01/08/2003 12:46:56 PST Wed" status="UNANN" ID="1570678">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="8" start="5" name="more"/>
+                    <label end="22" start="10" name="rb"/>
+                    <label end="24" start="24" name="cma"/>
+                    <label end="26" start="26" name="dt-a"/>
+                    <label end="34" start="28" name="VBG"/>
+                    <label end="42" start="36" name="nn"/>
+                    <label end="44" start="44" name="cma"/>
+                    <label end="46" start="46" name="``"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="60" start="52" name="organization"/>
+                    <label end="62" start="62" name="``"/>
+                    <label end="66" start="64" name="bedz"/>
+                    <label end="72" start="68" name="VBN"/>
+                    <label end="76" start="74" name="in"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="84" start="82" name="organization"/>
+                    <label end="88" start="86" name="cd"/>
+                    <label end="101" start="90" name="nns"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="109" start="106" name="date"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:56 PST Wed" status="MANUAL" ID="1570679">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="42" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3344" end="34" start="28" name="Fidelity"/>
+                    <label cBy="865" feID="40" end="62" start="46" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="28" name="AJP"/>
+                    <label end="62" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="28" name="Dep"/>
+                    <label end="62" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059641">
+            <text>She too was staring at the endless duel , but with considerably more excitement than her replica .</text>
+            <annotationSet cDate="01/08/2003 12:46:56 PST Wed" status="UNANN" ID="1570686">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="6" start="4" name="rb"/>
+                    <label end="10" start="8" name="bedz"/>
+                    <label end="18" start="12" name="VBG"/>
+                    <label end="21" start="20" name="at"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="33" start="27" name="jj"/>
+                    <label end="38" start="35" name="nn"/>
+                    <label end="40" start="40" name="cma"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="49" start="46" name="in"/>
+                    <label end="62" start="51" name="rb"/>
+                    <label end="67" start="64" name="more"/>
+                    <label end="78" start="69" name="nn"/>
+                    <label end="83" start="80" name="than"/>
+                    <label end="87" start="85" name="prps"/>
+                    <label end="95" start="89" name="nn"/>
+                    <label end="97" start="97" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:56 PST Wed" status="MANUAL" ID="1570687">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="95" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="38" end="87" start="85" name="Creator"/>
+                    <label cBy="865" feID="40" end="95" start="89" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="85" name="NP"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="85" name="Ext"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059656">
+            <text>John Hurst , the managing director of Deon who make a Ferrari Dino replica , has often had his cars mistaken for the real thing by owners of the genuine article .</text>
+            <annotationSet cDate="01/08/2003 12:46:58 PST Wed" status="UNANN" ID="1570716">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="person"/>
+                    <label end="11" start="11" name="cma"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="24" start="17" name="VBG"/>
+                    <label end="33" start="26" name="nn"/>
+                    <label end="36" start="35" name="of"/>
+                    <label end="41" start="38" name="person"/>
+                    <label end="45" start="43" name="wp"/>
+                    <label end="50" start="47" name="vbp"/>
+                    <label end="52" start="52" name="dt-a"/>
+                    <label end="65" start="54" name="organization"/>
+                    <label end="73" start="67" name="nn"/>
+                    <label end="75" start="75" name="cma"/>
+                    <label end="79" start="77" name="hvz"/>
+                    <label end="85" start="81" name="rb"/>
+                    <label end="89" start="87" name="hvd"/>
+                    <label end="93" start="91" name="prps"/>
+                    <label end="98" start="95" name="nns"/>
+                    <label end="107" start="100" name="VBN"/>
+                    <label end="111" start="109" name="in"/>
+                    <label end="115" start="113" name="dt"/>
+                    <label end="120" start="117" name="jj"/>
+                    <label end="126" start="122" name="nn"/>
+                    <label end="129" start="128" name="by"/>
+                    <label end="136" start="131" name="nns"/>
+                    <label end="139" start="138" name="of"/>
+                    <label end="143" start="141" name="dt"/>
+                    <label end="151" start="145" name="jj"/>
+                    <label end="159" start="153" name="nn"/>
+                    <label end="161" start="161" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:58 PST Wed" status="MANUAL" ID="1570717">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="73" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="39" end="65" start="52" name="Original"/>
+                    <label cBy="865" feID="40" end="73" start="67" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="52" name="N"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="52" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun">
+                    <label end="50" start="47" name="Gov"/>
+                    <label end="73" start="52" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059657">
+            <text>But for the rest of us they 've built an exact replica near by at Lascaux Two . &quot;</text>
+            <annotationSet cDate="01/08/2003 12:46:58 PST Wed" status="UNANN" ID="1570718">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="15" start="12" name="nn"/>
+                    <label end="18" start="17" name="of"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="30" start="28" name="hv"/>
+                    <label end="36" start="32" name="VBN"/>
+                    <label end="39" start="38" name="dt"/>
+                    <label end="45" start="41" name="jj"/>
+                    <label end="53" start="47" name="nn"/>
+                    <label end="58" start="55" name="in"/>
+                    <label end="61" start="60" name="by"/>
+                    <label end="64" start="63" name="at"/>
+                    <label end="76" start="66" name="organization"/>
+                    <label end="78" start="78" name="sent"/>
+                    <label end="80" start="80" name="''"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:59 PST Wed" status="MANUAL" ID="1570719">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="53" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3344" end="45" start="41" name="Fidelity"/>
+                    <label cBy="865" feID="40" end="53" start="47" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="41" name="AVP"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun">
+                    <label end="36" start="32" name="Gov"/>
+                    <label end="53" start="38" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1059658">
+            <text>The original bouquet for this picture was exceptionally large , so I have not been able to reproduce a life-sized replica but instead have scaled it down to fit into a picture frame .</text>
+            <annotationSet cDate="01/08/2003 12:46:59 PST Wed" status="UNANN" ID="1570720">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="jj"/>
+                    <label end="19" start="13" name="nn"/>
+                    <label end="23" start="21" name="in"/>
+                    <label end="28" start="25" name="dtp"/>
+                    <label end="36" start="30" name="nn"/>
+                    <label end="40" start="38" name="bedz"/>
+                    <label end="54" start="42" name="rb"/>
+                    <label end="60" start="56" name="jj"/>
+                    <label end="62" start="62" name="cma"/>
+                    <label end="65" start="64" name="rb"/>
+                    <label end="67" start="67" name="PRP"/>
+                    <label end="72" start="69" name="hv"/>
+                    <label end="76" start="74" name="not"/>
+                    <label end="81" start="78" name="ben"/>
+                    <label end="86" start="83" name="jj"/>
+                    <label end="89" start="88" name="to"/>
+                    <label end="99" start="91" name="vb"/>
+                    <label end="101" start="101" name="dt-a"/>
+                    <label end="112" start="103" name="jj"/>
+                    <label end="120" start="114" name="nn"/>
+                    <label end="124" start="122" name="cc"/>
+                    <label end="132" start="126" name="rb"/>
+                    <label end="137" start="134" name="hv"/>
+                    <label end="144" start="139" name="VBN"/>
+                    <label end="147" start="146" name="PRP"/>
+                    <label end="152" start="149" name="rp"/>
+                    <label end="155" start="154" name="to"/>
+                    <label end="159" start="157" name="vb"/>
+                    <label end="164" start="161" name="in"/>
+                    <label end="166" start="166" name="dt-a"/>
+                    <label end="174" start="168" name="nn"/>
+                    <label end="180" start="176" name="nn"/>
+                    <label end="182" start="182" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:46:59 PST Wed" status="MANUAL" ID="1570721">
+                <layer rank="1" name="Target">
+                    <label cBy="709" end="120" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3344" end="112" start="103" name="Fidelity"/>
+                    <label cBy="865" feID="40" end="120" start="114" name="Copy"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="103" name="AJP"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="103" name="Dep"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun">
+                    <label end="99" start="91" name="Gov"/>
+                    <label end="120" start="101" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

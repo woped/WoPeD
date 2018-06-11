@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="fix.v" ID="2427" frame="Bail_decision" frameID="121" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Acc" name="Accused"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Judge" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Stat" name="Status"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: To determine an amount of money for bail;</definition>
+    <lexeme POS="V" name="fix"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Accused"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Accused"/>
+                <annoSet ID="611984"/>
+                <annoSet ID="1932281"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <annoSet ID="1932279"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Judge"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="611984"/>
+                <annoSet ID="1932281"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Judge"/>
+                <annoSet ID="1932279"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Status"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Status"/>
+                <annoSet ID="1932279"/>
+                <annoSet ID="1932281"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Status"/>
+                <annoSet ID="611984"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Accused"/>
+            <FE name="Judge"/>
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Accused"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="" PT="DNI" FE="Status"/>
+                <annoSet ID="1932281"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Accused"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="" PT="INI" FE="Status"/>
+                <annoSet ID="611984"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <valenceUnit GF="" PT="INI" FE="Judge"/>
+                <valenceUnit GF="" PT="DNI" FE="Status"/>
+                <annoSet ID="1932279"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-lcoll-bail"/>
+    <subCorpus name="V-429-s20-lcoll-bond"/>
+    <subCorpus name="V-429-s20-rcoll-bail">
+        <sentence sentNo="0" aPos="83033930" ID="503095">
+            <text>He fixed bail for appeal but said McGuigan was not to be released pending appeal . </text>
+            <annotationSet cDate="01/07/2003 05:52:10 PST Tue" status="UNANN" ID="611983">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="12" start="9" name="NN1"/>
+                    <label end="16" start="14" name="PRP"/>
+                    <label end="23" start="18" name="NN1"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="32" start="29" name="VVD"/>
+                    <label end="41" start="34" name="NP0"/>
+                    <label end="45" start="43" name="VBD"/>
+                    <label end="49" start="47" name="XX0"/>
+                    <label end="52" start="51" name="TO0"/>
+                    <label end="55" start="54" name="VBI"/>
+                    <label end="64" start="57" name="VVN"/>
+                    <label end="72" start="66" name="PRP"/>
+                    <label end="79" start="74" name="NN1"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:10 PST Tue" status="MANUAL" ID="611984">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="621" end="1" start="0" name="Judge"/>
+                    <label cBy="296" feID="622" itype="INI" name="Status"/>
+                    <label cBy="296" feID="620" itype="DNI" name="Accused"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="7" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-bond"/>
+    <subCorpus name="V-570-s20-np-ppat"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-650-s20-np-pother"/>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-690-s20-trans-other"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+    <subCorpus name="01-T-NPbail-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="382" aPos="0" ID="1242624">
+            <text>Took him to the station and routine happened -- they had to call the bridewell surgeon and the drunk could call his own doctor , fixing bail and so on .</text>
+            <annotationSet cDate="07/21/2003 05:51:34 PDT Mon" status="UNANN" ID="1932278">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="VVD"/>
+                    <label end="7" start="5" name="PP"/>
+                    <label end="10" start="9" name="to"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="22" start="16" name="nn"/>
+                    <label end="26" start="24" name="cc"/>
+                    <label end="34" start="28" name="jj"/>
+                    <label end="43" start="36" name="VVN"/>
+                    <label end="46" start="45" name=":"/>
+                    <label end="51" start="48" name="PP"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="58" start="57" name="to"/>
+                    <label end="63" start="60" name="VV"/>
+                    <label end="67" start="65" name="dt"/>
+                    <label end="77" start="69" name="nn"/>
+                    <label end="85" start="79" name="nn"/>
+                    <label end="89" start="87" name="cc"/>
+                    <label end="93" start="91" name="dt"/>
+                    <label end="99" start="95" name="nn"/>
+                    <label end="105" start="101" name="md"/>
+                    <label end="110" start="107" name="VV"/>
+                    <label end="114" start="112" name="PP$"/>
+                    <label end="118" start="116" name="jj"/>
+                    <label end="125" start="120" name="nn"/>
+                    <label end="127" start="127" name=","/>
+                    <label end="134" start="129" name="VVG"/>
+                    <label end="139" start="136" name="nn"/>
+                    <label end="143" start="141" name="cc"/>
+                    <label end="146" start="145" name="rb"/>
+                    <label end="149" start="148" name="in"/>
+                    <label end="151" start="151" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2003 05:51:35 PDT Mon" status="MANUAL" ID="1932279">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="134" start="129" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="620" end="99" start="91" name="Accused"/>
+                    <label cBy="840" feID="621" itype="INI" name="Judge"/>
+                    <label cBy="840" feID="622" itype="DNI" name="Status"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="91" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="91" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="3272" aPos="0" ID="1242625">
+            <text>He fixed bail for appeal but said McGuigan was not to be released pending appeal .</text>
+            <annotationSet cDate="07/21/2003 05:51:36 PDT Mon" status="UNANN" ID="1932280">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="12" start="9" name="nn"/>
+                    <label end="16" start="14" name="in"/>
+                    <label end="23" start="18" name="nn"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="32" start="29" name="VVD"/>
+                    <label end="41" start="34" name="NP"/>
+                    <label end="45" start="43" name="VBD"/>
+                    <label end="49" start="47" name="rb"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="55" start="54" name="vb"/>
+                    <label end="64" start="57" name="VVN"/>
+                    <label end="72" start="66" name="VVG"/>
+                    <label end="79" start="74" name="nn"/>
+                    <label end="81" start="81" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2003 05:51:36 PDT Mon" status="MANUAL" ID="1932281">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="7" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="840" feID="621" end="1" start="0" name="Judge"/>
+                    <label cBy="840" feID="622" itype="DNI" name="Status"/>
+                    <label cBy="840" feID="620" itype="DNI" name="Accused"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

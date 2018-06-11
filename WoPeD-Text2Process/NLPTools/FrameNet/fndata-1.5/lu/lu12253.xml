@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="plutonium.n" ID="12253" frame="Substance" frameID="1321" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1373" ID="19459"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="con" name="Constituents"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="sub" name="Substance"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="typ" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: the chemical element of atomic number 94, a dense silvery radioactive metal of the actinide series, used as a fuel in nuclear reactors and as an explosive in nuclear fission weapons.</definition>
+    <lexeme POS="N" name="plutonium"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Substance"/>
+                <annoSet ID="2579379"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Substance"/>
+                <annoSet ID="2579379"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-n_modifier-(1)"/>
+    <subCorpus name="02-a_modifier-(1)"/>
+    <subCorpus name="03-object_of-(1)"/>
+    <subCorpus name="04-modifies-(1)"/>
+    <subCorpus name="05-and/or-(1)"/>
+    <subCorpus name="06-pp_from-p-(1)"/>
+    <subCorpus name="07-other-matched-(1)"/>
+    <subCorpus name="08-other-unmatched-(1)">
+        <sentence corpID="111" docID="19459" sentNo="3" paragNo="43" aPos="0" ID="1572379">
+            <text>Although uranium can be put to use , and used up , as fuel in existing reactors , plutonium is much harder to get rid of .</text>
+            <annotationSet cDate="07/14/2010 01:58:00 PDT Wed" status="UNANN" ID="2579378">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="in"/>
+                    <label end="15" start="9" name="nn"/>
+                    <label end="19" start="17" name="md"/>
+                    <label end="22" start="21" name="vb"/>
+                    <label end="26" start="24" name="VVN"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="33" start="31" name="VV"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="39" start="37" name="cc"/>
+                    <label end="44" start="41" name="VVD"/>
+                    <label end="47" start="46" name="rb"/>
+                    <label end="49" start="49" name=","/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="69" start="62" name="VVG"/>
+                    <label end="78" start="71" name="nns"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="90" start="82" name="nn"/>
+                    <label end="93" start="92" name="VBZ"/>
+                    <label end="98" start="95" name="rb"/>
+                    <label end="105" start="100" name="jjr"/>
+                    <label end="108" start="107" name="to"/>
+                    <label end="112" start="110" name="VV"/>
+                    <label end="116" start="114" name="VV"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 01:58:00 PDT Wed" status="MANUAL" ID="2579379">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="90" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="7526" end="90" start="82" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

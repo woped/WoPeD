@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="A" name="introverted.a" ID="1618" frame="Sociability" frameID="74" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="000000" bgColor="FFA500" type="Core" abbrev="Comp" name="Company"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Cont" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="jud" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Prot" name="Protagonist"/>
+        </frame>
+    </header>
+    <definition>FN: socially reserved, shy</definition>
+    <lexeme POS="A" name="introverted"/>
+    <valences>
+        <governor type="Sup" lemma="become">
+            <annoSet ID="603260"/>
+            <annoSet ID="603264"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Degree"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="603222"/>
+                <annoSet ID="603232"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Protagonist"/>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="603222"/>
+                <annoSet ID="603230"/>
+                <annoSet ID="603232"/>
+                <annoSet ID="603248"/>
+                <annoSet ID="603252"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="603260"/>
+                <annoSet ID="603264"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Degree"/>
+            <FE name="Protagonist"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="603222"/>
+                <annoSet ID="603232"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Protagonist"/>
+            <pattern total="3">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="603230"/>
+                <annoSet ID="603248"/>
+                <annoSet ID="603252"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="603260"/>
+                <annoSet ID="603264"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-170-prenom">
+        <sentence sentNo="0" aPos="12230085" ID="497910">
+            <text>The two of them , both intensely introverted people , conducted their love affair in secret . </text>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="UNANN" ID="603221">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="CRD"/>
+                    <label end="9" start="8" name="PRF"/>
+                    <label end="14" start="11" name="PNP"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="21" start="18" name="AV0"/>
+                    <label end="31" start="23" name="AV0"/>
+                    <label end="43" start="33" name="AJ0"/>
+                    <label end="50" start="45" name="NN0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="62" start="54" name="VVD-VVN"/>
+                    <label end="68" start="64" name="DPS"/>
+                    <label end="73" start="70" name="NN1"/>
+                    <label end="80" start="75" name="NN1"/>
+                    <label end="83" start="82" name="PRP"/>
+                    <label end="90" start="85" name="AJ0-NN1"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="MANUAL" ID="603222">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1516" end="31" start="23" name="Degree"/>
+                    <label cBy="618" feID="351" end="50" start="45" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="23" name="Dep"/>
+                    <label end="50" start="45" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="23" name="AVP"/>
+                    <label end="50" start="45" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22233696" ID="497914">
+            <text>In contrast , the introverted person is concerned with the space between people and objects . </text>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="UNANN" ID="603229">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="10" start="3" name="NN1"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="28" start="18" name="AJ0"/>
+                    <label end="35" start="30" name="NN1"/>
+                    <label end="38" start="37" name="VBZ"/>
+                    <label end="48" start="40" name="AJ0"/>
+                    <label end="53" start="50" name="PRP"/>
+                    <label end="57" start="55" name="AT0"/>
+                    <label end="63" start="59" name="NN1"/>
+                    <label end="71" start="65" name="PRP"/>
+                    <label end="78" start="73" name="NN0"/>
+                    <label end="82" start="80" name="CJC"/>
+                    <label end="90" start="84" name="NN2"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="MANUAL" ID="603230">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="351" end="35" start="30" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="30" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="30" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22233772" ID="497915">
+            <text>Many primarily introverted people can deal with the outside world when required , just as many extroverts can deal with ideas when this is needed . </text>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="UNANN" ID="603231">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="13" start="5" name="AV0"/>
+                    <label end="25" start="15" name="AJ0"/>
+                    <label end="32" start="27" name="NN0"/>
+                    <label end="36" start="34" name="VM0"/>
+                    <label end="41" start="38" name="VVI"/>
+                    <label end="46" start="43" name="PRP"/>
+                    <label end="50" start="48" name="AT0"/>
+                    <label end="58" start="52" name="AJ0"/>
+                    <label end="64" start="60" name="NN1"/>
+                    <label end="69" start="66" name="AVQ-CJS"/>
+                    <label end="78" start="71" name="VVN"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="85" start="82" name="AV0"/>
+                    <label end="88" start="87" name="CJS"/>
+                    <label end="93" start="90" name="DT0"/>
+                    <label end="104" start="95" name="NN2"/>
+                    <label end="108" start="106" name="VM0"/>
+                    <label end="113" start="110" name="VVI"/>
+                    <label end="118" start="115" name="PRP"/>
+                    <label end="124" start="120" name="NN2"/>
+                    <label end="129" start="126" name="AVQ-CJS"/>
+                    <label end="134" start="131" name="DT0"/>
+                    <label end="137" start="136" name="VBZ"/>
+                    <label end="144" start="139" name="VVN"/>
+                    <label end="146" start="146" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:26 PST Tue" status="MANUAL" ID="603232">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1516" end="13" start="5" name="Degree"/>
+                    <label cBy="618" feID="351" end="32" start="27" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="5" name="Dep"/>
+                    <label end="32" start="27" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="5" name="AVP"/>
+                    <label end="32" start="27" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52557465" ID="497923">
+            <text>In Bernice 's experience , small or introverted men were those most likely to be obsessive . </text>
+            <annotationSet cDate="01/07/2003 05:41:27 PST Tue" status="UNANN" ID="603247">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="9" start="3" name="NP0"/>
+                    <label end="12" start="11" name="POS"/>
+                    <label end="23" start="14" name="NN1"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="31" start="27" name="AJ0"/>
+                    <label end="34" start="33" name="CJC"/>
+                    <label end="46" start="36" name="AJ0-VVD"/>
+                    <label end="50" start="48" name="NN2"/>
+                    <label end="55" start="52" name="VBD"/>
+                    <label end="61" start="57" name="DT0"/>
+                    <label end="66" start="63" name="DT0"/>
+                    <label end="73" start="68" name="AJ0"/>
+                    <label end="76" start="75" name="TO0"/>
+                    <label end="79" start="78" name="VBI"/>
+                    <label end="89" start="81" name="AJ0"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:27 PST Tue" status="MANUAL" ID="603248">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="351" end="50" start="48" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="48" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="48" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="54730586" ID="497925">
+            <text>It suits introverted mountain people like us . &quot; </text>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="UNANN" ID="603251">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="19" start="9" name="AJ0"/>
+                    <label end="28" start="21" name="NN1"/>
+                    <label end="35" start="30" name="NN0"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="43" start="42" name="PNP"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="47" start="47" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="MANUAL" ID="603252">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="351" end="35" start="21" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="21" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="21" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-180-punct">
+        <sentence sentNo="0" aPos="21732936" ID="497929">
+            <text>Initially , I had much support but then I became introverted . </text>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="UNANN" ID="603259">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AV0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="12" start="12" name="PNP"/>
+                    <label end="16" start="14" name="VHD"/>
+                    <label end="21" start="18" name="DT0"/>
+                    <label end="29" start="23" name="NN1-VVB"/>
+                    <label end="33" start="31" name="CJC"/>
+                    <label end="38" start="35" name="AV0"/>
+                    <label end="40" start="40" name="PNP"/>
+                    <label end="47" start="42" name="VVD"/>
+                    <label end="59" start="49" name="AJ0-VVD"/>
+                    <label end="61" start="61" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="MANUAL" ID="603260">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="351" end="40" start="40" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="40" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="40" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="47" start="42" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101977066" ID="497931">
+            <text>As a result the girl had become introverted . </text>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="UNANN" ID="603263">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="3" start="3" name="AT0"/>
+                    <label end="10" start="5" name="NN1"/>
+                    <label end="14" start="12" name="AT0"/>
+                    <label end="19" start="16" name="NN1"/>
+                    <label end="23" start="21" name="VHD"/>
+                    <label end="30" start="25" name="VVN"/>
+                    <label end="42" start="32" name="AJ0-VVD"/>
+                    <label end="44" start="44" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:41:28 PST Tue" status="MANUAL" ID="603264">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="351" end="19" start="12" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="12" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="12" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="30" start="25" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-190-other"/>
+</lexUnit>

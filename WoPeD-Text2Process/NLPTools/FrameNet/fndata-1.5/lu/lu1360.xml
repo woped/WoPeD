@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="caterwaul.v" ID="1360" frame="Make_noise" frameID="69" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Addressee"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="ite" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Loc-Src" name="Location_of_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Noisy_event"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Path"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Rsn" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Sound" name="Sound"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src-p" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make a shrill howling or wailing noise.</definition>
+    <lexeme POS="V" name="caterwaul"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="458380"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Sound"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <annoSet ID="458380"/>
+                <annoSet ID="458384"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Sound_source"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="458380"/>
+                <annoSet ID="458384"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="458380"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="458384"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="21057033" ID="408026">
+            <text>Two spayed females disputing a territorial boundary can caterwaul as dramatically as any ` rutting toms &quot; . </text>
+            <annotationSet cDate="01/07/2003 02:44:24 PST Tue" status="UNANN" ID="458379">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="17" start="11" name="NN2"/>
+                    <label end="27" start="19" name="VVG"/>
+                    <label end="29" start="29" name="AT0"/>
+                    <label end="41" start="31" name="AJ0"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="54" start="52" name="VM0"/>
+                    <label end="64" start="56" name="VVI"/>
+                    <label end="67" start="66" name="AV0"/>
+                    <label end="80" start="69" name="AV0"/>
+                    <label end="83" start="82" name="CJS"/>
+                    <label end="87" start="85" name="DT0"/>
+                    <label end="89" start="89" name="PUQ"/>
+                    <label end="97" start="91" name="AJ0-VVG"/>
+                    <label end="102" start="99" name="NN2"/>
+                    <label end="104" start="104" name="PUQ"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:44:24 PST Tue" status="MANUAL" ID="458380">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="323" end="50" start="0" name="Sound_source"/>
+                    <label cBy="103" feID="329" end="102" start="66" name="Manner"/>
+                    <label cBy="309" feID="328" end="64" start="56" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="0" name="Ext"/>
+                    <label end="102" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="0" name="NP"/>
+                    <label end="102" start="66" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="73104752" ID="408028">
+            <text>And I , it was n't until afterwards I realized it was cats caterwauling . </text>
+            <annotationSet cDate="01/07/2003 02:44:24 PST Tue" status="UNANN" ID="458383">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="4" start="4" name="PNP"/>
+                    <label end="6" start="6" name="PUN"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="17" start="15" name="XX0"/>
+                    <label end="23" start="19" name="CJS"/>
+                    <label end="34" start="25" name="AV0"/>
+                    <label end="36" start="36" name="PNP"/>
+                    <label end="45" start="38" name="VVD"/>
+                    <label end="48" start="47" name="PNP"/>
+                    <label end="52" start="50" name="VBD"/>
+                    <label end="57" start="54" name="NN2"/>
+                    <label end="70" start="59" name="VVG"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:44:24 PST Tue" status="MANUAL" ID="458384">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="323" end="57" start="54" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="70" start="59" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="54" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense1"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="70" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

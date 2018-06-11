@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="prediction.n" ID="13082" frame="Expectation" frameID="26" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Evid" name="Evidence"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: a specific idea of what will happen.</definition>
+    <lexeme POS="N" name="prediction"/>
+    <valences>
+        <governor type="Sup" lemma="make">
+            <annoSet ID="2559005"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2559005"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Topic"/>
+                <annoSet ID="2559005"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Topic"/>
+                <annoSet ID="2559005"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPabout-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="3249" aPos="112180097" ID="1558122">
+            <text>We are in the middle of this inquiry , so it is far too early for anyone to make predictions about the outcome , &quot; he said .</text>
+            <annotationSet cDate="05/21/2010 03:27:54 PDT Fri" status="UNANN" ID="2559004">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="vbp"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="19" start="14" name="nn"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="27" start="24" name="dt"/>
+                    <label end="35" start="29" name="nn"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="40" start="39" name="rb"/>
+                    <label end="43" start="42" name="PP"/>
+                    <label end="46" start="45" name="VBZ"/>
+                    <label end="50" start="48" name="rb"/>
+                    <label end="54" start="52" name="rb"/>
+                    <label end="60" start="56" name="jj"/>
+                    <label end="64" start="62" name="in"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="74" start="73" name="to"/>
+                    <label end="79" start="76" name="VV"/>
+                    <label end="91" start="81" name="nns"/>
+                    <label end="97" start="93" name="in"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="109" start="103" name="nn"/>
+                    <label end="111" start="111" name=","/>
+                    <label end="116" start="115" name="PP"/>
+                    <label end="121" start="118" name="VVD"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2010 03:27:55 PDT Fri" status="MANUAL" ID="2559005">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="91" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="109" end="71" start="66" name="Cognizer"/>
+                    <label cBy="571" feID="9837" end="109" start="93" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="66" name="Ext"/>
+                    <label end="109" start="93" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="66" name="NP"/>
+                    <label end="109" start="93" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="79" start="76" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Wabout-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

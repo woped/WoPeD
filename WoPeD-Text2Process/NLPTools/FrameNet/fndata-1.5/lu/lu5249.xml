@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="quiet_down.v" ID="5249" frame="Silencing" frameID="285" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980218.0924" ID="9780"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Res" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: become quiet</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="quiet"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="ADV" name="down"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="2073125"/>
+                <annoSet ID="2073227"/>
+                <annoSet ID="2073229"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1127284"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Speaker"/>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Speaker"/>
+                <annoSet ID="1127284"/>
+                <annoSet ID="2073125"/>
+                <annoSet ID="2073227"/>
+                <annoSet ID="2073229"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Agent"/>
+            <FE name="Speaker"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Speaker"/>
+                <annoSet ID="2073125"/>
+                <annoSet ID="2073227"/>
+                <annoSet ID="2073229"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Speaker"/>
+                <annoSet ID="1127284"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-690-s20-trans-other">
+        <sentence sentNo="0" aPos="7596025" ID="835397">
+            <text>And the strong-man holds his arm up to quiet us down . &quot; </text>
+            <annotationSet cDate="01/07/2003 04:21:07 PST Tue" status="UNANN" ID="1127283">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="6" start="4" name="AT0"/>
+                    <label end="17" start="8" name="NN1"/>
+                    <label end="23" start="19" name="VVZ"/>
+                    <label end="27" start="25" name="DPS"/>
+                    <label end="31" start="29" name="NN1"/>
+                    <label end="34" start="33" name="AVP"/>
+                    <label end="37" start="36" name="TO0"/>
+                    <label end="43" start="39" name="VVI"/>
+                    <label end="46" start="45" name="PNP"/>
+                    <label end="51" start="48" name="AVP"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="55" start="55" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:21:07 PST Tue" status="MANUAL" ID="1127284">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2478" end="46" start="45" name="Speaker"/>
+                    <label cBy="669" feID="2471" end="17" start="4" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="45" name="Obj"/>
+                    <label end="17" start="4" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="45" name="NP"/>
+                    <label end="17" start="4" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="39" name="Target"/>
+                    <label cBy="669" end="51" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-820-s50-avpdown"/>
+    <subCorpus name="V-830-s50-avpdown-np"/>
+    <subCorpus name="V-870-s50-avpother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="01-T-NP-Wdown-(3)">
+        <sentence corpID="113" docID="9780" sentNo="2" paragNo="9" aPos="124165109" ID="1312492">
+            <text>Anti-war protesters resisted most attempts to quiet them down .</text>
+            <annotationSet cDate="02/16/2005 10:15:08 PST Wed" status="UNANN" ID="2073124">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="jj"/>
+                    <label end="18" start="9" name="nns"/>
+                    <label end="27" start="20" name="VVD"/>
+                    <label end="32" start="29" name="jjs"/>
+                    <label end="41" start="34" name="nns"/>
+                    <label end="44" start="43" name="to"/>
+                    <label end="50" start="46" name="VV"/>
+                    <label end="55" start="52" name="PP"/>
+                    <label end="60" start="57" name="rp"/>
+                    <label end="62" start="62" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 10:15:08 PST Wed" status="MANUAL" ID="2073125">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="50" start="46" name="Target"/>
+                    <label cBy="395" end="60" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2478" end="55" start="52" name="Speaker"/>
+                    <label cBy="395" feID="2471" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="52" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="52" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+    <subCorpus name="01-T-NP-Wdown-(4)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="231" aPos="8034362" ID="1312543">
+            <text>And the strong-man holds his arm up to quiet us down . &quot;</text>
+            <annotationSet cDate="02/16/2005 10:19:50 PST Wed" status="UNANN" ID="2073226">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="17" start="8" name="nn"/>
+                    <label end="23" start="19" name="VVZ"/>
+                    <label end="27" start="25" name="PP$"/>
+                    <label end="31" start="29" name="nn"/>
+                    <label end="34" start="33" name="rp"/>
+                    <label end="37" start="36" name="to"/>
+                    <label end="43" start="39" name="VV"/>
+                    <label end="46" start="45" name="PP"/>
+                    <label end="51" start="48" name="rp"/>
+                    <label end="53" start="53" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 10:19:50 PST Wed" status="MANUAL" ID="2073227">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="43" start="39" name="Target"/>
+                    <label cBy="395" end="51" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2478" end="46" start="45" name="Speaker"/>
+                    <label cBy="395" feID="2471" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="45" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="45" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="170" aPos="63745794" ID="1312544">
+            <text>Well , in that case , he told himself , there are ways of quieting kids down .</text>
+            <annotationSet cDate="02/16/2005 10:19:50 PST Wed" status="UNANN" ID="2073228">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="5" start="5" name=","/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="13" start="10" name="dt"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="23" start="22" name="PP"/>
+                    <label end="28" start="25" name="VVD"/>
+                    <label end="36" start="30" name="PP"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="44" start="40" name="ex"/>
+                    <label end="48" start="46" name="vbp"/>
+                    <label end="53" start="50" name="nns"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="65" start="58" name="VVG"/>
+                    <label end="70" start="67" name="nns"/>
+                    <label end="75" start="72" name="rp"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 10:19:50 PST Wed" status="MANUAL" ID="2073229">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="65" start="58" name="Target"/>
+                    <label cBy="395" end="75" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2471" itype="CNI" name="Agent"/>
+                    <label cBy="395" feID="2478" end="70" start="67" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="67" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="67" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(4)"/>
+    <subCorpus name="other-unmatched-(4)"/>
+</lexUnit>

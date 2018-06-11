@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Fight" POS="N" name="donnybrook.n" ID="8272" frame="Fighting_activity" frameID="563" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Combatants"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Fight" name="Fight"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="iss" name="Issue"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="000000" bgColor="00BFFF" type="Peripheral" abbrev="SA" name="Salient_activity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a heated argument. </definition>
+    <lexeme POS="N" name="donnybrook"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Fight"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Fight"/>
+                <annoSet ID="1925405"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Fight"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Fight"/>
+                <annoSet ID="1925405"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="132" aPos="0" ID="1239186">
+            <text>The capital of South Australia , Adelaide , with its beautiful cricket ground , was the unlikeliest setting for a donnybrook .</text>
+            <annotationSet cDate="07/14/2003 01:45:56 PDT Mon" status="UNANN" ID="1925404">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="19" start="15" name="NP"/>
+                    <label end="29" start="21" name="NP"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="40" start="33" name="NP"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="47" start="44" name="in"/>
+                    <label end="51" start="49" name="PP$"/>
+                    <label end="61" start="53" name="jj"/>
+                    <label end="69" start="63" name="nn"/>
+                    <label end="76" start="71" name="nn"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="82" start="80" name="VBD"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="98" start="88" name="jjs"/>
+                    <label end="106" start="100" name="nn"/>
+                    <label end="110" start="108" name="in"/>
+                    <label end="112" start="112" name="dt"/>
+                    <label end="123" start="114" name="nn"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/14/2003 01:45:56 PDT Mon" status="MANUAL" ID="1925405">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="123" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="4194" end="123" start="114" name="Fight"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="family.n" ID="2664" frame="Aggregate" frameID="103" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Agg" name="Aggregate"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="AgProp" name="AggregateProperty"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Con" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Name"/>
+        </frame>
+    </header>
+    <definition>COD: a group united by a significant shared characteristic</definition>
+    <lexeme POS="N" name="family"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Aggregate"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <annoSet ID="204206"/>
+                <annoSet ID="204222"/>
+                <annoSet ID="204460"/>
+                <annoSet ID="204558"/>
+                <annoSet ID="204594"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Individuals"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="204206"/>
+                <annoSet ID="204222"/>
+                <annoSet ID="204460"/>
+                <annoSet ID="204558"/>
+                <annoSet ID="204594"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Aggregate"/>
+            <FE name="Individuals"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="204206"/>
+                <annoSet ID="204222"/>
+                <annoSet ID="204460"/>
+                <annoSet ID="204558"/>
+                <annoSet ID="204594"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="1112697" ID="279358">
+            <text>When Grant died in 1789 his share in the brewery was bought by Sampson Hanbury , aged 30 , a member of a family of Quaker bankers . </text>
+            <annotationSet cDate="01/06/2003 09:38:06 PST Mon" status="UNANN" ID="204205">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="9" start="5" name="NP0"/>
+                    <label end="14" start="11" name="VVD"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="22" start="19" name="CRD"/>
+                    <label end="26" start="24" name="DPS"/>
+                    <label end="32" start="28" name="NN1-VVB"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="47" start="41" name="NN1"/>
+                    <label end="51" start="49" name="VBD"/>
+                    <label end="58" start="53" name="VVN"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="69" start="63" name="NP0"/>
+                    <label end="77" start="71" name="NP0"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="84" start="81" name="PRP"/>
+                    <label end="87" start="86" name="CRD"/>
+                    <label end="89" start="89" name="PUN"/>
+                    <label end="91" start="91" name="AT0"/>
+                    <label end="98" start="93" name="NN1"/>
+                    <label end="101" start="100" name="PRF"/>
+                    <label end="103" start="103" name="AT0"/>
+                    <label end="110" start="105" name="NN0"/>
+                    <label end="113" start="112" name="PRF"/>
+                    <label end="120" start="115" name="AJ0-NN1"/>
+                    <label end="128" start="122" name="NN2"/>
+                    <label end="130" start="130" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:38:06 PST Mon" status="MANUAL" ID="204206">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="744" end="128" start="112" name="Individuals"/>
+                    <label cBy="669" feID="745" end="110" start="105" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="128" start="112" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="128" start="112" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="110" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41636070" ID="279366">
+            <text>The three repressors belong to a family of proteins bearing the same DNA-binding motif , the TraY protein from E. coli F episome probably being a fourth . </text>
+            <annotationSet cDate="01/06/2003 09:38:07 PST Mon" status="UNANN" ID="204221">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="CRD"/>
+                    <label end="19" start="10" name="NN2"/>
+                    <label end="26" start="21" name="VVB"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="38" start="33" name="NN0"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="50" start="43" name="NN2"/>
+                    <label end="58" start="52" name="VVG"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="67" start="64" name="DT0"/>
+                    <label end="79" start="69" name="AJ0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="96" start="93" name="NN1"/>
+                    <label end="104" start="98" name="NN1"/>
+                    <label end="109" start="106" name="PRP"/>
+                    <label end="112" start="111" name="NP0"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="119" start="119" name="ZZ0"/>
+                    <label end="127" start="121" name="AJ0"/>
+                    <label end="136" start="129" name="AV0"/>
+                    <label end="142" start="138" name="VBG"/>
+                    <label end="144" start="144" name="AT0"/>
+                    <label end="151" start="146" name="ORD"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:38:07 PST Mon" status="MANUAL" ID="204222">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="744" end="50" start="40" name="Individuals"/>
+                    <label cBy="669" feID="745" end="38" start="33" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss"/>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd"/>
+    <subCorpus name="N-320-ingcmpd"/>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-370-pother">
+        <sentence sentNo="0" aPos="41669671" ID="279485">
+            <text>AMONG the genes thought to be involved in patterning the nervous system are a family of developmentally regulated paired box-containing ( Pax ) genes . </text>
+            <annotationSet cDate="01/06/2003 09:38:24 PST Mon" status="UNANN" ID="204459">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="PRP"/>
+                    <label end="8" start="6" name="AT0"/>
+                    <label end="14" start="10" name="NN2"/>
+                    <label end="22" start="16" name="VVD-VVN"/>
+                    <label end="25" start="24" name="TO0"/>
+                    <label end="28" start="27" name="VBI"/>
+                    <label end="37" start="30" name="AJ0"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="51" start="42" name="VVG"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="63" start="57" name="AJ0"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="74" start="72" name="VBB"/>
+                    <label end="76" start="76" name="AT0"/>
+                    <label end="83" start="78" name="NN0"/>
+                    <label end="86" start="85" name="PRF"/>
+                    <label end="102" start="88" name="AV0"/>
+                    <label end="112" start="104" name="AJ0-VVD"/>
+                    <label end="119" start="114" name="AJ0"/>
+                    <label end="134" start="121" name="NN1"/>
+                    <label end="136" start="136" name="PUL"/>
+                    <label end="140" start="138" name="NN1-NP0"/>
+                    <label end="142" start="142" name="PUR"/>
+                    <label end="148" start="144" name="NN2"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:38:24 PST Mon" status="MANUAL" ID="204460">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="744" end="148" start="85" name="Individuals"/>
+                    <label cBy="669" feID="745" end="83" start="78" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="148" start="85" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="148" start="85" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="83" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="N-429-lcoll-complete">
+        <sentence sentNo="0" aPos="70454673" ID="279534">
+            <text>We have included this complete family of clarinets as they are all regularly used in concert bands and clarinet choirs . </text>
+            <annotationSet cDate="01/06/2003 09:38:31 PST Mon" status="UNANN" ID="204557">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VHB"/>
+                    <label end="15" start="8" name="VVN"/>
+                    <label end="20" start="17" name="DT0"/>
+                    <label end="29" start="22" name="AJ0"/>
+                    <label end="36" start="31" name="NN0"/>
+                    <label end="39" start="38" name="PRF"/>
+                    <label end="49" start="41" name="NN2"/>
+                    <label end="52" start="51" name="CJS"/>
+                    <label end="57" start="54" name="PNP"/>
+                    <label end="61" start="59" name="VBB"/>
+                    <label end="65" start="63" name="AV0"/>
+                    <label end="75" start="67" name="AV0"/>
+                    <label end="80" start="77" name="VVD-VVN"/>
+                    <label end="83" start="82" name="PRP"/>
+                    <label end="91" start="85" name="NN1"/>
+                    <label end="97" start="93" name="NN2"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="110" start="103" name="NN1"/>
+                    <label end="117" start="112" name="NN2"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:38:32 PST Mon" status="MANUAL" ID="204558">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="744" end="49" start="38" name="Individuals"/>
+                    <label cBy="669" feID="745" end="36" start="31" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="38" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="36" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-lcoll-different">
+        <sentence sentNo="0" aPos="49081110" ID="279552">
+            <text>The perfection of this design is attested by the fact that species belonging to quite different families of fish have adopted it and thus bear a strong resemblance to one another . </text>
+            <annotationSet cDate="01/06/2003 09:38:34 PST Mon" status="UNANN" ID="204593">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="16" start="15" name="PRF"/>
+                    <label end="21" start="18" name="DT0"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="31" start="30" name="VBZ"/>
+                    <label end="40" start="33" name="VVN"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="47" start="45" name="AT0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="57" start="54" name="CJT-DT0"/>
+                    <label end="65" start="59" name="NN0"/>
+                    <label end="75" start="67" name="VVG"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="84" start="80" name="AV0"/>
+                    <label end="94" start="86" name="AJ0"/>
+                    <label end="103" start="96" name="NN2"/>
+                    <label end="106" start="105" name="PRF"/>
+                    <label end="111" start="108" name="NN0"/>
+                    <label end="116" start="113" name="VHB"/>
+                    <label end="124" start="118" name="VVN"/>
+                    <label end="127" start="126" name="PNP"/>
+                    <label end="131" start="129" name="CJC"/>
+                    <label end="136" start="133" name="AV0"/>
+                    <label end="141" start="138" name="VVB"/>
+                    <label end="143" start="143" name="AT0"/>
+                    <label end="150" start="145" name="AJ0"/>
+                    <label end="162" start="152" name="NN1"/>
+                    <label end="165" start="164" name="PRP"/>
+                    <label end="169" start="167" name="PNX"/>
+                    <label end="177" start="171" name="PNX"/>
+                    <label end="179" start="179" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:38:34 PST Mon" status="MANUAL" ID="204594">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="745" end="103" start="96" name="Aggregate"/>
+                    <label cBy="669" feID="744" end="111" start="105" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="111" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="111" start="105" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="103" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-lcoll-distinct"/>
+    <subCorpus name="N-429-lcoll-entire"/>
+    <subCorpus name="N-429-lcoll-integrated"/>
+    <subCorpus name="N-429-lcoll-new"/>
+    <subCorpus name="N-429-rcoll-device"/>
+    <subCorpus name="N-429-rcoll-drug"/>
+    <subCorpus name="N-429-rcoll-language"/>
+    <subCorpus name="N-429-rcoll-plant"/>
+    <subCorpus name="N-429-rcoll-product"/>
+    <subCorpus name="N-429-rcoll-solution"/>
+    <subCorpus name="N-429-rcoll-system"/>
+</lexUnit>

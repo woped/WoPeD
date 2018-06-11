@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="197" cDate="07/12/2001 03:49:21 PDT Thu" name="Buildings" ID="173" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains words which name permanent fixed structures forming an enclosure and providing protection from the elements.
+
+
+&lt;ex&gt;The &lt;fex name="Type"&gt;baroque&lt;/fex&gt; &lt;t&gt;church&lt;/t&gt;, built in 1635, has a very rich interior&lt;/ex&gt;
+&lt;ex&gt;The city tour includes the &lt;fex name="toc"&gt;16th-century&lt;/fex&gt; &lt;t&gt;monastery&lt;/t&gt; of the Transfiguration and Church of Elijah the Prophet&lt;/ex&gt;
+&lt;ex&gt;An ancient &lt;fex name="Mat"&gt;stone&lt;/fex&gt; &lt;t&gt;church&lt;/t&gt; stands amid the fields&lt;/ex&gt;
+
+&lt;ex&gt;Jack &lt;gov&gt;built&lt;/gov&gt; &lt;x&gt;his &lt;t&gt;house&lt;/t&gt;&lt;/x&gt; in the style of the day.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="197" cDate="07/13/2001 10:10:36 PDT Fri" abbrev="Bldr" name="Builder" ID="1336">
+        <definition>&lt;def-root&gt;The Individual that created the &lt;fen&gt;Building&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/05/2004 03:43:15 PST Fri" abbrev="" name="Building" ID="6037">
+        <definition>&lt;def-root&gt;The entity built by the &lt;fen&gt;Builder&lt;/fen&gt; which has some &lt;fen&gt;Function&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Artifact" ID="61"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/05/2004 03:47:09 PST Fri" abbrev="" name="Function" ID="6038">
+        <definition>&lt;def-root&gt;The use for which the &lt;fen&gt;Building&lt;/fen&gt; is intended.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/05/2004 03:48:40 PST Fri" abbrev="" name="Name" ID="6039">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Name&lt;/fen&gt; used to refer to the &lt;fen&gt;Building&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/05/2004 03:50:54 PST Fri" abbrev="Mat" name="Material" ID="6040">
+        <definition>&lt;def-root&gt;Any indication of what makes up the &lt;fen&gt;Building&lt;/fen&gt;, including components, ingredients, etc&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/05/2004 03:52:13 PST Fri" abbrev="toc" name="Time_of_creation" ID="6041">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Building&lt;/fen&gt; comes into existence.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/05/2004 03:53:01 PST Fri" abbrev="" name="Type" ID="6042">
+        <definition>&lt;def-root&gt;An indication of the subtype of &lt;fen&gt;Building&lt;/fen&gt;, including architectural style.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="11/15/2006 05:02:15 PST Wed" abbrev="" name="Descriptor" ID="10837">
+        <definition>&lt;def-root&gt;A characterization of some property of the Building.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="03/16/2007 04:33:52 PDT Fri" abbrev="" name="Place" ID="11235">
+        <definition>&lt;def-root&gt;The building's location.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="11/07/2007 11:19:18 PST Wed" abbrev="" name="Relative_location" ID="12045">
+        <definition>&lt;def-root&gt;A place that a &lt;fen&gt;Building&lt;/fen&gt; is located with respect to.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Artifact</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Locale_by_use</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Building_subparts</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_X-Gov" POS="N" name="house.n" ID="2999" lemmaID="18508" cBy="197" cDate="07/12/2001 03:50:43 PDT Thu">
+        <definition>COD: a building for human habitation</definition>
+        <sentenceCount annotated="97" total="514"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="house"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="houseboat.n" ID="3000" lemmaID="18511" cBy="197" cDate="07/12/2001 03:59:09 PDT Thu">
+        <definition>COD: a boat which is fitted for use as a dwelling. </definition>
+        <sentenceCount annotated="6" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="houseboat"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="church.n" ID="3001" lemmaID="6491" cBy="197" cDate="07/12/2001 04:00:16 PDT Thu">
+        <definition>COD: a building used for public Christian worship. </definition>
+        <sentenceCount annotated="47" total="267"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="church"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tower.n" ID="3002" lemmaID="40864" cBy="197" cDate="07/12/2001 04:01:17 PDT Thu">
+        <definition>COD: a tall, narrow building, either free-standing or forming part of a building such as a church or castle. </definition>
+        <sentenceCount annotated="18" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tower"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="bungalow.n" ID="3003" lemmaID="4926" cBy="197" cDate="07/12/2001 04:04:46 PDT Thu">
+        <definition>COD: a house with only one main storey. </definition>
+        <sentenceCount annotated="17" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bungalow"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="cabin.n" ID="3004" lemmaID="5128" cBy="197" cDate="07/12/2001 04:05:15 PDT Thu">
+        <definition>COD: a small wooden shelter or house. </definition>
+        <sentenceCount annotated="10" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cabin"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="castle.n" ID="3005" lemmaID="5686" cBy="197" cDate="07/12/2001 04:06:03 PDT Thu">
+        <definition>COD: a large building, typically of the medieval period, which is (or was formerly) fortified as a stronghold.</definition>
+        <sentenceCount annotated="41" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="castle"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="condominium.n" ID="3006" lemmaID="7680" cBy="197" cDate="07/12/2001 04:06:48 PDT Thu">
+        <definition>COD: a building or complex containing a number of individually owned flats or houses. </definition>
+        <sentenceCount annotated="1" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="condominium"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="cottage.n" ID="3007" lemmaID="8536" cBy="197" cDate="07/12/2001 04:07:12 PDT Thu">
+        <definition>COD: a small simple house, typically one in the country. </definition>
+        <sentenceCount annotated="29" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cottage"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="dacha.n" ID="3008" lemmaID="9454" cBy="197" cDate="07/12/2001 04:07:46 PDT Thu">
+        <definition>COD: a country house or cottage in Russia, typically used as a second or holiday home. </definition>
+        <sentenceCount annotated="4" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dacha"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="dormitory.n" ID="3009" lemmaID="11525" cBy="197" cDate="07/12/2001 04:08:19 PDT Thu">
+        <definition>COD: a bedroom for a number of people in a school or institution. </definition>
+        <sentenceCount annotated="4" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dormitory"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="dwelling.n" ID="3010" lemmaID="12027" cBy="197" cDate="07/12/2001 04:09:06 PDT Thu">
+        <definition>COD: a house or other place of residence. </definition>
+        <sentenceCount annotated="26" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dwelling"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="farmhouse.n" ID="3011" lemmaID="13957" cBy="197" cDate="07/12/2001 04:09:38 PDT Thu">
+        <definition>COD: a house attached to a farm, especially the main house in which the farmer lives. </definition>
+        <sentenceCount annotated="14" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="farmhouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="home.n" ID="3012" lemmaID="18253" cBy="197" cDate="07/12/2001 04:10:18 PDT Thu">
+        <definition>COD: a house or flat. </definition>
+        <sentenceCount annotated="62" total="387"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="home"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hospital.n" ID="3013" lemmaID="18467" cBy="197" cDate="07/12/2001 04:10:46 PDT Thu">
+        <definition>FN: a building which houses an institution providing medical, surgical, and nursing care for sick or injured patients.</definition>
+        <sentenceCount annotated="28" total="228"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hospital"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hostel.n" ID="3014" lemmaID="18475" cBy="197" cDate="07/12/2001 04:11:12 PDT Thu">
+        <definition>COD: an establishment which provides cheap food and lodging for a specific group of people. </definition>
+        <sentenceCount annotated="12" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hostel"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hotel.n" ID="3015" lemmaID="18487" cBy="197" cDate="07/12/2001 04:11:34 PDT Thu">
+        <definition>COD: an establishment providing accommodation and meals for travellers and tourists. </definition>
+        <sentenceCount annotated="32" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hotel"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="igloo.n" ID="3016" lemmaID="18922" cBy="197" cDate="07/12/2001 04:12:28 PDT Thu">
+        <definition>COD: a dome-shaped Eskimo house, typically built from blocks of solid snow. </definition>
+        <sentenceCount annotated="4" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="igloo"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="lodge.n" ID="3017" lemmaID="22646" cBy="197" cDate="07/12/2001 04:13:12 PDT Thu">
+        <definition>COD: a small house at the gates of a park or in the grounds of a large house, occupied by a gatekeeper or other employee, or a small country house occupied in season for sports such as hunting and shooting, or a large house or hotel, or a porter's quarters at the main entrance of a college or other large building. </definition>
+        <sentenceCount annotated="12" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lodge"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="mansion.n" ID="3018" lemmaID="23416" cBy="197" cDate="07/12/2001 04:14:02 PDT Thu">
+        <definition>COD: a large, impressive house. </definition>
+        <sentenceCount annotated="22" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mansion"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="monastery.n" ID="3019" lemmaID="24759" cBy="197" cDate="07/12/2001 04:14:54 PDT Thu">
+        <definition>FN: a building housing a order of monks.</definition>
+        <sentenceCount annotated="7" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="monastery"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="motel.n" ID="3020" lemmaID="24999" cBy="197" cDate="07/12/2001 04:15:19 PDT Thu">
+        <definition>COD: a roadside hotel designed primarily for motorists, typically having the rooms arranged in low blocks with parking directly outside. </definition>
+        <sentenceCount annotated="8" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="motel"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="palace.n" ID="3021" lemmaID="27555" cBy="197" cDate="07/12/2001 04:15:53 PDT Thu">
+        <definition>COD: a large, impressive building forming the official residence of a sovereign, president, archbishop, etc. </definition>
+        <sentenceCount annotated="31" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="palace"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="pension.n" ID="3022" lemmaID="28347" cBy="197" cDate="07/12/2001 04:16:19 PDT Thu">
+        <definition>COD: a small hotel or boarding house in France and other European countries. </definition>
+        <sentenceCount annotated="2" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pension"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="pueblo.n" ID="3023" lemmaID="31071" cBy="197" cDate="07/12/2001 04:16:44 PDT Thu">
+        <definition>FN: buildings in a town or village in Spain, Latin America, or the south-western US, especially an American Indian settlement</definition>
+        <sentenceCount annotated="2" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pueblo"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="residence.n" ID="3024" lemmaID="32835" cBy="197" cDate="07/12/2001 04:17:24 PDT Thu">
+        <definition>FN: a building which serves as a person's home.</definition>
+        <sentenceCount annotated="9" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="residence"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="shack.n" ID="3025" lemmaID="35308" cBy="197" cDate="07/12/2001 04:17:49 PDT Thu">
+        <definition>COD: a roughly built hut or cabin. </definition>
+        <sentenceCount annotated="8" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shack"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="shanty.n" ID="3027" lemmaID="35385" cBy="197" cDate="07/12/2001 04:18:17 PDT Thu">
+        <definition>COD: a small, crudely built shack. </definition>
+        <sentenceCount annotated="2" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shanty"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="shelter.n" ID="3028" lemmaID="35482" cBy="197" cDate="07/12/2001 04:18:41 PDT Thu">
+        <definition>FN: a structure giving protection from danger or the elements.</definition>
+        <sentenceCount annotated="21" total="67"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shelter"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tenement.n" ID="3029" lemmaID="39849" cBy="197" cDate="07/12/2001 04:19:25 PDT Thu">
+        <definition>COD: a separate residence within a house or block of flats.</definition>
+        <sentenceCount annotated="11" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tenement"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tent.n" ID="3031" lemmaID="39870" cBy="197" cDate="07/12/2001 04:19:46 PDT Thu">
+        <definition>COD: a portable shelter made of cloth, supported by one or more poles and stretched tight by cords attached to pegs driven into the ground.</definition>
+        <sentenceCount annotated="12" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tent"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="villa.n" ID="3032" lemmaID="43036" cBy="197" cDate="07/12/2001 04:21:40 PDT Thu">
+        <definition>COD: a detached or semi-detached house in a residential district, or a large country house, having an estate and consisting of buildings arranged around a courtyard. </definition>
+        <sentenceCount annotated="22" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="villa"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="acropolis.n" ID="3084" lemmaID="395" cBy="197" cDate="07/17/2001 04:19:05 PDT Tue">
+        <definition>COD: a citadel or fortified part of an ancient Greek city, built on high ground.</definition>
+        <sentenceCount annotated="2" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="acropolis"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="arena.n" ID="3085" lemmaID="1891" cBy="197" cDate="07/17/2001 04:23:01 PDT Tue">
+        <definition>COD: a level area surrounded by seating, in which public events and entertainments are held. </definition>
+        <sentenceCount annotated="5" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arena"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="auditorium.n" ID="3086" lemmaID="2352" cBy="197" cDate="07/17/2001 04:23:31 PDT Tue">
+        <definition>COD: a large hall used for public gatherings. </definition>
+        <sentenceCount annotated="1" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="auditorium"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="barn.n" ID="3087" lemmaID="2923" cBy="197" cDate="07/17/2001 04:24:15 PDT Tue">
+        <definition>COD: a large farm building used for storage or for housing livestock. </definition>
+        <sentenceCount annotated="19" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="barn"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="barracks.n" ID="3088" lemmaID="2945" cBy="197" cDate="07/17/2001 04:24:44 PDT Tue">
+        <definition>COD: a large building or group of buildings used to house soldiers. </definition>
+        <sentenceCount annotated="12" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="barracks"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="basilica.n" ID="3089" lemmaID="2988" cBy="197" cDate="07/17/2001 04:25:17 PDT Tue">
+        <definition>COD: a large oblong hall or building with double colonnades and a semicircular apse, used in ancient Rome as a law court or for public assemblies, or a similar building used as a Christian church. </definition>
+        <sentenceCount annotated="6" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="basilica"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="blockhouse.n" ID="3090" lemmaID="3877" cBy="197" cDate="07/17/2001 04:25:58 PDT Tue">
+        <definition>COD: a reinforced concrete shelter used as an observation point. </definition>
+        <sentenceCount annotated="2" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blockhouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="campanile.n" ID="3091" lemmaID="5305" cBy="197" cDate="07/17/2001 04:27:16 PDT Tue">
+        <definition>COD: a bell tower, especially a free-standing one. </definition>
+        <sentenceCount annotated="2" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="campanile"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="caravan.n" ID="3092" lemmaID="5491" cBy="197" cDate="07/17/2001 04:27:45 PDT Tue">
+        <definition>COD: a vehicle equipped for living in, usually designed to be towed. </definition>
+        <sentenceCount annotated="14" total="67"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="caravan"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="caravanserai.n" ID="3093" lemmaID="5494" cBy="197" cDate="07/17/2001 04:28:16 PDT Tue">
+        <definition>COD: inn with a central courtyard for travellers in the desert regions of Asia or North Africa</definition>
+        <sentenceCount annotated="2" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="caravanserai"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="chalet.n" ID="3094" lemmaID="5997" cBy="197" cDate="07/17/2001 04:28:41 PDT Tue">
+        <definition>COD: a wooden house with overhanging eaves, typically found in the Swiss Alps, or a small wooden cabin used by holidaymakers, typically one in a holiday camp. </definition>
+        <sentenceCount annotated="7" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chalet"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="chateau.n" ID="3095" lemmaID="6144" cBy="197" cDate="07/17/2001 04:29:14 PDT Tue">
+        <definition>COD: a large French country house or castle. </definition>
+        <sentenceCount annotated="2" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chateau"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="conservatory.n" ID="3096" lemmaID="7903" cBy="197" cDate="07/17/2001 04:29:44 PDT Tue">
+        <definition>COD: a room with a glass roof and walls, attached to a house and used as a sun lounge or for growing delicate plants. </definition>
+        <sentenceCount annotated="9" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conservatory"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="garage.n" ID="3097" lemmaID="15905" cBy="197" cDate="07/17/2001 04:31:20 PDT Tue">
+        <definition>COD: a building for housing a motor vehicle or vehicles. </definition>
+        <sentenceCount annotated="16" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="garage"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="gazebo.n" ID="3098" lemmaID="16019" cBy="197" cDate="07/17/2001 04:31:47 PDT Tue">
+        <definition>COD: a small building, especially one in the garden of a house, that gives a wide view of the surrounding area. </definition>
+        <sentenceCount annotated="3" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gazebo"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="greenhouse.n" ID="3099" lemmaID="16793" cBy="197" cDate="07/17/2001 04:32:12 PDT Tue">
+        <definition>COD: a glass building in which plants that need protection from cold weather are grown .</definition>
+        <sentenceCount annotated="8" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="greenhouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hall.n" ID="3100" lemmaID="17289" cBy="197" cDate="07/17/2001 04:32:44 PDT Tue">
+        <definition>COD: a large room for meetings, concerts, etc., or a university building in which students live, a large country house, or the building of a guild. </definition>
+        <sentenceCount annotated="26" total="159"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hall"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hangar.n" ID="3101" lemmaID="17385" cBy="197" cDate="07/17/2001 04:33:23 PDT Tue">
+        <definition>COD: a large building with extensive floor area, typically for housing aircraft. </definition>
+        <sentenceCount annotated="10" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hangar"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hippodrome.n" ID="3102" lemmaID="18131" cBy="197" cDate="07/17/2001 04:33:47 PDT Tue">
+        <definition>COD: a theatre or concert hall. </definition>
+        <sentenceCount annotated="4" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hippodrome"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hovel.n" ID="3103" lemmaID="18543" cBy="197" cDate="07/17/2001 04:35:27 PDT Tue">
+        <definition>COD: a small squalid or poorly constructed dwelling. </definition>
+        <sentenceCount annotated="8" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hovel"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="inn.n" ID="3104" lemmaID="20008" cBy="197" cDate="07/17/2001 04:35:56 PDT Tue">
+        <definition>COD: a public house, traditionally an establishment also providing food and lodging. </definition>
+        <sentenceCount annotated="8" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="inn"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="kennel.n" ID="3105" lemmaID="21246" cBy="197" cDate="07/17/2001 04:36:38 PDT Tue">
+        <definition>COD: a small shelter for a dog. </definition>
+        <sentenceCount annotated="4" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kennel"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="kiosk.n" ID="3106" lemmaID="21359" cBy="197" cDate="07/17/2001 04:37:07 PDT Tue">
+        <definition>COD: a small open-fronted hut or cubicle from which newspapers, refreshments, tickets, etc. are sold. </definition>
+        <sentenceCount annotated="2" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kiosk"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="lighthouse.n" ID="3107" lemmaID="22317" cBy="197" cDate="07/17/2001 04:37:45 PDT Tue">
+        <definition>COD: a tower or other structure containing a beacon light to warn ships at sea. </definition>
+        <sentenceCount annotated="9" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lighthouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="maisonette.n" ID="3108" lemmaID="23200" cBy="197" cDate="07/17/2001 04:38:19 PDT Tue">
+        <definition>COD: a set of rooms for living in, typically on two storeys of a larger building and having a separate entrance. </definition>
+        <sentenceCount annotated="6" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="maisonette"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="mall.n" ID="3109" lemmaID="23282" cBy="197" cDate="07/17/2001 04:38:47 PDT Tue">
+        <definition>COD: a large enclosed shopping area from which traffic is excluded. </definition>
+        <sentenceCount annotated="3" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mall"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="manor.n" ID="3110" lemmaID="23409" cBy="197" cDate="07/17/2001 04:39:22 PDT Tue">
+        <definition>COD: a large country house with lands. </definition>
+        <sentenceCount annotated="10" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="manor"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="manse.n" ID="3111" lemmaID="23414" cBy="197" cDate="07/17/2001 04:39:44 PDT Tue">
+        <definition>COD: the house occupied by a minister of a Scottish Presbyterian Church. </definition>
+        <sentenceCount annotated="6" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="manse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="mosque.n" ID="3112" lemmaID="24988" cBy="197" cDate="07/17/2001 04:40:33 PDT Tue">
+        <definition>COD: a Muslim place of worship. </definition>
+        <sentenceCount annotated="12" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mosque"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="outbuilding.n" ID="3113" lemmaID="27058" cBy="197" cDate="07/17/2001 04:41:00 PDT Tue">
+        <definition>COD: a smaller detached building in the grounds of a main building. </definition>
+        <sentenceCount annotated="3" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="outbuilding"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="outhouse.n" ID="3114" lemmaID="27096" cBy="197" cDate="07/17/2001 04:41:24 PDT Tue">
+        <definition>COD: a smaller building built on to or in the grounds of a house, or an outside toilet. </definition>
+        <sentenceCount annotated="5" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="outhouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="pagoda.n" ID="3115" lemmaID="27523" cBy="197" cDate="07/17/2001 04:41:54 PDT Tue">
+        <definition>COD: a Hindu or Buddhist temple or sacred building, typically having a many-tiered tower. </definition>
+        <sentenceCount annotated="3" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pagoda"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="palazzo.n" ID="3116" lemmaID="44984" cBy="197" cDate="07/17/2001 04:43:42 PDT Tue">
+        <definition>COD: a palatial building, especially in Italy. </definition>
+        <sentenceCount annotated="5" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="palazzo"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="pavilion.n" ID="3117" lemmaID="28111" cBy="197" cDate="07/17/2001 04:44:49 PDT Tue">
+        <definition>COD: a building at a cricket ground or other sports ground used for changing and taking refreshments, a summer house or other decorative shelter in a park or large garden, or a detached or semi-detached block at a hospital or other building complex. </definition>
+        <sentenceCount annotated="16" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pavilion"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="penthouse.n" ID="3118" lemmaID="28364" cBy="197" cDate="07/17/2001 04:45:20 PDT Tue">
+        <definition>COD: a flat on the top floor of a tall building, typically luxuriously fitted and offering fine views. </definition>
+        <sentenceCount annotated="5" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="penthouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="pyramid.n" ID="3119" lemmaID="31337" cBy="197" cDate="07/17/2001 04:45:52 PDT Tue">
+        <definition>COD: a monumental stone structure with a square or triangular base and sloping sides that meet in a point at the top, especially one built as a royal tomb in ancient Egypt.</definition>
+        <sentenceCount annotated="12" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pyramid"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="rotunda.n" ID="3120" lemmaID="33578" cBy="197" cDate="07/17/2001 04:46:39 PDT Tue">
+        <definition>COD: a round building or room, especially one with a dome. </definition>
+        <sentenceCount annotated="2" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rotunda"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="shebang.n" ID="3121" lemmaID="35441" cBy="197" cDate="07/17/2001 04:47:31 PDT Tue">
+        <definition>COD: a rough hut or shelter. </definition>
+        <sentenceCount annotated="0" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shebang"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="shed.n" ID="3122" lemmaID="35443" cBy="197" cDate="07/17/2001 04:48:03 PDT Tue">
+        <definition>COD: a simple roofed structure, typically of wood and used for storage or to shelter animals, or a larger structure, typically with one or more sides open, for storing vehicles or machinery, or an open-sided building for shearing sheep or milking cattle. </definition>
+        <sentenceCount annotated="16" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shed"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="skyscraper.n" ID="3123" lemmaID="36208" cBy="197" cDate="07/17/2001 04:48:32 PDT Tue">
+        <definition>COD: a very tall building of many storeys. </definition>
+        <sentenceCount annotated="3" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="skyscraper"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="stable.n" ID="3124" lemmaID="37682" cBy="197" cDate="07/17/2001 04:48:54 PDT Tue">
+        <definition>COD: a building for housing horses. </definition>
+        <sentenceCount annotated="14" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stable"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="stadium.n" ID="3125" lemmaID="37694" cBy="197" cDate="07/17/2001 04:49:19 PDT Tue">
+        <definition>COD: an athletic or sports ground with tiers of seats for spectators. </definition>
+        <sentenceCount annotated="10" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stadium"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="supermarket.n" ID="3126" lemmaID="38878" cBy="197" cDate="07/17/2001 04:49:54 PDT Tue">
+        <definition>COD: a large self-service shop selling foods and household goods. </definition>
+        <sentenceCount annotated="9" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="supermarket"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="synagogue.n" ID="3127" lemmaID="39269" cBy="197" cDate="07/17/2001 04:50:19 PDT Tue">
+        <definition>COD: a building where a Jewish assembly or congregation meets for religious observance and instruction. </definition>
+        <sentenceCount annotated="6" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="synagogue"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tabernacle.n" ID="3128" lemmaID="39333" cBy="197" cDate="07/17/2001 04:50:40 PDT Tue">
+        <definition>COD: a fixed or movable habitation, typically of light construction.</definition>
+        <sentenceCount annotated="4" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tabernacle"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tavern.n" ID="3129" lemmaID="39620" cBy="197" cDate="07/17/2001 04:51:03 PDT Tue">
+        <definition>COD: an inn or public house. </definition>
+        <sentenceCount annotated="5" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tavern"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="tepee.n" ID="3131" lemmaID="39885" cBy="197" cDate="07/17/2001 04:51:55 PDT Tue">
+        <definition>COD: a conical tent made of skins or cloth on a frame of poles, used by American Indians of the Plains and Great Lakes regions. </definition>
+        <sentenceCount annotated="1" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tepee"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="terminal.n" ID="3132" lemmaID="39901" cBy="197" cDate="07/17/2001 04:52:24 PDT Tue">
+        <definition>COD: a departure and arrival building for passengers at an airport.</definition>
+        <sentenceCount annotated="13" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="terminal"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="triplex.n" ID="3134" lemmaID="41266" cBy="197" cDate="07/17/2001 04:53:42 PDT Tue">
+        <definition>COD: a building divided into three self-contained residences. </definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="triplex"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="warehouse.n" ID="3135" lemmaID="43436" cBy="197" cDate="07/17/2001 04:55:09 PDT Tue">
+        <definition>COD: a large building where raw materials or manufactured goods may be stored. </definition>
+        <sentenceCount annotated="31" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="warehouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="wigwam.n" ID="3136" lemmaID="44157" cBy="197" cDate="07/17/2001 04:55:43 PDT Tue">
+        <definition>COD: a dome-shaped or conical dwelling made by fastening mats, skins, or bark over a framework of poles.</definition>
+        <sentenceCount annotated="0" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wigwam"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="hacienda.n" ID="3137" lemmaID="17173" cBy="197" cDate="07/17/2001 04:57:15 PDT Tue">
+        <definition>COD: a large estate with a house. </definition>
+        <sentenceCount annotated="4" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hacienda"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="homestead.n" ID="3138" lemmaID="18276" cBy="197" cDate="07/17/2001 04:57:38 PDT Tue">
+        <definition>COD: a house, especially a farmhouse, and outbuildings. </definition>
+        <sentenceCount annotated="3" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="homestead"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="bunker.n" ID="3139" lemmaID="4935" cBy="197" cDate="07/17/2001 04:58:11 PDT Tue">
+        <definition>COD: a large container or compartment for storing fuel, or a reinforced underground shelter for use in wartime. </definition>
+        <sentenceCount annotated="8" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bunker"/>
+    </lexUnit>
+    <lexUnit status="Finished_X-Gov" POS="N" name="theatre.n" ID="7105" lemmaID="46053" cBy="296" cDate="08/07/2002 08:54:17 PDT Wed">
+        <definition>COD: a building in which plays and other dramatic performances are given. </definition>
+        <sentenceCount annotated="21" total="212"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="theatre"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bar.n" ID="10228" lemmaID="2856" cBy="445" cDate="03/08/2004 01:38:06 PST Mon">
+        <definition>COD: an establishment where alcohol and other refreshments are served.</definition>
+        <sentenceCount annotated="6" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bar"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="city hall.n" ID="10229" lemmaID="48839" cBy="445" cDate="03/08/2004 01:50:34 PST Mon">
+        <definition>FN: the building or buildings where the administrative offices of a municipal government are located.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="city"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="hall"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="disco.n" ID="10230" lemmaID="10852" cBy="445" cDate="03/08/2004 02:02:08 PST Mon">
+        <definition>FN: a dance club at which music, generally of the style named "disco", is played.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disco"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="discotheque.n" ID="10231" lemmaID="10884" cBy="445" cDate="03/08/2004 02:04:55 PST Mon">
+        <definition>FN: a nightclub featuring dancing to live or recorded music.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="discotheque"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="library.n" ID="10232" lemmaID="22225" cBy="445" cDate="03/08/2004 02:06:52 PST Mon">
+        <definition>COD: a building or room containing a collection of books and periodicals for use by the public or the members of an institution.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="library"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="temple.n" ID="10233" lemmaID="39803" cBy="445" cDate="03/08/2004 02:08:22 PST Mon">
+        <definition>FN: a building devoted to religious worship.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="temple"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="building.n" ID="10869" lemmaID="4841" cBy="203" cDate="08/18/2004 05:18:48 PDT Wed">
+        <definition>COD: a structure with a roof and walls</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="building"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="structure.n" ID="10921" lemmaID="38399" cBy="605" cDate="08/20/2004 02:31:59 PDT Fri">
+        <definition>FN: a building</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="structure"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="housing.n" ID="12613" lemmaID="18542" cBy="605" cDate="08/05/2005 05:31:43 PDT Fri">
+        <definition>COD: houses and flats considered collectively</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="housing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fortress.n" ID="13513" lemmaID="15195" cBy="618" cDate="08/21/2006 12:05:29 PDT Mon">
+        <definition>COD: a military stronghold, especially a strongly fortified town fit for a large garrison.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fortress"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fortification.n" ID="13638" lemmaID="15185" cBy="618" cDate="10/25/2006 04:26:43 PDT Wed">
+        <definition>FN: building or structure for strengthening, securing, and fortifying a location.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fortification"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="citadel.n" ID="14009" lemmaID="6582" cBy="361" cDate="03/20/2007 03:37:25 PDT Tue">
+        <definition>COD: a fortress protecting or dominating a city.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="citadel"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fort.n" ID="14343" lemmaID="15172" cBy="361" cDate="04/03/2007 12:52:26 PDT Tue">
+        <definition>COD: a fortified building</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fort"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="airport.n" ID="14689" lemmaID="914" cBy="597" cDate="01/23/2008 03:33:41 PST Wed">
+        <definition>FN: the building that houses terminals; the place to go for airplane travel</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="airport"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="pub.n" ID="14926" lemmaID="31035" cBy="597" cDate="04/03/2008 01:53:03 PDT Thu">
+        <definition>FN: a place that serves drinks and usually food</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pub"/>
+    </lexUnit>
+</frame>

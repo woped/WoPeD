@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="abet.v" ID="7042" frame="Assistance" frameID="391" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ben" name="Benefited_party"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Focal_e" name="Focal_entity"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Help" name="Helper"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="P" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: encourage or assist (someone) to do something wrong, in particular to commit a crime. </definition>
+    <lexeme POS="V" name="abet"/>
+    <semType name="Negative_judgment" ID="14"/>
+    <valences>
+        <FERealization total="12">
+            <FE name="Benefited_party"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Benefited_party"/>
+                <annoSet ID="1942195"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Benefited_party"/>
+                <annoSet ID="1942183"/>
+                <annoSet ID="1942185"/>
+                <annoSet ID="1942263"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Benefited_party"/>
+                <annoSet ID="1942255"/>
+                <annoSet ID="1942273"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Obj" PT="NP" FE="Benefited_party"/>
+                <annoSet ID="1942167"/>
+                <annoSet ID="1942169"/>
+                <annoSet ID="1942171"/>
+                <annoSet ID="1942173"/>
+                <annoSet ID="1942213"/>
+                <annoSet ID="1942219"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Focal_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Focal_entity"/>
+                <annoSet ID="1942213"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Goal"/>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <annoSet ID="1942183"/>
+                <annoSet ID="1942185"/>
+                <annoSet ID="1942195"/>
+                <annoSet ID="1942263"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Goal"/>
+                <annoSet ID="1942219"/>
+                <annoSet ID="1942255"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <annoSet ID="1942167"/>
+                <annoSet ID="1942169"/>
+                <annoSet ID="1942171"/>
+                <annoSet ID="1942173"/>
+                <annoSet ID="1942273"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Helper"/>
+            <pattern total="8">
+                <valenceUnit GF="Ext" PT="NP" FE="Helper"/>
+                <annoSet ID="1942167"/>
+                <annoSet ID="1942169"/>
+                <annoSet ID="1942171"/>
+                <annoSet ID="1942173"/>
+                <annoSet ID="1942183"/>
+                <annoSet ID="1942195"/>
+                <annoSet ID="1942213"/>
+                <annoSet ID="1942263"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Helper"/>
+                <annoSet ID="1942185"/>
+                <annoSet ID="1942219"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Helper"/>
+                <annoSet ID="1942255"/>
+                <annoSet ID="1942273"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Benefited_party"/>
+            <FE name="Focal_entity"/>
+            <FE name="Helper"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Benefited_party"/>
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Focal_entity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Helper"/>
+                <annoSet ID="1942213"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Benefited_party"/>
+            <FE name="Goal"/>
+            <FE name="Helper"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Benefited_party"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Helper"/>
+                <annoSet ID="1942195"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Benefited_party"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <valenceUnit GF="" PT="CNI" FE="Helper"/>
+                <annoSet ID="1942185"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Benefited_party"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Helper"/>
+                <annoSet ID="1942183"/>
+                <annoSet ID="1942263"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Benefited_party"/>
+                <valenceUnit GF="" PT="INI" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Helper"/>
+                <annoSet ID="1942255"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Benefited_party"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Helper"/>
+                <annoSet ID="1942273"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Benefited_party"/>
+                <valenceUnit GF="" PT="INI" FE="Goal"/>
+                <valenceUnit GF="" PT="CNI" FE="Helper"/>
+                <annoSet ID="1942219"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Benefited_party"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Helper"/>
+                <annoSet ID="1942167"/>
+                <annoSet ID="1942169"/>
+                <annoSet ID="1942171"/>
+                <annoSet ID="1942173"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-Waid-T-NP-PPin-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1072" aPos="0" ID="1247578">
+            <text>He aids and abets you in the task of self-destruction .</text>
+            <annotationSet cDate="08/28/2003 11:52:39 PDT Thu" status="UNANN" ID="1942166">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVZ"/>
+                    <label end="10" start="8" name="cc"/>
+                    <label end="16" start="12" name="VVZ"/>
+                    <label end="20" start="18" name="PP"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="52" start="37" name="nn"/>
+                    <label end="54" start="54" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:39 PDT Thu" status="AUTO_EDITED" ID="1942167">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="16" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="20" start="18" name="Benefited_party"/>
+                    <label cBy="618" feID="3500" end="1" start="0" name="Helper"/>
+                    <label cBy="618" feID="3501" end="52" start="22" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="18" name="Obj"/>
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="52" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="18" name="NP"/>
+                    <label end="1" start="0" name="NP"/>
+                    <label end="52" start="22" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="164" aPos="0" ID="1247579">
+            <text>Since she knew by now that some of them had abetted Bothwell in that very matter , she angrily repulsed them .</text>
+            <annotationSet cDate="08/28/2003 11:52:40 PDT Thu" status="UNANN" ID="1942168">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="PP"/>
+                    <label end="13" start="10" name="VVD"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="20" start="18" name="rb"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="30" start="27" name="dt"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="38" start="35" name="PP"/>
+                    <label end="42" start="40" name="VHD"/>
+                    <label end="50" start="44" name="VVN"/>
+                    <label end="59" start="52" name="NP"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="67" start="64" name="dt"/>
+                    <label end="72" start="69" name="jj"/>
+                    <label end="79" start="74" name="nn"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="85" start="83" name="PP"/>
+                    <label end="93" start="87" name="rb"/>
+                    <label end="102" start="95" name="VVD"/>
+                    <label end="107" start="104" name="PP"/>
+                    <label end="109" start="109" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:40 PDT Thu" status="AUTO_APP" ID="1942169">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="50" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="59" start="52" name="Benefited_party"/>
+                    <label cBy="618" feID="3500" end="38" start="27" name="Helper"/>
+                    <label cBy="618" feID="3501" end="79" start="61" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="52" name="Obj"/>
+                    <label end="38" start="27" name="Ext"/>
+                    <label end="79" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="52" name="NP"/>
+                    <label end="38" start="27" name="NP"/>
+                    <label end="79" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1152" aPos="0" ID="1247580">
+            <text>Was she actually planning to aid and abet him in this unexpected , meaningless sexual dalliance ?</text>
+            <annotationSet cDate="08/28/2003 11:52:41 PDT Thu" status="UNANN" ID="1942170">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="VBD"/>
+                    <label end="6" start="4" name="PP"/>
+                    <label end="15" start="8" name="rb"/>
+                    <label end="24" start="17" name="VVG"/>
+                    <label end="27" start="26" name="to"/>
+                    <label end="31" start="29" name="VV"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="40" start="37" name="VV"/>
+                    <label end="44" start="42" name="PP"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="52" start="49" name="dt"/>
+                    <label end="63" start="54" name="jj"/>
+                    <label end="65" start="65" name=","/>
+                    <label end="77" start="67" name="jj"/>
+                    <label end="84" start="79" name="jj"/>
+                    <label end="94" start="86" name="nn"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:41 PDT Thu" status="AUTO_APP" ID="1942171">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="40" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="44" start="42" name="Benefited_party"/>
+                    <label cBy="618" feID="3500" end="6" start="4" name="Helper"/>
+                    <label cBy="618" feID="3501" end="94" start="46" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="42" name="Obj"/>
+                    <label end="6" start="4" name="Ext"/>
+                    <label end="94" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="42" name="NP"/>
+                    <label end="6" start="4" name="NP"/>
+                    <label end="94" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="31" aPos="0" ID="1247581">
+            <text>Still , reluctant as she was to aid and abet her curious cousin in any way , she found herself asking with careful casualness , ` What 's his mystery ? &quot;</text>
+            <annotationSet cDate="08/28/2003 11:52:41 PDT Thu" status="UNANN" ID="1942172">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="16" start="8" name="jj"/>
+                    <label end="19" start="18" name="in"/>
+                    <label end="23" start="21" name="PP"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="30" start="29" name="to"/>
+                    <label end="34" start="32" name="VV"/>
+                    <label end="38" start="36" name="cc"/>
+                    <label end="43" start="40" name="VV"/>
+                    <label end="47" start="45" name="PP$"/>
+                    <label end="55" start="49" name="jj"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="73" start="71" name="nn"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="79" start="77" name="PP"/>
+                    <label end="85" start="81" name="VVD"/>
+                    <label end="93" start="87" name="PP"/>
+                    <label end="100" start="95" name="VVG"/>
+                    <label end="105" start="102" name="in"/>
+                    <label end="113" start="107" name="jj"/>
+                    <label end="124" start="115" name="nn"/>
+                    <label end="126" start="126" name=","/>
+                    <label end="133" start="130" name="wp"/>
+                    <label end="136" start="135" name="VBZ"/>
+                    <label end="140" start="138" name="PP$"/>
+                    <label end="148" start="142" name="nn"/>
+                    <label end="150" start="150" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:42 PDT Thu" status="AUTO_EDITED" ID="1942173">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="43" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="62" start="45" name="Benefited_party"/>
+                    <label cBy="618" feID="3500" end="23" start="21" name="Helper"/>
+                    <label cBy="618" feID="3501" end="73" start="64" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="45" name="Obj"/>
+                    <label end="23" start="21" name="Ext"/>
+                    <label end="73" start="64" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="45" name="NP"/>
+                    <label end="23" start="21" name="NP"/>
+                    <label end="73" start="64" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NPcrime,suicide,murder-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="269" aPos="0" ID="1247586">
+            <text>He received the life sentence for aiding and abetting the murder of Belfast fruit merchant Craig Wallace McVeigh ( 45 ) two years ago .</text>
+            <annotationSet cDate="08/28/2003 11:52:44 PDT Thu" status="UNANN" ID="1942182">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="10" start="3" name="VVD"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="19" start="16" name="nn"/>
+                    <label end="28" start="21" name="nn"/>
+                    <label end="32" start="30" name="in"/>
+                    <label end="39" start="34" name="VVG"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="52" start="45" name="VVG"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="74" start="68" name="NP"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="89" start="82" name="nn"/>
+                    <label end="95" start="91" name="NP"/>
+                    <label end="103" start="97" name="NP"/>
+                    <label end="111" start="105" name="NP"/>
+                    <label end="113" start="113" name="("/>
+                    <label end="116" start="115" name="cd"/>
+                    <label end="118" start="118" name=")"/>
+                    <label end="122" start="120" name="cd"/>
+                    <label end="128" start="124" name="nns"/>
+                    <label end="132" start="130" name="rb"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:45 PDT Thu" status="AUTO_EDITED" ID="1942183">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="52" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3500" end="1" start="0" name="Helper"/>
+                    <label cBy="618" feID="3499" itype="INI" name="Benefited_party"/>
+                    <label cBy="618" feID="3501" end="132" start="54" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="132" start="54" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="132" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="8569" aPos="0" ID="1247587">
+            <text>` If the bank is the custodian of someone else 's money then it is aiding and abetting a crime .</text>
+            <annotationSet cDate="08/28/2003 11:52:45 PDT Thu" status="UNANN" ID="1942184">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="in"/>
+                    <label end="7" start="5" name="dt"/>
+                    <label end="12" start="9" name="nn"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="29" start="21" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="40" start="34" name="nn"/>
+                    <label end="45" start="42" name="rb"/>
+                    <label end="48" start="47" name="POS"/>
+                    <label end="54" start="50" name="nn"/>
+                    <label end="59" start="56" name="rb"/>
+                    <label end="62" start="61" name="PP"/>
+                    <label end="65" start="64" name="VBZ"/>
+                    <label end="72" start="67" name="VVG"/>
+                    <label end="76" start="74" name="cc"/>
+                    <label end="85" start="78" name="VVG"/>
+                    <label end="87" start="87" name="dt"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="95" start="95" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:45 PDT Thu" status="AUTO_EDITED" ID="1942185">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="85" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3501" end="93" start="87" name="Goal"/>
+                    <label cBy="618" feID="3500" itype="CNI" name="Helper"/>
+                    <label cBy="618" feID="3499" itype="INI" name="Benefited_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="93" start="87" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="93" start="87" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-NP-T-PPby-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="302" aPos="0" ID="1247592">
+            <text>Where were those dark Plutonian forces when she needed them to aid and abet her plotting ?</text>
+            <annotationSet cDate="08/28/2003 11:52:47 PDT Thu" status="UNANN" ID="1942194">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="wrb"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="15" start="11" name="dt"/>
+                    <label end="20" start="17" name="jj"/>
+                    <label end="30" start="22" name="jj"/>
+                    <label end="37" start="32" name="nns"/>
+                    <label end="42" start="39" name="wrb"/>
+                    <label end="46" start="44" name="PP"/>
+                    <label end="53" start="48" name="VVD"/>
+                    <label end="58" start="55" name="PP"/>
+                    <label end="61" start="60" name="to"/>
+                    <label end="65" start="63" name="VV"/>
+                    <label end="69" start="67" name="cc"/>
+                    <label end="74" start="71" name="VV"/>
+                    <label end="78" start="76" name="PP"/>
+                    <label end="87" start="80" name="VVG"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:48 PDT Thu" status="MANUAL" ID="1942195">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="74" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3500" end="58" start="55" name="Helper"/>
+                    <label cBy="618" feID="3501" end="87" start="76" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="55" name="Ext"/>
+                    <label end="87" start="76" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="55" name="NP"/>
+                    <label end="87" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="3499" end="78" start="76" name="Benefited_party"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="677" aPos="0" ID="1247601">
+            <text>` I could n't aid and abet you against Susan . &quot;</text>
+            <annotationSet cDate="08/28/2003 11:52:52 PDT Thu" status="UNANN" ID="1942212">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="PP"/>
+                    <label end="8" start="4" name="md"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="16" start="14" name="VV"/>
+                    <label end="20" start="18" name="cc"/>
+                    <label end="25" start="22" name="VV"/>
+                    <label end="29" start="27" name="PP"/>
+                    <label end="37" start="31" name="in"/>
+                    <label end="43" start="39" name="NP"/>
+                    <label end="45" start="45" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:52 PDT Thu" status="MANUAL" ID="1942213">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="25" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3500" end="2" start="2" name="Helper"/>
+                    <label cBy="618" feID="3499" end="29" start="27" name="Benefited_party"/>
+                    <label cBy="618" feID="3632" end="43" start="31" name="Focal_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="2" name="Ext"/>
+                    <label end="29" start="27" name="Obj"/>
+                    <label end="43" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="2" name="NP"/>
+                    <label end="29" start="27" name="NP"/>
+                    <label end="43" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="561" aPos="0" ID="1247604">
+            <text>` If you 're caught trying to help him escape you 'll be charged with aiding and abetting a wanted criminal .</text>
+            <annotationSet cDate="08/28/2003 11:52:53 PDT Thu" status="UNANN" ID="1942218">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="in"/>
+                    <label end="7" start="5" name="PP"/>
+                    <label end="11" start="9" name="vbp"/>
+                    <label end="18" start="13" name="VVN"/>
+                    <label end="25" start="20" name="VVG"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="33" start="30" name="VV"/>
+                    <label end="37" start="35" name="PP"/>
+                    <label end="44" start="39" name="VV"/>
+                    <label end="48" start="46" name="PP"/>
+                    <label end="52" start="50" name="md"/>
+                    <label end="55" start="54" name="vb"/>
+                    <label end="63" start="57" name="VVN"/>
+                    <label end="68" start="65" name="in"/>
+                    <label end="75" start="70" name="VVG"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="88" start="81" name="VVG"/>
+                    <label end="90" start="90" name="dt"/>
+                    <label end="97" start="92" name="VVN"/>
+                    <label end="106" start="99" name="jj"/>
+                    <label end="108" start="108" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:52:54 PDT Thu" status="MANUAL" ID="1942219">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="88" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="106" start="90" name="Benefited_party"/>
+                    <label cBy="618" feID="3501" itype="INI" name="Goal"/>
+                    <label cBy="618" feID="3500" itype="CNI" name="Helper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="90" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="90" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="63" aPos="0" ID="1247622">
+            <text>Abetted by her husband , she refused to countenance the renunciations which Henry was to make in the peace treaty .</text>
+            <annotationSet cDate="08/28/2003 11:53:02 PDT Thu" status="UNANN" ID="1942254">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="VVN"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="13" start="11" name="PP$"/>
+                    <label end="21" start="15" name="nn"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="27" start="25" name="PP"/>
+                    <label end="35" start="29" name="VVD"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="50" start="40" name="VV"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="68" start="56" name="nns"/>
+                    <label end="74" start="70" name="wdt"/>
+                    <label end="80" start="76" name="NP"/>
+                    <label end="84" start="82" name="VBD"/>
+                    <label end="87" start="86" name="to"/>
+                    <label end="92" start="89" name="VV"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="99" start="97" name="dt"/>
+                    <label end="105" start="101" name="nn"/>
+                    <label end="112" start="107" name="nn"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:53:02 PDT Thu" status="MANUAL" ID="1942255">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="6" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3500" end="21" start="8" name="Helper"/>
+                    <label cBy="618" feID="3499" end="27" start="25" name="Benefited_party"/>
+                    <label cBy="618" feID="3501" itype="INI" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="8" name="Dep"/>
+                    <label end="27" start="25" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="8" name="PP"/>
+                    <label end="27" start="25" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="738" aPos="0" ID="1247626">
+            <text>` It is appalling that we are aiding and abetting this kind of cruelty .</text>
+            <annotationSet cDate="08/28/2003 11:53:04 PDT Thu" status="UNANN" ID="1942262">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="PP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="16" start="8" name="jj"/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="24" start="23" name="PP"/>
+                    <label end="28" start="26" name="vbp"/>
+                    <label end="35" start="30" name="VVG"/>
+                    <label end="39" start="37" name="cc"/>
+                    <label end="48" start="41" name="VVG"/>
+                    <label end="53" start="50" name="dt"/>
+                    <label end="58" start="55" name="nn"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="69" start="63" name="nn"/>
+                    <label end="71" start="71" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:53:04 PDT Thu" status="MANUAL" ID="1942263">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="48" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3500" end="24" start="23" name="Helper"/>
+                    <label cBy="618" feID="3501" end="69" start="50" name="Goal"/>
+                    <label cBy="618" feID="3499" itype="INI" name="Benefited_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="23" name="Ext"/>
+                    <label end="69" start="50" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="23" name="NP"/>
+                    <label end="69" start="50" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="8708" aPos="0" ID="1247631">
+            <text>They would be aided and abetted in so doing by the Liberal Democrats .</text>
+            <annotationSet cDate="08/28/2003 11:53:06 PDT Thu" status="UNANN" ID="1942272">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="9" start="5" name="md"/>
+                    <label end="12" start="11" name="vb"/>
+                    <label end="18" start="14" name="VVN"/>
+                    <label end="22" start="20" name="cc"/>
+                    <label end="30" start="24" name="VVN"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="36" start="35" name="rb"/>
+                    <label end="42" start="38" name="VVG"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="57" start="51" name="jj"/>
+                    <label end="67" start="59" name="nns"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/28/2003 11:53:06 PDT Thu" status="MANUAL" ID="1942273">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="30" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3499" end="3" start="0" name="Benefited_party"/>
+                    <label cBy="618" feID="3501" end="42" start="32" name="Goal"/>
+                    <label cBy="618" feID="3500" end="67" start="44" name="Helper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="42" start="32" name="Dep"/>
+                    <label end="67" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="42" start="32" name="PP"/>
+                    <label end="67" start="44" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

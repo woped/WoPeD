@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Offense" POS="N" name="child abuse.n" ID="8680" frame="Offenses" frameID="432" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Off" name="Offense"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Pun" name="Punishment"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Spec" name="Specification"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Vic" name="Victim"/>
+        </frame>
+    </header>
+    <definition>FN: treat a child with cruelty or violence</definition>
+    <lexeme order="1" headword="false" breakBefore="true" POS="N" name="child"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="abuse"/>
+    <valences>
+        <governor type="Gov" lemma="accuse">
+            <annoSet ID="1902741"/>
+        </governor>
+        <governor type="Gov" lemma="condone">
+            <annoSet ID="1902831"/>
+        </governor>
+        <governor type="Gov" lemma="constitute">
+            <annoSet ID="1902911"/>
+        </governor>
+        <governor type="Gov" lemma="deny">
+            <annoSet ID="1902891"/>
+        </governor>
+        <governor type="Gov" lemma="indict">
+            <annoSet ID="1902869"/>
+        </governor>
+        <governor type="Gov" lemma="investigation">
+            <annoSet ID="1902753"/>
+        </governor>
+        <governor type="Gov" lemma="involve">
+            <annoSet ID="1902819"/>
+        </governor>
+        <governor type="Gov" lemma="sentence">
+            <annoSet ID="1902919"/>
+        </governor>
+        <governor type="Gov" lemma="study">
+            <annoSet ID="1902897"/>
+        </governor>
+        <governor type="Gov" lemma="suspect">
+            <annoSet ID="1902775"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="1902819"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Offense"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1902741"/>
+                <annoSet ID="1902753"/>
+                <annoSet ID="1902775"/>
+                <annoSet ID="1902819"/>
+                <annoSet ID="1902831"/>
+                <annoSet ID="1902869"/>
+                <annoSet ID="1902891"/>
+                <annoSet ID="1902897"/>
+                <annoSet ID="1902911"/>
+                <annoSet ID="1902919"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1902819"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="9">
+            <FE name="Offense"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1902741"/>
+                <annoSet ID="1902753"/>
+                <annoSet ID="1902775"/>
+                <annoSet ID="1902831"/>
+                <annoSet ID="1902869"/>
+                <annoSet ID="1902891"/>
+                <annoSet ID="1902897"/>
+                <annoSet ID="1902911"/>
+                <annoSet ID="1902919"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wof,with-T-(1)"/>
+    <subCorpus name="02-T-NPinvestigation,allegation-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="307" aPos="0" ID="1227845">
+            <text>Sadly , the Venets ' experience of being accused of child abuse is not uncommon .</text>
+            <annotationSet cDate="06/13/2003 02:00:54 PDT Fri" status="UNANN" ID="1902740">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="19" start="19" name="POS"/>
+                    <label end="30" start="21" name="nn"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="47" start="41" name="VVN"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="62" start="58" name="nn"/>
+                    <label end="65" start="64" name="VBZ"/>
+                    <label end="69" start="67" name="rb"/>
+                    <label end="78" start="71" name="jj"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:00:55 PDT Fri" status="MANUAL" ID="1902741">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="62" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="62" start="52" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="47" start="41" name="Gov"/>
+                    <label end="62" start="49" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="127" aPos="0" ID="1227851">
+            <text>The ` Effective Intervention &quot; document states that the investigation of child abuse or risk of abuse always requires social as well as medical assessments .</text>
+            <annotationSet cDate="06/13/2003 02:00:59 PDT Fri" status="UNANN" ID="1902752">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="14" start="6" name="jj"/>
+                    <label end="27" start="16" name="nn"/>
+                    <label end="38" start="31" name="nn"/>
+                    <label end="45" start="40" name="nns"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="68" start="56" name="nn"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="77" start="73" name="nn"/>
+                    <label end="83" start="79" name="nn"/>
+                    <label end="86" start="85" name="cc"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="107" start="102" name="rb"/>
+                    <label end="116" start="109" name="VVZ"/>
+                    <label end="123" start="118" name="jj"/>
+                    <label end="126" start="125" name="rb"/>
+                    <label end="131" start="128" name="rb"/>
+                    <label end="134" start="133" name="in"/>
+                    <label end="142" start="136" name="jj"/>
+                    <label end="154" start="144" name="nns"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:00:59 PDT Fri" status="MANUAL" ID="1902753">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="83" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="83" start="73" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="68" start="56" name="Gov"/>
+                    <label end="100" start="70" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1312" aPos="0" ID="1227862">
+            <text>The Supreme Court ruled on Feb. 20 by seven to two that parents suspected of child abuse could be imprisoned indefinitely for refusing to disclose the whereabouts of their children .</text>
+            <annotationSet cDate="06/13/2003 02:01:07 PDT Fri" status="UNANN" ID="1902774">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="NP"/>
+                    <label end="16" start="12" name="NP"/>
+                    <label end="22" start="18" name="VVD"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="30" start="27" name="NP"/>
+                    <label end="33" start="32" name="cd"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="42" start="38" name="cd"/>
+                    <label end="45" start="44" name="to"/>
+                    <label end="49" start="47" name="cd"/>
+                    <label end="54" start="51" name="in"/>
+                    <label end="62" start="56" name="nns"/>
+                    <label end="72" start="64" name="VVN"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="81" start="77" name="nn"/>
+                    <label end="87" start="83" name="nn"/>
+                    <label end="93" start="89" name="md"/>
+                    <label end="96" start="95" name="vb"/>
+                    <label end="107" start="98" name="VVN"/>
+                    <label end="120" start="109" name="rb"/>
+                    <label end="124" start="122" name="in"/>
+                    <label end="133" start="126" name="VVG"/>
+                    <label end="136" start="135" name="to"/>
+                    <label end="145" start="138" name="VV"/>
+                    <label end="149" start="147" name="dt"/>
+                    <label end="161" start="151" name="nn"/>
+                    <label end="164" start="163" name="in"/>
+                    <label end="170" start="166" name="PP$"/>
+                    <label end="179" start="172" name="nns"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:07 PDT Fri" status="MANUAL" ID="1902775">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="87" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="87" start="77" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="72" start="64" name="Gov"/>
+                    <label end="87" start="74" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="339" aPos="0" ID="1227884">
+            <text>Many people involved with the alleged child abuse case in South Ronaldsay think that the roots for believing that ` ritual &quot; abuse was taking place in the island were established at that controversial summer camp .</text>
+            <annotationSet cDate="06/13/2003 02:01:25 PDT Fri" status="UNANN" ID="1902818">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="10" start="5" name="nns"/>
+                    <label end="19" start="12" name="VVN"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="36" start="30" name="jj"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="48" start="44" name="nn"/>
+                    <label end="53" start="50" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="62" start="58" name="NP"/>
+                    <label end="72" start="64" name="NP"/>
+                    <label end="78" start="74" name="VVP"/>
+                    <label end="83" start="80" name="in"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="93" start="89" name="nns"/>
+                    <label end="97" start="95" name="in"/>
+                    <label end="107" start="99" name="VVG"/>
+                    <label end="112" start="109" name="dt"/>
+                    <label end="121" start="116" name="nn"/>
+                    <label end="129" start="125" name="nn"/>
+                    <label end="133" start="131" name="VBD"/>
+                    <label end="140" start="135" name="VVG"/>
+                    <label end="146" start="142" name="nn"/>
+                    <label end="149" start="148" name="in"/>
+                    <label end="153" start="151" name="dt"/>
+                    <label end="160" start="155" name="nn"/>
+                    <label end="165" start="162" name="VBD"/>
+                    <label end="177" start="167" name="VVN"/>
+                    <label end="180" start="179" name="in"/>
+                    <label end="185" start="182" name="dt"/>
+                    <label end="199" start="187" name="jj"/>
+                    <label end="206" start="201" name="nn"/>
+                    <label end="211" start="208" name="nn"/>
+                    <label end="213" start="213" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:25 PDT Fri" status="MANUAL" ID="1902819">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="48" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="48" start="38" name="Offense"/>
+                    <label cBy="395" feID="3968" end="36" start="30" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="30" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="19" start="12" name="Gov"/>
+                    <label end="72" start="21" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="185" aPos="0" ID="1227890">
+            <text>She has accused the Catholic Church of condoning child abuse , and in the past has even expressed sympathy for the IRA .</text>
+            <annotationSet cDate="06/13/2003 02:01:28 PDT Fri" status="UNANN" ID="1902830">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VHZ"/>
+                    <label end="14" start="8" name="VVN"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="27" start="20" name="NP"/>
+                    <label end="34" start="29" name="NP"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="47" start="39" name="VVG"/>
+                    <label end="53" start="49" name="nn"/>
+                    <label end="59" start="55" name="nn"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="65" start="63" name="cc"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="81" start="79" name="VHZ"/>
+                    <label end="86" start="83" name="rb"/>
+                    <label end="96" start="88" name="VVN"/>
+                    <label end="105" start="98" name="nn"/>
+                    <label end="109" start="107" name="in"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="117" start="115" name="nn"/>
+                    <label end="119" start="119" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:28 PDT Fri" status="MANUAL" ID="1902831">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="59" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="59" start="49" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="47" start="39" name="Gov"/>
+                    <label end="59" start="49" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="60" aPos="0" ID="1227909">
+            <text>It was at this time he was indicted on child abuse charges .</text>
+            <annotationSet cDate="06/13/2003 02:01:43 PDT Fri" status="UNANN" ID="1902868">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="13" start="10" name="dt"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="21" start="20" name="PP"/>
+                    <label end="25" start="23" name="VBD"/>
+                    <label end="34" start="27" name="VVN"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="49" start="45" name="nn"/>
+                    <label end="57" start="51" name="nns"/>
+                    <label end="59" start="59" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:43 PDT Fri" status="MANUAL" ID="1902869">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="49" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="3971" end="49" start="39" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="27" name="Gov"/>
+                    <label end="57" start="36" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="412" aPos="0" ID="1227920">
+            <text>Woody Allen denies child abuse</text>
+            <annotationSet cDate="06/13/2003 02:01:51 PDT Fri" status="UNANN" ID="1902890">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="17" start="12" name="VVZ"/>
+                    <label end="23" start="19" name="nn"/>
+                    <label end="29" start="25" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:51 PDT Fri" status="MANUAL" ID="1902891">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="29" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="29" start="19" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="17" start="12" name="Gov"/>
+                    <label end="29" start="19" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="75" aPos="0" ID="1227923">
+            <text>Most of the sociologists who had studied child abuse had simply tried to build more ` social factors &quot; into the dominant disease model ( cf Araji and Finkelhor , 1986 ) .</text>
+            <annotationSet cDate="06/13/2003 02:01:53 PDT Fri" status="UNANN" ID="1902896">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jjs"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="23" start="12" name="nns"/>
+                    <label end="27" start="25" name="wp"/>
+                    <label end="31" start="29" name="VHD"/>
+                    <label end="39" start="33" name="VVN"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="51" start="47" name="nn"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="62" start="57" name="rb"/>
+                    <label end="68" start="64" name="VVN"/>
+                    <label end="71" start="70" name="to"/>
+                    <label end="77" start="73" name="VV"/>
+                    <label end="82" start="79" name="rbr"/>
+                    <label end="91" start="86" name="jj"/>
+                    <label end="99" start="93" name="nns"/>
+                    <label end="106" start="103" name="in"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="119" start="112" name="jj"/>
+                    <label end="127" start="121" name="nn"/>
+                    <label end="133" start="129" name="nn"/>
+                    <label end="135" start="135" name="("/>
+                    <label end="138" start="137" name="nn"/>
+                    <label end="144" start="140" name="NP"/>
+                    <label end="148" start="146" name="cc"/>
+                    <label end="158" start="150" name="NP"/>
+                    <label end="160" start="160" name=","/>
+                    <label end="165" start="162" name="cd"/>
+                    <label end="167" start="167" name=")"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:54 PDT Fri" status="MANUAL" ID="1902897">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="51" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="51" start="41" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="39" start="33" name="Gov"/>
+                    <label end="51" start="41" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="266" aPos="0" ID="1227930">
+            <text>It is a subsequent and primarily political/moral question as to which of these should then constitute child abuse .</text>
+            <annotationSet cDate="06/13/2003 02:01:58 PDT Fri" status="UNANN" ID="1902910">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="dt"/>
+                    <label end="17" start="8" name="jj"/>
+                    <label end="21" start="19" name="cc"/>
+                    <label end="31" start="23" name="rb"/>
+                    <label end="47" start="33" name="jj"/>
+                    <label end="56" start="49" name="nn"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="68" start="64" name="wdt"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="77" start="73" name="dt"/>
+                    <label end="84" start="79" name="md"/>
+                    <label end="89" start="86" name="rb"/>
+                    <label end="100" start="91" name="VV"/>
+                    <label end="106" start="102" name="nn"/>
+                    <label end="112" start="108" name="nn"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:01:59 PDT Fri" status="MANUAL" ID="1902911">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="112" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="3971" end="112" start="102" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="100" start="91" name="Gov"/>
+                    <label end="112" start="102" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="309" aPos="0" ID="1227934">
+            <text>I also have its organisation flow up to 1969 when many OTO lodge members were arrested and sentenced for child abuse in California .</text>
+            <annotationSet cDate="06/13/2003 02:02:01 PDT Fri" status="UNANN" ID="1902918">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="5" start="2" name="rb"/>
+                    <label end="10" start="7" name="VHP"/>
+                    <label end="14" start="12" name="PP$"/>
+                    <label end="27" start="16" name="nn"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="35" start="34" name="rb"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="43" start="40" name="cd"/>
+                    <label end="48" start="45" name="wrb"/>
+                    <label end="53" start="50" name="jj"/>
+                    <label end="57" start="55" name="NP"/>
+                    <label end="63" start="59" name="nn"/>
+                    <label end="71" start="65" name="nns"/>
+                    <label end="76" start="73" name="VBD"/>
+                    <label end="85" start="78" name="VVN"/>
+                    <label end="89" start="87" name="cc"/>
+                    <label end="99" start="91" name="VVN"/>
+                    <label end="103" start="101" name="in"/>
+                    <label end="109" start="105" name="nn"/>
+                    <label end="115" start="111" name="nn"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="129" start="120" name="NP"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/13/2003 02:02:02 PDT Fri" status="MANUAL" ID="1902919">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="115" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="3971" end="115" start="105" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="99" start="91" name="Gov"/>
+                    <label end="115" start="101" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

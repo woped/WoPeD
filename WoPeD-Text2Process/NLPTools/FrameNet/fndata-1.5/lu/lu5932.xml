@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="vaporize.v" ID="5932" frame="Change_of_phase" frameID="336" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="I_state" name="Initial_state"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="0000FF" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: convert or be converted into vapour. with obj. </definition>
+    <lexeme POS="V" name="vaporize"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Place"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Place"/>
+                <annoSet ID="1278427"/>
+                <annoSet ID="2003004"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Undergoer"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1278405"/>
+                <annoSet ID="1278421"/>
+                <annoSet ID="1278427"/>
+                <annoSet ID="2003004"/>
+                <annoSet ID="2003008"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Place"/>
+            <FE name="Undergoer"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1278427"/>
+                <annoSet ID="2003004"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Undergoer"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1278405"/>
+                <annoSet ID="1278421"/>
+                <annoSet ID="2003008"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="39499613" ID="912008">
+            <text>The most common type of LPG gas is butane , but it does not vaporise — so therefore can not burn — at temperatures below about 4°C . </text>
+            <annotationSet cDate="01/07/2003 07:14:31 PST Tue" status="UNANN" ID="1278404">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="AV0"/>
+                    <label end="14" start="9" name="AJ0"/>
+                    <label end="19" start="16" name="NN1"/>
+                    <label end="22" start="21" name="PRF"/>
+                    <label end="26" start="24" name="NN1"/>
+                    <label end="30" start="28" name="NN1"/>
+                    <label end="33" start="32" name="VBZ"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="54" start="51" name="VDZ"/>
+                    <label end="58" start="56" name="XX0"/>
+                    <label end="67" start="60" name="VVI"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="72" start="71" name="CJS"/>
+                    <label end="82" start="74" name="AV0"/>
+                    <label end="86" start="84" name="VM0"/>
+                    <label end="90" start="88" name="XX0"/>
+                    <label end="95" start="92" name="VVI"/>
+                    <label end="97" start="97" name="PUN"/>
+                    <label end="100" start="99" name="PRP"/>
+                    <label end="113" start="102" name="NN2"/>
+                    <label end="119" start="115" name="AV0"/>
+                    <label end="125" start="121" name="PRP"/>
+                    <label end="129" start="127" name="UNC"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:32 PST Tue" status="MANUAL" ID="1278405">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2883" end="49" start="48" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="48" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="48" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64603687" ID="912016">
+            <text>About -80°C , antifreeze turns to pink ice and gasoline ( petrol ) fails to vaporize or ignite . </text>
+            <annotationSet cDate="01/07/2003 07:14:32 PST Tue" status="UNANN" ID="1278420">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="PRP"/>
+                    <label end="10" start="6" name="UNC"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="23" start="14" name="NN1-VVB"/>
+                    <label end="29" start="25" name="NN2-VVZ"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="37" start="34" name="AJ0"/>
+                    <label end="41" start="39" name="NN1"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="54" start="47" name="NN1"/>
+                    <label end="56" start="56" name="PUL"/>
+                    <label end="63" start="58" name="NN1"/>
+                    <label end="65" start="65" name="PUR"/>
+                    <label end="71" start="67" name="VVZ"/>
+                    <label end="74" start="73" name="TO0"/>
+                    <label end="83" start="76" name="VVI"/>
+                    <label end="86" start="85" name="CJC"/>
+                    <label end="93" start="88" name="VVI"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:33 PST Tue" status="MANUAL" ID="1278421">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2883" end="65" start="47" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="47" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="47" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="83" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79214054" ID="912019">
+            <text>I clasp the mahogany handle just as the door shivers its infection and walk down the crazy paving path as each stone vaporises one step behind me . </text>
+            <annotationSet cDate="01/07/2003 07:14:33 PST Tue" status="UNANN" ID="1278426">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="6" start="2" name="VVB"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="19" start="12" name="NN1"/>
+                    <label end="26" start="21" name="NN1-VVB"/>
+                    <label end="31" start="28" name="AV0"/>
+                    <label end="34" start="33" name="CJS-PRP"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="51" start="45" name="VVZ"/>
+                    <label end="55" start="53" name="DPS"/>
+                    <label end="65" start="57" name="NN1"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="74" start="71" name="VVB"/>
+                    <label end="79" start="76" name="AVP-PRP"/>
+                    <label end="83" start="81" name="AT0"/>
+                    <label end="89" start="85" name="AJ0"/>
+                    <label end="96" start="91" name="NN1"/>
+                    <label end="101" start="98" name="NN1"/>
+                    <label end="104" start="103" name="CJS-PRP"/>
+                    <label end="109" start="106" name="DT0"/>
+                    <label end="115" start="111" name="NN1"/>
+                    <label end="125" start="117" name="VVZ"/>
+                    <label end="129" start="127" name="CRD"/>
+                    <label end="134" start="131" name="NN1"/>
+                    <label end="141" start="136" name="PRP"/>
+                    <label end="144" start="143" name="PNP"/>
+                    <label end="146" start="146" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:33 PST Tue" status="MANUAL" ID="1278427">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2883" end="115" start="106" name="Undergoer"/>
+                    <label cBy="618" feID="2970" end="144" start="127" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="106" name="Ext"/>
+                    <label end="144" start="127" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="106" name="NP"/>
+                    <label end="144" start="127" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="125" start="117" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-NPliquid,stream,body-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="252" aPos="42044840" ID="1278006">
+            <text>Looking down on the land over seven miles below from the lofty heights where jet streams vaporize behind you , it was hard to imagine the difficulties the old man must have faced .</text>
+            <annotationSet cDate="09/15/2004 02:33:22 PDT Wed" status="UNANN" ID="2003003">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="VVG"/>
+                    <label end="11" start="8" name="rp"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="23" start="20" name="nn"/>
+                    <label end="28" start="25" name="in"/>
+                    <label end="34" start="30" name="cd"/>
+                    <label end="40" start="36" name="nns"/>
+                    <label end="46" start="42" name="in"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="61" start="57" name="jj"/>
+                    <label end="69" start="63" name="nns"/>
+                    <label end="75" start="71" name="wrb"/>
+                    <label end="79" start="77" name="nn"/>
+                    <label end="87" start="81" name="nns"/>
+                    <label end="96" start="89" name="VV"/>
+                    <label end="103" start="98" name="in"/>
+                    <label end="107" start="105" name="PP"/>
+                    <label end="109" start="109" name=","/>
+                    <label end="112" start="111" name="PP"/>
+                    <label end="116" start="114" name="VBD"/>
+                    <label end="121" start="118" name="jj"/>
+                    <label end="124" start="123" name="to"/>
+                    <label end="132" start="126" name="VV"/>
+                    <label end="136" start="134" name="dt"/>
+                    <label end="149" start="138" name="nns"/>
+                    <label end="153" start="151" name="dt"/>
+                    <label end="157" start="155" name="jj"/>
+                    <label end="161" start="159" name="nn"/>
+                    <label end="166" start="163" name="md"/>
+                    <label end="171" start="168" name="VH"/>
+                    <label end="177" start="173" name="VVN"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/15/2004 02:33:23 PDT Wed" status="MANUAL" ID="2003004">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="96" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2883" end="87" start="77" name="Undergoer"/>
+                    <label cBy="618" feID="2970" end="107" start="98" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="77" name="Ext"/>
+                    <label end="107" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="77" name="NP"/>
+                    <label end="107" start="98" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="49" aPos="94950020" ID="1278008">
+            <text>The heat from the steam jacket causes the liquid to vaporise and thus remove the stopper .</text>
+            <annotationSet cDate="09/15/2004 02:33:24 PDT Wed" status="UNANN" ID="2003007">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="12" start="9" name="in"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="22" start="18" name="nn"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="36" start="31" name="VVZ"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="47" start="42" name="nn"/>
+                    <label end="50" start="49" name="to"/>
+                    <label end="59" start="52" name="VV"/>
+                    <label end="63" start="61" name="cc"/>
+                    <label end="68" start="65" name="rb"/>
+                    <label end="75" start="70" name="VV"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="87" start="81" name="nn"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/15/2004 02:33:24 PDT Wed" status="MANUAL" ID="2003008">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="59" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2883" end="47" start="38" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="38" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="38" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

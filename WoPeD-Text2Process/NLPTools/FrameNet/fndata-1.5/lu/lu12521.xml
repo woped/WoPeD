@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="patient.a" ID="12521" frame="Rashness" frameID="1581" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="act" name="Action"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pro" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: acting without haste, with reasonable consideration.</definition>
+    <lexeme POS="A" name="patient"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Action"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Action"/>
+                <annoSet ID="2588209"/>
+                <annoSet ID="2588215"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Protagonist"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2588209"/>
+                <annoSet ID="2588215"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Action"/>
+            <FE name="Protagonist"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Action"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2588209"/>
+                <annoSet ID="2588215"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPwhen-(1)"/>
+    <subCorpus name="02-T-(1)"/>
+    <subCorpus name="03-T-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="125" aPos="78509437" ID="1576795">
+            <text>Louisa was patient with this choice .</text>
+            <annotationSet cDate="07/15/2010 03:16:13 PDT Thu" status="UNANN" ID="2588208">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="9" start="7" name="VBD"/>
+                    <label end="17" start="11" name="jj"/>
+                    <label end="22" start="19" name="in"/>
+                    <label end="27" start="24" name="dt"/>
+                    <label end="34" start="29" name="nn"/>
+                    <label end="36" start="36" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 03:16:13 PDT Thu" status="MANUAL" ID="2588209">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8673" end="5" start="0" name="Protagonist"/>
+                    <label cBy="571" feID="8674" end="34" start="19" name="Action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="34" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="34" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="9" start="7" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="618" aPos="101452967" ID="1576798">
+            <text>But I must ask you to be patient with my navigation in these uncharted waters .</text>
+            <annotationSet cDate="07/15/2010 03:16:14 PDT Thu" status="UNANN" ID="2588214">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="4" start="4" name="PP"/>
+                    <label end="9" start="6" name="md"/>
+                    <label end="13" start="11" name="VV"/>
+                    <label end="17" start="15" name="PP"/>
+                    <label end="20" start="19" name="to"/>
+                    <label end="23" start="22" name="vb"/>
+                    <label end="31" start="25" name="jj"/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="39" start="38" name="PP$"/>
+                    <label end="50" start="41" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="59" start="55" name="dt"/>
+                    <label end="69" start="61" name="jj"/>
+                    <label end="76" start="71" name="nns"/>
+                    <label end="78" start="78" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 03:16:14 PDT Thu" status="MANUAL" ID="2588215">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="31" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8673" end="17" start="15" name="Protagonist"/>
+                    <label cBy="571" feID="8674" end="76" start="33" name="Action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="15" name="Ext"/>
+                    <label end="76" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="15" name="NP"/>
+                    <label end="76" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="23" start="22" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

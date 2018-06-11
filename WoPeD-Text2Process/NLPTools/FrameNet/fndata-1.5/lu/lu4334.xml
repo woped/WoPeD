@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="assay.v" ID="4334" frame="Scrutiny" frameID="31" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: perform an analysis (e.g. of an ore or a drug) to ascertain the presence, absence, or quantity of certain components</definition>
+    <lexeme POS="V" name="assay"/>
+    <valences>
+        <FERealization total="11">
+            <FE name="Cognizer"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <annoSet ID="874277"/>
+                <annoSet ID="874291"/>
+                <annoSet ID="874301"/>
+                <annoSet ID="874313"/>
+                <annoSet ID="874327"/>
+                <annoSet ID="874329"/>
+                <annoSet ID="874453"/>
+                <annoSet ID="874463"/>
+                <annoSet ID="874497"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="874289"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer"/>
+                <annoSet ID="874293"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Ground"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <annoSet ID="874291"/>
+                <annoSet ID="874293"/>
+                <annoSet ID="874301"/>
+                <annoSet ID="874313"/>
+                <annoSet ID="874327"/>
+                <annoSet ID="874329"/>
+                <annoSet ID="874453"/>
+                <annoSet ID="874463"/>
+                <annoSet ID="874497"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="874277"/>
+                <annoSet ID="874289"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Manner"/>
+                <annoSet ID="874301"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Manner"/>
+                <annoSet ID="874453"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Manner"/>
+                <annoSet ID="874313"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="VPing" FE="Manner"/>
+                <annoSet ID="874329"/>
+                <annoSet ID="874463"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sforto" FE="Phenomenon"/>
+                <annoSet ID="874301"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874277"/>
+                <annoSet ID="874289"/>
+                <annoSet ID="874293"/>
+                <annoSet ID="874313"/>
+                <annoSet ID="874329"/>
+                <annoSet ID="874453"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Phenomenon"/>
+                <annoSet ID="874291"/>
+                <annoSet ID="874327"/>
+                <annoSet ID="874463"/>
+                <annoSet ID="874497"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Cognizer"/>
+            <FE name="Ground"/>
+            <FE name="Manner"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="Sforto" FE="Phenomenon"/>
+                <annoSet ID="874301"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Manner"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874453"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Manner"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874313"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Manner"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874329"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Phenomenon"/>
+                <annoSet ID="874463"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Cognizer"/>
+            <FE name="Ground"/>
+            <FE name="Phenomenon"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Phenomenon"/>
+                <annoSet ID="874291"/>
+                <annoSet ID="874327"/>
+                <annoSet ID="874497"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874277"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874289"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="874293"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="10797390" ID="704528">
+            <text>The quality of the full product range is assured because Fluka assay every chemical and bio-chemical , and subject all products to exacting tests in their well equipped quality control laboratories . </text>
+            <annotationSet cDate="01/07/2003 11:18:33 PST Tue" status="UNANN" ID="874276">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="22" start="19" name="AJ0"/>
+                    <label end="30" start="24" name="NN1"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="39" start="38" name="VBZ"/>
+                    <label end="47" start="41" name="VVN"/>
+                    <label end="55" start="49" name="CJS"/>
+                    <label end="61" start="57" name="NP0"/>
+                    <label end="67" start="63" name="VVB"/>
+                    <label end="73" start="69" name="AT0"/>
+                    <label end="82" start="75" name="NN1"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="99" start="88" name="NN1"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="105" start="103" name="CJC"/>
+                    <label end="113" start="107" name="NN1-VVB"/>
+                    <label end="117" start="115" name="DT0"/>
+                    <label end="126" start="119" name="NN2"/>
+                    <label end="129" start="128" name="PRP"/>
+                    <label end="138" start="131" name="AJ0"/>
+                    <label end="144" start="140" name="NN2"/>
+                    <label end="147" start="146" name="PRP"/>
+                    <label end="153" start="149" name="DPS"/>
+                    <label end="158" start="155" name="AJ0-AV0"/>
+                    <label end="167" start="160" name="AJ0-VVD"/>
+                    <label end="175" start="169" name="NN1"/>
+                    <label end="183" start="177" name="NN1"/>
+                    <label end="196" start="185" name="NN2"/>
+                    <label end="198" start="198" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:33 PST Tue" status="MANUAL" ID="874277">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="99" start="69" name="Ground"/>
+                    <label cBy="669" feID="130" itype="INI" name="Phenomenon"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="69" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="69" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41612678" ID="704534">
+            <text>We transiently expressed several cDNAs in mammalian cells , then assayed both cell lysates and conditioned medium in a Schwann cell proliferation assay . </text>
+            <annotationSet cDate="01/07/2003 11:18:33 PST Tue" status="UNANN" ID="874288">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="13" start="3" name="AV0"/>
+                    <label end="23" start="15" name="VVD"/>
+                    <label end="31" start="25" name="DT0"/>
+                    <label end="37" start="33" name="NN2"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="50" start="42" name="AJ0"/>
+                    <label end="56" start="52" name="NN2"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="63" start="60" name="AV0"/>
+                    <label end="71" start="65" name="VVD-VVN"/>
+                    <label end="76" start="73" name="DT0"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="89" start="83" name="NN2"/>
+                    <label end="93" start="91" name="CJC"/>
+                    <label end="105" start="95" name="AJ0-VVD"/>
+                    <label end="112" start="107" name="AJ0-NN1"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="117" start="117" name="AT0"/>
+                    <label end="125" start="119" name="NN1-NP0"/>
+                    <label end="130" start="127" name="NN1"/>
+                    <label end="144" start="132" name="NN1"/>
+                    <label end="150" start="146" name="NN1"/>
+                    <label end="152" start="152" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="MANUAL" ID="874289">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="112" start="73" name="Ground"/>
+                    <label cBy="669" feID="130" itype="INI" name="Phenomenon"/>
+                    <label cBy="439" feID="128" end="1" start="0" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="73" name="Obj"/>
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="73" name="NP"/>
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="71" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41614934" ID="704535">
+            <text>Rat sciatic nerve Schwann cells were assayed for incorporation of DNA synthesis precursors , as described . </text>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="UNANN" ID="874290">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="VVB"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="16" start="12" name="NN1"/>
+                    <label end="24" start="18" name="NN1-NP0"/>
+                    <label end="30" start="26" name="NN2"/>
+                    <label end="35" start="32" name="VBD"/>
+                    <label end="43" start="37" name="VVN"/>
+                    <label end="47" start="45" name="PRP"/>
+                    <label end="61" start="49" name="NN1"/>
+                    <label end="64" start="63" name="PRF"/>
+                    <label end="68" start="66" name="NN1"/>
+                    <label end="78" start="70" name="NN1"/>
+                    <label end="89" start="80" name="NN2"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="94" start="93" name="CJS"/>
+                    <label end="104" start="96" name="VVN"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="MANUAL" ID="874291">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="30" start="0" name="Ground"/>
+                    <label cBy="669" feID="130" end="89" start="45" name="Phenomenon"/>
+                    <label cBy="669" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="0" name="Ext"/>
+                    <label end="89" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="0" name="NP"/>
+                    <label end="89" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41615948" ID="704536">
+            <text>Tyrosine phosphorylation was assayed by western blotting as described , using precast 4-12% gradient gels ( Novex , San Diego ) . </text>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="UNANN" ID="874292">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-VVB"/>
+                    <label end="23" start="9" name="NN1"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="35" start="29" name="VVN"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="46" start="40" name="AJ0"/>
+                    <label end="55" start="48" name="NN1-VVG"/>
+                    <label end="58" start="57" name="CJS"/>
+                    <label end="68" start="60" name="VVN"/>
+                    <label end="70" start="70" name="PUN"/>
+                    <label end="76" start="72" name="VVG"/>
+                    <label end="84" start="78" name="AJ0"/>
+                    <label end="90" start="86" name="UNC"/>
+                    <label end="99" start="92" name="NN1"/>
+                    <label end="104" start="101" name="NN2-VVZ"/>
+                    <label end="106" start="106" name="PUL"/>
+                    <label end="112" start="108" name="NN1-NP0"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="118" start="116" name="NP0"/>
+                    <label end="124" start="120" name="NP0"/>
+                    <label end="126" start="126" name="PUR"/>
+                    <label end="128" start="128" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="MANUAL" ID="874293">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="23" start="0" name="Ground"/>
+                    <label cBy="669" feID="128" end="55" start="37" name="Cognizer"/>
+                    <label cBy="669" feID="130" itype="INI" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="0" name="Ext"/>
+                    <label end="55" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="0" name="NP"/>
+                    <label end="55" start="37" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41643208" ID="704540">
+            <text>The purified protein was assayed at the indicated concentrations for its ability to hydrolyse p- nitrophenol phosphate ( pNPP ) either in the absence ( ) or presence ( ) of 200 sodium vanadate . </text>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="UNANN" ID="874300">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="AJ0"/>
+                    <label end="19" start="13" name="NN1"/>
+                    <label end="23" start="21" name="VBD"/>
+                    <label end="31" start="25" name="VVN"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="48" start="40" name="VVN"/>
+                    <label end="63" start="50" name="NN2"/>
+                    <label end="67" start="65" name="PRP"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="82" start="81" name="TO0"/>
+                    <label end="92" start="84" name="VVI"/>
+                    <label end="95" start="94" name="AJ0"/>
+                    <label end="107" start="97" name="NN1"/>
+                    <label end="117" start="109" name="NN1"/>
+                    <label end="119" start="119" name="PUL"/>
+                    <label end="124" start="121" name="NN0"/>
+                    <label end="126" start="126" name="PUR"/>
+                    <label end="133" start="128" name="DT0"/>
+                    <label end="136" start="135" name="PRP"/>
+                    <label end="140" start="138" name="AT0"/>
+                    <label end="148" start="142" name="NN1"/>
+                    <label end="150" start="150" name="PUL"/>
+                    <label end="152" start="152" name="PUR"/>
+                    <label end="155" start="154" name="CJC"/>
+                    <label end="164" start="157" name="NN1"/>
+                    <label end="166" start="166" name="PUL"/>
+                    <label end="168" start="168" name="PUR"/>
+                    <label end="171" start="170" name="PRF"/>
+                    <label end="175" start="173" name="UNC"/>
+                    <label end="182" start="177" name="NN1"/>
+                    <label end="191" start="184" name="NN1"/>
+                    <label end="193" start="193" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:34 PST Tue" status="MANUAL" ID="874301">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="19" start="0" name="Ground"/>
+                    <label cBy="669" feID="1497" end="63" start="33" name="Manner"/>
+                    <label cBy="669" feID="130" end="191" start="65" name="Phenomenon"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Ext"/>
+                    <label end="63" start="33" name="Dep"/>
+                    <label end="191" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="NP"/>
+                    <label end="63" start="33" name="PP"/>
+                    <label end="191" start="65" name="Sforto"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41733116" ID="704546">
+            <text>All samples were assayed in triplicate and the mean value used ; lines represent standard errors. b and c , Adhesion was assayed as described . </text>
+            <annotationSet cDate="01/07/2003 11:18:35 PST Tue" status="UNANN" ID="874312">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="15" start="12" name="VBD"/>
+                    <label end="23" start="17" name="VVN"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="37" start="28" name="NN1"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="50" start="47" name="AJ0"/>
+                    <label end="56" start="52" name="NN1"/>
+                    <label end="61" start="58" name="VVD-VVN"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="79" start="71" name="VVB"/>
+                    <label end="88" start="81" name="AJ0-NN1"/>
+                    <label end="96" start="90" name="NN0"/>
+                    <label end="98" start="98" name="ZZ0"/>
+                    <label end="102" start="100" name="CJC"/>
+                    <label end="104" start="104" name="ZZ0"/>
+                    <label end="106" start="106" name="PUN"/>
+                    <label end="115" start="108" name="NN1"/>
+                    <label end="119" start="117" name="VBD"/>
+                    <label end="127" start="121" name="VVN"/>
+                    <label end="130" start="129" name="CJS"/>
+                    <label end="140" start="132" name="VVN"/>
+                    <label end="142" start="142" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:35 PST Tue" status="MANUAL" ID="874313">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="115" start="108" name="Ground"/>
+                    <label cBy="669" feID="1497" end="140" start="129" name="Manner"/>
+                    <label cBy="669" feID="130" itype="INI" name="Phenomenon"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="108" name="Ext"/>
+                    <label end="140" start="129" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="108" name="NP"/>
+                    <label end="140" start="129" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="127" start="121" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41876592" ID="704553">
+            <text>Immunoprecipitates were treated with 1.0% deoxycholate and the released material assayed for DRTF1/E2F activity in gel retardation . </text>
+            <annotationSet cDate="01/07/2003 11:18:36 PST Tue" status="UNANN" ID="874326">
+                <layer rank="1" name="BNC">
+                    <label end="17" start="0" name="NN2"/>
+                    <label end="22" start="19" name="VBD"/>
+                    <label end="30" start="24" name="VVN"/>
+                    <label end="35" start="32" name="PRP"/>
+                    <label end="40" start="37" name="UNC"/>
+                    <label end="53" start="42" name="NN1"/>
+                    <label end="57" start="55" name="CJC"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="70" start="63" name="AJ0"/>
+                    <label end="79" start="72" name="NN1"/>
+                    <label end="87" start="81" name="VVD-VVN"/>
+                    <label end="91" start="89" name="PRP"/>
+                    <label end="101" start="93" name="UNC"/>
+                    <label end="110" start="103" name="NN1"/>
+                    <label end="113" start="112" name="PRP"/>
+                    <label end="117" start="115" name="NN1"/>
+                    <label end="129" start="119" name="NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:36 PST Tue" status="MANUAL" ID="874327">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="79" start="59" name="Ground"/>
+                    <label cBy="669" feID="130" end="129" start="89" name="Phenomenon"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="59" name="Ext"/>
+                    <label end="129" start="89" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="59" name="NP"/>
+                    <label end="129" start="89" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="87" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41912165" ID="704554">
+            <text>Binding was assayed using intact COS cells expressing the cloned human NK-1R or its mutants . </text>
+            <annotationSet cDate="01/07/2003 11:18:36 PST Tue" status="UNANN" ID="874328">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1-VVG"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="18" start="12" name="VVN"/>
+                    <label end="24" start="20" name="VVG"/>
+                    <label end="31" start="26" name="AJ0"/>
+                    <label end="35" start="33" name="CJS"/>
+                    <label end="41" start="37" name="NN2"/>
+                    <label end="52" start="43" name="VVG"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="63" start="58" name="AJ0"/>
+                    <label end="69" start="65" name="AJ0-NN1"/>
+                    <label end="75" start="71" name="NN1"/>
+                    <label end="78" start="77" name="CJC"/>
+                    <label end="82" start="80" name="DPS"/>
+                    <label end="90" start="84" name="NN2"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:36 PST Tue" status="MANUAL" ID="874329">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="6" start="0" name="Ground"/>
+                    <label cBy="669" feID="1497" end="90" start="20" name="Manner"/>
+                    <label cBy="669" feID="130" itype="INI" name="Phenomenon"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="90" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="90" start="20" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="90938145" ID="704616">
+            <text>Pancreatic contents of DNA and RNA were assayed by the fluorimetric method of Boer but using an excitation wavelength of 536 nm and an emission wavelength of 602 nm . </text>
+            <annotationSet cDate="01/07/2003 11:18:46 PST Tue" status="UNANN" ID="874452">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="AJ0"/>
+                    <label end="18" start="11" name="NN2"/>
+                    <label end="21" start="20" name="PRF"/>
+                    <label end="25" start="23" name="NN1"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="33" start="31" name="NN1"/>
+                    <label end="38" start="35" name="VBD"/>
+                    <label end="46" start="40" name="VVN"/>
+                    <label end="49" start="48" name="PRP"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="66" start="55" name="AJ0"/>
+                    <label end="73" start="68" name="NN1"/>
+                    <label end="76" start="75" name="PRF"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="85" start="83" name="CJC"/>
+                    <label end="91" start="87" name="VVG"/>
+                    <label end="94" start="93" name="AT0"/>
+                    <label end="105" start="96" name="NN1"/>
+                    <label end="116" start="107" name="NN1"/>
+                    <label end="119" start="118" name="PRF"/>
+                    <label end="123" start="121" name="CRD"/>
+                    <label end="126" start="125" name="NN0"/>
+                    <label end="130" start="128" name="CJC"/>
+                    <label end="133" start="132" name="AT0"/>
+                    <label end="142" start="135" name="NN1"/>
+                    <label end="153" start="144" name="NN1"/>
+                    <label end="156" start="155" name="PRF"/>
+                    <label end="160" start="158" name="CRD"/>
+                    <label end="163" start="162" name="NN0"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:46 PST Tue" status="MANUAL" ID="874453">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="33" start="0" name="Ground"/>
+                    <label cBy="669" feID="1497" end="81" start="48" name="Manner"/>
+                    <label cBy="439" feID="128" itype="CNI" name="Cognizer"/>
+                    <label cBy="439" feID="130" itype="INI" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="0" name="Ext"/>
+                    <label end="81" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="0" name="NP"/>
+                    <label end="81" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="91052131" ID="704621">
+            <text>Extracts and supernatants were assayed for bile acids using a fluorimetric enzymatic assay ( Sterognost 3α-flu , Nycomed AS , Oslo , Norway ) . </text>
+            <annotationSet cDate="01/07/2003 11:18:46 PST Tue" status="UNANN" ID="874462">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN2"/>
+                    <label end="11" start="9" name="CJC"/>
+                    <label end="24" start="13" name="NN2"/>
+                    <label end="29" start="26" name="VBD"/>
+                    <label end="37" start="31" name="VVN"/>
+                    <label end="41" start="39" name="PRP"/>
+                    <label end="46" start="43" name="NN1"/>
+                    <label end="52" start="48" name="NN2"/>
+                    <label end="58" start="54" name="VVG"/>
+                    <label end="60" start="60" name="AT0"/>
+                    <label end="73" start="62" name="AJ0"/>
+                    <label end="83" start="75" name="AJ0"/>
+                    <label end="89" start="85" name="NN1"/>
+                    <label end="91" start="91" name="PUL"/>
+                    <label end="102" start="93" name="NP0"/>
+                    <label end="109" start="104" name="UNC"/>
+                    <label end="111" start="111" name="PUN"/>
+                    <label end="119" start="113" name="AJ0-VVD"/>
+                    <label end="122" start="121" name="CJS"/>
+                    <label end="124" start="124" name="PUN"/>
+                    <label end="129" start="126" name="NP0"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="138" start="133" name="NP0"/>
+                    <label end="140" start="140" name="PUR"/>
+                    <label end="142" start="142" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:46 PST Tue" status="MANUAL" ID="874463">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="24" start="0" name="Ground"/>
+                    <label cBy="669" feID="130" end="52" start="39" name="Phenomenon"/>
+                    <label cBy="669" feID="1497" end="140" start="54" name="Manner"/>
+                    <label cBy="669" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Ext"/>
+                    <label end="52" start="39" name="Dep"/>
+                    <label end="140" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="NP"/>
+                    <label end="52" start="39" name="PP"/>
+                    <label end="140" start="54" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="91239559" ID="704638">
+            <text>After two washes , the stained cells were assayed for fluorescence intensity on a FACScan cell sorter ( Becton Dickinson , Mountain View , CA , USA ) . </text>
+            <annotationSet cDate="01/07/2003 11:18:48 PST Tue" status="UNANN" ID="874496">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS-PRP"/>
+                    <label end="8" start="6" name="CRD"/>
+                    <label end="15" start="10" name="NN2"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="29" start="23" name="AJ0"/>
+                    <label end="35" start="31" name="NN2"/>
+                    <label end="40" start="37" name="VBD"/>
+                    <label end="48" start="42" name="VVN"/>
+                    <label end="52" start="50" name="PRP"/>
+                    <label end="65" start="54" name="NN1"/>
+                    <label end="75" start="67" name="NN1"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="80" start="80" name="AT0"/>
+                    <label end="88" start="82" name="AJ0"/>
+                    <label end="93" start="90" name="NN1"/>
+                    <label end="100" start="95" name="NN1"/>
+                    <label end="102" start="102" name="PUL"/>
+                    <label end="109" start="104" name="NP0"/>
+                    <label end="119" start="111" name="NP0"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="130" start="123" name="NN1"/>
+                    <label end="135" start="132" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                    <label end="140" start="139" name="NN1-NP0"/>
+                    <label end="142" start="142" name="PUN"/>
+                    <label end="146" start="144" name="NP0"/>
+                    <label end="148" start="148" name="PUR"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:18:48 PST Tue" status="MANUAL" ID="874497">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="129" end="35" start="19" name="Ground"/>
+                    <label cBy="669" feID="130" end="75" start="50" name="Phenomenon"/>
+                    <label cBy="669" feID="128" itype="CNI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="19" name="Ext"/>
+                    <label end="75" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="19" name="NP"/>
+                    <label end="75" start="50" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

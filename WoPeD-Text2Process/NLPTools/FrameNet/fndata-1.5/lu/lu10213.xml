@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="piano.n" ID="10213" frame="Noise_makers" frameID="1017" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="crt" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="nm" name="Noise_maker"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="toc" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="tp" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="s" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a large keyboard musical instrument with a wooden case enclosing a soundboard and metal strings, which are struck by hammers when the keys are depressed.</definition>
+    <lexeme POS="N" name="piano"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Noise_maker"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Noise_maker"/>
+                <annoSet ID="2591853"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <annoSet ID="2591853"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Noise_maker"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Noise_maker"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <annoSet ID="2591853"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="02-Welectric,grand-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="27" aPos="26833568" ID="1578617">
+            <text>Main Picture : The grand piano lends a dramatic air to the dining room which has quite a modern look with its black chairs and stark glass table .</text>
+            <annotationSet cDate="07/16/2010 12:29:48 PDT Fri" status="UNANN" ID="2591852">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="11" start="5" name="nn"/>
+                    <label end="13" start="13" name=":"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="23" start="19" name="jj"/>
+                    <label end="29" start="25" name="nn"/>
+                    <label end="35" start="31" name="VVZ"/>
+                    <label end="37" start="37" name="dt"/>
+                    <label end="46" start="39" name="jj"/>
+                    <label end="50" start="48" name="nn"/>
+                    <label end="53" start="52" name="to"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="64" start="59" name="nn"/>
+                    <label end="69" start="66" name="nn"/>
+                    <label end="75" start="71" name="wdt"/>
+                    <label end="79" start="77" name="VHZ"/>
+                    <label end="85" start="81" name="rb"/>
+                    <label end="87" start="87" name="dt"/>
+                    <label end="94" start="89" name="jj"/>
+                    <label end="99" start="96" name="nn"/>
+                    <label end="104" start="101" name="in"/>
+                    <label end="108" start="106" name="PP$"/>
+                    <label end="114" start="110" name="jj"/>
+                    <label end="121" start="116" name="nns"/>
+                    <label end="125" start="123" name="cc"/>
+                    <label end="131" start="127" name="jj"/>
+                    <label end="137" start="133" name="nn"/>
+                    <label end="143" start="139" name="nn"/>
+                    <label end="145" start="145" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 12:29:48 PDT Fri" status="MANUAL" ID="2591853">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="29" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6043" end="29" start="25" name="Noise_maker"/>
+                    <label cBy="571" feID="6048" end="23" start="19" name="Type"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="19" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

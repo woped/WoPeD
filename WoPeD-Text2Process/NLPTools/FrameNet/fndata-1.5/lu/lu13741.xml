@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="inside.prep" ID="13741" frame="Locative_relation" frameID="199" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: situated or moving within</definition>
+    <lexeme POS="PREP" name="inside"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Figure"/>
+                <annoSet ID="2599879"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599879"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599879"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="1" paragNo="3" aPos="0" ID="312914">
+            <text>Inside the flat a fruity voice was reading out a list of figures which had something to do with the production of pig-iron .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269190">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="23" start="18" name="AJ0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="41" start="35" name="VVG"/>
+                    <label end="45" start="43" name="AVP"/>
+                    <label end="47" start="47" name="AT0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="55" start="54" name="PRF"/>
+                    <label end="63" start="57" name="NN2"/>
+                    <label end="69" start="65" name="DTQ"/>
+                    <label end="73" start="71" name="VHD"/>
+                    <label end="83" start="75" name="PNI"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="89" start="88" name="VDI"/>
+                    <label end="94" start="91" name="PRP"/>
+                    <label end="98" start="96" name="AT0"/>
+                    <label end="109" start="100" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="121" start="114" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 05:00:35 PDT Tue" status="MANUAL" ID="2599879">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="5" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1621" end="14" start="7" name="Ground"/>
+                    <label cBy="664" feID="1622" end="121" start="16" name="Figure"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="7" name="Obj"/>
+                    <label end="121" start="16" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="7" name="NP"/>
+                    <label end="121" start="16" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

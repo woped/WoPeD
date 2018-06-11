@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="shoot.v" ID="7951" frame="Hit_target" frameID="485" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Target"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to fire a gun such that another object is impacted by a bullet.</definition>
+    <lexeme POS="V" name="shoot"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2595375"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <annoSet ID="1900748"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Subregion"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Subregion"/>
+                <annoSet ID="1900748"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Target"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Target"/>
+                <annoSet ID="2595375"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Target"/>
+                <annoSet ID="1900748"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[outside]" FE="Time"/>
+                <annoSet ID="1900748"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Subregion"/>
+            <FE name="Target"/>
+            <FE name="Target"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Subregion"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Target"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Target"/>
+                <valenceUnit GF="Dep" PT="PPing[outside]" FE="Time"/>
+                <annoSet ID="1900748"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Target"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Target"/>
+                <annoSet ID="2595375"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="4" aPos="0" ID="239741">
+            <text>Pickett , who was shot in the knee by the Secret Service after allegedly firing two shots outside the White House , used crutches to walk into the court .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125960">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="VVB"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="PNQ"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="21" start="18" name="VVN"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="47" start="42" name="AJ0"/>
+                    <label end="55" start="49" name="NN1"/>
+                    <label end="61" start="57" name="CJS"/>
+                    <label end="71" start="63" name="AV0"/>
+                    <label end="78" start="73" name="VVG"/>
+                    <label end="82" start="80" name="CRD"/>
+                    <label end="88" start="84" name="NN2"/>
+                    <label end="96" start="90" name="PRP"/>
+                    <label end="100" start="98" name="AT0"/>
+                    <label end="106" start="102" name="NP0"/>
+                    <label end="112" start="108" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="119" start="116" name="AJ0"/>
+                    <label end="128" start="121" name="NN2"/>
+                    <label end="131" start="130" name="TO0"/>
+                    <label end="136" start="133" name="VVI"/>
+                    <label end="141" start="138" name="PRP"/>
+                    <label end="145" start="143" name="AT0"/>
+                    <label end="151" start="147" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/12/2003 01:03:02 PDT Thu" status="MANUAL" ID="1900748">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="21" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="4025" end="12" start="10" name="Target"/>
+                    <label cBy="664" feID="4025" end="6" start="0" name="Target"/>
+                    <label cBy="664" feID="9726" end="33" start="23" name="Subregion"/>
+                    <label cBy="664" feID="4026" end="55" start="35" name="Agent"/>
+                    <label cBy="664" feID="9724" end="112" start="57" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="10" name="Ext"/>
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="33" start="23" name="Dep"/>
+                    <label end="55" start="35" name="Dep"/>
+                    <label end="112" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="10" name="NP"/>
+                    <label end="6" start="0" name="NP"/>
+                    <label end="33" start="23" name="PP"/>
+                    <label end="55" start="35" name="PP"/>
+                    <label end="112" start="57" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="6" start="0" name="Ant"/>
+                    <label end="12" start="10" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-NP-T-PPat-(1)"/>
+    <subCorpus name="02-NP-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="133" aPos="62886683" ID="1580377">
+            <text>We shot the two men at the boat , and the captain shot another man .</text>
+            <annotationSet cDate="07/16/2010 05:08:17 PDT Fri" status="UNANN" ID="2595374">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="14" start="12" name="cd"/>
+                    <label end="18" start="16" name="nns"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="30" start="27" name="nn"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="36" start="34" name="cc"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="48" start="42" name="nn"/>
+                    <label end="53" start="50" name="VVD"/>
+                    <label end="61" start="55" name="dt"/>
+                    <label end="65" start="63" name="nn"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 05:08:17 PDT Fri" status="MANUAL" ID="2595375">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="6" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="4026" end="1" start="0" name="Agent"/>
+                    <label cBy="571" feID="4025" end="30" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="30" start="8" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="30" start="8" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-NP-T-PPtowards-(1)"/>
+    <subCorpus name="04-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="flabbergast.v" ID="4299" frame="Experiencer_obj" frameID="47" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Circ" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Stimulus" name="Stimulus"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: surprise greatly</definition>
+    <lexeme POS="V" name="flabbergast"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Experiencer"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="858151"/>
+                <annoSet ID="858155"/>
+                <annoSet ID="858157"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Experiencer"/>
+                <annoSet ID="858165"/>
+                <annoSet ID="858167"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Stimulus"/>
+                <annoSet ID="858155"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Stimulus"/>
+                <annoSet ID="858151"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Stimulus"/>
+                <annoSet ID="858157"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <annoSet ID="858165"/>
+                <annoSet ID="858167"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Experiencer"/>
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="" PT="CNI" FE="Stimulus"/>
+                <annoSet ID="858155"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Stimulus"/>
+                <annoSet ID="858151"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Stimulus"/>
+                <annoSet ID="858157"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <annoSet ID="858165"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Experiencer"/>
+            <FE name="Stimulus"/>
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <annoSet ID="858167"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="15412445" ID="690432">
+            <text>Nutty was flabbergasted at Hoomey 's disclosure . </text>
+            <annotationSet cDate="01/07/2003 10:57:56 PST Tue" status="UNANN" ID="858150">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN1-NP0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="22" start="10" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="32" start="27" name="NP0"/>
+                    <label end="35" start="34" name="POS"/>
+                    <label end="46" start="37" name="NN1"/>
+                    <label end="48" start="48" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:57:56 PST Tue" status="MANUAL" ID="858151">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="198" end="4" start="0" name="Experiencer"/>
+                    <label cBy="900" feID="199" end="46" start="24" name="Stimulus"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="46" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="46" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25161030" ID="690434">
+            <text>The stranger was flabbergasted . </text>
+            <annotationSet cDate="01/07/2003 10:57:56 PST Tue" status="UNANN" ID="858154">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="15" start="13" name="VBD"/>
+                    <label end="29" start="17" name="VVN"/>
+                    <label end="31" start="31" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:57:56 PST Tue" status="MANUAL" ID="858155">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="198" end="11" start="0" name="Experiencer"/>
+                    <label cBy="900" feID="199" itype="CNI" name="Stimulus"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="29" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27493521" ID="690435">
+            <text>Friends were ` flabbergasted &quot; by the split . </text>
+            <annotationSet cDate="01/07/2003 10:57:56 PST Tue" status="UNANN" ID="858156">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN2"/>
+                    <label end="11" start="8" name="VBD"/>
+                    <label end="13" start="13" name="PUQ"/>
+                    <label end="27" start="15" name="VVN"/>
+                    <label end="29" start="29" name="PUQ"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="42" start="38" name="AJ0-NN1"/>
+                    <label end="44" start="44" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:57:57 PST Tue" status="MANUAL" ID="858157">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="198" end="6" start="0" name="Experiencer"/>
+                    <label cBy="900" feID="199" end="42" start="31" name="Stimulus"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="42" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="42" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="47291065" ID="690439">
+            <text>The fact that Governors need only pay £20 flabbergasted me … anyone desiring the privilege of that title should certainly be asked to contribute £50pa . </text>
+            <annotationSet cDate="01/07/2003 10:57:57 PST Tue" status="UNANN" ID="858164">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="12" start="9" name="CJT"/>
+                    <label end="22" start="14" name="NP0"/>
+                    <label end="27" start="24" name="VM0"/>
+                    <label end="32" start="29" name="AV0"/>
+                    <label end="36" start="34" name="VVI"/>
+                    <label end="40" start="38" name="NN0"/>
+                    <label end="54" start="42" name="VVD"/>
+                    <label end="57" start="56" name="PNP"/>
+                    <label end="66" start="61" name="PNI"/>
+                    <label end="75" start="68" name="VVG"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="89" start="81" name="NN1"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="97" start="94" name="DT0"/>
+                    <label end="103" start="99" name="NN1"/>
+                    <label end="110" start="105" name="VM0"/>
+                    <label end="120" start="112" name="AV0"/>
+                    <label end="123" start="122" name="VBI"/>
+                    <label end="129" start="125" name="VVN"/>
+                    <label end="132" start="131" name="TO0"/>
+                    <label end="143" start="134" name="VVI"/>
+                    <label end="149" start="145" name="NN0"/>
+                    <label end="151" start="151" name="PUN"/>
+                    <label end="59" start="59" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:57:57 PST Tue" status="MANUAL" ID="858165">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="199" end="40" start="0" name="Stimulus"/>
+                    <label cBy="900" feID="198" end="57" start="56" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="0" name="Ext"/>
+                    <label end="57" start="56" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="0" name="NP"/>
+                    <label end="57" start="56" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="59291216" ID="690440">
+            <text>Well , small girls were proud when they had a sixteen-year-old brother who could flabbergast posh girls like this one . </text>
+            <annotationSet cDate="01/07/2003 10:57:57 PST Tue" status="UNANN" ID="858166">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="ITJ"/>
+                    <label end="5" start="5" name="PUN"/>
+                    <label end="11" start="7" name="AJ0"/>
+                    <label end="17" start="13" name="NN2"/>
+                    <label end="22" start="19" name="VBD"/>
+                    <label end="28" start="24" name="AJ0"/>
+                    <label end="33" start="30" name="AVQ-CJS"/>
+                    <label end="38" start="35" name="PNP"/>
+                    <label end="42" start="40" name="VHD"/>
+                    <label end="44" start="44" name="AT0"/>
+                    <label end="61" start="46" name="AJ0"/>
+                    <label end="69" start="63" name="NN1"/>
+                    <label end="73" start="71" name="PNQ"/>
+                    <label end="79" start="75" name="VM0"/>
+                    <label end="91" start="81" name="VVI"/>
+                    <label end="96" start="93" name="AJ0"/>
+                    <label end="102" start="98" name="NN2"/>
+                    <label end="107" start="104" name="PRP"/>
+                    <label end="112" start="109" name="DT0"/>
+                    <label end="116" start="114" name="PNI"/>
+                    <label end="118" start="118" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:57:57 PST Tue" status="MANUAL" ID="858167">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="199" end="69" start="44" name="Stimulus"/>
+                    <label cBy="900" feID="198" end="116" start="93" name="Experiencer"/>
+                    <label cBy="309" feID="199" end="73" start="71" name="Stimulus"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="44" name="Ext"/>
+                    <label end="116" start="93" name="Obj"/>
+                    <label end="73" start="71" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="44" name="NP"/>
+                    <label end="116" start="93" name="NP"/>
+                    <label end="73" start="71" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="69" start="44" name="Ant"/>
+                    <label end="73" start="71" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="91" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/14/2001 06:42:32 PDT Tue" name="Locative_relation" ID="199" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Figure&lt;/fen&gt; is located relative to a &lt;fen&gt;Ground&lt;/fen&gt; location.  The location of the &lt;fen&gt;Figure&lt;/fen&gt; may be further specified by its &lt;fen&gt;Distance&lt;/fen&gt; from a reference location (generally, the deictic center) and the &lt;fen&gt;Direction&lt;/fen&gt; in which the &lt;fen&gt;Figure&lt;/fen&gt; lies from a reference location (generally, the deictic center).
+
+&lt;ex&gt;&lt;fex name="Fig"&gt;The cat&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Grnd"&gt;the mat&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Figure"&gt;The kitchen, with its breakfast / snack bar,&lt;/fex&gt; &lt;t&gt;adjoins&lt;/t&gt; on one side while the dining area adjoins on the other side. &lt;fex name="Ground"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <semType name="Locative_relation" ID="182"/>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/14/2001 06:50:27 PDT Tue" abbrev="Grnd" name="Ground" ID="1621">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Ground&lt;/fen&gt; serves as a basis for describing the location of the &lt;fen&gt;Figure&lt;/fen&gt;.
+
+&lt;ex&gt;The cat is &lt;t&gt;on&lt;/t&gt; &lt;fex name="Grnd"&gt;the mat&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Figures" ID="10107"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/14/2001 07:00:06 PDT Tue" abbrev="Fig" name="Figure" ID="1622">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Figure&lt;/fen&gt; is perceived as located relative to a certain &lt;fen&gt;Ground&lt;/fen&gt; location.
+
+&lt;ex&gt;&lt;fex name="Fig"&gt;The cat&lt;/fex&gt; is &lt;t&gt;on&lt;/t&gt; the mat.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Figures" ID="10107"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/24/2002 03:01:39 PDT Wed" abbrev="Dist" name="Distance" ID="3401">
+        <definition>&lt;def-root&gt;This  FE identifies the  &lt;fen&gt;Distance&lt;/fen&gt; between the &lt;fen&gt;Figure&lt;/fen&gt; and some reference location (generally, the deictic center or the &lt;fen&gt;Ground&lt;/fen&gt;).
+&lt;ex&gt;The cat is &lt;fex name="Dist"&gt;right&lt;/fex&gt; &lt;t&gt;underneath&lt;/t&gt; the table.&lt;/ex&gt;
+&lt;ex&gt;The cat is &lt;fex name="Dist"&gt;way&lt;/fex&gt; back &lt;t&gt;against&lt;/t&gt; the wall.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Dist"&gt;Deep&lt;/fex&gt; &lt;t&gt;under&lt;/t&gt; the earth lurk dark things.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/24/2002 03:14:32 PDT Wed" abbrev="Dir" name="Direction" ID="3404">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Direction&lt;/fen&gt; from a reference location (generally, the deictic center) of a path to the &lt;fen&gt;Figure&lt;/fen&gt;.
+&lt;ex&gt;The cat is &lt;fex name="Dir"&gt;down&lt;/fex&gt; &lt;t&gt;on&lt;/t&gt; the mat.&lt;/ex&gt;
+&lt;ex&gt;The book is  way &lt;fex name="Dir"&gt;back&lt;/fex&gt; &lt;t&gt;in&lt;/t&gt; the Paleontology area.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/14/2005 10:59:54 PDT Fri" abbrev="tim" name="Time" ID="9108">
+        <definition>&lt;def-root&gt;The period of time during which the locative relation between &lt;fen&gt;Figure&lt;/fen&gt; and &lt;fen&gt;Ground&lt;/fen&gt; obtains.
+
+&lt;ex&gt;He was &lt;t&gt;in&lt;/t&gt; Athens &lt;fex name="tim"&gt;on Friday&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="361" cDate="05/23/2006 05:09:11 PDT Tue" abbrev="" name="Figures" ID="10107">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Figures&lt;/fen&gt; are items which mutually serve to identify the location of the other items.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+        <relatedFrame>Relation</relatedFrame>
+        <relatedFrame>Trajector-Landmark</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Abounding_with</relatedFrame>
+        <relatedFrame>Within_distance</relatedFrame>
+        <relatedFrame>Expected_location_of_person</relatedFrame>
+        <relatedFrame>Containing</relatedFrame>
+        <relatedFrame>Adorning</relatedFrame>
+        <relatedFrame>Goal</relatedFrame>
+        <relatedFrame>Containment_relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Existence</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Being_located</relatedFrame>
+        <relatedFrame>Path_shape</relatedFrame>
+        <relatedFrame>Relational_natural_features</relatedFrame>
+        <relatedFrame>Locale</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="PREP" name="at.prep" ID="6735" lemmaID="2238" cBy="664" cDate="07/24/2002 03:27:45 PDT Wed">
+        <definition>COD: expressing location or arrival in a particular place or position. </definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="on.prep" ID="6736" lemmaID="26702" cBy="664" cDate="07/24/2002 03:28:12 PDT Wed">
+        <definition>COD: physically in contact with and supported by (a surface), or located somewhere in the general surface area of (a place). </definition>
+        <sentenceCount annotated="10" total="91"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="atop.prep" ID="6751" lemmaID="2272" cBy="664" cDate="07/24/2002 04:09:28 PDT Wed">
+        <definition>COD: on the top of. </definition>
+        <sentenceCount annotated="24" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="atop"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="athwart.prep" ID="6752" lemmaID="2253" cBy="664" cDate="07/24/2002 04:10:43 PDT Wed">
+        <definition>COD: from side to side of; across. </definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="athwart"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="around.prep" ID="6753" lemmaID="1963" cBy="664" cDate="07/24/2002 04:11:15 PDT Wed">
+        <definition>COD: on every side of. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="around"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="by.prep" ID="6754" lemmaID="5094" cBy="664" cDate="07/24/2002 04:11:55 PDT Wed">
+        <definition>COD: near to; beside. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="by"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="upon.prep" ID="6755" lemmaID="42478" cBy="664" cDate="07/24/2002 04:14:09 PDT Wed">
+        <definition>COD: more formal term for on.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="upon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="in.prep" ID="6756" lemmaID="19298" cBy="664" cDate="07/24/2002 04:14:32 PDT Wed">
+        <definition>COD: expressing the situation of being enclosed or surrounded by something. </definition>
+        <sentenceCount annotated="13" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="above.prep" ID="6757" lemmaID="159" cBy="664" cDate="07/24/2002 04:14:47 PDT Wed">
+        <definition>COD: at a higher level than. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="above"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="over.prep" ID="6758" lemmaID="27195" cBy="664" cDate="07/24/2002 04:15:31 PDT Wed">
+        <definition>COD: at a higher level or layer than. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="over"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="below.prep" ID="6759" lemmaID="3334" cBy="664" cDate="07/24/2002 04:16:20 PDT Wed">
+        <definition>COD: at a lower level than. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="below"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="under.prep" ID="6760" lemmaID="41920" cBy="664" cDate="07/24/2002 04:16:58 PDT Wed">
+        <definition>COD: at a lower level, layer, or grade than. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="under"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="beyond.prep" ID="6761" lemmaID="3487" cBy="664" cDate="07/24/2002 04:17:41 PDT Wed">
+        <definition>COD: at or to the further side of.</definition>
+        <sentenceCount annotated="14" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="beyond"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="beside.prep" ID="6762" lemmaID="3424" cBy="664" cDate="07/24/2002 04:17:56 PDT Wed">
+        <definition>COD: at the side of; next to. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="beside"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="beneath.prep" ID="6763" lemmaID="3352" cBy="664" cDate="07/24/2002 04:20:26 PDT Wed">
+        <definition>COD: extending or directly underneath. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="beneath"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="underneath.prep" ID="6764" lemmaID="41974" cBy="664" cDate="07/24/2002 04:20:40 PDT Wed">
+        <definition>COD: situated directly below.</definition>
+        <sentenceCount annotated="22" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="underneath"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="along.prep" ID="6765" lemmaID="1106" cBy="664" cDate="07/24/2002 04:21:18 PDT Wed">
+        <definition>COD: extending in a more or less horizontal line on. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="along"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="off.prep" ID="6766" lemmaID="26549" cBy="664" cDate="07/24/2002 04:22:36 PDT Wed">
+        <definition>COD: situated or leading in a direction away from. </definition>
+        <sentenceCount annotated="10" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="off"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="up.prep" ID="6767" lemmaID="42448" cBy="664" cDate="07/24/2002 04:31:29 PDT Wed">
+        <definition>COD: from a lower to a higher point of. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="down.prep" ID="6768" lemmaID="11609" cBy="664" cDate="07/24/2002 04:31:48 PDT Wed">
+        <definition>COD: towards or in a lower place or position. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="down"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="astride.prep" ID="7714" lemmaID="2209" cBy="664" cDate="11/13/2002 06:06:26 PST Wed">
+        <definition>COD: with a leg on each side of</definition>
+        <sentenceCount annotated="19" total="91"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="astride"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="amid.prep" ID="10208" lemmaID="1244" cBy="605" cDate="03/05/2004 03:35:13 PST Fri">
+        <definition>COD: surrounded by; in the middle of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="amid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="among.prep" ID="10209" lemmaID="1263" cBy="605" cDate="03/05/2004 03:36:08 PST Fri">
+        <definition>COD: situated more or less centrally in relation to (several others)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="among"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="next to.prep" ID="10864" lemmaID="49454" cBy="203" cDate="08/18/2004 05:14:29 PDT Wed">
+        <definition>FN: beside; close to</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="next"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="to"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="all over.prep" ID="10883" lemmaID="49473" cBy="203" cDate="08/18/2004 05:26:30 PDT Wed">
+        <definition>FN: over the whole area</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="all"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="over"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="against.prep" ID="11228" lemmaID="765" cBy="303" cDate="11/19/2004 01:52:50 PST Fri">
+        <definition>COD: in or into contact with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="against"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="abut.v" ID="11901" lemmaID="49961" cBy="605" cDate="04/22/2005 12:06:00 PDT Fri">
+        <definition>COD: (of land or a building) be next to or have a common boundary with</definition>
+        <sentenceCount annotated="13" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="abut"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="adjoin.v" ID="11902" lemmaID="497" cBy="605" cDate="04/22/2005 12:07:32 PDT Fri">
+        <definition>COD: be next to and joined with</definition>
+        <sentenceCount annotated="24" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="adjoin"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="abutting.a" ID="11903" lemmaID="49962" cBy="605" cDate="04/22/2005 12:08:52 PDT Fri">
+        <definition>FN: next to or having a common boundary with</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="abutting"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="adjoining.a" ID="11904" lemmaID="498" cBy="605" cDate="04/22/2005 12:09:23 PDT Fri">
+        <definition>FN: next to and joined with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="adjoining"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="border.v" ID="11905" lemmaID="4228" cBy="605" cDate="04/22/2005 12:09:59 PDT Fri">
+        <definition>COD: (of a country or area) be adjacent to (another)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="border"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="neighbor.v" ID="11906" lemmaID="49963" cBy="605" cDate="04/22/2005 12:11:21 PDT Fri">
+        <definition>COD: be situated next to or very near (another)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="neighbor"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="adjacent.a" ID="11907" lemmaID="493" cBy="605" cDate="04/22/2005 12:12:21 PDT Fri">
+        <definition>COD: next to or adjoining something else</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="adjacent"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="neighboring.a" ID="11908" lemmaID="49964" cBy="605" cDate="04/22/2005 12:13:07 PDT Fri">
+        <definition>FN: situated next to or very near (another).</definition>
+        <sentenceCount annotated="10" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="neighboring"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="where.adv" ID="13318" lemmaID="43919" cBy="303" cDate="06/23/2006 02:39:10 PDT Fri">
+        <definition>COD: at, in, or to which.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="where"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="inside.prep" ID="13741" lemmaID="20113" cBy="361" cDate="02/13/2007 11:43:45 PST Tue">
+        <definition>COD: situated or moving within</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="inside"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="outside.prep" ID="13742" lemmaID="27152" cBy="361" cDate="02/13/2007 11:45:02 PST Tue">
+        <definition>COD: situated or moving beyond the boundaries of</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="outside"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="near.prep" ID="13764" lemmaID="25554" cBy="361" cDate="02/23/2007 10:27:29 PST Fri">
+        <definition>COD: also near to </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="near"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="between.prep" ID="13809" lemmaID="3470" cBy="664" cDate="02/25/2007 12:20:34 PST Sun">
+        <definition>COD: at, into, or across the space separating (two objects, places, or points).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="between"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ground" POS="A" name="underground.a" ID="13961" lemmaID="50546" cBy="361" cDate="03/13/2007 11:37:48 PDT Tue">
+        <definition>COD: beneath the surface of the ground.</definition>
+        <sentenceCount annotated="19" total="155"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="underground"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ground" POS="A" name="above-ground.a" ID="13962" lemmaID="50547" cBy="361" cDate="03/13/2007 11:38:58 PDT Tue">
+        <definition>FN: above the surface of the ground.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="above-ground"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="opposite.prep" ID="14031" lemmaID="26841" cBy="361" cDate="03/22/2007 02:46:11 PDT Thu">
+        <definition>COD: in a position opposite to.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="opposite"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="underground.adv" ID="14061" lemmaID="41957" cBy="361" cDate="03/23/2007 08:28:14 PDT Fri">
+        <definition>COD: beneath the surface of the ground.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="underground"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="everywhere.adv" ID="14102" lemmaID="13285" cBy="664" cDate="03/24/2007 12:08:00 PDT Sat">
+        <definition>COD: in or to all places.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="everywhere"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="elsewhere.adv" ID="14172" lemmaID="12503" cBy="618" cDate="03/27/2007 04:15:19 PDT Tue">
+        <definition>COD: in, at, or to some other place or other places.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="elsewhere"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="here.adv" ID="14175" lemmaID="17895" cBy="361" cDate="03/27/2007 05:08:40 PDT Tue">
+        <definition>COD: in, at, or to this place or position.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="here"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="surrounding.a" ID="14302" lemmaID="39016" cBy="361" cDate="04/02/2007 12:54:25 PDT Mon">
+        <definition>FN: being around (an area)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="surrounding"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="distant.a" ID="14362" lemmaID="11199" cBy="361" cDate="04/06/2007 04:09:39 PDT Fri">
+        <definition>FN: far away</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="distant"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="outlying.a" ID="14374" lemmaID="50658" cBy="361" cDate="04/06/2007 05:42:11 PDT Fri">
+        <definition>COD: remote.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="outlying"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="north.prep" ID="14396" lemmaID="50667" cBy="361" cDate="04/11/2007 04:01:13 PDT Wed">
+        <definition>COD: to or towards the north.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="north"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="south.prep" ID="14397" lemmaID="50668" cBy="361" cDate="04/11/2007 04:02:17 PDT Wed">
+        <definition>COD: to or towards the south.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="south"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="out.prep" ID="14398" lemmaID="27047" cBy="361" cDate="04/11/2007 04:04:14 PDT Wed">
+        <definition>COD: away from one's usual base or residence.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="out"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="east.prep" ID="14402" lemmaID="50669" cBy="361" cDate="04/11/2007 04:08:03 PDT Wed">
+        <definition>COD: to or towards the east.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="east"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="west.prep" ID="14415" lemmaID="50674" cBy="361" cDate="04/11/2007 05:58:32 PDT Wed">
+        <definition>COD: to or towards the west.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="west"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="ubiquitous.a" ID="14473" lemmaID="41715" cBy="618" cDate="06/14/2007 12:38:55 PDT Thu">
+        <definition>FN: all over, everywhere.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ubiquitous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="on_top_of.prep" ID="14584" lemmaID="50749" cBy="361" cDate="10/24/2007 04:32:29 PDT Wed">
+        <definition>FN: being atop</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on_top_of"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="there.adv" ID="14589" lemmaID="40071" cBy="361" cDate="10/26/2007 11:55:55 PDT Fri">
+        <definition>FN: referring to a place that is not here</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="there"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ground" POS="A" name="offshore.a" ID="14619" lemmaID="50762" cBy="361" cDate="10/31/2007 05:11:34 PDT Wed">
+        <definition>FN: to be located off of the shore of some land mass. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="offshore"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ground" POS="A" name="inland.a" ID="14620" lemmaID="20000" cBy="361" cDate="10/31/2007 05:24:43 PDT Wed">
+        <definition>FN: to be located a certain distance from the edge or shore of a geographic area.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="inland"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="past.prep" ID="14634" lemmaID="27985" cBy="361" cDate="11/09/2007 12:07:36 PST Fri">
+        <definition>FN: after</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="past"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="to.prep" ID="14798" lemmaID="40569" cBy="597" cDate="02/20/2008 04:17:15 PST Wed">
+        <definition>FN: in the direction of</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="to"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="northeast.prep" ID="14813" lemmaID="50832" cBy="361" cDate="02/29/2008 04:06:29 PST Fri">
+        <definition>FN: being both north and east of another point</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="northeast"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="southeast.prep" ID="14814" lemmaID="50833" cBy="361" cDate="02/29/2008 04:16:23 PST Fri">
+        <definition>FN: being located south and east of a point</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="southeast"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mainland.n" ID="15076" lemmaID="23188" cBy="361" cDate="06/06/2008 03:59:29 PDT Fri">
+        <definition>FN: the main geographical part of a country, exclusive of islands. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mainland"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="throughout.prep" ID="15334" lemmaID="40299" cBy="145" cDate="05/08/2009 09:44:47 PDT Fri">
+        <definition>FN: in all parts of, over the entire range of, sometimes implying "uniformly"</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="throughout"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="meet.v" ID="15622" lemmaID="23890" cBy="589" cDate="02/10/2010 03:43:30 PST Wed">
+        <definition>FN: be physically touching with (something)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meet"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="contact.v" ID="15623" lemmaID="8016" cBy="589" cDate="02/10/2010 03:46:31 PST Wed">
+        <definition>FN: be physically touching with (something)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="contact"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="touch.v" ID="15624" lemmaID="40819" cBy="589" cDate="02/10/2010 03:57:27 PST Wed">
+        <definition>COD: come into or be in contact with</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="touch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bracket.v" ID="15673" lemmaID="4394" cBy="618" cDate="03/08/2010 04:00:15 PST Mon">
+        <definition>FN: surround on either side</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bracket"/>
+    </lexUnit>
+</frame>

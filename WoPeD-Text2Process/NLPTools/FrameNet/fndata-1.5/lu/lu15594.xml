@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="lose.v" ID="15594" frame="Finish_game" frameID="2193" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="lose" ID="19333"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Game"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Player"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: complete a game with an unfavorable outcome</definition>
+    <lexeme POS="V" name="lose"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Game"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Game"/>
+                <annoSet ID="2526998"/>
+                <annoSet ID="2527000"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Player"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Player"/>
+                <annoSet ID="2526998"/>
+                <annoSet ID="2527000"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Game"/>
+            <FE name="Player"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Game"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Player"/>
+                <annoSet ID="2526998"/>
+                <annoSet ID="2527000"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="19333" sentNo="3" paragNo="3" aPos="0" ID="1540627">
+            <text>If he loses , your shares are worthless .</text>
+            <annotationSet cDate="12/04/2009 04:08:32 PST Fri" status="UNANN" ID="2524246">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="4" start="3" name="PP"/>
+                    <label end="10" start="6" name="VVZ"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="17" start="14" name="PP$"/>
+                    <label end="24" start="19" name="nns"/>
+                    <label end="28" start="26" name="vbp"/>
+                    <label end="38" start="30" name="jj"/>
+                    <label end="40" start="40" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="1" start="0" name="NT"/>
+                    <label end="4" start="3" name="NT"/>
+                    <label end="12" start="12" name="NT"/>
+                    <label end="17" start="14" name="NT"/>
+                    <label end="28" start="26" name="NT"/>
+                    <label end="40" start="40" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/05/2010 02:04:18 PST Fri" status="MANUAL" ID="2526998">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="10" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="13504" end="4" start="3" name="Player"/>
+                    <label cBy="589" feID="13503" itype="DNI" name="Game"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="3" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="3" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="150" docID="19333" sentNo="5" paragNo="3" aPos="0" ID="1540629">
+            <text>and it lost well that was decided by a very small margin</text>
+            <annotationSet cDate="12/04/2009 04:08:32 PST Fri" status="UNANN" ID="2524248">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="PP"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="15" start="12" name="rb"/>
+                    <label end="20" start="17" name="dt"/>
+                    <label end="24" start="22" name="VBD"/>
+                    <label end="32" start="26" name="VVN"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="37" start="37" name="dt"/>
+                    <label end="42" start="39" name="rb"/>
+                    <label end="48" start="44" name="jj"/>
+                    <label end="55" start="50" name="nn"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="2" start="0" name="NT"/>
+                    <label end="5" start="4" name="NT"/>
+                    <label end="15" start="12" name="NT"/>
+                    <label end="20" start="17" name="NT"/>
+                    <label end="24" start="22" name="NT"/>
+                    <label end="35" start="34" name="NT"/>
+                    <label end="37" start="37" name="NT"/>
+                    <label end="42" start="39" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/05/2010 02:05:20 PST Fri" status="MANUAL" ID="2527000">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="10" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="13504" end="5" start="4" name="Player"/>
+                    <label cBy="589" feID="13503" itype="DNI" name="Game"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="4" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="4" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

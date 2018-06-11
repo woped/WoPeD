@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="01/24/2002 03:01:38 PST Thu" name="Commemorative" ID="261" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes a particular compounding construction (a pattern of coinage) by which more complex words can be created by joining an &lt;fen&gt;Honored_entity&lt;/fen&gt; to a &lt;fen&gt;Dedicated_type&lt;/fen&gt; to describe a particular &lt;fen&gt;Dedicated_entity&lt;/fen&gt; which has been officially named for the &lt;fen&gt;Honored_entity&lt;/fen&gt;.  The &lt;fen&gt;Dedicated_type&lt;/fen&gt; and &lt;fen&gt;Honored_entity&lt;/fen&gt; FEs each form part of the Lexical Units (annotated on the second FE layer), and the &lt;fen&gt;Dedicated_entity&lt;/fen&gt; is the denotation of the whole.  Since each of the FEs is a part of the Lexical Unit, there is no assignment of Grammatical Function or Phrase Type.  The &lt;fen&gt;Dedicated_type&lt;/fen&gt; should (in principle) also be annotated as a LU in a separate frame.  Targets are added opportunistically to this frame in the course of annotating other frames.  For example, the Day of &lt;t&gt;Armistice Day&lt;/t&gt; should also be annotated in the Calendric_unit frame.
+
+&lt;ex&gt;1st layer:  Turn right at the &lt;fex name="ded"&gt;&lt;t&gt;Jefferson Building&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;2nd layer:  Turn right at the &lt;fex name="Honored_entity"&gt;Jefferson&lt;/fex&gt; &lt;fex name="Dedicated_type"&gt;Building&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="01/25/2002 01:27:54 PST Fri" abbrev="Hon" name="Honored_entity" ID="2256">
+        <definition>&lt;def-root&gt;This FE identifies the person, subject, or event that is being honored.
+
+&lt;ex&gt;We have a picnic every year on &lt;t&gt;&lt;fex name="Honored_entity"&gt;Veterans'&lt;/fex&gt; day&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="01/25/2002 01:28:54 PST Fri" abbrev="Ded_typ" name="Dedicated_type" ID="2257">
+        <definition>&lt;def-root&gt;This FE identifies the type of entity that had been dedicated to honor the &lt;fen&gt;Honored_entity&lt;/fen&gt;.
+
+&lt;ex&gt;Is &lt;t&gt;Armistice &lt;fex name="Ded_typ"&gt;DAY&lt;/fex&gt;&lt;/t&gt; a national holiday?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/02/2006 10:37:39 PST Thu" abbrev="ded" name="Dedicated_entity" ID="9896">
+        <definition>&lt;def-root&gt;The entity which has been dedicated to the &lt;fen&gt;Honored_entity&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;fex name="ded"&gt;&lt;t&gt;Jimmy Hoffa Building&lt;/t&gt;&lt;/fex&gt; hasn't opened yet.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="Armistice Day.n" ID="4763" lemmaID="45419" cBy="243" cDate="01/27/2002 12:06:06 PST Sun">
+        <definition>COD: the anniversary of the armistice of 11 November 1918, now replaced by Remembrance Sunday in the UK. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Day"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Armistice"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="Boxing Day.n" ID="4994" lemmaID="45474" cBy="243" cDate="02/25/2002 02:48:33 PST Mon">
+        <definition>COD: a public holiday on the first day (or first weekday) after Christmas Day. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Boxing"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Day"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="Labor Day.n" ID="4995" lemmaID="45475" cBy="243" cDate="02/25/2002 03:03:43 PST Mon">
+        <definition>COD: a public holiday held in honour of working people in some countries on 1 May, or (in the US and Canada) on the first Monday in September. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Labor"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Day"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="April Fool's Day.n" ID="5147" lemmaID="45500" cBy="243" cDate="03/04/2002 03:50:13 PST Mon">
+        <definition>COD: April, traditionally an occasion for playing tricks. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="SCON" name="'s"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="April"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Fool"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="Day"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="Christmas Day.n" ID="5148" lemmaID="45501" cBy="243" cDate="03/04/2002 04:01:01 PST Mon">
+        <definition>COD: the annual Christian festival celebrating Christ's birth, held on 25 December.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Christmas"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Day"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="Passover Eve.n" ID="6686" lemmaID="45889" cBy="243" cDate="07/19/2002 12:20:37 PDT Fri">
+        <definition>COD: the major Jewish spring festival, commemorating the liberation of the Israelites from Egyptian bondage. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Passover"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Eve"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="birthday.n" ID="14520" lemmaID="3661" cBy="664" cDate="08/09/2007 12:43:39 PDT Thu">
+        <definition>FN: the day of the year matching the date of birth (for an individual).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="birthday"/>
+    </lexUnit>
+</frame>

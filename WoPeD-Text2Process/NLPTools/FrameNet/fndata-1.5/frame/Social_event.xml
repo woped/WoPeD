@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="599" cDate="06/06/2001 02:00:21 PDT Wed" name="Social_event" ID="125" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Social_event&lt;/fen&gt; occurs at which &lt;fen&gt;Attendee&lt;/fen&gt;s are present to conduct a social function or joint activity.  The &lt;fen&gt;Social_event&lt;/fen&gt; is often a party or celebration, in which case it is possible to express someone who is being honored (the &lt;fen&gt;Honoree&lt;/fen&gt;) or its function may be to celebrate an &lt;fen&gt;Occasion&lt;/fen&gt; at which &lt;fen&gt;Attendee&lt;/fen&gt;s are present. Often, a specific &lt;fen&gt;Attendee&lt;/fen&gt;, the &lt;fen&gt;Host&lt;/fen&gt;, provides a venue for people to gather.
+
+&lt;ex&gt;&lt;fex name="Host"&gt;Sue&lt;/fex&gt; &lt;m&gt;threw&lt;/m&gt; a &lt;fex name="Soc"&gt;&lt;t&gt;party&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Occasion"&gt;for Bob's birthday&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Host"&gt;Who&lt;/fex&gt; will &lt;t&gt;host&lt;/t&gt; &lt;fex name="Soc"&gt;the Olympic games&lt;/fex&gt; &lt;fex name="Time"&gt;in eight years&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/06/2001 02:05:05 PDT Wed" abbrev="Duration" name="Duration" ID="759">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Duration&lt;/fen&gt; of time for which the &lt;fen&gt;Social_event&lt;/fen&gt; is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="599" cDate="06/06/2001 02:05:05 PDT Wed" abbrev="Soc" name="Social_event" ID="760">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Social_event&lt;/fen&gt; itself.
+
+&lt;ex&gt;The department &lt;fex name="Soc"&gt;&lt;t&gt;picnic&lt;/t&gt;&lt;/fex&gt; was lots of fun.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/06/2001 02:05:05 PDT Wed" abbrev="Place" name="Place" ID="761">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Social_event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/06/2001 02:05:05 PDT Wed" abbrev="Time" name="Time" ID="763">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Social_event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="599" cDate="06/06/2001 02:07:54 PDT Wed" abbrev="Host" name="Host" ID="764">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Host&lt;/fen&gt; is the person or organization that hosts the &lt;fen&gt;Social_event&lt;/fen&gt;.  In cases where an individual stands in for an organization, the host may be marked twice.
+
+&lt;ex&gt;&lt;fex name="Host"&gt;Ron&lt;/fex&gt; threw a &lt;t&gt;party&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Host"&gt;President Reagan&lt;/fex&gt; hosted a &lt;fex name="Host"&gt;state&lt;/fex&gt; &lt;t&gt;banquet&lt;/t&gt;.&lt;/ex&gt;
+The FE &lt;fen&gt;Host&lt;/fen&gt; is also used in ambiguous cases, such as:
+&lt;ex&gt;&lt;fex name="Host"&gt;church&lt;/fex&gt; &lt;fex name="Soc"&gt;&lt;t&gt;picnic&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="599" cDate="06/06/2001 02:12:17 PDT Wed" abbrev="Hon" name="Honoree" ID="765">
+        <definition>&lt;def-root&gt;The person for whom the &lt;fen&gt;Social_event&lt;/fen&gt; is held.
+
+&lt;ex&gt;I threw a &lt;t&gt;party&lt;/t&gt; &lt;fex name="Hon"&gt;for Josef&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="599" cDate="06/06/2001 02:14:06 PDT Wed" abbrev="Occ" name="Occasion" ID="766">
+        <definition>&lt;def-root&gt;The Occasion for which the &lt;fen&gt;Social_event&lt;/fen&gt; is held.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="599" cDate="06/06/2001 02:16:19 PDT Wed" abbrev="Att" name="Attendee" ID="767">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Attendee&lt;/fen&gt; is used for the people who come to the &lt;fen&gt;Social_event&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Att"&gt;The whole group&lt;/fex&gt; attended the &lt;t&gt;party&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/06/2001 02:21:27 PDT Wed" abbrev="Degr" name="Degree" ID="768">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Social_event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/06/2001 02:21:27 PDT Wed" abbrev="Manr" name="Manner" ID="772">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Social_event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/19/2001 02:15:27 PDT Tue" abbrev="Ref" name="Refreshment" ID="890">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Refreshment&lt;/fen&gt; is used for the meal, food or drinks that are served at the &lt;fen&gt;Social_event&lt;/fen&gt;.
+
+&lt;ex&gt;I enjoy a tasteful &lt;fex name="Ref"&gt;dinner&lt;/fex&gt; &lt;t&gt;party&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;I attended a &lt;fex name="Ref"&gt;cocktail&lt;/fex&gt; &lt;t&gt;party&lt;/t&gt; and drank myself silly.&lt;/ex&gt;
+&lt;ex&gt;First layer: I attended a &lt;fex name="Soc"&gt;&lt;t&gt;banquet&lt;/t&gt;&lt;/fex&gt; on Saturday. &lt;/ex&gt;
+&lt;ex&gt;Second layer: I attended a &lt;fex name="Ref"&gt;&lt;t&gt;banquet&lt;/t&gt;&lt;/fex&gt; on Saturday. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/20/2001 03:29:00 PDT Fri" abbrev="Sty" name="Style" ID="1545">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Style&lt;/fen&gt; of  the &lt;fen&gt;Social_event&lt;/fen&gt; and its level of formality, indicating appropriate dress for participants and/or  the kind of activities in which they engage.
+
+&lt;ex&gt;Lee hosted a &lt;fex name="Style"&gt;formal&lt;/fex&gt; &lt;t&gt;party&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;Abby's &lt;fex name="Sty"&gt;garden&lt;/fex&gt; &lt;t&gt;party&lt;/t&gt; was successful.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="02/27/2007 04:09:41 PST Tue" abbrev="" name="Period_of_iterations" ID="11116">
+        <definition>&lt;def-root&gt;COD: The length of time from when the event denoted by the target began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="08/09/2007 11:53:14 PDT Thu" abbrev="" name="Descriptor" ID="11958">
+        <definition>&lt;def-root&gt;A characteristic of the social_event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="08/13/2007 02:35:46 PDT Mon" abbrev="" name="Name" ID="11960">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Name&lt;/fen&gt; of the &lt;fen&gt;Social_event&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="08/13/2007 02:40:07 PDT Mon" abbrev="" name="Frequency" ID="11961">
+        <definition>&lt;def-root&gt;This FE describes how often the &lt;fen&gt;Social_event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Social_event_collective</relatedFrame>
+        <relatedFrame>Social_event_individuals</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Eventive_affecting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="party.n" ID="2521" lemmaID="27940" cBy="599" cDate="06/06/2001 02:26:12 PDT Wed">
+        <definition>COD: a social gathering of invited guests, typically involving eating, drinking, and entertainment.</definition>
+        <sentenceCount annotated="30" total="579"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="party"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="host.v" ID="2523" lemmaID="18472" cBy="599" cDate="06/06/2001 03:57:15 PDT Wed">
+        <definition>COD: act as host (person who receives or entertains other people as guests) at (an event)</definition>
+        <sentenceCount annotated="28" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="host"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="banquet.n" ID="3151" lemmaID="2839" cBy="296" cDate="07/18/2001 02:33:27 PDT Wed">
+        <definition>COD:  an elaborate and formal meal for many people.</definition>
+        <sentenceCount annotated="22" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="banquet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shindig.n" ID="3152" lemmaID="35523" cBy="296" cDate="07/18/2001 02:49:27 PDT Wed">
+        <definition>COD:  a large, lively party. </definition>
+        <sentenceCount annotated="4" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shindig"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fete.n" ID="3153" lemmaID="14217" cBy="296" cDate="07/18/2001 02:57:51 PDT Wed">
+        <definition>FN: a party</definition>
+        <sentenceCount annotated="21" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fete"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="celebration.n" ID="3154" lemmaID="5856" cBy="296" cDate="07/18/2001 03:08:32 PDT Wed">
+        <definition>FN: an event honoring a special occasion</definition>
+        <sentenceCount annotated="39" total="259"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="celebration"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="social.n" ID="3157" lemmaID="36770" cBy="296" cDate="07/18/2001 03:15:56 PDT Wed">
+        <definition>COD: an informal social gathering organized by the members of a particular club or group. </definition>
+        <sentenceCount annotated="7" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="social"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="get-together.n" ID="3158" lemmaID="16171" cBy="296" cDate="07/18/2001 03:23:22 PDT Wed">
+        <definition>FN: a social gathering of individuals</definition>
+        <sentenceCount annotated="4" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="get-together"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="picnic.n" ID="3240" lemmaID="28912" cBy="296" cDate="07/23/2001 01:53:03 PDT Mon">
+        <definition>COD: a packed meal eaten outdoors, or an occasion when such a meal is eaten. </definition>
+        <sentenceCount annotated="22" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="picnic"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fair.n" ID="3241" lemmaID="13839" cBy="296" cDate="07/23/2001 02:12:32 PDT Mon">
+        <definition>COD:  a gathering of stalls and amusements for public entertainment. </definition>
+        <sentenceCount annotated="32" total="274"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fair"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="reception.n" ID="3242" lemmaID="32103" cBy="296" cDate="07/23/2001 02:23:21 PDT Mon">
+        <definition>COD: a formal social occasion held to welcome someone or celebrate an event. </definition>
+        <sentenceCount annotated="45" total="339"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reception"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dance.n" ID="3247" lemmaID="9533" cBy="296" cDate="07/23/2001 03:28:26 PDT Mon">
+        <definition>COD: a social gathering at which people dance. </definition>
+        <sentenceCount annotated="28" total="240"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dance"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="festival.n" ID="3248" lemmaID="14210" cBy="296" cDate="07/23/2001 03:48:09 PDT Mon">
+        <definition>COD:  day or period of celebration or an organized series of concerts, films.       </definition>
+        <sentenceCount annotated="55" total="414"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="festival"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="feast.n" ID="3382" lemmaID="14083" cBy="296" cDate="07/31/2001 10:59:42 PDT Tue">
+        <definition>COD:  a large meal, especially a celebratory one. NB: certain religious days are called "feasts" - these are not social events.</definition>
+        <sentenceCount annotated="19" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="feast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dinner.n" ID="3384" lemmaID="10723" cBy="296" cDate="07/31/2001 01:23:14 PDT Tue">
+        <definition>COD: a formal evening meal, typically one in honour of a person or event. </definition>
+        <sentenceCount annotated="38" total="343"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dinner"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dinner-party.n" ID="3385" lemmaID="10724" cBy="296" cDate="07/31/2001 01:43:07 PDT Tue">
+        <definition>COD:  a social occasion at which guests eat dinner together. </definition>
+        <sentenceCount annotated="7" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dinner-party"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bash.n" ID="3386" lemmaID="2979" cBy="296" cDate="07/31/2001 01:51:27 PDT Tue">
+        <definition>COD: usu. with modifier a party or social event. </definition>
+        <sentenceCount annotated="18" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="gala.n" ID="3387" lemmaID="15821" cBy="296" cDate="07/31/2001 01:55:35 PDT Tue">
+        <definition>COD: a festive entertainment or performance</definition>
+        <sentenceCount annotated="19" total="127"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gala"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="jollification.n" ID="3390" lemmaID="21030" cBy="296" cDate="07/31/2001 02:20:01 PDT Tue">
+        <definition>COD: merrymaking. </definition>
+        <sentenceCount annotated="5" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jollification"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="rave.n" ID="3391" lemmaID="31913" cBy="296" cDate="07/31/2001 02:21:30 PDT Tue">
+        <definition>COD: lively party involving dancing and drinking</definition>
+        <sentenceCount annotated="31" total="109"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="soiree.n" ID="3392" lemmaID="36832" cBy="296" cDate="07/31/2001 02:31:22 PDT Tue">
+        <definition>FN: party</definition>
+        <sentenceCount annotated="7" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="soiree"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="barbecue.n" ID="3393" lemmaID="2873" cBy="296" cDate="07/31/2001 02:47:34 PDT Tue">
+        <definition>COD: an outdoor meal or gathering at which meat, fish, or other food is grilled on a rack over an open fire. </definition>
+        <sentenceCount annotated="17" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="barbecue"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ball.n" ID="3394" lemmaID="2737" cBy="296" cDate="07/31/2001 03:03:02 PDT Tue">
+        <definition>COD:  a formal social gathering for dancing. </definition>
+        <sentenceCount annotated="18" total="173"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ball"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="meeting.n" ID="10227" lemmaID="23892" cBy="445" cDate="03/08/2004 01:28:30 PST Mon">
+        <definition>COD: an assembly of people for a particular purpose, especially for formal discussion.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="meeting"/>
+    </lexUnit>
+</frame>

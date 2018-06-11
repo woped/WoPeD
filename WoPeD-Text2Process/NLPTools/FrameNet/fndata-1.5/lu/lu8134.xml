@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="grade.v" ID="8134" frame="Assessing" frameID="519" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Assessor"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cop" name="Co_participant"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Evid" name="Evidence"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="fea" name="Feature"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Core" abbrev="Medium" name="Medium"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Core" abbrev="met" name="Method"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="sta" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Pos" name="Value"/>
+        </frame>
+    </header>
+    <definition>FN: to decide on the basis of some quality where to place something along an established scale "Geologists grade rocks according to their hardness."</definition>
+    <lexeme POS="V" name="grade"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Assessor"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <annoSet ID="2058900"/>
+                <annoSet ID="2058922"/>
+                <annoSet ID="2058950"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Assessor"/>
+                <annoSet ID="2058960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Feature"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Feature"/>
+                <annoSet ID="2058922"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Feature"/>
+                <annoSet ID="2058950"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Feature"/>
+                <annoSet ID="2058900"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Feature"/>
+                <annoSet ID="2058960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Medium"/>
+                <annoSet ID="2058900"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Phenomenon"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2058900"/>
+                <annoSet ID="2058950"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2058960"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Assessor"/>
+            <FE name="Feature"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Feature"/>
+                <annoSet ID="2058922"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Assessor"/>
+            <FE name="Feature"/>
+            <FE name="Medium"/>
+            <FE name="Medium"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Feature"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Medium"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Medium"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2058900"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Assessor"/>
+            <FE name="Feature"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Feature"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2058950"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Assessor"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Feature"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2058960"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-T-Wwhether,if,how-(1)"/>
+    <subCorpus name="03-T-NPsystem,test,accord-(1)"/>
+    <subCorpus name="04-T-PPin,for,from-(1)"/>
+    <subCorpus name="05-T-PPas-(1)"/>
+    <subCorpus name="06-T-NP-(1)"/>
+    <subCorpus name="07-T-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="10" aPos="6483167" ID="1305369">
+            <text>They cite Germany 's Abitur , where school-leavers are graded in eight subjects , and where their grading wins them entry into an apprenticeship if they do not go to university .</text>
+            <annotationSet cDate="01/17/2005 06:31:28 PST Mon" status="UNANN" ID="2058899">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="8" start="5" name="VVP"/>
+                    <label end="16" start="10" name="NP"/>
+                    <label end="19" start="18" name="POS"/>
+                    <label end="26" start="21" name="NP"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="34" start="30" name="wrb"/>
+                    <label end="49" start="36" name="nns"/>
+                    <label end="53" start="51" name="vbp"/>
+                    <label end="60" start="55" name="VVN"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="69" start="65" name="cd"/>
+                    <label end="78" start="71" name="nns"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="90" start="86" name="wrb"/>
+                    <label end="96" start="92" name="PP$"/>
+                    <label end="104" start="98" name="VVG"/>
+                    <label end="109" start="106" name="VVZ"/>
+                    <label end="114" start="111" name="PP"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="125" start="122" name="in"/>
+                    <label end="128" start="127" name="dt"/>
+                    <label end="143" start="130" name="nn"/>
+                    <label end="146" start="145" name="in"/>
+                    <label end="151" start="148" name="PP"/>
+                    <label end="154" start="153" name="VVP"/>
+                    <label end="158" start="156" name="rb"/>
+                    <label end="161" start="160" name="VV"/>
+                    <label end="164" start="163" name="to"/>
+                    <label end="175" start="166" name="nn"/>
+                    <label end="177" start="177" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 06:31:29 PST Mon" status="MANUAL" ID="2058900">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="60" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4113" end="78" start="62" name="Feature"/>
+                    <label cBy="361" feID="4111" end="49" start="36" name="Phenomenon"/>
+                    <label cBy="361" feID="9152" end="34" start="30" name="Medium"/>
+                    <label cBy="361" feID="9152" end="26" start="10" name="Medium"/>
+                    <label cBy="361" feID="4110" itype="CNI" name="Assessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="78" start="62" name="Dep"/>
+                    <label end="49" start="36" name="Ext"/>
+                    <label end="34" start="30" name="Dep"/>
+                    <label end="26" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="78" start="62" name="PP"/>
+                    <label end="49" start="36" name="NP"/>
+                    <label end="34" start="30" name="AVP"/>
+                    <label end="26" start="10" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="34" start="30" name="Rel"/>
+                    <label end="26" start="10" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="781" aPos="96797938" ID="1305380">
+            <text>The severity of these symptoms was graded into four categories : absent , mild , moderate , or severe , according to De Meester et al 's criteria .</text>
+            <annotationSet cDate="01/17/2005 06:31:34 PST Mon" status="UNANN" ID="2058921">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="20" start="16" name="dt"/>
+                    <label end="29" start="22" name="nns"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="40" start="35" name="VVN"/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="50" start="47" name="cd"/>
+                    <label end="61" start="52" name="nns"/>
+                    <label end="63" start="63" name=":"/>
+                    <label end="70" start="65" name="jj"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="77" start="74" name="jj"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="88" start="81" name="jj"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="93" start="92" name="cc"/>
+                    <label end="100" start="95" name="jj"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="112" start="104" name="VVG"/>
+                    <label end="115" start="114" name="to"/>
+                    <label end="118" start="117" name="NP"/>
+                    <label end="126" start="120" name="NP"/>
+                    <label end="129" start="128" name="cc"/>
+                    <label end="132" start="131" name="NP"/>
+                    <label end="135" start="134" name="POS"/>
+                    <label end="144" start="137" name="nns"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 06:31:34 PST Mon" status="MANUAL" ID="2058922">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="40" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4113" end="29" start="0" name="Feature"/>
+                    <label cBy="361" feID="4110" itype="CNI" name="Assessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="868" aPos="96805980" ID="1305394">
+            <text>Tumours were assessed as benign or malignant and were graded by degree of dysplasia ( benign ) or differentiation ( malignant ) .</text>
+            <annotationSet cDate="01/17/2005 06:31:42 PST Mon" status="UNANN" ID="2058949">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="11" start="8" name="VBD"/>
+                    <label end="20" start="13" name="VVN"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="30" start="25" name="jj"/>
+                    <label end="33" start="32" name="cc"/>
+                    <label end="43" start="35" name="jj"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="52" start="49" name="VBD"/>
+                    <label end="59" start="54" name="VVN"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="82" start="74" name="nn"/>
+                    <label end="84" start="84" name="("/>
+                    <label end="91" start="86" name="jj"/>
+                    <label end="93" start="93" name=")"/>
+                    <label end="96" start="95" name="cc"/>
+                    <label end="112" start="98" name="nn"/>
+                    <label end="114" start="114" name="("/>
+                    <label end="124" start="116" name="jj"/>
+                    <label end="126" start="126" name=")"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 06:31:42 PST Mon" status="MANUAL" ID="2058950">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="59" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" itype="CNI" name="Assessor"/>
+                    <label cBy="361" feID="4113" end="126" start="61" name="Feature"/>
+                    <label cBy="361" feID="4111" end="6" start="0" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="61" name="Dep"/>
+                    <label end="6" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="61" name="PP"/>
+                    <label end="6" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1759" aPos="98653463" ID="1305399">
+            <text>They also graded each stool on a 6 point scale sensitive to intestinal transit time ( Table I ) .</text>
+            <annotationSet cDate="01/17/2005 06:31:44 PST Mon" status="UNANN" ID="2058959">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="8" start="5" name="rb"/>
+                    <label end="15" start="10" name="VVD"/>
+                    <label end="20" start="17" name="dt"/>
+                    <label end="26" start="22" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="33" start="33" name="cd"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="55" start="47" name="jj"/>
+                    <label end="58" start="57" name="to"/>
+                    <label end="69" start="60" name="jj"/>
+                    <label end="77" start="71" name="nn"/>
+                    <label end="82" start="79" name="nn"/>
+                    <label end="84" start="84" name="("/>
+                    <label end="90" start="86" name="nn"/>
+                    <label end="92" start="92" name="nn"/>
+                    <label end="94" start="94" name=")"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 06:31:45 PST Mon" status="MANUAL" ID="2058960">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="15" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" end="3" start="0" name="Assessor"/>
+                    <label cBy="361" feID="4111" end="26" start="17" name="Phenomenon"/>
+                    <label cBy="361" feID="4113" end="94" start="28" name="Feature"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="26" start="17" name="Obj"/>
+                    <label end="94" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="26" start="17" name="NP"/>
+                    <label end="94" start="28" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

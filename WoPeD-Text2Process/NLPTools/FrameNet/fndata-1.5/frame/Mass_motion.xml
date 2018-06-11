@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/11/2002 02:43:02 PST Mon" name="Mass_motion" ID="284" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Mass_theme&lt;/fen&gt;, generally made up of many individuals, moves from a &lt;fen&gt;Source&lt;/fen&gt; to a &lt;fen&gt;Goal&lt;/fen&gt; with some &lt;fen&gt;Path&lt;/fen&gt;.
+ &lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/11/2002 02:54:42 PST Mon" abbrev="Thm" name="Mass_theme" ID="2458">
+        <definition>&lt;def-root&gt;The mass of entities which moves.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:54:50 PST Mon" abbrev="Degr" name="Degree" ID="2459">
+        <definition>&lt;def-root&gt;Degree of abundance.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/11/2002 02:54:55 PST Mon" abbrev="Area" name="Area" ID="2460">
+        <definition>&lt;def-root&gt;The place where the overall motion event takes place, thus including Source, Path, and Goal locations.
+Letters &lt;t&gt;streamed&lt;/t&gt; in &lt;fex name="Area"&gt;all over the country&lt;/fex&gt;.
+ &lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:55:26 PST Mon" abbrev="Time" name="Time" ID="2461">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:55:36 PST Mon" abbrev="Spd" name="Speed" ID="2462">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which motion occurs.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/11/2002 02:55:38 PST Mon" abbrev="Src" name="Source" ID="2463">
+        <definition>&lt;def-root&gt;The Source is the location the Theme occupies initially before its change of location. 
+
+&lt;ex&gt;Afterwards, the crowd &lt;t&gt;flooded&lt;/t&gt; &lt;fex name="Source"&gt;away from the ceremony&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="2460"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/11/2002 02:55:40 PST Mon" abbrev="Path" name="Path" ID="2464">
+        <definition>&lt;def-root&gt;Path refers to (a part of the) ground the &lt;fen&gt;Mass_theme&lt;/fen&gt; travels over or to a landmark the &lt;fen&gt;Mass_theme&lt;/fen&gt; travels by. 
+
+&lt;ex&gt;The door opened , and a crowd of people &lt;t&gt;flooded&lt;/t&gt; &lt;fex name="Path"&gt;past me&lt;/fex&gt;, into the hall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2460"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/11/2002 02:55:54 PST Mon" abbrev="Goal" name="Goal" ID="2465">
+        <definition>&lt;def-root&gt;Goal is the location the &lt;fen&gt;Mass_theme&lt;/fen&gt; ends up in. 
+
+
+&lt;ex&gt;Eager spectators &lt;t&gt;crowded&lt;/t&gt; &lt;fex name="Goal"&gt;into the auditorium&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="2460"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:56:14 PST Mon" abbrev="Dur" name="Duration" ID="2466">
+        <definition>&lt;def-root&gt;The amount of time for which a state holds or a process is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:56:18 PST Mon" abbrev="Dist" name="Distance" ID="2467">
+        <definition>&lt;def-root&gt;This FE is any expression which characterizes the extent of motion.  This frame element occurs throughout the motion domain but is very infrequent in Motion.Noise. The engine 	&lt;t&gt;spluttered&lt;/t&gt; forward &lt;fex name="Distance"&gt;a short way&lt;/fex&gt; and stopped. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/11/2002 02:56:32 PST Mon" abbrev="MoT" name="Mode_of_transportation" ID="2468">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; expresses how the motion of the &lt;fen&gt;Mass_theme&lt;/fen&gt; is effected, by its body or by a vehicle which holds and conveys the &lt;fen&gt;Mass_theme&lt;/fen&gt;. Vehicles can move in any way and in any medium. They are usually expressed obliquely with 'in' or 'by'.
+
+&lt;ex&gt; Fans &lt;t&gt;poured&lt;/t&gt; in &lt;fex name="Mode_of_transportation"&gt;by boat and train&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Manr" name="Manner" ID="5374">
+        <definition>&lt;def-root&gt;Any description of the motion event which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). In addition, it may indicate salient characteristics of an &lt;fen&gt;Mass_theme&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully)
+
+&lt;ex&gt;Children &lt;t&gt;crowded&lt;/t&gt; &lt;fex name="Manner"&gt;eagerly&lt;/fex&gt; around us&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="" name="Place" ID="5375">
+        <definition>&lt;def-root&gt;The spatial setting in which the Mass_motion takes place.
+
+&lt;ex&gt;&lt;fex name="Place"&gt;In the main auditorium&lt;/fex&gt; people &lt;t&gt;crowded&lt;/t&gt; around Orange's newest computer&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="12/16/2005 11:13:29 PST Fri" abbrev="dir" name="Direction" ID="9787">
+        <definition>&lt;def-root&gt;This FE is used for expressions that indicate motion along a line from the deitic center towards a reference point (which may be implicit) that is neither the &lt;fen&gt;Goal&lt;/fen&gt; of the posture change nor a landmark along the way of the moving part of the body.  Often &lt;fen&gt;Direction&lt;/fen&gt; is defined with reference to the canonical orientation of the &lt;fen&gt;Mass_theme&lt;/fen&gt;, or the orientation imposed by an implicit observer.&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2460"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="571" cDate="05/25/2010 10:46:04 PDT Tue" abbrev="pur" name="Purpose" ID="13930">
+        <definition>&lt;def-root&gt;In cases wherein the &lt;fen&gt;Mass_theme&lt;/fen&gt; is construed as a sentient entities, this FE denotes the state of affairs that the entities wish to bring about by mass movement.
+
+&lt;ex&gt;The ducks &lt;t&gt;flocked&lt;/t&gt; south &lt;fex name="pur"&gt;to mate&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="2463"/>
+        <memberFE name="Direction" ID="9787"/>
+        <memberFE name="Goal" ID="2465"/>
+        <memberFE name="Path" ID="2464"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Abounding_with</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="swarm.v" ID="5196" lemmaID="39083" cBy="664" cDate="03/11/2002 02:46:00 PST Mon">
+        <definition>COD:  move somewhere in large numbers. </definition>
+        <sentenceCount annotated="13" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swarm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="teem.v" ID="5197" lemmaID="39712" cBy="664" cDate="03/11/2002 02:49:03 PST Mon">
+        <definition>FN: move as a large, flowing group</definition>
+        <sentenceCount annotated="17" total="251"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="teem"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="throng.v" ID="5198" lemmaID="40290" cBy="664" cDate="03/11/2002 02:49:22 PST Mon">
+        <definition>COD: flock or be present in great numbers. </definition>
+        <sentenceCount annotated="6" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="throng"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stream.v" ID="5199" lemmaID="38302" cBy="664" cDate="03/11/2002 02:49:42 PST Mon">
+        <definition>COD: (of a mass of people or things) move in a continuous flow. </definition>
+        <sentenceCount annotated="18" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stream"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="crowd.v" ID="5200" lemmaID="9092" cBy="664" cDate="03/11/2002 02:50:46 PST Mon">
+        <definition>COD: move or come together as a crowd. </definition>
+        <sentenceCount annotated="31" total="296"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crowd"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="flood.v" ID="5201" lemmaID="14753" cBy="664" cDate="03/11/2002 02:52:37 PST Mon">
+        <definition>COD: arrive in or overwhelm with very large numbers.</definition>
+        <sentenceCount annotated="13" total="203"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flood"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pour.v" ID="5202" lemmaID="29977" cBy="664" cDate="03/11/2002 02:53:41 PST Mon">
+        <definition>COD: (of people or things) come or go in a steady stream. </definition>
+        <sentenceCount annotated="9" total="298"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pour"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="flock.v" ID="5203" lemmaID="14748" cBy="664" cDate="03/11/2002 03:05:36 PST Mon">
+        <definition>COD:  congregate or move in a flock. </definition>
+        <sentenceCount annotated="17" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flock"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="roll.v" ID="5204" lemmaID="33454" cBy="664" cDate="03/11/2002 03:11:46 PST Mon">
+        <definition>FN: come by the score</definition>
+        <sentenceCount annotated="6" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roll"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="troop.v" ID="5309" lemmaID="41313" cBy="664" cDate="03/22/2002 12:14:30 PST Fri">
+        <definition>COD: come or go together or in large numbers.</definition>
+        <sentenceCount annotated="9" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="troop"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="parade.v" ID="5310" lemmaID="27750" cBy="664" cDate="03/22/2002 12:20:23 PST Fri">
+        <definition>FN: move as a groop (as if) on display</definition>
+        <sentenceCount annotated="4" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="parade"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rain.v" ID="5357" lemmaID="31722" cBy="664" cDate="03/29/2002 03:35:47 PST Fri">
+        <definition>COD: fall or cause to fall in large quantities.</definition>
+        <sentenceCount annotated="20" total="173"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rain"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="hail.v" ID="5358" lemmaID="17204" cBy="664" cDate="03/29/2002 03:37:29 PST Fri">
+        <definition>FN: fall destructively in copious quantities.</definition>
+        <sentenceCount annotated="1" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shower.v" ID="5359" lemmaID="35691" cBy="664" cDate="03/29/2002 03:45:40 PST Fri">
+        <definition>COD: fall, throw, or be thrown in a shower</definition>
+        <sentenceCount annotated="6" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shower"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pelt.v" ID="5360" lemmaID="28286" cBy="664" cDate="03/29/2002 04:58:05 PST Fri">
+        <definition>COD: (of rain, hail, or snow) fall very heavily. </definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pelt"/>
+    </lexUnit>
+</frame>

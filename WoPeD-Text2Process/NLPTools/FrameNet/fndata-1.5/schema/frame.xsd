@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+<!-- 
+    1. Root element is 'frame'
+    2. 'frame' has 3 attributes:
+        1. 'ID', a nonNegativeInteger
+        2. 'name' a word (that could contain underscores/dashes etc.) starting with a capital letter
+        3. 'cDate' dayabbr monthabbr daynum hour:min:sec timezone year
+    3. 'frame' has 3 elements:
+        1. 'definition' a string
+        2. 'fe'a complex type described below (1+)
+        3. 'lexUnit' a complex type described below (0+)
+    3.2.1 'fe' has 7 attributes:
+        1. 'ID' (same as above description)
+        2. 'name' (same as above description)
+        3. 'abbrev' (same type as 'name')
+        4. 'cDate' (same as above description)
+        5. 'coreType' (same type as 'name')
+        6. 'fgColor' (a word (lowercase) indicating a color)
+        7. 'bgColor' (same type as 'fgColor')
+    3.2.2 'fe' has 2 elements:
+        1. 'definition' (a string)
+        2. 'semType' (just as two attributes 'ID' and 'name') (implied 0+)
+    3.3.1 'lexUnit' has 6 attributes:
+        1. 'ID' (same as above description)
+        2. 'name' (word with a period followed by a letter)
+        3. 'POS' (a capital letter)
+        4. 'status' (capital letter word)
+        5. 'cDate' (same as above)
+        6. 'lemmaId' (a nonNegativeInteger)
+    3.3.2 'lexUnit' has 4 elements
+        1. 'definition' (has SOURCE then a colon followed by a string)
+        2. 'annotation' (has 2 elements, 'annotated' and 'total' both nonNegativeIntegers)
+        3. 'lexeme' (a complex type described below) (1+)
+        4. 'semType' (same as above) (implied 0+)
+    3.3.2.3.1 'lexeme' has 4 attributes
+        1. 'ID' (same)
+        2. 'POS' (a capital letter)
+        3. 'breakBefore' (a boolean)
+        4. 'headWord' (a boolean)
+    3.3.2.3.2 'lexeme' has text
+-->
+    <xsd:include schemaLocation="commonTypes.xsd"/>
+    <xsd:element name="frame">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="definition" type="xsd:string"/>
+                <xsd:element name="semType" type="fn:semTypeRefType" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="FE" type="fn:FEType" maxOccurs="unbounded"/>
+                <xsd:element name="FEcoreSet" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="memberFE" type="fn:internalFrameRelationFEType" minOccurs="2" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="frameRelation" type="fn:relatedFramesType"
+                    maxOccurs="unbounded"/>
+                <xsd:element name="lexUnit" type="fn:frameLUType" 
+                    minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="ID" type="fn:IDType" use="required"/>
+            <xsd:attribute name="name" type="fn:frameNameType" use="required"/>
+            <xsd:attribute name="cDate" type="fn:dateTimeType" use="required"/>
+            <xsd:attribute name="cBy" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element> <!-- end 'frame' -->
+
+    <!-- FE Type -->
+    <xsd:complexType name="FEType">
+        <xsd:sequence>
+            <xsd:element name="definition" type="xsd:string"/>
+            <xsd:element name="semType" type="fn:semTypeRefType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="requiresFE" type="fn:internalFrameRelationFEType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="excludesFE" type="fn:internalFrameRelationFEType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="fn:IDType" use="required"/>
+        <xsd:attribute name="name" type="fn:frameNameType" use="required"/>
+        <xsd:attribute name="abbrev" type="xsd:string" use="required"/>
+        <xsd:attribute name="cDate" type="fn:dateTimeType" use="required"/>
+        <xsd:attribute name="cBy" type="xsd:string" use="required"/>
+        <xsd:attribute name="coreType" type="fn:coreType" use="required"/>
+        <xsd:attribute name="fgColor" type="fn:RGBColorType" use="required"/>
+        <xsd:attribute name="bgColor" type="fn:RGBColorType" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="internalFrameRelationFEType">
+        <xsd:attribute name="ID" type="xsd:int" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    
+    <!-- Related frames type -->
+    <xsd:complexType name="relatedFramesType">
+        <xsd:sequence>
+            <xsd:element name="relatedFrame" type="fn:frameNameType"
+                minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    
+    <!-- frame-embedded lexUnit type -->
+    <xsd:complexType name="frameLUType">
+        <xsd:sequence>
+            <xsd:element name="definition" type="fn:defType"/>
+            <xsd:element name="sentenceCount">
+                <xsd:complexType>
+                    <xsd:attribute name="total" type="fn:countType" use="required"/>
+                    <xsd:attribute name="annotated" type="fn:countType" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="lexeme" type="fn:lexemeType" maxOccurs="unbounded"/>
+            <xsd:element name="semType" type="fn:semTypeRefType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="fn:basicLUAttributes"/>
+        <xsd:attribute name="cDate" type="fn:dateTimeType" use="required"/>
+        <xsd:attribute name="cBy" type="xsd:string" use="required"/>
+        <xsd:attribute name="lemmaID" type="fn:IDType" use="required"/>
+    </xsd:complexType>
+</xsd:schema>

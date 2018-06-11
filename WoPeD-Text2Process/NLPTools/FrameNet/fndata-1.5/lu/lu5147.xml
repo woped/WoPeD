@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="April Fool's Day.n" ID="5147" frame="Commemorative" frameID="261" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="ded" name="Dedicated_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Ded_typ" name="Dedicated_type"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Hon" name="Honored_entity"/>
+        </frame>
+    </header>
+    <definition>COD: April, traditionally an occasion for playing tricks. </definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="April"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="N" name="Fool"/>
+    <lexeme order="3" headword="false" breakBefore="false" POS="SCON" name="'s"/>
+    <lexeme order="4" headword="true" breakBefore="false" POS="N" name="Day"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Dedicated_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <annoSet ID="1080433"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Dedicated_type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <annoSet ID="1080433"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1080433"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Dedicated_entity"/>
+            <FE name="Dedicated_type"/>
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1080433"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-other">
+        <sentence sentNo="0" aPos="109660849" ID="811880">
+            <text>Jennifer , she was born on April Fool 's Day . </text>
+            <annotationSet cDate="01/07/2003 03:27:03 PST Tue" status="UNANN" ID="1080431">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="9" start="9" name="PUN"/>
+                    <label end="13" start="11" name="PNP"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="22" start="19" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="31" start="27" name="NP0"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="39" start="38" name="POS"/>
+                    <label end="43" start="41" name="NN1-NP0"/>
+                    <label end="45" start="45" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:03 PST Tue" status="MANUAL" ID="1080433">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="43" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="9896" end="43" start="27" name="Dedicated_entity"/>
+                </layer>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="664" feID="2256" end="39" start="27" name="Honored_entity"/>
+                    <label cBy="664" feID="2257" end="43" start="41" name="Dedicated_type"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

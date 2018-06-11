@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="589" cDate="03/02/2010 02:19:25 PST Tue" name="Satisfying" ID="2233" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes an &lt;fen&gt;Agent&lt;/fen&gt; or an &lt;fen&gt;Entity&lt;/fen&gt; that does or does not meet a &lt;fen&gt;Standard&lt;/fen&gt;.  Alternatively, an action or occurrence may be construed as an &lt;fen&gt;Event&lt;/fen&gt; that meets or fails to meet the &lt;fen&gt;Standard&lt;/fen&gt;.
+&lt;ex&gt;Will &lt;fex name="Event"&gt;my coursework&lt;/fex&gt; &lt;t&gt;satisfy&lt;/t&gt; &lt;fex name="Standard"&gt;the requirements for admission&lt;/fex&gt;?&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;He&lt;/fex&gt; &lt;t&gt;satisfied&lt;/t&gt; &lt;fex name="Standard"&gt;his son's wish&lt;/fex&gt; &lt;fex name="Means"&gt;by buying him a Wii&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/02/2010 03:05:33 PST Tue" abbrev="" name="Agent" ID="13613">
+        <definition>&lt;def-root&gt;The volitional &lt;fen&gt;Agent&lt;/fen&gt; who is in line with a &lt;fen&gt;Standard&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/02/2010 03:06:10 PST Tue" abbrev="" name="Entity" ID="13614">
+        <definition>&lt;def-root&gt;The non-agentive &lt;fen&gt;Entity&lt;/fen&gt; that is in line with a &lt;fen&gt;Standard&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Core" cBy="589" cDate="03/02/2010 03:06:31 PST Tue" abbrev="" name="Event" ID="13615">
+        <definition>&lt;def-root&gt;An occurrence or action that brings about the satisfaction or nonsatisfaction of a &lt;fen&gt;Standard&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/02/2010 03:07:03 PST Tue" abbrev="" name="Standard" ID="13616">
+        <definition>&lt;def-root&gt;The condition or requirement that the &lt;fen&gt;Agent&lt;/fen&gt;, &lt;fen&gt;Entity&lt;/fen&gt;, or &lt;fen&gt;Event&lt;/fen&gt; satisfy (or not).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="03/02/2010 03:52:03 PST Tue" abbrev="" name="Manner" ID="13618">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Standard&lt;/fen&gt; is satisfied.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Peripheral" cBy="589" cDate="03/02/2010 03:53:19 PST Tue" abbrev="" name="Means" ID="13619">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Standard&lt;/fen&gt; is satisfied.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="03/02/2010 03:55:23 PST Tue" abbrev="" name="Time" ID="13620">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; in which satisfaction of the &lt;fen&gt;Standard&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Event" ID="13615"/>
+        <memberFE name="Entity" ID="13614"/>
+        <memberFE name="Agent" ID="13613"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Compliance</relatedFrame>
+        <relatedFrame>Meet_specifications</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Add_Annotation" POS="V" name="satisfy.v" ID="15655" lemmaID="34197" cBy="589" cDate="03/02/2010 04:00:15 PST Tue">
+        <definition>COD: comply with a condition, obligation, or demand</definition>
+        <sentenceCount annotated="2" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="satisfy"/>
+    </lexUnit>
+</frame>

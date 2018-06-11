@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="05/28/2001 04:57:06 PDT Mon" name="Bail_decision" ID="121" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame covers a step in a criminal process in which a  &lt;fen&gt;Judge&lt;/fen&gt; decides whether the &lt;fen&gt;Accused&lt;/fen&gt; should be released on bail, and, if so, what the amount of the bail should be. &lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="05/28/2001 05:01:22 PDT Mon" abbrev="Acc" name="Accused" ID="620">
+        <definition>&lt;def-root&gt;At the time of bail setting, the &lt;fen&gt;Accused&lt;/fen&gt; is held without bail/bond, released on his/her own recognizance, or required to give the Court  a specific amount of money for bail.
+&lt;ex&gt;Judge Duncan &lt;t&gt;fixed&lt;/t&gt; &lt;fex name="Accused"&gt;the doctor's&lt;/fex&gt; bail at one million dollars.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="05/28/2001 05:02:58 PDT Mon" abbrev="Judge" name="Judge" ID="621">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Judge&lt;/fen&gt;, as head of  the Court, determines the &lt;fen&gt;Accused&lt;/fen&gt;'s bail.
+&lt;ex&gt;&lt;fex name="Judge"&gt;Judge Duncan&lt;/fex&gt; &lt;t&gt;fixed&lt;/t&gt; the doctor's bail at one million dollars.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="05/28/2001 05:04:43 PDT Mon" abbrev="Stat" name="Status" ID="622">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Status&lt;/fen&gt; idenitifies the decision made with regard to bail.  The possible statuses are "without bail/bond", "on one's own recognizance", or a specific amount of money required for bail.
+&lt;ex&gt;Judge Duncan &lt;t&gt;fixed&lt;/t&gt; the doctor's bail &lt;fex name="Status"&gt;at one million dollars&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:41:27 PDT Thu" abbrev="Time" name="Time" ID="1638">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the bail setting occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:41:32 PDT Thu" abbrev="Place" name="Place" ID="1639">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the bail setting occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Mnr" name="Manner" ID="5381">
+        <definition>&lt;def-root&gt;Any description of the bail setting which is not covered by more specific FEs, including, secondary effects (openly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an Judge that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully).&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Means" name="Means" ID="5382">
+        <definition>&lt;def-root&gt;The method used by the &lt;fen&gt;Judge&lt;/fen&gt; to set the bail.
+
+&lt;ex&gt;It used to be that a judge would &lt;t&gt;set&lt;/t&gt; bail &lt;fex name="Means"&gt;purely by guesswork&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/15/2005 10:33:32 PST Thu" abbrev="pur" name="Purpose" ID="9771">
+        <definition>&lt;def-root&gt;The purpose for which the &lt;fen&gt;Judge&lt;/fen&gt; sets bail.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Arraignment</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Entering_of_plea</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="set.v" ID="2426" lemmaID="35224" cBy="145" cDate="05/28/2001 04:57:57 PDT Mon">
+        <definition>FN: To determine an amount of money for bail</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="fix.v" ID="2427" lemmaID="14547" cBy="145" cDate="05/28/2001 05:06:31 PDT Mon">
+        <definition>FN: To determine an amount of money for bail;</definition>
+        <sentenceCount annotated="3" total="236"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fix"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="order.v" ID="2428" lemmaID="26908" cBy="145" cDate="05/28/2001 05:10:53 PDT Mon">
+        <definition>FN: A judge's decision with regard to confinement or bail for a defendant.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="order"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bail.n" ID="2429" lemmaID="2698" cBy="145" cDate="05/28/2001 05:12:03 PDT Mon">
+        <definition>FN: Money paid to a court to guarantee one's appearance in court.</definition>
+        <sentenceCount annotated="20" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bond.n" ID="2430" lemmaID="4112" cBy="145" cDate="05/28/2001 05:14:41 PDT Mon">
+        <definition>FN: Money paid to guarantee one's performance of a duty; in this frame, to appear in court at the appropriate date.</definition>
+        <sentenceCount annotated="10" total="242"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bond"/>
+    </lexUnit>
+</frame>

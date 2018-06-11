@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="offer.v" ID="15659" frame="Offering" frameID="2239" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="off" name="Offerer"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Rec" name="Potential_recipient"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="pot" name="Purpose_of_theme"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: present (something) to be given.</definition>
+    <lexeme POS="V" name="offer"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Offerer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Offerer"/>
+                <annoSet ID="2591151"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Potential_recipient"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Potential_recipient"/>
+                <annoSet ID="2591151"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2591151"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Offerer"/>
+            <FE name="Potential_recipient"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Offerer"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Potential_recipient"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2591151"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-PPto-(1)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="406" aPos="94359676" ID="1578266">
+            <text>Then he offered sweets to Judy and two other chimps .</text>
+            <annotationSet cDate="07/16/2010 12:05:01 PDT Fri" status="UNANN" ID="2591150">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="6" start="5" name="PP"/>
+                    <label end="14" start="8" name="VVD"/>
+                    <label end="21" start="16" name="nns"/>
+                    <label end="24" start="23" name="to"/>
+                    <label end="29" start="26" name="NP"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="37" start="35" name="cd"/>
+                    <label end="43" start="39" name="jj"/>
+                    <label end="50" start="45" name="nns"/>
+                    <label end="52" start="52" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 12:05:01 PDT Fri" status="MANUAL" ID="2591151">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="14" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="13657" end="6" start="5" name="Offerer"/>
+                    <label cBy="571" feID="13659" end="21" start="16" name="Theme"/>
+                    <label cBy="571" feID="13658" end="29" start="23" name="Potential_recipient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="5" name="Ext"/>
+                    <label end="21" start="16" name="Obj"/>
+                    <label end="29" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="5" name="NP"/>
+                    <label end="21" start="16" name="NP"/>
+                    <label end="29" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-T-NP-NP-(1)"/>
+    <subCorpus name="03-NP-T-NP-(1)"/>
+    <subCorpus name="04-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="schoolmaster.n" ID="2294" frame="Education_teaching" frameID="111" totalAnnotated="17" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="cou" name="Course"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Duration"/>
+            <FE fgColor="FFFF00" bgColor="006400" type="Core" abbrev="fac" name="Fact"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Instn" name="Institution"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Lvl" name="Level"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FF0000" bgColor="7FFF00" type="Core" abbrev="mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Core" abbrev="pre" name="Precept"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Qual" name="Qualification"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="800080" bgColor="FFA500" type="Core" abbrev="rol" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="ski" name="Skill"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="stu" name="Student"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="sub" name="Subject"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="tea" name="Teacher"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a male teacher in a school. </definition>
+    <lexeme POS="N" name="schoolmaster"/>
+    <valences>
+        <FERealization total="9">
+            <FE name="Institution"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Institution"/>
+                <annoSet ID="98645"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Institution"/>
+                <annoSet ID="98607"/>
+                <annoSet ID="98613"/>
+                <annoSet ID="98615"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Institution"/>
+                <annoSet ID="98619"/>
+                <annoSet ID="98625"/>
+                <annoSet ID="98629"/>
+                <annoSet ID="98633"/>
+                <annoSet ID="98681"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Student"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Student"/>
+                <annoSet ID="98663"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Gen" PT="Poss" FE="Student"/>
+                <annoSet ID="98635"/>
+                <annoSet ID="98637"/>
+                <annoSet ID="98639"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="17">
+            <FE name="Teacher"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98607"/>
+                <annoSet ID="98613"/>
+                <annoSet ID="98625"/>
+                <annoSet ID="98637"/>
+                <annoSet ID="98639"/>
+                <annoSet ID="98645"/>
+                <annoSet ID="98663"/>
+                <annoSet ID="98719"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Teacher"/>
+                <annoSet ID="98615"/>
+                <annoSet ID="98619"/>
+                <annoSet ID="98629"/>
+                <annoSet ID="98633"/>
+                <annoSet ID="98635"/>
+                <annoSet ID="98665"/>
+                <annoSet ID="98681"/>
+                <annoSet ID="98691"/>
+                <annoSet ID="98697"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="9">
+            <FE name="Institution"/>
+            <FE name="Teacher"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Institution"/>
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98645"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Institution"/>
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98607"/>
+                <annoSet ID="98613"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Institution"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Teacher"/>
+                <annoSet ID="98615"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Institution"/>
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98625"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Institution"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Teacher"/>
+                <annoSet ID="98619"/>
+                <annoSet ID="98629"/>
+                <annoSet ID="98633"/>
+                <annoSet ID="98681"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Student"/>
+            <FE name="Teacher"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Student"/>
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98663"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Student"/>
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98637"/>
+                <annoSet ID="98639"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Student"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Teacher"/>
+                <annoSet ID="98635"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Teacher"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Teacher"/>
+                <annoSet ID="98719"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Teacher"/>
+                <annoSet ID="98665"/>
+                <annoSet ID="98691"/>
+                <annoSet ID="98697"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppat">
+        <sentence sentNo="0" aPos="10478512" ID="226013">
+            <text>Thus , when Richard Baxter was offered the position of schoolmaster at Dudley , he accepted and was ordained by the Bishop of Worcester on Advent Sunday 1638 . </text>
+            <annotationSet cDate="01/06/2003 07:37:56 PST Mon" status="UNANN" ID="98606">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="5" start="5" name="PUN"/>
+                    <label end="10" start="7" name="AVQ-CJS"/>
+                    <label end="18" start="12" name="NP0"/>
+                    <label end="25" start="20" name="NP0"/>
+                    <label end="29" start="27" name="VBD"/>
+                    <label end="37" start="31" name="VVN"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="53" start="52" name="PRF"/>
+                    <label end="66" start="55" name="NN1"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="76" start="71" name="NP0"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="81" start="80" name="PNP"/>
+                    <label end="90" start="83" name="VVD"/>
+                    <label end="94" start="92" name="CJC"/>
+                    <label end="98" start="96" name="VBD"/>
+                    <label end="107" start="100" name="VVN"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="121" start="116" name="NP0"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="134" start="126" name="NP0"/>
+                    <label end="137" start="136" name="PRP"/>
+                    <label end="144" start="139" name="NP0"/>
+                    <label end="151" start="146" name="NP0"/>
+                    <label end="156" start="153" name="CRD"/>
+                    <label end="158" start="158" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:56 PST Mon" status="MANUAL" ID="98607">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="66" start="55" name="Teacher"/>
+                    <label cBy="709" feID="543" end="76" start="68" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="68" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="68" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="66" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="50605737" ID="226016">
+            <text>When he was appointed is not known , but it was before 1496 , for the rent roll dated Christmas of that year shows payment of £10 to him as priest and Schoolmaster at Stockport . </text>
+            <annotationSet cDate="01/06/2003 07:37:56 PST Mon" status="UNANN" ID="98612">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="6" start="5" name="PNP"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="20" start="12" name="VVN"/>
+                    <label end="23" start="22" name="VBZ"/>
+                    <label end="27" start="25" name="XX0"/>
+                    <label end="33" start="29" name="VVN"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="42" start="41" name="PNP"/>
+                    <label end="46" start="44" name="VBD"/>
+                    <label end="53" start="48" name="PRP"/>
+                    <label end="58" start="55" name="CRD"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="64" start="62" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="73" start="70" name="NN1"/>
+                    <label end="78" start="75" name="NN1"/>
+                    <label end="84" start="80" name="VVD"/>
+                    <label end="94" start="86" name="NP0"/>
+                    <label end="97" start="96" name="PRF"/>
+                    <label end="102" start="99" name="DT0"/>
+                    <label end="107" start="104" name="NN1"/>
+                    <label end="113" start="109" name="VVZ"/>
+                    <label end="121" start="115" name="NN1"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="128" start="126" name="NN0"/>
+                    <label end="131" start="130" name="PRP"/>
+                    <label end="135" start="133" name="PNP"/>
+                    <label end="138" start="137" name="AV0"/>
+                    <label end="145" start="140" name="NN1"/>
+                    <label end="149" start="147" name="CJC"/>
+                    <label end="162" start="151" name="NN1-NP0"/>
+                    <label end="165" start="164" name="PRP"/>
+                    <label end="175" start="167" name="NP0"/>
+                    <label end="177" start="177" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="MANUAL" ID="98613">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="162" start="151" name="Teacher"/>
+                    <label cBy="709" feID="543" end="175" start="164" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="175" start="164" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="175" start="164" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="162" start="151" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67843463" ID="226017">
+            <text>Thereafter he was a schoolmaster at Worksop College , but was best known as a fast bowler for Essex and England . </text>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="UNANN" ID="98614">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="AV0"/>
+                    <label end="12" start="11" name="PNP"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="18" start="18" name="AT0"/>
+                    <label end="31" start="20" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="42" start="36" name="NP0"/>
+                    <label end="50" start="44" name="NP0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="60" start="58" name="VBD"/>
+                    <label end="65" start="62" name="AV0"/>
+                    <label end="71" start="67" name="VVN"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="76" start="76" name="AT0"/>
+                    <label end="81" start="78" name="AJ0"/>
+                    <label end="88" start="83" name="NN1"/>
+                    <label end="92" start="90" name="PRP"/>
+                    <label end="98" start="94" name="NP0"/>
+                    <label end="102" start="100" name="CJC"/>
+                    <label end="110" start="104" name="NP0"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="MANUAL" ID="98615">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="12" start="11" name="Teacher"/>
+                    <label cBy="709" feID="543" end="50" start="33" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="11" name="Ext"/>
+                    <label end="50" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="11" name="NP"/>
+                    <label end="50" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="14" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-ppfrom"/>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="10476855" ID="226019">
+            <text>He acknowledged the great help and encouragement he received from Mr. John Owen , schoolmaster of Wroxeter free school ( not the famous Puritan of the same name ) . </text>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="UNANN" ID="98618">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="14" start="3" name="VVD"/>
+                    <label end="18" start="16" name="AT0"/>
+                    <label end="24" start="20" name="AJ0"/>
+                    <label end="29" start="26" name="NN1"/>
+                    <label end="33" start="31" name="CJC"/>
+                    <label end="47" start="35" name="NN1"/>
+                    <label end="50" start="49" name="PNP"/>
+                    <label end="59" start="52" name="VVD"/>
+                    <label end="64" start="61" name="PRP"/>
+                    <label end="68" start="66" name="NP0"/>
+                    <label end="73" start="70" name="NP0"/>
+                    <label end="78" start="75" name="NP0"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="93" start="82" name="NN1"/>
+                    <label end="96" start="95" name="PRF"/>
+                    <label end="105" start="98" name="NP0"/>
+                    <label end="110" start="107" name="AJ0"/>
+                    <label end="117" start="112" name="NN1"/>
+                    <label end="119" start="119" name="PUL"/>
+                    <label end="123" start="121" name="XX0"/>
+                    <label end="127" start="125" name="AT0"/>
+                    <label end="134" start="129" name="AJ0"/>
+                    <label end="142" start="136" name="NN1"/>
+                    <label end="145" start="144" name="PRF"/>
+                    <label end="149" start="147" name="AT0"/>
+                    <label end="154" start="151" name="DT0"/>
+                    <label end="159" start="156" name="NN1"/>
+                    <label end="161" start="161" name="PUR"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="MANUAL" ID="98619">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="78" start="66" name="Teacher"/>
+                    <label cBy="709" feID="543" end="117" start="95" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="78" start="66" name="Ext"/>
+                    <label end="117" start="95" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="78" start="66" name="NP"/>
+                    <label end="117" start="95" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="93" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41962564" ID="226022">
+            <text>The schoolmaster of St. Andrews was ambitious ` and aspires eagerly to the dignity of being professor of humanity in this university &quot; . </text>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="UNANN" ID="98624">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="15" start="4" name="NN1"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="22" start="20" name="NP0"/>
+                    <label end="30" start="24" name="NP0"/>
+                    <label end="34" start="32" name="VBD"/>
+                    <label end="44" start="36" name="AJ0"/>
+                    <label end="46" start="46" name="PUQ"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="58" start="52" name="NN2-VVZ"/>
+                    <label end="66" start="60" name="AV0"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="81" start="75" name="NN1"/>
+                    <label end="84" start="83" name="PRF"/>
+                    <label end="90" start="86" name="VBG"/>
+                    <label end="100" start="92" name="NN1"/>
+                    <label end="103" start="102" name="PRF"/>
+                    <label end="112" start="105" name="NN1"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="120" start="117" name="DT0"/>
+                    <label end="131" start="122" name="NN1"/>
+                    <label end="133" start="133" name="PUQ"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:57 PST Mon" status="MANUAL" ID="98625">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="15" start="4" name="Teacher"/>
+                    <label cBy="709" feID="543" end="30" start="17" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67660919" ID="226024">
+            <text>After her death , he married Margaret Ann , daughter of Angus McEwan , schoolmaster of Assynt ; they had two sons . </text>
+            <annotationSet cDate="01/06/2003 07:37:58 PST Mon" status="UNANN" ID="98628">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS-PRP"/>
+                    <label end="8" start="6" name="DPS"/>
+                    <label end="14" start="10" name="NN1"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="19" start="18" name="PNP"/>
+                    <label end="27" start="21" name="VVD"/>
+                    <label end="36" start="29" name="NP0"/>
+                    <label end="40" start="38" name="NP0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="51" start="44" name="NN1"/>
+                    <label end="54" start="53" name="PRF"/>
+                    <label end="60" start="56" name="NP0"/>
+                    <label end="67" start="62" name="NP0"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="82" start="71" name="NN1"/>
+                    <label end="85" start="84" name="PRF"/>
+                    <label end="92" start="87" name="NP0"/>
+                    <label end="94" start="94" name="PUN"/>
+                    <label end="99" start="96" name="PNP"/>
+                    <label end="103" start="101" name="VHD"/>
+                    <label end="107" start="105" name="CRD"/>
+                    <label end="112" start="109" name="NN2"/>
+                    <label end="114" start="114" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:58 PST Mon" status="MANUAL" ID="98629">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="67" start="56" name="Teacher"/>
+                    <label cBy="709" feID="543" end="92" start="84" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="56" name="Ext"/>
+                    <label end="92" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="56" name="NP"/>
+                    <label end="92" start="84" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="68148305" ID="226026">
+            <text>Josselin was schoolmaster of Earls Colne from 1650 to 1658 and we learn about education and about his own reading habits , as well as his theories and even his dreams . </text>
+            <annotationSet cDate="01/06/2003 07:37:58 PST Mon" status="UNANN" ID="98632">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-NP0"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="24" start="13" name="NN1"/>
+                    <label end="27" start="26" name="PRF"/>
+                    <label end="33" start="29" name="NP0"/>
+                    <label end="39" start="35" name="NP0"/>
+                    <label end="44" start="41" name="PRP"/>
+                    <label end="49" start="46" name="CRD"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="57" start="54" name="CRD"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="64" start="63" name="PNP"/>
+                    <label end="70" start="66" name="VVB"/>
+                    <label end="76" start="72" name="PRP"/>
+                    <label end="86" start="78" name="NN1"/>
+                    <label end="90" start="88" name="CJC"/>
+                    <label end="96" start="92" name="PRP"/>
+                    <label end="100" start="98" name="DPS"/>
+                    <label end="104" start="102" name="DT0"/>
+                    <label end="112" start="106" name="NN1"/>
+                    <label end="119" start="114" name="NN2-VVZ"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="124" start="123" name="CJC"/>
+                    <label end="129" start="126" name="CJC"/>
+                    <label end="132" start="131" name="CJC"/>
+                    <label end="136" start="134" name="DPS"/>
+                    <label end="145" start="138" name="NN2"/>
+                    <label end="149" start="147" name="CJC"/>
+                    <label end="154" start="151" name="AV0"/>
+                    <label end="158" start="156" name="DPS"/>
+                    <label end="165" start="160" name="NN2"/>
+                    <label end="167" start="167" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:58 PST Mon" status="MANUAL" ID="98633">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="7" start="0" name="Teacher"/>
+                    <label cBy="709" feID="543" end="39" start="26" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="39" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="39" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="11" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="4093775" ID="226027">
+            <text>` I 'm not your schoolmaster , ` Lewis once crossly remarked to a pupil . </text>
+            <annotationSet cDate="01/06/2003 07:37:58 PST Mon" status="UNANN" ID="98634">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="PNP"/>
+                    <label end="5" start="4" name="VBB"/>
+                    <label end="9" start="7" name="XX0"/>
+                    <label end="14" start="11" name="DPS"/>
+                    <label end="27" start="16" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="31" start="31" name="PUQ"/>
+                    <label end="37" start="33" name="NP0"/>
+                    <label end="42" start="39" name="AV0"/>
+                    <label end="50" start="44" name="AV0"/>
+                    <label end="59" start="52" name="VVD-VVN"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="64" start="64" name="AT0"/>
+                    <label end="70" start="66" name="NN1"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:59 PST Mon" status="MANUAL" ID="98635">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="2" start="2" name="Teacher"/>
+                    <label cBy="709" feID="542" end="14" start="11" name="Student"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="2" name="Ext"/>
+                    <label end="14" start="11" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="2" name="NP"/>
+                    <label end="14" start="11" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="5" start="4" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32731349" ID="226028">
+            <text>Like Hooker , he was saved from becoming an apprentice by his schoolmaster . </text>
+            <annotationSet cDate="01/06/2003 07:37:59 PST Mon" status="UNANN" ID="98636">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PRP"/>
+                    <label end="10" start="5" name="NP0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="19" start="17" name="VBD"/>
+                    <label end="25" start="21" name="VVN"/>
+                    <label end="30" start="27" name="PRP"/>
+                    <label end="39" start="32" name="VVG"/>
+                    <label end="42" start="41" name="AT0"/>
+                    <label end="53" start="44" name="NN1"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="60" start="58" name="DPS"/>
+                    <label end="73" start="62" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:59 PST Mon" status="MANUAL" ID="98637">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="542" end="60" start="58" name="Student"/>
+                    <label cBy="709" feID="541" end="73" start="62" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="58" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="58" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76760123" ID="226029">
+            <text>He called persistently for his old schoolmaster to beat him . </text>
+            <annotationSet cDate="01/06/2003 07:37:59 PST Mon" status="UNANN" ID="98638">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="21" start="10" name="AV0"/>
+                    <label end="25" start="23" name="PRP"/>
+                    <label end="29" start="27" name="DPS"/>
+                    <label end="33" start="31" name="AJ0"/>
+                    <label end="46" start="35" name="NN1"/>
+                    <label end="49" start="48" name="TO0"/>
+                    <label end="54" start="51" name="VVI"/>
+                    <label end="58" start="56" name="PNP"/>
+                    <label end="60" start="60" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:37:59 PST Mon" status="MANUAL" ID="98639">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="542" end="29" start="27" name="Student"/>
+                    <label cBy="709" feID="541" end="46" start="35" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="27" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="27" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="2913993" ID="226032">
+            <text>He was succeeded as Master of Magdalene by another Eton schoolmaster , A. B. Ramsay . </text>
+            <annotationSet cDate="01/06/2003 07:38:00 PST Mon" status="UNANN" ID="98644">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="VVN"/>
+                    <label end="18" start="17" name="CJS-PRP"/>
+                    <label end="25" start="20" name="NN1-NP0"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="38" start="30" name="NN1-NP0"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="49" start="43" name="DT0"/>
+                    <label end="54" start="51" name="NN1-NP0"/>
+                    <label end="67" start="56" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="72" start="71" name="NP0"/>
+                    <label end="75" start="74" name="NP0"/>
+                    <label end="82" start="77" name="NN1-NP0"/>
+                    <label end="84" start="84" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:00 PST Mon" status="MANUAL" ID="98645">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="543" end="54" start="51" name="Institution"/>
+                    <label cBy="709" feID="541" end="67" start="56" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="51" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-ppother">
+        <sentence sentNo="0" aPos="9378910" ID="226041">
+            <text>Archie 's Nephew , a stable-companion of Rushing Wild , was scoring for the first time this season , having acted as a schoolmaster for novice riders in several earlier runs . </text>
+            <annotationSet cDate="01/06/2003 07:38:01 PST Mon" status="UNANN" ID="98662">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="15" start="10" name="NN1"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="36" start="21" name="NN1"/>
+                    <label end="39" start="38" name="PRF"/>
+                    <label end="47" start="41" name="VVG"/>
+                    <label end="52" start="49" name="AJ0-AV0"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="58" start="56" name="VBD"/>
+                    <label end="66" start="60" name="VVG"/>
+                    <label end="70" start="68" name="PRP"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="80" start="76" name="ORD"/>
+                    <label end="85" start="82" name="NN1"/>
+                    <label end="90" start="87" name="DT0"/>
+                    <label end="97" start="92" name="NN1"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="106" start="101" name="VHG"/>
+                    <label end="112" start="108" name="VVN"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="117" start="117" name="AT0"/>
+                    <label end="130" start="119" name="NN1"/>
+                    <label end="134" start="132" name="PRP"/>
+                    <label end="141" start="136" name="NN1"/>
+                    <label end="148" start="143" name="NN2"/>
+                    <label end="151" start="150" name="PRP"/>
+                    <label end="159" start="153" name="DT0"/>
+                    <label end="167" start="161" name="AJC"/>
+                    <label end="172" start="169" name="NN2"/>
+                    <label end="174" start="174" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:01 PST Mon" status="MANUAL" ID="98663">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="542" end="148" start="132" name="Student"/>
+                    <label cBy="709" feID="541" end="130" start="119" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="148" start="132" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="148" start="132" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="130" start="119" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14548842" ID="226042">
+            <text>George Halket ( 1690-1756 ) , schoolmaster in the parish of Rathen , songwriter , satirist and Hanoverian scourge . </text>
+            <annotationSet cDate="01/06/2003 07:38:01 PST Mon" status="UNANN" ID="98664">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="12" start="7" name="NP0"/>
+                    <label end="14" start="14" name="PUL"/>
+                    <label end="24" start="16" name="CRD"/>
+                    <label end="26" start="26" name="PUR"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="41" start="30" name="NN1"/>
+                    <label end="44" start="43" name="PRP"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="55" start="50" name="NN1"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="65" start="60" name="NP0"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="78" start="69" name="NN1"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="89" start="82" name="NN1"/>
+                    <label end="93" start="91" name="CJC"/>
+                    <label end="104" start="95" name="AJ0"/>
+                    <label end="112" start="106" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:01 PST Mon" status="MANUAL" ID="98665">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="26" start="0" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-pother"/>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="5522971" ID="226050">
+            <text>Gilpin was a schoolmaster and the vicar of Boldre in Hampshire , who spent his holidays sketching romantic countryside all over Britain . </text>
+            <annotationSet cDate="01/06/2003 07:38:02 PST Mon" status="UNANN" ID="98680">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="9" start="7" name="VBD"/>
+                    <label end="11" start="11" name="AT0"/>
+                    <label end="24" start="13" name="NN1"/>
+                    <label end="28" start="26" name="CJC"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="38" start="34" name="NN1"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="48" start="43" name="NN1-NP0"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="61" start="53" name="NP0"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="67" start="65" name="PNQ"/>
+                    <label end="73" start="69" name="VVD"/>
+                    <label end="77" start="75" name="DPS"/>
+                    <label end="86" start="79" name="NN2"/>
+                    <label end="96" start="88" name="VVG"/>
+                    <label end="105" start="98" name="AJ0"/>
+                    <label end="117" start="107" name="NN1"/>
+                    <label end="121" start="119" name="DT0"/>
+                    <label end="126" start="123" name="PRP"/>
+                    <label end="134" start="128" name="NP0"/>
+                    <label end="136" start="136" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:02 PST Mon" status="MANUAL" ID="98681">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="5" start="0" name="Teacher"/>
+                    <label cBy="709" feID="543" end="61" start="40" name="Institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="61" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="61" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="9" start="7" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22016747" ID="226055">
+            <text>By profession prior to retirement Bill Wickson was a schoolmaster , and for many years was Headmaster of South Norwood High School . </text>
+            <annotationSet cDate="01/06/2003 07:38:03 PST Mon" status="UNANN" ID="98690">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="12" start="3" name="NN1"/>
+                    <label end="18" start="14" name="PRP"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="32" start="23" name="NN1"/>
+                    <label end="37" start="34" name="NP0"/>
+                    <label end="45" start="39" name="NP0"/>
+                    <label end="49" start="47" name="VBD"/>
+                    <label end="51" start="51" name="AT0"/>
+                    <label end="64" start="53" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="70" start="68" name="CJC"/>
+                    <label end="74" start="72" name="PRP"/>
+                    <label end="79" start="76" name="DT0"/>
+                    <label end="85" start="81" name="NN2"/>
+                    <label end="89" start="87" name="VBD"/>
+                    <label end="100" start="91" name="NN1"/>
+                    <label end="103" start="102" name="PRF"/>
+                    <label end="109" start="105" name="NP0"/>
+                    <label end="117" start="111" name="NP0"/>
+                    <label end="122" start="119" name="AJ0"/>
+                    <label end="129" start="124" name="NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:03 PST Mon" status="MANUAL" ID="98691">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="45" start="34" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="34" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="34" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="49" start="47" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32413495" ID="226058">
+            <text>My parents wanted me to be a schoolmaster , but I married into the dry-cleaning business . &quot; </text>
+            <annotationSet cDate="01/06/2003 07:38:03 PST Mon" status="UNANN" ID="98696">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="9" start="3" name="NN2"/>
+                    <label end="16" start="11" name="VVD"/>
+                    <label end="19" start="18" name="PNP"/>
+                    <label end="22" start="21" name="TO0"/>
+                    <label end="25" start="24" name="VBI"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="40" start="29" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="48" start="48" name="PNP"/>
+                    <label end="56" start="50" name="VVD"/>
+                    <label end="61" start="58" name="PRP"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="78" start="67" name="AJ0"/>
+                    <label end="87" start="80" name="NN1"/>
+                    <label end="89" start="89" name="PUN"/>
+                    <label end="91" start="91" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:03 PST Mon" status="MANUAL" ID="98697">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="19" start="18" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="18" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="25" start="24" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="117320300" ID="226069">
+            <text>The plot concerns a highly respectable German schoolmaster , Professor Raat , who visits a nightclub ( The Blue Angel ) with the idea of catching out one of his morally wayward students . </text>
+            <annotationSet cDate="01/06/2003 07:38:04 PST Mon" status="UNANN" ID="98718">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="16" start="9" name="NN2-VVZ"/>
+                    <label end="18" start="18" name="AT0"/>
+                    <label end="25" start="20" name="AV0"/>
+                    <label end="37" start="27" name="AJ0"/>
+                    <label end="44" start="39" name="AJ0-NN1"/>
+                    <label end="57" start="46" name="NN1"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="69" start="61" name="NP0"/>
+                    <label end="74" start="71" name="NP0"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="80" start="78" name="PNQ"/>
+                    <label end="87" start="82" name="VVZ"/>
+                    <label end="89" start="89" name="AT0"/>
+                    <label end="99" start="91" name="NN1"/>
+                    <label end="101" start="101" name="PUL"/>
+                    <label end="105" start="103" name="AT0"/>
+                    <label end="110" start="107" name="AJ0"/>
+                    <label end="116" start="112" name="NN1"/>
+                    <label end="118" start="118" name="PUR"/>
+                    <label end="123" start="120" name="PRP"/>
+                    <label end="127" start="125" name="AT0"/>
+                    <label end="132" start="129" name="NN1"/>
+                    <label end="135" start="134" name="PRF"/>
+                    <label end="144" start="137" name="VVG"/>
+                    <label end="148" start="146" name="AVP"/>
+                    <label end="152" start="150" name="CRD"/>
+                    <label end="155" start="154" name="PRF"/>
+                    <label end="159" start="157" name="DPS"/>
+                    <label end="167" start="161" name="AV0"/>
+                    <label end="175" start="169" name="AJ0"/>
+                    <label end="184" start="177" name="NN2"/>
+                    <label end="186" start="186" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:38:05 PST Mon" status="MANUAL" ID="98719">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="541" end="57" start="46" name="Teacher"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

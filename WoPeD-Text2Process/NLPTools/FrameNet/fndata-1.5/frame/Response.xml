@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="12/15/2004 11:23:33 PST Wed" name="Response" ID="1302" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; performs a &lt;fen&gt;Response&lt;/fen&gt; action in consequence of a &lt;fen&gt;Trigger&lt;/fen&gt; event. In many cases, a non-agentive &lt;fen&gt;Responding_entity&lt;/fen&gt; causes the &lt;fen&gt;Response&lt;/fen&gt; after the &lt;fen&gt;Trigger&lt;/fen&gt; occurs.
+
+
+
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="12/15/2004 11:29:23 PST Wed" abbrev="res" name="Response" ID="7376">
+        <definition>&lt;def-root&gt;The means action whereby the &lt;fen&gt;Agent&lt;/fen&gt; responds to the Trigger.
+
+&lt;ex&gt;The diocese &lt;t&gt;responded&lt;/t&gt; &lt;fex name="res"&gt;by taking the property&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/15/2004 11:31:34 PST Wed" abbrev="res_e" name="Responding_entity" ID="7377">
+        <definition>&lt;def-root&gt;A non-agentive entity that is impinged upon by a &lt;fen&gt;Trigger&lt;/fen&gt; event to which they respond.
+
+&lt;ex&gt;&lt;fex name="res_e"&gt;This plastic&lt;/fex&gt; &lt;t&gt;responds&lt;/t&gt; well to pressure.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="7833"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/15/2004 11:33:06 PST Wed" abbrev="tri" name="Trigger" ID="7378">
+        <definition>&lt;def-root&gt;An event that impinges upon the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Responding_entity&lt;/fen&gt; and produces a &lt;fen&gt;Response&lt;/fen&gt; from it.
+
+&lt;ex&gt; How has the modern welfare state &lt;t&gt;responded&lt;/t&gt; &lt;fex name="tri"&gt;to the needs of working class women&lt;/fex&gt;, and why? &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/15/2004 11:35:41 PST Wed" abbrev="tim" name="Time" ID="7379">
+        <definition>&lt;def-root&gt;The point in time when the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Responding_entity&lt;/fen&gt;manifests its &lt;fen&gt;Response&lt;/fen&gt; to the &lt;fen&gt;Trigger&lt;/fen&gt;.
+
+&lt;ex&gt;Israel &lt;t&gt;responded&lt;/t&gt; &lt;fex name="Time"&gt;yesterday&lt;/fex&gt; to the killing of 22 people by Palestinian suicide bombers with a helicopter attack&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/15/2004 11:47:36 PST Wed" abbrev="man" name="Manner" ID="7380">
+        <definition>&lt;def-root&gt;A characterization of the &lt;fen&gt;Responding_entity&lt;/fen&gt;, &lt;fen&gt;Agent&lt;/fen&gt;, or their &lt;fen&gt;Response&lt;/fen&gt; action.
+
+&lt;ex&gt;The government agencies &lt;t&gt;responded&lt;/t&gt; &lt;fex name="man"&gt;slowly&lt;/fex&gt; and without much effort.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/15/2004 11:53:09 PST Wed" abbrev="pla" name="Place" ID="7381">
+        <definition>&lt;def-root&gt;The location in which the &lt;fen&gt;Response&lt;/fen&gt; action takes place.
+
+&lt;ex&gt;The auto industry has &lt;t&gt;responded&lt;/t&gt; &lt;fex name="Place"&gt;in the U.S., but particularly in Asian and European markets&lt;/fex&gt; by manufacturing an entry-level segment of cars that is more appealing, better looking, and safer than in the past.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/15/2004 11:56:12 PST Wed" abbrev="" name="Purpose" ID="7382">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Agent&lt;/fen&gt; intends to accomplish by performing the &lt;fen&gt;Response&lt;/fen&gt; action.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/20/2005 01:44:00 PDT Wed" abbrev="age" name="Agent" ID="7833">
+        <definition>&lt;def-root&gt;The intentional &lt;fen&gt;Agent&lt;/fen&gt; that is impinged upon by a &lt;fen&gt;Trigger&lt;/fen&gt; event to which they respond.
+
+&lt;ex&gt;Once again &lt;fex name="age"&gt;the Government&lt;/fex&gt; is &lt;t&gt;responding&lt;/t&gt; to a crisis with measures that will only harm patients&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="04/20/2005 01:47:42 PDT Wed" abbrev="dim" name="Dimension" ID="7834">
+        <definition>&lt;def-root&gt;A particular feature of the &lt;fen&gt;Responding_entity&lt;/fen&gt; or &lt;fen&gt;Agent&lt;/fen&gt; that is involved in the &lt;fen&gt;Response&lt;/fen&gt; action.
+
+&lt;ex&gt;Don't respond emotionally, &lt;t&gt;respond&lt;/t&gt; &lt;fex name="dim"&gt;rationally&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;The body's &lt;fex name="dim"&gt;immune&lt;/fex&gt; &lt;t&gt;response&lt;/t&gt; to this agent is particularly extreme.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="04/20/2005 01:50:33 PDT Wed" abbrev="rol" name="Role" ID="7835">
+        <definition>&lt;def-root&gt;The capacity of of the &lt;fen&gt;Agent&lt;/fen&gt; is their &lt;fen&gt;Response&lt;/fen&gt; act.
+
+&lt;ex&gt;His &lt;t&gt;response&lt;/t&gt; &lt;fex name="rol"&gt;as an official&lt;/fex&gt; was quite off-putting.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Eventive_affecting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Communication_response</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Response_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Deserving</relatedFrame>
+        <relatedFrame>Health_response</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="respond.v" ID="11468" lemmaID="32908" cBy="605" cDate="12/15/2004 11:30:32 PST Wed">
+        <definition>FN: do something as a reaction to</definition>
+        <sentenceCount annotated="33" total="233"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="respond"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="response.n" ID="11469" lemmaID="32910" cBy="605" cDate="12/15/2004 11:31:01 PST Wed">
+        <definition>FN: a reaction</definition>
+        <sentenceCount annotated="53" total="457"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="response"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="react.v" ID="11470" lemmaID="31958" cBy="605" cDate="12/15/2004 11:37:29 PST Wed">
+        <definition>COD: respond to something in a particular way or with particular behaviour</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="react"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="reaction.n" ID="11471" lemmaID="31959" cBy="605" cDate="12/15/2004 11:37:53 PST Wed">
+        <definition>COD: an instance of reacting to or against something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reaction"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="meet.v" ID="15654" lemmaID="23890" cBy="589" cDate="02/26/2010 03:39:51 PST Fri">
+        <definition>FN: to respond to (something)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meet"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,1736 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="V" name="acquit.v" ID="6180" frame="Verdict" frameID="318" totalAnnotated="23" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="NYTIMES" ID="100">
+            <document description="apwsE980312.0584" ID="108"/>
+            <document description="apwsE980403.0662" ID="109"/>
+            <document description="apwsE980303.0902" ID="111"/>
+            <document description="apwsE980413.0662" ID="115"/>
+            <document description="apwsE980402.0285" ID="116"/>
+            <document description="apwsE980330.0395" ID="118"/>
+            <document description="apwsE980314.0155" ID="119"/>
+        </corpus>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Cse" name="Case"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Chrg" name="Charges"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Defend" name="Defendant"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Vdct" name="Finding"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Judge" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="LBasis" name="Legal_Basis"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: formally declare not guilty of a criminal charge</definition>
+    <lexeme POS="V" name="acquit"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Case"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Case"/>
+                <annoSet ID="1833851"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="22">
+            <FE name="Charges"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Charges"/>
+                <annoSet ID="1909289"/>
+            </pattern>
+            <pattern total="12">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <annoSet ID="1833853"/>
+                <annoSet ID="1833867"/>
+                <annoSet ID="1833871"/>
+                <annoSet ID="1833873"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+                <annoSet ID="1909223"/>
+                <annoSet ID="1909227"/>
+                <annoSet ID="1909235"/>
+                <annoSet ID="1909245"/>
+                <annoSet ID="1909247"/>
+                <annoSet ID="1909249"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Charges"/>
+                <annoSet ID="1909247"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <annoSet ID="1833857"/>
+                <annoSet ID="1833865"/>
+                <annoSet ID="1909259"/>
+                <annoSet ID="1909261"/>
+                <annoSet ID="1909265"/>
+                <annoSet ID="1909267"/>
+                <annoSet ID="1909273"/>
+                <annoSet ID="1909291"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="23">
+            <FE name="Defendant"/>
+            <pattern total="12">
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <annoSet ID="1833851"/>
+                <annoSet ID="1833853"/>
+                <annoSet ID="1833865"/>
+                <annoSet ID="1833867"/>
+                <annoSet ID="1833873"/>
+                <annoSet ID="1909223"/>
+                <annoSet ID="1909227"/>
+                <annoSet ID="1909235"/>
+                <annoSet ID="1909245"/>
+                <annoSet ID="1909259"/>
+                <annoSet ID="1909291"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+            <pattern total="11">
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <annoSet ID="1833857"/>
+                <annoSet ID="1833871"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+                <annoSet ID="1909247"/>
+                <annoSet ID="1909249"/>
+                <annoSet ID="1909261"/>
+                <annoSet ID="1909265"/>
+                <annoSet ID="1909267"/>
+                <annoSet ID="1909273"/>
+                <annoSet ID="1909289"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="23">
+            <FE name="Finding"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <annoSet ID="1833851"/>
+                <annoSet ID="1833853"/>
+                <annoSet ID="1833857"/>
+                <annoSet ID="1833865"/>
+                <annoSet ID="1833867"/>
+                <annoSet ID="1833871"/>
+                <annoSet ID="1833873"/>
+            </pattern>
+            <pattern total="16">
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+                <annoSet ID="1909223"/>
+                <annoSet ID="1909227"/>
+                <annoSet ID="1909235"/>
+                <annoSet ID="1909245"/>
+                <annoSet ID="1909247"/>
+                <annoSet ID="1909249"/>
+                <annoSet ID="1909259"/>
+                <annoSet ID="1909261"/>
+                <annoSet ID="1909265"/>
+                <annoSet ID="1909267"/>
+                <annoSet ID="1909273"/>
+                <annoSet ID="1909289"/>
+                <annoSet ID="1909291"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="22">
+            <FE name="Judge"/>
+            <pattern total="12">
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1833851"/>
+                <annoSet ID="1833853"/>
+                <annoSet ID="1833865"/>
+                <annoSet ID="1833867"/>
+                <annoSet ID="1833873"/>
+                <annoSet ID="1909223"/>
+                <annoSet ID="1909227"/>
+                <annoSet ID="1909235"/>
+                <annoSet ID="1909245"/>
+                <annoSet ID="1909259"/>
+                <annoSet ID="1909291"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+            <pattern total="10">
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <annoSet ID="1833857"/>
+                <annoSet ID="1833871"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+                <annoSet ID="1909247"/>
+                <annoSet ID="1909249"/>
+                <annoSet ID="1909261"/>
+                <annoSet ID="1909265"/>
+                <annoSet ID="1909267"/>
+                <annoSet ID="1909289"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1909249"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Place"/>
+                <annoSet ID="1833873"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Time"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1833851"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+                <annoSet ID="1909247"/>
+                <annoSet ID="1909289"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1833867"/>
+                <annoSet ID="1909249"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1833873"/>
+                <annoSet ID="1909273"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1909267"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Case"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Case"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1833851"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Charges"/>
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1909247"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <annoSet ID="1833871"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1833853"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1909223"/>
+                <annoSet ID="1909227"/>
+                <annoSet ID="1909235"/>
+                <annoSet ID="1909245"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <annoSet ID="1833857"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <annoSet ID="1909261"/>
+                <annoSet ID="1909265"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1833865"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1909291"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Judge"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <annoSet ID="1909259"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Manner"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1909249"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1909299"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Place"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1833873"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Judge"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1909289"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1909217"/>
+                <annoSet ID="1909221"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Charges"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="--" FE="Finding"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1833867"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="" PT="CNI" FE="Judge"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1909267"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Charges"/>
+            <FE name="Defendant"/>
+            <FE name="Finding"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Defendant"/>
+                <valenceUnit GF="" PT="INC" FE="Finding"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1909273"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="04-NPjury, court-T">
+        <sentence corpID="100" docID="108" sentNo="1" paragNo="5" aPos="0" ID="1193310">
+            <text>On March 6 , 1997 , a jury acquitted Otegi in the deaths of Inaki Mendiluze and Jose Luis Gonzalez .</text>
+            <annotationSet cDate="02/12/2003 04:27:54 PST Wed" status="UNANN" ID="1833850">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="NP"/>
+                    <label end="9" start="9" name="cd"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="16" start="13" name="cd"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="35" start="27" name="VVN"/>
+                    <label end="41" start="37" name="NP"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="55" start="50" name="nns"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="64" start="60" name="NP"/>
+                    <label end="74" start="66" name="NP"/>
+                    <label end="78" start="76" name="cc"/>
+                    <label end="83" start="80" name="NP"/>
+                    <label end="88" start="85" name="NP"/>
+                    <label end="97" start="90" name="NP"/>
+                    <label end="99" start="99" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:27:56 PST Wed" status="AUTO_EDITED" ID="1833851">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="35" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2757" end="25" start="20" name="Judge"/>
+                    <label cBy="605" feID="2759" end="41" start="37" name="Defendant"/>
+                    <label cBy="605" feID="3082" end="97" start="43" name="Case"/>
+                    <label cBy="605" feID="3132" end="18" start="0" name="Time"/>
+                    <label cBy="309" feID="2758" end="35" start="27" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="20" name="Ext"/>
+                    <label end="41" start="37" name="Obj"/>
+                    <label end="97" start="43" name="Dep"/>
+                    <label end="18" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="20" name="NP"/>
+                    <label end="41" start="37" name="NP"/>
+                    <label end="97" start="43" name="PP"/>
+                    <label end="18" start="0" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="100" docID="109" sentNo="1" paragNo="3" aPos="0" ID="1193311">
+            <text>A Broward County jury acquitted Ruddock of a charge that he ripped a diamond ring off Alexandra Williams ' finger at the fighter 's home two years ago .</text>
+            <annotationSet cDate="02/12/2003 04:27:56 PST Wed" status="UNANN" ID="1833852">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="NP"/>
+                    <label end="15" start="10" name="NP"/>
+                    <label end="20" start="17" name="nn"/>
+                    <label end="30" start="22" name="VVN"/>
+                    <label end="38" start="32" name="NP"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="43" start="43" name="dt"/>
+                    <label end="50" start="45" name="nn"/>
+                    <label end="55" start="52" name="in"/>
+                    <label end="58" start="57" name="PP"/>
+                    <label end="65" start="60" name="VVD"/>
+                    <label end="67" start="67" name="dt"/>
+                    <label end="75" start="69" name="nn"/>
+                    <label end="80" start="77" name="nn"/>
+                    <label end="84" start="82" name="in"/>
+                    <label end="94" start="86" name="NP"/>
+                    <label end="103" start="96" name="NP"/>
+                    <label end="105" start="105" name="POS"/>
+                    <label end="112" start="107" name="nn"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="119" start="117" name="dt"/>
+                    <label end="127" start="121" name="nn"/>
+                    <label end="130" start="129" name="POS"/>
+                    <label end="135" start="132" name="nn"/>
+                    <label end="139" start="137" name="cd"/>
+                    <label end="145" start="141" name="nns"/>
+                    <label end="149" start="147" name="rb"/>
+                    <label end="151" start="151" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:27:59 PST Wed" status="AUTO_EDITED" ID="1833853">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="30" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2757" end="20" start="0" name="Judge"/>
+                    <label cBy="605" feID="2759" end="38" start="32" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="149" start="40" name="Charges"/>
+                    <label cBy="309" feID="2758" end="30" start="22" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="0" name="Ext"/>
+                    <label end="38" start="32" name="Obj"/>
+                    <label end="149" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="0" name="NP"/>
+                    <label end="38" start="32" name="NP"/>
+                    <label end="149" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-XPconvict"/>
+    <subCorpus name="06-T-NPcharge, count, court">
+        <sentence corpID="100" docID="111" sentNo="1" paragNo="2" aPos="0" ID="1193313">
+            <text>DEDHAM , Massachusetts ( AP ) --- Boston Red Sox first baseman Mo Vaughn was acquitted on a charge of drunken driving after a two-day trial .</text>
+            <annotationSet cDate="02/12/2003 04:28:01 PST Wed" status="UNANN" ID="1833856">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="21" start="9" name="NP"/>
+                    <label end="23" start="23" name="("/>
+                    <label end="26" start="25" name="NP"/>
+                    <label end="28" start="28" name=")"/>
+                    <label end="32" start="30" name=":"/>
+                    <label end="39" start="34" name="NP"/>
+                    <label end="43" start="41" name="NP"/>
+                    <label end="47" start="45" name="NP"/>
+                    <label end="53" start="49" name="jj"/>
+                    <label end="61" start="55" name="nn"/>
+                    <label end="64" start="63" name="NP"/>
+                    <label end="71" start="66" name="NP"/>
+                    <label end="75" start="73" name="VBD"/>
+                    <label end="85" start="77" name="VVN"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="90" start="90" name="dt"/>
+                    <label end="97" start="92" name="nn"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="108" start="102" name="jj"/>
+                    <label end="116" start="110" name="nn"/>
+                    <label end="122" start="118" name="in"/>
+                    <label end="124" start="124" name="dt"/>
+                    <label end="132" start="126" name="jj"/>
+                    <label end="138" start="134" name="nn"/>
+                    <label end="140" start="140" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:28:02 PST Wed" status="AUTO_EDITED" ID="1833857">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="85" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2759" end="71" start="34" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="116" start="87" name="Charges"/>
+                    <label cBy="605" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="85" start="77" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="34" name="Ext"/>
+                    <label end="116" start="87" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="34" name="NP"/>
+                    <label end="116" start="87" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="100" docID="115" sentNo="1" paragNo="46" aPos="0" ID="1193317">
+            <text>Consequently , Yew acquitted and discharged the accused on all charges .</text>
+            <annotationSet cDate="02/12/2003 04:28:07 PST Wed" status="UNANN" ID="1833864">
+                <layer rank="1" name="PENN">
+                    <label end="11" start="0" name="rb"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="17" start="15" name="NP"/>
+                    <label end="27" start="19" name="VVN"/>
+                    <label end="31" start="29" name="cc"/>
+                    <label end="42" start="33" name="VVN"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="54" start="48" name="VVN"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="69" start="63" name="nns"/>
+                    <label end="71" start="71" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:28:08 PST Wed" status="AUTO_EDITED" ID="1833865">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="27" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2757" end="17" start="15" name="Judge"/>
+                    <label cBy="605" feID="2759" end="54" start="44" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="69" start="56" name="Charges"/>
+                    <label cBy="309" feID="2758" end="27" start="19" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="15" name="Ext"/>
+                    <label end="54" start="44" name="Obj"/>
+                    <label end="69" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="15" name="NP"/>
+                    <label end="54" start="44" name="NP"/>
+                    <label end="69" start="56" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="100" docID="116" sentNo="1" paragNo="18" aPos="0" ID="1193318">
+            <text>KUALA LUMPUR , Fri. - The Sessions Court today acquitted the managing director of Intrakota Consolidated Berhad of a charge of allowing the company 's bus to emit excessive smoke .</text>
+            <annotationSet cDate="02/12/2003 04:28:08 PST Wed" status="UNANN" ID="1833866">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="11" start="6" name="NP"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="18" start="15" name="NP"/>
+                    <label end="20" start="20" name=":"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="33" start="26" name="NP"/>
+                    <label end="39" start="35" name="NP"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="55" start="47" name="VVN"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="68" start="61" name="VVG"/>
+                    <label end="77" start="70" name="nn"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="90" start="82" name="NP"/>
+                    <label end="103" start="92" name="NP"/>
+                    <label end="110" start="105" name="NP"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="115" start="115" name="dt"/>
+                    <label end="122" start="117" name="nn"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="134" start="127" name="VVG"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="146" start="140" name="nn"/>
+                    <label end="149" start="148" name="POS"/>
+                    <label end="153" start="151" name="nn"/>
+                    <label end="156" start="155" name="to"/>
+                    <label end="161" start="158" name="VV"/>
+                    <label end="171" start="163" name="jj"/>
+                    <label end="177" start="173" name="nn"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:28:09 PST Wed" status="AUTO_EDITED" ID="1833867">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="55" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2757" end="39" start="22" name="Judge"/>
+                    <label cBy="605" feID="3132" end="45" start="41" name="Time"/>
+                    <label cBy="605" feID="2759" end="110" start="57" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="177" start="112" name="Charges"/>
+                    <label cBy="309" feID="2758" end="55" start="47" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="22" name="Ext"/>
+                    <label end="45" start="41" name="Dep"/>
+                    <label end="110" start="57" name="Obj"/>
+                    <label end="177" start="112" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="22" name="NP"/>
+                    <label end="45" start="41" name="AVP"/>
+                    <label end="110" start="57" name="NP"/>
+                    <label end="177" start="112" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="100" docID="118" sentNo="2" paragNo="3" aPos="0" ID="1193320">
+            <text>He was acquitted of charges he forced a Muslim boy to eat pork .</text>
+            <annotationSet cDate="02/12/2003 04:28:12 PST Wed" status="UNANN" ID="1833870">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="VVN"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="26" start="20" name="nns"/>
+                    <label end="29" start="28" name="PP"/>
+                    <label end="36" start="31" name="VVD"/>
+                    <label end="38" start="38" name="dt"/>
+                    <label end="45" start="40" name="jj"/>
+                    <label end="49" start="47" name="nn"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="56" start="54" name="VV"/>
+                    <label end="61" start="58" name="nn"/>
+                    <label end="63" start="63" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:28:12 PST Wed" status="AUTO_EDITED" ID="1833871">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="15" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2759" end="1" start="0" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="61" start="17" name="Charges"/>
+                    <label cBy="605" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="15" start="7" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="61" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="61" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="100" docID="119" sentNo="1" paragNo="2" aPos="0" ID="1193321">
+            <text>ROME ( AP ) --- A court here Saturday acquitted former Italian Premier Bettino Craxi of corruption charges in connection with alleged kickbacks for work on the Rome subway system .</text>
+            <annotationSet cDate="02/12/2003 04:28:13 PST Wed" status="UNANN" ID="1833872">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="5" start="5" name="("/>
+                    <label end="8" start="7" name="NP"/>
+                    <label end="10" start="10" name=")"/>
+                    <label end="14" start="12" name=":"/>
+                    <label end="16" start="16" name="dt"/>
+                    <label end="22" start="18" name="nn"/>
+                    <label end="27" start="24" name="rb"/>
+                    <label end="36" start="29" name="NP"/>
+                    <label end="46" start="38" name="VVN"/>
+                    <label end="53" start="48" name="jj"/>
+                    <label end="61" start="55" name="jj"/>
+                    <label end="69" start="63" name="NP"/>
+                    <label end="77" start="71" name="NP"/>
+                    <label end="83" start="79" name="NP"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="97" start="88" name="nn"/>
+                    <label end="105" start="99" name="nns"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="119" start="110" name="nn"/>
+                    <label end="124" start="121" name="in"/>
+                    <label end="132" start="126" name="jj"/>
+                    <label end="142" start="134" name="nns"/>
+                    <label end="146" start="144" name="in"/>
+                    <label end="151" start="148" name="nn"/>
+                    <label end="154" start="153" name="in"/>
+                    <label end="158" start="156" name="dt"/>
+                    <label end="163" start="160" name="NP"/>
+                    <label end="170" start="165" name="nn"/>
+                    <label end="177" start="172" name="nn"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/12/2003 04:28:14 PST Wed" status="AUTO_EDITED" ID="1833873">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="46" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2757" end="22" start="16" name="Judge"/>
+                    <label cBy="605" feID="3133" end="27" start="24" name="Place"/>
+                    <label cBy="605" feID="3132" end="36" start="29" name="Time"/>
+                    <label cBy="605" feID="2759" end="83" start="48" name="Defendant"/>
+                    <label cBy="605" feID="3081" end="177" start="85" name="Charges"/>
+                    <label cBy="309" feID="2758" end="46" start="38" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="16" name="Ext"/>
+                    <label end="27" start="24" name="Dep"/>
+                    <label end="36" start="29" name="Dep"/>
+                    <label end="83" start="48" name="Obj"/>
+                    <label end="177" start="85" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="16" name="NP"/>
+                    <label end="27" start="24" name="AVP"/>
+                    <label end="36" start="29" name="NP"/>
+                    <label end="83" start="48" name="NP"/>
+                    <label end="177" start="85" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-T-NP-XPpping,of"/>
+    <subCorpus name="08-T-NP-PPof, on"/>
+    <subCorpus name="09-T-PPon, in, of"/>
+    <subCorpus name="11-T-NP"/>
+    <subCorpus name="12-NP-T"/>
+    <subCorpus name="other-matched"/>
+    <subCorpus name="other-unmatched"/>
+    <subCorpus name="07-T-NP-PPOF-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1928" aPos="0" ID="1231088">
+            <text>On March 12 , 1991 , José de Almeida , the leader of the illegal separatist Azores Liberation Front , was acquitted of charges of treason .</text>
+            <annotationSet cDate="06/19/2003 10:02:34 PDT Thu" status="UNANN" ID="1909216">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="NP"/>
+                    <label end="10" start="9" name="cd"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="17" start="14" name="cd"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="25" start="21" name="NP"/>
+                    <label end="28" start="27" name="NP"/>
+                    <label end="36" start="30" name="NP"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="48" start="43" name="nn"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="63" start="57" name="jj"/>
+                    <label end="74" start="65" name="nn"/>
+                    <label end="81" start="76" name="NP"/>
+                    <label end="92" start="83" name="NP"/>
+                    <label end="98" start="94" name="NP"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="104" start="102" name="VBD"/>
+                    <label end="114" start="106" name="VVN"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="125" start="119" name="nns"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="136" start="130" name="nn"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:35 PDT Thu" status="MANUAL" ID="1909217">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="114" start="106" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3132" end="19" start="0" name="Time"/>
+                    <label cBy="618" feID="2759" end="100" start="21" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="136" start="116" name="Charges"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="114" start="106" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Dep"/>
+                    <label end="100" start="21" name="Ext"/>
+                    <label end="136" start="116" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="PP"/>
+                    <label end="100" start="21" name="NP"/>
+                    <label end="136" start="116" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="74" aPos="0" ID="1231090">
+            <text>On 13 December 1985 Jarrett was acquitted of this charge , and was awarded £350 costs against the police .</text>
+            <annotationSet cDate="06/19/2003 10:02:35 PDT Thu" status="UNANN" ID="1909220">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="4" start="3" name="cd"/>
+                    <label end="13" start="6" name="NP"/>
+                    <label end="18" start="15" name="cd"/>
+                    <label end="26" start="20" name="NP"/>
+                    <label end="30" start="28" name="VBD"/>
+                    <label end="40" start="32" name="VVN"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="48" start="45" name="dt"/>
+                    <label end="55" start="50" name="nn"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="61" start="59" name="cc"/>
+                    <label end="65" start="63" name="VBD"/>
+                    <label end="73" start="67" name="VVN"/>
+                    <label end="78" start="75" name="jj"/>
+                    <label end="84" start="80" name="nns"/>
+                    <label end="92" start="86" name="in"/>
+                    <label end="96" start="94" name="dt"/>
+                    <label end="103" start="98" name="nn"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:35 PDT Thu" status="MANUAL" ID="1909221">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="40" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3132" end="18" start="0" name="Time"/>
+                    <label cBy="618" feID="2759" end="26" start="20" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="55" start="42" name="Charges"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="40" start="32" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Dep"/>
+                    <label end="26" start="20" name="Ext"/>
+                    <label end="55" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="PP"/>
+                    <label end="26" start="20" name="NP"/>
+                    <label end="55" start="42" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1092" aPos="0" ID="1231091">
+            <text>The New York jury deliberated for four days before acquitting Noseir of Kahane 's assassination .</text>
+            <annotationSet cDate="06/19/2003 10:02:36 PDT Thu" status="UNANN" ID="1909222">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="NP"/>
+                    <label end="11" start="8" name="NP"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="28" start="18" name="VVD"/>
+                    <label end="32" start="30" name="in"/>
+                    <label end="37" start="34" name="cd"/>
+                    <label end="42" start="39" name="nns"/>
+                    <label end="49" start="44" name="in"/>
+                    <label end="60" start="51" name="VVG"/>
+                    <label end="67" start="62" name="nn"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="77" start="72" name="NP"/>
+                    <label end="80" start="79" name="POS"/>
+                    <label end="94" start="82" name="nn"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:36 PDT Thu" status="MANUAL" ID="1909223">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="60" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="16" start="0" name="Judge"/>
+                    <label cBy="618" feID="2759" end="67" start="62" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="94" start="69" name="Charges"/>
+                    <label cBy="309" feID="2758" end="60" start="51" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="0" name="Ext"/>
+                    <label end="67" start="62" name="Obj"/>
+                    <label end="94" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="0" name="NP"/>
+                    <label end="67" start="62" name="NP"/>
+                    <label end="94" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="136" aPos="0" ID="1231093">
+            <text>They acquitted him of three further charges of indecency and one of buggery .</text>
+            <annotationSet cDate="06/19/2003 10:02:36 PDT Thu" status="UNANN" ID="1909226">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="13" start="5" name="VVD"/>
+                    <label end="17" start="15" name="PP"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="26" start="22" name="cd"/>
+                    <label end="34" start="28" name="jj"/>
+                    <label end="42" start="36" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="55" start="47" name="nn"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="63" start="61" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="74" start="68" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:37 PDT Thu" status="MANUAL" ID="1909227">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="13" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="3" start="0" name="Judge"/>
+                    <label cBy="618" feID="2759" end="17" start="15" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="74" start="19" name="Charges"/>
+                    <label cBy="309" feID="2758" end="13" start="5" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="17" start="15" name="Obj"/>
+                    <label end="74" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="17" start="15" name="NP"/>
+                    <label end="74" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2057" aPos="0" ID="1231097">
+            <text>A MOTHER accused of trying to turn herself into a human fireball because she had been rejected by the boss she loved , wept yesterday as a jury acquitted her of attempted arson .</text>
+            <annotationSet cDate="06/19/2003 10:02:38 PDT Thu" status="UNANN" ID="1909234">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="7" start="2" name="nn"/>
+                    <label end="15" start="9" name="VVN"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="25" start="20" name="VVG"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="33" start="30" name="VV"/>
+                    <label end="41" start="35" name="PP"/>
+                    <label end="46" start="43" name="in"/>
+                    <label end="48" start="48" name="dt"/>
+                    <label end="54" start="50" name="jj"/>
+                    <label end="63" start="56" name="nn"/>
+                    <label end="71" start="65" name="in"/>
+                    <label end="75" start="73" name="PP"/>
+                    <label end="79" start="77" name="VHD"/>
+                    <label end="84" start="81" name="VBN"/>
+                    <label end="93" start="86" name="VVN"/>
+                    <label end="96" start="95" name="in"/>
+                    <label end="100" start="98" name="dt"/>
+                    <label end="105" start="102" name="nn"/>
+                    <label end="109" start="107" name="PP"/>
+                    <label end="115" start="111" name="VVD"/>
+                    <label end="117" start="117" name=","/>
+                    <label end="122" start="119" name="VVD"/>
+                    <label end="132" start="124" name="nn"/>
+                    <label end="135" start="134" name="in"/>
+                    <label end="137" start="137" name="dt"/>
+                    <label end="142" start="139" name="nn"/>
+                    <label end="152" start="144" name="VVN"/>
+                    <label end="156" start="154" name="PP"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="169" start="161" name="jj"/>
+                    <label end="175" start="171" name="nn"/>
+                    <label end="177" start="177" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:38 PDT Thu" status="MANUAL" ID="1909235">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="152" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="142" start="137" name="Judge"/>
+                    <label cBy="618" feID="2759" end="156" start="154" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="175" start="158" name="Charges"/>
+                    <label cBy="309" feID="2758" end="152" start="144" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="142" start="137" name="Ext"/>
+                    <label end="156" start="154" name="Obj"/>
+                    <label end="175" start="158" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="142" start="137" name="NP"/>
+                    <label end="156" start="154" name="NP"/>
+                    <label end="175" start="158" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="211" aPos="0" ID="1231102">
+            <text>Another point relates to the fact that , in the first case , the jury acquitted the defendants of one charge and convicted them of Both charges arose out of the same facts .</text>
+            <annotationSet cDate="06/19/2003 10:02:40 PDT Thu" status="UNANN" ID="1909244">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="dt"/>
+                    <label end="12" start="8" name="nn"/>
+                    <label end="20" start="14" name="VVZ"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="37" start="34" name="wdt"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="52" start="48" name="jj"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="68" start="65" name="nn"/>
+                    <label end="78" start="70" name="VVN"/>
+                    <label end="82" start="80" name="dt"/>
+                    <label end="93" start="84" name="nns"/>
+                    <label end="96" start="95" name="in"/>
+                    <label end="100" start="98" name="cd"/>
+                    <label end="107" start="102" name="nn"/>
+                    <label end="111" start="109" name="cc"/>
+                    <label end="121" start="113" name="VVD"/>
+                    <label end="126" start="123" name="PP"/>
+                    <label end="129" start="128" name="in"/>
+                    <label end="134" start="131" name="dt"/>
+                    <label end="142" start="136" name="nns"/>
+                    <label end="148" start="144" name="VVD"/>
+                    <label end="152" start="150" name="rp"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="159" start="157" name="dt"/>
+                    <label end="164" start="161" name="jj"/>
+                    <label end="170" start="166" name="nns"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:41 PDT Thu" status="MANUAL" ID="1909245">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="78" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="68" start="61" name="Judge"/>
+                    <label cBy="618" feID="2759" end="93" start="80" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="107" start="95" name="Charges"/>
+                    <label cBy="309" feID="2758" end="78" start="70" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="61" name="Ext"/>
+                    <label end="93" start="80" name="Obj"/>
+                    <label end="107" start="95" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="61" name="NP"/>
+                    <label end="93" start="80" name="NP"/>
+                    <label end="107" start="95" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1321" aPos="0" ID="1231103">
+            <text>The Contemporary Arts Centre of Cincinnati was acquitted of obscenity on Oct. 5 for having displayed an exhibition of photographs by the late Robert Mapplethorpe .</text>
+            <annotationSet cDate="06/19/2003 10:02:41 PDT Thu" status="UNANN" ID="1909246">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="15" start="4" name="NP"/>
+                    <label end="20" start="17" name="NPS"/>
+                    <label end="27" start="22" name="NP"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="41" start="32" name="NP"/>
+                    <label end="45" start="43" name="VBD"/>
+                    <label end="55" start="47" name="VVN"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="68" start="60" name="nn"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="76" start="73" name="NP"/>
+                    <label end="78" start="78" name="cd"/>
+                    <label end="82" start="80" name="in"/>
+                    <label end="99" start="91" name="VVN"/>
+                    <label end="102" start="101" name="dt"/>
+                    <label end="113" start="104" name="nn"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="128" start="118" name="nns"/>
+                    <label end="131" start="130" name="in"/>
+                    <label end="135" start="133" name="dt"/>
+                    <label end="140" start="137" name="jj"/>
+                    <label end="147" start="142" name="NP"/>
+                    <label end="160" start="149" name="NP"/>
+                    <label end="162" start="162" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:41 PDT Thu" status="MANUAL" ID="1909247">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="55" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="618" feID="2759" end="41" start="0" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="68" start="57" name="Charges"/>
+                    <label cBy="618" feID="3132" end="78" start="70" name="Time"/>
+                    <label cBy="618" feID="3081" end="160" start="80" name="Charges"/>
+                    <label cBy="309" feID="2758" end="55" start="47" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="0" name="Ext"/>
+                    <label end="68" start="57" name="Dep"/>
+                    <label end="78" start="70" name="Dep"/>
+                    <label end="160" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="0" name="NP"/>
+                    <label end="68" start="57" name="PP"/>
+                    <label end="78" start="70" name="PP"/>
+                    <label end="160" start="80" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="107" aPos="0" ID="1231104">
+            <text>FORMER Liverpool City Council deputy leader Derek Hatton and two other people were yesterday formally acquitted of one charge of conspiring to defraud the city council .</text>
+            <annotationSet cDate="06/19/2003 10:02:41 PDT Thu" status="UNANN" ID="1909248">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="jj"/>
+                    <label end="15" start="7" name="NP"/>
+                    <label end="20" start="17" name="NP"/>
+                    <label end="28" start="22" name="NP"/>
+                    <label end="35" start="30" name="nn"/>
+                    <label end="42" start="37" name="nn"/>
+                    <label end="48" start="44" name="NP"/>
+                    <label end="55" start="50" name="NP"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="63" start="61" name="cd"/>
+                    <label end="69" start="65" name="jj"/>
+                    <label end="76" start="71" name="nns"/>
+                    <label end="81" start="78" name="VBD"/>
+                    <label end="91" start="83" name="rb"/>
+                    <label end="100" start="93" name="rb"/>
+                    <label end="110" start="102" name="VVN"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="117" start="115" name="cd"/>
+                    <label end="124" start="119" name="nn"/>
+                    <label end="127" start="126" name="in"/>
+                    <label end="138" start="129" name="VVG"/>
+                    <label end="141" start="140" name="to"/>
+                    <label end="149" start="143" name="VV"/>
+                    <label end="153" start="151" name="dt"/>
+                    <label end="158" start="155" name="nn"/>
+                    <label end="166" start="160" name="nn"/>
+                    <label end="168" start="168" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:42 PDT Thu" status="MANUAL" ID="1909249">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="110" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="618" feID="2759" end="76" start="0" name="Defendant"/>
+                    <label cBy="618" feID="3132" end="91" start="83" name="Time"/>
+                    <label cBy="618" feID="3296" end="100" start="93" name="Manner"/>
+                    <label cBy="618" feID="3081" end="166" start="112" name="Charges"/>
+                    <label cBy="309" feID="2758" end="110" start="102" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="0" name="Ext"/>
+                    <label end="91" start="83" name="Dep"/>
+                    <label end="100" start="93" name="Dep"/>
+                    <label end="166" start="112" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="0" name="NP"/>
+                    <label end="91" start="83" name="AVP"/>
+                    <label end="100" start="93" name="AVP"/>
+                    <label end="166" start="112" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="08-T-NP-PPon-(1)">
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="120" aPos="0" ID="1231109">
+            <text>Leese claimed that his ` martyrdom &quot; had been achieved against the wishes of the Jury who had acquitted him on the serious charge .</text>
+            <annotationSet cDate="06/19/2003 10:02:44 PDT Thu" status="UNANN" ID="1909258">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="12" start="6" name="VVD"/>
+                    <label end="17" start="14" name="in"/>
+                    <label end="21" start="19" name="PP$"/>
+                    <label end="33" start="25" name="nn"/>
+                    <label end="39" start="37" name="VHD"/>
+                    <label end="44" start="41" name="VBN"/>
+                    <label end="53" start="46" name="VVN"/>
+                    <label end="61" start="55" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="72" start="67" name="nns"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="84" start="81" name="NP"/>
+                    <label end="88" start="86" name="wp"/>
+                    <label end="92" start="90" name="VHD"/>
+                    <label end="102" start="94" name="VVN"/>
+                    <label end="106" start="104" name="PP"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="121" start="115" name="jj"/>
+                    <label end="128" start="123" name="nn"/>
+                    <label end="130" start="130" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:44 PDT Thu" status="MANUAL" ID="1909259">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="102" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="84" start="77" name="Judge"/>
+                    <label cBy="618" feID="2759" end="106" start="104" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="128" start="108" name="Charges"/>
+                    <label cBy="309" feID="2758" end="102" start="94" name="Finding"/>
+                    <label cBy="309" feID="2757" end="88" start="86" name="Judge"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="77" name="Ext"/>
+                    <label end="106" start="104" name="Obj"/>
+                    <label end="128" start="108" name="Dep"/>
+                    <label end="88" start="86" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="77" name="NP"/>
+                    <label end="106" start="104" name="NP"/>
+                    <label end="128" start="108" name="PP"/>
+                    <label end="88" start="86" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="84" start="77" name="Ant"/>
+                    <label end="88" start="86" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="99" aPos="0" ID="1231110">
+            <text>General Galtieri was acquitted on human rights charges but sentenced first by a military court , then , on appeal , by a civilian court on his conduct of the 1982 Falklands War .</text>
+            <annotationSet cDate="06/19/2003 10:02:44 PDT Thu" status="UNANN" ID="1909260">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="15" start="8" name="NP"/>
+                    <label end="19" start="17" name="VBD"/>
+                    <label end="29" start="21" name="VVN"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="38" start="34" name="jj"/>
+                    <label end="45" start="40" name="nns"/>
+                    <label end="53" start="47" name="nns"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="67" start="59" name="VVN"/>
+                    <label end="73" start="69" name="jj"/>
+                    <label end="76" start="75" name="in"/>
+                    <label end="78" start="78" name="dt"/>
+                    <label end="87" start="80" name="jj"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="95" start="95" name=","/>
+                    <label end="100" start="97" name="rb"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="112" start="107" name="nn"/>
+                    <label end="114" start="114" name=","/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="119" start="119" name="dt"/>
+                    <label end="128" start="121" name="jj"/>
+                    <label end="134" start="130" name="nn"/>
+                    <label end="137" start="136" name="in"/>
+                    <label end="141" start="139" name="PP$"/>
+                    <label end="149" start="143" name="nn"/>
+                    <label end="152" start="151" name="in"/>
+                    <label end="156" start="154" name="dt"/>
+                    <label end="161" start="158" name="cd"/>
+                    <label end="171" start="163" name="NP"/>
+                    <label end="175" start="173" name="NP"/>
+                    <label end="177" start="177" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:44 PDT Thu" status="MANUAL" ID="1909261">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="29" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2759" end="15" start="0" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="53" start="31" name="Charges"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="29" start="21" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="53" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="53" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="340" aPos="0" ID="1231112">
+            <text>Since 1986 Gotti had faced three previous trials and had been acquitted on all charges .</text>
+            <annotationSet cDate="06/19/2003 10:02:45 PDT Thu" status="UNANN" ID="1909264">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="9" start="6" name="cd"/>
+                    <label end="15" start="11" name="NP"/>
+                    <label end="19" start="17" name="VHD"/>
+                    <label end="25" start="21" name="VVN"/>
+                    <label end="31" start="27" name="cd"/>
+                    <label end="40" start="33" name="jj"/>
+                    <label end="47" start="42" name="nns"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="60" start="57" name="VBN"/>
+                    <label end="70" start="62" name="VVN"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="85" start="79" name="nns"/>
+                    <label end="87" start="87" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:45 PDT Thu" status="MANUAL" ID="1909265">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="70" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2759" end="15" start="11" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="85" start="72" name="Charges"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="70" start="62" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="11" name="Ext"/>
+                    <label end="85" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="11" name="NP"/>
+                    <label end="85" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="67" aPos="0" ID="1231113">
+            <text>In June 1991 they were acquitted on all charges and proceedings under the Criminal Justice Act 1988 were discontinued .</text>
+            <annotationSet cDate="06/19/2003 10:02:48 PDT Thu" status="UNANN" ID="1909266">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="NP"/>
+                    <label end="11" start="8" name="cd"/>
+                    <label end="16" start="13" name="PP"/>
+                    <label end="21" start="18" name="VBD"/>
+                    <label end="31" start="23" name="VVN"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="46" start="40" name="nns"/>
+                    <label end="50" start="48" name="cc"/>
+                    <label end="62" start="52" name="nns"/>
+                    <label end="68" start="64" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="81" start="74" name="NP"/>
+                    <label end="89" start="83" name="NP"/>
+                    <label end="93" start="91" name="NP"/>
+                    <label end="98" start="95" name="cd"/>
+                    <label end="103" start="100" name="VBD"/>
+                    <label end="116" start="105" name="VVN"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:48 PDT Thu" status="MANUAL" ID="1909267">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="31" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3132" end="11" start="0" name="Time"/>
+                    <label cBy="618" feID="2759" end="16" start="13" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="46" start="33" name="Charges"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="309" feID="2758" end="31" start="23" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Dep"/>
+                    <label end="16" start="13" name="Ext"/>
+                    <label end="46" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="PP"/>
+                    <label end="16" start="13" name="NP"/>
+                    <label end="46" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6082" aPos="0" ID="1231116">
+            <text>A GROUP of criminal lawyers is to complain to the Lord Chancellor , Lord Mackay , about the huge legal bill for six paratroopers acquitted last week on charges arising out of a fracas in Coalisland .</text>
+            <annotationSet cDate="06/19/2003 10:02:49 PDT Thu" status="UNANN" ID="1909272">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="NP"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="18" start="11" name="jj"/>
+                    <label end="26" start="20" name="nns"/>
+                    <label end="29" start="28" name="VBZ"/>
+                    <label end="32" start="31" name="to"/>
+                    <label end="41" start="34" name="VV"/>
+                    <label end="44" start="43" name="to"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="53" start="50" name="NP"/>
+                    <label end="64" start="55" name="NP"/>
+                    <label end="66" start="66" name=","/>
+                    <label end="71" start="68" name="NP"/>
+                    <label end="78" start="73" name="NP"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="86" start="82" name="in"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="95" start="92" name="jj"/>
+                    <label end="101" start="97" name="jj"/>
+                    <label end="106" start="103" name="nn"/>
+                    <label end="110" start="108" name="in"/>
+                    <label end="114" start="112" name="cd"/>
+                    <label end="127" start="116" name="nns"/>
+                    <label end="137" start="129" name="VVN"/>
+                    <label end="142" start="139" name="jj"/>
+                    <label end="147" start="144" name="nn"/>
+                    <label end="150" start="149" name="in"/>
+                    <label end="158" start="152" name="nns"/>
+                    <label end="166" start="160" name="VVG"/>
+                    <label end="170" start="168" name="rp"/>
+                    <label end="173" start="172" name="in"/>
+                    <label end="175" start="175" name="dt"/>
+                    <label end="182" start="177" name="nn"/>
+                    <label end="185" start="184" name="in"/>
+                    <label end="196" start="187" name="NP"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:49 PDT Thu" status="MANUAL" ID="1909273">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="137" start="129" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="2759" end="127" start="112" name="Defendant"/>
+                    <label cBy="664" feID="3132" end="147" start="139" name="Time"/>
+                    <label cBy="664" feID="3081" end="196" start="149" name="Charges"/>
+                    <label cBy="589" feID="2758" end="137" start="129" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="127" start="112" name="Ext"/>
+                    <label end="147" start="139" name="Dep"/>
+                    <label end="196" start="149" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="127" start="112" name="NP"/>
+                    <label end="147" start="139" name="NP"/>
+                    <label end="196" start="149" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="1405" aPos="0" ID="1231124">
+            <text>He was acquitted on May 25 , 1990 , largely because of contradictory statements by witnesses .</text>
+            <annotationSet cDate="06/19/2003 10:02:53 PDT Thu" status="UNANN" ID="1909288">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="VVN"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="NP"/>
+                    <label end="25" start="24" name="cd"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="32" start="29" name="cd"/>
+                    <label end="34" start="34" name=","/>
+                    <label end="42" start="36" name="rb"/>
+                    <label end="50" start="44" name="in"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="67" start="55" name="jj"/>
+                    <label end="78" start="69" name="nns"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="91" start="83" name="nns"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:53 PDT Thu" status="MANUAL" ID="1909289">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="15" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2759" end="1" start="0" name="Defendant"/>
+                    <label cBy="618" feID="2757" itype="CNI" name="Judge"/>
+                    <label cBy="618" feID="3132" end="34" start="17" name="Time"/>
+                    <label cBy="618" feID="4656" end="91" start="36" name="Reason"/>
+                    <label cBy="618" feID="3081" itype="DNI" name="Charges"/>
+                    <label cBy="309" feID="2758" end="15" start="7" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="34" start="17" name="Dep"/>
+                    <label end="91" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="34" start="17" name="PP"/>
+                    <label end="91" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="314" aPos="0" ID="1231125">
+            <text>Although the jury acquitted him on one murder charge , it was deadlocked over a second and a riot charge , and a retrial was arranged for Sept. 17 .</text>
+            <annotationSet cDate="06/19/2003 10:02:53 PDT Thu" status="UNANN" ID="1909290">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="in"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="26" start="18" name="VVN"/>
+                    <label end="30" start="28" name="PP"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="37" start="35" name="cd"/>
+                    <label end="44" start="39" name="nn"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="53" start="53" name=","/>
+                    <label end="56" start="55" name="PP"/>
+                    <label end="60" start="58" name="VBD"/>
+                    <label end="71" start="62" name="VVN"/>
+                    <label end="76" start="73" name="in"/>
+                    <label end="78" start="78" name="dt"/>
+                    <label end="85" start="80" name="jj"/>
+                    <label end="89" start="87" name="cc"/>
+                    <label end="91" start="91" name="dt"/>
+                    <label end="96" start="93" name="nn"/>
+                    <label end="103" start="98" name="nn"/>
+                    <label end="105" start="105" name=","/>
+                    <label end="109" start="107" name="cc"/>
+                    <label end="111" start="111" name="dt"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="123" start="121" name="VBD"/>
+                    <label end="132" start="125" name="VVN"/>
+                    <label end="136" start="134" name="in"/>
+                    <label end="142" start="138" name="NP"/>
+                    <label end="145" start="144" name="cd"/>
+                    <label end="147" start="147" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:54 PDT Thu" status="MANUAL" ID="1909291">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="26" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2757" end="16" start="9" name="Judge"/>
+                    <label cBy="618" feID="2759" end="30" start="28" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="51" start="32" name="Charges"/>
+                    <label cBy="309" feID="2758" end="26" start="18" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="9" name="Ext"/>
+                    <label end="30" start="28" name="Obj"/>
+                    <label end="51" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="9" name="NP"/>
+                    <label end="30" start="28" name="NP"/>
+                    <label end="51" start="32" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="544" aPos="0" ID="1231129">
+            <text>In 1984 an all-white jury had unanimously acquitted five Western Australian police officers on charges arising from Pat 's death .</text>
+            <annotationSet cDate="06/19/2003 10:02:55 PDT Thu" status="UNANN" ID="1909298">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="cd"/>
+                    <label end="9" start="8" name="dt"/>
+                    <label end="19" start="11" name="jj"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="28" start="26" name="VHD"/>
+                    <label end="40" start="30" name="rb"/>
+                    <label end="50" start="42" name="VVN"/>
+                    <label end="55" start="52" name="cd"/>
+                    <label end="63" start="57" name="jj"/>
+                    <label end="74" start="65" name="jj"/>
+                    <label end="81" start="76" name="nn"/>
+                    <label end="90" start="83" name="nns"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="101" start="95" name="nns"/>
+                    <label end="109" start="103" name="VVG"/>
+                    <label end="114" start="111" name="in"/>
+                    <label end="118" start="116" name="NP"/>
+                    <label end="121" start="120" name="POS"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/19/2003 10:02:55 PDT Thu" status="MANUAL" ID="1909299">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="50" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3132" end="6" start="0" name="Time"/>
+                    <label cBy="618" feID="2757" end="24" start="8" name="Judge"/>
+                    <label cBy="618" feID="3296" end="40" start="30" name="Manner"/>
+                    <label cBy="618" feID="2759" end="90" start="52" name="Defendant"/>
+                    <label cBy="618" feID="3081" end="127" start="92" name="Charges"/>
+                    <label cBy="309" feID="2758" end="50" start="42" name="Finding"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Dep"/>
+                    <label end="24" start="8" name="Ext"/>
+                    <label end="40" start="30" name="Dep"/>
+                    <label end="90" start="52" name="Obj"/>
+                    <label end="127" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="PP"/>
+                    <label end="24" start="8" name="NP"/>
+                    <label end="40" start="30" name="AVP"/>
+                    <label end="90" start="52" name="NP"/>
+                    <label end="127" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="09-T-PPin-(1)"/>
+    <subCorpus name="10-T-NP-(1)"/>
+    <subCorpus name="12-T-NP-Wof-Wvvg-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

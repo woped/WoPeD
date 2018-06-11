@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="had better.v" ID="12875" frame="Required_event" frameID="1381" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="neg" name="Negative_consequences"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="req" name="Required_situation"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: would find it wiser to.</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="V" name="had"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="ADV" name="better"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Negative_consequences"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Negative_consequences"/>
+                <annoSet ID="2227773"/>
+                <annoSet ID="2227891"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="13">
+            <FE name="Required_situation"/>
+            <pattern total="13">
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <annoSet ID="2227753"/>
+                <annoSet ID="2227763"/>
+                <annoSet ID="2227773"/>
+                <annoSet ID="2227789"/>
+                <annoSet ID="2227795"/>
+                <annoSet ID="2227805"/>
+                <annoSet ID="2227837"/>
+                <annoSet ID="2227851"/>
+                <annoSet ID="2227859"/>
+                <annoSet ID="2227877"/>
+                <annoSet ID="2227891"/>
+                <annoSet ID="2227895"/>
+                <annoSet ID="2227979"/>
+            </pattern>
+            <pattern total="13">
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="2227753"/>
+                <annoSet ID="2227763"/>
+                <annoSet ID="2227773"/>
+                <annoSet ID="2227789"/>
+                <annoSet ID="2227795"/>
+                <annoSet ID="2227805"/>
+                <annoSet ID="2227837"/>
+                <annoSet ID="2227851"/>
+                <annoSet ID="2227859"/>
+                <annoSet ID="2227877"/>
+                <annoSet ID="2227891"/>
+                <annoSet ID="2227895"/>
+                <annoSet ID="2227979"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Negative_consequences"/>
+            <FE name="Required_situation"/>
+            <FE name="Required_situation"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Negative_consequences"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="2227773"/>
+                <annoSet ID="2227891"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Required_situation"/>
+            <FE name="Required_situation"/>
+            <pattern total="11">
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="2227753"/>
+                <annoSet ID="2227763"/>
+                <annoSet ID="2227789"/>
+                <annoSet ID="2227795"/>
+                <annoSet ID="2227805"/>
+                <annoSet ID="2227837"/>
+                <annoSet ID="2227851"/>
+                <annoSet ID="2227859"/>
+                <annoSet ID="2227877"/>
+                <annoSet ID="2227895"/>
+                <annoSet ID="2227979"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-VP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="248" aPos="23382013" ID="1389946">
+            <text>It had better be important .</text>
+            <annotationSet cDate="07/28/2006 05:18:00 PDT Fri" status="UNANN" ID="2227752">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="12" start="7" name="rbr"/>
+                    <label end="15" start="14" name="vb"/>
+                    <label end="25" start="17" name="jj"/>
+                    <label end="27" start="27" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:00 PDT Fri" status="MANUAL" ID="2227753">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="12" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="1" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="25" start="14" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="25" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="25" start="14" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1225" aPos="7063343" ID="1389951">
+            <text>It had better be that and not him having another of his scenes .</text>
+            <annotationSet cDate="07/28/2006 05:18:01 PDT Fri" status="UNANN" ID="2227762">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="12" start="7" name="rbr"/>
+                    <label end="15" start="14" name="vb"/>
+                    <label end="20" start="17" name="wdt"/>
+                    <label end="24" start="22" name="cc"/>
+                    <label end="28" start="26" name="rb"/>
+                    <label end="32" start="30" name="PP"/>
+                    <label end="39" start="34" name="VHG"/>
+                    <label end="47" start="41" name="dt"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="54" start="52" name="PP$"/>
+                    <label end="61" start="56" name="nns"/>
+                    <label end="63" start="63" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:01 PDT Fri" status="MANUAL" ID="2227763">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="12" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="1" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="61" start="14" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="61" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="61" start="14" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="585" aPos="9598165" ID="1389956">
+            <text>She had better do so by April 10 or it will be too late . &quot;</text>
+            <annotationSet cDate="07/28/2006 05:18:03 PDT Fri" status="UNANN" ID="2227772">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VHD"/>
+                    <label end="13" start="8" name="jjr"/>
+                    <label end="16" start="15" name="VVP"/>
+                    <label end="19" start="18" name="rb"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="28" start="24" name="NP"/>
+                    <label end="31" start="30" name="cd"/>
+                    <label end="34" start="33" name="cc"/>
+                    <label end="37" start="36" name="PP"/>
+                    <label end="42" start="39" name="md"/>
+                    <label end="45" start="44" name="vb"/>
+                    <label end="49" start="47" name="rb"/>
+                    <label end="54" start="51" name="jj"/>
+                    <label end="56" start="56" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:03 PDT Fri" status="MANUAL" ID="2227773">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="13" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="2" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="31" start="15" name="Required_situation"/>
+                    <label cBy="361" feID="7753" end="54" start="33" name="Negative_consequences"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="31" start="15" name="Dep"/>
+                    <label end="54" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="31" start="15" name="VPbrst"/>
+                    <label end="54" start="33" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Wvv-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="158" aPos="8722131" ID="1389964">
+            <text>You 'd better know the theory and the practice of the venue 's fire regulations .</text>
+            <annotationSet cDate="07/28/2006 05:18:05 PDT Fri" status="UNANN" ID="2227788">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="5" start="4" name="md"/>
+                    <label end="12" start="7" name="rb"/>
+                    <label end="17" start="14" name="VV"/>
+                    <label end="21" start="19" name="dt"/>
+                    <label end="28" start="23" name="nn"/>
+                    <label end="32" start="30" name="cc"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="45" start="38" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="61" start="60" name="POS"/>
+                    <label end="66" start="63" name="nn"/>
+                    <label end="78" start="68" name="nns"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:05 PDT Fri" status="MANUAL" ID="2227789">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="2" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="78" start="14" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="78" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="78" start="14" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="90" aPos="107025688" ID="1389967">
+            <text>` You 'd better put these back on . &quot;</text>
+            <annotationSet cDate="07/28/2006 05:18:05 PDT Fri" status="UNANN" ID="2227794">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="7" start="6" name="md"/>
+                    <label end="14" start="9" name="rb"/>
+                    <label end="18" start="16" name="VV"/>
+                    <label end="24" start="20" name="dt"/>
+                    <label end="29" start="26" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="34" start="34" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:05 PDT Fri" status="MANUAL" ID="2227795">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="4" start="2" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="32" start="16" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Ext"/>
+                    <label end="32" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="NP"/>
+                    <label end="32" start="16" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="43" aPos="106885568" ID="1389972">
+            <text>` But I 'd better check first . &quot;</text>
+            <annotationSet cDate="07/28/2006 05:18:06 PDT Fri" status="UNANN" ID="2227804">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="cc"/>
+                    <label end="6" start="6" name="PP"/>
+                    <label end="9" start="8" name="md"/>
+                    <label end="16" start="11" name="rb"/>
+                    <label end="22" start="18" name="VV"/>
+                    <label end="28" start="24" name="jj"/>
+                    <label end="30" start="30" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:06 PDT Fri" status="MANUAL" ID="2227805">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="16" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="6" start="6" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="28" start="18" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="6" name="Ext"/>
+                    <label end="28" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="6" name="NP"/>
+                    <label end="28" start="18" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="669" aPos="4546348" ID="1389988">
+            <text>` You 'd better mind yourself with this fellow .</text>
+            <annotationSet cDate="07/28/2006 05:18:12 PDT Fri" status="UNANN" ID="2227836">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="7" start="6" name="md"/>
+                    <label end="14" start="9" name="rb"/>
+                    <label end="19" start="16" name="VV"/>
+                    <label end="28" start="21" name="PP"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="38" start="35" name="dt"/>
+                    <label end="45" start="40" name="nn"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:12 PDT Fri" status="MANUAL" ID="2227837">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="4" start="2" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="45" start="16" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Ext"/>
+                    <label end="45" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="NP"/>
+                    <label end="45" start="16" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="780" aPos="24485522" ID="1389995">
+            <text>` Perhaps I 'd better explain . &quot;</text>
+            <annotationSet cDate="07/28/2006 05:18:14 PDT Fri" status="UNANN" ID="2227850">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="2" name="rb"/>
+                    <label end="10" start="10" name="PP"/>
+                    <label end="13" start="12" name="md"/>
+                    <label end="20" start="15" name="rb"/>
+                    <label end="28" start="22" name="VV"/>
+                    <label end="30" start="30" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:14 PDT Fri" status="MANUAL" ID="2227851">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="20" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="10" start="10" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="28" start="22" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="10" name="Ext"/>
+                    <label end="28" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="10" name="NP"/>
+                    <label end="28" start="22" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="118090816" ID="1389999">
+            <text>I think you 'd better get yourself sorted out .</text>
+            <annotationSet cDate="07/28/2006 05:18:15 PDT Fri" status="UNANN" ID="2227858">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="6" start="2" name="VVP"/>
+                    <label end="10" start="8" name="PP"/>
+                    <label end="13" start="12" name="md"/>
+                    <label end="20" start="15" name="rb"/>
+                    <label end="24" start="22" name="VV"/>
+                    <label end="33" start="26" name="PP"/>
+                    <label end="40" start="35" name="VVN"/>
+                    <label end="44" start="42" name="rp"/>
+                    <label end="46" start="46" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:15 PDT Fri" status="MANUAL" ID="2227859">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="20" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="10" start="8" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="44" start="22" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="8" name="Ext"/>
+                    <label end="44" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="8" name="NP"/>
+                    <label end="44" start="22" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="368" aPos="33132896" ID="1390008">
+            <text>He 'd better have a good reason for ringing me up on Christmas Day !</text>
+            <annotationSet cDate="07/28/2006 05:18:17 PDT Fri" status="UNANN" ID="2227876">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="md"/>
+                    <label end="11" start="6" name="rb"/>
+                    <label end="16" start="13" name="VH"/>
+                    <label end="18" start="18" name="dt"/>
+                    <label end="23" start="20" name="jj"/>
+                    <label end="30" start="25" name="nn"/>
+                    <label end="34" start="32" name="in"/>
+                    <label end="42" start="36" name="VVG"/>
+                    <label end="45" start="44" name="PP"/>
+                    <label end="48" start="47" name="rp"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="61" start="53" name="NP"/>
+                    <label end="65" start="63" name="NP"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:17 PDT Fri" status="MANUAL" ID="2227877">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="11" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="1" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="65" start="13" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="65" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="65" start="13" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="485" aPos="107114121" ID="1390015">
+            <text>You 'd better swear an oath of secrecy , or Nicola Schreider will not be amused to find out Guy 's been playing away even before they 're married ! &quot;</text>
+            <annotationSet cDate="07/28/2006 05:18:21 PDT Fri" status="UNANN" ID="2227890">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="5" start="4" name="md"/>
+                    <label end="12" start="7" name="rb"/>
+                    <label end="18" start="14" name="VV"/>
+                    <label end="21" start="20" name="dt"/>
+                    <label end="26" start="23" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="37" start="31" name="nn"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="42" start="41" name="cc"/>
+                    <label end="49" start="44" name="NP"/>
+                    <label end="59" start="51" name="NP"/>
+                    <label end="64" start="61" name="md"/>
+                    <label end="68" start="66" name="rb"/>
+                    <label end="71" start="70" name="vb"/>
+                    <label end="78" start="73" name="VVN"/>
+                    <label end="81" start="80" name="to"/>
+                    <label end="86" start="83" name="VV"/>
+                    <label end="90" start="88" name="rp"/>
+                    <label end="94" start="92" name="NP"/>
+                    <label end="97" start="96" name="VHZ"/>
+                    <label end="102" start="99" name="VBN"/>
+                    <label end="110" start="104" name="VVG"/>
+                    <label end="115" start="112" name="rb"/>
+                    <label end="120" start="117" name="rb"/>
+                    <label end="127" start="122" name="in"/>
+                    <label end="132" start="129" name="PP"/>
+                    <label end="136" start="134" name="vbp"/>
+                    <label end="144" start="138" name="VVN"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:21 PDT Fri" status="MANUAL" ID="2227891">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="2" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="37" start="14" name="Required_situation"/>
+                    <label cBy="361" feID="7753" end="144" start="41" name="Negative_consequences"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="37" start="14" name="Dep"/>
+                    <label end="144" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="37" start="14" name="VPbrst"/>
+                    <label end="144" start="41" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1207" aPos="31054754" ID="1390017">
+            <text>You 'd better ring her .</text>
+            <annotationSet cDate="07/28/2006 05:18:22 PDT Fri" status="UNANN" ID="2227894">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="5" start="4" name="md"/>
+                    <label end="12" start="7" name="rb"/>
+                    <label end="17" start="14" name="VV"/>
+                    <label end="21" start="19" name="PP"/>
+                    <label end="23" start="23" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:22 PDT Fri" status="MANUAL" ID="2227895">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="2" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="21" start="14" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="21" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="21" start="14" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1123" aPos="20041585" ID="1390059">
+            <text>They also had better balance .</text>
+            <annotationSet cDate="07/28/2006 05:18:33 PDT Fri" status="UNANN" ID="2227978">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="8" start="5" name="rb"/>
+                    <label end="12" start="10" name="VHD"/>
+                    <label end="19" start="14" name="jjr"/>
+                    <label end="27" start="21" name="nn"/>
+                    <label end="29" start="29" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/28/2006 05:18:33 PDT Fri" status="MANUAL" ID="2227979">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="19" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7752" end="3" start="0" name="Required_situation"/>
+                    <label cBy="361" feID="7752" end="27" start="21" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="27" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="27" start="21" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="manually-added"/>
+</lexUnit>

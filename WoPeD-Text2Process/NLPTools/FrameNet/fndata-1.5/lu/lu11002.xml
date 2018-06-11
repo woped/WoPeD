@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="lick.v" ID="11002" frame="Manipulation" frameID="17" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="AgBP" name="Bodypart_of_agent"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Enty" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="000000" bgColor="008000" type="Extra-Thematic" abbrev="Locus" name="Locus"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: pass the tongue over (something), typically in order to taste, moisten, or clean it.</definition>
+    <lexeme POS="V" name="lick"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2004538"/>
+                <annoSet ID="2004539"/>
+                <annoSet ID="2005716"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Entity"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <annoSet ID="2004538"/>
+                <annoSet ID="2004539"/>
+                <annoSet ID="2005716"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Agent"/>
+            <FE name="Entity"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <annoSet ID="2004538"/>
+                <annoSet ID="2004539"/>
+                <annoSet ID="2005716"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="coll-lip">
+        <sentence sentNo="0" aPos="75923627" ID="261386">
+            <text>The man licked mud-caked lips , eyes half-closing in weariness . </text>
+            <annotationSet cDate="01/06/2003 08:57:02 PST Mon" status="UNANN" ID="168526">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="23" start="15" name="AJ0"/>
+                    <label end="28" start="25" name="NN2"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="35" start="32" name="NN2"/>
+                    <label end="48" start="37" name="AJ0-NN1"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="61" start="53" name="NN1"/>
+                    <label end="63" start="63" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/24/2004 08:45:07 PDT Fri" status="AUTO_EDITED" ID="2004538">
+                <layer rank="1" name="Target">
+                    <label cBy="309" end="13" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="78" end="28" start="15" name="Entity"/>
+                    <label cBy="309" feID="77" end="6" start="0" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="28" start="15" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="28" start="15" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="37167837" ID="261377">
+            <text>Will licked his lips and looked uncertainly towards Hari . </text>
+            <annotationSet cDate="01/06/2003 08:57:01 PST Mon" status="UNANN" ID="168508">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="10" start="5" name="VVD"/>
+                    <label end="14" start="12" name="DPS"/>
+                    <label end="19" start="16" name="NN2"/>
+                    <label end="23" start="21" name="CJC"/>
+                    <label end="30" start="25" name="VVD-VVN"/>
+                    <label end="42" start="32" name="AV0"/>
+                    <label end="50" start="44" name="PRP"/>
+                    <label end="55" start="52" name="NN1-NP0"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/24/2004 08:45:10 PDT Fri" status="AUTO_EDITED" ID="2004539">
+                <layer rank="1" name="Target">
+                    <label cBy="309" end="10" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="78" end="19" start="12" name="Entity"/>
+                    <label cBy="309" feID="77" end="3" start="0" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="19" start="12" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="19" start="12" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="80808443" ID="261389">
+            <text>She licked her lips . </text>
+            <annotationSet cDate="01/06/2003 08:57:03 PST Mon" status="UNANN" ID="168532">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="13" start="11" name="DPS"/>
+                    <label end="18" start="15" name="NN2"/>
+                    <label end="20" start="20" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/24/2004 09:39:10 PDT Fri" status="AUTO_EDITED" ID="2005716">
+                <layer rank="1" name="Target">
+                    <label cBy="309" end="9" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="78" end="18" start="11" name="Entity"/>
+                    <label cBy="309" feID="77" end="2" start="0" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="18" start="11" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="18" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="coll-paw"/>
+</lexUnit>

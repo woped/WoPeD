@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="yammer.n" ID="9712" frame="Sounds" frameID="850" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Component_sound"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Location_of_sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="800080" bgColor="FFFF00" type="Peripheral" abbrev="" name="Noisy_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFF00" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Themes"/>
+        </frame>
+    </header>
+    <definition>COD: loud and sustained noise.</definition>
+    <lexeme POS="N" name="yammer"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Component_sound"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Component_sound"/>
+                <annoSet ID="1721923"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Component_sound"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Component_sound"/>
+                <annoSet ID="1721923"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="58411141" ID="1135408">
+            <text>Even from across the pool we could hear the yammer of their animated conversation . </text>
+            <annotationSet cDate="01/08/2003 03:52:26 PST Wed" status="UNANN" ID="1721922">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="8" start="5" name="PRP"/>
+                    <label end="15" start="10" name="PRP"/>
+                    <label end="19" start="17" name="AT0"/>
+                    <label end="24" start="21" name="NN1"/>
+                    <label end="27" start="26" name="PNP"/>
+                    <label end="33" start="29" name="VM0"/>
+                    <label end="38" start="35" name="VVI"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="52" start="51" name="PRF"/>
+                    <label end="58" start="54" name="DPS"/>
+                    <label end="67" start="60" name="AJ0"/>
+                    <label end="80" start="69" name="NN1"/>
+                    <label end="82" start="82" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:52:26 PST Wed" status="MANUAL" ID="1721923">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5500" end="80" start="51" name="Component_sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

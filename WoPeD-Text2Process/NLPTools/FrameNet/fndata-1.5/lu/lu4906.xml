@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="hunt.v" ID="4906" frame="Seeking" frameID="269" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Cognizer_agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Otcm" name="Outcome"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Sought_entity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: search diligently for. </definition>
+    <lexeme POS="V" name="hunt"/>
+    <valences>
+        <FERealization total="13">
+            <FE name="Cognizer_agent"/>
+            <pattern total="12">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <annoSet ID="1059994"/>
+                <annoSet ID="1059996"/>
+                <annoSet ID="1060014"/>
+                <annoSet ID="1060020"/>
+                <annoSet ID="1060026"/>
+                <annoSet ID="1060062"/>
+                <annoSet ID="1060070"/>
+                <annoSet ID="1060074"/>
+                <annoSet ID="1060080"/>
+                <annoSet ID="1060082"/>
+                <annoSet ID="1060118"/>
+                <annoSet ID="1060234"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer_agent"/>
+                <annoSet ID="1059884"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Ground"/>
+                <annoSet ID="1060026"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[round]" FE="Ground"/>
+                <annoSet ID="1060118"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Ground"/>
+                <annoSet ID="1060062"/>
+                <annoSet ID="1060070"/>
+                <annoSet ID="1060074"/>
+                <annoSet ID="1060080"/>
+                <annoSet ID="1060082"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1059994"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="13">
+            <FE name="Sought_entity"/>
+            <pattern total="7">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Sought_entity"/>
+                <annoSet ID="1059994"/>
+                <annoSet ID="1059996"/>
+                <annoSet ID="1060014"/>
+                <annoSet ID="1060020"/>
+                <annoSet ID="1060026"/>
+                <annoSet ID="1060082"/>
+                <annoSet ID="1060234"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DNI" FE="Sought_entity"/>
+                <annoSet ID="1060062"/>
+                <annoSet ID="1060070"/>
+                <annoSet ID="1060074"/>
+                <annoSet ID="1060080"/>
+                <annoSet ID="1060118"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sought_entity"/>
+                <annoSet ID="1059884"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="7">
+            <FE name="Cognizer_agent"/>
+            <FE name="Ground"/>
+            <FE name="Sought_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Sought_entity"/>
+                <annoSet ID="1060026"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="PP[round]" FE="Ground"/>
+                <valenceUnit GF="" PT="DNI" FE="Sought_entity"/>
+                <annoSet ID="1060118"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Ground"/>
+                <valenceUnit GF="" PT="DNI" FE="Sought_entity"/>
+                <annoSet ID="1060062"/>
+                <annoSet ID="1060070"/>
+                <annoSet ID="1060074"/>
+                <annoSet ID="1060080"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Sought_entity"/>
+                <annoSet ID="1060082"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer_agent"/>
+            <FE name="Manner"/>
+            <FE name="Sought_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Sought_entity"/>
+                <annoSet ID="1059994"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Cognizer_agent"/>
+            <FE name="Sought_entity"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer_agent"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Sought_entity"/>
+                <annoSet ID="1059996"/>
+                <annoSet ID="1060014"/>
+                <annoSet ID="1060020"/>
+                <annoSet ID="1060234"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer_agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sought_entity"/>
+                <annoSet ID="1059884"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-570-s20-np-ppamongst"/>
+    <subCorpus name="V-570-s20-np-ppin"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-650-s20-np-pother"/>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-670-s20-pass-by">
+        <sentence sentNo="0" aPos="77563696" ID="800726">
+            <text>LITTLE Laura Konan , four , was being hunted by Interpol last night after her French father failed to return her to her mother Rosalyn Wigham 's home in Blyth , Northumberland , after a day out </text>
+            <annotationSet cDate="01/07/2003 03:03:31 PST Tue" status="UNANN" ID="1059883">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="11" start="7" name="NP0"/>
+                    <label end="17" start="13" name="NP0"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="24" start="21" name="CRD"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="30" start="28" name="VBD"/>
+                    <label end="36" start="32" name="VBG"/>
+                    <label end="43" start="38" name="VVN"/>
+                    <label end="46" start="45" name="PRP"/>
+                    <label end="55" start="48" name="NP0"/>
+                    <label end="60" start="57" name="ORD"/>
+                    <label end="66" start="62" name="NN1"/>
+                    <label end="72" start="68" name="PRP"/>
+                    <label end="76" start="74" name="DPS"/>
+                    <label end="83" start="78" name="AJ0"/>
+                    <label end="90" start="85" name="NN1"/>
+                    <label end="97" start="92" name="VVD-VVN"/>
+                    <label end="100" start="99" name="TO0"/>
+                    <label end="107" start="102" name="VVI"/>
+                    <label end="111" start="109" name="PNP"/>
+                    <label end="114" start="113" name="PRP"/>
+                    <label end="118" start="116" name="DPS"/>
+                    <label end="125" start="120" name="NN1"/>
+                    <label end="133" start="127" name="NP0"/>
+                    <label end="140" start="135" name="NP0"/>
+                    <label end="143" start="142" name="POS"/>
+                    <label end="148" start="145" name="NN1"/>
+                    <label end="151" start="150" name="PRP"/>
+                    <label end="157" start="153" name="NP0"/>
+                    <label end="159" start="159" name="PUN"/>
+                    <label end="174" start="161" name="NP0"/>
+                    <label end="176" start="176" name="PUN"/>
+                    <label end="182" start="178" name="CJS-PRP"/>
+                    <label end="184" start="184" name="AT0"/>
+                    <label end="188" start="186" name="NN1"/>
+                    <label end="192" start="190" name="AVP"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:31 PST Tue" status="MANUAL" ID="1059884">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2329" end="26" start="0" name="Sought_entity"/>
+                    <label cBy="900" feID="2327" end="55" start="45" name="Cognizer_agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="0" name="Ext"/>
+                    <label end="55" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="0" name="NP"/>
+                    <label end="55" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-690-s20-trans-other"/>
+    <subCorpus name="V-730-s20-ppfor">
+        <sentence sentNo="0" aPos="34813955" ID="800781">
+            <text>Housekeeper Anne Jackson told how Mr Elton had turned the sitting room of his £750,000 London flat into an office as he desperately hunted for a new job . </text>
+            <annotationSet cDate="01/07/2003 03:03:39 PST Tue" status="UNANN" ID="1059993">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="NP0"/>
+                    <label end="15" start="12" name="NP0"/>
+                    <label end="23" start="17" name="NP0"/>
+                    <label end="28" start="25" name="VVD"/>
+                    <label end="32" start="30" name="AVQ"/>
+                    <label end="35" start="34" name="NP0"/>
+                    <label end="41" start="37" name="NP0"/>
+                    <label end="45" start="43" name="VHD"/>
+                    <label end="52" start="47" name="VVN"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="64" start="58" name="NN1"/>
+                    <label end="69" start="66" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="76" start="74" name="DPS"/>
+                    <label end="85" start="78" name="NN0"/>
+                    <label end="92" start="87" name="NP0"/>
+                    <label end="97" start="94" name="NN1"/>
+                    <label end="102" start="99" name="PRP"/>
+                    <label end="105" start="104" name="AT0"/>
+                    <label end="112" start="107" name="NN1"/>
+                    <label end="115" start="114" name="CJS"/>
+                    <label end="118" start="117" name="PNP"/>
+                    <label end="130" start="120" name="AV0"/>
+                    <label end="137" start="132" name="VVD-VVN"/>
+                    <label end="141" start="139" name="PRP"/>
+                    <label end="143" start="143" name="AT0"/>
+                    <label end="147" start="145" name="AJ0"/>
+                    <label end="151" start="149" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:39 PST Tue" status="MANUAL" ID="1059994">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="118" start="117" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2330" end="130" start="120" name="Manner"/>
+                    <label cBy="900" feID="2329" end="151" start="139" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="118" start="117" name="Ext"/>
+                    <label end="130" start="120" name="Dep"/>
+                    <label end="151" start="139" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="118" start="117" name="NP"/>
+                    <label end="130" start="120" name="AVP"/>
+                    <label end="151" start="139" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="137" start="132" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="9570532" ID="800782">
+            <text>Election ` 92 : Party aides hunt for their leader 's lost mobile phone </text>
+            <annotationSet cDate="01/07/2003 03:03:39 PST Tue" status="UNANN" ID="1059995">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-NP0"/>
+                    <label end="9" start="9" name="PUQ"/>
+                    <label end="12" start="11" name="CRD"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="20" start="16" name="NN0"/>
+                    <label end="26" start="22" name="NN2"/>
+                    <label end="31" start="28" name="VVB"/>
+                    <label end="35" start="33" name="PRP"/>
+                    <label end="41" start="37" name="DPS"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="51" start="50" name="VHZ"/>
+                    <label end="56" start="53" name="VVN"/>
+                    <label end="63" start="58" name="AJ0"/>
+                    <label end="69" start="65" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:39 PST Tue" status="MANUAL" ID="1059996">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="26" start="16" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2329" end="69" start="33" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="16" name="Ext"/>
+                    <label end="69" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="16" name="NP"/>
+                    <label end="69" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11143768" ID="800791">
+            <text>Many pupils who had left a schoolbook behind would rather risk punishment than walk through the dark room with the animals smiling as they watched you hunt for your things . </text>
+            <annotationSet cDate="01/07/2003 03:03:40 PST Tue" status="UNANN" ID="1060013">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="NN2"/>
+                    <label end="14" start="12" name="PNQ"/>
+                    <label end="18" start="16" name="VHD"/>
+                    <label end="23" start="20" name="VVN"/>
+                    <label end="25" start="25" name="AT0"/>
+                    <label end="36" start="27" name="NN1"/>
+                    <label end="43" start="38" name="AV0"/>
+                    <label end="49" start="45" name="VM0"/>
+                    <label end="56" start="51" name="AV0"/>
+                    <label end="61" start="58" name="VVI"/>
+                    <label end="72" start="63" name="NN1"/>
+                    <label end="77" start="74" name="CJS"/>
+                    <label end="82" start="79" name="NN1-VVB"/>
+                    <label end="90" start="84" name="PRP"/>
+                    <label end="94" start="92" name="AT0"/>
+                    <label end="99" start="96" name="AJ0-NN1"/>
+                    <label end="104" start="101" name="NN1"/>
+                    <label end="109" start="106" name="PRP"/>
+                    <label end="113" start="111" name="AT0"/>
+                    <label end="121" start="115" name="NN2"/>
+                    <label end="129" start="123" name="VVG"/>
+                    <label end="132" start="131" name="CJS"/>
+                    <label end="137" start="134" name="PNP"/>
+                    <label end="145" start="139" name="VVD"/>
+                    <label end="149" start="147" name="PNP"/>
+                    <label end="154" start="151" name="VVB"/>
+                    <label end="158" start="156" name="PRP"/>
+                    <label end="163" start="160" name="DPS"/>
+                    <label end="170" start="165" name="NN2"/>
+                    <label end="172" start="172" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:40 PST Tue" status="MANUAL" ID="1060014">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="149" start="147" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2329" end="170" start="156" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="149" start="147" name="Ext"/>
+                    <label end="170" start="156" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="149" start="147" name="NP"/>
+                    <label end="170" start="156" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="154" start="151" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="62801015" ID="800794">
+            <text>` We could n't think where you were , &quot; said my mother , ` we hunted for you for hours . &quot; </text>
+            <annotationSet cDate="01/07/2003 03:03:40 PST Tue" status="UNANN" ID="1060019">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="9" start="5" name="VM0"/>
+                    <label end="13" start="11" name="XX0"/>
+                    <label end="19" start="15" name="VVI"/>
+                    <label end="25" start="21" name="AVQ-CJS"/>
+                    <label end="29" start="27" name="PNP"/>
+                    <label end="34" start="31" name="VBD"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="38" start="38" name="PUQ"/>
+                    <label end="43" start="40" name="VVD"/>
+                    <label end="46" start="45" name="DPS"/>
+                    <label end="53" start="48" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="57" start="57" name="PUQ"/>
+                    <label end="60" start="59" name="PNP"/>
+                    <label end="67" start="62" name="VVD"/>
+                    <label end="71" start="69" name="PRP"/>
+                    <label end="75" start="73" name="PNP"/>
+                    <label end="79" start="77" name="PRP"/>
+                    <label end="85" start="81" name="NN2"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="89" start="89" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:40 PST Tue" status="MANUAL" ID="1060020">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="60" start="59" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2329" end="75" start="69" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="59" name="Ext"/>
+                    <label end="75" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="59" name="NP"/>
+                    <label end="75" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-s20-ppin">
+        <sentence sentNo="0" aPos="101692018" ID="800797">
+            <text>Rachel was hunting in her bag for a twenty-dollar bill . </text>
+            <annotationSet cDate="01/07/2003 03:03:41 PST Tue" status="UNANN" ID="1060025">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="9" start="7" name="VBD"/>
+                    <label end="17" start="11" name="VVG"/>
+                    <label end="20" start="19" name="PRP"/>
+                    <label end="24" start="22" name="DPS"/>
+                    <label end="28" start="26" name="NN1"/>
+                    <label end="32" start="30" name="PRP"/>
+                    <label end="34" start="34" name="AT0"/>
+                    <label end="48" start="36" name="AJ0"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:41 PST Tue" status="MANUAL" ID="1060026">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="5" start="0" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="28" start="19" name="Ground"/>
+                    <label cBy="900" feID="2329" end="53" start="30" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="28" start="19" name="Dep"/>
+                    <label end="53" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="28" start="19" name="PP"/>
+                    <label end="53" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-s20-ppthrough">
+        <sentence sentNo="0" aPos="100653421" ID="800815">
+            <text>She was hunting through her bag when someone tapped at the door . </text>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="UNANN" ID="1060061">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="14" start="8" name="VVG"/>
+                    <label end="22" start="16" name="PRP"/>
+                    <label end="26" start="24" name="DPS"/>
+                    <label end="30" start="28" name="NN1"/>
+                    <label end="35" start="32" name="AVQ-CJS"/>
+                    <label end="43" start="37" name="PNI"/>
+                    <label end="50" start="45" name="VVD"/>
+                    <label end="53" start="52" name="PRP"/>
+                    <label end="57" start="55" name="AT0"/>
+                    <label end="62" start="59" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="MANUAL" ID="1060062">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="2" start="0" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="30" start="16" name="Ground"/>
+                    <label cBy="900" feID="2329" itype="DNI" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="30" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="30" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="74695117" ID="800819">
+            <text>She went in , hunted through the cupboards until she found everything she needed , then cooked herself a large meal . </text>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="UNANN" ID="1060069">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="10" start="9" name="AVP"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="19" start="14" name="VVD-VVN"/>
+                    <label end="27" start="21" name="PRP"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="41" start="33" name="NN2"/>
+                    <label end="47" start="43" name="CJS"/>
+                    <label end="51" start="49" name="PNP"/>
+                    <label end="57" start="53" name="VVD"/>
+                    <label end="68" start="59" name="PNI"/>
+                    <label end="72" start="70" name="PNP"/>
+                    <label end="79" start="74" name="VVD"/>
+                    <label end="81" start="81" name="PUN"/>
+                    <label end="86" start="83" name="AV0"/>
+                    <label end="93" start="88" name="VVD"/>
+                    <label end="101" start="95" name="PNX"/>
+                    <label end="103" start="103" name="AT0"/>
+                    <label end="109" start="105" name="AJ0"/>
+                    <label end="114" start="111" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="MANUAL" ID="1060070">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="2" start="0" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="41" start="21" name="Ground"/>
+                    <label cBy="900" feID="2329" itype="DNI" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="41" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="41" start="21" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="100683859" ID="800821">
+            <text>Tell you what , you hunt through the file , see if we have a case history on Miss Duncan . </text>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="UNANN" ID="1060073">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="VVB"/>
+                    <label end="7" start="5" name="PNP"/>
+                    <label end="12" start="9" name="DTQ"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="18" start="16" name="PNP"/>
+                    <label end="23" start="20" name="VVB"/>
+                    <label end="31" start="25" name="PRP"/>
+                    <label end="35" start="33" name="AT0"/>
+                    <label end="40" start="37" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="VVB"/>
+                    <label end="49" start="48" name="CJS"/>
+                    <label end="52" start="51" name="PNP"/>
+                    <label end="57" start="54" name="VHB"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="64" start="61" name="NN1"/>
+                    <label end="72" start="66" name="NN1"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="80" start="77" name="NP0"/>
+                    <label end="87" start="82" name="NP0"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:43 PST Tue" status="MANUAL" ID="1060074">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="18" start="16" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="40" start="25" name="Ground"/>
+                    <label cBy="900" feID="2329" itype="DNI" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="16" name="Ext"/>
+                    <label end="40" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="16" name="NP"/>
+                    <label end="40" start="25" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="65728810" ID="800824">
+            <text>In fact , one of the main advantages of using IFAs is that they can hunt through the range of mortgage offers and find the best deal for you . </text>
+            <annotationSet cDate="01/07/2003 03:03:44 PST Tue" status="UNANN" ID="1060079">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="NN1"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="CRD"/>
+                    <label end="15" start="14" name="PRF"/>
+                    <label end="19" start="17" name="AT0"/>
+                    <label end="24" start="21" name="AJ0"/>
+                    <label end="35" start="26" name="NN2"/>
+                    <label end="38" start="37" name="PRF"/>
+                    <label end="44" start="40" name="VVG"/>
+                    <label end="49" start="46" name="NP0"/>
+                    <label end="52" start="51" name="VBZ"/>
+                    <label end="57" start="54" name="CJT"/>
+                    <label end="62" start="59" name="PNP"/>
+                    <label end="66" start="64" name="VM0"/>
+                    <label end="71" start="68" name="VVI"/>
+                    <label end="79" start="73" name="PRP"/>
+                    <label end="83" start="81" name="AT0"/>
+                    <label end="89" start="85" name="NN1"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="101" start="94" name="NN1"/>
+                    <label end="108" start="103" name="NN2"/>
+                    <label end="112" start="110" name="CJC"/>
+                    <label end="117" start="114" name="VVB"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="126" start="123" name="AJS"/>
+                    <label end="131" start="128" name="NN1"/>
+                    <label end="135" start="133" name="PRP"/>
+                    <label end="139" start="137" name="PNP"/>
+                    <label end="141" start="141" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:44 PST Tue" status="MANUAL" ID="1060080">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="62" start="59" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="108" start="73" name="Ground"/>
+                    <label cBy="296" feID="2329" itype="DNI" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="59" name="Ext"/>
+                    <label end="108" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="59" name="NP"/>
+                    <label end="108" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="71" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27485493" ID="800825">
+            <text>He regularly hunts through supermarket shelves for home produced items after deciding six months ago to boycott foreign products . </text>
+            <annotationSet cDate="01/07/2003 03:03:44 PST Tue" status="UNANN" ID="1060081">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="11" start="3" name="AV0"/>
+                    <label end="17" start="13" name="VVZ"/>
+                    <label end="25" start="19" name="PRP"/>
+                    <label end="37" start="27" name="NN1"/>
+                    <label end="45" start="39" name="NN2-VVZ"/>
+                    <label end="49" start="47" name="PRP"/>
+                    <label end="54" start="51" name="AV0"/>
+                    <label end="63" start="56" name="AJ0-VVD"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="75" start="71" name="PRP"/>
+                    <label end="84" start="77" name="VVG"/>
+                    <label end="88" start="86" name="CRD"/>
+                    <label end="95" start="90" name="NN2"/>
+                    <label end="99" start="97" name="AV0"/>
+                    <label end="102" start="101" name="TO0"/>
+                    <label end="110" start="104" name="VVI"/>
+                    <label end="118" start="112" name="AJ0"/>
+                    <label end="127" start="120" name="NN2"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:44 PST Tue" status="MANUAL" ID="1060082">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="1" start="0" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="45" start="19" name="Ground"/>
+                    <label cBy="900" feID="2329" end="69" start="47" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="45" start="19" name="Dep"/>
+                    <label end="69" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="45" start="19" name="PP"/>
+                    <label end="69" start="47" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-s20-ppother">
+        <sentence sentNo="0" aPos="64051528" ID="800843">
+            <text>The cameras hunted round the team , trying to locate the intruder . </text>
+            <annotationSet cDate="01/07/2003 03:03:48 PST Tue" status="UNANN" ID="1060117">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="17" start="12" name="VVD-VVN"/>
+                    <label end="23" start="19" name="PRP"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="32" start="29" name="NN0"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="41" start="36" name="VVG"/>
+                    <label end="44" start="43" name="TO0"/>
+                    <label end="51" start="46" name="VVI"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:48 PST Tue" status="MANUAL" ID="1060118">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2327" end="10" start="0" name="Cognizer_agent"/>
+                    <label cBy="900" feID="2328" end="32" start="19" name="Ground"/>
+                    <label cBy="900" feID="2329" itype="DNI" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="32" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="32" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other">
+        <sentence sentNo="0" aPos="70725352" ID="800901">
+            <text>Soon the hunters who travelled by rail hunted not for food or protection , but for trophies and sport . </text>
+            <annotationSet cDate="01/07/2003 03:03:55 PST Tue" status="UNANN" ID="1060233">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="15" start="9" name="NN2"/>
+                    <label end="19" start="17" name="PNQ"/>
+                    <label end="29" start="21" name="VVD"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="37" start="34" name="NN1"/>
+                    <label end="44" start="39" name="VVD"/>
+                    <label end="48" start="46" name="XX0"/>
+                    <label end="52" start="50" name="PRP"/>
+                    <label end="57" start="54" name="NN1"/>
+                    <label end="60" start="59" name="CJC"/>
+                    <label end="71" start="62" name="NN1"/>
+                    <label end="73" start="73" name="PUN"/>
+                    <label end="77" start="75" name="PRP"/>
+                    <label end="81" start="79" name="PRP"/>
+                    <label end="90" start="83" name="NN2"/>
+                    <label end="94" start="92" name="CJC"/>
+                    <label end="100" start="96" name="NN1"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:03:55 PST Tue" status="MANUAL" ID="1060234">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="2327" end="37" start="5" name="Cognizer_agent"/>
+                    <label cBy="605" feID="2329" end="100" start="46" name="Sought_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="5" name="Ext"/>
+                    <label end="100" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="5" name="NP"/>
+                    <label end="100" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

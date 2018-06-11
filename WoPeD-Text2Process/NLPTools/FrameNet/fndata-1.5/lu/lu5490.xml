@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="mass.n" ID="5490" frame="Rite" frameID="301" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="DesS" name="Desired_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="G_member" name="Guardian"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ldr" name="Leader"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Mbr" name="Member"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="NStat" name="New_Status"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Obj" name="Object"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Org" name="Organization"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: the Christian Eucharist or Holy Communion, especially in the Roman Catholic Church. </definition>
+    <lexeme POS="N" name="mass"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Member"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Member"/>
+                <annoSet ID="1341414"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1341404"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Time"/>
+                <annoSet ID="1341414"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Time"/>
+                <annoSet ID="1341404"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Member"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Member"/>
+                <valenceUnit GF="Dep" PT="A" FE="Time"/>
+                <annoSet ID="1341414"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="N" FE="Time"/>
+                <annoSet ID="1341404"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s20-ppat">
+        <sentence sentNo="0" aPos="31860365" ID="943837">
+            <text>Then there are charades , cards and midnight mass at Sandringham church . </text>
+            <annotationSet cDate="01/07/2003 08:25:52 PST Tue" status="UNANN" ID="1341403">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="9" start="5" name="EX0"/>
+                    <label end="13" start="11" name="VBB"/>
+                    <label end="22" start="15" name="NN2"/>
+                    <label end="24" start="24" name="PUN"/>
+                    <label end="30" start="26" name="NN2"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="43" start="36" name="NN1"/>
+                    <label end="48" start="45" name="NN1"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="63" start="53" name="NP0"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:25:52 PST Tue" status="MANUAL" ID="1341404">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2599" end="43" start="36" name="Time"/>
+                    <label cBy="618" feID="2600" end="70" start="50" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="36" name="Dep"/>
+                    <label end="70" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="36" name="N"/>
+                    <label end="70" start="50" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-s20-ppfor">
+        <sentence sentNo="0" aPos="4312046" ID="943842">
+            <text>The Centenary mass for the Beatification of John Henry Cardinal Newman is being held at the Oratory , Birmingham , ( NOT Rednal as it usually is ) on Saturday , 11th August , at 11.00 am . </text>
+            <annotationSet cDate="01/07/2003 08:25:52 PST Tue" status="UNANN" ID="1341413">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="AJ0"/>
+                    <label end="17" start="14" name="NN1"/>
+                    <label end="21" start="19" name="PRP"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="39" start="27" name="NN1"/>
+                    <label end="42" start="41" name="PRF"/>
+                    <label end="47" start="44" name="NP0"/>
+                    <label end="53" start="49" name="NP0"/>
+                    <label end="62" start="55" name="NP0"/>
+                    <label end="69" start="64" name="NP0"/>
+                    <label end="72" start="71" name="VBZ"/>
+                    <label end="78" start="74" name="VBG"/>
+                    <label end="83" start="80" name="VVN"/>
+                    <label end="86" start="85" name="PRP"/>
+                    <label end="90" start="88" name="AT0"/>
+                    <label end="98" start="92" name="NN1"/>
+                    <label end="100" start="100" name="PUN"/>
+                    <label end="111" start="102" name="NP0"/>
+                    <label end="113" start="113" name="PUN"/>
+                    <label end="115" start="115" name="PUL"/>
+                    <label end="119" start="117" name="XX0"/>
+                    <label end="126" start="121" name="AJ0"/>
+                    <label end="129" start="128" name="CJS"/>
+                    <label end="132" start="131" name="PNP"/>
+                    <label end="140" start="134" name="AV0"/>
+                    <label end="143" start="142" name="VBZ"/>
+                    <label end="145" start="145" name="PUR"/>
+                    <label end="148" start="147" name="PRP"/>
+                    <label end="157" start="150" name="NP0"/>
+                    <label end="159" start="159" name="PUN"/>
+                    <label end="164" start="161" name="ORD"/>
+                    <label end="171" start="166" name="NP0"/>
+                    <label end="173" start="173" name="PUN"/>
+                    <label end="176" start="175" name="PRP"/>
+                    <label end="182" start="178" name="CRD"/>
+                    <label end="185" start="184" name="AV0"/>
+                    <label end="187" start="187" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:25:52 PST Tue" status="MANUAL" ID="1341414">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2599" end="12" start="4" name="Time"/>
+                    <label cBy="618" feID="2595" end="69" start="19" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="4" name="Dep"/>
+                    <label end="69" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="4" name="A"/>
+                    <label end="69" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-250-s20-ppin"/>
+    <subCorpus name="N-250-s20-ppon"/>
+    <subCorpus name="N-280-s20-poss"/>
+    <subCorpus name="N-290-s20-posscmpd"/>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-330-s20-period"/>
+    <subCorpus name="N-340-s20-ppother"/>
+    <subCorpus name="N-340a-s20-ppother"/>
+    <subCorpus name="N-370-s20-pother"/>
+    <subCorpus name="N-380-s20-other"/>
+    <subCorpus name="N-429-s20-lcoll-requiem"/>
+    <subCorpus name="N-429-s20-lgov-attend"/>
+    <subCorpus name="N-429-s20-lgov-celebrate"/>
+    <subCorpus name="N-429-s20-lgov-hear"/>
+    <subCorpus name="N-429-s20-lgov-perform"/>
+    <subCorpus name="N-429-s20-lgov-say"/>
+</lexUnit>

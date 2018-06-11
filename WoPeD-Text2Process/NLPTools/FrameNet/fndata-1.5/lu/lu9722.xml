@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="hunch up.v" ID="9722" frame="Change_posture" frameID="770" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="0000FF" bgColor="d0d0d0" type="Extra-Thematic" abbrev="poc" name="Point_of_contact"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: assume a posture of sitting or standing with one's shoulders raised and the top of one's body bent forward</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="hunch"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Direction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <annoSet ID="1947427"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Goal"/>
+                <annoSet ID="1947417"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="1947433"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Location"/>
+                <annoSet ID="1947427"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Protagonist"/>
+                <annoSet ID="1947427"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1947417"/>
+                <annoSet ID="1947433"/>
+                <annoSet ID="1947453"/>
+                <annoSet ID="1947477"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Result"/>
+                <annoSet ID="1947477"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Location"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Location"/>
+                <valenceUnit GF="" PT="CNI" FE="Protagonist"/>
+                <annoSet ID="1947427"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Goal"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1947417"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1947433"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1947453"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Protagonist"/>
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Result"/>
+                <annoSet ID="1947477"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wup-(2)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="453" aPos="0" ID="1250213">
+            <text>He hunched up against the back of the car .</text>
+            <annotationSet cDate="10/08/2003 07:06:55 PDT Wed" status="UNANN" ID="1947416">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="9" start="3" name="VVN"/>
+                    <label end="12" start="11" name="rp"/>
+                    <label end="20" start="14" name="in"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="29" start="26" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="40" start="38" name="nn"/>
+                    <label end="42" start="42" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2003 07:06:55 PDT Wed" status="AUTO_APP" ID="1947417">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="9" start="3" name="Target"/>
+                    <label cBy="605" end="12" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5011" end="40" start="14" name="Goal"/>
+                    <label cBy="605" feID="5002" end="1" start="0" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="14" name="Dep"/>
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="14" name="PP"/>
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="19" aPos="0" ID="1250218">
+            <text>` Have you got any food ? &quot; said Adam hoarsely , hunching up sideways in the driver 's seat .</text>
+            <annotationSet cDate="10/08/2003 07:06:58 PDT Wed" status="UNANN" ID="1947426">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="NP"/>
+                    <label end="9" start="7" name="PP"/>
+                    <label end="13" start="11" name="VVD"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="22" start="19" name="nn"/>
+                    <label end="24" start="24" name="sent"/>
+                    <label end="31" start="28" name="VVD"/>
+                    <label end="36" start="33" name="NP"/>
+                    <label end="45" start="38" name="rb"/>
+                    <label end="47" start="47" name=","/>
+                    <label end="56" start="49" name="VVG"/>
+                    <label end="59" start="58" name="rp"/>
+                    <label end="68" start="61" name="rb"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="82" start="77" name="nn"/>
+                    <label end="85" start="84" name="POS"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="92" start="92" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2003 07:06:58 PDT Wed" status="AUTO_EDITED" ID="1947427">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="56" start="49" name="Target"/>
+                    <label cBy="605" end="59" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5014" end="68" start="61" name="Direction"/>
+                    <label cBy="605" feID="5004" end="90" start="70" name="Location"/>
+                    <label cBy="395" feID="5002" itype="CNI" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="61" name="Dep"/>
+                    <label end="90" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="61" name="AVP"/>
+                    <label end="90" start="70" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="349" aPos="0" ID="1250221">
+            <text>You could not hunch up into the tree , hugging closer to the trunk .</text>
+            <annotationSet cDate="10/08/2003 07:07:01 PDT Wed" status="UNANN" ID="1947432">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="8" start="4" name="md"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="18" start="14" name="VV"/>
+                    <label end="21" start="20" name="rp"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="35" start="32" name="nn"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="45" start="39" name="VVG"/>
+                    <label end="52" start="47" name="jjr"/>
+                    <label end="55" start="54" name="to"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="65" start="61" name="nn"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2003 07:07:01 PDT Wed" status="AUTO_EDITED" ID="1947433">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="18" start="14" name="Target"/>
+                    <label cBy="605" end="21" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5011" end="35" start="23" name="Goal"/>
+                    <label cBy="605" feID="5002" end="2" start="0" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="23" name="Dep"/>
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="23" name="PP"/>
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="687" aPos="0" ID="1250231">
+            <text>She hunched up .</text>
+            <annotationSet cDate="10/08/2003 07:07:06 PDT Wed" status="UNANN" ID="1947452">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="10" start="4" name="VVN"/>
+                    <label end="13" start="12" name="rp"/>
+                    <label end="15" start="15" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2003 07:07:06 PDT Wed" status="AUTO_APP" ID="1947453">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="10" start="4" name="Target"/>
+                    <label cBy="605" end="13" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5002" end="2" start="0" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-PP-(2)"/>
+    <subCorpus name="02-NP-T-(2)"/>
+    <subCorpus name="other-matched-(2)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="223" aPos="0" ID="1250243">
+            <text>I said , hunching up as small as I could .</text>
+            <annotationSet cDate="10/08/2003 07:07:11 PDT Wed" status="UNANN" ID="1947476">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="16" start="9" name="VVG"/>
+                    <label end="19" start="18" name="rp"/>
+                    <label end="22" start="21" name="rb"/>
+                    <label end="28" start="24" name="jj"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="33" start="33" name="PP"/>
+                    <label end="39" start="35" name="md"/>
+                    <label end="41" start="41" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2003 07:07:11 PDT Wed" status="AUTO_EDITED" ID="1947477">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="16" start="9" name="Target"/>
+                    <label cBy="605" end="19" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5002" end="0" start="0" name="Protagonist"/>
+                    <label cBy="605" feID="5006" end="39" start="21" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="39" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="39" start="21" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="ADV" name="somewhat.adv" ID="15970" frame="Degree" frameID="2001" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Gra" name="Gradable_attribute"/>
+        </frame>
+    </header>
+    <definition>FN: not very much.</definition>
+    <lexeme POS="ADV" name="somewhat"/>
+    <valences>
+        <governor type="Ctrlr" lemma="sink">
+            <annoSet ID="2600210"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Gradable_attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Gradable_attribute"/>
+                <annoSet ID="2600210"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Gradable_attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Gradable_attribute"/>
+                <annoSet ID="2600210"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="3" paragNo="3" aPos="0" ID="312916">
+            <text>Winston turned a switch and the voice sank somewhat , though the words were still distinguishable .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269192">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="15" start="15" name="AT0"/>
+                    <label end="22" start="17" name="NN1"/>
+                    <label end="26" start="24" name="CJC"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="41" start="38" name="VVD"/>
+                    <label end="50" start="43" name="AV0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="59" start="54" name="CJS"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="74" start="71" name="VBD"/>
+                    <label end="80" start="76" name="AV0"/>
+                    <label end="96" start="82" name="AJ0"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 06:56:35 PDT Fri" status="MANUAL" ID="2600210">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="50" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="12081" itype="CNI" name="Gradable_attribute"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adv">
+                    <label end="41" start="38" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

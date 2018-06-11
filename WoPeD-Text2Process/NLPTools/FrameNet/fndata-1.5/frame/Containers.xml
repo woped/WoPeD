@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:27 PST Wed" name="Containers" ID="78" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame covers entities which are prototypically conceived of and created to fulfill the function of containing--i.e. &lt;fen&gt;Container&lt;/fen&gt;s  that contain objects or substances, the &lt;fen&gt;Contents&lt;/fen&gt;.  This can be expressed as a complement , and includes potential or intended contents.   A &lt;fen&gt;Container&lt;/fen&gt; may also have an &lt;fen&gt;Owner&lt;/fen&gt;, a current &lt;fen&gt;Relative_location&lt;/fen&gt;, &lt;fen&gt;Material&lt;/fen&gt; from which it is constructed, a method of &lt;fen&gt;Construction&lt;/fen&gt;, and a &lt;fen&gt;Type&lt;/fen&gt;.  Note the connection between words in this frame and those in the Filling, Emptying, and Fullness frames.
+&lt;ex&gt;a &lt;fex name="Container"&gt;&lt;t&gt;BAG&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Contents"&gt;of popcorn&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Contents"&gt;underwear&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;drawer&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Owner"&gt;Chuck's&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;suitcase&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Container"&gt;the SUITCASE&lt;/fex&gt; &lt;fex name="Rel_loc"&gt;in Chuck's office&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Mat"&gt;straw&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;basket&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cons"&gt;woven&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;basket&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Type"&gt;Erlenmeyer&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;flask&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <semType name="Artifact" ID="61"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:27 PST Wed" abbrev="Container" name="Container" ID="367">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Container&lt;/fen&gt; is an object which is conventionally used as a container.  Target words in this frame are tagged with this frame element.
+
+&lt;ex&gt;John carried a &lt;fex name="Container"&gt;&lt;t&gt;bucket&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Container" ID="15"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:27 PST Wed" abbrev="Cont" name="Contents" ID="368">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Contents&lt;/fen&gt; is the object(s)/stuff contained in the &lt;fen&gt;Container&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 04:32:53 PDT Mon" abbrev="Mat" name="Material" ID="2011">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Material&lt;/fen&gt; identifies the material of which the &lt;fen&gt;Container&lt;/fen&gt; is made.
+
+&lt;ex&gt;&lt;fex name="Mat"&gt;straw&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;basket&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 04:33:02 PDT Mon" abbrev="Type" name="Type" ID="2012">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Type&lt;/fen&gt; designates the type of &lt;fen&gt;Container&lt;/fen&gt;.  Often the &lt;fen&gt;Type&lt;/fen&gt; labels part of a multi-word or compound word target.
+
+&lt;ex&gt;&lt;fex name="Type"&gt;Erlenmeyer&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;flask&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Type"&gt;TABLE&lt;/fex&gt;&lt;fex name="Container"&gt;SPOON&lt;/fex&gt;&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 04:33:08 PDT Mon" abbrev="Rel_loc" name="Relative_location" ID="2013">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Relative_location&lt;/fen&gt; is the location of the &lt;fen&gt;Container&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;fex name="Container"&gt;&lt;t&gt;wallet&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Rel_loc"&gt;in his pocket&lt;/fex&gt; was full of photos of his family.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 05:52:02 PDT Mon" abbrev="Cons" name="Construction" ID="2015">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Construction&lt;/fen&gt; indicates the action (or causer) which creates the Container.
+
+&lt;ex&gt;&lt;fex name="Cons"&gt;fired&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;urns&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/04/2001 03:09:24 PDT Thu" abbrev="Own" name="Owner" ID="2043">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Owner&lt;/fen&gt; identifies the owner of the &lt;fen&gt;Container&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Owner"&gt;Chuck's&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;suitcase&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/11/2001 04:02:39 PDT Thu" abbrev="Use" name="Use" ID="2064">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Use&lt;/fen&gt; identifies the purpose for which an artifact is constructed and the activity with which it is associated, or the &lt;fen&gt;Contents&lt;/fen&gt; protypically contained in the &lt;fen&gt;Container&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Use"&gt;watering&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;can&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Use"&gt;wine&lt;/fex&gt; &lt;fex name="Container"&gt; &lt;t&gt;glass&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/30/2001 11:52:46 PST Tue" abbrev="Part" name="Part" ID="2096">
+        <definition>&lt;def-root&gt;This FE identifies a &lt;fen&gt;Part&lt;/fen&gt; of the &lt;fen&gt;Container&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Part"&gt;screw top&lt;/fex&gt; &lt;fex name="Container"&gt;&lt;t&gt;bottle&lt;/t&gt;&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="10/02/2004 04:59:48 PDT Sat" abbrev="" name="Descriptor" ID="7162">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Descriptor&lt;/fen&gt; describes some aspect of the &lt;fen&gt;Container&lt;/fen&gt;.
+
+&lt;ex&gt;He put everything into a &lt;fex name="Descriptor"&gt;really really huge&lt;/fex&gt; &lt;t&gt;briefcase&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Bounded_entity</relatedFrame>
+        <relatedFrame>Containing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="amphora.n" ID="1664" lemmaID="1286" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>COD: a tall ancient Greek or Roman jar or jug with two handles and a narrow neck</definition>
+        <sentenceCount annotated="4" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="amphora"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="backpack.n" ID="1665" lemmaID="8" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>COD:  a rucksack. </definition>
+        <sentenceCount annotated="6" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="backpack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="can.n" ID="1667" lemmaID="5321" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>COD: a cylindrical metal container, in particular one in which food or drink is hermetically sealed for storage over long periods. </definition>
+        <sentenceCount annotated="46" total="320"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="can"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="capsule.n" ID="1668" lemmaID="5471" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>COD:  a small case or container</definition>
+        <sentenceCount annotated="12" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="capsule"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cart.n" ID="1669" lemmaID="5623" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>COD: a shallow open container on wheels, pulled or pushed by hand. </definition>
+        <sentenceCount annotated="26" total="253"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cart"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="casket.n" ID="1670" lemmaID="5668" cBy="731" cDate="02/08/2001 01:30:14 PST Thu">
+        <definition>FN: a (decorated) box or chest for holding valuable objects</definition>
+        <sentenceCount annotated="12" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="casket"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="chest.n" ID="1673" lemmaID="6246" cBy="731" cDate="02/08/2001 01:30:15 PST Thu">
+        <definition>COD: a large strong box for storage or transport. </definition>
+        <sentenceCount annotated="16" total="303"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chest"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="envelope.n" ID="1677" lemmaID="12913" cBy="731" cDate="02/08/2001 01:30:15 PST Thu">
+        <definition>COD: a flat paper container with a sealable flap, used to enclose a letter or document. </definition>
+        <sentenceCount annotated="50" total="444"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="envelope"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="flask.n" ID="1678" lemmaID="14631" cBy="731" cDate="02/08/2001 01:30:15 PST Thu">
+        <definition>COD:  a narrow-necked conical or spherical bottle</definition>
+        <sentenceCount annotated="37" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flask"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="glass.n" ID="1680" lemmaID="16304" cBy="731" cDate="02/08/2001 01:30:15 PST Thu">
+        <definition>COD: a drinking container made of glass. </definition>
+        <sentenceCount annotated="44" total="498"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glass"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="handbag.n" ID="1681" lemmaID="17334" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: (Brit.) a small bag used by a woman to carry everyday personal items. </definition>
+        <sentenceCount annotated="13" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="handbag"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="jar.n" ID="1682" lemmaID="20841" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: a wide-mouthed cylindrical container made of glass or pottery</definition>
+        <sentenceCount annotated="29" total="271"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jar"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="knapsack.n" ID="1684" lemmaID="21396" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: a soldier's or hiker's bag with shoulder straps, carried on the back. </definition>
+        <sentenceCount annotated="6" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="knapsack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ladle.n" ID="1685" lemmaID="21576" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>FN: a large long-handled spoon with a cup-shaped bowl, used for transferring hot liquids</definition>
+        <sentenceCount annotated="8" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ladle"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="locker.n" ID="1686" lemmaID="22624" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>FN: a small lockable cupboard or compartment, typically used for clothes and personal belongings</definition>
+        <sentenceCount annotated="22" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="locker"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mug.n" ID="1687" lemmaID="25161" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: a large cup, typically cylindrical and with a handle and used without a saucer</definition>
+        <sentenceCount annotated="51" total="361"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mug"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pot_cooking.n" ID="1690" lemmaID="29913" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: a rounded or cylindrical container, especially one of ceramic, used for storage or cooking.</definition>
+        <sentenceCount annotated="30" total="613"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pot"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="purse.n" ID="1691" lemmaID="31253" cBy="731" cDate="02/08/2001 01:30:16 PST Thu">
+        <definition>COD: a small pouch of leather or plastic used for carrying money or a handbag.</definition>
+        <sentenceCount annotated="27" total="232"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="purse"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Container" POS="N" name="reservoir.n" ID="1692" lemmaID="32828" cBy="731" cDate="02/08/2001 01:30:17 PST Thu">
+        <definition>FN: a receptacle for liquid</definition>
+        <sentenceCount annotated="29" total="264"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reservoir"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sack.n" ID="1693" lemmaID="33879" cBy="731" cDate="02/08/2001 01:30:17 PST Thu">
+        <definition>COD: a large bag made of a material such as hessian or thick paper, used for storing and carrying goods. </definition>
+        <sentenceCount annotated="35" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="satchel.n" ID="1694" lemmaID="34176" cBy="731" cDate="02/08/2001 01:30:17 PST Thu">
+        <definition>COD: a shoulder bag with a long strap, used especially for school books. </definition>
+        <sentenceCount annotated="11" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="satchel"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spoon.n" ID="1698" lemmaID="37465" cBy="731" cDate="02/08/2001 01:30:17 PST Thu">
+        <definition>COD: an implement consisting of a small, shallow oval or round bowl on a long handle, used for eating, stirring, and serving food. </definition>
+        <sentenceCount annotated="31" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spoon"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="suitcase.n" ID="1699" lemmaID="38726" cBy="731" cDate="02/08/2001 01:30:17 PST Thu">
+        <definition>COD: a case with a handle and a hinged lid, used for carrying clothes and other personal possessions. </definition>
+        <sentenceCount annotated="58" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suitcase"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tin.n" ID="1701" lemmaID="40477" cBy="731" cDate="02/08/2001 01:30:18 PST Thu">
+        <definition>FN: a container made of tinplate or aluminium, typically used for baking or storing</definition>
+        <sentenceCount annotated="44" total="371"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tin"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="wallet.n" ID="1702" lemmaID="43379" cBy="731" cDate="02/08/2001 01:30:18 PST Thu">
+        <definition>COD: a pocket-sized, flat, folding holder for money and plastic cards</definition>
+        <sentenceCount annotated="32" total="212"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wallet"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="teaspoon.n" ID="2023" lemmaID="39682" cBy="605" cDate="04/26/2001 02:40:25 PDT Thu">
+        <definition>COD: a small spoon used for adding sugar to and stirring hot drinks or for eating some foods.</definition>
+        <sentenceCount annotated="8" total="86"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="teaspoon"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="ampule.n" ID="4208" lemmaID="45244" cBy="664" cDate="10/08/2001 06:18:16 PDT Mon">
+        <definition>FN: a small capsule</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ampule"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ashtray.n" ID="4209" lemmaID="2080" cBy="664" cDate="10/08/2001 06:21:34 PDT Mon">
+        <definition>COD: 1.  a small receptacle for tobacco ash and cigarette ends. </definition>
+        <sentenceCount annotated="14" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ash-tray"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bag.n" ID="4221" lemmaID="2680" cBy="664" cDate="10/09/2001 04:43:26 PDT Tue">
+        <definition>FN: a (flexible) container, which may have an open top, for carrying one's belongings</definition>
+        <sentenceCount annotated="30" total="486"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bag"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="barrel.n" ID="4222" lemmaID="2950" cBy="664" cDate="10/09/2001 04:43:49 PDT Tue">
+        <definition>COD:  a cylindrical container bulging out in the middle, traditionally made of wooden staves enclosed by metal hoops</definition>
+        <sentenceCount annotated="30" total="308"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="barrel"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="basin.n" ID="4223" lemmaID="2990" cBy="664" cDate="10/09/2001 04:47:00 PDT Tue">
+        <definition>COD: a large bowl or open container for washing in, preparing food, or holding liquid</definition>
+        <sentenceCount annotated="19" total="318"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="basin"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="basket.n" ID="4224" lemmaID="2993" cBy="664" cDate="10/09/2001 04:47:23 PDT Tue">
+        <definition>COD: a container used to hold or carry things, made from interwoven strips of cane or wire</definition>
+        <sentenceCount annotated="40" total="464"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="basket"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="beaker.n" ID="4225" lemmaID="3096" cBy="664" cDate="10/09/2001 04:47:49 PDT Tue">
+        <definition>FN: a cylindrical glass container used for drinking or in a laboratory</definition>
+        <sentenceCount annotated="19" total="127"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beaker"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bin.n" ID="4226" lemmaID="3608" cBy="664" cDate="10/09/2001 04:48:11 PDT Tue">
+        <definition>COD:  a storage receptacle, sometimes for depositing rubbish</definition>
+        <sentenceCount annotated="27" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bin"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bottle.n" ID="4227" lemmaID="4277" cBy="664" cDate="10/09/2001 04:48:54 PDT Tue">
+        <definition>COD: a container with a narrow neck, used for storing liquids.</definition>
+        <sentenceCount annotated="47" total="565"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bottle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bowl.n" ID="4228" lemmaID="4346" cBy="664" cDate="10/09/2001 04:49:17 PDT Tue">
+        <definition>COD: a round, deep dish or basin</definition>
+        <sentenceCount annotated="39" total="451"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bowl"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="box.n" ID="4229" lemmaID="4361" cBy="664" cDate="10/09/2001 04:49:51 PDT Tue">
+        <definition>COD: a container with a flat base and sides and a lid</definition>
+        <sentenceCount annotated="37" total="763"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="box"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="briefcase.n" ID="4230" lemmaID="4597" cBy="664" cDate="10/09/2001 04:50:18 PDT Tue">
+        <definition>COD:  a flat rectangular case for carrying books and documents</definition>
+        <sentenceCount annotated="57" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="briefcase"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bucket.n" ID="4231" lemmaID="4781" cBy="664" cDate="10/09/2001 04:50:40 PDT Tue">
+        <definition>COD: a cylindrical open container with a handle, used to carry liquids. </definition>
+        <sentenceCount annotated="19" total="404"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bucket"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="canister.n" ID="4232" lemmaID="5371" cBy="664" cDate="10/10/2001 04:23:45 PDT Wed">
+        <definition>COD: a round or cylindrical container used for storing food, chemicals, rolls of film, etc. </definition>
+        <sentenceCount annotated="14" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="canister"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="canteen.n" ID="4233" lemmaID="5411" cBy="664" cDate="10/10/2001 04:25:00 PDT Wed">
+        <definition>COD: a small water bottle, as used by soldiers or campers</definition>
+        <sentenceCount annotated="7" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="canteen"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="carafe.n" ID="4234" lemmaID="5487" cBy="664" cDate="10/10/2001 04:26:29 PDT Wed">
+        <definition>COD: an open-topped glass flask typically used for serving wine in a restaurant. </definition>
+        <sentenceCount annotated="8" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="carafe"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="carton.n" ID="4235" lemmaID="5634" cBy="664" cDate="10/10/2001 04:27:18 PDT Wed">
+        <definition>COD: a light cardboard container</definition>
+        <sentenceCount annotated="23" total="185"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="carton"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cartridge.n" ID="4236" lemmaID="5638" cBy="664" cDate="10/10/2001 04:28:56 PDT Wed">
+        <definition>FN: the containing/housing part of an object designed for insertion into a larger device, typically containing some resource used by the device; often used to refer to the entire inserted object.</definition>
+        <sentenceCount annotated="24" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cartridge"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="case.n" ID="4237" lemmaID="5649" cBy="664" cDate="10/10/2001 04:31:37 PDT Wed">
+        <definition>COD:   a container designed to hold or protect something</definition>
+        <sentenceCount annotated="35" total="506"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="case"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="coffer.n" ID="4238" lemmaID="7079" cBy="664" cDate="10/10/2001 04:33:24 PDT Wed">
+        <definition>COD: a small chest for holding valuables. </definition>
+        <sentenceCount annotated="8" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coffer"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="coffin.n" ID="4239" lemmaID="7082" cBy="664" cDate="10/10/2001 04:34:28 PDT Wed">
+        <definition>COD: a long, narrow box in which a dead body is buried or cremated. </definition>
+        <sentenceCount annotated="26" total="347"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coffin"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="container.n" ID="4241" lemmaID="8024" cBy="664" cDate="10/10/2001 04:36:32 PDT Wed">
+        <definition>COD: an object for holding or transporting something</definition>
+        <sentenceCount annotated="54" total="444"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="container"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cooler.n" ID="4242" lemmaID="8259" cBy="664" cDate="10/11/2001 02:58:16 PDT Thu">
+        <definition>COD: a device or container for keeping things cool. </definition>
+        <sentenceCount annotated="4" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cooler"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="crate.n" ID="4243" lemmaID="8812" cBy="664" cDate="10/11/2001 03:08:42 PDT Thu">
+        <definition>COD:  a slatted wooden case used for transporting goods</definition>
+        <sentenceCount annotated="24" total="217"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crate"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="crock.n" ID="4244" lemmaID="8985" cBy="664" cDate="10/11/2001 03:16:19 PDT Thu">
+        <definition>COD:  an earthenware pot or jar</definition>
+        <sentenceCount annotated="7" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crock"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="crucible.n" ID="4245" lemmaID="9102" cBy="664" cDate="10/11/2001 03:22:20 PDT Thu">
+        <definition>COD: a container in which metals or other substances may be melted or subjected to very high temperatures</definition>
+        <sentenceCount annotated="4" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crucible"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cruet.n" ID="4246" lemmaID="9116" cBy="664" cDate="10/11/2001 03:52:39 PDT Thu">
+        <definition>COD: a small container for salt, pepper, oil, or vinegar for use at a dining table</definition>
+        <sentenceCount annotated="4" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cruet"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cup.n" ID="4247" lemmaID="9245" cBy="664" cDate="10/11/2001 03:54:22 PDT Thu">
+        <definition>COD: a small bowl-shaped container for drinking from, typically having a handle and used with a matching saucer</definition>
+        <sentenceCount annotated="32" total="391"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cup"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="cuspidor.n" ID="4248" lemmaID="9339" cBy="664" cDate="10/11/2001 03:56:12 PDT Thu">
+        <definition>COD: (N. Amer.) a spittoon. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cuspidor"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cylinder.n" ID="4249" lemmaID="9410" cBy="664" cDate="10/11/2001 03:57:19 PDT Thu">
+        <definition>COD: a cylindrical container for liquefied gas under pressure</definition>
+        <sentenceCount annotated="20" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cylinder"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cask.n" ID="4250" lemmaID="5667" cBy="664" cDate="10/11/2001 03:59:43 PDT Thu">
+        <definition>COD: a large barrel-like container for the storage of liquid, especially alcoholic drinks</definition>
+        <sentenceCount annotated="22" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cask"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="carryall.n" ID="4251" lemmaID="5614" cBy="664" cDate="10/11/2001 04:35:07 PDT Thu">
+        <definition>COD: (N. Amer.) a large bag or case. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="carryall"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="censer.n" ID="4252" lemmaID="5883" cBy="664" cDate="10/11/2001 04:35:32 PDT Thu">
+        <definition>COD: a container in which incense is burnt. </definition>
+        <sentenceCount annotated="5" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="censer"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="chalice.n" ID="4253" lemmaID="5998" cBy="664" cDate="10/11/2001 04:35:56 PDT Thu">
+        <definition>COD:  a goblet</definition>
+        <sentenceCount annotated="9" total="92"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chalice"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="creamer.n" ID="4254" lemmaID="8844" cBy="664" cDate="10/11/2001 04:36:57 PDT Thu">
+        <definition>COD: (N. Amer.) a jug for cream. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="creamer"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="decanter.n" ID="4260" lemmaID="9749" cBy="664" cDate="10/13/2001 06:54:45 PDT Sat">
+        <definition>COD: a stoppered glass container into which wine or spirit is decanted</definition>
+        <sentenceCount annotated="17" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="decanter"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dish.n" ID="4261" lemmaID="10974" cBy="664" cDate="10/13/2001 06:58:02 PDT Sat">
+        <definition>COD: a shallow, typically flat-bottomed container for cooking or serving food</definition>
+        <sentenceCount annotated="18" total="422"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dish"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dispenser.n" ID="4262" lemmaID="11087" cBy="664" cDate="10/13/2001 07:02:03 PDT Sat">
+        <definition>FN: A device which stores a substance or (us. homogeneous) items, designed to release a measured amount for use.</definition>
+        <sentenceCount annotated="25" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dispenser"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="drum.n" ID="4263" lemmaID="11855" cBy="664" cDate="10/13/2001 07:16:57 PDT Sat">
+        <definition>COD: a cylindrical object or part, especially a container: </definition>
+        <sentenceCount annotated="33" total="262"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="drum"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="duffel bag.n" ID="4264" lemmaID="11926" cBy="664" cDate="10/13/2001 07:24:30 PDT Sat">
+        <definition>FN: a cylindrical canvas bag</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="duffel"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bag"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="flagon.n" ID="4265" lemmaID="14574" cBy="664" cDate="10/13/2001 07:34:21 PDT Sat">
+        <definition>COD: a large container for serving or consuming drinks</definition>
+        <sentenceCount annotated="11" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flagon"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="empty.n" ID="4266" lemmaID="12642" cBy="664" cDate="10/15/2001 05:59:32 PDT Mon">
+        <definition>COD: (informal) a bottle or glass left empty of its contents. </definition>
+        <sentenceCount annotated="6" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="empty"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="etui.n" ID="4267" lemmaID="45246" cBy="664" cDate="10/15/2001 06:05:53 PDT Mon">
+        <definition>COD: (dated) a small ornamental case for holding needles, cosmetics, and other articles.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="etui"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="goblet.n" ID="4268" lemmaID="16449" cBy="664" cDate="10/15/2001 06:09:37 PDT Mon">
+        <definition>COD: a drinking glass with a foot and a stem</definition>
+        <sentenceCount annotated="21" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="goblet"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="grail.n" ID="4269" lemmaID="16650" cBy="664" cDate="10/15/2001 06:10:57 PDT Mon">
+        <definition>COD: (in medieval legend) the cup or platter used by Christ at the Last Supper and in which Joseph of Arimathea received Christ's blood, especially as the object of quests by knights. </definition>
+        <sentenceCount annotated="6" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grail"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hamper.n" ID="4270" lemmaID="17327" cBy="664" cDate="10/15/2001 06:26:57 PDT Mon">
+        <definition>COD: (Brit.) a basket  used for food </definition>
+        <sentenceCount annotated="15" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hamper"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="haversack.n" ID="4271" lemmaID="17582" cBy="664" cDate="10/15/2001 06:34:14 PDT Mon">
+        <definition>COD: a small, stout bag carried on the back or over the shoulder, used especially by soldiers and walkers</definition>
+        <sentenceCount annotated="5" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="haversack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hopper.n" ID="4272" lemmaID="18388" cBy="664" cDate="10/15/2001 06:36:30 PDT Mon">
+        <definition>COD: a container for grain, rock, or rubbish, typically one that tapers downward and discharges its contents at the bottom</definition>
+        <sentenceCount annotated="8" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hopper"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="jeroboam.n" ID="4273" lemmaID="20909" cBy="664" cDate="10/15/2001 06:39:39 PDT Mon">
+        <definition>COD: a wine bottle with a capacity four times larger than that of an ordinary bottle</definition>
+        <sentenceCount annotated="1" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jeroboam"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="jigger.n" ID="4274" lemmaID="20951" cBy="664" cDate="10/15/2001 06:42:42 PDT Mon">
+        <definition>FN: a small glass used for alcoholic drinks</definition>
+        <sentenceCount annotated="1" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jigger"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="jug.n" ID="4275" lemmaID="21112" cBy="664" cDate="10/15/2001 06:49:30 PDT Mon">
+        <definition>COD:  a cylindrical container with a handle and a lip, for holding and pouring liquids</definition>
+        <sentenceCount annotated="35" total="331"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jug"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="keg.n" ID="4276" lemmaID="21239" cBy="664" cDate="10/15/2001 06:51:29 PDT Mon">
+        <definition>COD: a small barrel, especially one of less than 10 gallons or (in the US) 30 gallons</definition>
+        <sentenceCount annotated="21" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="keg"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="magnum.n" ID="4277" lemmaID="23156" cBy="664" cDate="10/15/2001 06:59:59 PDT Mon">
+        <definition>COD: a wine bottle of twice the standard size, normally 112 litres</definition>
+        <sentenceCount annotated="9" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="magnum"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="mailer.n" ID="4278" lemmaID="45247" cBy="664" cDate="10/16/2001 04:06:19 PDT Tue">
+        <definition>COD: a container used for conveying items by post</definition>
+        <sentenceCount annotated="2" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mailer"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="overnighter.n" ID="4279" lemmaID="45248" cBy="664" cDate="10/16/2001 04:10:44 PDT Tue">
+        <definition>COD: an overnight bag. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="overnighter"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pack.n" ID="4286" lemmaID="27481" cBy="664" cDate="10/17/2001 06:21:55 PDT Wed">
+        <definition>FN: a small container or carton that goods are sold in</definition>
+        <sentenceCount annotated="29" total="315"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sarcophagus.n" ID="4287" lemmaID="34150" cBy="664" cDate="10/17/2001 06:29:38 PDT Wed">
+        <definition>COD: a stone coffin, typically associated with ancient Egypt, Rome, and Greece. </definition>
+        <sentenceCount annotated="15" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sarcophagus"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tun.n" ID="4288" lemmaID="41475" cBy="664" cDate="10/17/2001 06:31:14 PDT Wed">
+        <definition>COD: a large beer or wine cask</definition>
+        <sentenceCount annotated="4" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tun"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stein.n" ID="4289" lemmaID="37959" cBy="664" cDate="10/17/2001 06:33:09 PDT Wed">
+        <definition>COD: a large earthenware beer mug</definition>
+        <sentenceCount annotated="7" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stein"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spittoon.n" ID="4290" lemmaID="37385" cBy="664" cDate="10/17/2001 06:34:01 PDT Wed">
+        <definition>COD:  a container for spitting into</definition>
+        <sentenceCount annotated="4" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spittoon"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pannier.n" ID="4301" lemmaID="27675" cBy="664" cDate="10/19/2001 06:21:38 PDT Fri">
+        <definition>FN: a large container carried on the back (of an animal).</definition>
+        <sentenceCount annotated="5" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pannier"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ramekin.n" ID="4302" lemmaID="31763" cBy="664" cDate="10/19/2001 06:22:52 PDT Fri">
+        <definition>COD: a small dish for baking and serving an individual portion of food. </definition>
+        <sentenceCount annotated="5" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ramekin"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="reticule.n" ID="4303" lemmaID="33001" cBy="664" cDate="10/19/2001 06:24:03 PDT Fri">
+        <definition>COD: (chiefly historical) a woman's small handbag, typically having a drawstring and decorated with embroidery or beading. [Fashion] </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reticule"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="salver.n" ID="4304" lemmaID="34052" cBy="664" cDate="10/19/2001 06:24:58 PDT Fri">
+        <definition>COD: a tray, typically one made of silver and used in formal circumstances. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="salver"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="samovar.n" ID="4305" lemmaID="34064" cBy="664" cDate="10/19/2001 06:26:05 PDT Fri">
+        <definition>COD: a highly decorated Russian tea urn</definition>
+        <sentenceCount annotated="5" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="samovar"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="snifter.n" ID="4306" lemmaID="36645" cBy="664" cDate="10/19/2001 06:27:33 PDT Fri">
+        <definition>COD: a balloon glass for brandy</definition>
+        <sentenceCount annotated="4" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snifter"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thermos.n" ID="4307" lemmaID="40104" cBy="664" cDate="10/19/2001 06:29:22 PDT Fri">
+        <definition>COD: (trademark) a vacuum flask. </definition>
+        <sentenceCount annotated="10" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thermos"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tureen.n" ID="4308" lemmaID="41513" cBy="664" cDate="10/19/2001 06:30:06 PDT Fri">
+        <definition>COD:  a deep covered dish from which soup is served</definition>
+        <sentenceCount annotated="8" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tureen"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="valise.n" ID="4309" lemmaID="42672" cBy="664" cDate="10/19/2001 06:30:50 PDT Fri">
+        <definition>COD: a small travelling bag or suitcase</definition>
+        <sentenceCount annotated="4" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="valise"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cauldron.n" ID="4310" lemmaID="45251" cBy="664" cDate="10/22/2001 01:32:40 PDT Mon">
+        <definition>COD:  a large metal pot, used for cooking over an open fire. </definition>
+        <sentenceCount annotated="14" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cauldron"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="casserole.n" ID="4312" lemmaID="5671" cBy="664" cDate="10/22/2001 01:37:33 PDT Mon">
+        <definition>COD: a large dish with a lid, used for cooking food slowly in an oven</definition>
+        <sentenceCount annotated="19" total="169"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="casserole"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="folder.n" ID="4416" lemmaID="14914" cBy="296" cDate="11/07/2001 02:07:41 PST Wed">
+        <definition>COD: a folding cover or wallet for storing loose papers. </definition>
+        <sentenceCount annotated="30" total="219"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="folder"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="rucksack.n" ID="4417" lemmaID="33703" cBy="296" cDate="11/07/2001 02:17:37 PST Wed">
+        <definition>COD: .a bag with two shoulder straps which allow it to be carried on the back, used by hikers. </definition>
+        <sentenceCount annotated="24" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rucksack"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Container" POS="N" name="pouch.n" ID="4418" lemmaID="29964" cBy="296" cDate="11/07/2001 02:24:04 PST Wed">
+        <definition>COD:.a small flexible bag. </definition>
+        <sentenceCount annotated="34" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pouch"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="vial.n" ID="4419" lemmaID="42961" cBy="296" cDate="11/07/2001 02:29:37 PST Wed">
+        <definition>COD: a small container used especially for holding liquid medicines. </definition>
+        <sentenceCount annotated="15" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vial"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="vase.n" ID="4420" lemmaID="42743" cBy="296" cDate="11/07/2001 02:36:39 PST Wed">
+        <definition>COD: a decorative container without handles, typically made of glass or china and used as an ornament or for displaying cut flowers. </definition>
+        <sentenceCount annotated="24" total="261"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vase"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pail.n" ID="4421" lemmaID="27526" cBy="296" cDate="11/07/2001 02:41:32 PST Wed">
+        <definition>COD: a bucket. </definition>
+        <sentenceCount annotated="18" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pail"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pipette.n" ID="4422" lemmaID="29103" cBy="296" cDate="11/07/2001 02:44:42 PST Wed">
+        <definition>COD: a slender tube with a bulb at one end, filled by sucking liquid into the tube, used for transferring or measuring out quantities of the liquid. </definition>
+        <sentenceCount annotated="8" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pipette"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tumbler.n" ID="4423" lemmaID="41462" cBy="669" cDate="11/07/2001 03:57:33 PST Wed">
+        <definition>COD: a drinking glass with straight sides and no handle or stem. formerly having a rounded bottom so as not to stand upright.</definition>
+        <sentenceCount annotated="27" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tumbler"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="vat.n" ID="4424" lemmaID="42751" cBy="669" cDate="11/07/2001 04:11:26 PST Wed">
+        <definition>COD: a large tank or tub used to hold liquid</definition>
+        <sentenceCount annotated="24" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vat"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="vivarium.n" ID="4425" lemmaID="43167" cBy="669" cDate="11/07/2001 04:34:37 PST Wed">
+        <definition>COD: an enclosure or structure used for keeping animals under semi-natural conditions for observation or study or as pets; an aquarium or terrarium. </definition>
+        <sentenceCount annotated="2" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vivarium"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="goldfish bowl.n" ID="4436" lemmaID="45287" cBy="296" cDate="11/12/2001 12:21:20 PST Mon">
+        <definition>COD: a spherical glass container for goldfish. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="goldfish"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="punch bowl.n" ID="4437" lemmaID="45288" cBy="296" cDate="11/12/2001 12:23:18 PST Mon">
+        <definition>COD: a deep bowl for mixing and serving punch. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="punch"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bowl"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="toilet bowl.n" ID="4440" lemmaID="45289" cBy="664" cDate="11/13/2001 02:56:51 PST Tue">
+        <definition>FN:</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bowl"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="toilet"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="wine bottle.n" ID="4441" lemmaID="45290" cBy="664" cDate="11/13/2001 03:00:09 PST Tue">
+        <definition>COD: a glass bottle for wine, the standard size holding 75 cl or 2623 fl. oz. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bottle"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wine"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chest of drawers.n" ID="4442" lemmaID="45291" cBy="664" cDate="11/13/2001 03:04:00 PST Tue">
+        <definition>COD: a piece of furniture used for storage, consisting of an upright frame into which drawers are fitted </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="drawers"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="of"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chest"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hot-water bottle.n" ID="4443" lemmaID="45292" cBy="664" cDate="11/13/2001 03:21:09 PST Tue">
+        <definition>COD: a flat, oblong rubber container that is filled with hot water and used for warming a bed or part of the body</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bottle"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hot-water"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Container" POS="N" name="urn.n" ID="4452" lemmaID="42548" cBy="296" cDate="11/21/2001 11:54:52 PST Wed">
+        <definition>COD:  a tall, rounded vase with a stem and base, especially one for storing a cremated person's ashes or a tall, rounded container with a tap (usually for storing coffee or tea).</definition>
+        <sentenceCount annotated="28" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="urn"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tank.n" ID="4453" lemmaID="39493" cBy="296" cDate="11/21/2001 11:59:14 PST Wed">
+        <definition>COD: a large receptacle or storage chamber, especially for liquid or gas. </definition>
+        <sentenceCount annotated="33" total="363"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tank"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="safe.n" ID="4454" lemmaID="33923" cBy="296" cDate="11/21/2001 12:07:36 PST Wed">
+        <definition>COD: a strong fireproof cabinet with a complex lock, used for the storage of valuables. </definition>
+        <sentenceCount annotated="13" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="safe"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="planter.n" ID="4455" lemmaID="29265" cBy="296" cDate="11/21/2001 12:11:16 PST Wed">
+        <definition>COD: decorative container in which plants are grown</definition>
+        <sentenceCount annotated="10" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="planter"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pot.n" ID="7202" lemmaID="29913" cBy="296" cDate="08/12/2002 08:52:59 PDT Mon">
+        <definition>FN: an open-topped container</definition>
+        <sentenceCount annotated="53" total="346"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pot"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="drawer.n" ID="11155" lemmaID="11717" cBy="303" cDate="11/16/2004 04:32:43 PST Tue">
+        <definition>COD: a lidless box-like storage compartment made to slide horizontally in and out of a desk or chest.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="drawer"/>
+        <semType name="Container" ID="15"/>
+    </lexUnit>
+</frame>

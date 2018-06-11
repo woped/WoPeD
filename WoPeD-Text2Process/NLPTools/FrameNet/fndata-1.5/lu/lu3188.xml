@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_X-Gov" POS="N" name="kitchenette.n" ID="3188" frame="Building_subparts" frameID="188" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Building_part"/>
+            <FE fgColor="FF0000" bgColor="FFFFFF" type="Peripheral" abbrev="other" name="Place_holder"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="" name="Type"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: a small kitchen or part of a room equipped as a kitchen. </definition>
+    <lexeme POS="N" name="kitchenette"/>
+    <valences>
+        <governor type="Gov" lemma="clatter">
+            <annoSet ID="503905"/>
+        </governor>
+        <governor type="Gov" lemma="walk">
+            <annoSet ID="503911"/>
+        </governor>
+    </valences>
+    <subCorpus name="N-380-s20-other-s20">
+        <sentence sentNo="0" aPos="95465473" ID="432169">
+            <text>She sits me down in Jamie 's heap of a living room while she clatters in the kitchenette . </text>
+            <annotationSet cDate="01/07/2003 03:40:55 PST Tue" status="UNANN" ID="503904">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVZ"/>
+                    <label end="10" start="9" name="PNP"/>
+                    <label end="15" start="12" name="AVP"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="24" start="20" name="NP0"/>
+                    <label end="27" start="26" name="POS"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="35" start="34" name="PRF"/>
+                    <label end="37" start="37" name="AT0"/>
+                    <label end="44" start="39" name="NN1"/>
+                    <label end="49" start="46" name="NN1"/>
+                    <label end="55" start="51" name="CJS"/>
+                    <label end="59" start="57" name="PNP"/>
+                    <label end="68" start="61" name="VVZ"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="87" start="77" name="NN1"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:40:55 PST Tue" status="MANUAL" ID="503905">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="87" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="68" start="61" name="Gov"/>
+                    <label end="87" start="70" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s40-lgov-sleep"/>
+    <subCorpus name="N-429-s40-lgov-walk">
+        <sentence sentNo="0" aPos="108917803" ID="432172">
+            <text>There was no response so I called again and walked over to the kitchenette . </text>
+            <annotationSet cDate="01/07/2003 03:40:55 PST Tue" status="UNANN" ID="503910">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="11" start="10" name="AT0"/>
+                    <label end="20" start="13" name="NN1"/>
+                    <label end="23" start="22" name="CJS"/>
+                    <label end="25" start="25" name="PNP"/>
+                    <label end="32" start="27" name="VVD"/>
+                    <label end="38" start="34" name="AV0"/>
+                    <label end="42" start="40" name="CJC"/>
+                    <label end="49" start="44" name="VVD-VVN"/>
+                    <label end="54" start="51" name="AVP"/>
+                    <label end="57" start="56" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="73" start="63" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:40:55 PST Tue" status="MANUAL" ID="503911">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="49" start="44" name="Gov"/>
+                    <label end="73" start="56" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s40-rgov-leave"/>
+    <subCorpus name="N-429-s40-rgov-show"/>
+    <subCorpus name="N-429-s40-rgov-sleep"/>
+</lexUnit>

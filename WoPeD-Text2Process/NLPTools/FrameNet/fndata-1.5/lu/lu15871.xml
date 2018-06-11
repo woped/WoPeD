@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="shatter.v" ID="15871" frame="Breaking_apart" frameID="1862" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=987" ID="17738"/>
+            <document description="bncp=2738" ID="17787"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="cri" name="Criterion"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="pie" name="Pieces"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="who" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: break suddenly and violently into pieces.</definition>
+    <lexeme POS="V" name="shatter"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Pieces"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <annoSet ID="2585217"/>
+                <annoSet ID="2585281"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Place"/>
+                <annoSet ID="2585281"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Time"/>
+                <annoSet ID="2585281"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Whole"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Whole"/>
+                <annoSet ID="2585217"/>
+                <annoSet ID="2585281"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Pieces"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="" PT="INC" FE="Place"/>
+                <valenceUnit GF="" PT="INC" FE="Time"/>
+                <valenceUnit GF="" PT="INC" FE="Whole"/>
+                <annoSet ID="2585281"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Pieces"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="" PT="INC" FE="Whole"/>
+                <annoSet ID="2585217"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-subject-(1)"/>
+    <subCorpus name="02-sound+modifier-(1)"/>
+    <subCorpus name="03-modifier-(1)"/>
+    <subCorpus name="04-other-matched-(1)"/>
+    <subCorpus name="05-other-unmatched-(1)">
+        <sentence corpID="111" docID="17787" sentNo="3" paragNo="937" aPos="0" ID="1575299">
+            <text>There was a rat-at-tat of machinegun fire and several windows shattered .</text>
+            <annotationSet cDate="07/15/2010 01:04:13 PDT Thu" status="UNANN" ID="2585216">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="10" start="10" name="dt"/>
+                    <label end="21" start="12" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="35" start="26" name="VV"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="52" start="46" name="jj"/>
+                    <label end="60" start="54" name="nns"/>
+                    <label end="70" start="62" name="VVD"/>
+                    <label end="72" start="72" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:04:13 PDT Thu" status="MANUAL" ID="2585217">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="70" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="10885" end="60" start="46" name="Whole"/>
+                    <label cBy="976" feID="10886" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="17738" sentNo="1" paragNo="5930" aPos="0" ID="1575331">
+            <text>A BRITISH Airways crew feared they would be sucked out of the cockpit when the windscreen shattered at 33,000 ft yesterday .</text>
+            <annotationSet cDate="07/15/2010 01:04:21 PDT Thu" status="UNANN" ID="2585280">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="NP"/>
+                    <label end="16" start="10" name="NPS"/>
+                    <label end="21" start="18" name="nn"/>
+                    <label end="28" start="23" name="VVD"/>
+                    <label end="33" start="30" name="PP"/>
+                    <label end="39" start="35" name="md"/>
+                    <label end="42" start="41" name="vb"/>
+                    <label end="49" start="44" name="VVN"/>
+                    <label end="53" start="51" name="rp"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="60" start="58" name="dt"/>
+                    <label end="68" start="62" name="nn"/>
+                    <label end="73" start="70" name="wrb"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="88" start="79" name="nn"/>
+                    <label end="98" start="90" name="VVN"/>
+                    <label end="101" start="100" name="in"/>
+                    <label end="108" start="103" name="cd"/>
+                    <label end="111" start="110" name="NP"/>
+                    <label end="121" start="113" name="nn"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:04:21 PDT Thu" status="MANUAL" ID="2585281">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="98" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="10885" end="88" start="75" name="Whole"/>
+                    <label cBy="976" feID="10886" itype="INI" name="Pieces"/>
+                    <label cBy="976" feID="10895" end="111" start="100" name="Place"/>
+                    <label cBy="976" feID="10894" end="121" start="113" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

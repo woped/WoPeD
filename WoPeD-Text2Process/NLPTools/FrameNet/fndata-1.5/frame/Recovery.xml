@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:09 PST Wed" name="Recovery" ID="51" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These words describe the recovery or healing of a &lt;fen&gt;Patient&lt;/fen&gt; from an &lt;fen&gt;Affliction&lt;/fen&gt; without reference to the influence of any Treatment or Healer (see the Cure frame). &lt;/def-root&gt;</definition>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:09 PST Wed" abbrev="Pat" name="Patient" ID="213">
+        <definition>&lt;def-root&gt;The    Patient may either be expressed as the External Argument or, as in Health.Cure, may occur as the possessor of the Affliction (an example of FE conflation): 
+&lt;ex&gt;&lt;fex name="Patient"&gt;Pat&lt;/fex&gt; is &lt;t&gt;convalescing&lt;/t&gt; from surgery.&lt;/ex&gt;
+&lt;ex&gt;Pat's wound is &lt;t&gt;healing&lt;/t&gt;.&lt;/ex&gt;
+In the second example, &lt;ment&gt;Pat's wound&lt;/ment&gt; is the &lt;fen&gt;Body_part&lt;/fen&gt;, but &lt;ment&gt;Pat's&lt;/ment&gt; is also an instantiation of the &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <requiresFE name="Affliction" ID="214"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:09 PST Wed" abbrev="Affl" name="Affliction" ID="214">
+        <definition>&lt;def-root&gt;This FE is the injury, pain or disease experienced by the Patient.  Affliction occurs either as an External Argument of verbs or as a PP Complement of nouns or verbs: 
+&lt;ex&gt;&lt;fex name="Affliction"&gt;The wound&lt;/fex&gt; is &lt;t&gt;healing&lt;/t&gt; well.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Affliction"&gt;Pat's wound&lt;/fex&gt; is &lt;t&gt;healing&lt;/t&gt; well.&lt;/ex&gt;
+&lt;ex&gt;Pat is &lt;t&gt;recovering&lt;/t&gt; &lt;fex name="Affliction"&gt;from scarlet fever&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Pat's &lt;t&gt;recovery&lt;/t&gt; &lt;fex name="Affliction"&gt;from scarlet fever&lt;/fex&gt; was very rapid. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Patient" ID="213"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:09 PST Wed" abbrev="BodP" name="Body_part" ID="215">
+        <definition>&lt;def-root&gt;Where Body Part is expressed as a separate constituent (rather than in phrases such as &lt;ment&gt;the wound on Pat's arm&lt;/ment&gt;), it occurs as an External Argument: 
+&lt;ex&gt;&lt;fex name="Body_part"&gt;Pat's arm&lt;/fex&gt; &lt;t&gt;healed&lt;/t&gt; up quickly.&lt;/ex&gt;
+ Body Part is treated as a separate Frame Element although it may be viewed as metonymic for Affliction. &lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:30:20 PDT Tue" abbrev="Manr" name="Manner" ID="1485">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:30:23 PDT Tue" abbrev="Degr" name="Degree" ID="1486">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Patient&lt;/fen&gt;'s state diverges from their former illness.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:30:51 PDT Tue" abbrev="Mns" name="Means" ID="1487">
+        <definition>&lt;def-root&gt;An act of the &lt;fen&gt;Patient&lt;/fen&gt; that results in their recovery.
+&lt;ex&gt;You will &lt;t&gt;recover&lt;/t&gt; more quickly &lt;fex name="Mns"&gt;by getting simple bed-rest&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/07/2003 08:53:59 PST Sun" abbrev="" name="Company" ID="5846">
+        <definition>&lt;def-root&gt;An individual or group of individuals that the &lt;fen&gt;Patient&lt;/fen&gt; is generally in the presence of during convalescence.
+
+&lt;ex&gt;She had confidently expected to &lt;t&gt;convalesce&lt;/t&gt; &lt;fex name="Company"&gt;with her brother and his wife&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/23/2006 01:20:58 PST Mon" abbrev="tim" name="Time" ID="9876">
+        <definition>&lt;def-root&gt;The time at which the recovery takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/23/2006 01:21:44 PST Mon" abbrev="pla" name="Place" ID="9877">
+        <definition>&lt;def-root&gt;The location where the recovery takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Patient" ID="213"/>
+        <memberFE name="Affliction" ID="214"/>
+        <memberFE name="Body_part" ID="215"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Medical_conditions</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="convalesce.v" ID="907" lemmaID="8169" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>COD: gradually recover one's health after an illness or medical treatment. </definition>
+        <sentenceCount annotated="6" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convalesce"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="convalescence.n" ID="908" lemmaID="8170" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>FN: the state of recovering from an illness or medical treatment.</definition>
+        <sentenceCount annotated="7" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="convalescence"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="heal.v" ID="909" lemmaID="17666" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>FN: become sound or healthy again</definition>
+        <sentenceCount annotated="12" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="heal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="recover.v" ID="910" lemmaID="32180" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>COD: return to a normal state of health, mind, or strength</definition>
+        <sentenceCount annotated="21" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="recover"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="recovery.n" ID="911" lemmaID="32183" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>COD: an act or the process of recovering. </definition>
+        <sentenceCount annotated="11" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="recovery"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="recuperate.v" ID="912" lemmaID="32211" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>COD: recover from illness or exertion.</definition>
+        <sentenceCount annotated="14" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="recuperate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="recuperation.n" ID="913" lemmaID="32212" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>FN: the state of recuperating</definition>
+        <sentenceCount annotated="7" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="recuperation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="perk up.v" ID="10007" lemmaID="48627" cBy="664" cDate="12/08/2003 04:26:01 PST Mon">
+        <definition>FN: to heal up.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="perk"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+</frame>

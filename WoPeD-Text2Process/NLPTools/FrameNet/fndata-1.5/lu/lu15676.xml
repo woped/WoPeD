@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="rot.v" ID="15676" frame="Cause_to_rot" frameID="2248" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1082" ID="20112"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>FN: bring about decay in (organic matter).</definition>
+    <lexeme POS="V" name="rot"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Cause"/>
+                <annoSet ID="2596343"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2596343"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="2596343"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Manner"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="2596343"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-quickly-(1)">
+        <sentence corpID="111" docID="20112" sentNo="5" paragNo="285" aPos="0" ID="1580861">
+            <text>Most of the original infections in plywood are killed in the hot pressing process , but if the material is subsequently exposed to bacteria or fungi and water it will rot quite quickly .</text>
+            <annotationSet cDate="07/16/2010 05:40:13 PDT Fri" status="UNANN" ID="2596342">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jjs"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="19" start="12" name="jj"/>
+                    <label end="30" start="21" name="nns"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="41" start="35" name="nn"/>
+                    <label end="45" start="43" name="vbp"/>
+                    <label end="52" start="47" name="VVN"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="63" start="61" name="jj"/>
+                    <label end="72" start="65" name="jj"/>
+                    <label end="80" start="74" name="nn"/>
+                    <label end="82" start="82" name=","/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="93" start="91" name="dt"/>
+                    <label end="102" start="95" name="nn"/>
+                    <label end="105" start="104" name="VBZ"/>
+                    <label end="118" start="107" name="rb"/>
+                    <label end="126" start="120" name="VVN"/>
+                    <label end="129" start="128" name="to"/>
+                    <label end="138" start="131" name="nns"/>
+                    <label end="141" start="140" name="cc"/>
+                    <label end="147" start="143" name="nns"/>
+                    <label end="151" start="149" name="cc"/>
+                    <label end="157" start="153" name="nn"/>
+                    <label end="160" start="159" name="PP"/>
+                    <label end="165" start="162" name="md"/>
+                    <label end="169" start="167" name="VV"/>
+                    <label end="175" start="171" name="rb"/>
+                    <label end="183" start="177" name="rb"/>
+                    <label end="185" start="185" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 05:40:13 PDT Fri" status="MANUAL" ID="2596343">
+                <layer rank="1" name="Target">
+                    <label cBy="773" end="169" start="167" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="13690" end="160" start="159" name="Undergoer"/>
+                    <label cBy="773" feID="13695" end="183" start="171" name="Manner"/>
+                    <label cBy="773" feID="13698" itype="DNI" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="160" start="159" name="Ext"/>
+                    <label end="183" start="171" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="160" start="159" name="NP"/>
+                    <label end="183" start="171" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

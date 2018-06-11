@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="05/17/2001 11:05:09 PDT Thu" name="Kinship" ID="104" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains words that denote Kinship relations. In annotating the directional uses of these words, we use the standard terms from anthropology, &lt;fen&gt;Ego&lt;/fen&gt; and &lt;fen&gt;Alter&lt;/fen&gt;.  &lt;ex&gt;&lt;fex name="Alter"&gt;Matilde&lt;/fex&gt; is &lt;fex name="Ego"&gt;Gilberto's&lt;/fex&gt; &lt;t&gt;cousin&lt;/t&gt; &lt;fex name="Degree"&gt;once removed&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/18/2001 03:42:51 PDT Fri" abbrev="" name="Alter" ID="516">
+        <definition>&lt;def-root&gt;The person who fills the role named by the Kinship term with respect to the &lt;fen&gt;Ego&lt;/fen&gt;.&lt;ex&gt;&lt;fex name="Alter"&gt;John&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Ego"&gt;my&lt;/fex&gt; &lt;t&gt;cousin&lt;/t&gt;.&lt;/ex&gt;&lt;ex&gt;I met &lt;fex name="Ego"&gt;his&lt;/fex&gt; &lt;fex name="Alter"&gt;&lt;t&gt;brother&lt;/t&gt;&lt;/fex&gt; last year.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Ego" ID="517"/>
+        <excludesFE name="Relatives" ID="518"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/18/2001 03:46:02 PDT Fri" abbrev="" name="Ego" ID="517">
+        <definition>&lt;def-root&gt;The person from whose perspective the Kinship relationship is defined.&lt;ex&gt;&lt;fex name="Alter"&gt;Bill&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Ego"&gt;Sue's&lt;/fex&gt; &lt;t&gt;son&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Alter" ID="516"/>
+        <excludesFE name="Relatives" ID="518"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/21/2001 12:36:56 PDT Mon" abbrev="" name="Relatives" ID="518">
+        <definition>&lt;def-root&gt;The combination of &lt;fen&gt;Alter&lt;/fen&gt; and &lt;fen&gt;Ego&lt;/fen&gt; together.&lt;ex&gt;&lt;fex name="Relatives"&gt;John and I&lt;/fex&gt; &lt;m&gt;are&lt;/m&gt; &lt;t&gt;brothers&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/21/2001 07:53:56 PDT Mon" abbrev="Degr" name="Degree" ID="527">
+        <definition>&lt;def-root&gt;An expression of the closeness or distance of the relation.  We do not go into full anthropological detail in measuring the distance of the relation, but simply annotate all such expressions as &lt;fen&gt;Degree&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="03/01/2007 01:54:29 PST Thu" abbrev="des" name="Descriptor" ID="11136">
+        <definition>&lt;def-root&gt;This FE describe some characteristic of the &lt;fen&gt;Alter&lt;/fen&gt; or the &lt;fen&gt;Ego&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Relation_between_individuals</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="father.n" ID="2142" lemmaID="14015" cBy="605" cDate="05/17/2001 11:06:39 PDT Thu">
+        <definition>COD: a man in relation to his natural child or children</definition>
+        <sentenceCount annotated="55" total="299"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="father"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mother.n" ID="2143" lemmaID="25004" cBy="605" cDate="05/17/2001 11:07:27 PDT Thu">
+        <definition>COD: a woman in relation to a child or children to whom she has given birth</definition>
+        <sentenceCount annotated="49" total="237"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="son.n" ID="2144" lemmaID="36936" cBy="605" cDate="05/17/2001 11:08:27 PDT Thu">
+        <definition>COD: a boy or man in relation to his parents</definition>
+        <sentenceCount annotated="32" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="son"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="daughter.n" ID="2145" lemmaID="9616" cBy="605" cDate="05/17/2001 11:09:09 PDT Thu">
+        <definition>COD: a girl or woman in relation to her parents</definition>
+        <sentenceCount annotated="38" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="daughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="uncle.n" ID="2146" lemmaID="41862" cBy="605" cDate="05/17/2001 11:09:40 PDT Thu">
+        <definition>COD: the brother of one's father or mother or the husband of one's aunt</definition>
+        <sentenceCount annotated="30" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="uncle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="aunt.n" ID="2147" lemmaID="2368" cBy="605" cDate="05/17/2001 11:10:45 PDT Thu">
+        <definition>COD: the sister of one's father or mother or the wife of one's uncle</definition>
+        <sentenceCount annotated="30" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="aunt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="auntie.n" ID="2148" lemmaID="2369" cBy="605" cDate="05/17/2001 11:11:29 PDT Thu">
+        <definition>COD: aunt</definition>
+        <sentenceCount annotated="20" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="auntie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dad.n" ID="2149" lemmaID="9461" cBy="605" cDate="05/17/2001 11:12:02 PDT Thu">
+        <definition>COD: (informal) one's father</definition>
+        <sentenceCount annotated="32" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dad"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="daddy.n" ID="2150" lemmaID="9462" cBy="605" cDate="05/17/2001 11:12:30 PDT Thu">
+        <definition>COD: (informal) one's father (common form by young children)</definition>
+        <sentenceCount annotated="19" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="daddy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="grandson.n" ID="2151" lemmaID="16682" cBy="605" cDate="05/17/2001 11:12:44 PDT Thu">
+        <definition>COD: .a boy or man in relation to his parents</definition>
+        <sentenceCount annotated="34" total="109"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grandson"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="granddaughter.n" ID="2152" lemmaID="16667" cBy="605" cDate="05/17/2001 11:14:08 PDT Thu">
+        <definition>COD: a daughter of one's son or daughter</definition>
+        <sentenceCount annotated="39" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="granddaughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="niece.n" ID="2153" lemmaID="25820" cBy="605" cDate="05/17/2001 11:14:46 PDT Thu">
+        <definition>COD: a daughter of one's brother or sister, or of one's brother-in-law or sister-in-law</definition>
+        <sentenceCount annotated="27" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="niece"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="nephew.n" ID="2154" lemmaID="25679" cBy="605" cDate="05/17/2001 11:15:26 PDT Thu">
+        <definition>COD: a son of one's brother or sister, or of one's brother-in-law or sister-in-law</definition>
+        <sentenceCount annotated="34" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nephew"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="brother.n" ID="2155" lemmaID="4720" cBy="605" cDate="05/17/2001 11:16:13 PDT Thu">
+        <definition>COD: a man or boy in relation to other sons and daughters of his parents</definition>
+        <sentenceCount annotated="31" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sister.n" ID="2156" lemmaID="36049" cBy="605" cDate="05/17/2001 11:16:49 PDT Thu">
+        <definition>COD: a woman or girl in relation to other daughters and sons of her parents</definition>
+        <sentenceCount annotated="35" total="167"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sister"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="grandfather.n" ID="2157" lemmaID="16670" cBy="605" cDate="05/17/2001 11:17:23 PDT Thu">
+        <definition>COD: the father of one's father or mother</definition>
+        <sentenceCount annotated="29" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grandfather"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="grandmother.n" ID="2158" lemmaID="16676" cBy="605" cDate="05/17/2001 11:18:04 PDT Thu">
+        <definition>COD: the mother of one's father or mother</definition>
+        <sentenceCount annotated="37" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grandmother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mother-in-law.n" ID="2159" lemmaID="25008" cBy="605" cDate="05/17/2001 12:38:58 PDT Thu">
+        <definition>FN: the mother of a person's spouse</definition>
+        <sentenceCount annotated="15" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mother-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="father-in-law.n" ID="2160" lemmaID="14019" cBy="605" cDate="05/17/2001 12:39:28 PDT Thu">
+        <definition>FN: the father of a person's spouse</definition>
+        <sentenceCount annotated="22" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="father-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="son-in-law.n" ID="2161" lemmaID="36946" cBy="605" cDate="05/17/2001 12:40:17 PDT Thu">
+        <definition>FN: the husband of a person's daughter</definition>
+        <sentenceCount annotated="24" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="son-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="daughter-in-law.n" ID="2162" lemmaID="9617" cBy="605" cDate="05/17/2001 12:40:59 PDT Thu">
+        <definition>COD: the wife of one's son</definition>
+        <sentenceCount annotated="22" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="daughter-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepson.n" ID="2163" lemmaID="37986" cBy="605" cDate="05/17/2001 12:42:20 PDT Thu">
+        <definition>COD:  son of one's husband or wife by a previous marriage</definition>
+        <sentenceCount annotated="22" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepson"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepdaughter.n" ID="2164" lemmaID="37975" cBy="605" cDate="05/17/2001 12:57:53 PDT Thu">
+        <definition>COD: a daughter of one's husband or wife by a previous marriage</definition>
+        <sentenceCount annotated="16" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepdaughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepmother.n" ID="2165" lemmaID="37980" cBy="605" cDate="05/17/2001 12:58:47 PDT Thu">
+        <definition>COD: a man who is married to one's mother after the divorce of one's parents or the death of one's father</definition>
+        <sentenceCount annotated="35" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepmother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepfather.n" ID="2166" lemmaID="37976" cBy="605" cDate="05/17/2001 01:00:27 PDT Thu">
+        <definition>COD: an who is married to one's mother after the divorce of one's parents or the death of one's father</definition>
+        <sentenceCount annotated="19" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepfather"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepbrother.n" ID="2167" lemmaID="37973" cBy="605" cDate="05/17/2001 01:01:15 PDT Thu">
+        <definition>COD: a son of one's step-parent, by a marriage other than that with one's own father or mother</definition>
+        <sentenceCount annotated="11" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepbrother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stepsister.n" ID="2168" lemmaID="37985" cBy="605" cDate="05/17/2001 01:01:52 PDT Thu">
+        <definition>COD: a daughter of one's step-parent by a marriage other than with one's own father or mother</definition>
+        <sentenceCount annotated="7" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stepsister"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="brother-in-law.n" ID="2169" lemmaID="4723" cBy="605" cDate="05/17/2001 01:06:18 PDT Thu">
+        <definition>COD: the brother of one's wife or husband, or the husband of one's sister or sister-in-law. </definition>
+        <sentenceCount annotated="26" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brother-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sister-in-law.n" ID="2171" lemmaID="36051" cBy="605" cDate="05/17/2001 01:25:45 PDT Thu">
+        <definition>COD: the sister of one's wife or husband, or the wife of one's brother or brother-in-law. </definition>
+        <sentenceCount annotated="16" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sister-in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cousin.n" ID="2172" lemmaID="8668" cBy="605" cDate="05/17/2001 01:26:49 PDT Thu">
+        <definition>COD: a child of one's uncle or aunt</definition>
+        <sentenceCount annotated="33" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cousin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mom.n" ID="2173" lemmaID="24741" cBy="605" cDate="05/17/2001 02:10:45 PDT Thu">
+        <definition>FN: informal one's mother</definition>
+        <sentenceCount annotated="14" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mom"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mum.n" ID="2174" lemmaID="25209" cBy="605" cDate="05/17/2001 02:14:20 PDT Thu">
+        <definition>COD: Brit. informal one's mother</definition>
+        <sentenceCount annotated="23" total="114"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mum"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="great-grandson.n" ID="2179" lemmaID="44892" cBy="605" cDate="05/18/2001 02:49:00 PDT Fri">
+        <definition>FN: the son of one's child's son or daughter.</definition>
+        <sentenceCount annotated="10" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="great-grandson"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="great-granddaughter.n" ID="2180" lemmaID="44894" cBy="605" cDate="05/18/2001 02:54:49 PDT Fri">
+        <definition>FN: the daughter of one's child's son or daughter.</definition>
+        <sentenceCount annotated="6" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="great-granddaughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="parent.n" ID="2238" lemmaID="27822" cBy="605" cDate="05/22/2001 06:54:03 PDT Tue">
+        <definition>COD: a father or mother</definition>
+        <sentenceCount annotated="53" total="364"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="parent"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="child.n" ID="2239" lemmaID="6295" cBy="605" cDate="05/22/2001 06:54:17 PDT Tue">
+        <definition>COD: a son or daughter of any age</definition>
+        <sentenceCount annotated="23" total="178"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="child"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="in-law.n" ID="2240" lemmaID="44902" cBy="605" cDate="05/22/2001 07:10:53 PDT Tue">
+        <definition>COD: a relative by marriage</definition>
+        <sentenceCount annotated="15" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="in-law"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="family.n" ID="2307" lemmaID="13903" cBy="605" cDate="05/24/2001 03:14:58 PDT Thu">
+        <definition>COD: a group consisting of two parents and their children living together as a unit</definition>
+        <sentenceCount annotated="39" total="169"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="family"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sibling.n" ID="2867" lemmaID="35779" cBy="605" cDate="07/05/2001 06:20:35 PDT Thu">
+        <definition>COD: each of two or more children or offspring having one or both parents in common; a brother or sister</definition>
+        <sentenceCount annotated="17" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sibling"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ancestor.n" ID="2868" lemmaID="1349" cBy="605" cDate="07/05/2001 06:21:32 PDT Thu">
+        <definition>COD: a person, typically one more remote than a grandparent, from whom one is descended</definition>
+        <sentenceCount annotated="11" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ancestor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="descendant.n" ID="2869" lemmaID="10313" cBy="605" cDate="07/05/2001 06:23:06 PDT Thu">
+        <definition>COD: a person, animal, etc. that is descended from a particular ancestor</definition>
+        <sentenceCount annotated="17" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="descendant"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="forebear.n" ID="2870" lemmaID="15012" cBy="605" cDate="07/05/2001 06:25:02 PDT Thu">
+        <definition>COD: an ancestor</definition>
+        <sentenceCount annotated="12" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forebear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="forefather.n" ID="2871" lemmaID="15053" cBy="605" cDate="07/05/2001 06:26:30 PDT Thu">
+        <definition>COD: an ancestor</definition>
+        <sentenceCount annotated="10" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forefather"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="kinsman.n" ID="2872" lemmaID="21357" cBy="605" cDate="07/05/2001 06:56:22 PDT Thu">
+        <definition>COD: pl. -men or -women (in anthropological or formal use) one of a person's blood relations</definition>
+        <sentenceCount annotated="15" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kinsman"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="kinsfolk.n" ID="2873" lemmaID="21355" cBy="605" cDate="07/05/2001 06:59:28 PDT Thu">
+        <definition>COD: (in anthropological or formal use) a person's blood relations, regarded collectively</definition>
+        <sentenceCount annotated="4" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kinsfolk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="kinswoman.n" ID="2874" lemmaID="21358" cBy="605" cDate="07/05/2001 07:01:32 PDT Thu">
+        <definition>FN: one of a person's female blood relations</definition>
+        <sentenceCount annotated="9" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kinswoman"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="relative.n" ID="2875" lemmaID="32493" cBy="605" cDate="07/05/2001 07:04:41 PDT Thu">
+        <definition>COD: a person connected by blood or marriage</definition>
+        <sentenceCount annotated="18" total="166"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="relative"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="kin.n" ID="2876" lemmaID="21320" cBy="605" cDate="07/05/2001 07:10:08 PDT Thu">
+        <definition>COD: in sing. treated as pl. one's family and relations. </definition>
+        <sentenceCount annotated="20" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="maternal.a" ID="5302" lemmaID="23687" cBy="664" cDate="03/21/2002 04:53:24 PST Thu">
+        <definition>COD: of or relating to a mother.</definition>
+        <sentenceCount annotated="4" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="maternal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="paternal.a" ID="5303" lemmaID="28037" cBy="664" cDate="03/21/2002 05:03:07 PST Thu">
+        <definition>COD: of or appropriate to a father</definition>
+        <sentenceCount annotated="17" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="paternal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="parental.a" ID="5304" lemmaID="27824" cBy="664" cDate="03/21/2002 05:09:59 PST Thu">
+        <definition>FN: of or pertaining to the parents</definition>
+        <sentenceCount annotated="12" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="parental"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="filial.a" ID="5305" lemmaID="14343" cBy="664" cDate="03/21/2002 05:15:51 PST Thu">
+        <definition>COD: of, relating to, or due from a son or daughter.</definition>
+        <sentenceCount annotated="6" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="filial"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="ancestral.a" ID="5306" lemmaID="1350" cBy="664" cDate="03/21/2002 06:04:21 PST Thu">
+        <definition>FN: pertaining to (one's) ancestors. </definition>
+        <sentenceCount annotated="14" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ancestral"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="scion.n" ID="7798" lemmaID="34452" cBy="605" cDate="12/04/2002 04:30:02 PST Wed">
+        <definition>COD: a descendant of a notable family or one with a long lineage</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scion"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="kid.n" ID="11747" lemmaID="21294" cBy="395" cDate="03/20/2005 12:44:20 PST Sun">
+        <definition>COD: (informal) a child or young person. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="offspring.n" ID="13316" lemmaID="26600" cBy="303" cDate="06/23/2006 02:28:04 PDT Fri">
+        <definition>COD: a person's child or children, or the young of an animal.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="offspring"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clan.n" ID="14670" lemmaID="6632" cBy="597" cDate="01/17/2008 12:06:20 PST Thu">
+        <definition>FN: group of people who are related by blood or by marriage</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clan"/>
+    </lexUnit>
+</frame>

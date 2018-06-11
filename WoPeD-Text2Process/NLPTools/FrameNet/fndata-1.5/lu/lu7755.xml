@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="a bastard.n" ID="7755" frame="Difficulty" frameID="375" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Activity" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Circumstances" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Experiencer" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Parameter" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="sta" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: very difficult</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+    <lexeme order="2" headword="true" breakBefore="true" POS="A" name="bastard"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="1956547"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <annoSet ID="1956547"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Activity"/>
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <annoSet ID="1956547"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wit-Wbe-Wa-Wjj-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="406" aPos="0" ID="1254778">
+            <text>` It 's a bastard this one , Mrs Q , &quot; he said .</text>
+            <annotationSet cDate="05/23/2004 10:25:47 PDT Sun" status="UNANN" ID="1956546">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="PP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="8" start="8" name="dt"/>
+                    <label end="16" start="10" name="nn"/>
+                    <label end="21" start="18" name="dt"/>
+                    <label end="25" start="23" name="nn"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="31" start="29" name="nn"/>
+                    <label end="33" start="33" name="NP"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="40" start="39" name="PP"/>
+                    <label end="45" start="42" name="VVD"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/23/2004 10:25:47 PDT Sun" status="MANUAL" ID="1956547">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="16" start="10" name="Target"/>
+                    <label cBy="605" end="8" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="3360" end="3" start="2" name="Activity"/>
+                    <label cBy="664" feID="3360" end="25" start="18" name="Activity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                    <label end="25" start="18" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                    <label end="25" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="5" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

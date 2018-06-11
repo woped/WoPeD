@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="05/31/2002 11:45:09 PDT Fri" name="Cause_temperature_change" ID="334" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame, an &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of an &lt;fen&gt;Item&lt;/fen&gt;.  A &lt;fen&gt;Temperature_goal&lt;/fen&gt; can specify the desired temperature.  A &lt;fen&gt;Temperature_change&lt;/fen&gt; can also be indicated.  The &lt;fen&gt;Temperature_start&lt;/fen&gt; indicates the initial temperature.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Margaret Anne&lt;/fex&gt; &lt;t&gt;chilled&lt;/t&gt; &lt;fex name="Item"&gt;the salad&lt;/fex&gt; &lt;fex name="Temperature_goal"&gt;to 30 degrees&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;Heat&lt;/t&gt; &lt;fex name="Item"&gt;the water&lt;/fex&gt; &lt;fex name="Temperature_change"&gt;30 degrees&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="05/31/2002 01:55:15 PDT Fri" abbrev="Agt" name="Agent" ID="2887">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; performs the intentional act which changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agt"&gt;Ryan&lt;/fex&gt; &lt;t&gt;reheated&lt;/t&gt; the pasta in the microwave.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 01:55:18 PDT Fri" abbrev="Ins" name="Instrument" ID="2888">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Instrument&lt;/fen&gt; with which  the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="05/31/2002 01:56:18 PDT Fri" abbrev="Item" name="Item" ID="2889">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Item&lt;/fen&gt; undergoes the temperature change.
+
+&lt;ex&gt;Ryan &lt;t&gt;reheated&lt;/t&gt; &lt;fex name="Item"&gt;the pasta&lt;/fex&gt; in the microwave.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 01:58:03 PDT Fri" abbrev="Temperature_goal" name="Temperature_goal" ID="2891">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Temperature_goal&lt;/fen&gt; is the temperature to which the &lt;fen&gt;Agent&lt;/fen&gt; is heating or cooling the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;t&gt;Heat&lt;/t&gt; the syrup &lt;fex name="Temperature_goal"&gt;to 180 degrees&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 01:58:58 PDT Fri" abbrev="" name="Temperature_change" ID="2892">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Temperature_change&lt;/fen&gt; is the amount of difference between the intial and goal temperatures.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 02:00:52 PDT Fri" abbrev="Temperature_start" name="Temperature_start" ID="2893">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Temperature_start&lt;/fen&gt; is the initial temperature of the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;t&gt;Heat&lt;/t&gt; the sugar water mixture &lt;fex name="Temperature_start"&gt;from room temperature&lt;/fex&gt; until it reaches 180 degrees.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 03:38:07 PDT Fri" abbrev="Mnr" name="Manner" ID="2910">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which  the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 03:38:08 PDT Fri" abbrev="Mns" name="Means" ID="2911">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 03:38:11 PDT Fri" abbrev="Place" name="Place" ID="2912">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where  the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="05/31/2002 03:38:12 PDT Fri" abbrev="Purp" name="Purpose" ID="2913">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which  the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt; and what the &lt;fen&gt;Agent&lt;/fen&gt; hopes to accomplish.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="05/31/2002 03:38:13 PDT Fri" abbrev="Time" name="Time" ID="2914">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when  the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/03/2002 05:20:35 PDT Mon" abbrev="Result" name="Result" ID="2932">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Result&lt;/fen&gt; is the resultant state of  the &lt;fen&gt;Agent&lt;/fen&gt; changing the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/07/2002 02:15:28 PDT Fri" abbrev="Cause" name="Cause" ID="2992">
+        <definition>&lt;def-root&gt;An animate or inanimate entity, a force, or event that changes the temperature. Volitionality is not a necessary characteristic of &lt;fen&gt;Cause&lt;/fen&gt;s.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The sun&lt;/fex&gt; &lt;t&gt;warmed&lt;/t&gt; the house.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="2887"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/11/2002 01:31:30 PDT Tue" abbrev="Dur" name="Duration" ID="3023">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Agent&lt;/fen&gt; changes the temperature of the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;t&gt;Refrigerate&lt;/t&gt; the cookie dough &lt;fex name="Dur"&gt;for an hour&lt;/fex&gt; before baking.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/12/2002 04:16:04 PDT Wed" abbrev="sub" name="Subregion" ID="3039">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Subregion&lt;/fen&gt; describes which part of a larger whole is being affected.
+
+&lt;ex&gt;The mousse was &lt;t&gt;chilled&lt;/t&gt; &lt;fex name="Subregion"&gt;around the edges&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/13/2002 12:07:06 PDT Thu" abbrev="Container" name="Container" ID="3041">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Container&lt;/fen&gt; that holds the &lt;fen&gt;Item&lt;/fen&gt; whose temperature is being changed.
+
+&lt;ex&gt;&lt;t&gt;Heat&lt;/t&gt; the potatoes &lt;fex name="Container"&gt;in a medium-sized pan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/13/2002 12:08:18 PDT Thu" abbrev="Depict" name="Depictive" ID="3042">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Item&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/13/2002 01:15:12 PDT Thu" abbrev="H/C" name="Hot_Cold_source" ID="3046">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Hot_Cold_source&lt;/fen&gt; is the source of the heat or coolness.
+
+&lt;ex&gt;We &lt;t&gt;chilled&lt;/t&gt; the drinks &lt;fex name="Hot_Cold_source"&gt;on ice&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/18/2002 11:31:50 PDT Tue" abbrev="cir" name="Circumstances" ID="3091">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Circumstances&lt;/fen&gt; at which the temperature change occurs.
+
+&lt;ex&gt;Bill &lt;t&gt;cooled&lt;/t&gt; the jello &lt;fex name="Circumstances"&gt;at room temperature&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:40:48 PDT Thu" abbrev="Degr" name="Degree" ID="5438">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Item&lt;/fen&gt; approaches (an implicit) &lt;fen&gt;Temperature_goal&lt;/fen&gt;, which is often construed to be the ambient temperature.
+
+&lt;ex&gt;You'll probably have to wait a while to &lt;t&gt;warm&lt;/t&gt; your legs &lt;t&gt;up&lt;/t&gt; &lt;fex name="Degr"&gt;completely&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Inchoative_change_of_temperature</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="heat.v" ID="5908" lemmaID="17715" cBy="296" cDate="05/31/2002 11:45:44 PDT Fri">
+        <definition>COD: make hot or warm</definition>
+        <sentenceCount annotated="55" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="heat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="warm.v" ID="5909" lemmaID="43447" cBy="296" cDate="05/31/2002 11:45:53 PDT Fri">
+        <definition>COD: make warm </definition>
+        <sentenceCount annotated="41" total="42"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="warm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cool.v" ID="5910" lemmaID="8255" cBy="296" cDate="05/31/2002 11:46:03 PDT Fri">
+        <definition>FN: cause to become at a fairly low temperature</definition>
+        <sentenceCount annotated="27" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cool"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="refrigerate.v" ID="5912" lemmaID="32354" cBy="296" cDate="05/31/2002 11:46:25 PDT Fri">
+        <definition>COD: subject (food or drink) to cold in order to chill or preserve it. </definition>
+        <sentenceCount annotated="6" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="refrigerate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="heat up.v" ID="6081" lemmaID="45738" cBy="296" cDate="06/11/2002 02:54:09 PDT Tue">
+        <definition>COD: make hot or warm</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="heat"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cool down.v" ID="6082" lemmaID="45739" cBy="296" cDate="06/11/2002 02:55:58 PDT Tue">
+        <definition>COD: cause to become at a fairly low temperature</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cool"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="down"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="warm up.v" ID="6083" lemmaID="45740" cBy="296" cDate="06/11/2002 03:30:51 PDT Tue">
+        <definition>FN: to make at a higher temperature</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="warm"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="reheat.v" ID="6088" lemmaID="45741" cBy="296" cDate="06/11/2002 03:55:59 PDT Tue">
+        <definition>COD: heat again. </definition>
+        <sentenceCount annotated="7" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reheat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="chill.v" ID="7295" lemmaID="6309" cBy="296" cDate="08/19/2002 11:03:44 PDT Mon">
+        <definition>COD: make cold. </definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chill"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="overheat.v" ID="12059" lemmaID="50010" cBy="303" cDate="05/09/2005 05:28:36 PDT Mon">
+        <definition>FN: cause to become too hot</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="overheat"/>
+    </lexUnit>
+</frame>

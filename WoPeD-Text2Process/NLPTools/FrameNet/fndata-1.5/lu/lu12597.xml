@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="condition.n" ID="12597" frame="State_of_entity" frameID="1600" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2235" ID="19944"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="eva" name="Evaluation"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core-Unexpressed" abbrev="sta" name="State"/>
+        </frame>
+    </header>
+    <definition>COD: the state of something or someone, with regard to appearance, fitness, or working order.</definition>
+    <lexeme POS="N" name="condition"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2582303"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Evaluation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Evaluation"/>
+                <annoSet ID="2582303"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="State"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="State"/>
+                <annoSet ID="2582303"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Evaluation"/>
+            <FE name="State"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Evaluation"/>
+                <valenceUnit GF="" PT="DEN" FE="State"/>
+                <annoSet ID="2582303"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-excellent-(1)">
+        <sentence corpID="111" docID="19944" sentNo="2" paragNo="186" aPos="0" ID="1573843">
+            <text>It was in excellent condition , was only a year old and cost me £85 .</text>
+            <annotationSet cDate="07/15/2010 09:58:37 PDT Thu" status="UNANN" ID="2582302">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="18" start="10" name="jj"/>
+                    <label end="28" start="20" name="nn"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="34" start="32" name="VBD"/>
+                    <label end="39" start="36" name="rb"/>
+                    <label end="41" start="41" name="dt"/>
+                    <label end="46" start="43" name="nn"/>
+                    <label end="50" start="48" name="jj"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="59" start="56" name="VV"/>
+                    <label end="62" start="61" name="PP"/>
+                    <label end="66" start="64" name="jj"/>
+                    <label end="68" start="68" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 09:58:38 PDT Thu" status="MANUAL" ID="2582303">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="28" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8787" end="1" start="0" name="Entity"/>
+                    <label cBy="589" feID="8788" end="18" start="10" name="Evaluation"/>
+                    <label cBy="589" feID="8789" end="28" start="20" name="State"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="18" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="18" start="10" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="5" start="3" name="Cop"/>
+                    <label end="8" start="7" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

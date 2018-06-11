@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/08/2005 09:44:46 PST Thu" name="Relation_between_individuals" ID="1689" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Two sentient beings have a permanent or semi-permanent &lt;fen&gt;Relation&lt;/fen&gt; to each other.  This relation may be symmetrically construed as between the &lt;fen&gt;Individuals&lt;/fen&gt; or it may be construed assymetrically, such that &lt;fen&gt;Individual_1&lt;/fen&gt; is identified by their relation to the (implicitly better-known) &lt;fen&gt;Individual_2&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/08/2005 09:44:46 PST Thu" abbrev="Com" name="Individual_1" ID="9719">
+        <definition>&lt;def-root&gt;The individual being described in terms of &lt;fen&gt;Individual_2&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <requiresFE name="Individual_2" ID="9720"/>
+        <excludesFE name="Individuals" ID="9722"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/08/2005 09:44:46 PST Thu" abbrev="ind2" name="Individual_2" ID="9720">
+        <definition>&lt;def-root&gt;The individual whose identity serves to identify &lt;fen&gt;Individual_2&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <requiresFE name="Individual_1" ID="9719"/>
+        <excludesFE name="Individuals" ID="9722"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="12/08/2005 09:52:42 PST Thu" abbrev="" name="Relation" ID="9721">
+        <definition>&lt;def-root&gt;The type of connection between the &lt;fen&gt;Individuals&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/08/2005 09:53:22 PST Thu" abbrev="inds" name="Individuals" ID="9722">
+        <definition>&lt;def-root&gt;The individuals in a (symmetrically construed) &lt;fen&gt;Relation&lt;/fen&gt; to each other.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Social_connection</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>People</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Subordinates_and_superiors</relatedFrame>
+        <relatedFrame>Kinship</relatedFrame>
+        <relatedFrame>Personal_relationship</relatedFrame>
+        <relatedFrame>People_by_residence</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

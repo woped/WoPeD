@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="reach.v" ID="5257" frame="Contacting" frameID="286" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Address" name="Address"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Communication" name="Communication"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Intm" name="Intermediary"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Src" name="Location_of_communicator"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Topic" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD:  make contact with. </definition>
+    <lexeme POS="V" name="reach"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Address"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Address"/>
+                <annoSet ID="1263140"/>
+                <annoSet ID="1263468"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Addressee"/>
+            <pattern total="6">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <annoSet ID="1263140"/>
+                <annoSet ID="1263214"/>
+                <annoSet ID="1263268"/>
+                <annoSet ID="1263348"/>
+                <annoSet ID="1263468"/>
+                <annoSet ID="1263620"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Addressee"/>
+                <annoSet ID="1264184"/>
+                <annoSet ID="1264190"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Communication"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <annoSet ID="1263140"/>
+                <annoSet ID="1263214"/>
+                <annoSet ID="1263268"/>
+                <annoSet ID="1263348"/>
+                <annoSet ID="1263468"/>
+                <annoSet ID="1263620"/>
+                <annoSet ID="1264184"/>
+                <annoSet ID="1264190"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Communicator"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <annoSet ID="1263140"/>
+                <annoSet ID="1263214"/>
+                <annoSet ID="1263268"/>
+                <annoSet ID="1263348"/>
+                <annoSet ID="1263468"/>
+                <annoSet ID="1263620"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Communicator"/>
+                <annoSet ID="1264184"/>
+                <annoSet ID="1264190"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Intermediary"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Intermediary"/>
+                <annoSet ID="1263620"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Medium"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Medium"/>
+                <annoSet ID="1263268"/>
+                <annoSet ID="1264184"/>
+                <annoSet ID="1264190"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Medium"/>
+                <annoSet ID="1263348"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="1263620"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Address"/>
+            <FE name="Addressee"/>
+            <FE name="Communication"/>
+            <FE name="Communicator"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Address"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <annoSet ID="1263140"/>
+                <annoSet ID="1263468"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Addressee"/>
+            <FE name="Communication"/>
+            <FE name="Communicator"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <annoSet ID="1263214"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Addressee"/>
+            <FE name="Communication"/>
+            <FE name="Communicator"/>
+            <FE name="Intermediary"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Intermediary"/>
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="1263620"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Addressee"/>
+            <FE name="Communication"/>
+            <FE name="Communicator"/>
+            <FE name="Medium"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="" PT="CNI" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Medium"/>
+                <annoSet ID="1264184"/>
+                <annoSet ID="1264190"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Medium"/>
+                <annoSet ID="1263268"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="INI" FE="Communication"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Medium"/>
+                <annoSet ID="1263348"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-lcoll-able">
+        <sentence sentNo="0" aPos="53564921" ID="904370">
+            <text>` Shall I be able to reach you at 1027 , Westminster Drive ? &quot; she asked . </text>
+            <annotationSet cDate="01/07/2003 06:56:30 PST Tue" status="UNANN" ID="1263139">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="6" start="2" name="VM0"/>
+                    <label end="8" start="8" name="PNP"/>
+                    <label end="11" start="10" name="VBI"/>
+                    <label end="16" start="13" name="AJ0"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="25" start="21" name="VVI"/>
+                    <label end="29" start="27" name="PNP"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="37" start="34" name="CRD"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="51" start="41" name="NP0"/>
+                    <label end="57" start="53" name="NP0"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="61" start="61" name="PUQ"/>
+                    <label end="65" start="63" name="PNP"/>
+                    <label end="71" start="67" name="VVD"/>
+                    <label end="73" start="73" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:56:30 PST Tue" status="MANUAL" ID="1263140">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="8" start="8" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="29" start="27" name="Addressee"/>
+                    <label cBy="618" feID="2485" end="57" start="31" name="Address"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="8" name="Ext"/>
+                    <label end="29" start="27" name="Obj"/>
+                    <label end="57" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="8" name="NP"/>
+                    <label end="29" start="27" name="NP"/>
+                    <label end="57" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-lcoll-attempt"/>
+    <subCorpus name="V-429-s20-lcoll-ca">
+        <sentence sentNo="0" aPos="40179935" ID="904407">
+            <text>I 've just had terrible news and I ca n't reach Sandy . </text>
+            <annotationSet cDate="01/07/2003 06:56:34 PST Tue" status="UNANN" ID="1263213">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VHB"/>
+                    <label end="9" start="6" name="AV0"/>
+                    <label end="13" start="11" name="VHN"/>
+                    <label end="22" start="15" name="AJ0"/>
+                    <label end="27" start="24" name="NN1"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="33" start="33" name="PNP"/>
+                    <label end="36" start="35" name="VM0"/>
+                    <label end="40" start="38" name="XX0"/>
+                    <label end="46" start="42" name="VVI"/>
+                    <label end="52" start="48" name="NP0"/>
+                    <label end="54" start="54" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:56:35 PST Tue" status="MANUAL" ID="1263214">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="33" start="33" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="52" start="48" name="Addressee"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="33" name="Ext"/>
+                    <label end="52" start="48" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="33" name="NP"/>
+                    <label end="52" start="48" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-lcoll-can">
+        <sentence sentNo="0" aPos="89309274" ID="904434">
+            <text>You can reach us -- and we can reach you -- by mail , telephone , fax or in person . </text>
+            <annotationSet cDate="01/07/2003 06:56:40 PST Tue" status="UNANN" ID="1263267">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VM0"/>
+                    <label end="12" start="8" name="VVI"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="18" start="17" name="PUN"/>
+                    <label end="22" start="20" name="CJC"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="29" start="27" name="VM0"/>
+                    <label end="35" start="31" name="VVI"/>
+                    <label end="39" start="37" name="PNP"/>
+                    <label end="42" start="41" name="PUN"/>
+                    <label end="45" start="44" name="PRP"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="62" start="54" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="68" start="66" name="NN1-VVB"/>
+                    <label end="71" start="70" name="CJC"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="81" start="76" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:56:40 PST Tue" status="MANUAL" ID="1263268">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="2" start="0" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="15" start="14" name="Addressee"/>
+                    <label cBy="618" feID="2482" end="81" start="44" name="Medium"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="15" start="14" name="Obj"/>
+                    <label end="81" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="15" start="14" name="NP"/>
+                    <label end="81" start="44" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-lcoll-could"/>
+    <subCorpus name="V-429-s20-lcoll-manage">
+        <sentence sentNo="0" aPos="58315579" ID="904474">
+            <text>The decision had already been made just a few minutes after Mattie had left his office and seconds after he had managed to reach the newspaper 's owner on the phone . </text>
+            <annotationSet cDate="01/07/2003 06:56:44 PST Tue" status="UNANN" ID="1263347">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="15" start="13" name="VHD"/>
+                    <label end="23" start="17" name="AV0"/>
+                    <label end="28" start="25" name="VBN"/>
+                    <label end="33" start="30" name="VVN"/>
+                    <label end="38" start="35" name="AV0"/>
+                    <label end="40" start="40" name="DT0"/>
+                    <label end="44" start="42" name="DT0"/>
+                    <label end="52" start="46" name="NN2"/>
+                    <label end="58" start="54" name="PRP"/>
+                    <label end="65" start="60" name="NP0"/>
+                    <label end="69" start="67" name="VHD"/>
+                    <label end="74" start="71" name="VVN"/>
+                    <label end="78" start="76" name="DPS"/>
+                    <label end="85" start="80" name="NN1"/>
+                    <label end="89" start="87" name="CJC"/>
+                    <label end="97" start="91" name="NN2"/>
+                    <label end="103" start="99" name="CJS-PRP"/>
+                    <label end="106" start="105" name="PNP"/>
+                    <label end="110" start="108" name="VHD"/>
+                    <label end="118" start="112" name="VVN"/>
+                    <label end="121" start="120" name="TO0"/>
+                    <label end="127" start="123" name="VVI"/>
+                    <label end="131" start="129" name="AT0"/>
+                    <label end="141" start="133" name="NN1"/>
+                    <label end="144" start="143" name="POS"/>
+                    <label end="150" start="146" name="NN1"/>
+                    <label end="153" start="152" name="PRP"/>
+                    <label end="157" start="155" name="AT0"/>
+                    <label end="163" start="159" name="NN1"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:56:44 PST Tue" status="MANUAL" ID="1263348">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="106" start="105" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="150" start="129" name="Addressee"/>
+                    <label cBy="618" feID="2482" end="163" start="152" name="Medium"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="105" name="Ext"/>
+                    <label end="150" start="129" name="Obj"/>
+                    <label end="163" start="152" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="105" name="NP"/>
+                    <label end="150" start="129" name="NP"/>
+                    <label end="163" start="152" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="127" start="123" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-lcoll-try"/>
+    <subCorpus name="V-429-s20-lcoll-unable"/>
+    <subCorpus name="V-429-s20-rcoll-office">
+        <sentence sentNo="0" aPos="71293215" ID="904534">
+            <text>But people reached her at the office and the office had a rule banning employees ' home addresses being revealed . </text>
+            <annotationSet cDate="01/07/2003 06:56:54 PST Tue" status="UNANN" ID="1263467">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="9" start="4" name="NN0"/>
+                    <label end="17" start="11" name="VVD"/>
+                    <label end="21" start="19" name="PNP"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="35" start="30" name="NN1"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="50" start="45" name="NN1"/>
+                    <label end="54" start="52" name="VHD"/>
+                    <label end="56" start="56" name="AT0"/>
+                    <label end="61" start="58" name="NN1"/>
+                    <label end="69" start="63" name="VVG"/>
+                    <label end="79" start="71" name="NN2"/>
+                    <label end="81" start="81" name="POS"/>
+                    <label end="86" start="83" name="NN1"/>
+                    <label end="96" start="88" name="NN2"/>
+                    <label end="102" start="98" name="VBG"/>
+                    <label end="111" start="104" name="VVN"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:56:54 PST Tue" status="MANUAL" ID="1263468">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="9" start="4" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="21" start="19" name="Addressee"/>
+                    <label cBy="618" feID="2485" end="35" start="23" name="Address"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="19" name="Obj"/>
+                    <label end="35" start="23" name="Dep"/>
+                    <label end="9" start="4" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="19" name="NP"/>
+                    <label end="35" start="23" name="PP"/>
+                    <label end="9" start="4" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-via"/>
+    <subCorpus name="V-429-s40-rcoll-us"/>
+    <subCorpus name="V-429-s40-rcoll-you">
+        <sentence sentNo="0" aPos="39071038" ID="904610">
+            <text>` He reached you through your Tarot before . </text>
+            <annotationSet cDate="01/07/2003 06:57:02 PST Tue" status="UNANN" ID="1263619">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="11" start="5" name="VVD"/>
+                    <label end="15" start="13" name="PNP"/>
+                    <label end="23" start="17" name="PRP"/>
+                    <label end="28" start="25" name="DPS"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="41" start="36" name="PRP"/>
+                    <label end="43" start="43" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:57:02 PST Tue" status="MANUAL" ID="1263620">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2481" end="3" start="2" name="Communicator"/>
+                    <label cBy="618" feID="2483" end="15" start="13" name="Addressee"/>
+                    <label cBy="618" feID="2940" end="34" start="17" name="Intermediary"/>
+                    <label cBy="618" feID="2930" end="41" start="36" name="Time"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                    <label end="15" start="13" name="Obj"/>
+                    <label end="34" start="17" name="Dep"/>
+                    <label end="41" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                    <label end="15" start="13" name="NP"/>
+                    <label end="34" start="17" name="PP"/>
+                    <label end="41" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s45-rcoll-me"/>
+    <subCorpus name="V-429-s50-rcoll-them"/>
+    <subCorpus name="V-500-s20-vpto"/>
+    <subCorpus name="V-570-s20-np-ppat"/>
+    <subCorpus name="V-570-s20-np-ppfor"/>
+    <subCorpus name="V-570-s20-np-ppfrom"/>
+    <subCorpus name="V-570-s20-np-ppwith"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-650-s20-np-pother"/>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-670-s20-pass-by">
+        <sentence sentNo="0" aPos="71428717" ID="904892">
+            <text>The company may be reached by fax . </text>
+            <annotationSet cDate="01/07/2003 06:57:42 PST Tue" status="UNANN" ID="1264183">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="14" start="12" name="VM0"/>
+                    <label end="17" start="16" name="VBI"/>
+                    <label end="25" start="19" name="VVN"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="32" start="30" name="NN1"/>
+                    <label end="34" start="34" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:57:42 PST Tue" status="MANUAL" ID="1264184">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2483" end="10" start="0" name="Addressee"/>
+                    <label cBy="618" feID="2482" end="32" start="27" name="Medium"/>
+                    <label cBy="618" feID="2481" itype="CNI" name="Communicator"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="32" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="32" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="78135353" ID="904895">
+            <text>Counsellors are reached by telephone and face-to-face meetings can be quickly arranged if wanted . </text>
+            <annotationSet cDate="01/07/2003 06:57:43 PST Tue" status="UNANN" ID="1264189">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="NN2"/>
+                    <label end="14" start="12" name="VBB"/>
+                    <label end="22" start="16" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="35" start="27" name="NN1"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="52" start="41" name="AJ0"/>
+                    <label end="61" start="54" name="NN2"/>
+                    <label end="65" start="63" name="VM0"/>
+                    <label end="68" start="67" name="VBI"/>
+                    <label end="76" start="70" name="AV0"/>
+                    <label end="85" start="78" name="VVD-VVN"/>
+                    <label end="88" start="87" name="CJS"/>
+                    <label end="95" start="90" name="AJ0-VVN"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:57:43 PST Tue" status="MANUAL" ID="1264190">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2483" end="10" start="0" name="Addressee"/>
+                    <label cBy="618" feID="2482" end="35" start="24" name="Medium"/>
+                    <label cBy="618" feID="2481" itype="CNI" name="Communicator"/>
+                    <label cBy="153" feID="2486" itype="INI" name="Communication"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="35" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="35" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-690-s20-trans-other"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

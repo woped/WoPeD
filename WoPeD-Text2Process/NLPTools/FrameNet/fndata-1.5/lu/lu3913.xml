@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="pot.v" ID="3913" frame="Placing" frameID="62" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Area" name="Area"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Thm_c" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="Duration" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: plant in a pot</definition>
+    <lexeme POS="V" name="pot"/>
+    <valences>
+        <FERealization total="10">
+            <FE name="Agent"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="632134"/>
+                <annoSet ID="632138"/>
+                <annoSet ID="632158"/>
+                <annoSet ID="632176"/>
+                <annoSet ID="632184"/>
+                <annoSet ID="632212"/>
+                <annoSet ID="632262"/>
+                <annoSet ID="632274"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="632170"/>
+                <annoSet ID="632270"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Goal"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <annoSet ID="632134"/>
+                <annoSet ID="632170"/>
+                <annoSet ID="632176"/>
+                <annoSet ID="632262"/>
+                <annoSet ID="632270"/>
+                <annoSet ID="632274"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <annoSet ID="632138"/>
+                <annoSet ID="632184"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="632158"/>
+                <annoSet ID="632212"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <annoSet ID="632262"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="632138"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="632138"/>
+                <annoSet ID="632262"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="632134"/>
+                <annoSet ID="632158"/>
+                <annoSet ID="632170"/>
+                <annoSet ID="632176"/>
+                <annoSet ID="632212"/>
+                <annoSet ID="632270"/>
+                <annoSet ID="632274"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="632184"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Manner"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="632262"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="632138"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="8">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Theme"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="632134"/>
+                <annoSet ID="632176"/>
+                <annoSet ID="632274"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="632184"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="632158"/>
+                <annoSet ID="632212"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="632170"/>
+                <annoSet ID="632270"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-lcoll-plant">
+        <sentence sentNo="0" aPos="65634337" ID="575142">
+            <text>For attractive flowering and fruiting plants , it 's worth potting a few rooted strawberry runners this summer . </text>
+            <annotationSet cDate="01/07/2003 06:17:49 PST Tue" status="UNANN" ID="632133">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="__UNDEF__"/>
+                    <label end="13" start="4" name="__UNDEF__"/>
+                    <label end="23" start="15" name="__UNDEF__"/>
+                    <label end="27" start="25" name="__UNDEF__"/>
+                    <label end="36" start="29" name="__UNDEF__"/>
+                    <label end="43" start="38" name="__UNDEF__"/>
+                    <label end="45" start="45" name="__UNDEF__"/>
+                    <label end="48" start="47" name="__UNDEF__"/>
+                    <label end="51" start="50" name="__UNDEF__"/>
+                    <label end="57" start="53" name="__UNDEF__"/>
+                    <label end="65" start="59" name="__UNDEF__"/>
+                    <label end="67" start="67" name="__UNDEF__"/>
+                    <label end="71" start="69" name="__UNDEF__"/>
+                    <label end="78" start="73" name="__UNDEF__"/>
+                    <label end="89" start="80" name="__UNDEF__"/>
+                    <label end="97" start="91" name="__UNDEF__"/>
+                    <label end="102" start="99" name="__UNDEF__"/>
+                    <label end="109" start="104" name="__UNDEF__"/>
+                    <label end="111" start="111" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:49 PST Tue" status="MANUAL" ID="632134">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" end="97" start="67" name="Theme"/>
+                    <label cBy="900" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="309" feID="277" end="65" start="59" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="67" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="67" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69616007" ID="575144">
+            <text>Individual plants can eventually be potted singly in small pots . </text>
+            <annotationSet cDate="01/07/2003 06:17:49 PST Tue" status="UNANN" ID="632137">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="__UNDEF__"/>
+                    <label end="16" start="11" name="__UNDEF__"/>
+                    <label end="20" start="18" name="__UNDEF__"/>
+                    <label end="31" start="22" name="__UNDEF__"/>
+                    <label end="34" start="33" name="__UNDEF__"/>
+                    <label end="41" start="36" name="__UNDEF__"/>
+                    <label end="48" start="43" name="__UNDEF__"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="57" start="53" name="__UNDEF__"/>
+                    <label end="62" start="59" name="__UNDEF__"/>
+                    <label end="64" start="64" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:49 PST Tue" status="MANUAL" ID="632138">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="277" end="62" start="50" name="Goal"/>
+                    <label cBy="900" feID="274" end="16" start="0" name="Theme"/>
+                    <label cBy="618" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="278" end="48" start="43" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="50" name="Dep"/>
+                    <label end="16" start="0" name="Ext"/>
+                    <label end="48" start="43" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="50" name="PP"/>
+                    <label end="16" start="0" name="NP"/>
+                    <label end="48" start="43" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-lcoll-root"/>
+    <subCorpus name="V-429-s20-rcoll-on"/>
+    <subCorpus name="V-429-s20-rcoll-plant">
+        <sentence sentNo="0" aPos="7665088" ID="575154">
+            <text>Pot on young plants of winter cherry ( Solanum capsicastrum ) into 4in pots , using a John Innes No 2 or similar free-draining compost . </text>
+            <annotationSet cDate="01/07/2003 06:17:50 PST Tue" status="UNANN" ID="632157">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="__UNDEF__"/>
+                    <label end="5" start="4" name="__UNDEF__"/>
+                    <label end="11" start="7" name="__UNDEF__"/>
+                    <label end="18" start="13" name="__UNDEF__"/>
+                    <label end="21" start="20" name="__UNDEF__"/>
+                    <label end="28" start="23" name="__UNDEF__"/>
+                    <label end="35" start="30" name="__UNDEF__"/>
+                    <label end="37" start="37" name="__UNDEF__"/>
+                    <label end="45" start="39" name="__UNDEF__"/>
+                    <label end="58" start="47" name="__UNDEF__"/>
+                    <label end="60" start="60" name="__UNDEF__"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="69" start="67" name="__UNDEF__"/>
+                    <label end="74" start="71" name="__UNDEF__"/>
+                    <label end="76" start="76" name="__UNDEF__"/>
+                    <label end="82" start="78" name="__UNDEF__"/>
+                    <label end="84" start="84" name="__UNDEF__"/>
+                    <label end="89" start="86" name="__UNDEF__"/>
+                    <label end="95" start="91" name="__UNDEF__"/>
+                    <label end="98" start="97" name="__UNDEF__"/>
+                    <label end="100" start="100" name="__UNDEF__"/>
+                    <label end="103" start="102" name="__UNDEF__"/>
+                    <label end="111" start="105" name="__UNDEF__"/>
+                    <label end="125" start="113" name="__UNDEF__"/>
+                    <label end="133" start="127" name="__UNDEF__"/>
+                    <label end="135" start="135" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:50 PST Tue" status="MANUAL" ID="632158">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" end="60" start="7" name="Theme"/>
+                    <label cBy="900" feID="277" end="74" start="62" name="Goal"/>
+                    <label cBy="900" feID="273" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="7" name="Obj"/>
+                    <label end="74" start="62" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="7" name="NP"/>
+                    <label end="74" start="62" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="2" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24515558" ID="575160">
+            <text>I pot my plants , which works , but I do n't know if this is actually necessary . </text>
+            <annotationSet cDate="01/07/2003 06:17:51 PST Tue" status="UNANN" ID="632169">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="__UNDEF__"/>
+                    <label end="4" start="2" name="__UNDEF__"/>
+                    <label end="7" start="6" name="__UNDEF__"/>
+                    <label end="14" start="9" name="__UNDEF__"/>
+                    <label end="16" start="16" name="__UNDEF__"/>
+                    <label end="22" start="18" name="__UNDEF__"/>
+                    <label end="28" start="24" name="__UNDEF__"/>
+                    <label end="30" start="30" name="__UNDEF__"/>
+                    <label end="34" start="32" name="__UNDEF__"/>
+                    <label end="36" start="36" name="__UNDEF__"/>
+                    <label end="39" start="38" name="__UNDEF__"/>
+                    <label end="43" start="41" name="__UNDEF__"/>
+                    <label end="48" start="45" name="__UNDEF__"/>
+                    <label end="51" start="50" name="__UNDEF__"/>
+                    <label end="56" start="53" name="__UNDEF__"/>
+                    <label end="59" start="58" name="__UNDEF__"/>
+                    <label end="68" start="61" name="__UNDEF__"/>
+                    <label end="78" start="70" name="__UNDEF__"/>
+                    <label end="80" start="80" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:51 PST Tue" status="MANUAL" ID="632170">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="273" end="0" start="0" name="Agent"/>
+                    <label cBy="900" feID="274" end="14" start="6" name="Theme"/>
+                    <label cBy="309" feID="277" end="4" start="2" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="14" start="6" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="14" start="6" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="4" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-strawberry">
+        <sentence sentNo="0" aPos="46303130" ID="575163">
+            <text>Pot up one or two strawberry plants for a special treat : bring them into a cool greenhouse or conservatory , watering sparingly . </text>
+            <annotationSet cDate="01/07/2003 06:17:51 PST Tue" status="UNANN" ID="632175">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="__UNDEF__"/>
+                    <label end="5" start="4" name="__UNDEF__"/>
+                    <label end="9" start="7" name="__UNDEF__"/>
+                    <label end="12" start="11" name="__UNDEF__"/>
+                    <label end="16" start="14" name="__UNDEF__"/>
+                    <label end="27" start="18" name="__UNDEF__"/>
+                    <label end="34" start="29" name="__UNDEF__"/>
+                    <label end="38" start="36" name="__UNDEF__"/>
+                    <label end="40" start="40" name="__UNDEF__"/>
+                    <label end="48" start="42" name="__UNDEF__"/>
+                    <label end="54" start="50" name="__UNDEF__"/>
+                    <label end="56" start="56" name="__UNDEF__"/>
+                    <label end="62" start="58" name="__UNDEF__"/>
+                    <label end="67" start="64" name="__UNDEF__"/>
+                    <label end="72" start="69" name="__UNDEF__"/>
+                    <label end="74" start="74" name="__UNDEF__"/>
+                    <label end="79" start="76" name="__UNDEF__"/>
+                    <label end="90" start="81" name="__UNDEF__"/>
+                    <label end="93" start="92" name="__UNDEF__"/>
+                    <label end="106" start="95" name="__UNDEF__"/>
+                    <label end="108" start="108" name="__UNDEF__"/>
+                    <label end="117" start="110" name="__UNDEF__"/>
+                    <label end="127" start="119" name="__UNDEF__"/>
+                    <label end="129" start="129" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:51 PST Tue" status="MANUAL" ID="632176">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" end="34" start="7" name="Theme"/>
+                    <label cBy="900" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="309" feID="277" end="2" start="0" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="7" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="7" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="2" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-tuber"/>
+    <subCorpus name="V-429-s20-rcoll-up">
+        <sentence sentNo="0" aPos="4145509" ID="575167">
+            <text>You may replant in the old containers or pot up in individual pots for replanting later . </text>
+            <annotationSet cDate="01/07/2003 06:17:52 PST Tue" status="UNANN" ID="632183">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="__UNDEF__"/>
+                    <label end="6" start="4" name="__UNDEF__"/>
+                    <label end="14" start="8" name="__UNDEF__"/>
+                    <label end="17" start="16" name="__UNDEF__"/>
+                    <label end="21" start="19" name="__UNDEF__"/>
+                    <label end="25" start="23" name="__UNDEF__"/>
+                    <label end="36" start="27" name="__UNDEF__"/>
+                    <label end="39" start="38" name="__UNDEF__"/>
+                    <label end="43" start="41" name="__UNDEF__"/>
+                    <label end="46" start="45" name="__UNDEF__"/>
+                    <label end="49" start="48" name="PRP"/>
+                    <label end="60" start="51" name="__UNDEF__"/>
+                    <label end="65" start="62" name="__UNDEF__"/>
+                    <label end="69" start="67" name="__UNDEF__"/>
+                    <label end="80" start="71" name="__UNDEF__"/>
+                    <label end="86" start="82" name="__UNDEF__"/>
+                    <label end="88" start="88" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:52 PST Tue" status="MANUAL" ID="632184">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" itype="DNI" name="Theme"/>
+                    <label cBy="618" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="277" end="65" start="48" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb">
+                    <label end="46" start="45" name="Asp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46302985" ID="575181">
+            <text>Pot up the seedlings into 3in pots and keep them in a warm place . </text>
+            <annotationSet cDate="01/07/2003 06:17:53 PST Tue" status="UNANN" ID="632211">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="__UNDEF__"/>
+                    <label end="5" start="4" name="__UNDEF__"/>
+                    <label end="9" start="7" name="__UNDEF__"/>
+                    <label end="19" start="11" name="__UNDEF__"/>
+                    <label end="24" start="21" name="PRP"/>
+                    <label end="28" start="26" name="__UNDEF__"/>
+                    <label end="33" start="30" name="__UNDEF__"/>
+                    <label end="37" start="35" name="__UNDEF__"/>
+                    <label end="42" start="39" name="__UNDEF__"/>
+                    <label end="47" start="44" name="__UNDEF__"/>
+                    <label end="50" start="49" name="__UNDEF__"/>
+                    <label end="52" start="52" name="__UNDEF__"/>
+                    <label end="57" start="54" name="__UNDEF__"/>
+                    <label end="63" start="59" name="__UNDEF__"/>
+                    <label end="65" start="65" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:53 PST Tue" status="MANUAL" ID="632212">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" end="19" start="7" name="Theme"/>
+                    <label cBy="900" feID="277" end="33" start="21" name="Goal"/>
+                    <label cBy="900" feID="273" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="7" name="Obj"/>
+                    <label end="33" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="7" name="NP"/>
+                    <label end="33" start="21" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="2" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb">
+                    <label end="5" start="4" name="Asp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-570-s20-np-ppin"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-680-s20-pass">
+        <sentence sentNo="0" aPos="55682745" ID="575206">
+            <text>They are prepared and potted in the same way as soft cuttings , but occasionally a variant is used if the plant is less easy to root . </text>
+            <annotationSet cDate="01/07/2003 06:17:56 PST Tue" status="UNANN" ID="632261">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="__UNDEF__"/>
+                    <label end="7" start="5" name="__UNDEF__"/>
+                    <label end="16" start="9" name="__UNDEF__"/>
+                    <label end="20" start="18" name="__UNDEF__"/>
+                    <label end="27" start="22" name="__UNDEF__"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="34" start="32" name="__UNDEF__"/>
+                    <label end="39" start="36" name="__UNDEF__"/>
+                    <label end="43" start="41" name="__UNDEF__"/>
+                    <label end="46" start="45" name="__UNDEF__"/>
+                    <label end="51" start="48" name="__UNDEF__"/>
+                    <label end="60" start="53" name="__UNDEF__"/>
+                    <label end="62" start="62" name="__UNDEF__"/>
+                    <label end="66" start="64" name="__UNDEF__"/>
+                    <label end="79" start="68" name="__UNDEF__"/>
+                    <label end="81" start="81" name="__UNDEF__"/>
+                    <label end="89" start="83" name="__UNDEF__"/>
+                    <label end="92" start="91" name="__UNDEF__"/>
+                    <label end="97" start="94" name="__UNDEF__"/>
+                    <label end="100" start="99" name="__UNDEF__"/>
+                    <label end="104" start="102" name="__UNDEF__"/>
+                    <label end="110" start="106" name="__UNDEF__"/>
+                    <label end="113" start="112" name="__UNDEF__"/>
+                    <label end="118" start="115" name="__UNDEF__"/>
+                    <label end="123" start="120" name="__UNDEF__"/>
+                    <label end="126" start="125" name="__UNDEF__"/>
+                    <label end="131" start="128" name="__UNDEF__"/>
+                    <label end="133" start="133" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:56 PST Tue" status="MANUAL" ID="632262">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="274" end="3" start="0" name="Theme"/>
+                    <label cBy="605" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="605" feID="278" end="60" start="29" name="Manner"/>
+                    <label cBy="309" feID="277" end="27" start="22" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="60" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="60" start="29" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-690-s20-trans-other">
+        <sentence sentNo="0" aPos="106535243" ID="575210">
+            <text>White clinched a quarter-final place when he potted the last red and colours to the pink in the deciding frame . </text>
+            <annotationSet cDate="01/07/2003 06:17:56 PST Tue" status="UNANN" ID="632269">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="__UNDEF__"/>
+                    <label end="13" start="6" name="__UNDEF__"/>
+                    <label end="15" start="15" name="__UNDEF__"/>
+                    <label end="29" start="17" name="__UNDEF__"/>
+                    <label end="35" start="31" name="__UNDEF__"/>
+                    <label end="40" start="37" name="__UNDEF__"/>
+                    <label end="43" start="42" name="__UNDEF__"/>
+                    <label end="50" start="45" name="__UNDEF__"/>
+                    <label end="54" start="52" name="__UNDEF__"/>
+                    <label end="59" start="56" name="__UNDEF__"/>
+                    <label end="63" start="61" name="__UNDEF__"/>
+                    <label end="67" start="65" name="__UNDEF__"/>
+                    <label end="75" start="69" name="__UNDEF__"/>
+                    <label end="78" start="77" name="__UNDEF__"/>
+                    <label end="82" start="80" name="__UNDEF__"/>
+                    <label end="87" start="84" name="__UNDEF__"/>
+                    <label end="90" start="89" name="__UNDEF__"/>
+                    <label end="94" start="92" name="__UNDEF__"/>
+                    <label end="103" start="96" name="__UNDEF__"/>
+                    <label end="109" start="105" name="__UNDEF__"/>
+                    <label end="111" start="111" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:56 PST Tue" status="MANUAL" ID="632270">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="273" end="43" start="42" name="Agent"/>
+                    <label cBy="900" feID="274" end="63" start="52" name="Theme"/>
+                    <label cBy="309" feID="277" end="50" start="45" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="42" name="Ext"/>
+                    <label end="63" start="52" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="42" name="NP"/>
+                    <label end="63" start="52" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="50" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="7682019" ID="575212">
+            <text>Soft cuttings may root after only a few weeks , so pot individual cuttings as soon as you see new young leaves or white roots at the base of containers . </text>
+            <annotationSet cDate="01/07/2003 06:17:57 PST Tue" status="UNANN" ID="632273">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="__UNDEF__"/>
+                    <label end="12" start="5" name="__UNDEF__"/>
+                    <label end="16" start="14" name="__UNDEF__"/>
+                    <label end="21" start="18" name="__UNDEF__"/>
+                    <label end="27" start="23" name="__UNDEF__"/>
+                    <label end="32" start="29" name="__UNDEF__"/>
+                    <label end="34" start="34" name="__UNDEF__"/>
+                    <label end="38" start="36" name="__UNDEF__"/>
+                    <label end="44" start="40" name="__UNDEF__"/>
+                    <label end="46" start="46" name="__UNDEF__"/>
+                    <label end="49" start="48" name="__UNDEF__"/>
+                    <label end="53" start="51" name="__UNDEF__"/>
+                    <label end="64" start="55" name="__UNDEF__"/>
+                    <label end="73" start="66" name="__UNDEF__"/>
+                    <label end="76" start="75" name="__UNDEF__"/>
+                    <label end="81" start="78" name="__UNDEF__"/>
+                    <label end="84" start="83" name="__UNDEF__"/>
+                    <label end="88" start="86" name="__UNDEF__"/>
+                    <label end="92" start="90" name="__UNDEF__"/>
+                    <label end="96" start="94" name="__UNDEF__"/>
+                    <label end="102" start="98" name="__UNDEF__"/>
+                    <label end="109" start="104" name="__UNDEF__"/>
+                    <label end="112" start="111" name="__UNDEF__"/>
+                    <label end="118" start="114" name="__UNDEF__"/>
+                    <label end="124" start="120" name="__UNDEF__"/>
+                    <label end="127" start="126" name="__UNDEF__"/>
+                    <label end="131" start="129" name="__UNDEF__"/>
+                    <label end="136" start="133" name="__UNDEF__"/>
+                    <label end="139" start="138" name="__UNDEF__"/>
+                    <label end="150" start="141" name="__UNDEF__"/>
+                    <label end="152" start="152" name="__UNDEF__"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:17:57 PST Tue" status="MANUAL" ID="632274">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="274" end="73" start="55" name="Theme"/>
+                    <label cBy="900" feID="273" itype="CNI" name="Agent"/>
+                    <label cBy="309" feID="277" end="53" start="51" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="55" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="55" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

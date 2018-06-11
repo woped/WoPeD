@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="upper.n" ID="7062" frame="Intoxicants" frameID="390" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Co" name="Country_of_origin"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Int" name="Intoxicant"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a stimulating drug, especially amphetamine. </definition>
+    <lexeme POS="N" name="upper"/>
+    <valences>
+        <governor type="Gov" lemma="take">
+            <annoSet ID="1563019"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1563019"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1563019"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="9600304" ID="1055807">
+            <text>He cleaned up his act , quit taking uppers and downers with the help of his wife and the Betty Ford Clinic , and now looks set to go on for another 40 years . </text>
+            <annotationSet cDate="01/08/2003 12:38:17 PST Wed" status="UNANN" ID="1563018">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="12" start="11" name="AVP"/>
+                    <label end="16" start="14" name="DPS"/>
+                    <label end="20" start="18" name="NN1"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="27" start="24" name="VVD"/>
+                    <label end="34" start="29" name="VVG"/>
+                    <label end="41" start="36" name="NN2"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="53" start="47" name="NN2"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="70" start="69" name="PRF"/>
+                    <label end="74" start="72" name="DPS"/>
+                    <label end="79" start="76" name="NN1"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="87" start="85" name="AT0"/>
+                    <label end="93" start="89" name="NP0"/>
+                    <label end="98" start="95" name="NP0"/>
+                    <label end="105" start="100" name="NN1"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="111" start="109" name="CJC"/>
+                    <label end="115" start="113" name="AV0"/>
+                    <label end="121" start="117" name="VVZ"/>
+                    <label end="125" start="123" name="VVN"/>
+                    <label end="128" start="127" name="TO0"/>
+                    <label end="131" start="130" name="VVI"/>
+                    <label end="134" start="133" name="AVP"/>
+                    <label end="138" start="136" name="PRP"/>
+                    <label end="146" start="140" name="DT0"/>
+                    <label end="149" start="148" name="CRD"/>
+                    <label end="155" start="151" name="NN2"/>
+                    <label end="157" start="157" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:38:17 PST Wed" status="MANUAL" ID="1563019">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="41" start="36" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="29" name="Gov"/>
+                    <label end="53" start="36" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

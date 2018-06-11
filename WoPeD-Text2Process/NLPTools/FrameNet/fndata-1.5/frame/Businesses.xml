@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="613" cDate="07/03/2002 10:18:46 PDT Wed" name="Businesses" ID="365" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Proprietor&lt;/fen&gt; owns or runs a &lt;fen&gt;Business&lt;/fen&gt; which provides a &lt;fen&gt;Product&lt;/fen&gt; (which may be goods or services). &lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/03/2002 10:34:44 PDT Wed" abbrev="Prd" name="Product" ID="3323">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Product&lt;/fen&gt; identifies the product or service provided by the business.  
+&lt;ex&gt;Josh runs a &lt;fex name="Product"&gt;copier toner&lt;/fex&gt; &lt;t&gt;business&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/03/2002 10:41:09 PDT Wed" abbrev="Pptr" name="Proprietor" ID="3324">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Proprietor&lt;/fen&gt; is the owner or chief participant in the business. 
+&lt;ex&gt;I worked in &lt;fex name="Pptr"&gt;Goldberg's&lt;/fex&gt; legal &lt;t&gt;practice&lt;/t&gt; .&lt;/ex&gt;
+&lt;ex&gt;I didn't want to go into the &lt;fex name="Pptr"&gt;family&lt;/fex&gt; &lt;t&gt;business&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/05/2002 12:43:09 PDT Fri" abbrev="Desc" name="Descriptor" ID="3329">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Descriptor&lt;/fen&gt; indicates other characteristics of the business besides its &lt;fen&gt;Product&lt;/fen&gt; and &lt;fen&gt;Proprietor&lt;/fen&gt;.
+&lt;ex&gt;Chris runs a &lt;fex name="Desc"&gt;small&lt;/fex&gt; &lt;t&gt;company&lt;/t&gt; in Idaho.&lt;/ex&gt;
+&lt;ex&gt;I work for a &lt;fex name="Desc"&gt;non-profit&lt;/fex&gt; arts &lt;t&gt;company&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/05/2002 12:46:18 PDT Fri" abbrev="Place" name="Place" ID="3330">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; in which the business is located.
+&lt;ex&gt;Chris's &lt;t&gt;business&lt;/t&gt; &lt;fex name="Place"&gt;in Idaho&lt;/fex&gt; is thriving.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Place"&gt;Local&lt;/fex&gt; &lt;t&gt;companies&lt;/t&gt; are looking for more and more Spanish-speaking employees.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="613" cDate="07/16/2002 01:52:23 PDT Tue" abbrev="Busn" name="Business" ID="3385">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Business&lt;/fen&gt; identifies the company or establishment. This may be the target itself or the &lt;fen&gt;Business_Name&lt;/fen&gt; if it is an appositive not set off with commas (i.e. restrictive):
+&lt;ex&gt;The electronics &lt;fex name="Busn"&gt;&lt;t&gt;firm&lt;/t&gt;&lt;/fex&gt; went bankrupt.&lt;/ex&gt;
+In the appositive case, the name may also be tagged &lt;fen&gt;Business_Name&lt;/fen&gt; on a second annotation layer.
+&lt;ex&gt;&lt;gov&gt;1st Layer:&lt;/gov&gt; The Japanese electronics &lt;t&gt;firm&lt;/t&gt; &lt;fex name="Busn"&gt;Sony&lt;/fex&gt; is growing rapidly.&lt;/ex&gt;
+&lt;ex&gt;&lt;gov&gt;2nd Layer:&lt;/gov&gt;
+The Japanese electronics &lt;t&gt;firm&lt;/t&gt; &lt;fex name="BName"&gt;Sony&lt;/fex&gt; is growing rapidly.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/16/2002 01:59:02 PDT Tue" abbrev="BName" name="Business_Name" ID="3386">
+        <definition>&lt;def-root&gt;The name of the &lt;fen&gt;Business&lt;/fen&gt; when it appears in an appositive set off by commas (non-restrictive):
+&lt;ex&gt;My clothing &lt;t&gt;company&lt;/t&gt;, &lt;fex name="BName"&gt;Togs&lt;/fex&gt;, is doing well.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/16/2002 02:08:58 PDT Tue" abbrev="ServP" name="Service_provider" ID="3387">
+        <definition>&lt;def-root&gt;When a &lt;fen&gt;Business&lt;/fen&gt; is described in terms of the professionals who work to produce the product or service, use &lt;fen&gt;Service_provider&lt;/fen&gt;.
+&lt;ex&gt; John works as an office assistant for a &lt;t&gt;firm&lt;/t&gt; &lt;fex name="ServP"&gt;of accountants&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Commerce_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="business.n" ID="6355" lemmaID="5031" cBy="613" cDate="07/03/2002 10:24:29 PDT Wed">
+        <definition>COD: a commercial organization</definition>
+        <sentenceCount annotated="42" total="407"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="business"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shop.n" ID="6357" lemmaID="35619" cBy="613" cDate="07/03/2002 10:26:14 PDT Wed">
+        <definition>COD: a building or part of a building where goods or services are sold</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shop"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="establishment.n" ID="6358" lemmaID="13134" cBy="613" cDate="07/03/2002 10:27:04 PDT Wed">
+        <definition>COD: a business organization, public institution, or household</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="establishment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mill.n" ID="6359" lemmaID="24305" cBy="613" cDate="07/03/2002 10:28:06 PDT Wed">
+        <definition>COD: a building fitted with machinery for a manufacturing process</definition>
+        <sentenceCount annotated="63" total="346"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="practice.n" ID="6360" lemmaID="30013" cBy="613" cDate="07/03/2002 10:28:50 PDT Wed">
+        <definition>COD: the business or premises of a doctor or lawyer</definition>
+        <sentenceCount annotated="25" total="427"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="practice"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="firm.n" ID="6361" lemmaID="14475" cBy="613" cDate="07/03/2002 10:29:32 PDT Wed">
+        <definition>COD: a company or business partnership</definition>
+        <sentenceCount annotated="30" total="377"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="firm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="operation.n" ID="6905" lemmaID="26812" cBy="605" cDate="07/29/2002 07:17:13 PDT Mon">
+        <definition>COD: a business organization; a company. </definition>
+        <sentenceCount annotated="22" total="441"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="operation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="company.n" ID="11113" lemmaID="7430" cBy="303" cDate="11/05/2004 06:25:21 PST Fri">
+        <definition>COD: a commercial business</definition>
+        <sentenceCount annotated="37" total="306"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="company"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Business" POS="N" name="chain.n" ID="13810" lemmaID="5986" cBy="664" cDate="02/25/2007 12:45:47 PST Sun">
+        <definition>COD: a group of hotels or shops owned by the same company.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chain"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Business" POS="N" name="corporation.n" ID="13819" lemmaID="8412" cBy="664" cDate="02/25/2007 01:32:26 PST Sun">
+        <definition>COD: a large company or group of companies authorized to act as a single entity and recognized as such in law. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="corporation"/>
+    </lexUnit>
+</frame>

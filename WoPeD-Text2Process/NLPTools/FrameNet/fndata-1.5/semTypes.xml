@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<semTypes XMLCreated="09/02/2010 10:46:39 PDT Thu" xsi:schemaLocation="schema/semTypes.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <semType abbrev="Body-of-water" name="Body_of_water" ID="2">
+        <definition>Labels LU's which designate bodies of water.  The limits of a body of water are defined in terms of the land that borders the water.  Equivlent to WN Body of water.
+(Appropriate for LU's in Locale frame and its descendants.)</definition>
+        <superType supID="17" superTypeName="Region"/>
+    </semType>
+    <semType abbrev="Running-water" name="Running-water" ID="3">
+        <definition>Labels LU's that designate geographical features of running water.  Equivalent to WN watercourse.
+(Appropriate for LU's in Locale and descendants of Locale.)</definition>
+        <superType supID="2" superTypeName="Body_of_water"/>
+    </semType>
+    <semType abbrev="Sentient" name="Sentient" ID="5">
+        <definition>Marks FEs whose fillers are sentient beings; dogs, definitely; bacteria, probably not; comatose people, planeria, maybe.  This is a common-sense type, with fuzzy boundaries, not a precise bio-medical category.</definition>
+        <superType supID="65" superTypeName="Animate_being"/>
+    </semType>
+    <semType abbrev="Landform" name="Landform" ID="7">
+        <definition>Labels LU's which designate land geography/topography.  Such LU's give some information about the 3-D shape of the land.
+(Appropriate for LU's in Locale frame and its descendants.)</definition>
+        <superType supID="17" superTypeName="Region"/>
+    </semType>
+    <semType abbrev="Activity" name="Activity" ID="8">
+        <definition>Labels Activity Aktionsart.  Used for events that fundamentally denote the 'Ongoing' subpart of an X-schema.  E.g. We walked _for an hour_.  Note that most verbs which inherently denote an Activity can be used as Accomplishments when a distinct goal is mentioned:  We walked to the </definition>
+        <superType supID="75" superTypeName="Event"/>
+    </semType>
+    <semType abbrev="Transparent Noun" name="Transparent Noun" ID="9">
+        <definition>Transparent noun.</definition>
+        <superType supID="180" superTypeName="Lexical_type"/>
+    </semType>
+    <semType abbrev="BodyPt" name="Body_part" ID="10">
+        <definition>Type for all body parts of humans and animals.</definition>
+        <superType supID="68" superTypeName="Physical_object"/>
+    </semType>
+    <semType abbrev="Positive_judgment" name="Positive_judgment" ID="13">
+        <definition>This semantic type is used to mark words in the Judgment frame and related frames (like Punishments_and_rewards) as involving a positive judgment by a Cognizer, i.e. a Cognizer respecting or approving to actions of an Evaluee.  (See Negative_judgment.)</definition>
+        <superType supID="213" superTypeName="Affect_describing"/>
+    </semType>
+    <semType abbrev="Negative_judgment" name="Negative_judgment" ID="14">
+        <definition>This type is used to mark lexical units involving a negative judgment (on the part of the Judge) in frames related to Judgment, such as Punishment.  It is also used to denote the opinion of the speaker associated with words in several other frames (such as Frugality and Appearance), including a more heterogeneous variety of words having the prefixes 'mis-', 'under-', and 'over-'.  It is also used of words which indicate undesirable effects, e.g. warp, in frames such as Reshaping.</definition>
+        <superType supID="213" superTypeName="Affect_describing"/>
+    </semType>
+    <semType abbrev="Container" name="Container" ID="15">
+        <definition>Marks FEs extending over constituents whose denotatum is a container.</definition>
+        <superType supID="68" superTypeName="Physical_object"/>
+    </semType>
+    <semType abbrev="Non-Lexical Frame" name="Non-Lexical Frame" ID="16">
+        <definition>Used to describe frames that don't have corresponding lexical items in English.</definition>
+        <superType supID="179" superTypeName="Framal_type"/>
+    </semType>
+    <semType abbrev="Land" name="Region" ID="17">
+        <definition>Labels LU's that designate solid ground defined in terms of the shape of a border with water.  Equivalent to WN Geological formation, which, however, is not a supertype of Body of Water.</definition>
+        <superType supID="54" superTypeName="Location"/>
+    </semType>
+    <semType abbrev="Achievement" name="Achievement" ID="19">
+        <definition>Aspectual type for predicators which describe "achievements"; e.g. Gloria recognized the boy (in an instant) *for an hour. (One kind of "telic", the other is "accomplishment")</definition>
+        <superType supID="75" superTypeName="Event"/>
+    </semType>
+    <semType abbrev="Accomplishment" name="Accomplishment" ID="20">
+        <definition>Aspectual type for predicators that describe "accomplishments", which include both activities and their culmination e.g. They climbed the mountain (in two days). N.B. _They climbed the mountain for two days_ describes an activity, not an accomplishment-- there is no implication that they reached the top.</definition>
+        <superType supID="75" superTypeName="Event"/>
+    </semType>
+    <semType abbrev="Non-p" name="Non-perspectivalized_frame" ID="52">
+        <definition>This semantic type marks frames that do not impose a perspective on the situation portrayed by the frame.  An example is the Commerce frame, in which a Lexical Unit like commerce.n denotes an interaction between participants (Buyer, Seller, Money, and Goods) but profiles none of them.  An important consequence of the lack of perspective is that the opposition of core, periperal, and extrathematic frame elements is not relevant.</definition>
+        <superType supID="179" superTypeName="Framal_type"/>
+    </semType>
+    <semType abbrev="LOCN" name="Location" ID="54">
+        <definition>WN synset: location</definition>
+        <superType supID="68" superTypeName="Physical_object"/>
+    </semType>
+    <semType abbrev="CONT" name="Content" ID="55">
+        <definition>WN synset: content, cognitive content, mental object</definition>
+        <superType supID="177" superTypeName="State_of_affairs"/>
+    </semType>
+    <semType abbrev="MESG" name="Message" ID="56">
+        <definition>WN synset: message, content, subject matter, substance</definition>
+        <superType supID="177" superTypeName="State_of_affairs"/>
+    </semType>
+    <semType abbrev="SOCR" name="Social relation" ID="57">
+        <definition>WN synset: social relation</definition>
+        <superType supID="174" superTypeName="Relation"/>
+    </semType>
+    <semType abbrev="ORGZ" name="Organization" ID="58">
+        <definition>WN synset: organization, organisation</definition>
+        <superType supID="76" superTypeName="Group"/>
+    </semType>
+    <semType abbrev="QUAN" name="Quantity" ID="59">
+        <definition>WN synset: measure, quantity, amount, quantum</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="SHAP" name="Shape" ID="60">
+        <definition>WN synset: shape, form</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="ARTF" name="Artifact" ID="61">
+        <definition>WN synset: artifact, artefact</definition>
+        <superType supID="68" superTypeName="Physical_object"/>
+    </semType>
+    <semType abbrev="STRC" name="Structure" ID="62">
+        <definition>WN synset: structure, construction</definition>
+        <superType supID="61" superTypeName="Artifact"/>
+    </semType>
+    <semType abbrev="STUF" name="Material" ID="63">
+        <definition>WN synset: material, stuff</definition>
+        <superType supID="70" superTypeName="Physical_entity"/>
+    </semType>
+    <semType abbrev="ANIM" name="Animate_being" ID="65">
+        <definition>WN synset: animal, animate being, beast, brute, creature, fauna</definition>
+        <superType supID="66" superTypeName="Living_thing"/>
+    </semType>
+    <semType abbrev="LIVE" name="Living_thing" ID="66">
+        <definition>WN synset: organism, being, living thing</definition>
+        <superType supID="68" superTypeName="Physical_object"/>
+    </semType>
+    <semType abbrev="PhysObj" name="Physical_object" ID="68">
+        <definition>WN synset: object, physical object</definition>
+        <superType supID="70" superTypeName="Physical_entity"/>
+    </semType>
+    <semType abbrev="HACT" name="Human_act" ID="69">
+        <definition>WN synset (top): act, human action, human activity</definition>
+        <superType supID="181" superTypeName="Intentional_act"/>
+    </semType>
+    <semType abbrev="PhysEnt" name="Physical_entity" ID="70">
+        <definition>WN synset (top): entity</definition>
+        <superType supID="178" superTypeName="Ontological_type"/>
+    </semType>
+    <semType abbrev="EVNT" name="Event" ID="75">
+        <definition>WN synset (top): event</definition>
+        <superType supID="177" superTypeName="State_of_affairs"/>
+    </semType>
+    <semType abbrev="GRUP" name="Group" ID="76">
+        <definition>WN synset (top): group, grouping</definition>
+        <superType supID="178" superTypeName="Ontological_type"/>
+    </semType>
+    <semType abbrev="STAT" name="State" ID="77">
+        <definition>WN synset (top): state</definition>
+        <superType supID="177" superTypeName="State_of_affairs"/>
+    </semType>
+    <semType abbrev="HUMN" name="Human" ID="80">
+        <definition>WN synset: person, individual, someone, somebody, mortal, human, soul</definition>
+        <superType supID="5" superTypeName="Sentient"/>
+    </semType>
+    <semType abbrev="ablible" name="Tendency_grading_LU" ID="91">
+        <definition>This semantic type marks adjectives generally having the meaning "able to be Verb-ed" (thus implicitly evoking the Capability frame). With these adjectives, the verbal notion is incorporated in the meaning of the adjective. (In most cases, this is reflected in the morphological composition of the adjective, which combines a verb stem with the affix -able/-ible.) These adjectives allow Degree modification, which may not  be realized with other lexical units in the frame.</definition>
+        <superType supID="216" superTypeName="Biframal_LU"/>
+    </semType>
+    <semType abbrev="Sensemod" name="Sensory_modality" ID="92">
+        <definition>This semantic type (and its children) mark lexical units that refer to sense modalities.</definition>
+        <superType supID="214" superTypeName="LU_with_FE_specified"/>
+    </semType>
+    <semType abbrev="audmod" name="Auditory_modality" ID="93">
+        <definition>This semantic type marks lexical units that refer to auditory sensation.</definition>
+        <superType supID="92" superTypeName="Sensory_modality"/>
+    </semType>
+    <semType abbrev="vismod" name="Visual_modality" ID="94">
+        <definition>This semantic type marks lexlical units that refer to visual perception.</definition>
+        <superType supID="92" superTypeName="Sensory_modality"/>
+    </semType>
+    <semType abbrev="Olfmod" name="Olfactory_modality" ID="95">
+        <definition>This semantic type marks lexlical units that refer to olfactory perception.</definition>
+        <superType supID="92" superTypeName="Sensory_modality"/>
+    </semType>
+    <semType abbrev="tactmod" name="Tactile_modality" ID="96">
+        <definition>This semantic type marks lexlical units that refer to tactile sensation.</definition>
+        <superType supID="92" superTypeName="Sensory_modality"/>
+    </semType>
+    <semType abbrev="gustmod" name="Gustatory_modality" ID="97">
+        <definition>This semantic type marks lexlical units that refer to gustatory  perception.</definition>
+        <superType supID="92" superTypeName="Sensory_modality"/>
+    </semType>
+    <semType abbrev="Eos" name="End_of_scale" ID="98">
+        <definition>This semantic type marks lexical units that indicate that a property is maximal or minimal.</definition>
+        <superType supID="215" superTypeName="Value_for_degree"/>
+    </semType>
+    <semType abbrev="Neg" name="Negative" ID="99">
+        <definition>This semantic type marks lexical units as referring to the marked end of a scale.</definition>
+        <superType supID="215" superTypeName="Value_for_degree"/>
+    </semType>
+    <semType abbrev="agt" name="Agentive_noun" ID="102">
+        <definition>A sentient being that acts volitionally to perform an activity. 
+&lt;ex&gt;&lt;/ex&gt;
+Use of this semantic type indicates that a target participates in a nominalization construction with frame elements appropriate to entities (cf. People frame), which can appear in addition to frame elements approporiate to the event. 
+</definition>
+        <superType supID="216" superTypeName="Biframal_LU"/>
+    </semType>
+    <semType abbrev="sup" name="Support" ID="111">
+        <definition>This semantic type marks lexical units which can be used in a frame only when introduced by a frame evoking element, i.e., in cases when it functions as a support. Note that such lexical units are not intended to be subcorporated and annotated outside of the context of the lexical units that introduce them.</definition>
+        <superType supID="223" superTypeName="Bound_LU"/>
+    </semType>
+    <semType abbrev="Time" name="Time" ID="141">
+        <definition>Marks FEs whose fillers denote points in time.</definition>
+        <superType supID="174" superTypeName="Relation"/>
+    </semType>
+    <semType abbrev="Duration" name="Duration" ID="142">
+        <definition>Marks FEs which have time-periods as fillers.</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="Source" name="Source" ID="151">
+        <definition>Marks FEs whose fillers depict a location as formerly occupied before motion.</definition>
+        <superType supID="182" superTypeName="Locative_relation"/>
+    </semType>
+    <semType abbrev="Path" name="Path" ID="152">
+        <definition>Marks FEs whose fillers denote a location along the path of motion.</definition>
+        <superType supID="182" superTypeName="Locative_relation"/>
+    </semType>
+    <semType abbrev="Goal" name="Goal" ID="153">
+        <definition>Marks FEs whose fillers denote a location that is the destination of motion.</definition>
+        <superType supID="182" superTypeName="Locative_relation"/>
+    </semType>
+    <semType abbrev="Attrb" name="Attribute" ID="154">
+        <definition>Ontological type from which more specific attributes such as Shape and Quantity inherit.</definition>
+        <superType supID="178" superTypeName="Ontological_type"/>
+    </semType>
+    <semType abbrev="Degree" name="Degree" ID="172">
+        <definition>Type for expressions of degree, such as _very_, _completely_, _somewhat_ and _partially_.</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="Manner" name="Manner" ID="173">
+        <definition>Type for expressions of the manner of an event or action: _suddenly_, _gradually_, _grudgingly_</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="Rel" name="Relation" ID="174">
+        <definition>Type for relations in general, inherited by more specific relation types.</definition>
+        <superType supID="178" superTypeName="Ontological_type"/>
+    </semType>
+    <semType abbrev="Point" name="Point" ID="175">
+        <definition>Type for locations expressed as points: _at the top of the Empire State Building_, _a peak of $36/share_.</definition>
+        <superType supID="54" superTypeName="Location"/>
+    </semType>
+    <semType abbrev="Line" name="Line" ID="176">
+        <definition>Type for locations viewed as lines: _on West Main St._, _the equator_</definition>
+        <superType supID="54" superTypeName="Location"/>
+    </semType>
+    <semType abbrev="SOA" name="State_of_affairs" ID="177">
+        <definition>Type for states of affairs broadly defined, including states, events and the content of messages: _her happiness_, _your graduation_, _the Big Bang_</definition>
+        <superType supID="178" superTypeName="Ontological_type"/>
+    </semType>
+    <semType abbrev="Ontol" name="Ontological_type" ID="178">
+        <definition>Supertype for FN semantic types on FEs, corresponding roughly to nodes in other ontologies.</definition>
+    </semType>
+    <semType abbrev="Framal" name="Framal_type" ID="179">
+        <definition>Supertype for types on frames; FrameNet-specific. Subtypes of this frame are used to mark meta-information on frames.</definition>
+    </semType>
+    <semType abbrev="Lexical" name="Lexical_type" ID="180">
+        <definition>Supertype for types on LUs or words</definition>
+    </semType>
+    <semType abbrev="IntentAct" name="Intentional_act" ID="181">
+        <definition>Type for intentional actions; i.e. actions performed by sentient beings in furtherance of their own intentions.</definition>
+        <superType supID="75" superTypeName="Event"/>
+    </semType>
+    <semType abbrev="LocRel" name="Locative_relation" ID="182">
+        <definition>Type for relations between events and locations.</definition>
+        <superType supID="174" superTypeName="Relation"/>
+    </semType>
+    <semType abbrev="Affect" name="Affect_describing" ID="213">
+        <definition>Lexical units associated with positive or negative affect with regard to some phenomenon.</definition>
+        <superType supID="180" superTypeName="Lexical_type"/>
+    </semType>
+    <semType abbrev="SpecFE" name="LU_with_FE_specified" ID="214">
+        <definition>Type for LUs which specify features on some of their FEs that are not simply cases of denotation or incorporation.</definition>
+        <superType supID="180" superTypeName="Lexical_type"/>
+    </semType>
+    <semType abbrev="ValueDegree" name="Value_for_degree" ID="215">
+        <definition>Supertype for types having to do with the degree expressed by certain LUs.</definition>
+        <superType supID="214" superTypeName="LU_with_FE_specified"/>
+    </semType>
+    <semType abbrev="GuestLU" name="Biframal_LU" ID="216">
+        <definition>Type for LUs that are closely associated with the frame in which they appear but actually denote one of the FEs in the frame or denote a specified frame and take the current Frame itself as an FE.</definition>
+        <superType supID="180" superTypeName="Lexical_type"/>
+    </semType>
+    <semType abbrev="Bound_LU" name="Bound_LU" ID="223">
+        <definition>This ST is used for LUs of a frame that cannot be used (for interpretation or generation) unless they co-occur with the right other words as governors or dependents.  (The limiting case, where a precise group of words must
+all co-occur in order to evoke a frame, is handled in FrameNet by the use of multi-word lexical units.)  
+The Support subtype of bound lexical unit is exemplified by give with a causal meaning:
+
+Receiving the notification so late almost gave me a heart attack.
+
+Give.v in the Causation frame is usable with a large number of dependents denoting the Effect, but not all:
+
+Releasing these old files nearly gave a disaster.
+
+The Bound_dependent_LU type is used for LUs like pickle.n in the Predicament frame, which occurs virtually only with the supports in and out of. 
+</definition>
+        <superType supID="180" superTypeName="Lexical_type"/>
+    </semType>
+    <semType abbrev="Bound_dependent_LU" name="Bound_dependent_LU" ID="224">
+        <definition>This ST marks LUs that require one of a list of particular supports or governors in order to have the meaning of the frame. </definition>
+        <superType supID="223" superTypeName="Bound_LU"/>
+    </semType>
+    <semType abbrev="Guest_LU" name="Guest_LU" ID="225">
+        <definition>This type is applied to LUs which are only tangentially used in the current frame, and whose interpretation is still largely dependent on their membership in some other frame, e.g. grin used in the Statement frame:
+
+"You'll never catch up," she grinned.
+
+Such LUs are only meant to be used for full-text annotation.</definition>
+        <superType supID="216" superTypeName="Biframal_LU"/>
+    </semType>
+    <semType abbrev="Participating_entity" name="Participating_entity" ID="226">
+        <definition>This type marks LUs which denote a non-active participant of the current frame, either an entity in the relationship described in the frame, or (more commonly) an entity affected by the action of the frame.  Such LUs must incorporate a frame-element of the frame.
+
+An example is the noun victim in the Crime frame, or the noun possession_((entity)).n in the Possession frame.</definition>
+        <superType supID="216" superTypeName="Biframal_LU"/>
+    </semType>
+    <semType abbrev="Temp" name="Temperature" ID="233">
+        <definition>An attribute of physical objects, technically defined in terms of degree of molecular motion, but effectively grounded in bodily sensations of warmth or cold. </definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="Speed" name="Speed" ID="234">
+        <definition>Distance traveled divided by time.</definition>
+        <superType supID="154" superTypeName="Attribute"/>
+    </semType>
+    <semType abbrev="End_state_LU" name="End_state_LU" ID="253">
+        <definition>This semantic type indicates that the labeled lexical unit denotes the end-state of a causative process denoted by the frame.  The Agent, Cause, Time, and Purpose (if any) of the process are completely deprofiled and unexpressible.  These lexical units are generally derived as past-participles (in form) from verbs in the same frame.
+
+Exx:  chilled.a, heated.a in *Cause_change_of_temperature, designed.a in Invention, persuaded.a in Suasion</definition>
+        <superType supID="216" superTypeName="Biframal_LU"/>
+    </semType>
+</semTypes>

@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="discover.v" ID="7441" frame="Achieving_first" frameID="403" totalAnnotated="15" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950628.0426" ID="7293"/>
+            <document description="apwsE951011.0095" ID="13680"/>
+            <document description="apwsE950511.0455" ID="13685"/>
+            <document description="apwsE951011.0155" ID="13687"/>
+            <document description="apwsE960221.0267" ID="13703"/>
+            <document description="apwsE950915.0541" ID="13711"/>
+            <document description="apwsE951011.0247" ID="13723"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Basis"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Fld" name="Field"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Instr" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Location_of_appearance"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="New" name="New_idea"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: be the first to find or observe (a place, substance, or scientific phenomenon). </definition>
+    <lexeme POS="V" name="discover"/>
+    <valences>
+        <FERealization total="15">
+            <FE name="Cognizer"/>
+            <pattern total="14">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2010131"/>
+                <annoSet ID="2010133"/>
+                <annoSet ID="2010149"/>
+                <annoSet ID="2010201"/>
+                <annoSet ID="2010303"/>
+                <annoSet ID="2010343"/>
+                <annoSet ID="2010369"/>
+                <annoSet ID="2010383"/>
+                <annoSet ID="2135159"/>
+                <annoSet ID="2135169"/>
+                <annoSet ID="2135173"/>
+                <annoSet ID="2135223"/>
+                <annoSet ID="2135247"/>
+                <annoSet ID="2135325"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer"/>
+                <annoSet ID="2135205"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Means"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Means"/>
+                <annoSet ID="2010369"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="15">
+            <FE name="New_idea"/>
+            <pattern total="13">
+                <valenceUnit GF="Obj" PT="NP" FE="New_idea"/>
+                <annoSet ID="2010131"/>
+                <annoSet ID="2010133"/>
+                <annoSet ID="2010149"/>
+                <annoSet ID="2010201"/>
+                <annoSet ID="2010343"/>
+                <annoSet ID="2010369"/>
+                <annoSet ID="2010383"/>
+                <annoSet ID="2135159"/>
+                <annoSet ID="2135169"/>
+                <annoSet ID="2135173"/>
+                <annoSet ID="2135223"/>
+                <annoSet ID="2135247"/>
+                <annoSet ID="2135325"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Srel" FE="New_idea"/>
+                <annoSet ID="2010303"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="New_idea"/>
+                <annoSet ID="2135205"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2135169"/>
+                <annoSet ID="2135173"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Cognizer"/>
+            <FE name="New_idea"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="New_idea"/>
+                <annoSet ID="2135223"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Means"/>
+            <FE name="New_idea"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Means"/>
+                <valenceUnit GF="Obj" PT="NP" FE="New_idea"/>
+                <annoSet ID="2010369"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Cognizer"/>
+            <FE name="New_idea"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="New_idea"/>
+                <annoSet ID="2010131"/>
+                <annoSet ID="2010133"/>
+                <annoSet ID="2010149"/>
+                <annoSet ID="2010201"/>
+                <annoSet ID="2010343"/>
+                <annoSet ID="2010383"/>
+                <annoSet ID="2135159"/>
+                <annoSet ID="2135247"/>
+                <annoSet ID="2135325"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="Srel" FE="New_idea"/>
+                <annoSet ID="2010303"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="New_idea"/>
+                <annoSet ID="2135205"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Cognizer"/>
+            <FE name="New_idea"/>
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="New_idea"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2135169"/>
+                <annoSet ID="2135173"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-NPamerica,source,species-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="3054" aPos="111521114" ID="1280964">
+            <text>But for Arab compasses , navigational aids , instruments and charts , Columbus would never have discovered America .</text>
+            <annotationSet cDate="10/13/2004 06:10:34 PDT Wed" status="UNANN" ID="2010130">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="in"/>
+                    <label end="11" start="8" name="jj"/>
+                    <label end="21" start="13" name="nns"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="36" start="25" name="jj"/>
+                    <label end="41" start="38" name="nns"/>
+                    <label end="43" start="43" name=","/>
+                    <label end="55" start="45" name="nns"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="66" start="61" name="nns"/>
+                    <label end="68" start="68" name=","/>
+                    <label end="77" start="70" name="NP"/>
+                    <label end="83" start="79" name="md"/>
+                    <label end="89" start="85" name="rb"/>
+                    <label end="94" start="91" name="VH"/>
+                    <label end="105" start="96" name="VVN"/>
+                    <label end="113" start="107" name="NP"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:10:35 PDT Wed" status="MANUAL" ID="2010131">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="105" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="77" start="70" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="113" start="107" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="70" name="Ext"/>
+                    <label end="113" start="107" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="70" name="NP"/>
+                    <label end="113" start="107" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3495" aPos="36809808" ID="1280965">
+            <text>IT IS 500 years since Columbus discovered America -- and across the Atlantic they are celebrating in true Hollywood style .</text>
+            <annotationSet cDate="10/13/2004 06:10:36 PDT Wed" status="UNANN" ID="2010132">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="8" start="6" name="cd"/>
+                    <label end="14" start="10" name="nns"/>
+                    <label end="20" start="16" name="in"/>
+                    <label end="29" start="22" name="NP"/>
+                    <label end="40" start="31" name="VVD"/>
+                    <label end="48" start="42" name="NP"/>
+                    <label end="51" start="50" name=":"/>
+                    <label end="55" start="53" name="cc"/>
+                    <label end="62" start="57" name="in"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="75" start="68" name="NP"/>
+                    <label end="80" start="77" name="PP"/>
+                    <label end="84" start="82" name="vbp"/>
+                    <label end="96" start="86" name="VVG"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="104" start="101" name="jj"/>
+                    <label end="114" start="106" name="NP"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:10:36 PDT Wed" status="MANUAL" ID="2010133">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="40" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="29" start="22" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="48" start="42" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="22" name="Ext"/>
+                    <label end="48" start="42" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="22" name="NP"/>
+                    <label end="48" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="73" aPos="76553623" ID="1280973">
+            <text>James Bruce of Kinnaird arrived in Abyssinia in 1769 , determined to discover the source of the Blue Nile .</text>
+            <annotationSet cDate="10/13/2004 06:10:41 PDT Wed" status="UNANN" ID="2010148">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="22" start="15" name="NP"/>
+                    <label end="30" start="24" name="VVD"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="43" start="35" name="NP"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="51" start="48" name="cd"/>
+                    <label end="53" start="53" name=","/>
+                    <label end="64" start="55" name="VVN"/>
+                    <label end="67" start="66" name="to"/>
+                    <label end="76" start="69" name="VV"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="87" start="82" name="nn"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="99" start="96" name="NP"/>
+                    <label end="104" start="101" name="NP"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:10:41 PDT Wed" status="MANUAL" ID="2010149">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="76" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="22" start="0" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="104" start="78" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="0" name="Ext"/>
+                    <label end="104" start="78" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="0" name="NP"/>
+                    <label end="104" start="78" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="780" aPos="32087976" ID="1280999">
+            <text>We would couple this with an investigation to discover the real cause or causes of the high labour turnover ( which may turn out to have nothing to do with the immediate problem ) .</text>
+            <annotationSet cDate="10/13/2004 06:10:56 PDT Wed" status="UNANN" ID="2010200">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="md"/>
+                    <label end="14" start="9" name="nn"/>
+                    <label end="19" start="16" name="dt"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="27" start="26" name="dt"/>
+                    <label end="41" start="29" name="nn"/>
+                    <label end="44" start="43" name="to"/>
+                    <label end="53" start="46" name="VV"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="62" start="59" name="jj"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="71" start="70" name="cc"/>
+                    <label end="78" start="73" name="VVZ"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="90" start="87" name="jj"/>
+                    <label end="97" start="92" name="nn"/>
+                    <label end="106" start="99" name="nn"/>
+                    <label end="108" start="108" name="("/>
+                    <label end="114" start="110" name="wdt"/>
+                    <label end="118" start="116" name="md"/>
+                    <label end="123" start="120" name="VV"/>
+                    <label end="127" start="125" name="rp"/>
+                    <label end="130" start="129" name="to"/>
+                    <label end="135" start="132" name="VH"/>
+                    <label end="143" start="137" name="nn"/>
+                    <label end="146" start="145" name="to"/>
+                    <label end="149" start="148" name="VV"/>
+                    <label end="154" start="151" name="in"/>
+                    <label end="158" start="156" name="dt"/>
+                    <label end="168" start="160" name="jj"/>
+                    <label end="176" start="170" name="nn"/>
+                    <label end="178" start="178" name=")"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:10:56 PDT Wed" status="MANUAL" ID="2010201">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="53" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="1" start="0" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="178" start="55" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="178" start="55" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="178" start="55" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="363" aPos="13338786" ID="1281050">
+            <text>A TEAM of Japanese scientists appears to have discovered how to weigh smells .</text>
+            <annotationSet cDate="10/13/2004 06:11:25 PDT Wed" status="UNANN" ID="2010302">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="5" start="2" name="nn"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="17" start="10" name="jj"/>
+                    <label end="28" start="19" name="nns"/>
+                    <label end="36" start="30" name="VVZ"/>
+                    <label end="39" start="38" name="to"/>
+                    <label end="44" start="41" name="VH"/>
+                    <label end="55" start="46" name="VVN"/>
+                    <label end="59" start="57" name="wrb"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="68" start="64" name="VV"/>
+                    <label end="75" start="70" name="VVZ"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:11:25 PDT Wed" status="MANUAL" ID="2010303">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="55" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="28" start="0" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="75" start="57" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="0" name="Ext"/>
+                    <label end="75" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="0" name="NP"/>
+                    <label end="75" start="57" name="Srel"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="226" aPos="40245980" ID="1281070">
+            <text>The sighting of Mary Magdalene is affirmed by Peter and John discovering the Empty Tomb , the burial cloths neatly set to one side .</text>
+            <annotationSet cDate="10/13/2004 06:11:37 PDT Wed" status="UNANN" ID="2010342">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="VVG"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="19" start="16" name="NP"/>
+                    <label end="29" start="21" name="NP"/>
+                    <label end="32" start="31" name="VBZ"/>
+                    <label end="41" start="34" name="VVD"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="50" start="46" name="NP"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="59" start="56" name="NP"/>
+                    <label end="71" start="61" name="VVG"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="81" start="77" name="jj"/>
+                    <label end="86" start="83" name="NP"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="92" start="90" name="dt"/>
+                    <label end="99" start="94" name="nn"/>
+                    <label end="106" start="101" name="nns"/>
+                    <label end="113" start="108" name="rb"/>
+                    <label end="117" start="115" name="VVD"/>
+                    <label end="120" start="119" name="to"/>
+                    <label end="124" start="122" name="cd"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:11:37 PDT Wed" status="MANUAL" ID="2010343">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="71" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3726" end="86" start="73" name="New_idea"/>
+                    <label cBy="618" feID="3725" end="59" start="46" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="73" name="Obj"/>
+                    <label end="59" start="46" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="73" name="NP"/>
+                    <label end="59" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="2104" aPos="107088568" ID="1281083">
+            <text>` Having found the panel , how did you discover the trick to opening it ? &quot;</text>
+            <annotationSet cDate="10/13/2004 06:11:45 PDT Wed" status="UNANN" ID="2010368">
+                <layer rank="1" name="PENN">
+                    <label end="13" start="9" name="VVD"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="23" start="19" name="nn"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="29" start="27" name="wrb"/>
+                    <label end="33" start="31" name="VVD"/>
+                    <label end="37" start="35" name="PP"/>
+                    <label end="46" start="39" name="VVP"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="59" start="58" name="to"/>
+                    <label end="67" start="61" name="VVG"/>
+                    <label end="70" start="69" name="PP"/>
+                    <label end="72" start="72" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:11:45 PDT Wed" status="MANUAL" ID="2010369">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="46" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3729" end="29" start="27" name="Means"/>
+                    <label cBy="618" feID="3725" end="37" start="35" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="70" start="48" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="27" name="Dep"/>
+                    <label end="37" start="35" name="Ext"/>
+                    <label end="70" start="48" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="27" name="AVP"/>
+                    <label end="37" start="35" name="NP"/>
+                    <label end="70" start="48" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="431" aPos="21343386" ID="1281090">
+            <text>Yet , ask the average mastermind of today what Priestley is best remembered for , the reply is usually ` He discovered oxygen &quot; .</text>
+            <annotationSet cDate="10/13/2004 06:11:48 PDT Wed" status="UNANN" ID="2010382">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="rb"/>
+                    <label end="4" start="4" name=","/>
+                    <label end="8" start="6" name="VV"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="20" start="14" name="jj"/>
+                    <label end="31" start="22" name="nn"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="40" start="36" name="nn"/>
+                    <label end="45" start="42" name="wp"/>
+                    <label end="55" start="47" name="NP"/>
+                    <label end="58" start="57" name="VBZ"/>
+                    <label end="63" start="60" name="rbs"/>
+                    <label end="74" start="65" name="VVN"/>
+                    <label end="78" start="76" name="in"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="90" start="86" name="nn"/>
+                    <label end="93" start="92" name="VBZ"/>
+                    <label end="101" start="95" name="rb"/>
+                    <label end="106" start="105" name="PP"/>
+                    <label end="117" start="108" name="VVD"/>
+                    <label end="124" start="119" name="nn"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/13/2004 06:11:49 PDT Wed" status="MANUAL" ID="2010383">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="117" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="106" start="105" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="124" start="119" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="105" name="Ext"/>
+                    <label end="124" start="119" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="105" name="NP"/>
+                    <label end="124" start="119" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-Wparticle,law,ebola-(2)">
+        <sentence corpID="113" docID="13680" sentNo="1" paragNo="2" aPos="13549883" ID="1343578">
+            <text>The citation said that Perl and his colleagues discovered a particle known as the tau lepton .</text>
+            <annotationSet cDate="09/22/2005 04:06:43 PDT Thu" status="UNANN" ID="2135158">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="16" start="13" name="VVD"/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="26" start="23" name="NP"/>
+                    <label end="30" start="28" name="cc"/>
+                    <label end="34" start="32" name="PP$"/>
+                    <label end="45" start="36" name="nns"/>
+                    <label end="56" start="47" name="VVD"/>
+                    <label end="58" start="58" name="dt"/>
+                    <label end="67" start="60" name="nn"/>
+                    <label end="73" start="69" name="VVN"/>
+                    <label end="76" start="75" name="in"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="84" start="82" name="nn"/>
+                    <label end="91" start="86" name="nn"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:06:45 PDT Thu" status="MANUAL" ID="2135159">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="56" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="45" start="23" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="91" start="58" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="23" name="Ext"/>
+                    <label end="91" start="58" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="23" name="NP"/>
+                    <label end="91" start="58" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="13685" sentNo="1" paragNo="24" aPos="58343149" ID="1343583">
+            <text>Piot said the Zairian hospital where he discovered Ebola in 1976 had 120 beds and only three syringes .</text>
+            <annotationSet cDate="09/22/2005 04:06:49 PDT Thu" status="UNANN" ID="2135168">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="8" start="5" name="VVD"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="20" start="14" name="nn"/>
+                    <label end="29" start="22" name="nn"/>
+                    <label end="35" start="31" name="wrb"/>
+                    <label end="38" start="37" name="PP"/>
+                    <label end="49" start="40" name="VVD"/>
+                    <label end="55" start="51" name="NP"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="63" start="60" name="cd"/>
+                    <label end="67" start="65" name="VHD"/>
+                    <label end="71" start="69" name="cd"/>
+                    <label end="76" start="73" name="nns"/>
+                    <label end="80" start="78" name="cc"/>
+                    <label end="85" start="82" name="rb"/>
+                    <label end="91" start="87" name="cd"/>
+                    <label end="100" start="93" name="nns"/>
+                    <label end="102" start="102" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:06:50 PDT Thu" status="MANUAL" ID="2135169">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="49" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="38" start="37" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="55" start="51" name="New_idea"/>
+                    <label cBy="618" feID="3727" end="63" start="57" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="37" name="Ext"/>
+                    <label end="55" start="51" name="Obj"/>
+                    <label end="63" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="37" name="NP"/>
+                    <label end="55" start="51" name="NP"/>
+                    <label end="63" start="57" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="13687" sentNo="1" paragNo="14" aPos="13576737" ID="1343585">
+            <text>Perl in the mid-1970s discovered the tau , one of six particles called leptons which are basic elements in atoms that make up the building blocks of the universe .</text>
+            <annotationSet cDate="09/22/2005 04:06:50 PDT Thu" status="UNANN" ID="2135172">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="20" start="12" name="nns"/>
+                    <label end="31" start="22" name="VVD"/>
+                    <label end="35" start="33" name="dt"/>
+                    <label end="39" start="37" name="nn"/>
+                    <label end="41" start="41" name=","/>
+                    <label end="45" start="43" name="cd"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="52" start="50" name="cd"/>
+                    <label end="62" start="54" name="nns"/>
+                    <label end="69" start="64" name="VVD"/>
+                    <label end="77" start="71" name="nns"/>
+                    <label end="83" start="79" name="wdt"/>
+                    <label end="87" start="85" name="vbp"/>
+                    <label end="93" start="89" name="jj"/>
+                    <label end="102" start="95" name="nns"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="111" start="107" name="nns"/>
+                    <label end="116" start="113" name="wdt"/>
+                    <label end="121" start="118" name="VVP"/>
+                    <label end="124" start="123" name="rp"/>
+                    <label end="128" start="126" name="dt"/>
+                    <label end="137" start="130" name="nn"/>
+                    <label end="144" start="139" name="nns"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="151" start="149" name="dt"/>
+                    <label end="160" start="153" name="nn"/>
+                    <label end="162" start="162" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:06:50 PDT Thu" status="MANUAL" ID="2135173">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="31" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="3" start="0" name="Cognizer"/>
+                    <label cBy="618" feID="3727" end="20" start="5" name="Time"/>
+                    <label cBy="618" feID="3726" end="160" start="33" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="20" start="5" name="Dep"/>
+                    <label end="160" start="33" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="20" start="5" name="PP"/>
+                    <label end="160" start="33" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Welement,law,particle-T-(2)">
+        <sentence corpID="113" docID="13703" sentNo="1" paragNo="9" aPos="104110087" ID="1343601">
+            <text>All of the six elements discovered by the Darmstadt center are unstable under the natural conditions on earth .</text>
+            <annotationSet cDate="09/22/2005 04:06:56 PDT Thu" status="UNANN" ID="2135204">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="13" start="11" name="cd"/>
+                    <label end="22" start="15" name="nns"/>
+                    <label end="33" start="24" name="VVN"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="50" start="42" name="NP"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="61" start="59" name="vbp"/>
+                    <label end="70" start="63" name="jj"/>
+                    <label end="76" start="72" name="in"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="88" start="82" name="jj"/>
+                    <label end="99" start="90" name="nns"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="108" start="104" name="nn"/>
+                    <label end="110" start="110" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:06:56 PDT Thu" status="MANUAL" ID="2135205">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="33" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3726" end="22" start="0" name="New_idea"/>
+                    <label cBy="618" feID="3725" end="57" start="35" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="0" name="Ext"/>
+                    <label end="57" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="0" name="NP"/>
+                    <label end="57" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)">
+        <sentence corpID="113" docID="13711" sentNo="1" paragNo="20" aPos="90927751" ID="1343610">
+            <text>Since 1979 he has been Lucasian Professor of Mathematics at Cambridge university , a post held from 1669 to 1701 by Sir Isaac Newton , who discovered the law of gravity .</text>
+            <annotationSet cDate="09/22/2005 04:07:01 PDT Thu" status="UNANN" ID="2135222">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="9" start="6" name="cd"/>
+                    <label end="12" start="11" name="PP"/>
+                    <label end="16" start="14" name="VHZ"/>
+                    <label end="21" start="18" name="VBN"/>
+                    <label end="30" start="23" name="NP"/>
+                    <label end="40" start="32" name="NP"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="55" start="45" name="nns"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="68" start="60" name="NP"/>
+                    <label end="79" start="70" name="nn"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="88" start="85" name="nn"/>
+                    <label end="93" start="90" name="VVN"/>
+                    <label end="98" start="95" name="in"/>
+                    <label end="103" start="100" name="cd"/>
+                    <label end="106" start="105" name="to"/>
+                    <label end="111" start="108" name="cd"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="118" start="116" name="NP"/>
+                    <label end="124" start="120" name="NP"/>
+                    <label end="131" start="126" name="NP"/>
+                    <label end="133" start="133" name=","/>
+                    <label end="137" start="135" name="wp"/>
+                    <label end="148" start="139" name="VVD"/>
+                    <label end="152" start="150" name="dt"/>
+                    <label end="156" start="154" name="nn"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="167" start="161" name="nn"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:07:01 PDT Thu" status="MANUAL" ID="2135223">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="148" start="139" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="131" start="116" name="Cognizer"/>
+                    <label cBy="618" feID="3725" end="137" start="135" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="167" start="150" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="131" start="116" name="Ext"/>
+                    <label end="137" start="135" name="Ext"/>
+                    <label end="167" start="150" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="131" start="116" name="NP"/>
+                    <label end="137" start="135" name="NP"/>
+                    <label end="167" start="150" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="131" start="116" name="Ant"/>
+                    <label end="137" start="135" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="13723" sentNo="1" paragNo="17" aPos="13622266" ID="1343622">
+            <text>The winners of the physics prize discovered subatomic particles called the tau and the neutrino .</text>
+            <annotationSet cDate="09/22/2005 04:07:05 PDT Thu" status="UNANN" ID="2135246">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nns"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="25" start="19" name="nn"/>
+                    <label end="31" start="27" name="nn"/>
+                    <label end="42" start="33" name="VVD"/>
+                    <label end="52" start="44" name="jj"/>
+                    <label end="62" start="54" name="nns"/>
+                    <label end="69" start="64" name="VVD"/>
+                    <label end="73" start="71" name="dt"/>
+                    <label end="77" start="75" name="nn"/>
+                    <label end="81" start="79" name="cc"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="94" start="87" name="nn"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:07:05 PDT Thu" status="MANUAL" ID="2135247">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="42" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="31" start="0" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="94" start="44" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="0" name="Ext"/>
+                    <label end="94" start="44" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="0" name="NP"/>
+                    <label end="94" start="44" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(2)">
+        <sentence corpID="113" docID="7293" sentNo="1" paragNo="4" aPos="70781286" ID="1343661">
+            <text>TORONTO --- A team of international researchers led by the University of Toronto has discovered the gene that causes a severe form of Alzheimer 's disease .</text>
+            <annotationSet cDate="09/22/2005 04:07:19 PDT Thu" status="UNANN" ID="2135324">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="10" start="8" name=":"/>
+                    <label end="12" start="12" name="dt"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="34" start="22" name="jj"/>
+                    <label end="46" start="36" name="nns"/>
+                    <label end="50" start="48" name="VVN"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="68" start="59" name="NP"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="79" start="73" name="NP"/>
+                    <label end="83" start="81" name="VHZ"/>
+                    <label end="94" start="85" name="VVN"/>
+                    <label end="98" start="96" name="dt"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="108" start="105" name="wdt"/>
+                    <label end="115" start="110" name="VVZ"/>
+                    <label end="117" start="117" name="dt"/>
+                    <label end="124" start="119" name="jj"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="132" start="131" name="in"/>
+                    <label end="142" start="134" name="NP"/>
+                    <label end="145" start="144" name="POS"/>
+                    <label end="153" start="147" name="nn"/>
+                    <label end="155" start="155" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/22/2005 04:07:20 PDT Thu" status="MANUAL" ID="2135325">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="94" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3725" end="79" start="12" name="Cognizer"/>
+                    <label cBy="618" feID="3726" end="153" start="96" name="New_idea"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="12" name="Ext"/>
+                    <label end="153" start="96" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="12" name="NP"/>
+                    <label end="153" start="96" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

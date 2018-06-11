@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="unbuckle.v" ID="4555" frame="Closure" frameID="254" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="C_portal" name="Container_portal"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Cont_obj" name="Containing_object"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="E_region" name="Enclosed_region"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Fastener" name="Fastener"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Manp" name="Manipulator"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: with obj. unfasten the buckle of. </definition>
+    <lexeme POS="V" name="unbuckle"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Agent"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="899292"/>
+                <annoSet ID="899298"/>
+                <annoSet ID="899302"/>
+                <annoSet ID="899306"/>
+                <annoSet ID="899308"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Containing_object"/>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Containing_object"/>
+                <annoSet ID="899292"/>
+                <annoSet ID="899298"/>
+                <annoSet ID="899302"/>
+                <annoSet ID="899306"/>
+                <annoSet ID="899308"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Fastener"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="INC" FE="Fastener"/>
+                <annoSet ID="899292"/>
+                <annoSet ID="899298"/>
+                <annoSet ID="899302"/>
+                <annoSet ID="899306"/>
+                <annoSet ID="899308"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Agent"/>
+            <FE name="Containing_object"/>
+            <FE name="Fastener"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Containing_object"/>
+                <valenceUnit GF="" PT="INC" FE="Fastener"/>
+                <annoSet ID="899292"/>
+                <annoSet ID="899298"/>
+                <annoSet ID="899302"/>
+                <annoSet ID="899306"/>
+                <annoSet ID="899308"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="6681001" ID="718068">
+            <text>` He 's going to her place , &quot; said Lee , unbuckling his belt . </text>
+            <annotationSet cDate="01/07/2003 11:47:19 PST Tue" status="UNANN" ID="899291">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="12" start="8" name="VVG"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="19" start="17" name="DPS"/>
+                    <label end="25" start="21" name="NN1"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="29" start="29" name="PUQ"/>
+                    <label end="34" start="31" name="VVD"/>
+                    <label end="38" start="36" name="NP0"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="51" start="42" name="VVG"/>
+                    <label end="55" start="53" name="DPS"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="62" start="62" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:47:19 PST Tue" status="MANUAL" ID="899292">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2199" end="38" start="36" name="Agent"/>
+                    <label cBy="296" feID="2198" end="60" start="53" name="Containing_object"/>
+                    <label cBy="309" feID="2200" end="51" start="42" name="Fastener"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="36" name="Ext"/>
+                    <label end="60" start="53" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="36" name="NP"/>
+                    <label end="60" start="53" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="7121410" ID="718071">
+            <text>Charles unbuckled his ski straps and stuck skis and sticks in the snow beside Peregrine 's . </text>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="UNANN" ID="899297">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="16" start="8" name="VVD"/>
+                    <label end="20" start="18" name="DPS"/>
+                    <label end="24" start="22" name="NN1"/>
+                    <label end="31" start="26" name="NN2"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="41" start="37" name="VVD"/>
+                    <label end="46" start="43" name="NN2"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="57" start="52" name="NN2"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="69" start="66" name="NN1"/>
+                    <label end="76" start="71" name="PRP"/>
+                    <label end="86" start="78" name="NP0"/>
+                    <label end="89" start="88" name="POS"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="MANUAL" ID="899298">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2199" end="6" start="0" name="Agent"/>
+                    <label cBy="296" feID="2198" end="31" start="18" name="Containing_object"/>
+                    <label cBy="309" feID="2200" end="16" start="8" name="Fastener"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="31" start="18" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="31" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34102668" ID="718073">
+            <text>Curtius started unbuckling his gunbelt . </text>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="UNANN" ID="899301">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1-NP0"/>
+                    <label end="14" start="8" name="VVD"/>
+                    <label end="25" start="16" name="VVG"/>
+                    <label end="29" start="27" name="DPS"/>
+                    <label end="37" start="31" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="MANUAL" ID="899302">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2199" end="6" start="0" name="Agent"/>
+                    <label cBy="296" feID="2198" end="37" start="27" name="Containing_object"/>
+                    <label cBy="309" feID="2200" end="25" start="16" name="Fastener"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="37" start="27" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="37" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48339064" ID="718075">
+            <text>The gunman managed to unbuckle his safety belt and struggled to push open the passenger door . </text>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="UNANN" ID="899305">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="17" start="11" name="VVD-VVN"/>
+                    <label end="20" start="19" name="TO0"/>
+                    <label end="29" start="22" name="VVI"/>
+                    <label end="33" start="31" name="DPS"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="45" start="42" name="NN1"/>
+                    <label end="49" start="47" name="CJC"/>
+                    <label end="59" start="51" name="VVD-VVN"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="72" start="69" name="VVB"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="86" start="78" name="NN1"/>
+                    <label end="91" start="88" name="NN1"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="MANUAL" ID="899306">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2199" end="9" start="0" name="Agent"/>
+                    <label cBy="296" feID="2198" end="45" start="31" name="Containing_object"/>
+                    <label cBy="309" feID="2200" end="29" start="22" name="Fastener"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="45" start="31" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="45" start="31" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="29" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48916699" ID="718076">
+            <text>He began to unbuckle his belt . </text>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="UNANN" ID="899307">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="10" start="9" name="TO0"/>
+                    <label end="19" start="12" name="VVI"/>
+                    <label end="23" start="21" name="DPS"/>
+                    <label end="28" start="25" name="NN1"/>
+                    <label end="30" start="30" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:47:20 PST Tue" status="MANUAL" ID="899308">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2199" end="1" start="0" name="Agent"/>
+                    <label cBy="296" feID="2198" end="28" start="21" name="Containing_object"/>
+                    <label cBy="309" feID="2200" end="19" start="12" name="Fastener"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="28" start="21" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="28" start="21" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

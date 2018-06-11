@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="abaya.n" ID="3619" frame="Clothing" frameID="134" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: a full-length, sleeveless outer garment worn by Arabs. </definition>
+    <lexeme POS="N" name="abaya"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Garment"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="569585"/>
+                <annoSet ID="569587"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wearer"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="569585"/>
+                <annoSet ID="569587"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Garment"/>
+            <FE name="Wearer"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="569585"/>
+                <annoSet ID="569587"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="30877772" ID="465348">
+            <text>My abaya had more gold then than now . &quot; </text>
+            <annotationSet cDate="01/07/2003 05:00:22 PST Tue" status="UNANN" ID="569584">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="7" start="3" name="NN1"/>
+                    <label end="11" start="9" name="VHD"/>
+                    <label end="16" start="13" name="DT0"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="26" start="23" name="AV0"/>
+                    <label end="31" start="28" name="CJS"/>
+                    <label end="35" start="33" name="AV0"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="39" start="39" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:00:22 PST Tue" status="MANUAL" ID="569585">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="870" end="1" start="0" name="Wearer"/>
+                    <label cBy="296" feID="869" end="7" start="3" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="7" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30880316" ID="465349">
+            <text>Her veil and abaya , far heavier than normal , seemed to turn her whole figure into a sort of black pillar which , unless it moved , had neither front nor back . </text>
+            <annotationSet cDate="01/07/2003 05:00:22 PST Tue" status="UNANN" ID="569586">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="7" start="4" name="NN1-VVB"/>
+                    <label end="11" start="9" name="CJC"/>
+                    <label end="17" start="13" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="23" start="21" name="AV0"/>
+                    <label end="31" start="25" name="AJC"/>
+                    <label end="36" start="33" name="CJS"/>
+                    <label end="43" start="38" name="AJ0"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="52" start="47" name="VVD"/>
+                    <label end="55" start="54" name="TO0"/>
+                    <label end="60" start="57" name="VVI"/>
+                    <label end="64" start="62" name="DPS"/>
+                    <label end="70" start="66" name="AJ0-NN1"/>
+                    <label end="77" start="72" name="NN1"/>
+                    <label end="82" start="79" name="PRP"/>
+                    <label end="84" start="84" name="AT0"/>
+                    <label end="89" start="86" name="NN1"/>
+                    <label end="92" start="91" name="PRF"/>
+                    <label end="98" start="94" name="AJ0"/>
+                    <label end="105" start="100" name="NN1"/>
+                    <label end="111" start="107" name="DTQ"/>
+                    <label end="113" start="113" name="PUN"/>
+                    <label end="120" start="115" name="CJS"/>
+                    <label end="123" start="122" name="PNP"/>
+                    <label end="129" start="125" name="VVD"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="135" start="133" name="VHD"/>
+                    <label end="143" start="137" name="AV0"/>
+                    <label end="149" start="145" name="AJ0"/>
+                    <label end="153" start="151" name="CJC"/>
+                    <label end="158" start="155" name="NN1"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:00:22 PST Tue" status="MANUAL" ID="569587">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="870" end="2" start="0" name="Wearer"/>
+                    <label cBy="296" feID="869" end="17" start="13" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

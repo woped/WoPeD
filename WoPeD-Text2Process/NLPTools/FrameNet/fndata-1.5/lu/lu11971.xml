@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="ford.v" ID="11971" frame="Path_shape" frameID="61" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep-Und" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Core" abbrev="PS" name="Path_shape"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Road" name="Road"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: cross at a ford.</definition>
+    <lexeme POS="V" name="ford"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Path"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Path"/>
+                <annoSet ID="2095252"/>
+                <annoSet ID="2095280"/>
+                <annoSet ID="2095282"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Road"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="2095252"/>
+                <annoSet ID="2095280"/>
+                <annoSet ID="2095282"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Path"/>
+            <FE name="Road"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="2095252"/>
+                <annoSet ID="2095282"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Path"/>
+            <FE name="Road"/>
+            <FE name="Road"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="2095280"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="268" aPos="41780847" ID="1323566">
+            <text>Follow this path through Gleann Choinneachain until it fords the stream .</text>
+            <annotationSet cDate="04/27/2005 08:05:28 PDT Wed" status="UNANN" ID="2095251">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="VV"/>
+                    <label end="10" start="7" name="dt"/>
+                    <label end="15" start="12" name="nn"/>
+                    <label end="23" start="17" name="in"/>
+                    <label end="30" start="25" name="NP"/>
+                    <label end="44" start="32" name="NP"/>
+                    <label end="50" start="46" name="in"/>
+                    <label end="53" start="52" name="PP"/>
+                    <label end="59" start="55" name="VVZ"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="70" start="65" name="nn"/>
+                    <label end="72" start="72" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 08:05:28 PDT Wed" status="MANUAL" ID="2095252">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="59" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="269" end="53" start="52" name="Road"/>
+                    <label cBy="605" feID="267" end="70" start="61" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="53" start="52" name="Ext"/>
+                    <label end="70" start="61" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="53" start="52" name="NP"/>
+                    <label end="70" start="61" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="171" aPos="25983359" ID="1323580">
+            <text>The path leading to the stepping stones which forded Hodge Beck wound narrowly between high sheltering hedges .</text>
+            <annotationSet cDate="04/27/2005 08:05:33 PDT Wed" status="UNANN" ID="2095279">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="15" start="9" name="VVG"/>
+                    <label end="18" start="17" name="to"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="31" start="24" name="VVG"/>
+                    <label end="38" start="33" name="nns"/>
+                    <label end="44" start="40" name="wdt"/>
+                    <label end="51" start="46" name="VVD"/>
+                    <label end="57" start="53" name="NP"/>
+                    <label end="62" start="59" name="NP"/>
+                    <label end="68" start="64" name="VVD"/>
+                    <label end="77" start="70" name="rb"/>
+                    <label end="85" start="79" name="in"/>
+                    <label end="90" start="87" name="jj"/>
+                    <label end="101" start="92" name="VVG"/>
+                    <label end="108" start="103" name="nns"/>
+                    <label end="110" start="110" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 08:05:33 PDT Wed" status="MANUAL" ID="2095280">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="51" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="269" end="38" start="20" name="Road"/>
+                    <label cBy="605" feID="267" end="62" start="53" name="Path"/>
+                    <label cBy="309" feID="269" end="44" start="40" name="Road"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="20" name="Ext"/>
+                    <label end="62" start="53" name="Obj"/>
+                    <label end="44" start="40" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="20" name="NP"/>
+                    <label end="62" start="53" name="NP"/>
+                    <label end="44" start="40" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="38" start="20" name="Ant"/>
+                    <label end="44" start="40" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="113" aPos="48628821" ID="1323581">
+            <text>Here , a fast , sparkling fresh stream springs into existence , fords a lane and runs parallel to a wooden pathway .</text>
+            <annotationSet cDate="04/27/2005 08:05:33 PDT Wed" status="UNANN" ID="2095281">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="5" start="5" name=","/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="12" start="9" name="jj"/>
+                    <label end="14" start="14" name=","/>
+                    <label end="24" start="16" name="jj"/>
+                    <label end="30" start="26" name="jj"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="45" start="39" name="VVZ"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="60" start="52" name="nn"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="68" start="64" name="VVZ"/>
+                    <label end="70" start="70" name="dt"/>
+                    <label end="75" start="72" name="nn"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="84" start="81" name="VVZ"/>
+                    <label end="93" start="86" name="jj"/>
+                    <label end="96" start="95" name="to"/>
+                    <label end="98" start="98" name="dt"/>
+                    <label end="105" start="100" name="jj"/>
+                    <label end="113" start="107" name="nn"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 08:05:33 PDT Wed" status="MANUAL" ID="2095282">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="269" end="37" start="7" name="Road"/>
+                    <label cBy="605" feID="267" end="75" start="70" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="7" name="Ext"/>
+                    <label end="75" start="70" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="7" name="NP"/>
+                    <label end="75" start="70" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

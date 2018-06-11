@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="signature.n" ID="10682" frame="Sign_agreement" frameID="1151" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=999" ID="18090"/>
+            <document description="bncp=1813" ID="21906"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="agr" name="Agreement"/>
+            <FE fgColor="000000" bgColor="1E90FF" type="Extra-Thematic" abbrev="Ben" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cop" name="Co_participant"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="rea" name="Reason"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="sig1" name="Signatory"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="sig" name="Signature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: a person's name written in a distinctive way as a form of indicating agreement</definition>
+    <lexeme POS="N" name="signature"/>
+    <valences>
+        <governor type="Sup" lemma="bear">
+            <annoSet ID="2561533"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Agreement"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agreement"/>
+                <annoSet ID="2561533"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Agreement"/>
+                <annoSet ID="2561679"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Signatory"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Signatory"/>
+                <annoSet ID="2561533"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Signatory"/>
+                <annoSet ID="2561679"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Signature"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Signature"/>
+                <annoSet ID="2561533"/>
+                <annoSet ID="2561679"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agreement"/>
+            <FE name="Signatory"/>
+            <FE name="Signature"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agreement"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Signatory"/>
+                <valenceUnit GF="" PT="DEN" FE="Signature"/>
+                <annoSet ID="2561533"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Agreement"/>
+                <valenceUnit GF="" PT="DNI" FE="Signatory"/>
+                <valenceUnit GF="" PT="DEN" FE="Signature"/>
+                <annoSet ID="2561679"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-append+forge-(1)">
+        <sentence corpID="111" docID="18090" sentNo="4" paragNo="1469" aPos="0" ID="1559386">
+            <text>Under s 24 of the Bills of Exchange Act 1882 , a cheque bearing the forged signature of the drawer , however skilful , is wholly inoperative .</text>
+            <annotationSet cDate="05/24/2010 03:04:40 PDT Mon" status="UNANN" ID="2561532">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="6" start="6" name="PP"/>
+                    <label end="9" start="8" name="cd"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="22" start="18" name="nns"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="34" start="27" name="NP"/>
+                    <label end="38" start="36" name="NP"/>
+                    <label end="43" start="40" name="cd"/>
+                    <label end="45" start="45" name=","/>
+                    <label end="47" start="47" name="dt"/>
+                    <label end="54" start="49" name="nn"/>
+                    <label end="62" start="56" name="VVG"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="73" start="68" name="VVN"/>
+                    <label end="83" start="75" name="nn"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="97" start="92" name="nn"/>
+                    <label end="99" start="99" name=","/>
+                    <label end="107" start="101" name="rb"/>
+                    <label end="115" start="109" name="jj"/>
+                    <label end="117" start="117" name=","/>
+                    <label end="120" start="119" name="VBZ"/>
+                    <label end="127" start="122" name="rb"/>
+                    <label end="139" start="129" name="jj"/>
+                    <label end="141" start="141" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 03:04:40 PDT Mon" status="MANUAL" ID="2561533">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="83" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6651" end="97" start="85" name="Signatory"/>
+                    <label cBy="589" feID="6667" end="54" start="47" name="Agreement"/>
+                    <label cBy="589" feID="6653" end="83" start="75" name="Signature"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="85" name="Dep"/>
+                    <label end="54" start="47" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="85" name="PP"/>
+                    <label end="54" start="47" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="62" start="56" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-collect-(1)"/>
+    <subCorpus name="03-illegible+indecipherable+business-like-(1)"/>
+    <subCorpus name="04-a_modifier-(1)"/>
+    <subCorpus name="05-possessor-(1)"/>
+    <subCorpus name="06-pp_on-p-(1)">
+        <sentence corpID="111" docID="21906" sentNo="5" paragNo="50" aPos="0" ID="1559459">
+            <text>The signature on this document is not my signature . ''</text>
+            <annotationSet cDate="05/24/2010 03:05:04 PDT Mon" status="UNANN" ID="2561678">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="nn"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="20" start="17" name="dt"/>
+                    <label end="29" start="22" name="nn"/>
+                    <label end="32" start="31" name="VBZ"/>
+                    <label end="36" start="34" name="rb"/>
+                    <label end="39" start="38" name="PP$"/>
+                    <label end="49" start="41" name="nn"/>
+                    <label end="51" start="51" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 03:05:04 PDT Mon" status="MANUAL" ID="2561679">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6653" end="12" start="4" name="Signature"/>
+                    <label cBy="589" feID="6667" end="29" start="14" name="Agreement"/>
+                    <label cBy="589" feID="6651" itype="DNI" name="Signatory"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="14" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-pp_of-p-(1)"/>
+    <subCorpus name="08-pp_from-p-(1)"/>
+    <subCorpus name="09-pp_by-p-(1)"/>
+    <subCorpus name="10-other-matched-(1)"/>
+    <subCorpus name="11-other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="New" POS="N" name="replacement.n" ID="10793" frame="Take_place_of" frameID="1171" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="con" name="Context"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="fun" name="Function"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="new" name="New"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="old" name="Old"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="rol" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: taking the place of.</definition>
+    <lexeme POS="N" name="replacement"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Function"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Function"/>
+                <annoSet ID="2521562"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="New"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="New"/>
+                <annoSet ID="2521562"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Old"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Old"/>
+                <annoSet ID="2521562"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Function"/>
+            <FE name="New"/>
+            <FE name="Old"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Function"/>
+                <valenceUnit GF="" PT="DNI" FE="New"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Old"/>
+                <annoSet ID="2521562"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPfor-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3687" aPos="28833879" ID="1539131">
+            <text>THIS is the Mondeo , Ford 's new Belgian-built replacement for the Sierra which goes on sale in March .</text>
+            <annotationSet cDate="10/07/2009 12:50:00 PDT Wed" status="UNANN" ID="2521561">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="24" start="21" name="NP"/>
+                    <label end="27" start="26" name="POS"/>
+                    <label end="31" start="29" name="jj"/>
+                    <label end="45" start="33" name="VVN"/>
+                    <label end="57" start="47" name="nn"/>
+                    <label end="61" start="59" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="72" start="67" name="NP"/>
+                    <label end="78" start="74" name="wdt"/>
+                    <label end="83" start="80" name="VVZ"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="100" start="96" name="NP"/>
+                    <label end="102" start="102" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/07/2009 12:50:00 PDT Wed" status="MANUAL" ID="2521562">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="57" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="6798" end="72" start="59" name="Old"/>
+                    <label cBy="976" feID="6794" itype="DNI" name="New"/>
+                    <label cBy="976" feID="6796" itype="INI" name="Function"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="59" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPof-(1)"/>
+    <subCorpus name="03-T-NP-(1)"/>
+    <subCorpus name="04-T-VP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

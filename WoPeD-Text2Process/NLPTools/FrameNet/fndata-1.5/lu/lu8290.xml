@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="visa.n" ID="8290" frame="Documents" frameID="560" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=487" ID="19826"/>
+            <document description="bncp=617" ID="21948"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Bea" name="Bearer"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Do" name="Document"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Iss" name="Issuer"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Obl" name="Obligation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Rig" name="Right"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Spec" name="Specification"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Sta" name="Status"/>
+        </frame>
+    </header>
+    <definition>COD: an endorsement on a passport indicating that the holder is allowed to enter, leave, or stay for a specified period of time in a country. </definition>
+    <lexeme POS="N" name="visa"/>
+    <valences>
+        <governor type="Sup" lemma="on">
+            <annoSet ID="2601569"/>
+        </governor>
+        <governor type="Ctrlr" lemma="issue">
+            <annoSet ID="2601485"/>
+        </governor>
+        <governor type="Ctrlr" lemma="work">
+            <annoSet ID="2601569"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Bearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Bearer"/>
+                <annoSet ID="2601569"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Bearer"/>
+                <annoSet ID="2601485"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Descriptor"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2601485"/>
+                <annoSet ID="2601569"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Document"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Document"/>
+                <annoSet ID="2601485"/>
+                <annoSet ID="2601569"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Issuer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Issuer"/>
+                <annoSet ID="2601485"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Status"/>
+                <annoSet ID="2601569"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Bearer"/>
+            <FE name="Descriptor"/>
+            <FE name="Document"/>
+            <FE name="Issuer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Bearer"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Document"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Issuer"/>
+                <annoSet ID="2601485"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Bearer"/>
+            <FE name="Descriptor"/>
+            <FE name="Document"/>
+            <FE name="Status"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Bearer"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Document"/>
+                <valenceUnit GF="Dep" PT="N" FE="Status"/>
+                <annoSet ID="2601569"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-issue-(1)">
+        <sentence corpID="111" docID="21948" sentNo="2" paragNo="101" aPos="0" ID="1582922">
+            <text>Commenting on the situation Arve Kristiansen said : ` We have been told that the American Embassy in Oslo will issue new visas for us , as least we hope so . ''</text>
+            <annotationSet cDate="08/06/2010 01:23:49 PDT Fri" status="UNANN" ID="2601484">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="VVG"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="26" start="18" name="nn"/>
+                    <label end="31" start="28" name="NP"/>
+                    <label end="43" start="33" name="NP"/>
+                    <label end="48" start="45" name="VVD"/>
+                    <label end="50" start="50" name=":"/>
+                    <label end="55" start="54" name="PP"/>
+                    <label end="60" start="57" name="VHP"/>
+                    <label end="65" start="62" name="VBN"/>
+                    <label end="70" start="67" name="VVN"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="88" start="81" name="NP"/>
+                    <label end="96" start="90" name="NP"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="104" start="101" name="NP"/>
+                    <label end="109" start="106" name="md"/>
+                    <label end="115" start="111" name="VV"/>
+                    <label end="119" start="117" name="jj"/>
+                    <label end="125" start="121" name="nns"/>
+                    <label end="129" start="127" name="in"/>
+                    <label end="132" start="131" name="PP"/>
+                    <label end="134" start="134" name=","/>
+                    <label end="137" start="136" name="in"/>
+                    <label end="143" start="139" name="jjs"/>
+                    <label end="146" start="145" name="PP"/>
+                    <label end="151" start="148" name="VVP"/>
+                    <label end="154" start="153" name="rb"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/06/2010 01:23:49 PDT Fri" status="MANUAL" ID="2601485">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="125" start="121" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="4187" end="104" start="77" name="Issuer"/>
+                    <label cBy="589" feID="4192" end="125" start="121" name="Document"/>
+                    <label cBy="589" feID="4181" end="132" start="127" name="Bearer"/>
+                    <label cBy="589" feID="14141" end="119" start="117" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="77" name="Ext"/>
+                    <label end="132" start="127" name="Dep"/>
+                    <label end="119" start="117" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="77" name="NP"/>
+                    <label end="132" start="127" name="PP"/>
+                    <label end="119" start="117" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="115" start="111" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-obtain-(1)"/>
+    <subCorpus name="03-object_of-(1)"/>
+    <subCorpus name="04-a_modifier-(1)">
+        <sentence corpID="111" docID="19826" sentNo="5" paragNo="75" aPos="0" ID="1582964">
+            <text>Mihir , a 28-year-old Bangladeshi working illegally on a long-expired tourist visa , is paid 150,000 yen ( £650 ) a month at a manual job in a car parts factory north of Tokyo .</text>
+            <annotationSet cDate="08/06/2010 01:24:01 PDT Fri" status="UNANN" ID="2601568">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="8" start="8" name="dt"/>
+                    <label end="20" start="10" name="jj"/>
+                    <label end="32" start="22" name="nn"/>
+                    <label end="40" start="34" name="VVG"/>
+                    <label end="50" start="42" name="rb"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="55" start="55" name="dt"/>
+                    <label end="68" start="57" name="jj"/>
+                    <label end="76" start="70" name="nn"/>
+                    <label end="81" start="78" name="nn"/>
+                    <label end="83" start="83" name=","/>
+                    <label end="86" start="85" name="VBZ"/>
+                    <label end="91" start="88" name="VVN"/>
+                    <label end="99" start="93" name="cd"/>
+                    <label end="103" start="101" name="nn"/>
+                    <label end="105" start="105" name="("/>
+                    <label end="110" start="107" name="nn"/>
+                    <label end="112" start="112" name=")"/>
+                    <label end="114" start="114" name="dt"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="125" start="125" name="dt"/>
+                    <label end="132" start="127" name="jj"/>
+                    <label end="136" start="134" name="nn"/>
+                    <label end="139" start="138" name="in"/>
+                    <label end="141" start="141" name="dt"/>
+                    <label end="145" start="143" name="nn"/>
+                    <label end="151" start="147" name="nns"/>
+                    <label end="159" start="153" name="nn"/>
+                    <label end="165" start="161" name="nn"/>
+                    <label end="168" start="167" name="in"/>
+                    <label end="174" start="170" name="NP"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/06/2010 01:24:01 PDT Fri" status="MANUAL" ID="2601569">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="81" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="14141" end="68" start="55" name="Descriptor"/>
+                    <label cBy="589" feID="4190" end="76" start="70" name="Status"/>
+                    <label cBy="589" feID="4192" end="81" start="78" name="Document"/>
+                    <label cBy="589" feID="4181" end="32" start="8" name="Bearer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="55" name="Dep"/>
+                    <label end="76" start="70" name="Dep"/>
+                    <label end="32" start="8" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="55" name="AJP"/>
+                    <label end="76" start="70" name="N"/>
+                    <label end="32" start="8" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="40" start="34" name="Ctrlr"/>
+                    <label end="53" start="52" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-pp_for-p-(1)"/>
+    <subCorpus name="06-possessor-(1)"/>
+    <subCorpus name="07-and/or-(1)"/>
+    <subCorpus name="08-n_modifier-(1)"/>
+    <subCorpus name="09-other-matched-(1)"/>
+    <subCorpus name="10-other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="carry.v" ID="13680" frame="Carry_goods" frameID="1850" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="dis" name="Distributor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="dur" name="Duration"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="goo" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: keep a regular stock of.</definition>
+    <lexeme POS="V" name="carry"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Distributor"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Distributor"/>
+                <annoSet ID="2262491"/>
+                <annoSet ID="2262501"/>
+                <annoSet ID="2262503"/>
+                <annoSet ID="2262509"/>
+                <annoSet ID="2262933"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Goods"/>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <annoSet ID="2262491"/>
+                <annoSet ID="2262501"/>
+                <annoSet ID="2262503"/>
+                <annoSet ID="2262509"/>
+                <annoSet ID="2262933"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2262491"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Distributor"/>
+            <FE name="Goods"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Distributor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <annoSet ID="2262501"/>
+                <annoSet ID="2262503"/>
+                <annoSet ID="2262509"/>
+                <annoSet ID="2262933"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Distributor"/>
+            <FE name="Goods"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Distributor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2262491"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NPstock,supplies,goods-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="250" aPos="50519328" ID="1407325">
+            <text>` I am sorry to inform you that we no longer carry a stock of the spare parts you require .</text>
+            <annotationSet cDate="12/06/2006 02:54:43 PST Wed" status="UNANN" ID="2262490">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="PP"/>
+                    <label end="5" start="4" name="vbp"/>
+                    <label end="11" start="7" name="jj"/>
+                    <label end="14" start="13" name="to"/>
+                    <label end="21" start="16" name="VV"/>
+                    <label end="25" start="23" name="PP"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="33" start="32" name="PP"/>
+                    <label end="36" start="35" name="rb"/>
+                    <label end="43" start="38" name="rbr"/>
+                    <label end="49" start="45" name="VV"/>
+                    <label end="51" start="51" name="dt"/>
+                    <label end="57" start="53" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="70" start="66" name="jj"/>
+                    <label end="76" start="72" name="nns"/>
+                    <label end="80" start="78" name="PP"/>
+                    <label end="88" start="82" name="VVP"/>
+                    <label end="90" start="90" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/06/2006 02:54:43 PST Wed" status="MANUAL" ID="2262491">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="49" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="10849" end="33" start="32" name="Distributor"/>
+                    <label cBy="361" feID="10851" end="43" start="35" name="Time"/>
+                    <label cBy="361" feID="10850" end="88" start="51" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="32" name="Ext"/>
+                    <label end="43" start="35" name="Dep"/>
+                    <label end="88" start="51" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="32" name="NP"/>
+                    <label end="43" start="35" name="AVP"/>
+                    <label end="88" start="51" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="73" aPos="10831014" ID="1407330">
+            <text>Although many of the largest emergency glazing companies carry large stocks of glass , they have had to call on manufacturers , especially Pilkington 's , for extra supplies .</text>
+            <annotationSet cDate="12/06/2006 02:54:44 PST Wed" status="UNANN" ID="2262500">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="in"/>
+                    <label end="12" start="9" name="jj"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="27" start="21" name="jjs"/>
+                    <label end="37" start="29" name="nn"/>
+                    <label end="45" start="39" name="nn"/>
+                    <label end="55" start="47" name="nns"/>
+                    <label end="61" start="57" name="VVP"/>
+                    <label end="67" start="63" name="jj"/>
+                    <label end="74" start="69" name="nns"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="83" start="79" name="nn"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="90" start="87" name="PP"/>
+                    <label end="95" start="92" name="VHP"/>
+                    <label end="99" start="97" name="VHD"/>
+                    <label end="102" start="101" name="to"/>
+                    <label end="107" start="104" name="VV"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="124" start="112" name="nns"/>
+                    <label end="126" start="126" name=","/>
+                    <label end="137" start="128" name="rb"/>
+                    <label end="148" start="139" name="NP"/>
+                    <label end="151" start="150" name="POS"/>
+                    <label end="153" start="153" name=","/>
+                    <label end="157" start="155" name="in"/>
+                    <label end="163" start="159" name="jj"/>
+                    <label end="172" start="165" name="nns"/>
+                    <label end="174" start="174" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/06/2006 02:54:44 PST Wed" status="MANUAL" ID="2262501">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="61" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="10849" end="55" start="17" name="Distributor"/>
+                    <label cBy="361" feID="10850" end="83" start="63" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="17" name="Ext"/>
+                    <label end="83" start="63" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="17" name="NP"/>
+                    <label end="83" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="46" aPos="45275112" ID="1407331">
+            <text>Marubeni was to make a definite decision on whether it would carry the Axil workstation products depending on reaction at the show .</text>
+            <annotationSet cDate="12/06/2006 02:54:44 PST Wed" status="UNANN" ID="2262502">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="14" start="13" name="to"/>
+                    <label end="19" start="16" name="VV"/>
+                    <label end="21" start="21" name="dt"/>
+                    <label end="30" start="23" name="jj"/>
+                    <label end="39" start="32" name="nn"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="50" start="44" name="in"/>
+                    <label end="53" start="52" name="PP"/>
+                    <label end="59" start="55" name="md"/>
+                    <label end="65" start="61" name="VV"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="86" start="76" name="nn"/>
+                    <label end="95" start="88" name="nns"/>
+                    <label end="105" start="97" name="VVG"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="117" start="110" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="dt"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/06/2006 02:54:45 PST Wed" status="MANUAL" ID="2262503">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="65" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="10849" end="7" start="0" name="Distributor"/>
+                    <label cBy="361" feID="10850" end="95" start="67" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="95" start="67" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="95" start="67" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NPstore,company,market-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="230" aPos="41012144" ID="1407334">
+            <text>This is not surprising , because the NASM store does carry some very rare Japanese types .</text>
+            <annotationSet cDate="12/06/2006 02:54:45 PST Wed" status="UNANN" ID="2262508">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="10" start="8" name="rb"/>
+                    <label end="21" start="12" name="jj"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="31" start="25" name="in"/>
+                    <label end="35" start="33" name="dt"/>
+                    <label end="40" start="37" name="NP"/>
+                    <label end="46" start="42" name="nn"/>
+                    <label end="51" start="48" name="VVZ"/>
+                    <label end="57" start="53" name="VV"/>
+                    <label end="62" start="59" name="dt"/>
+                    <label end="67" start="64" name="rb"/>
+                    <label end="72" start="69" name="jj"/>
+                    <label end="81" start="74" name="jj"/>
+                    <label end="87" start="83" name="nns"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/06/2006 02:54:46 PST Wed" status="MANUAL" ID="2262509">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="57" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="10849" end="46" start="33" name="Distributor"/>
+                    <label cBy="361" feID="10850" end="87" start="59" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="33" name="Ext"/>
+                    <label end="87" start="59" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="33" name="NP"/>
+                    <label end="87" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-Wusually,always,never-T-NP-(2)"/>
+    <subCorpus name="03-NPwe,they-T-NP-PPin-(2)"/>
+    <subCorpus name="04-NPwe,they-T-NP-(2)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="154" aPos="2922327" ID="1407546">
+            <text>They could carry goods for local co-operatives and state authorities .</text>
+            <annotationSet cDate="12/06/2006 03:18:46 PST Wed" status="UNANN" ID="2262932">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="9" start="5" name="md"/>
+                    <label end="15" start="11" name="VV"/>
+                    <label end="21" start="17" name="nns"/>
+                    <label end="25" start="23" name="in"/>
+                    <label end="31" start="27" name="jj"/>
+                    <label end="45" start="33" name="nns"/>
+                    <label end="49" start="47" name="cc"/>
+                    <label end="55" start="51" name="nn"/>
+                    <label end="67" start="57" name="nns"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/06/2006 03:18:46 PST Wed" status="MANUAL" ID="2262933">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="15" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="10849" end="3" start="0" name="Distributor"/>
+                    <label cBy="361" feID="10850" end="67" start="17" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="67" start="17" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="67" start="17" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-NP-T-PPby-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

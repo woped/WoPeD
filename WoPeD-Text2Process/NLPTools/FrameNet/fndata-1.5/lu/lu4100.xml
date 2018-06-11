@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Role" POS="N" name="suzerain.n" ID="4100" frame="Leadership" frameID="73" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="act" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Dom" name="Domain"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="gov" name="Governed"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="lea" name="Leader"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Role" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a sovereign or state having some control over another state that is internally autonomous</definition>
+    <lexeme POS="N" name="suzerain"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Governed"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Governed"/>
+                <annoSet ID="809803"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Leader"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Leader"/>
+                <annoSet ID="809801"/>
+                <annoSet ID="809803"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Governed"/>
+            <FE name="Leader"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Governed"/>
+                <valenceUnit GF="" PT="DEN" FE="Leader"/>
+                <annoSet ID="809803"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Leader"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Leader"/>
+                <annoSet ID="809801"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="72613466" ID="666060">
+            <text>The economy of the Temple , and with it the Jewish cult , depended on the goodwill of the suzerain . </text>
+            <annotationSet cDate="01/07/2003 09:59:55 PST Tue" status="UNANN" ID="809800">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="24" start="19" name="NN1-NP0"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="30" start="28" name="CJC"/>
+                    <label end="35" start="32" name="PRP"/>
+                    <label end="38" start="37" name="PNP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="49" start="44" name="AJ0"/>
+                    <label end="54" start="51" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="65" start="58" name="VVD-VVN"/>
+                    <label end="68" start="67" name="PRP"/>
+                    <label end="72" start="70" name="AT0"/>
+                    <label end="81" start="74" name="NN1"/>
+                    <label end="84" start="83" name="PRF"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="97" start="90" name="NN1"/>
+                    <label end="99" start="99" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:59:55 PST Tue" status="MANUAL" ID="809801">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="347" end="97" start="90" name="Leader"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="97" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="94437673" ID="666061">
+            <text>The ruler of the Habsburg territories was also Holy Roman Emperor , in theory at least the suzerain of hundreds of German states and rulers . </text>
+            <annotationSet cDate="01/07/2003 09:59:55 PST Tue" status="UNANN" ID="809802">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="24" start="17" name="NP0"/>
+                    <label end="36" start="26" name="NN2"/>
+                    <label end="40" start="38" name="VBD"/>
+                    <label end="45" start="42" name="AV0"/>
+                    <label end="50" start="47" name="AJ0"/>
+                    <label end="56" start="52" name="AJ0-NN1"/>
+                    <label end="64" start="58" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="76" start="71" name="NN1"/>
+                    <label end="79" start="78" name="AV0"/>
+                    <label end="85" start="81" name="AV0"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="98" start="91" name="NN1"/>
+                    <label end="101" start="100" name="PRF"/>
+                    <label end="110" start="103" name="NN2"/>
+                    <label end="113" start="112" name="PRF"/>
+                    <label end="120" start="115" name="AJ0-NN1"/>
+                    <label end="127" start="122" name="NN2"/>
+                    <label end="131" start="129" name="CJC"/>
+                    <label end="138" start="133" name="NN2"/>
+                    <label end="140" start="140" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:59:55 PST Tue" status="MANUAL" ID="809803">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="347" end="98" start="91" name="Leader"/>
+                    <label cBy="597" feID="6431" end="138" start="100" name="Governed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="100" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="100" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="98" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="bushel.n" ID="2823" frame="Measure_volume" frameID="155" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Size" name="Size"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Stuff"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Unit"/>
+        </frame>
+    </header>
+    <definition>COD: a measure of capacity equal to 8 gallons (equivalent to 36.4 litre), or in the US a measure of capacity equal to 64 US pints (equivalent to 35.2 litres).</definition>
+    <lexeme POS="N" name="bushel"/>
+    <semType name="Transparent Noun" ID="9"/>
+    <valences>
+        <governor type="Gov" lemma="own">
+            <annoSet ID="233587"/>
+        </governor>
+        <governor type="Gov" lemma="pass">
+            <annoSet ID="233611"/>
+        </governor>
+        <governor type="Gov" lemma="yield">
+            <annoSet ID="233583"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Count"/>
+            <pattern total="4">
+                <valenceUnit GF="Quant" PT="Num" FE="Count"/>
+                <annoSet ID="233583"/>
+                <annoSet ID="233587"/>
+                <annoSet ID="233605"/>
+                <annoSet ID="233611"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Stuff"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Stuff"/>
+                <annoSet ID="233583"/>
+                <annoSet ID="233587"/>
+                <annoSet ID="233605"/>
+                <annoSet ID="233611"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Unit"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="233583"/>
+                <annoSet ID="233587"/>
+                <annoSet ID="233605"/>
+                <annoSet ID="233611"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Count"/>
+            <FE name="Stuff"/>
+            <FE name="Unit"/>
+            <pattern total="4">
+                <valenceUnit GF="Quant" PT="Num" FE="Count"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Stuff"/>
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="233583"/>
+                <annoSet ID="233587"/>
+                <annoSet ID="233605"/>
+                <annoSet ID="233611"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="27105379" ID="294591">
+            <text>An example provided by a kachcheri mudaliyar shows that out of a crop which yielded sixty bushels of paddy , a little over eight bushels was paid for cattle hire . </text>
+            <annotationSet cDate="01/06/2003 10:12:31 PST Mon" status="UNANN" ID="233582">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="9" start="3" name="NN1"/>
+                    <label end="18" start="11" name="VVN"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="23" start="23" name="AT0"/>
+                    <label end="33" start="25" name="NN2"/>
+                    <label end="43" start="35" name="NN1-VVB"/>
+                    <label end="49" start="45" name="NN2-VVZ"/>
+                    <label end="54" start="51" name="CJT"/>
+                    <label end="58" start="56" name="PRP"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="63" start="63" name="AT0"/>
+                    <label end="68" start="65" name="NN1"/>
+                    <label end="74" start="70" name="DTQ"/>
+                    <label end="82" start="76" name="VVD"/>
+                    <label end="88" start="84" name="CRD"/>
+                    <label end="96" start="90" name="NN2"/>
+                    <label end="99" start="98" name="PRF"/>
+                    <label end="105" start="101" name="NN1"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="109" start="109" name="AV0"/>
+                    <label end="116" start="111" name="AV0"/>
+                    <label end="121" start="118" name="AV0"/>
+                    <label end="127" start="123" name="CRD"/>
+                    <label end="135" start="129" name="NN2"/>
+                    <label end="139" start="137" name="VBD"/>
+                    <label end="144" start="141" name="VVN"/>
+                    <label end="148" start="146" name="PRP"/>
+                    <label end="155" start="150" name="NN2"/>
+                    <label end="160" start="157" name="NN1-VVB"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 10:12:31 PST Mon" status="MANUAL" ID="233583">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1196" end="88" start="84" name="Count"/>
+                    <label cBy="296" feID="1198" end="96" start="90" name="Unit"/>
+                    <label cBy="296" feID="1197" end="105" start="98" name="Stuff"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="88" start="84" name="Quant"/>
+                    <label end="105" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="88" start="84" name="Num"/>
+                    <label end="105" start="98" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="96" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="82" start="76" name="Gov"/>
+                    <label end="105" start="84" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="43158751" ID="294593">
+            <text>He also owned ten bushels of wheat , and fourteen of barley , and had sown three dayworks ( roods ) of winter wheat , but no husbandry implements were listed . </text>
+            <annotationSet cDate="01/06/2003 10:12:31 PST Mon" status="UNANN" ID="233586">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="AV0"/>
+                    <label end="12" start="8" name="VVD"/>
+                    <label end="16" start="14" name="CRD"/>
+                    <label end="24" start="18" name="NN2"/>
+                    <label end="27" start="26" name="PRF"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="CJC"/>
+                    <label end="48" start="41" name="CRD"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="58" start="53" name="NN1"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="68" start="66" name="VHD"/>
+                    <label end="73" start="70" name="VVN"/>
+                    <label end="79" start="75" name="CRD"/>
+                    <label end="88" start="81" name="NN2"/>
+                    <label end="90" start="90" name="PUL"/>
+                    <label end="96" start="92" name="NN2"/>
+                    <label end="98" start="98" name="PUR"/>
+                    <label end="101" start="100" name="PRF"/>
+                    <label end="108" start="103" name="NN1"/>
+                    <label end="114" start="110" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="123" start="122" name="AT0"/>
+                    <label end="133" start="125" name="NN1"/>
+                    <label end="144" start="135" name="NN2"/>
+                    <label end="149" start="146" name="VBD"/>
+                    <label end="156" start="151" name="VVN"/>
+                    <label end="158" start="158" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 10:12:31 PST Mon" status="MANUAL" ID="233587">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1196" end="16" start="14" name="Count"/>
+                    <label cBy="296" feID="1198" end="24" start="18" name="Unit"/>
+                    <label cBy="296" feID="1197" end="33" start="26" name="Stuff"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="14" name="Quant"/>
+                    <label end="33" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="14" name="Num"/>
+                    <label end="33" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="12" start="8" name="Gov"/>
+                    <label end="58" start="14" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="N-429-lcoll-million">
+        <sentence sentNo="0" aPos="70728680" ID="294602">
+            <text>The CPR carried 3.9 million bushels of grain in 1882 ; 7.8 million bushels in 1885 ; 29.3 million bushels in 1892 ; 42.8 million at the end of the century ; and 175.5 million in 1921 . </text>
+            <annotationSet cDate="01/06/2003 10:12:32 PST Mon" status="UNANN" ID="233604">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NP0"/>
+                    <label end="14" start="8" name="VVD"/>
+                    <label end="18" start="16" name="CRD"/>
+                    <label end="26" start="20" name="CRD"/>
+                    <label end="34" start="28" name="NN2"/>
+                    <label end="37" start="36" name="PRF"/>
+                    <label end="43" start="39" name="NN1"/>
+                    <label end="46" start="45" name="PRP"/>
+                    <label end="51" start="48" name="CRD"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="57" start="55" name="CRD"/>
+                    <label end="65" start="59" name="CRD"/>
+                    <label end="73" start="67" name="NN2"/>
+                    <label end="76" start="75" name="PRP"/>
+                    <label end="81" start="78" name="CRD"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="88" start="85" name="CRD"/>
+                    <label end="96" start="90" name="CRD"/>
+                    <label end="104" start="98" name="NN2"/>
+                    <label end="107" start="106" name="PRP"/>
+                    <label end="112" start="109" name="CRD"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="119" start="116" name="CRD"/>
+                    <label end="127" start="121" name="CRD"/>
+                    <label end="130" start="129" name="PRP"/>
+                    <label end="134" start="132" name="AT0"/>
+                    <label end="138" start="136" name="NN1"/>
+                    <label end="141" start="140" name="PRF"/>
+                    <label end="145" start="143" name="AT0"/>
+                    <label end="153" start="147" name="NN1"/>
+                    <label end="155" start="155" name="PUN"/>
+                    <label end="159" start="157" name="CJC"/>
+                    <label end="165" start="161" name="CRD"/>
+                    <label end="173" start="167" name="CRD"/>
+                    <label end="176" start="175" name="PRP"/>
+                    <label end="181" start="178" name="CRD"/>
+                    <label end="183" start="183" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 10:12:32 PST Mon" status="MANUAL" ID="233605">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1196" end="26" start="16" name="Count"/>
+                    <label cBy="296" feID="1198" end="34" start="28" name="Unit"/>
+                    <label cBy="296" feID="1197" end="43" start="36" name="Stuff"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="16" name="Quant"/>
+                    <label end="43" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="16" name="Num"/>
+                    <label end="43" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="70729621" ID="294605">
+            <text>307 million bushels of grain passed through the city 's elevators in 1907 , representing an 88 per cent increase over 1887 . </text>
+            <annotationSet cDate="01/06/2003 10:12:33 PST Mon" status="UNANN" ID="233610">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="10" start="4" name="CRD"/>
+                    <label end="18" start="12" name="NN2"/>
+                    <label end="21" start="20" name="PRF"/>
+                    <label end="27" start="23" name="NN1"/>
+                    <label end="34" start="29" name="VVD-VVN"/>
+                    <label end="42" start="36" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="54" start="53" name="POS"/>
+                    <label end="64" start="56" name="NN2"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="72" start="69" name="CRD"/>
+                    <label end="74" start="74" name="PUN"/>
+                    <label end="87" start="76" name="VVG"/>
+                    <label end="90" start="89" name="AT0"/>
+                    <label end="93" start="92" name="CRD"/>
+                    <label end="97" start="95" name="NN0"/>
+                    <label end="102" start="99" name="NN0"/>
+                    <label end="111" start="104" name="NN1-VVB"/>
+                    <label end="116" start="113" name="AV0"/>
+                    <label end="121" start="118" name="CRD"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 10:12:33 PST Mon" status="MANUAL" ID="233611">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1196" end="10" start="0" name="Count"/>
+                    <label cBy="296" feID="1198" end="18" start="12" name="Unit"/>
+                    <label cBy="296" feID="1197" end="27" start="20" name="Stuff"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Quant"/>
+                    <label end="27" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="Num"/>
+                    <label end="27" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="27" start="0" name="X"/>
+                    <label end="34" start="29" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>
