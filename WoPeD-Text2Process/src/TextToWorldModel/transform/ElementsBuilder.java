@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package transform;
+package TextToWorldModel.transform;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,8 +10,8 @@ import java.util.List;
 import TextToWorldModel.Constants;
 import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.WordNetFunctionality;
-import processing.ProcessingUtils;
-import text.T2PSentence;
+import TextToWorldModel.processing.ProcessingUtils;
+import worldModel.T2PSentence;
 import worldModel.Action;
 import worldModel.Actor;
 import worldModel.ExtractedObject;

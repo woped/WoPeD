@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package transform;
+package TextToWorldModel.transform;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,10 +12,9 @@ import java.util.List;
 
 
 import TextToWorldModel.Constants;
-import processing.ProcessingUtils;
-import text.T2PSentence;
-import tools.Configuration;
-import transform.ConjunctionElement.ConjunctionType;
+import TextToWorldModel.processing.ProcessingUtils;
+import worldModel.T2PSentence;
+import TextToWorldModel.transform.ConjunctionElement.ConjunctionType;
 import worldModel.Action;
 import worldModel.Actor;
 import worldModel.ExtractedObject;
@@ -233,7 +232,7 @@ public class AnalyzedSentence {
 	 */
 	private int determineSubSentenceCount(Tree sentence) {
 		int _result = SearchUtils.count(f_sentenceTags,sentence.getChildrenAsList());
-		//ignore it if the root if the only node (e.g. for relaitve sentence processing)
+		//ignore it if the root if the only node (e.g. for relaitve sentence TextToWorldModel.processing)
 		if(_result == 1 && sentence.getChild(0).value().equals("WHNP")){
 			_result --;
 		}
@@ -926,7 +925,7 @@ public class AnalyzedSentence {
 				}
 				
 				if((_dep.parent().value().equals("SBAR") || _dep.parent().value().equals("S") || _dep.parent().value().equals("PRN"))
-						&& (!_dep.parent().parent().value().equals("SBAR"))) { //hack for relative clause processing	
+						&& (!_dep.parent().parent().value().equals("SBAR"))) { //hack for relative clause TextToWorldModel.processing
 					list.remove(i);
 					i--;
 					break;

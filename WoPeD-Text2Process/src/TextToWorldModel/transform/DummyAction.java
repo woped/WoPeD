@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package transform;
+package TextToWorldModel.transform;
 
 import worldModel.Action;
 

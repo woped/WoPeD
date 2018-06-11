@@ -275,14 +275,6 @@ public class T2PUI extends JDialog {
 				WorldModelExecution WMex = new WorldModelExecution();
 				WorldModel world = WMex.getWorldModelBuilder().getWorldModel(textArea.getText());
 
-			/*	InterpetWorldModel interpreter = new InterpetWorldModel();
-
-				PNMLGenerator generator = new PNMLGenerator();
-				generator.init();
-				generator.createDummyPlace();
-				generator.setTransition(interpreter.getTextTrans(world.getActions()));
-				generator.setArc();*/
-
 				PetrinetBuilder PNBuilder = new PetrinetBuilder(world);
 
 				PNMLImport pnmlImport = new PNMLImport(mediator);

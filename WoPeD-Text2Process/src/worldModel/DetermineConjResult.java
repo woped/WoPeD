@@ -3,7 +3,7 @@
  */
 package worldModel;
 
-import transform.ConjunctionElement.ConjunctionType;
+import TextToWorldModel.transform.ConjunctionElement.ConjunctionType;
 
 public class DetermineConjResult {
 	
