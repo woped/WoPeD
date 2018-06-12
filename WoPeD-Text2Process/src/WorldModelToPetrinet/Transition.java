@@ -72,8 +72,8 @@ public class Transition extends PetriNetElement {
     }
 
     public void setPartOfGateway(int subID,String transID){
-        idGateway=transID+"_op_"+subID;
-        this.transID=transID;
+        idGateway=transID;
+        this.transID=transID+"_op_"+subID;
     }
 
     // getter and setter for role
@@ -129,19 +129,10 @@ public class Transition extends PetriNetElement {
 
             Element transitionTag;
 
-            if (isGateway == false) {
+            transitionTag = doc.createElement("transition");
+            transitionTag.setAttribute("id", transID);
+            doc.appendChild(transitionTag);
 
-                transitionTag = doc.createElement("transition");
-                transitionTag.setAttribute("id", transID);
-                doc.appendChild(transitionTag);
-
-            } else {
-
-                transitionTag = doc.createElement("transition");
-                transitionTag.setAttribute("id", idGateway);
-                doc.appendChild(transitionTag);
-
-            }
 
             Element name = doc.createElement("name");
             transitionTag.appendChild(name);
@@ -179,7 +170,7 @@ public class Transition extends PetriNetElement {
             if (isGateway == true) {
 
                 Element operator = doc.createElement("operator");
-                operator.setAttribute("id", transID);
+                operator.setAttribute("id", idGateway);
                 operator.setAttribute("type", "" + getOperatorType());
                 toolSpecific.appendChild(operator);
             }

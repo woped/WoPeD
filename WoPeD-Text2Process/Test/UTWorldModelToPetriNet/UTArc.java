@@ -8,6 +8,8 @@ import static org.junit.Assert.assertEquals;
 /*Unit Test for class WorldModelToPetriNet Arc*/
 public class UTArc {
 
+    /*Unit test for Class WorldModelToPetrinet.Arc*/
+
     String exspectedPNML="<arc id=\"a1\" source=\"1\" target=\"1\">" +
             "<inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/>" +
             "</graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\">" +

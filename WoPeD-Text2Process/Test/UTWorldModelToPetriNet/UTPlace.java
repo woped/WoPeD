@@ -6,6 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class UTPlace {
+
+    /*Unit test for Class WorldModelToPetrinet.Place*/
+
     String exspectedPNML="<place id=\"p1\"><name><text>p1</text>" +
             "<graphics><offset x=\"0\" y=\"0\"/></graphics>" +
             "</name><graphics><position x=\"0\" y=\"0\"/>" +
