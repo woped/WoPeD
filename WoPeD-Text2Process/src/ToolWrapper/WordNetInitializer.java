@@ -28,8 +28,12 @@ public class WordNetInitializer {
     //getter
     public static WordNetInitializer getInstance(){
         if(wni == null){
-            wni = new WordNetInitializer();
-            init();
+            synchronized (FrameNetInitializer.class) {
+                if(wni == null){
+                    wni = new WordNetInitializer();
+                    init();
+                }
+            }
         }
         return wni;
     }
