@@ -14,9 +14,9 @@ public class PetriNet {
     private PetrinetElementBuilder elementBuilder;
 
     public PetriNet(){
-        Transition.resetStaticContext();
+       /* Transition.resetStaticContext();
         Arc.resetStaticContext();
-        Place.resetStaticContext();
+        Place.resetStaticContext();*/
         DummyAction.resetStaticContext();
         elementBuilder= new PetrinetElementBuilder();
     }
@@ -55,7 +55,7 @@ public class PetriNet {
         Iterator<Place> i = placeList.iterator();
         while (i.hasNext()){
             Place p = i.next();
-            if(p.getPlaceID().equals(id)){
+            if(p.getID().equals(id)){
                 return p;
             }
         }
@@ -82,7 +82,7 @@ public class PetriNet {
             Iterator<Place> i3 = sourcePlaces.iterator();
             while(i3.hasNext()){
                 Place p2 = i3.next();
-                if(p.getPlaceID().equals(p2.getPlaceID())){
+                if(p.getID().equals(p2.getID())){
                     found=true;
                 }
             }
@@ -113,7 +113,7 @@ public class PetriNet {
             Iterator<Place> i3 = targetPlaces.iterator();
             while(i3.hasNext()){
                 Place p2 = i3.next();
-                if(p.getPlaceID().equals(p2.getPlaceID())){
+                if(p.getID().equals(p2.getID())){
                     found=true;
                 }
             }
@@ -162,11 +162,11 @@ public class PetriNet {
         Transition t = elementBuilder.createTransition("startprocess",false,false,"");
         Place source = elementBuilder.createPlace(false,"");
         source.setText("start");
-        source.hasMarking=true;
-        Arc a1= elementBuilder.createArc(source.getPlaceID(),t.getTransID(),"");
+        source.setHasMarking(true);
+        Arc a1= elementBuilder.createArc(source.getID(),t.getID(),"");
         while(i.hasNext()){
             Place p = i.next();
-            Arc a = elementBuilder.createArc(t.getTransID(),p.getPlaceID(),"");
+            Arc a = elementBuilder.createArc(t.getID(),p.getID(),"");
             placeList.add(p);
             arcList.add(a);
         }

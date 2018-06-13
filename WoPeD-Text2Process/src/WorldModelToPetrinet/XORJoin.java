@@ -16,7 +16,7 @@ public class XORJoin extends PetrinetGateway {
         super(elementBuilder);
         this.sourceCount=sourceCount;
         this.originID=originID;
-        transID = elementBuilder.createTransition("",false,false,"").getTransID();
+        transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<sourceCount;i++){
             Transition source = elementBuilder.createTransition("",false,true,"");
             source.setPartOfGateway(i+1,transID);
@@ -32,9 +32,9 @@ public class XORJoin extends PetrinetGateway {
         int j=0;
         while(i.hasNext()){
             Place p = i.next();
-            petriNet.add(elementBuilder.createArc(p.getPlaceID(),joins.get(j).getTransID(),originID));
+            petriNet.add(elementBuilder.createArc(p.getID(),joins.get(j).getID(),originID));
             petriNet.add(joins.get(j));
-            petriNet.add(elementBuilder.createArc(joins.get(j).getTransID(),target.getPlaceID(),originID));
+            petriNet.add(elementBuilder.createArc(joins.get(j).getID(),target.getID(),originID));
             j++;
         }
 

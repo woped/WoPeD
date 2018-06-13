@@ -1,5 +1,6 @@
 package UTWorldModelToPetriNet;
 
+import WorldModelToPetrinet.IDHandler;
 import WorldModelToPetrinet.Place;
 import org.junit.Test;
 
@@ -15,8 +16,7 @@ public class UTPlace {
             "<dimension x=\"40\" y=\"40\"/></graphics></place>";
     @Test
     public void evaluatePlace(){
-        Place.resetStaticContext();
-        Place p= new Place(false,"");
+        Place p= new Place(false,"", new IDHandler(1));
         assertEquals("Place did not create exspected PNML.", true,p.toString().equals(exspectedPNML));
     }
 }

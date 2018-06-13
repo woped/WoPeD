@@ -17,7 +17,7 @@ public class XORSplit extends PetrinetGateway {
         super(elementBuilder);
         this.choiceCount=choiceCount;
         this.originID=originID;
-        transID = elementBuilder.createTransition("",false,false,"").getTransID();
+        transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<choiceCount;i++){
             Transition choice = elementBuilder.createTransition("choice",false,true,"");
             choice.setPartOfGateway(i+1,transID);
@@ -31,9 +31,9 @@ public class XORSplit extends PetrinetGateway {
         Iterator<Place> i = targets.iterator();
         int j=0;
         while(i.hasNext()){
-            petriNet.add(elementBuilder.createArc(source.getPlaceID(),choices.get(j).getTransID(),originID));
+            petriNet.add(elementBuilder.createArc(source.getID(),choices.get(j).getID(),originID));
             Place p = i.next();
-            petriNet.add(elementBuilder.createArc(choices.get(j).getTransID(),p.getPlaceID(),originID));
+            petriNet.add(elementBuilder.createArc(choices.get(j).getID(),p.getID(),originID));
             petriNet.add(choices.get(j));
             j++;
         }

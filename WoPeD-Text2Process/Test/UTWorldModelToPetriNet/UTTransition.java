@@ -1,5 +1,6 @@
 package UTWorldModelToPetriNet;
 
+import WorldModelToPetrinet.IDHandler;
 import WorldModelToPetrinet.Transition;
 import org.junit.Test;
 
@@ -14,8 +15,7 @@ public class UTTransition {
             "<time>0</time><timeUnit>1</timeUnit><orientation>1</orientation></toolspecific></transition>";
     @Test
     public void evaluateTransition(){
-        Transition.resetStaticContext();
-        Transition t= new Transition("",false,false,"");
+        Transition t= new Transition("",false,false,"", new IDHandler(1));
         assertEquals("Transition did not create exspected PNML.", true,t.toString().equals(exspectedPNML));
     }
 

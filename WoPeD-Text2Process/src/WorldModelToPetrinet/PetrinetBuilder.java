@@ -89,7 +89,7 @@ public class PetrinetBuilder {
             petriNet.unifySources(sources);
         }else{
             sources.get(0).setText("start");
-            sources.get(0).hasMarking=true;
+            sources.get(0).setHasMarking(true);
         }
 
 
@@ -107,8 +107,8 @@ public class PetrinetBuilder {
 
         Place singletarget = elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
         petriNet.add(singletarget);
-        petriNet.add(elementBuilder.createArc(target.getPlaceID(),t.getTransID(),getOriginID(f.getSingleObject())));
-        petriNet.add(elementBuilder.createArc(t.getTransID(),singletarget.getPlaceID(),getOriginID(f.getSingleObject())));
+        petriNet.add(elementBuilder.createArc(target.getID(),t.getID(),getOriginID(f.getSingleObject())));
+        petriNet.add(elementBuilder.createArc(t.getID(),singletarget.getID(),getOriginID(f.getSingleObject())));
 
 
         if(f.getType().equals(FlowType.concurrency)){
@@ -242,15 +242,15 @@ public class PetrinetBuilder {
                 petriNet.add(p0);
                 Transition t0= createTransition(f.getSingleObject(),false);
                 petriNet.add(t0);
-                petriNet.add(elementBuilder.createArc(p0.getPlaceID(),t0.getTransID(),""));
-                petriNet.add(elementBuilder.createArc(t0.getTransID(),p1.getPlaceID(),getOriginID(f.getSingleObject())));
+                petriNet.add(elementBuilder.createArc(p0.getID(),t0.getID(),""));
+                petriNet.add(elementBuilder.createArc(t0.getID(),p1.getID(),getOriginID(f.getSingleObject())));
             }
             Transition t1= createTransition(f.getMultipleObjects().get(0),false);
             petriNet.add(t1);
             Place p2 =elementBuilder.createPlace(false,getOriginID(f.getMultipleObjects().get(0)));
             petriNet.add(p2);
-            Arc a1 =elementBuilder.createArc(p1.getPlaceID(),t1.getTransID(),getOriginID(f.getMultipleObjects().get(0)));
-            Arc a2 =elementBuilder.createArc(t1.getTransID(),p2.getPlaceID(),getOriginID(f.getMultipleObjects().get(0)));
+            Arc a1 =elementBuilder.createArc(p1.getID(),t1.getID(),getOriginID(f.getMultipleObjects().get(0)));
+            Arc a2 =elementBuilder.createArc(t1.getID(),p2.getID(),getOriginID(f.getMultipleObjects().get(0)));
             petriNet.add(a1);
             petriNet.add(a2);
         }
@@ -273,8 +273,8 @@ public class PetrinetBuilder {
             petriNet.add(t);
             Place p2= elementBuilder.createPlace(false, getOriginID(a));
             petriNet.add(p2);
-            petriNet.add(elementBuilder.createArc(targetPlace.getPlaceID(),t.getTransID(),getOriginID(a)));
-            petriNet.add(elementBuilder.createArc(t.getTransID(),p2.getPlaceID(),getOriginID(a)));
+            petriNet.add(elementBuilder.createArc(targetPlace.getID(),t.getID(),getOriginID(a)));
+            petriNet.add(elementBuilder.createArc(t.getID(),p2.getID(),getOriginID(a)));
         }
         if(f.getType().equals(FlowType.concurrency)){
             ANDSplit as=new ANDSplit("",false,"",elementBuilder);
