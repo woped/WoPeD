@@ -14,13 +14,14 @@ import org.w3c.dom.Element;
 
 public class Arc extends PetriNetElement{
 
-    String arcID;
+    private String arcID;
     static int id = 1;
     double offsetX = 500.0, offsetY = -12.0;
-    String source, target, text = "1";
+    private String source, target;
 
     public Arc(String source, String target, String originID){
         super(originID);
+        text = "1";
         arcID = "a" + id;
         id++;
 

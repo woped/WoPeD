@@ -33,18 +33,18 @@ public class UTANDSplit {
     public void evaluateANDSplit(){
         PetriNet pn = new PetriNet();
 
-        Place source =new Place(false,"");
+        Place source =pn.getElementBuilder().createPlace(false,"");
         ArrayList<Place> targets = new ArrayList<Place>();
-        targets.add(new Place(false,""));
-        targets.add(new Place(false,""));
-        targets.add(new Place(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
 
         pn.add(source);
         pn.add(targets.get(0));
         pn.add(targets.get(1));
         pn.add(targets.get(2));
 
-        ANDSplit as = new ANDSplit("split",false,"");
+        ANDSplit as = new ANDSplit("split",false,"",pn.getElementBuilder());
         as.addANDSplitToPetriNet(pn,source,targets);
         assertEquals("AND Split did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
     }

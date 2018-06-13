@@ -11,12 +11,18 @@ public class PetriNet {
     private ArrayList<Arc> arcList= new ArrayList<Arc>();
     private ArrayList<Place> placeList= new ArrayList<Place>();
     private ArrayList<Transition> transitionList= new ArrayList<Transition>();
+    private PetrinetElementBuilder elementBuilder;
 
     public PetriNet(){
         Transition.resetStaticContext();
         Arc.resetStaticContext();
         Place.resetStaticContext();
         DummyAction.resetStaticContext();
+        elementBuilder= new PetrinetElementBuilder();
+    }
+
+    public PetrinetElementBuilder getElementBuilder() {
+        return elementBuilder;
     }
 
     public void add(Place p){
@@ -153,14 +159,14 @@ public class PetriNet {
 
     public void unifySources(List<Place> sources){
         Iterator<Place> i = sources.iterator();
-        Transition t = new Transition("startprocess",false,false,"");
-        Place source = new Place(false,"");
+        Transition t = elementBuilder.createTransition("startprocess",false,false,"");
+        Place source = elementBuilder.createPlace(false,"");
         source.setText("start");
         source.hasMarking=true;
-        Arc a1= new Arc(source.getPlaceID(),t.getTransID(),"");
+        Arc a1= elementBuilder.createArc(source.getPlaceID(),t.getTransID(),"");
         while(i.hasNext()){
             Place p = i.next();
-            Arc a = new Arc(t.getTransID(),p.getPlaceID(),"");
+            Arc a = elementBuilder.createArc(t.getTransID(),p.getPlaceID(),"");
             placeList.add(p);
             arcList.add(a);
         }
@@ -171,10 +177,10 @@ public class PetriNet {
 
     public void unifySinks(List<Place> sinks){
         Iterator<Place> i = sinks.iterator();
-        Place sink = new Place(false,"");
+        Place sink = elementBuilder.createPlace(false,"");
         placeList.add(sink);
         sink.setText("end");
-        XORJoin xj= new XORJoin(sinks.size(),"");
+        XORJoin xj= new XORJoin(sinks.size(),"",elementBuilder);
         xj.addXORJoinToPetriNet(this,sinks,sink);
     }
 

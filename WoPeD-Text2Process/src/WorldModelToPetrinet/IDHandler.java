@@ -7,8 +7,7 @@ public class IDHandler {
     }
 
     private int getNext(){
-        id++;
-        return id;
+        return id++;
     }
 
 }

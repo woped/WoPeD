@@ -2,8 +2,12 @@ package WorldModelToPetrinet;
 
 public abstract class PetriNetElement {
 
-    protected String originID;
-    public PetriNetElement(String originID){
+    private String originID;
+    protected String text;
+    protected IDHandler idHandler;
+
+    public PetriNetElement(String originID){//, IDHandler idHandler){
+        //this.idHandler=idHandler;
         this.originID=originID;
     }
 
@@ -13,6 +17,14 @@ public abstract class PetriNetElement {
 
     public void setOriginID(String originID) {
         this.originID = originID;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
 }

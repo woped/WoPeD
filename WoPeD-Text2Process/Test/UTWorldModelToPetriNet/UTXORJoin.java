@@ -37,18 +37,18 @@ public class UTXORJoin {
     public void evaluateXORJoin() {
         PetriNet pn = new PetriNet();
 
-        Place target =new Place(false,"");
+        Place target =pn.getElementBuilder().createPlace(false,"");
         ArrayList<Place> sources = new ArrayList<Place>();
-        sources.add(new Place(false,""));
-        sources.add(new Place(false,""));
-        sources.add(new Place(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
 
         pn.add(target);
         pn.add(sources.get(0));
         pn.add(sources.get(1));
         pn.add(sources.get(2));
 
-        XORJoin xj = new XORJoin(sources.size(),"");
+        XORJoin xj = new XORJoin(sources.size(),"",pn.getElementBuilder());
         xj.addXORJoinToPetriNet(pn,sources,target);
         assertEquals("XOR Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
     }

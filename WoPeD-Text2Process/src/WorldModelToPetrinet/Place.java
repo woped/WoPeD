@@ -11,7 +11,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
     public class Place extends PetriNetElement {
-        String text;
+
         String placeID;
         int XposPlace = 0, YposPlace = 0, XposText = 0, YposText = 0, dimensionX = 40, dimensionY = 40;
         static int ID = 1;
@@ -29,13 +29,6 @@ import org.w3c.dom.Element;
             ID=1;
         }
 
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
 
         public String getPlaceID() {
             return placeID;

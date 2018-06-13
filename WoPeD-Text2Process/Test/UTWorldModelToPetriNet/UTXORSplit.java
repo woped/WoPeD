@@ -38,18 +38,18 @@ public class UTXORSplit {
     public void evaluateXORSplit() {
         PetriNet pn = new PetriNet();
 
-        Place source =new Place(false,"");
+        Place source =pn.getElementBuilder().createPlace(false,"");
         ArrayList<Place> targets = new ArrayList<Place>();
-        targets.add(new Place(false,""));
-        targets.add(new Place(false,""));
-        targets.add(new Place(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
+        targets.add(pn.getElementBuilder().createPlace(false,""));
 
         pn.add(source);
         pn.add(targets.get(0));
         pn.add(targets.get(1));
         pn.add(targets.get(2));
 
-        XORSplit as = new XORSplit(targets.size(),"");
+        XORSplit as = new XORSplit(targets.size(),"",pn.getElementBuilder());
         as.addXORSplitToPetriNet(pn,source,targets);
         assertEquals("XOR Split did not create expected PNML.", true,pn.getPNML().equals(exspectedPNML));
     }

@@ -34,18 +34,18 @@ public class UTANDJoin {
     public void evaluateANDJoin() {
         PetriNet pn = new PetriNet();
 
-        Place target =new Place(false,"");
+        Place target =pn.getElementBuilder().createPlace(false,"");
         ArrayList<Place> sources = new ArrayList<Place>();
-        sources.add(new Place(false,""));
-        sources.add(new Place(false,""));
-        sources.add(new Place(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
+        sources.add(pn.getElementBuilder().createPlace(false,""));
 
         pn.add(target);
         pn.add(sources.get(0));
         pn.add(sources.get(1));
         pn.add(sources.get(2));
 
-        ANDJoin aj = new ANDJoin("",false,"");
+        ANDJoin aj = new ANDJoin("",false,"",pn.getElementBuilder());
         aj.addANDJoinToPetriNet(pn,sources,target);
         assertEquals("AND Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
     }

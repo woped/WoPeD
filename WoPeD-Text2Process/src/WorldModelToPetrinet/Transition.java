@@ -14,7 +14,7 @@ import org.w3c.dom.Element;
 
 public class Transition extends PetriNetElement {
 
-    String textofTrans, roleName, organizationalUnitName ="default", resourceName;
+    String roleName, organizationalUnitName ="default", resourceName;
     static int id = 1,  i = 1;
     String transID, idGateway;
     int textPositionX = 0;
@@ -42,7 +42,7 @@ public class Transition extends PetriNetElement {
 
     public Transition(String text, boolean hasResource, boolean isGateway, String originID) {
         super(originID);
-        this.textofTrans = text;
+        this.text = text;
         this.hasResource = hasResource;
         this.isGateway = isGateway;
 
@@ -138,7 +138,7 @@ public class Transition extends PetriNetElement {
             transitionTag.appendChild(name);
 
             Element text = doc.createElement("text");
-            text.appendChild(doc.createTextNode(textofTrans));
+            text.appendChild(doc.createTextNode(this.text));
             name.appendChild(text);
 
             Element graphicsOfText = doc.createElement("graphics");
