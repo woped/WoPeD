@@ -14,28 +14,19 @@ import org.w3c.dom.Element;
 
 public class Arc extends PetriNetElement{
 
-    String arcID;
-    static int id = 1;
-    double offsetX = 500.0, offsetY = -12.0;
-    String source, target, text = "1";
+    private String ID;
+    private double offsetX = 500.0, offsetY = -12.0;
+    private String source, target;
 
-    public Arc(String source, String target, String originID){
-        super(originID);
-        arcID = "a" + id;
-        id++;
-
+    public Arc(String source, String target, String originID, IDHandler idHandler) {
+        super(originID, idHandler);
+        text = "1";
+        ID = "a" + IDCounter;
         this.source = source;
         this.target = target;
-
-    }
-
-    public static void resetStaticContext(){
-        //TODO replace by ID handler -> Thread Safeness
-        id=1;
     }
 
     public String toString(){
-
         DocumentBuilderFactory icFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder icBuilder;
         String arcXMLStringValue = "";
@@ -44,7 +35,7 @@ public class Arc extends PetriNetElement{
             Document doc = icBuilder.newDocument();
 
             Element arcTag = doc.createElement("arc");
-            arcTag.setAttribute("id", arcID);
+            arcTag.setAttribute("id", ID);
             arcTag.setAttribute("source", source);
             arcTag.setAttribute("target", target);
             doc.appendChild(arcTag);
@@ -82,8 +73,6 @@ public class Arc extends PetriNetElement{
             displayProbabilityPosition.setAttribute("y", "12.0");
             toolSpecific.appendChild(displayProbabilityPosition);
 
-
-
             // Transform Document to XML String
             TransformerFactory tf = TransformerFactory.newInstance();
             Transformer transformer = tf.newTransformer();
@@ -96,12 +85,9 @@ public class Arc extends PetriNetElement{
             //TODO Bad Design -> improve
             arcXMLStringValue = arcXMLStringValue.substring(arcXMLStringValue.indexOf('\n')+1);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
         return arcXMLStringValue;
     }

@@ -1,4 +1,4 @@
-package text;
+package worldModel;
 
 import java.util.Collection;
 

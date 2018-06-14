@@ -4,7 +4,6 @@
 package worldModel;
 
 import ToolWrapper.FrameNetFunctionality.PhraseType;
-import text.T2PSentence;
 
 import de.saar.coli.salsa.reiter.framenet.FrameElement;
 

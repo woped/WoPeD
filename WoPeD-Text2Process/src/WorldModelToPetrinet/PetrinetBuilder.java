@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import transform.DummyAction;
+import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
 import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;
 
 public class PetrinetBuilder {
     private WorldModel processWM;
+    private PetrinetElementBuilder elementBuilder;
     private List<Flow> flowsFromWM = new ArrayList<Flow>();
     private List<Action> actionsFromWM = new ArrayList<Action>();
     private List<Transition> transitionsFromWM = new ArrayList<Transition>();
@@ -29,6 +30,7 @@ public class PetrinetBuilder {
     public PetrinetBuilder(WorldModel processWM) {
         this.processWM = processWM;
         petriNet= new PetriNet();
+        elementBuilder=petriNet.getElementBuilder();
     }
 
     public String buildPNML() {
@@ -76,11 +78,21 @@ public class PetrinetBuilder {
 
         // Sanitize to Workflownet
         List<Place> sinks = petriNet.getAllSinks();
-        if(sinks.size()>1)
+        if(sinks.size()>1){
             petriNet.unifySinks(sinks);
+        }
+        else{
+            sinks.get(0).setText("end");
+        }
         List<Place> sources = petriNet.getAllSources();
-        if(sources.size()>1)
+        if(sources.size()>1){
             petriNet.unifySources(sources);
+        }else{
+            sources.get(0).setText("start");
+            sources.get(0).setHasMarking(true);
+        }
+
+
     }
 
 
@@ -88,22 +100,22 @@ public class PetrinetBuilder {
 
         List<Place> sources=  getSourcePlaceForJoinFlow(f);
 
-        Place target=new Place(false,getOriginID(f.getSingleObject()));
+        Place target=elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
         petriNet.add(target);
         Transition t = createTransition(f.getSingleObject(),false);
         petriNet.add(t);
 
-        Place singletarget = new Place(false,getOriginID(f.getSingleObject()));
+        Place singletarget = elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
         petriNet.add(singletarget);
-        petriNet.add(new Arc(target.getPlaceID(),t.getTransID(),getOriginID(f.getSingleObject())));
-        petriNet.add(new Arc(t.getTransID(),singletarget.getPlaceID(),getOriginID(f.getSingleObject())));
+        petriNet.add(elementBuilder.createArc(target.getID(),t.getID(),getOriginID(f.getSingleObject())));
+        petriNet.add(elementBuilder.createArc(t.getID(),singletarget.getID(),getOriginID(f.getSingleObject())));
 
 
         if(f.getType().equals(FlowType.concurrency)){
-            ANDJoin aj = new ANDJoin("",false,"");
+            ANDJoin aj = new ANDJoin("",false,"",elementBuilder);
             aj.addANDJoinToPetriNet(petriNet,sources,target);
         }else{
-            XORJoin xj = new XORJoin(sources.size(),"");
+            XORJoin xj = new XORJoin(sources.size(),"",elementBuilder);
             xj.addXORJoinToPetriNet(petriNet,sources,target);
         }
     }
@@ -114,21 +126,25 @@ public class PetrinetBuilder {
 
     private String generateTransitionLabel(Action a) {
         String transitionlabel="";
-        if(a.getMarker()!=null)
-            transitionlabel+= a.getMarker()+" ";
-        transitionlabel+=a.getVerb()+" ";
-        if(a.getCop()!=null)
-            transitionlabel+= a.getCop();
+        if(isDummyAction(a)){
+            transitionlabel+="";
+        }else {
+            if (a.getMarker() != null)
+                transitionlabel += a.getMarker() + " ";
+            transitionlabel += a.getVerb() + " ";
+            if (a.getCop() != null)
+                transitionlabel += a.getCop();
+        }
         return transitionlabel;
     }
     private String getOriginID(SpecifiedElement element){
         if(isDummyAction((Action) element)){
             DummyAction d= (DummyAction) element;
-            return ""+d.getDummyID();
+            return "Dummy"+d.getDummyID();
         }else{
             int sentenceID = element.getOrigin().getID();
             int wordIndex = element.getWordIndex();
-            String originID= "Dummy"+sentenceID+wordIndex;
+            String originID= ""+sentenceID+wordIndex;
             return originID;
         }
 
@@ -161,7 +177,7 @@ public class PetrinetBuilder {
             if(artifactsExist(f.getSingleObject())){
                 p= getExistingPlace(f.getSingleObject());
             }else{
-                p=new Place(false,getOriginID(f.getSingleObject()));
+                p=elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
                 petriNet.add(p);
             }
       //  }
@@ -178,7 +194,7 @@ public class PetrinetBuilder {
                 if(artifactsExist(a)){
                     p= getExistingPlace(a);
                 }else{
-                    p=new Place(false,getOriginID(a));
+                    p= elementBuilder.createPlace(false,getOriginID(a));
                     petriNet.add(p);
             }
             sources.add(p);
@@ -189,7 +205,7 @@ public class PetrinetBuilder {
 
     private Transition createTransition(Action a, boolean isGateway){
         boolean hasResource =a.getObject() != null;
-        Transition t = new Transition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+        Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
         if(a.getActorFrom()!=null){
@@ -222,19 +238,19 @@ public class PetrinetBuilder {
             boolean initiallyFound = artifactsExist(f.getSingleObject());
             Place p1= getSourcePlaceForSplitFlow(f);
             if(!initiallyFound){
-                Place p0= new Place(true,"");
+                Place p0=elementBuilder.createPlace(false,"");
                 petriNet.add(p0);
                 Transition t0= createTransition(f.getSingleObject(),false);
                 petriNet.add(t0);
-                petriNet.add(new Arc(p0.getPlaceID(),t0.getTransID(),""));
-                petriNet.add(new Arc(t0.getTransID(),p1.getPlaceID(),getOriginID(f.getSingleObject())));
+                petriNet.add(elementBuilder.createArc(p0.getID(),t0.getID(),""));
+                petriNet.add(elementBuilder.createArc(t0.getID(),p1.getID(),getOriginID(f.getSingleObject())));
             }
             Transition t1= createTransition(f.getMultipleObjects().get(0),false);
             petriNet.add(t1);
-            Place p2 = new Place(false,getOriginID(f.getMultipleObjects().get(0)));
+            Place p2 =elementBuilder.createPlace(false,getOriginID(f.getMultipleObjects().get(0)));
             petriNet.add(p2);
-            Arc a1 = new Arc(p1.getPlaceID(),t1.getTransID(),getOriginID(f.getMultipleObjects().get(0)));
-            Arc a2 = new Arc(t1.getTransID(),p2.getPlaceID(),getOriginID(f.getMultipleObjects().get(0)));
+            Arc a1 =elementBuilder.createArc(p1.getID(),t1.getID(),getOriginID(f.getMultipleObjects().get(0)));
+            Arc a2 =elementBuilder.createArc(t1.getID(),p2.getID(),getOriginID(f.getMultipleObjects().get(0)));
             petriNet.add(a1);
             petriNet.add(a2);
         }
@@ -249,25 +265,36 @@ public class PetrinetBuilder {
         while(i.hasNext()){
 
             Action a = i.next();
-            Place targetPlace = new Place(false,"");
+            Place targetPlace = elementBuilder.createPlace(false,"");
             targetPlaces.add(targetPlace);
             petriNet.add(targetPlace);
 
             Transition t = createTransition(a,false);
             petriNet.add(t);
-            Place p2= new Place(false, getOriginID(a));
+            Place p2= elementBuilder.createPlace(false, getOriginID(a));
             petriNet.add(p2);
-            petriNet.add(new Arc(targetPlace.getPlaceID(),t.getTransID(),getOriginID(a)));
-            petriNet.add(new Arc(t.getTransID(),p2.getPlaceID(),getOriginID(a)));
+            petriNet.add(elementBuilder.createArc(targetPlace.getID(),t.getID(),getOriginID(a)));
+            petriNet.add(elementBuilder.createArc(t.getID(),p2.getID(),getOriginID(a)));
         }
         if(f.getType().equals(FlowType.concurrency)){
-            ANDSplit as=new ANDSplit("",false,"");
+            ANDSplit as=new ANDSplit("",false,"",elementBuilder);
             as.addANDSplitToPetriNet(petriNet,p1,targetPlaces);
         }else if(f.getType().equals(FlowType.choice)||f.getType().equals(FlowType.multiChoice) ||f.getType().equals(FlowType.iteration)){
-            XORSplit xs = new XORSplit(splitList.size(),"");
+            XORSplit xs = new XORSplit(splitList.size(),"",elementBuilder);
             xs.addXORSplitToPetriNet(petriNet,p1,targetPlaces);
         }
 
+    }
+
+    private List<Place> getAllDummyPlaces(){
+        ArrayList<Place> dummyPlaces= new ArrayList<Place>();
+        Iterator<Place> i = petriNet.getPlaceList().iterator();
+        while(i.hasNext()){
+            Place p = i.next();
+            if(p.getOriginID().startsWith("Dummy"))
+                dummyPlaces.add(p);
+        }
+        return dummyPlaces;
     }
 
 

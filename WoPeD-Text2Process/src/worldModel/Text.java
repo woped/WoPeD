@@ -1,10 +1,10 @@
-package text;
+package worldModel;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import transform.ListUtils;
+import TextToWorldModel.transform.ListUtils;
 
 public class Text {
 

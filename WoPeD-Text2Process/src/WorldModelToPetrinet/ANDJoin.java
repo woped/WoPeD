@@ -5,24 +5,25 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import java.util.Iterator;
 import java.util.List;
 
-public class ANDJoin {
+public class ANDJoin extends PetrinetGateway {
 
     Transition join;
     String originID;
-    public ANDJoin(String text, boolean hasResource, String originID){
+    public ANDJoin(String text, boolean hasResource, String originID, PetrinetElementBuilder elementBuilder){
+        super(elementBuilder);
         this.originID=originID;
-        join=new Transition(text,hasResource,true,originID);
-        join.setPartOfGateway(1,join.getTransID());
+        join=elementBuilder.createTransition(text,hasResource,true,originID);
+        join.setPartOfGateway(1,join.getID());
         join.setOperatorType(OperatorTransitionModel.AND_JOIN_TYPE);
         join.setOrientationCode(3);
 
     }
     public void addANDJoinToPetriNet(PetriNet petriNet, List<Place> sources, Place target){
-        petriNet.add(new Arc(join.getTransID(), target.getPlaceID(),originID));
+        petriNet.add(elementBuilder.createArc(join.getID(), target.getID(),originID));
         Iterator<Place> i = sources.iterator();
         while(i.hasNext()){
             Place p = i.next();
-            petriNet.add(new Arc(p.getPlaceID(),join.getTransID(),originID));
+            petriNet.add(elementBuilder.createArc(p.getID(),join.getID(),originID));
         }
         petriNet.add(join);
     }

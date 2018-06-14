@@ -27,8 +27,13 @@ public class StanfordParserInitializer {
     }
     public static StanfordParserInitializer getInstance(){
         if (SPinitializer == null){
-            SPinitializer = new StanfordParserInitializer();
-            SPinitializer.init();
+            synchronized (StanfordParserInitializer.class) {
+                if (SPinitializer == null) {
+                    SPinitializer = new StanfordParserInitializer();
+                    SPinitializer.init();
+                }
+            }
+
         }
         return SPinitializer;
     }

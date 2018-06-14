@@ -3,8 +3,6 @@
  */
 package worldModel;
 
-import text.T2PSentence;
-
 public class OriginatedElement {
 	
 	private T2PSentence f_origin;

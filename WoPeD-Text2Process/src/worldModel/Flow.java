@@ -6,8 +6,6 @@ package worldModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import text.T2PSentence;
-
 public class Flow extends OriginatedElement{
 	
 	private List<Action> f_multiples = new ArrayList<Action>();
