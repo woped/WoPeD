@@ -4,6 +4,7 @@ import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.FrameNetInitializer;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetInitializer;
+import WorldModelToPetrinet.IDHandler;
 import edu.stanford.nlp.ling.Word;
 import worldModel.T2PSentence;
 import worldModel.Text;
@@ -55,6 +56,7 @@ public class WorldModelBuilder {
     }
 
     private WorldModel buildWorldModelMock(){
+        IDHandler idHandler = new IDHandler(1);
         //create text representation of the mock WorldModel
         String [][] mockText = {{"The", "manager", "finishes", "the", "documents","."},
                                 {"If", "he", "likes", "it",",", "he", "sends", "it", "to", "the", "office","."},
@@ -141,7 +143,7 @@ public class WorldModelBuilder {
             s2.setObject(r[4]);
         //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
         act[3].addSpecifiers(s2);
-        act[4]= new DummyAction();
+        act[4]= new DummyAction(idHandler);
         for (int i = 0;i<act.length;i++){
             mockWM.addAction(act[i]);
         }
@@ -151,7 +153,7 @@ public class WorldModelBuilder {
         f[0] = new Flow(mockTextT2P.getSentence(0));
         f[0].setDirection(Flow.FlowDirection.split);
         f[0].setType(Flow.FlowType.sequence);
-        f[0].setSingleObject(new DummyAction());
+        f[0].setSingleObject(new DummyAction(idHandler));
             ArrayList<Action> mo1 = new ArrayList<Action>();
             mo1.add(act[0]);
         f[0].setMultipleObjects(mo1);

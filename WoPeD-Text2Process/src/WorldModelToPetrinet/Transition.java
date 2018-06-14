@@ -150,7 +150,7 @@ public class Transition extends PetriNetElement {
                 toolSpecific.appendChild(operator);
             }
 
-            if (hasResource == true) {
+    /*        if (hasResource == true) {
 
                 Element trigger = doc.createElement("trigger");
                 trigger.setAttribute("id", "");
@@ -188,7 +188,7 @@ public class Transition extends PetriNetElement {
                 dimensionOfResource.setAttribute("y", "" + resourceDimensionY);
                 graphicsOfResource.appendChild(dimensionOfResource);
 
-            }
+            }*/
 
             Element time = doc.createElement("time");
             time.appendChild(doc.createTextNode("0"));

@@ -8,6 +8,8 @@ import java.util.List;
 
 public class PetriNet {
 
+    public enum REFERENCE_DIRECTION {ingoing,outgoing,all};
+
     private ArrayList<Arc> arcList= new ArrayList<Arc>();
     private ArrayList<Place> placeList= new ArrayList<Place>();
     private ArrayList<Transition> transitionList= new ArrayList<Transition>();
@@ -17,7 +19,7 @@ public class PetriNet {
        /* Transition.resetStaticContext();
         Arc.resetStaticContext();
         Place.resetStaticContext();*/
-        DummyAction.resetStaticContext();
+        //DummyAction.resetStaticContext();
         elementBuilder= new PetrinetElementBuilder();
     }
 
@@ -183,5 +185,72 @@ public class PetriNet {
         XORJoin xj= new XORJoin(sinks.size(),"",elementBuilder);
         xj.addXORJoinToPetriNet(this,sinks,sink);
     }
+
+    public PetriNetElement getPetrinetElementByID(String ID){
+        ArrayList<ArrayList<? extends PetriNetElement>> elementLists = new  ArrayList<ArrayList<? extends PetriNetElement>> ();
+        elementLists.add(arcList);
+        elementLists.add(placeList);
+        elementLists.add(transitionList);
+        Iterator<ArrayList<? extends PetriNetElement>> i = elementLists.iterator();
+        while(i.hasNext()){
+            ArrayList<? extends PetriNetElement> elementList = i.next();
+            Iterator<? extends PetriNetElement> j = elementList.iterator();
+            while(j.hasNext()){
+                PetriNetElement element= j.next();
+                if(element.getID().equals(ID)){
+                    return element;
+                }
+            }
+        }
+        //if nothing is found
+        return null;
+    }
+
+    public boolean removePetrinetElementByID(String ID){
+        ArrayList<ArrayList<? extends PetriNetElement>> elementLists = new  ArrayList<ArrayList<? extends PetriNetElement>> ();
+        elementLists.add(arcList);
+        elementLists.add(placeList);
+        elementLists.add(transitionList);
+        Iterator<ArrayList<? extends PetriNetElement>> i = elementLists.iterator();
+        while(i.hasNext()){
+            ArrayList<? extends PetriNetElement> elementList = i.next();
+            Iterator<? extends PetriNetElement> j = elementList.iterator();
+            while(j.hasNext()){
+                PetriNetElement element= j.next();
+                if(element.getID().equals(ID)){
+                    j.remove();
+                    return true;
+                }
+            }
+        }
+        //if nothing is found
+        return false;
+    }
+
+    public List<Arc> getAllReferencingArcsForElement(String ID, REFERENCE_DIRECTION directionRestriction ){
+    PetriNetElement element = getPetrinetElementByID(ID);
+    ArrayList<Arc> referencingArcs = new ArrayList<Arc>();
+    if(element!=null){
+        Iterator<Arc> i = arcList.iterator();
+        while(i.hasNext()){
+            Arc a= i.next();
+            switch (directionRestriction) {
+                case ingoing:
+                    if(a.getTarget().equals(element.getID()))
+                        referencingArcs.add(a);
+                    break;
+                case outgoing:
+                    if(a.getSource().equals(element.getID()))
+                        referencingArcs.add(a);
+                    break;
+                default:
+                    if(a.getSource().equals(element.getID())||a.getTarget().equals(element.getID()))
+                        referencingArcs.add(a);
+            }
+        }
+    }
+    return referencingArcs;
+    }
+
 
 }

@@ -1,8 +1,11 @@
 package WorldModelToPetrinet;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
@@ -10,6 +13,8 @@ import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;
 
 public class PetrinetBuilder {
+
+    public static final String DUMMY_PREFIX="DUMMY";
     private WorldModel processWM;
     private PetrinetElementBuilder elementBuilder;
     private List<Flow> flowsFromWM = new ArrayList<Flow>();
@@ -75,7 +80,7 @@ public class PetrinetBuilder {
                 }
             }
         }
-
+        //removeDummyNodes();
         // Sanitize to Workflownet
         List<Place> sinks = petriNet.getAllSinks();
         if(sinks.size()>1){
@@ -140,7 +145,7 @@ public class PetrinetBuilder {
     private String getOriginID(SpecifiedElement element){
         if(isDummyAction((Action) element)){
             DummyAction d= (DummyAction) element;
-            return "Dummy"+d.getDummyID();
+            return DUMMY_PREFIX+d.getDummyID();
         }else{
             int sentenceID = element.getOrigin().getID();
             int wordIndex = element.getWordIndex();
@@ -203,9 +208,29 @@ public class PetrinetBuilder {
         return sources;
     }
 
+    public static String splitString(String msg, int lineSize) {
+        String res="";
+        //List<String> res = new ArrayList<>();
+
+        Pattern p = Pattern.compile("\\b.{1," + (lineSize-1) + "}\\b\\W?");
+        Matcher m = p.matcher(msg);
+
+        while(m.find()) {
+            System.out.println(m.group().trim());   // Debug
+            res =res+m.group()+"\n";
+            //res.add(m.group());
+        }
+        return res;
+    }
+
     private Transition createTransition(Action a, boolean isGateway){
         boolean hasResource =a.getObject() != null;
+        ProcessModelBuilder mb= new ProcessModelBuilder();
+       /* String label= mb.createTaskText(a);
+        label =splitString(label,20);
+        label = label.trim();*/
         Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
         if(a.getActorFrom()!=null){
@@ -291,12 +316,54 @@ public class PetrinetBuilder {
         Iterator<Place> i = petriNet.getPlaceList().iterator();
         while(i.hasNext()){
             Place p = i.next();
-            if(p.getOriginID().startsWith("Dummy"))
+            if(p.getOriginID().startsWith(DUMMY_PREFIX))
                 dummyPlaces.add(p);
         }
         return dummyPlaces;
     }
 
+    private void removeDummyNodes(){
+        List<Place> dummyList = getAllDummyPlaces();
+        Iterator<Place> i = dummyList.iterator();
+        while(i.hasNext()){
+            Place dummyPlace = i.next();
+            List<Arc> ingoingArcs = petriNet.getAllReferencingArcsForElement(dummyPlace.getID(),PetriNet.REFERENCE_DIRECTION.ingoing);
+            if(ingoingArcs.size()==1){
+                Transition dummyTransition = (Transition) petriNet.getPetrinetElementByID(ingoingArcs.get(0).getSource());
+
+                //remove Arc between Dummy Transition + Place
+                petriNet.removePetrinetElementByID(ingoingArcs.get(0).getID());
+
+                //handle n sources x m targets Situation
+                ArrayList<Transition> newTargets = new ArrayList<Transition>();
+                Iterator<Arc> ntI = petriNet.getAllReferencingArcsForElement(dummyPlace.getID(), PetriNet.REFERENCE_DIRECTION.outgoing).iterator();
+                while(ntI.hasNext()){
+                    Arc a = ntI.next();
+                    newTargets.add((Transition) petriNet.getPetrinetElementByID(a.getTarget()));
+                    petriNet.removePetrinetElementByID(a.getID());
+                }
+
+                Iterator<Arc> nsI = petriNet.getAllReferencingArcsForElement(dummyTransition.getID(), PetriNet.REFERENCE_DIRECTION.ingoing).iterator();
+                while(nsI.hasNext()){
+                    Arc a = nsI.next();
+                    Iterator<Transition> newTargetIterator = newTargets.iterator();
+                    while(newTargetIterator.hasNext()){
+                        petriNet.add(elementBuilder.createArc(a.getSource(),newTargetIterator.next().getID(),""));
+                    }
+                    petriNet.removePetrinetElementByID(a.getID());
+                }
+
+                //remove DummyElements
+                petriNet.removePetrinetElementByID(dummyPlace.getID());
+                petriNet.removePetrinetElementByID(dummyTransition.getID());
+
+            }else{
+                /*do nothing, currently cant be handled*/
+                //TODO check if possible
+            }
+
+        }
+    }
 
     // Get XML String with all transitions
     /*private String getTransitionsFromWM() {

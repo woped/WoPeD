@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import ToolWrapper.WordNetFunctionality;
+import WorldModelToPetrinet.IDHandler;
 import edu.mit.jwi.item.POS;
 
 import TextToWorldModel.Constants;
@@ -53,7 +54,8 @@ public class TextAnalyzer {
 		INANIMATE,
 		BOTH
 	};
-	
+
+	private IDHandler dummyIDHandler;
 	private Text f_text;
 	private ArrayList<AnalyzedSentence> f_analyzedSentences = new ArrayList<AnalyzedSentence>();
 	
@@ -66,6 +68,7 @@ public class TextAnalyzer {
 	 * 
 	 */
 	public TextAnalyzer() {
+		dummyIDHandler=new IDHandler(1);
 	}
 	
 	public void analyze(Text textToAnalyze) {
@@ -410,7 +413,7 @@ public class TextAnalyzer {
 						Action _link = a.getLink();
 						Flow _fIn = findFlow(a,true);
 						Flow _fOut = findFlow(a,false);
-						DummyAction _da = new DummyAction(a);			
+						DummyAction _da = new DummyAction(a,dummyIDHandler);
 						f_world.addAction(_da);
 						if(_fIn.getDirection() == FlowDirection.join) {
 							_fIn.setSingleObject(_da);
@@ -430,7 +433,7 @@ public class TextAnalyzer {
 						//build a join in front of the link target
 						_fIn = findFlow(_link, true);
 						if(_fIn.getDirection() == FlowDirection.split) {
-							DummyAction _da2 = new DummyAction(a);
+							DummyAction _da2 = new DummyAction(a,dummyIDHandler);
 							f_world.addAction(_da2);
 							_fIn.getMultipleObjects().add(_da2);
 							_fIn.getMultipleObjects().remove(_link);
@@ -456,7 +459,7 @@ public class TextAnalyzer {
 
 	private Flow joinOnDummyNode(List<Action> cameFrom, T2PSentence base,Flow flow) {
 		//building a join on a dummy node
-		DummyAction _da = new DummyAction(cameFrom.get(0));
+		DummyAction _da = new DummyAction(cameFrom.get(0),dummyIDHandler);
 		f_world.addAction(_da);
 		buildJoin(flow,cameFrom, _da);
 		f_world.addFlow(flow);
@@ -494,10 +497,10 @@ public class TextAnalyzer {
 		for(Actor ac:_actors) {
 			List<Action> _actions = getActionsFor(ac,allActions);
 			//build one block for each actor
-			DummyAction _daStart = new DummyAction(_actions.get(0));
+			DummyAction _daStart = new DummyAction(_actions.get(0),dummyIDHandler);
 			f_world.addAction(_daStart);
 			_entries.add(_daStart);
-			DummyAction _daEnd = new DummyAction(_actions.get(0));
+			DummyAction _daEnd = new DummyAction(_actions.get(0),dummyIDHandler);
 			f_world.addAction(_daEnd);
 			_exits.add(_daEnd);			
 			buildBlock(base,_daStart,_daEnd,_actions,conjs);			
@@ -508,7 +511,7 @@ public class TextAnalyzer {
 		f_world.addFlow(flow);
 		
 
-		DummyAction _da = new DummyAction(allActions.get(0));
+		DummyAction _da = new DummyAction(allActions.get(0),dummyIDHandler);
 		f_world.addAction(_da);
 		
 		Flow _join = new Flow(base);
@@ -567,7 +570,7 @@ public class TextAnalyzer {
 	private void createDummyStartNode(List<Action> _cameFrom, Flow flow) {
 		if(_cameFrom.size() == 0) {
 			//we need a starting point
-			DummyAction _da = new DummyAction();
+			DummyAction _da = new DummyAction(dummyIDHandler);
 			f_world.addAction(_da);
 			_cameFrom.add(_da);
 			flow.setSingleObject(_da);
@@ -584,7 +587,7 @@ public class TextAnalyzer {
 			}
 			if(f_lastSplit != null) {
 				//adding gateway block in a sub branch of this if/else split
-				DummyAction _da = new DummyAction(gatewayActions.get(0));
+				DummyAction _da = new DummyAction(gatewayActions.get(0),dummyIDHandler);
 				f_world.addAction(_da);
 				openSplit.addAll(getEnds(f_lastSplit.getMultipleObjects())); //marking all open ends	
 				f_lastSplit.getMultipleObjects().add(_da);
@@ -618,7 +621,7 @@ public class TextAnalyzer {
 		}	
 		//it could happen that we cleaned all branches!
 		if(cameFrom.size() == 0) {
-			DummyAction _da = new DummyAction(gatewayActions.get(0));
+			DummyAction _da = new DummyAction(gatewayActions.get(0),dummyIDHandler);
 			f_world.addAction(_da);
 			flow.getMultipleObjects().add(_da);
 			cameFrom.add(_da);
@@ -644,7 +647,7 @@ public class TextAnalyzer {
 		if(cameFrom.size() >= 1) {			
 			if(cameFrom.size() > 1)  {
 				Flow _dummyFlow = new Flow(_base);
-				DummyAction _da = new DummyAction(action);
+				DummyAction _da = new DummyAction(action,dummyIDHandler);
 				f_world.addAction(_da);
 				buildJoin(_dummyFlow,cameFrom,_da);
 				clearSplit(openSplit);
