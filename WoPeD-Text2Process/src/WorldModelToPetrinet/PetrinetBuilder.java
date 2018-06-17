@@ -1,6 +1,5 @@
 package WorldModelToPetrinet;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -80,23 +79,8 @@ public class PetrinetBuilder {
                 }
             }
         }
-        //removeDummyNodes();
-        // Sanitize to Workflownet
-        List<Place> sinks = petriNet.getAllSinks();
-        if(sinks.size()>1){
-            petriNet.unifySinks(sinks);
-        }
-        else{
-            sinks.get(0).setText("end");
-        }
-        List<Place> sources = petriNet.getAllSources();
-        if(sources.size()>1){
-            petriNet.unifySources(sources);
-        }else{
-            sources.get(0).setText("start");
-            sources.get(0).setHasMarking(true);
-        }
-
+        removeDummyNodes();
+        petriNet.transformToWorkflowNet();
 
     }
 
@@ -129,19 +113,6 @@ public class PetrinetBuilder {
         return a.getName().equals("Dummy Node");
     }
 
-    private String generateTransitionLabel(Action a) {
-        String transitionlabel="";
-        if(isDummyAction(a)){
-            transitionlabel+="";
-        }else {
-            if (a.getMarker() != null)
-                transitionlabel += a.getMarker() + " ";
-            transitionlabel += a.getVerb() + " ";
-            if (a.getCop() != null)
-                transitionlabel += a.getCop();
-        }
-        return transitionlabel;
-    }
     private String getOriginID(SpecifiedElement element){
         if(isDummyAction((Action) element)){
             DummyAction d= (DummyAction) element;
@@ -185,7 +156,6 @@ public class PetrinetBuilder {
                 p=elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
                 petriNet.add(p);
             }
-      //  }
         return p;
     }
 
@@ -208,6 +178,21 @@ public class PetrinetBuilder {
         return sources;
     }
 
+    //first approach for Transition Label generation
+   /* private String generateTransitionLabel(Action a) {
+        String transitionlabel="";
+        if(isDummyAction(a)){
+            transitionlabel+="";
+        }else {
+            if (a.getMarker() != null)
+                transitionlabel += a.getMarker() + " ";
+            transitionlabel += a.getVerb() + " ";
+            if (a.getCop() != null)
+                transitionlabel += a.getCop();
+        }
+        return transitionlabel;
+    }
+
     public static String splitString(String msg, int lineSize) {
         String res="";
         //List<String> res = new ArrayList<>();
@@ -221,18 +206,23 @@ public class PetrinetBuilder {
             //res.add(m.group());
         }
         return res;
-    }
+    }*/
 
     private Transition createTransition(Action a, boolean isGateway){
         boolean hasResource =a.getObject() != null;
-        ProcessModelBuilder mb= new ProcessModelBuilder();
-       /* String label= mb.createTaskText(a);
-        label =splitString(label,20);
-        label = label.trim();*/
-        Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+        ProcessLabelGenerator mb= new ProcessLabelGenerator();
 
+        //Transition Text
+        Transition t = elementBuilder.createTransition(mb.createTaskText(a),hasResource,isGateway, getOriginID(a));
+        //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+
+        //Resource Text
+        //TODO Refactor
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
+
+        //Org Text
+        //TODO Refactor
         if(a.getActorFrom()!=null){
             if(a.getActorFrom().getReference()!=null){
                 if(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
@@ -251,14 +241,12 @@ public class PetrinetBuilder {
                 t.setRoleName(a.getActorFrom().getName());
             }
         }
-
-
         return t;
     }
 
     private void createSequence(Flow f){
 
-        //check refers (apparently) to a bug during WorldModel Creation: Sequences among Equal Actions are created -> Inconsistency
+        //check refers (apparently) to a bug during WorldModel Creation: Sequences among Equal Actions are created -> Inconsistency -> ignore
         if(!getOriginID(f.getMultipleObjects().get(0)).equals(getOriginID(f.getSingleObject()))){
             boolean initiallyFound = artifactsExist(f.getSingleObject());
             Place p1= getSourcePlaceForSplitFlow(f);
@@ -286,7 +274,6 @@ public class PetrinetBuilder {
         List<Action> splitList = f.getMultipleObjects();
         ArrayList<Place> targetPlaces = new ArrayList<Place>();
         Iterator<Action> i = splitList.iterator();
-        //Place targetPlace = new Place(false,getOriginID(f.getSingleObject()));
         while(i.hasNext()){
 
             Action a = i.next();

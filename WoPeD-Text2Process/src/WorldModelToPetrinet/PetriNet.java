@@ -9,6 +9,7 @@ import java.util.List;
 public class PetriNet {
 
     public enum REFERENCE_DIRECTION {ingoing,outgoing,all};
+    public enum ISOLATED_PLACE_TYPE {source,sink};
 
     private ArrayList<Arc> arcList= new ArrayList<Arc>();
     private ArrayList<Place> placeList= new ArrayList<Place>();
@@ -16,10 +17,6 @@ public class PetriNet {
     private PetrinetElementBuilder elementBuilder;
 
     public PetriNet(){
-       /* Transition.resetStaticContext();
-        Arc.resetStaticContext();
-        Place.resetStaticContext();*/
-        //DummyAction.resetStaticContext();
         elementBuilder= new PetrinetElementBuilder();
     }
 
@@ -52,81 +49,11 @@ public class PetriNet {
         return transitionList;
     }
 
-    private Place getPlaceById(String id){
-
-        Iterator<Place> i = placeList.iterator();
-        while (i.hasNext()){
-            Place p = i.next();
-            if(p.getID().equals(id)){
-                return p;
-            }
-        }
-        //not found
-        return null;
+    public void transformToWorkflowNet(){
+        healDanglingTransitions();
+        unifySources();
+        unifySinks();
     }
-
-    public List<Place> getAllSinks(){
-        ArrayList<Place> sourcePlaces = new ArrayList<Place>();
-        Iterator<Arc> i = arcList.iterator();
-        while(i.hasNext()){
-            Arc a = i.next();
-            String elementID= a.getSource();
-            if(elementID.startsWith("p")){
-                //Place
-                sourcePlaces.add(getPlaceById(elementID));
-            }
-        }
-        ArrayList<Place> sinks = new ArrayList<Place>();
-        Iterator<Place> i2 = placeList.iterator();
-        while(i2.hasNext()){
-            Place p = i2.next();
-            boolean found=false;
-            Iterator<Place> i3 = sourcePlaces.iterator();
-            while(i3.hasNext()){
-                Place p2 = i3.next();
-                if(p.getID().equals(p2.getID())){
-                    found=true;
-                }
-            }
-            if(!found){
-                sinks.add(p);
-            }
-
-        }
-        return sinks;
-    }
-
-    public List<Place> getAllSources(){
-        ArrayList<Place> targetPlaces = new ArrayList<Place>();
-        Iterator<Arc> i = arcList.iterator();
-        while(i.hasNext()){
-            Arc a = i.next();
-            String elementID= a.getTarget();
-            if(elementID.startsWith("p")){
-                //Place
-                targetPlaces.add(getPlaceById(elementID));
-            }
-        }
-        ArrayList<Place> sources = new ArrayList<Place>();
-        Iterator<Place> i2 = placeList.iterator();
-        while(i2.hasNext()){
-            Place p = i2.next();
-            boolean found=false;
-            Iterator<Place> i3 = targetPlaces.iterator();
-            while(i3.hasNext()){
-                Place p2 = i3.next();
-                if(p.getID().equals(p2.getID())){
-                    found=true;
-                }
-            }
-            if(!found){
-                sources.add(p);
-            }
-
-        }
-        return sources;
-    }
-
 
     public String getPNML(){
         String PNML= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -157,33 +84,6 @@ public class PetriNet {
                 "  </net>\n" +
                 "</pnml>";
         return PNML;
-    }
-
-    public void unifySources(List<Place> sources){
-        Iterator<Place> i = sources.iterator();
-        Transition t = elementBuilder.createTransition("startprocess",false,false,"");
-        Place source = elementBuilder.createPlace(false,"");
-        source.setText("start");
-        source.setHasMarking(true);
-        Arc a1= elementBuilder.createArc(source.getID(),t.getID(),"");
-        while(i.hasNext()){
-            Place p = i.next();
-            Arc a = elementBuilder.createArc(t.getID(),p.getID(),"");
-            placeList.add(p);
-            arcList.add(a);
-        }
-        transitionList.add(t);
-        placeList.add(source);
-        arcList.add(a1);
-    }
-
-    public void unifySinks(List<Place> sinks){
-        Iterator<Place> i = sinks.iterator();
-        Place sink = elementBuilder.createPlace(false,"");
-        placeList.add(sink);
-        sink.setText("end");
-        XORJoin xj= new XORJoin(sinks.size(),"",elementBuilder);
-        xj.addXORJoinToPetriNet(this,sinks,sink);
     }
 
     public PetriNetElement getPetrinetElementByID(String ID){
@@ -252,5 +152,93 @@ public class PetriNet {
     return referencingArcs;
     }
 
+    private List<Place> getAllIsolatedElements(ISOLATED_PLACE_TYPE placeType) {
+        ArrayList<Place> isolatedPlaces = new ArrayList<Place>();
+        Iterator<Place> i = placeList.iterator();
+        while(i.hasNext()){
+            Place p = i.next();
 
+            switch (placeType) {
+                case sink:
+                    if(isSink(p))
+                        isolatedPlaces.add(p);
+                    break;
+                case source:
+                    if(isSource(p))
+                        isolatedPlaces.add(p);
+                    break;
+                default: break;
+            }
+        }
+        return isolatedPlaces;
+    }
+
+    private boolean isSource(Place p){
+        return getAllReferencingArcsForElement(p.getID(),REFERENCE_DIRECTION.ingoing).size()==0;
+    }
+
+    private boolean isSink(Place p){
+        return getAllReferencingArcsForElement(p.getID(),REFERENCE_DIRECTION.outgoing).size()==0;
+    }
+
+    private void unifySources(){
+        List<Place> sources = getAllIsolatedElements(ISOLATED_PLACE_TYPE.source);
+        if(sources.size()>1){
+            Iterator<Place> i = sources.iterator();
+            Transition t = elementBuilder.createTransition("startprocess",false,false,"");
+            Place source = elementBuilder.createPlace(false,"");
+            source.setText("start");
+            source.setHasMarking(true);
+            Arc a1= elementBuilder.createArc(source.getID(),t.getID(),"");
+            while(i.hasNext()){
+                Arc a = elementBuilder.createArc(t.getID(),i.next().getID(),"");
+                arcList.add(a);
+            }
+            transitionList.add(t);
+            placeList.add(source);
+            arcList.add(a1);
+        }else{
+            sources.get(0).setText("start");
+            sources.get(0).setHasMarking(true);
+        }
+    }
+
+    private void unifySinks(){
+        List<Place> sinks = getAllIsolatedElements(ISOLATED_PLACE_TYPE.sink);
+        if(sinks.size()>1){
+            Iterator<Place> i = sinks.iterator();
+            Place sink = elementBuilder.createPlace(false,"");
+            placeList.add(sink);
+            sink.setText("end");
+            XORJoin xj= new XORJoin(sinks.size(),"",elementBuilder);
+            xj.addXORJoinToPetriNet(this,sinks,sink);
+        }else{
+            sinks.get(0).setText("end");
+        }
+    }
+
+    private void healDanglingTransitions(){
+        Iterator<Transition> i = transitionList.iterator();
+        while(i.hasNext()){
+            Transition t = i.next();
+            boolean hasOutgoingArcs =getAllReferencingArcsForElement(t.getID(),REFERENCE_DIRECTION.outgoing).size()>0;
+            boolean hasIngoingArcs =getAllReferencingArcsForElement(t.getID(),REFERENCE_DIRECTION.ingoing).size()>0;
+
+            if( (!hasIngoingArcs) && (!hasOutgoingArcs)){
+                //fully Isolated Transition
+                removePetrinetElementByID(t.getID());
+
+            }else if(!hasIngoingArcs){
+                Place p = elementBuilder.createPlace(false,"");
+                this.add(p);
+                this.add(elementBuilder.createArc(p.getID(),t.getID(),""));
+
+            }else if(!hasOutgoingArcs){
+                Place p = elementBuilder.createPlace(false,"");
+                this.add(p);
+                this.add(elementBuilder.createArc(t.getID(),p.getID(),""));
+            }
+
+        }
+    }
 }
