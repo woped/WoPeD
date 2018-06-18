@@ -1,12 +1,8 @@
 import TextToWorldModel.WorldModelBuilder;
 import WorldModelToPetrinet.PetrinetBuilder;
-import jdk.internal.org.xml.sax.SAXException;
-import jdk.nashorn.internal.runtime.Source;
 import org.junit.Test;
-import org.woped.file.PNMLImport;
 import worldModel.WorldModel;
 
-import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -14,10 +10,8 @@ import javax.xml.validation.Validator;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 
-import static com.apple.eio.FileManager.getResource;
 import static org.junit.Assert.assertEquals;
 
 public class STWorldModelToPetriNet {
@@ -76,6 +70,7 @@ public class STWorldModelToPetriNet {
         WorldModel wm = WMBuilder.buildWorldModel(true);
         PetrinetBuilder PNBuilder = new PetrinetBuilder(wm);
         PetriNetPNML=PNBuilder.buildPNML();
+        System.out.println(PetriNetPNML);
         assertEquals("Generated PNML is invalid to its XSD.",true,validateXMLSchema(filePath+"pnml_wf.xsd"));
         assertEquals("Generated PNML does not equal expectation.",true,PetriNetPNML.equals(exspectedPNML));
 
@@ -87,10 +82,10 @@ public class STWorldModelToPetriNet {
             Validator validator = schema.newValidator();
             validator.validate(new StreamSource(new ByteArrayInputStream(PetriNetPNML.getBytes(StandardCharsets.UTF_8))));
         } catch (IOException e) {
-            //System.out.println("Exception: "+e.getMessage());
+            System.out.println("Exception: "+e.getMessage());
             return false;
         } catch (org.xml.sax.SAXException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             return false;
         }
         return true;
