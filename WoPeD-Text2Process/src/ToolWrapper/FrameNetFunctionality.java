@@ -4,11 +4,10 @@ import TextToWorldModel.Constants;
 import de.saar.coli.salsa.reiter.framenet.*;
 import de.saar.coli.salsa.reiter.framenet.fncorpus.*;
 import edu.mit.jwi.item.POS;
-import transform.SearchUtils;
+import TextToWorldModel.transform.SearchUtils;
 import worldModel.Action;
 import worldModel.SpecifiedElement;
 import worldModel.Specifier;
-import ToolWrapper.FrameNetFunctionality.PhraseType;
 
 import java.util.Arrays;
 import java.util.Collection;

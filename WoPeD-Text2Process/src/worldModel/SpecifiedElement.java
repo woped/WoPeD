@@ -6,7 +6,6 @@ package worldModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import text.T2PSentence;
 import worldModel.Specifier.SpecifierType;
 
 public abstract class SpecifiedElement extends OriginatedElement implements Comparable<SpecifiedElement>{

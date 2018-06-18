@@ -8,7 +8,7 @@ import edu.stanford.nlp.trees.GrammaticalStructure;
 import edu.stanford.nlp.trees.GrammaticalStructureFactory;
 import edu.stanford.nlp.trees.TreebankLanguagePack;
 import org.junit.Test;
-import text.Text;
+import worldModel.Text;
 
 public class UTStanfordParser {
     @Test

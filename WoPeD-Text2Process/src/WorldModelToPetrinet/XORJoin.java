@@ -6,18 +6,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class XORJoin {
+public class XORJoin extends PetrinetGateway {
     String transID;
     private int sourceCount;
     private String originID;
     private ArrayList<Transition> joins= new ArrayList<Transition>();
 
-    public XORJoin(int sourceCount,String originID){
+    public XORJoin(int sourceCount,String originID, PetrinetElementBuilder elementBuilder){
+        super(elementBuilder);
         this.sourceCount=sourceCount;
         this.originID=originID;
-        transID = new Transition("",false,false,"").getTransID();
+        transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<sourceCount;i++){
-            Transition source = new Transition("",false,true,"");
+            Transition source = elementBuilder.createTransition("",false,true,"");
             source.setPartOfGateway(i+1,transID);
             source.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
             source.setOrientationCode(3);
@@ -31,9 +32,9 @@ public class XORJoin {
         int j=0;
         while(i.hasNext()){
             Place p = i.next();
-            petriNet.add(new Arc(p.getPlaceID(),joins.get(j).getTransID(),originID));
+            petriNet.add(elementBuilder.createArc(p.getID(),joins.get(j).getID(),originID));
             petriNet.add(joins.get(j));
-            petriNet.add(new Arc(joins.get(j).getTransID(),target.getPlaceID(),originID));
+            petriNet.add(elementBuilder.createArc(joins.get(j).getID(),target.getID(),originID));
             j++;
         }
 

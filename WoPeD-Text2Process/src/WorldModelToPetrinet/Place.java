@@ -11,34 +11,24 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
     public class Place extends PetriNetElement {
-        String text;
-        String placeID;
-        int XposPlace = 0, YposPlace = 0, XposText = 0, YposText = 0, dimensionX = 40, dimensionY = 40;
-        static int ID = 1;
-        boolean hasMarking = false;
 
-        public Place(boolean hasMarking, String originID) {
-            super(originID);
-            placeID = "p" + ID;
-            text = "p" + ID;
-            ID++;
+        private int XposPlace = 0, YposPlace = 0, XposText = 0, YposText = 0, dimensionX = 40, dimensionY = 40;
+
+        private boolean hasMarking = false;
+
+        public Place(boolean hasMarking, String originID, IDHandler idHandler) {
+            super(originID, idHandler);
+            ID = "p" + IDCounter;
+            text = "p" + IDCounter;
             this.hasMarking = hasMarking;
         }
-        public static void resetStaticContext(){
-            //TODO replace by ID handler -> Thread Safeness
-            ID=1;
+
+        public void setHasMarking(boolean hasMarking) {
+            this.hasMarking = hasMarking;
         }
 
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public String getPlaceID() {
-            return placeID;
+        public boolean hasMarking() {
+            return hasMarking;
         }
 
         // Creates XML Element for Place
@@ -50,7 +40,7 @@ import org.w3c.dom.Element;
                 icBuilder = icFactory.newDocumentBuilder();
                 Document doc = icBuilder.newDocument();
                 Element placeTag = doc.createElement("place");
-                placeTag.setAttribute("id", placeID);
+                placeTag.setAttribute("id", ID);
                 doc.appendChild(placeTag);
                 Element nameTag = doc.createElement("name");
                 placeTag.appendChild(nameTag);

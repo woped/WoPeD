@@ -8,9 +8,9 @@ import edu.stanford.nlp.trees.GrammaticalStructure;
 import edu.stanford.nlp.trees.GrammaticalStructureFactory;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreebankLanguagePack;
-import processing.ITextParsingStatusListener;
-import text.T2PSentence;
-import text.Text;
+import TextToWorldModel.processing.ITextParsingStatusListener;
+import worldModel.T2PSentence;
+import worldModel.Text;
 
 import java.io.*;
 import java.util.ArrayList;
