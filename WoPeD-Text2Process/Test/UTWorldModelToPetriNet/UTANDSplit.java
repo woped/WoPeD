@@ -26,7 +26,22 @@ public class UTANDSplit {
             "<arc id=\"a2\" source=\"t1_op_1\" target=\"p2\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a3\" source=\"t1_op_1\" target=\"p3\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a4\" source=\"t1_op_1\" target=\"p4\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
-            "  </net>\n" +
+            "<toolspecific tool=\"WoPeD\" version=\"1.0\">\n" +
+            "      <bounds>\n" +
+            "        <position x=\"2\" y=\"25\"/>\n" +
+            "        <dimension x=\"763\" y=\"574\"/>\n" +
+            "      </bounds>\n" +
+            "      <scale>100</scale>\n" +
+            "      <treeWidthRight>549</treeWidthRight>\n" +
+            "      <overviewPanelVisible>true</overviewPanelVisible>\n" +
+            "      <treeHeightOverview>100</treeHeightOverview>\n" +
+            "      <treePanelVisible>true</treePanelVisible>\n" +
+            "      <verticalLayout>false</verticalLayout>\n" +
+            "      <resources>\n" +
+            "\n" +
+            "\n" +
+            "      </resources>\n" +
+            "    </toolspecific>  </net>\n" +
             "</pnml>";
 
     @Test
