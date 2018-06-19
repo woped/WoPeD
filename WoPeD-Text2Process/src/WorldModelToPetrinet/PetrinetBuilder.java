@@ -209,35 +209,36 @@ public class PetrinetBuilder {
     }*/
 
     private Transition createTransition(Action a, boolean isGateway){
-        boolean hasResource =a.getObject() != null;
+        boolean hasResource = a.getObject() != null;
+        boolean hasRole = a.getActorFrom() != null;
+
         ProcessLabelGenerator mb= new ProcessLabelGenerator();
 
         //Transition Text
-        Transition t = elementBuilder.createTransition(mb.createTaskText(a),hasResource,isGateway, getOriginID(a));
-        //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+        Transition t = elementBuilder.createTransition(mb.createTaskText(a),hasRole,isGateway, getOriginID(a));
+        //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasRole,isGateway, getOriginID(a));
 
         //Resource Text
         //TODO Refactor
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
 
-        //Org Text
+        //Org Text: auskommentiert, da nicht verlässlich
         //TODO Refactor
-        if(a.getActorFrom()!=null){
+        if(a.getActorFrom()!= null){
             if(a.getActorFrom().getReference()!=null){
                 if(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
-                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
                 }else{
-                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
                 }
                 t.setRoleName(a.getActorFrom().getReference().getName());
             }else if(a.getActorFrom()!=null){
                 if(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
-                    t.setOrganizationalUnitName(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
                 }else{
-                    t.setOrganizationalUnitName(a.getActorFrom().getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getName());
                 }
-
                 t.setRoleName(a.getActorFrom().getName());
             }
         }
@@ -351,194 +352,4 @@ public class PetrinetBuilder {
 
         }
     }
-
-    // Get XML String with all transitions
-    /*private String getTransitionsFromWM() {
-
-        flowsFromWM = processWM.getFlows();
-        iteratorFlows = flowsFromWM.iterator();
-
-        while (iteratorFlows.hasNext()) {
-
-            Flow nextFlow = iteratorFlows.next();
-
-            actionsFromWM = nextFlow.getMultipleObjects();
-            iteratorActions = actionsFromWM.iterator();
-
-            while (iteratorActions.hasNext()) {
-                Action actionFromFlow = iteratorActions.next();
-
-                // Gateway
-                if (actionFromFlow.getMarker() != null) {
-
-                    // Generate 2 times
-                    transition = new Transition(actionFromFlow.getName(), false, true);
-                    transition.setTriggerType(104);
-                    transitionsFromWM.add(transition);
-                    xml.add(transition.toString());
-                    transition = new Transition(actionFromFlow.getName(), false, true);
-                    transition.setTriggerType(104);
-
-                }
-                // Transition with RoleName
-                else if (actionFromFlow.getActorFrom() != null) {
-
-                    transition = new Transition(actionFromFlow.getName(), true, false);
-                    if (actionFromFlow.getActorFrom().getReference() == null) {
-                        transition.setRoleName(actionFromFlow.getActorFrom().getName());
-                    } else {
-                        transition.setRoleName(actionFromFlow.getActorFrom().getReference().getName());
-                    }
-
-                }
-                // Transition without RoleName
-                else {
-                    transition = new Transition(actionFromFlow.getName(), false, false);
-                }
-
-                // XML String from Transition
-                transitionsFromWM.add(transition);
-                xml.add(transition.toString());
-
-            }
-
-        }
-
-        return xml.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();
-    }
-
-    // Get XML String with all places
-    private String getPlaces() {
-
-        int amountOfTransitions = transitionsFromWM.size();
-        int i = 1;
-
-        while (i <= (amountOfTransitions + 1)) {
-
-            // hasMarking -> false
-            place = new Place(false);
-            places.add(place);
-
-            // hasMarking -> true (missing)...
-
-            i++;
-        }
-        return places.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();
-    }
-
-    // Get XML String with all arcs
-    private String getArcs() {
-
-        flowsFromWM = processWM.getFlows();
-        iteratorFlows = flowsFromWM.iterator();
-        iteratorPlaces = places.iterator();
-        iteratorTransitions = transitionsFromWM.iterator();
-        List<String> finalXML = new ArrayList<String>();
-        Transition currentTransition;
-        Place currentPlace;
-        List<Place> lastElement = new ArrayList<Place>();
-
-        while (iteratorFlows.hasNext()) {
-
-            // Get next flow
-            Flow nextFlow = iteratorFlows.next();
-
-            // check if flow has multiple Followers
-            boolean hasMultipleFollowers = nextFlow.getMultipleObjects().size() > 1;
-
-            // just one follower = Sequence
-            if (hasMultipleFollowers == false) {
-
-
-                System.out.println(nextFlow.getMultipleObjects());
-
-                if(lastElement.isEmpty()) {
-                    // get place from list
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-                }else{
-                    currentPlace = lastElement.get(0);
-                }
-
-
-                // get transition from list
-                currentTransition = iteratorTransitions.next();
-                finalXML.add(currentTransition.toString());
-
-                // generate arc between place and transition
-                arc = new Arc(currentPlace.placeID, currentTransition.getTransID());
-                finalXML.add(arc.toString());
-
-                // get place
-                currentPlace = iteratorPlaces.next();
-                finalXML.add(currentPlace.toString());
-
-                // create arc between transition and place
-                // note that last element is a place
-                lastElement.add(currentPlace);
-                arc = new Arc(currentTransition.getTransID(), currentPlace.placeID);
-                finalXML.add(arc.toString() + "\n");
-
-            } else { // flow has multiple followers
-
-                System.out.println(nextFlow.getMultipleObjects());
-
-                // check if last element is a place
-                String last = lastElement.get(0).getPlaceID();
-                if (last.contains("p")) {
-
-                    // get transition from list
-                    currentTransition = iteratorTransitions.next();
-                    finalXML.add(currentTransition.toString());
-
-                    // create arc between last element (place) and transition
-                    arc = new Arc(last, currentTransition.getIdGateway());
-                    finalXML.add(arc.toString());
-
-                    // get place from list
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-
-                    // create arc between transition and place
-                    arc = new Arc(currentTransition.getIdGateway(), currentPlace.getPlaceID());
-                    finalXML.add(arc.toString());
-
-                    //note last element
-                    lastElement.remove(0);
-                    lastElement.add(currentPlace);
-
-                    // 2 times because we need two transitions for the gateway
-                    currentTransition = iteratorTransitions.next();
-                    finalXML.add(currentTransition.toString());
-
-                    arc = new Arc(last, currentTransition.getIdGateway());
-                    finalXML.add(arc.toString());
-
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-
-                    arc = new Arc(currentTransition.getIdGateway(), currentPlace.getPlaceID());
-                    finalXML.add(arc.toString());
-
-                    //note last element
-                    lastElement.add(currentPlace);
-
-                    //System.out.println(finalXML.toString());
-
-                }
-
-            }
-
-        }
-        return finalXML.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();//"";// arcs.toString() + "\n" + transitionsFromWM.toString() + "\n" + places.toString();
-    }*/
 }
