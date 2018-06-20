@@ -113,9 +113,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
 		ConfigurationManager.getConfiguration().setText2ProcessServerHost(
 				getServerURLText_T2P().getText());
-		
-		System.out.println(getManagerPathText_T2P().getText());
-		
+				
 		ConfigurationManager.getConfiguration().setText2ProcessServerURI(
 				getManagerPathText_T2P().getText());
 		
@@ -154,9 +152,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 				ConfigurationManager.getConfiguration()
 						.getText2ProcessServerURI());
 		
-		System.out.println(ConfigurationManager.getConfiguration()
-				.getText2ProcessServerURI());
-
 		getServerPortText_T2P().setText(
 				""
 						+ ConfigurationManager.getConfiguration()
