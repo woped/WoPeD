@@ -75,6 +75,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 			if (getConfDocument().getConfiguration().getP2T() == null)
 				getConfDocument().getConfiguration().addNewP2T();
 
+			// <t2p> tag is not existing yet -> create it
+			if (getConfDocument().getConfiguration().getT2P() == null)
+				getConfDocument().getConfiguration().addNewT2P();
+
 			// <metrics> tag is not existing yet -> create it
 			if (getConfDocument().getConfiguration().getMetrics() == null)
 				getConfDocument().getConfiguration().addNewMetrics();
@@ -1531,6 +1535,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 				.removeApromoreServer(index);
 	}
 
+	// Process 2 Text
 	@Override
 	public String getProcess2TextServerHost() {
 		if (getConfDocument().getConfiguration().getP2T().isSetP2TServerHost()) {
@@ -1539,6 +1544,16 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 		} else
 			return ConfigurationManager.getStandardConfiguration()
 					.getProcess2TextServerHost();
+	}
+
+	@Override
+	public String getText2ProcessServerHost() {
+		if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
+			return getConfDocument().getConfiguration().getT2P()
+					.getT2PServerHost();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getText2ProcessServerHost();
 	}
 
 	@Override
@@ -1588,6 +1603,56 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	@Override
 	public void setProcess2TextUse(boolean selected) {
 		getConfDocument().getConfiguration().getP2T().setP2TUse(selected);
+	}
+
+	// Text 2 Process
+	@Override
+	public void setText2ProcessServerHost(String host) {
+		getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
+	}
+
+	@Override
+	public int getText2ProcessServerPort() {
+		if (getConfDocument().getConfiguration().getT2P().isSetT2PServerPort()) {
+			return getConfDocument().getConfiguration().getT2P()
+					.getT2PServerPort();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getText2ProcessServerPort();
+	}
+
+	@Override
+	public void setText2ProcessServerPort(int port) {
+		getConfDocument().getConfiguration().getT2P().setT2PServerPort(port);
+	}
+
+	@Override
+	public String getText2ProcessServerURI() {
+		if (getConfDocument().getConfiguration().getP2T().isSetP2TUse()) {
+			return getConfDocument().getConfiguration().getT2P()
+					.getT2PServerURI();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getText2ProcessServerURI();
+	}
+
+	@Override
+	public void setText2ProcessServerURI(String uri) {
+		getConfDocument().getConfiguration().getT2P().setT2PServerURI(uri);
+	}
+
+	@Override
+	public boolean getText2ProcessUse() {
+		if (getConfDocument().getConfiguration().getT2P().isSetT2PUse()) {
+			return getConfDocument().getConfiguration().getT2P().getT2PUse();
+		} else
+			return ConfigurationManager.getStandardConfiguration()
+					.getText2ProcessUse();
+	}
+
+	@Override
+	public void setText2ProcessUse(boolean selected) {
+		getConfDocument().getConfiguration().getT2P().setT2PUse(selected);
 	}
 
 	@Override

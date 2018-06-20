@@ -81,10 +81,16 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static int DEFAULT_APROMORE_PROXYPORT = 0;
 	public static boolean DEFAULT_APROMORE_USEPROXY = false;
 	public static boolean DEFAULT_APROMORE_USE = false;
+
 	public static String DEFAULT_PROCESS2TEXT_HOST = "193.196.7.214";
 	public static int DEFAULT_PROCESS2TEXT_PORT = 8080;
 	public static String DEFAULT_PROCESS2TEXT_URI = "/ProcessToTextWebService/ProcessToText?wsdl";
 	public static boolean DEFAULT_PROCESS2TEXT_USE = false;
+
+	public static String DEFAULT_TEXT2PROCESS_HOST = "193.196.7.214";
+	public static int DEFAULT_TEXT2PROCESS_PORT = 8080;
+	public static String DEFAULT_TEXT2PROCESS_URI = "/ProcessToTextWebService/TextToProcess?wsdl";
+	public static boolean DEFAULT_TEXT2PROCESS_USE = false;
 
 	public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
 	public static int DEFAULT_BUSINESSDASHBOARD_MAXVALUES = 1000;
@@ -132,13 +138,20 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	private int apromore_proxyport = DEFAULT_APROMORE_PROXYPORT;
 	private boolean apromore_useproxy = DEFAULT_APROMORE_USEPROXY;
 	private boolean apromore_use = DEFAULT_APROMORE_USE;
+
 	// P2T
 	private String process2text_serverHost = DEFAULT_PROCESS2TEXT_HOST;
 	private int process2text_serverPort = DEFAULT_PROCESS2TEXT_PORT;
-
-	//Dashboard
     private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
     private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
+
+	// T2P
+	private String text2process_serverHost = DEFAULT_TEXT2PROCESS_HOST;
+	private int text2process_serverPort = DEFAULT_TEXT2PROCESS_PORT;
+    private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
+    private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
+
+	//Dashboard
     private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
 	private int businessdashboard_maxvalues = DEFAULT_BUSINESSDASHBOARD_MAXVALUES;
 	private boolean businessdashboard_usebydefault = DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT;
@@ -960,9 +973,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
 	@Override
 	public void removeApromoreServer(int index) {
-
 	}
 
+	// Process 2 Text
 	@Override
 	public String getProcess2TextServerHost() {
 		return process2text_serverHost;
@@ -1003,6 +1016,49 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		this.process2text_use = selected;
 	}
 
+// Text 2 Process
+	@Override
+	public String getText2ProcessServerHost() {
+		return text2process_serverHost;
+	}
+
+	@Override
+	public void setText2ProcessServerHost(String host) {
+		this.text2process_serverHost = host;
+	}
+
+	@Override
+	public int getText2ProcessServerPort() {
+		return text2process_serverPort;
+	}
+
+	@Override
+	public void setText2ProcessServerPort(int port) {
+		this.text2process_serverPort = port;
+	}
+
+	@Override
+	public String getText2ProcessServerURI() {
+		return text2process_serverUri;
+	}
+
+	@Override
+	public void setText2ProcessServerURI(String uri) {
+		this.process2text_serverUri = uri;
+	}
+
+	@Override
+	public boolean getText2ProcessUse() {
+		return text2process_use;
+	}
+
+	@Override
+	public void setText2ProcessUse(boolean selected) {
+		this.text2process_use = selected;
+	}
+
+
+	
 	@Override
 	public int getBusinessDashboardServerPort() {
 		return this.businessdashboard_serverport;
