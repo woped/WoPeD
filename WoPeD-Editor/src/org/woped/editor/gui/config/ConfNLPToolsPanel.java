@@ -51,7 +51,7 @@ import org.woped.gui.translations.Messages;
  *         Created on: 26.11.2004 Last Change on: 14.11.2005
  */
 @SuppressWarnings("serial")
-public class ConfProcess2TextPanel extends AbstractConfPanel {
+public class ConfNLPToolsPanel extends AbstractConfPanel {
 	private JCheckBox useBox = null;
 	private JPanel enabledPanel = null;
 	private JPanel settingsPanel = null;
@@ -77,7 +77,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	/**
 	 * Constructor for ConfToolsPanel.
 	 */
-	public ConfProcess2TextPanel(String name) {
+	public ConfNLPToolsPanel(String name) {
 		super(name);
 		initialize();
 	}
@@ -110,6 +110,22 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 					Integer.parseInt(getServerPortText().getText()));
 		ConfigurationManager.getConfiguration().setProcess2TextUse(
 				useBox.isSelected());
+
+		ConfigurationManager.getConfiguration().setText2ProcessServerHost(
+				getServerURLText_T2P().getText());
+		
+		System.out.println(getManagerPathText_T2P().getText());
+		
+		ConfigurationManager.getConfiguration().setText2ProcessServerURI(
+				getManagerPathText_T2P().getText());
+		
+		if (getServerPortText_T2P().getText().equals("")) {
+			ConfigurationManager.getConfiguration()
+					.setText2ProcessServerPort(0);
+		} else
+			ConfigurationManager.getConfiguration().setText2ProcessServerPort(
+					Integer.parseInt(getServerPortText_T2P().getText()));
+		
 		return true;
 	}
 
@@ -130,6 +146,21 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 								.getProcess2TextServerPort());
 		getUseBox().setSelected(
 				ConfigurationManager.getConfiguration().getProcess2TextUse());
+
+		getServerURLText_T2P().setText(
+				ConfigurationManager.getConfiguration()
+						.getText2ProcessServerHost());
+		getManagerPathText_T2P().setText(
+				ConfigurationManager.getConfiguration()
+						.getText2ProcessServerURI());
+		
+		System.out.println(ConfigurationManager.getConfiguration()
+				.getText2ProcessServerURI());
+
+		getServerPortText_T2P().setText(
+				""
+						+ ConfigurationManager.getConfiguration()
+								.getText2ProcessServerPort());
 	}
 
 	private void initialize() {
@@ -149,10 +180,10 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		c.gridy = 1;
 		contentPanel.add(getSettingsPanel(), c);
 		
-/*		c.weightx = 1;
+		c.weightx = 1;
 		c.gridx = 0;
 		c.gridy = 3;
-		contentPanel.add(getSettingsPanel_T2P(), c);*/
+		contentPanel.add(getSettingsPanel_T2P(), c);
 
 
 		// dummy
@@ -184,7 +215,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 			serverURLText_T2P.setColumns(40);
 			serverURLText_T2P.setEnabled(true);
 			serverURLText_T2P.setToolTipText("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerHost")
+					+ Messages.getString("Configuration.T2P.Label.ServerHost")
 					+ "</html>");
 		}
 		return serverURLText_T2P;
@@ -363,7 +394,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JLabel getServerURLLabel_T2P() {
 		if (serverURLLabel_T2P == null) {
 			serverURLLabel_T2P = new JLabel("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerHost")
+					+ Messages.getString("Configuration.T2P.Label.ServerHost")
 					+ "</html>");
 			serverURLLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
 		}
@@ -383,7 +414,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JLabel getServerPortLabel_T2P() {
 		if (serverPortLabel_T2P == null) {
 			serverPortLabel_T2P = new JLabel("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerPort")
+					+ Messages.getString("Configuration.T2P.Label.ServerPort")
 					+ "</html>");
 			serverPortLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
 		}
@@ -408,7 +439,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 			serverPortText_T2P.setColumns(4);
 			serverPortText_T2P.setEnabled(true);
 			serverPortText_T2P.setToolTipText("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerPort")
+					+ Messages.getString("Configuration.T2P.Label.ServerPort")
 					+ "</html>");
 		}
 		return serverPortText_T2P;
@@ -435,7 +466,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 					Messages.getString("Configuration.P2T.Label.Use"));
 			useBox.setEnabled(true);
 			useBox.setToolTipText("<html>"
-					+ Messages.getString("Configuration.P2T.Label.Use")
+					+ Messages.getString("Configuration.T2P.Label.Use")
 					+ "</html>");
 			CheckboxListener cbl = new CheckboxListener();
 			useBox.addItemListener(cbl);
@@ -457,7 +488,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JLabel getManagerPathLabel_T2P() {
 		if (managerPathLabel_T2P == null) {
 			managerPathLabel_T2P = new JLabel("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerURI")
+					+ Messages.getString("Configuration.T2P.Label.ServerURI")
 					+ "</html>");
 			managerPathLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
 		}
@@ -482,7 +513,7 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 			managerPathText_T2P.setColumns(40);
 			managerPathText_T2P.setEnabled(true);
 			managerPathText_T2P.setToolTipText("<html>"
-					+ Messages.getString("Configuration.P2T.Label.ServerURI")
+					+ Messages.getString("Configuration.T2P.Label.ServerURI")
 					+ "</html>");
 		}
 		return managerPathText_T2P;
@@ -638,14 +669,14 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private void setDefaultValues_T2P() {
 		getServerURLText_T2P().setText(
 				ConfigurationManager.getStandardConfiguration()
-						.getProcess2TextServerHost());
+						.getText2ProcessServerHost());
 		getManagerPathText_T2P().setText(
 				ConfigurationManager.getStandardConfiguration()
-						.getProcess2TextServerURI());
+						.getText2ProcessServerURI());
 		getServerPortText_T2P().setText(
 				""
 						+ ConfigurationManager.getStandardConfiguration()
-								.getProcess2TextServerPort());
+								.getText2ProcessServerPort());
 	}
 	
 }

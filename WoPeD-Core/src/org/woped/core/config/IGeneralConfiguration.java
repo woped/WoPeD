@@ -505,6 +505,21 @@ public interface IGeneralConfiguration extends IConfiguration {
 
 	public void setProcess2TextUse(boolean selected);
 
+	public String getText2ProcessServerHost();
+
+	public void setText2ProcessServerHost(String host);
+
+	public int getText2ProcessServerPort();
+
+	public void setText2ProcessServerPort(int port);
+
+	public String getText2ProcessServerURI();
+
+	public void setText2ProcessServerURI(String uri);
+
+	public boolean getText2ProcessUse();
+
+	public void setText2ProcessUse(boolean selected);
 	
 	//dashboard
 	public int getBusinessDashboardServerPort();

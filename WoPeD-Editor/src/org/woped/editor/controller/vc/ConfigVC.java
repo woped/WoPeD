@@ -56,7 +56,7 @@ import org.woped.editor.gui.config.ConfEditorPanel;
 import org.woped.editor.gui.config.ConfFilePanel;
 import org.woped.editor.gui.config.ConfLanguagePanel;
 import org.woped.editor.gui.config.ConfMetricsPanel;
-import org.woped.editor.gui.config.ConfProcess2TextPanel;
+import org.woped.editor.gui.config.ConfNLPToolsPanel;
 import org.woped.editor.gui.config.ConfBusinessDashboardPanel;
 import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -287,7 +287,7 @@ public class ConfigVC extends JDialog implements IViewController {
 					Messages.getString("Configuration.Apromore.Title"),
 					aproPanel);
 			confPanels.put(aproPanel.getPanelName(), aproPanel);
-			p2tPanel = new ConfProcess2TextPanel(
+			p2tPanel = new ConfNLPToolsPanel(
 					Messages.getString("Configuration.P2T.Title"));
 			tabbedPane.addTab(Messages.getString("Configuration.P2T.Title"),
 					p2tPanel);
