@@ -3,6 +3,8 @@ package WorldModelToPetrinet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
@@ -10,6 +12,8 @@ import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;
 
 public class PetrinetBuilder {
+
+    public static final String DUMMY_PREFIX="DUMMY";
     private WorldModel processWM;
     private PetrinetElementBuilder elementBuilder;
     private List<Flow> flowsFromWM = new ArrayList<Flow>();
@@ -75,23 +79,8 @@ public class PetrinetBuilder {
                 }
             }
         }
-
-        // Sanitize to Workflownet
-        List<Place> sinks = petriNet.getAllSinks();
-        if(sinks.size()>1){
-            petriNet.unifySinks(sinks);
-        }
-        else{
-            sinks.get(0).setText("end");
-        }
-        List<Place> sources = petriNet.getAllSources();
-        if(sources.size()>1){
-            petriNet.unifySources(sources);
-        }else{
-            sources.get(0).setText("start");
-            sources.get(0).setHasMarking(true);
-        }
-
+        removeDummyNodes();
+        petriNet.transformToWorkflowNet();
 
     }
 
@@ -124,23 +113,10 @@ public class PetrinetBuilder {
         return a.getName().equals("Dummy Node");
     }
 
-    private String generateTransitionLabel(Action a) {
-        String transitionlabel="";
-        if(isDummyAction(a)){
-            transitionlabel+="";
-        }else {
-            if (a.getMarker() != null)
-                transitionlabel += a.getMarker() + " ";
-            transitionlabel += a.getVerb() + " ";
-            if (a.getCop() != null)
-                transitionlabel += a.getCop();
-        }
-        return transitionlabel;
-    }
     private String getOriginID(SpecifiedElement element){
         if(isDummyAction((Action) element)){
             DummyAction d= (DummyAction) element;
-            return "Dummy"+d.getDummyID();
+            return DUMMY_PREFIX+d.getDummyID();
         }else{
             int sentenceID = element.getOrigin().getID();
             int wordIndex = element.getWordIndex();
@@ -180,7 +156,6 @@ public class PetrinetBuilder {
                 p=elementBuilder.createPlace(false,getOriginID(f.getSingleObject()));
                 petriNet.add(p);
             }
-      //  }
         return p;
     }
 
@@ -203,37 +178,76 @@ public class PetrinetBuilder {
         return sources;
     }
 
+    //first approach for Transition Label generation
+   /* private String generateTransitionLabel(Action a) {
+        String transitionlabel="";
+        if(isDummyAction(a)){
+            transitionlabel+="";
+        }else {
+            if (a.getMarker() != null)
+                transitionlabel += a.getMarker() + " ";
+            transitionlabel += a.getVerb() + " ";
+            if (a.getCop() != null)
+                transitionlabel += a.getCop();
+        }
+        return transitionlabel;
+    }
+
+    public static String splitString(String msg, int lineSize) {
+        String res="";
+        //List<String> res = new ArrayList<>();
+
+        Pattern p = Pattern.compile("\\b.{1," + (lineSize-1) + "}\\b\\W?");
+        Matcher m = p.matcher(msg);
+
+        while(m.find()) {
+            System.out.println(m.group().trim());   // Debug
+            res =res+m.group()+"\n";
+            //res.add(m.group());
+        }
+        return res;
+    }*/
+
     private Transition createTransition(Action a, boolean isGateway){
-        boolean hasResource =a.getObject() != null;
-        Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
+        boolean hasResource = a.getObject() != null;
+        boolean hasRole = a.getActorFrom() != null;
+
+        ProcessLabelGenerator mb= new ProcessLabelGenerator();
+
+        //Transition Text
+        Transition t = elementBuilder.createTransition(mb.createTaskText(a),hasRole,isGateway, getOriginID(a));
+        //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasRole,isGateway, getOriginID(a));
+
+        //Resource Text
+        //TODO Refactor
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
-        if(a.getActorFrom()!=null){
+
+        //Org Text: auskommentiert, da nicht verlässlich
+        //TODO Refactor
+        if(a.getActorFrom()!= null){
             if(a.getActorFrom().getReference()!=null){
                 if(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
-                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
                 }else{
-                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
                 }
                 t.setRoleName(a.getActorFrom().getReference().getName());
             }else if(a.getActorFrom()!=null){
                 if(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
-                    t.setOrganizationalUnitName(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
                 }else{
-                    t.setOrganizationalUnitName(a.getActorFrom().getName());
+                    //t.setOrganizationalUnitName(a.getActorFrom().getName());
                 }
-
                 t.setRoleName(a.getActorFrom().getName());
             }
         }
-
-
         return t;
     }
 
     private void createSequence(Flow f){
 
-        //check refers (apparently) to a bug during WorldModel Creation: Sequences among Equal Actions are created -> Inconsistency
+        //check refers (apparently) to a bug during WorldModel Creation: Sequences among Equal Actions are created -> Inconsistency -> ignore
         if(!getOriginID(f.getMultipleObjects().get(0)).equals(getOriginID(f.getSingleObject()))){
             boolean initiallyFound = artifactsExist(f.getSingleObject());
             Place p1= getSourcePlaceForSplitFlow(f);
@@ -261,7 +275,6 @@ public class PetrinetBuilder {
         List<Action> splitList = f.getMultipleObjects();
         ArrayList<Place> targetPlaces = new ArrayList<Place>();
         Iterator<Action> i = splitList.iterator();
-        //Place targetPlace = new Place(false,getOriginID(f.getSingleObject()));
         while(i.hasNext()){
 
             Action a = i.next();
@@ -291,200 +304,52 @@ public class PetrinetBuilder {
         Iterator<Place> i = petriNet.getPlaceList().iterator();
         while(i.hasNext()){
             Place p = i.next();
-            if(p.getOriginID().startsWith("Dummy"))
+            if(p.getOriginID().startsWith(DUMMY_PREFIX))
                 dummyPlaces.add(p);
         }
         return dummyPlaces;
     }
 
+    private void removeDummyNodes(){
+        List<Place> dummyList = getAllDummyPlaces();
+        Iterator<Place> i = dummyList.iterator();
+        while(i.hasNext()){
+            Place dummyPlace = i.next();
+            List<Arc> ingoingArcs = petriNet.getAllReferencingArcsForElement(dummyPlace.getID(),PetriNet.REFERENCE_DIRECTION.ingoing);
+            if(ingoingArcs.size()==1){
+                Transition dummyTransition = (Transition) petriNet.getPetrinetElementByID(ingoingArcs.get(0).getSource());
 
-    // Get XML String with all transitions
-    /*private String getTransitionsFromWM() {
+                //remove Arc between Dummy Transition + Place
+                petriNet.removePetrinetElementByID(ingoingArcs.get(0).getID());
 
-        flowsFromWM = processWM.getFlows();
-        iteratorFlows = flowsFromWM.iterator();
-
-        while (iteratorFlows.hasNext()) {
-
-            Flow nextFlow = iteratorFlows.next();
-
-            actionsFromWM = nextFlow.getMultipleObjects();
-            iteratorActions = actionsFromWM.iterator();
-
-            while (iteratorActions.hasNext()) {
-                Action actionFromFlow = iteratorActions.next();
-
-                // Gateway
-                if (actionFromFlow.getMarker() != null) {
-
-                    // Generate 2 times
-                    transition = new Transition(actionFromFlow.getName(), false, true);
-                    transition.setTriggerType(104);
-                    transitionsFromWM.add(transition);
-                    xml.add(transition.toString());
-                    transition = new Transition(actionFromFlow.getName(), false, true);
-                    transition.setTriggerType(104);
-
+                //handle n sources x m targets Situation
+                ArrayList<Transition> newTargets = new ArrayList<Transition>();
+                Iterator<Arc> ntI = petriNet.getAllReferencingArcsForElement(dummyPlace.getID(), PetriNet.REFERENCE_DIRECTION.outgoing).iterator();
+                while(ntI.hasNext()){
+                    Arc a = ntI.next();
+                    newTargets.add((Transition) petriNet.getPetrinetElementByID(a.getTarget()));
+                    petriNet.removePetrinetElementByID(a.getID());
                 }
-                // Transition with RoleName
-                else if (actionFromFlow.getActorFrom() != null) {
 
-                    transition = new Transition(actionFromFlow.getName(), true, false);
-                    if (actionFromFlow.getActorFrom().getReference() == null) {
-                        transition.setRoleName(actionFromFlow.getActorFrom().getName());
-                    } else {
-                        transition.setRoleName(actionFromFlow.getActorFrom().getReference().getName());
+                Iterator<Arc> nsI = petriNet.getAllReferencingArcsForElement(dummyTransition.getID(), PetriNet.REFERENCE_DIRECTION.ingoing).iterator();
+                while(nsI.hasNext()){
+                    Arc a = nsI.next();
+                    Iterator<Transition> newTargetIterator = newTargets.iterator();
+                    while(newTargetIterator.hasNext()){
+                        petriNet.add(elementBuilder.createArc(a.getSource(),newTargetIterator.next().getID(),""));
                     }
-
-                }
-                // Transition without RoleName
-                else {
-                    transition = new Transition(actionFromFlow.getName(), false, false);
+                    petriNet.removePetrinetElementByID(a.getID());
                 }
 
-                // XML String from Transition
-                transitionsFromWM.add(transition);
-                xml.add(transition.toString());
+                //remove DummyElements
+                petriNet.removePetrinetElementByID(dummyPlace.getID());
+                petriNet.removePetrinetElementByID(dummyTransition.getID());
 
+            }else{
+                /*do nothing, currently cant be handled*/
+                //TODO check if possible
             }
 
         }
-
-        return xml.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();
     }
-
-    // Get XML String with all places
-    private String getPlaces() {
-
-        int amountOfTransitions = transitionsFromWM.size();
-        int i = 1;
-
-        while (i <= (amountOfTransitions + 1)) {
-
-            // hasMarking -> false
-            place = new Place(false);
-            places.add(place);
-
-            // hasMarking -> true (missing)...
-
-            i++;
-        }
-        return places.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();
-    }
-
-    // Get XML String with all arcs
-    private String getArcs() {
-
-        flowsFromWM = processWM.getFlows();
-        iteratorFlows = flowsFromWM.iterator();
-        iteratorPlaces = places.iterator();
-        iteratorTransitions = transitionsFromWM.iterator();
-        List<String> finalXML = new ArrayList<String>();
-        Transition currentTransition;
-        Place currentPlace;
-        List<Place> lastElement = new ArrayList<Place>();
-
-        while (iteratorFlows.hasNext()) {
-
-            // Get next flow
-            Flow nextFlow = iteratorFlows.next();
-
-            // check if flow has multiple Followers
-            boolean hasMultipleFollowers = nextFlow.getMultipleObjects().size() > 1;
-
-            // just one follower = Sequence
-            if (hasMultipleFollowers == false) {
-
-
-                System.out.println(nextFlow.getMultipleObjects());
-
-                if(lastElement.isEmpty()) {
-                    // get place from list
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-                }else{
-                    currentPlace = lastElement.get(0);
-                }
-
-
-                // get transition from list
-                currentTransition = iteratorTransitions.next();
-                finalXML.add(currentTransition.toString());
-
-                // generate arc between place and transition
-                arc = new Arc(currentPlace.placeID, currentTransition.getTransID());
-                finalXML.add(arc.toString());
-
-                // get place
-                currentPlace = iteratorPlaces.next();
-                finalXML.add(currentPlace.toString());
-
-                // create arc between transition and place
-                // note that last element is a place
-                lastElement.add(currentPlace);
-                arc = new Arc(currentTransition.getTransID(), currentPlace.placeID);
-                finalXML.add(arc.toString() + "\n");
-
-            } else { // flow has multiple followers
-
-                System.out.println(nextFlow.getMultipleObjects());
-
-                // check if last element is a place
-                String last = lastElement.get(0).getPlaceID();
-                if (last.contains("p")) {
-
-                    // get transition from list
-                    currentTransition = iteratorTransitions.next();
-                    finalXML.add(currentTransition.toString());
-
-                    // create arc between last element (place) and transition
-                    arc = new Arc(last, currentTransition.getIdGateway());
-                    finalXML.add(arc.toString());
-
-                    // get place from list
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-
-                    // create arc between transition and place
-                    arc = new Arc(currentTransition.getIdGateway(), currentPlace.getPlaceID());
-                    finalXML.add(arc.toString());
-
-                    //note last element
-                    lastElement.remove(0);
-                    lastElement.add(currentPlace);
-
-                    // 2 times because we need two transitions for the gateway
-                    currentTransition = iteratorTransitions.next();
-                    finalXML.add(currentTransition.toString());
-
-                    arc = new Arc(last, currentTransition.getIdGateway());
-                    finalXML.add(arc.toString());
-
-                    currentPlace = iteratorPlaces.next();
-                    finalXML.add(currentPlace.toString());
-
-                    arc = new Arc(currentTransition.getIdGateway(), currentPlace.getPlaceID());
-                    finalXML.add(arc.toString());
-
-                    //note last element
-                    lastElement.add(currentPlace);
-
-                    //System.out.println(finalXML.toString());
-
-                }
-
-            }
-
-        }
-        return finalXML.toString() .replace(",", "")  //remove the commas
-                .replace("[", "")  //remove the right bracket
-                .replace("]", "")  //remove the left bracket
-                .trim();//"";// arcs.toString() + "\n" + transitionsFromWM.toString() + "\n" + places.toString();
-    }*/
 }

@@ -14,7 +14,6 @@ import org.w3c.dom.Element;
 
 public class Arc extends PetriNetElement{
 
-    private String ID;
     private double offsetX = 500.0, offsetY = -12.0;
     private String source, target;
 

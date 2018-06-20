@@ -14,7 +14,7 @@ import org.w3c.dom.Element;
 
 public class Transition extends PetriNetElement {
 
-    private String roleName, organizationalUnitName ="default", resourceName;
+    private String roleName, organizationalUnitName = "all", resourceName;
     private String idGateway;
     private int textPositionX = 0;
     private int textPositionY = 0;
@@ -35,7 +35,7 @@ public class Transition extends PetriNetElement {
     private int resourceDimensionY = 22;
     private int operatorType;
     private int orientationCode=1;
-    private boolean hasResource = false, isGateway = false;
+    private boolean hasResource = false, isGateway = false; //hasResource bezieht sich auf die Rolle, nicht auf die Ressource
 
     public Transition(String text, boolean hasResource, boolean isGateway, String originID, IDHandler idHandler) {
         super(originID, idHandler);
@@ -171,8 +171,9 @@ public class Transition extends PetriNetElement {
                 graphicsOfTrigger.appendChild(dimensionOfTrigger);
 
                 Element transResource = doc.createElement("transitionResource");
-                transResource.setAttribute("organizationalUnitName", organizationalUnitName);
                 transResource.setAttribute("roleName", roleName);
+                transResource.setAttribute("organizationalUnitName", organizationalUnitName);
+
                 toolSpecific.appendChild(transResource);
 
                 Element graphicsOfResource = doc.createElement("graphics");
