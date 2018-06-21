@@ -89,7 +89,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
 	public static String DEFAULT_TEXT2PROCESS_HOST = "193.196.7.214";
 	public static int DEFAULT_TEXT2PROCESS_PORT = 8080;
-	public static String DEFAULT_TEXT2PROCESS_URI = "/ProcessToTextWebService/TextToProcess?wsdl";
+	public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
 	public static boolean DEFAULT_TEXT2PROCESS_USE = false;
 
 	public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
