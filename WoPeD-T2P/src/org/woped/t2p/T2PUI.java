@@ -123,7 +123,7 @@ public class T2PUI extends JDialog {
 		this.pack();
 
 		if (getOwner() != null) {
-			this.setLocation(0, getOwner().getHeight() / 4);
+			this.setLocation(getOwner().getWidth() / 3, getOwner().getHeight() / 3);
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
