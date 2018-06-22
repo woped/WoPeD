@@ -23,6 +23,7 @@
 package org.woped.t2p;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -47,8 +48,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import ToolWrapper.FrameNetInitializer;
-import WorldModelToPetrinet.PetrinetBuilder;
+
+//import ToolWrapper.FrameNetFunctionality;
+//import ToolWrapper.FrameNetInitializer;
+//import WorldModelToPetrinet.PetrinetBuilder;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
@@ -57,7 +60,7 @@ import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-import worldModel.WorldModel;
+//import worldModel.WorldModel;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
@@ -80,6 +83,7 @@ public class T2PUI extends JDialog {
 
 	private JScrollPane t2pPanel = null;
 	private JPanel buttonPanel = null;
+	private JPanel logoPanel = null;
 	private JPanel textPanel = null;
 
 	private ApplicationMediator mediator;
@@ -123,7 +127,7 @@ public class T2PUI extends JDialog {
 		this.pack();
 
 		if (getOwner() != null) {
-			this.setLocation(getOwner().getWidth() / 3, getOwner().getHeight() / 3);
+			this.setLocation(0, getOwner().getHeight() / 4);
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
@@ -192,7 +196,7 @@ public class T2PUI extends JDialog {
 
 			btnGenerate.setMnemonic(KeyEvent.VK_A);
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text")); 
+			btnGenerate.setText("Generate"); // TODO: config auslagern
 			c1.gridy = 0;
 			c1.gridx = 0;
 			c1.insets = new Insets(10, 10, 10, 10);
@@ -208,7 +212,7 @@ public class T2PUI extends JDialog {
 			});
 
 			btnErase.setMnemonic(KeyEvent.VK_L);
-			btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text")); // Properties
+			btnErase.setText("Delete"); // Properties
 			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
 			c1.gridy = 0;
 			c1.gridx = 1;
@@ -225,7 +229,7 @@ public class T2PUI extends JDialog {
 
 			btnUpload.setMnemonic(KeyEvent.VK_C);
 			btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
-			btnUpload.setText(Messages.getString("T2PUI.Button.Upload.Text")); 
+			btnUpload.setText("Upload"); // Properties
 			c1.gridy = 0;
 			c1.gridx = 2;
 			c1.insets = new Insets(10, 10, 10, 10);
@@ -236,7 +240,7 @@ public class T2PUI extends JDialog {
 	}
 
 	public void generate() {
-		if (textArea.getText().equals("")) {
+/*		if (textArea.getText().equals("")) {
 
 			String textMessages[] = { Messages.getString("Dialog.Ok"),
 
@@ -299,7 +303,7 @@ public class T2PUI extends JDialog {
 				close();
 
 			}
-		}
+		}*/
 
 	}
 

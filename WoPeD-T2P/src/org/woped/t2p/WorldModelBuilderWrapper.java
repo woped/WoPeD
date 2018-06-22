@@ -1,6 +1,6 @@
 package org.woped.t2p;
 
-import TextToWorldModel.WorldModelBuilder;
+/*import TextToWorldModel.WorldModelBuilder;
 import worldModel.WorldModel;
 //This class is a quick fix for API incompatibility
 public class WorldModelBuilderWrapper {
@@ -16,4 +16,4 @@ public class WorldModelBuilderWrapper {
         return wmb.buildWorldModel(false);
     }
 
-}
+}*/

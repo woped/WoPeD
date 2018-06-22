@@ -1,6 +1,6 @@
 package org.woped.t2p;
 
-import TextToWorldModel.WorldModelBuilder;
+/*import TextToWorldModel.WorldModelBuilder;
 
 
 public class WorldModelExecution implements Runnable {
@@ -15,4 +15,4 @@ public class WorldModelExecution implements Runnable {
 		return WMBuilder;
 	}
 
-}
+}*/
