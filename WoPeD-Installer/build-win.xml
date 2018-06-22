@@ -1,12 +1,12 @@
 <project default="makedistribution" name="INSTALLER">
-
+	   
 	<tstamp />
 	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller, makeLinuxInstaller" />
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller" />
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -34,11 +34,11 @@
 		<mkdir dir="dist/run" />
 		<mkdir dir="dist/run/org" />
 		<mkdir dir="dist/run/org/woped" />
-		<mkdir dir="dist/run/org/woped/gui" />
+		<mkdir dir="dist/run/org/woped/starter" />
 	</target>
 
 	<target name="setversion">
-		<copy file="build-tools/log4j.xml" tofile="../WoPeD-Starter/bin/org/woped/starter/utilities/log4j.xml" overwrite="true"/>
+		<copy file="build-tools/log4j.xml" tofile="../WoPeD-Starter/bin/org/woped/starter/utilities/log4j.xml" overwrite="true"/> 
 		<copy file="../WoPeD-GUI/src/org/woped/gui/translations/Messages.properties" tofile="dist/Messages.properties" filtering="true" overwrite="true" />
 		<copy file="../WoPeD-GUI/src/org/woped/gui/translations/Messages_de.properties" tofile="dist/Messages_de.properties" filtering="true" overwrite="true" />
 		<copy file="dist/Messages.properties" tofile="../WoPeD-GUI/bin/org/woped/gui/translations/Messages.properties" />
@@ -47,57 +47,58 @@
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/Example.pnml" />
-		<copy todir="dist/run/org/woped/gui">
+		<copy todir="dist/run/org/woped/starter">
 			<fileset dir="../WoPeD-Starter/bin/org/woped/starter">
 				<include name="RunWoPeD*.class" />
 			</fileset>
 		</copy>
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-1.4.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/bpelBeans.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/commons-logging-1.1.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/confBeans.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derby.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derbyclient.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derbyrun.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-1.0.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/gson-2.3.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/httpclient-4.3.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/httpcore-4.3.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jaxb2-basics-runtime-0.6.5.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-0.1.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcalendar-1.3.2.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcommon-1.0.15.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jfreechart-1.0.12.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jfxrt.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraph-5.10.2.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraphx-1.5.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jsr-1.7.3.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/junit-4.8.2.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/log4j-1.2.8.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/mail-1.4.7.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/manager-client.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/manager-ws-model.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/metricsBeans.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/plugin-api-1.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />	
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ruddi-1.0.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-simple-1.7.6.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-api-1.7.6.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-beans-3.2.5.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-context-3.2.5.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-core-3.2.5.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-expression-3.2.5.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-oxm-3.2.5.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-ws-core-2.1.4.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-xml-2.1.4.RELEASE.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ssj-2.1.3.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/stax-1.2.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/swingx-1.6.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablefilter-swing-5.1.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablelayout-0.8.6.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/treelayout.core-1.0.1.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/trident-1.2.0.jar" />
-			<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/xmlbeans-2.3.0.jar" />
+
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/antlrworks-1.4.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/bpelBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/commons-logging-1.1.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/confBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derby.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derbyclient.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/derbyrun.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/flanagan-1.0.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/gson-2.3.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/httpclient-4.3.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/httpcore-4.3.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jaxb2-basics-runtime-0.6.5.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jbpt-0.1.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcalendar-1.3.2.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jcommon-1.0.15.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jfreechart-1.0.12.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jfxrt.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraph-5.10.2.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jgraphx-1.5.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/jsr-1.7.3.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/junit-4.8.2.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/log4j-1.2.8.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/mail-1.4.7.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/manager-client.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/manager-ws-model.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/metricsBeans.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/plugin-api-1.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/pnmlBeans.jar" />	
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ruddi-1.0.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-simple-1.7.6.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/slf4j-api-1.7.6.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-beans-3.2.5.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-context-3.2.5.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-core-3.2.5.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-expression-3.2.5.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-oxm-3.2.5.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-ws-core-2.1.4.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-xml-2.1.4.RELEASE.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ssj-2.1.3.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/stax-1.2.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/swingx-1.6.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablefilter-swing-5.1.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablelayout-0.8.6.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/treelayout.core-1.0.1.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/trident-1.2.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/xmlbeans-2.3.0.jar" />
 		<copy todir="dist/doc/pdf/en">
 			<fileset file="../WoPeD-Starter/doc/pdf/en/*.pdf" />
 		</copy>
@@ -154,7 +155,7 @@
 			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
 			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
 		</copy>
-
+		
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Linux" />
 			<fileset dir="build-tools/launcher/MacOS/" />
@@ -175,13 +176,9 @@
 			<fileset file="build-tools/setup/*.xml" />
 		</copy>
 
-		<copy todir="dist" file="build-tools/setup/MacOS/makepackage" filtering="true" overwrite="true" />
-		<copy todir="dist" file="build-tools/setup/MacOS/runWoPeDOnMac.sh" filtering="true" overwrite="true" />
-		<chmod file="dist/runWoPeDOnMac.sh" perm="755" />
-
 		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
-
+		
 	</target>
 
 	<target name="makesubprojects">
@@ -194,48 +191,34 @@
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST.mf">
 			<fileset dir="../WoPeD-AProMoRe/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
+			<fileset dir="../WoPeD-Configuration/bin" />
 			<fileset dir="../WoPeD-Core/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-Flamingo/bin" />
+			<fileset dir="../WoPeD-GUI/bin" />
 			<fileset dir="../WoPeD-ProcessMetrics/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Starter/bin" />
-			<fileset dir="../WoPeD-GUI/bin" />
-			<fileset dir="../WoPeD-Configuration/bin" />
+			<fileset dir="../WoPeD-T2P/bin" />
 		</jar>
 	</target>
 
-	<target name="makeWindowsInstaller">
-
+	<target name="makeWindowsInstaller">		
 		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
 		<exec dir="dist/launch" executable="cmd">
 			<arg line="/c java -jar launch4j.jar buildexe.xml" />
 		</exec>
 		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+			<arg line="/c java -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
 		</exec>
-
 		<exec dir="dist/launch" executable="cmd">
 			<arg line="/c java -jar launch4j.jar buildsetup.xml" />
 		</exec>
-
 		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
 	</target>
 	
-	<target name="makeLinuxInstaller">
-		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-		<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-			<tarfileset dir="dist" mode="755">
-				<include name="WoPeD-install-linux" />
-			</tarfileset>
-			<tarfileset dir="dist">
-				<include name="WoPeD-install-linux.jar" />
-			</tarfileset>
-		</tar>
-	</target>
-
 	<target name="purge">
 		<delete dir="dist" />
 	</target>

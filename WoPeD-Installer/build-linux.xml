@@ -1,16 +1,12 @@
 <project default="makedistribution" name="INSTALLER">
-	   
+
 	<tstamp />
 	<property file="../WoPeD-CommonLibs/build.properties" />
 
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="lib/AntelopeTasks_3.4.2.jar" />
-	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="lib/jarbundler-2.2.0.jar"/>
-	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.jar"/>
-
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeLinuxInstaller" />
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -153,7 +149,7 @@
 			<fileset dir="build-tools/setup/izpack" />
 		</copy>
 		
-			<copy todir="dist/launch">
+		<copy todir="dist/launch">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset file="build-tools/setup/Windows/*.ico" />
 			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
@@ -169,7 +165,7 @@
 			<fileset file="build-tools/setup/Windows/shortcut-win.xml" />
 			<fileset file="build-tools/setup/*.png" />
 		</copy>
-		
+
 		<copy todir="dist" filtering="true" overwrite="true">
 			<fileset file="build-tools/launcher/MacOS/Info.plist" />
 		</copy>
@@ -180,11 +176,6 @@
 			<fileset file="build-tools/setup/*.xml" />
 		</copy>
 		
-		<copy todir="dist" file="build-tools/setup/MacOS/makepackage" filtering="true" overwrite="true" />
-		<copy todir="dist" file="build-tools/setup/MacOS/runWoPeDOnMac.sh" filtering="true" overwrite="true" />
-		<copy todir="dist" file="build-tools/setup/MacOS/WoPeD-install-macos.pkgproj" filtering="true" overwrite="true" />
-		<chmod file="dist/runWoPeDOnMac.sh" perm="755" />
-
 		<copy file="dist/Readme.txt" tofile="installers/Readme-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		<copy file="dist/Changelog.txt" tofile="installers/Changelog-${WOPEDVERSION}${SNAPSHOT}.txt" />
 		
@@ -213,62 +204,16 @@
 			<fileset dir="../WoPeD-T2P/bin" />
 		</jar>
 	</target>
-
-	<target name="makeMacInstaller">
-		<bundleapp outputdirectory="dist/mac"
-		        name="WoPeD"
-		        displayname="WoPeD"
-		        identifier="org.woped"
-		        shortversion="${WOPEDVERSION}${SNAPSHOT}"
-        		icon="dist/WoPeD.icns"
- 		        applicationCategory="public.app-category.developer-tools"
-		        mainclassname="org.woped.starter.RunWoPeD"
-       	 		copyright="WoPeD copyright 2017">
- 	            <option value="-Dapple.laf.useScreenMenuBar=true"/>
-		</bundleapp>
-
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/lib" />
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/doc" />
-		<mkdir dir="dist/mac/WoPeD.app/Contents/Java/nets" />
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java">
-					<fileset file="dist/WoPeD*.jar" />
-					<fileset file="dist/*.txt" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java">
-			<fileset file="dist/WoPeD*.jar" />
-			<fileset file="dist/*.txt" />
-		</copy>
-
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/doc">
-			<fileset file="dist/doc/**" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/lib">
-			<fileset file="dist/lib/*.jar" />
-		</copy>
-		
-		<copy todir="dist/mac/WoPeD.app/Contents/Java/nets">
-			<fileset file="dist/nets/*.*" />
-		</copy>
-
-		<exec dir="dist" executable="/bin/sh"> 
-			<arg line="./copy_docicon.sh" />
-		</exec>
-
-		<exec dir="dist" executable="/bin/sh"> 
-			<arg line="./copy_missing_files.sh" />
-		</exec>
-
-		<exec dir="dist" executable="/bin/sh"> 
-			<arg line="./makepackage" />
-		</exec>
 	
+	<target name="makeLinuxInstaller">
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist" executable="/usr/bin/java">
+			<arg line=" -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o ../installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.jar" />
+		</exec>
 	</target>
 		
 	<target name="purge">
 		<delete dir="dist" />
 	</target>
-	
+
 </project>

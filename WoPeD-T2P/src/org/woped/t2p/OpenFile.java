@@ -1,8 +1,6 @@
 package org.woped.t2p;
 
 
-import java.awt.event.ActionEvent;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -24,6 +22,8 @@ public class OpenFile {
 		}
 		input.close();
 	}
-	else {
-		sb.append("No file was selected");
-	}}}
+//	else {
+//		sb.append("No file was selected");
+//	}
+	}
+}
