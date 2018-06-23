@@ -41,7 +41,7 @@ public class FrameNetInitializer {
     }
 
     //getter
-    public static FrameNetInitializer getInstance(){
+    public synchronized static FrameNetInitializer getInstance(){
         if(fni == null){
             synchronized (FrameNetInitializer.class) {
                 if(fni == null){
@@ -52,17 +52,17 @@ public class FrameNetInitializer {
         }
         return fni;
     }
-    public FrameNet getFN() {
+    public synchronized FrameNet getFN() {
         return f_frameNet;
     }
-    public static AnnotationCorpus getCorpus() {
+    public synchronized static AnnotationCorpus getCorpus() {
         return f_corpus;
     }
-    public static  boolean getGenrateButton(){
+    public synchronized static  boolean getGenrateButton(){
         return generateButton;
     } // TODO: prüfen ob weiterhin benötigt
 
-    public static void init() {
+    public synchronized static void init() {
         try {
 
             //start time for tracking tracking

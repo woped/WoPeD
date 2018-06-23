@@ -26,7 +26,7 @@ public class WordNetInitializer {
     }
 
     //getter
-    public static WordNetInitializer getInstance(){
+    public static synchronized WordNetInitializer getInstance(){
         if(wni == null){
             synchronized (FrameNetInitializer.class) {
                 if(wni == null){
@@ -37,12 +37,12 @@ public class WordNetInitializer {
         }
         return wni;
     }
-    public IRAMDictionary getDict() {
+    public synchronized IRAMDictionary getDict() {
         return dict;
     }
 
     //actually opening and loading the dictionary
-    private static void init () {
+    private synchronized static void init () {
 
         try {
             // construct the dictionary object and open it

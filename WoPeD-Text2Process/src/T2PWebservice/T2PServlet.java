@@ -14,7 +14,7 @@ public class T2PServlet extends HttpServlet {
 
         // create HTML response
         PrintWriter writer = response.getWriter();
-        T2PController controller = new T2PController();
+        T2PController controller = new T2PController(text);
         String pnml= controller.generatePetrinetFromText(text);
         writer.append(pnml);
 

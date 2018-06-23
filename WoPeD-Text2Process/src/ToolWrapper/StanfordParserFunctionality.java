@@ -24,6 +24,8 @@ public class StanfordParserFunctionality {
     private LexicalizedParser parser;
     private TreebankLanguagePack tlp;
 
+    private static StanfordParserFunctionality instance;
+
    public StanfordParserFunctionality(){
        dpp = SPInitializer.getDpp();
        gsf = SPInitializer.getGsf();
@@ -31,11 +33,18 @@ public class StanfordParserFunctionality {
        tlp = SPInitializer.getTlp();
    }
 
-    public Text createText(String input){
+   public synchronized static StanfordParserFunctionality getInstance(){
+       if(instance==null){
+           instance=new StanfordParserFunctionality();
+       }
+       return instance;
+   }
+
+    public synchronized Text createText(String input){
         return createText(input, null);
     }
 
-    public Text createText(String input, ITextParsingStatusListener listener){
+    public synchronized Text createText(String input, ITextParsingStatusListener listener){
         Text _result = new Text();
 
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());

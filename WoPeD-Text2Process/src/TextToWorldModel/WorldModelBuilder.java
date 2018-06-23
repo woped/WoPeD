@@ -19,7 +19,7 @@ public class WorldModelBuilder {
     private String processText;
     private Text parsedText;
     private TextAnalyzer analyzer = new TextAnalyzer();
-    private StanfordParserFunctionality stanford = new StanfordParserFunctionality();
+    private StanfordParserFunctionality stanford = StanfordParserFunctionality.getInstance();
 
     public WorldModelBuilder(String processText){
         this.processText = processText;
