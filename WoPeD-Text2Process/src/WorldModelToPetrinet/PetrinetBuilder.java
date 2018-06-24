@@ -36,6 +36,11 @@ public class PetrinetBuilder {
         elementBuilder=petriNet.getElementBuilder();
     }
 
+    public PetriNet getPetriNet() {
+        return petriNet;
+    }
+
+
     public String buildPNML() {
 
         /*
