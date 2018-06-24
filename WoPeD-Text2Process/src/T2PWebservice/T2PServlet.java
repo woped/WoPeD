@@ -5,21 +5,58 @@ import javax.servlet.http.*;
 
 public class T2PServlet extends HttpServlet {
 
+    //Restricts the maximum of concurrently processed HTTP requests to avoid DOS
+    public static final int MAX_CONCURRENT_HTTP_REQUESTS=6;
+    private int serviceCounter = 0;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String text=getBody(request);
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
+            throws ServletException,IOException{
 
-        // create HTML response
         PrintWriter writer = response.getWriter();
-        T2PController controller = new T2PController(text);
-        String pnml= controller.generatePetrinetFromText(text);
-        writer.append(pnml);
 
+        T2PController controller = null;
+        if (numServices()<MAX_CONCURRENT_HTTP_REQUESTS){
+            enteringServiceMethod();
+            try {
+
+                response.setContentType("text/html");
+                response.setCharacterEncoding("UTF-8");
+                String text=getBody(request);
+                controller = new T2PController(text);
+                String pnml= controller.generatePetrinetFromText();
+                writer.append(pnml);
+            } catch (InvalidInputException e) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                writer.append(e.getMessage());
+            }catch(IOException e){
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                writer.append(e.getMessage());
+            }catch(NullPointerException e){
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+            finally
+             {
+                leavingServiceMethod();
+            }
+        }else{
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            writer.append("Server is currently busy. Try again later.");
+        }
     }
 
+    //simple Semaphor implementation for http requests
+    protected synchronized void enteringServiceMethod() {
+        serviceCounter++;
+    }
+    protected synchronized void leavingServiceMethod() {
+        serviceCounter--;
+    }
+    protected synchronized int numServices() {
+        return serviceCounter;
+    }
+
+    //extract the post argument from request
     public static String getBody(HttpServletRequest request) throws IOException {
 
         String body = null;
