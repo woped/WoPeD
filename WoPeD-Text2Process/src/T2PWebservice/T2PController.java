@@ -22,6 +22,10 @@ public class T2PController extends Thread {
         this.text=text;
     }
 
+    public void resetNLPTools(){
+        WorldModelBuilder.resetNLPTools();
+    }
+
     //Thread support only for Testing
     public void run(){
        PNML= generatePetrinetFromText();
@@ -54,7 +58,7 @@ public class T2PController extends Thread {
     }
 
     private void checkInputValidity(String text) throws InvalidInputException {
-        if(text.length()>MAX_INPUT_LENGTH)
+        if(text.length()>MAX_INPUT_LENGTH | text.equals(""))
             throw new InvalidInputException("The input is too long.");
 
         //Accept only charcaters common in a plain text in english language

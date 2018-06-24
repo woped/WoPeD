@@ -1,9 +1,6 @@
 package TextToWorldModel;
 
-import ToolWrapper.FrameNetFunctionality;
-import ToolWrapper.FrameNetInitializer;
-import ToolWrapper.StanfordParserFunctionality;
-import ToolWrapper.WordNetInitializer;
+import ToolWrapper.*;
 import WorldModelToPetrinet.IDHandler;
 import edu.stanford.nlp.ling.Word;
 import worldModel.T2PSentence;
@@ -35,6 +32,13 @@ public class WorldModelBuilder {
         }
     }
 
+    public static synchronized void resetNLPTools(){
+        StanfordParserInitializer.resetInstance();
+        WordNetInitializer.resetInstance();
+        StanfordParserInitializer.resetInstance();
+        FrameNetInitializer.resetInstance();
+    }
+
     public TextStatistics getTextStatistics() {
         TextStatistics _result = new TextStatistics();
         _result.setNumberOfSentences(parsedText.getSize());
@@ -45,9 +49,6 @@ public class WorldModelBuilder {
     }
 
     private WorldModel buildWorldModel(){
-        WordNetInitializer.getInstance();
-        FrameNetInitializer.getInstance();
-
         parsedText = stanford.createText(processText);
         analyzer.clear();
         analyzer.analyze(parsedText);
@@ -114,15 +115,20 @@ public class WorldModelBuilder {
         act[0].setBaseForm("finish");
         act[0].setActorFrom(a[0]);
         act[0].setObject(r[0]);
+        act[0].setFinalLabel("finishes the document");
+
         act[1] = new Action(mockTextT2P.getSentence(1),3 ,"likes");
         act[1].setBaseForm("like");
         act[1].setActorFrom(a[1]);
         act[1].setObject(r[1]);
         act[1].setMarker("if");
+        act[1].setFinalLabel("likes the document");
+
         act[2] = new Action(mockTextT2P.getSentence(1),7,"sends");
         act[2].setBaseForm("send");
         act[2].setActorFrom(a[2]);
         act[2].setObject(r[2]);
+        act[2].setFinalLabel("sends the document to the office");
         act[2].setPreAdvMod("then",0);
             Specifier s1 =new Specifier(mockTextT2P.getSentence(1),11,"to the office");
             s1.setSpecifierType(Specifier.SpecifierType.PP);
@@ -131,10 +137,12 @@ public class WorldModelBuilder {
             s1.setObject(a[3]);
             //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
         act[2].addSpecifiers(s1);
+
         act[3] = new Action(mockTextT2P.getSentence(2),3,"throws");
         act[3].setBaseForm("throw");
         act[3].setActorFrom(a[4]);
         act[3].setObject(r[3]);
+        act[3].setFinalLabel("throws the document in the bin");
         act[3].setPreAdvMod("otherwise",1);
             Specifier s2 =new Specifier(mockTextT2P.getSentence(2),7,"in the bin");
             s2.setSpecifierType(Specifier.SpecifierType.PP);
@@ -144,6 +152,7 @@ public class WorldModelBuilder {
         //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
         act[3].addSpecifiers(s2);
         act[4]= new DummyAction(idHandler);
+        act[4].setFinalLabel("Dummy Node");
         for (int i = 0;i<act.length;i++){
             mockWM.addAction(act[i]);
         }

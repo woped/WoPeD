@@ -31,6 +31,9 @@ public class Action extends SpecifiedElement{
 	private Action f_link = null;
 	private ActionLinkType f_linkType = null;
 	private boolean f_transient;
+
+
+	private String finalLabel;
 	
 	public enum ActionLinkType{
 		FORWARD,
@@ -293,6 +296,14 @@ public class Action extends SpecifiedElement{
 	 */
 	public boolean getTransient() {
 		return f_transient;
+	}
+
+	public String getFinalLabel() {
+		return finalLabel;
+	}
+
+	public void setFinalLabel(String finalLabel) {
+		this.finalLabel = finalLabel;
 	}
 	
 }

@@ -32,7 +32,11 @@ public class T2PServlet extends HttpServlet {
             }catch(IOException e){
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 writer.append(e.getMessage());
-            }catch(NullPointerException e){
+            }catch(Exception e){
+               /* some unexspected Exception
+                  The integrity of the initialized tools might not be given anymore
+                  -> reset the Instances accordingly, next request will trigger a reload*/
+                controller.resetNLPTools();
                 response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
             finally
@@ -41,7 +45,6 @@ public class T2PServlet extends HttpServlet {
             }
         }else{
             response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
-            writer.append("Server is currently busy. Try again later.");
         }
     }
 

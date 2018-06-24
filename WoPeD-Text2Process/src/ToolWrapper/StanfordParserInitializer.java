@@ -38,6 +38,10 @@ public class StanfordParserInitializer {
         return SPinitializer;
     }
 
+    public static synchronized void resetInstance(){
+        SPinitializer=null;
+    }
+
     public synchronized DocumentPreprocessor getDpp() {
         return dpp;
     }

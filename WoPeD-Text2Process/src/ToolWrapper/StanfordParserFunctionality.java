@@ -40,6 +40,10 @@ public class StanfordParserFunctionality {
        return instance;
    }
 
+   public synchronized static void resetInstance(){
+       instance=null;
+    }
+
     public synchronized Text createText(String input){
         return createText(input, null);
     }

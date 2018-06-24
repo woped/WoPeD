@@ -251,7 +251,7 @@ public class T2PUI extends JDialog {
 					Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
 
-		} else if (!FrameNetInitializer.getGenrateButton()) {
+		} else if (!FrameNetInitializer.getInstance().getGenrateButton()) {
 			String textMessages[] = { Messages.getString("Dialog.Ok"),
 
 			};
