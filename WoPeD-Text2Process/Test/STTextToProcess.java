@@ -5,10 +5,8 @@ import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetFunctionality;
 import ToolWrapper.WordNetInitializer;
-import WorldModelToPetrinet.PetriNet;
-import WorldModelToPetrinet.PetriNetElement;
-import WorldModelToPetrinet.PetrinetBuilder;
-import WorldModelToPetrinet.Place;
+import WorldModelToPetrinet.*;
+import org.apache.bcel.classfile.Constant;
 import org.junit.Test;
 import org.w3c.dom.NodeList;
 import worldModel.Action;
@@ -29,15 +27,11 @@ public class STTextToProcess extends T2PScenarioTest {
 
     private static String [] TestExamples = {"ST_Resource_Lemon_Chicken_Recipe.xml"}; //, "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
 
-    private final static double acceptanceThreshold=0.1;
+    private final static double acceptanceThreshold = 0.1;
 
     private static final String [] ELEMENT_TYPE_PLACE = {"Places","Place"};
     private static final String [] ELEMENT_TYPE_TRANSITION ={"Transitions","Transition"};
     private static final String [] ELEMENT_TYPE_ARC ={"Arcs","Arc"};
-    private static final String [] ELEMENT_TYPE_XOR_Join ={"XOR_Joins","XOR_Join"};
-    private static final String [] ELEMENT_TYPE_XOR_Split ={"XOR_Splits","XOR_Split"};
-    private static final String [] ELEMENT_TYPE_AND_Join ={"AND_Joins","AND_Join"};
-    private static final String [] ELEMENT_TYPE_AND_Split ={"AND_Splits","AND_Split"};
 
 
     @Test
@@ -48,6 +42,7 @@ public class STTextToProcess extends T2PScenarioTest {
         WorldModelBuilder WMbuilder;
         PetrinetBuilder PNbuilder;
 
+        //Initialize Tools
         WordNetFunctionality wf = new WordNetFunctionality();
         FrameNetFunctionality ff = new FrameNetFunctionality();
         StanfordParserFunctionality sf = new StanfordParserFunctionality();
@@ -62,23 +57,23 @@ public class STTextToProcess extends T2PScenarioTest {
             WMbuilder = new WorldModelBuilder(sanitizeText(getPlainTextDescription()));
             WorldModel wm = WMbuilder.buildWorldModel(false);
             PNbuilder = new PetrinetBuilder(wm);
-
-            String xml = PNbuilder.buildPNML(); //unused
+            PNbuilder.buildPNML();
             PetriNet petriNet = PNbuilder.getPetriNet();
+
 
             double performance = endPerformanceTrace();
 
             System.out.println("Petrinet for Testexample " + (i + 1) + " " + TestExamples[i] + " was generated in " + (int) performance + " milliseconds.");
             Double score = compareResults(petriNet, i);
-
-            //System.out.println("Final PNML");
-            //System.out.print(xml);
-            //System.out.println("");
-
             assertEquals("Generated Petrinet for Testexample " + (i + 1) + " " + TestExamples[i] + " fails the Requirements based on its Metadata.", true, score > acceptanceThreshold);
 
-
         }
+
+
+        wf = null;
+        ff = null;
+        sf = null;
+
     }
 
     private double compareResults(PetriNet petriNet, int currentTestcase) {
@@ -91,7 +86,15 @@ public class STTextToProcess extends T2PScenarioTest {
         printComparison(petriNet.getPlaceList(), getPetriNetElementList(ELEMENT_TYPE_PLACE));
         printScore("Similarity Score for Places ", elementDeltaScores.get("placeDelta"));
 
-        /*TODO evaluate quality of other ElementTypes*/
+        elementDeltaScores.put("transitionDelta", calculateTransitionDelta(petriNet));
+        System.out.println("\n--------- Transitions ---------");
+        printComparison(petriNet.getTransitionList(), getPetriNetElementList(ELEMENT_TYPE_TRANSITION));
+        printScore("Similarity Score for Transitions ", elementDeltaScores.get("transitionDelta"));
+
+        elementDeltaScores.put("arcDelta", calculateArcDelta(petriNet));
+        System.out.println("\n--------- Arc ---------");
+        printComparison(petriNet.getTransitionList(), getPetriNetElementList(ELEMENT_TYPE_ARC));
+        printScore("Similarity Score for Arc ", elementDeltaScores.get("arcDelta"));
 
         double deltasum = 0.0;
         for (double d : elementDeltaScores.values()) {
@@ -108,15 +111,35 @@ public class STTextToProcess extends T2PScenarioTest {
         Iterator<Place> iter = places.iterator();
         while (iter.hasNext()) {
             Place p = iter.next();
-            if(!p.getText().equals("Dummy Node")) { //ToDo: Check String value for Dummy Nodes
-                placeCount++;
-            }
+            placeCount++;
         }
         return calculateDeltaScore(placeCount,getPetriNetElementTypeCount(ELEMENT_TYPE_PLACE));
     }
 
+    private static double calculateTransitionDelta(PetriNet pn){
+        int transitionCount=0;
+        List<Transition> transitions = pn.getTransitionList();
+        Iterator<Transition> iter = transitions.iterator();
+        while (iter.hasNext()) {
+            Transition t = iter.next();
+            transitionCount++;
+        }
+        return calculateDeltaScore(transitionCount,getPetriNetElementTypeCount(ELEMENT_TYPE_TRANSITION));
+    }
+
+    private static double calculateArcDelta(PetriNet pn){
+        int arcCount=0;
+        List<Arc> arcs = pn.getArcList();
+        Iterator<Arc> iter = arcs.iterator();
+        while (iter.hasNext()) {
+            Arc a = iter.next();
+            arcCount++;
+        }
+        return calculateDeltaScore(arcCount,getPetriNetElementTypeCount(ELEMENT_TYPE_PLACE));
+    }
+
     private void printComparison(List<? extends PetriNetElement> elements, ArrayList<String> testElements ){
-        //elements=getDisjointList(elements);
+
         Iterator i = elements.iterator();
         int listSize;
         if(elements.size()>testElements.size()){
@@ -146,7 +169,6 @@ public class STTextToProcess extends T2PScenarioTest {
         }
         prinComparisonTable(x);
     }
-
 
     private static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
         double actual = (double)actualElementsCount;
