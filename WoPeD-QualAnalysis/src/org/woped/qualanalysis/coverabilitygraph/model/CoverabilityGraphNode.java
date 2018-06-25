@@ -94,12 +94,12 @@ public class CoverabilityGraphNode extends DefaultGraphCell {
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
         sb.append("<table>");
-        sb.append("<tr><th>ID</th><th>Name</th<th>#</th></tr>");
+        sb.append("<tr><th>ID</th><th>#</th></tr>");
 
         SortedSet<PlaceNode> places = this.marking.getPlaces();
         for (PlaceNode place : places) {
             String token = this.marking.isPlaceUnbound(place) ? Marking.UNBOUND_SIGN : String.valueOf(this.marking.getTokens(place));
-            sb.append(String.format("<tr><td>%s</td><td>%s</td><td>%s</td></tr>", place.getId(), place.getName(), token));
+            sb.append(String.format("<tr><td>%s</td><td>%s</td></tr>", place.getName(), token));
         }
 
         sb.append("</table>");

@@ -50,7 +50,7 @@ public class CoverabilityGraphEdge extends DefaultEdge {
 
             @Override
             public int compare(TransitionNode o1, TransitionNode o2) {
-                return comparator.compare(o1.getName(), o2.getName());
+                return comparator.compare(o1.getId(), o2.getId());
             }
         });
         triggers.add(trigger);
