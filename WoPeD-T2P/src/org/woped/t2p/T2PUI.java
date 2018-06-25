@@ -23,17 +23,11 @@
 package org.woped.t2p;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
@@ -41,17 +35,16 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.SwingWorker;
 
-import ToolWrapper.FrameNetFunctionality;
-import ToolWrapper.FrameNetInitializer;
-import WorldModelToPetrinet.PetrinetBuilder;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
@@ -59,8 +52,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
-
-import worldModel.WorldModel;
+import org.woped.t2p.FileReader.NoFileException;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
@@ -72,22 +64,15 @@ import worldModel.WorldModel;
 
 @SuppressWarnings("serial")
 public class T2PUI extends JDialog {
-	private JLabel logoLabel = null;
-	private JLabel textLabel = null;
-
-	private WopedButton btnUpload = null;
-	private WopedButton btnGenerate = null;
-	private WopedButton btnErase = null;
-
-	private JTextArea textArea = null;
-
-	private JScrollPane t2pPanel = null;
-	private JPanel buttonPanel = null;
-	private JPanel logoPanel = null;
-	private JPanel textPanel = null;
-
+	private JTextAreaWithHint textArea;
+	
+	private JDialog loadDialog;
+	
 	private ApplicationMediator mediator;
-
+	
+	private boolean requested = false;
+	private SwingWorker<HttpResponse, Void> bgTask;
+	
 	public T2PUI(AbstractApplicationMediator mediator) {
 		this(null, mediator);
 	}
@@ -103,10 +88,6 @@ public class T2PUI extends JDialog {
 		this.mediator = (ApplicationMediator) mediator;
 		initialize();
 	}
-
-	/*
-	 * public static void main(String[] args) { new AboutUI(null); }
-	 */
 	/**
 	 * This method initializes and layouts the about information
 	 * 
@@ -117,218 +98,229 @@ public class T2PUI extends JDialog {
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
 		this.setResizable(true);
-		this.getContentPane().add(getTextPanel(), BorderLayout.NORTH);
-
-		// this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
-		this.getContentPane().add(getT2PPanel(), BorderLayout.CENTER);
-
-		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		
+		textArea = new JTextAreaWithHint();
+		
 		this.setTitle(Messages.getString("T2P.tooltip"));
+		this.getContentPane().add(wrapTextArea(initializeTextArea(textArea)), BorderLayout.CENTER);
+		this.getContentPane().add(initializeButtonsPanel(), BorderLayout.SOUTH);
+		
 		this.pack();
-
-		if (getOwner() != null) {
-			this.setLocation(0, getOwner().getHeight() / 4);
-		} else {
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
-		}
-
-		this.setSize(830, 500);
+		
+		Dimension size = new Dimension(600, 440);
+		this.setSize(size);
+		this.setLocationRelativeTo(null);
 	}
-
-	private JPanel getTextPanel() {
-
-		if (textPanel == null) {
-			textPanel = new JPanel();
-		}
-
-		String[] aboutArgs = { Messages.getWoPeDVersionWithTimestamp() };
-		String aboutText = "<html><p>" + Messages.getStringReplaced("T2PUI.Scrollpane", aboutArgs) + "</p></html>";
-
-		textPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.gridx = 0;
-		c.gridy = 0;
-		c.anchor = GridBagConstraints.NORTH;
-		 c.insets = new Insets(10, 10, 10, 10);
-		logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.T2PUI.Image"))));
-		textPanel.add(logoLabel, c);
-
-		c.gridy = 1;
-		 c.insets = new Insets(0, 10, 0, 10);
-		c.anchor = GridBagConstraints.NORTH;
-		textLabel = new JLabel(aboutText);
-		textPanel.add(textLabel, c);
-
-		return textPanel;
-
+	
+	
+	private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
+		
+		Font f = new Font("Lucia Grande", Font.PLAIN, 13);
+		String hint = Messages.getString("T2PUI.Tmp.HowTo");
+		
+		ta.setFont(f);
+		ta.changeHintText(hint);
+		ta.setLineWrap(true);
+		ta.setWrapStyleWord(true);
+		
+		ta.requestFocus();
+		ta.requestFocusInWindow();
+		ta.setMargin(new Insets(10, 10, 10, 10));
+		
+		return ta;
 	}
-
-	private JScrollPane getT2PPanel() {
-
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout());
-
-		panel.setBackground(Color.white);
-		textArea = new JTextArea();
-		textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
-
-		panel.add(textArea);
-
-		t2pPanel = new JScrollPane(panel);
-
-		return t2pPanel;
+	
+	private JScrollPane wrapTextArea(JTextAreaWithHint ta) {
+		JScrollPane scrollPane = new JScrollPane(ta);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		return scrollPane;
 	}
+		
+	private JPanel initializeButtonsPanel() {
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
+		
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+		
+		String[] lang = { Messages.getString("T2PUI.Tmp.Lang"), "en_US" };
+		JComboBox<String> langBox = new JComboBox<String>(lang);
+		langBox.setSelectedIndex(1);
+		
+		// TODO: Listener for ComboBox Changes
+		
+		WopedButton btnGenerate = new WopedButton(new AbstractAction() {
+			public void actionPerformed(ActionEvent arg0) {
+				request();
+			}
+		});
+		
+		btnGenerate.setMnemonic(KeyEvent.VK_A);
+		//btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
+		btnGenerate.setText(Messages.getString("T2PUI.Tmp.Button.Generate"));
+		
+		
+		WopedButton btnErase = new WopedButton(new AbstractAction() {
+			public void actionPerformed(ActionEvent arg0) {
+				clearTextArea();
+			}
+		});
 
-	private JPanel getButtonPanel() {
-		if (buttonPanel == null) {
-			buttonPanel = new JPanel();
-			buttonPanel.setLayout(new GridBagLayout());
-			GridBagConstraints c1 = new GridBagConstraints();
+		btnErase.setMnemonic(KeyEvent.VK_L);
+		btnErase.setText(Messages.getString("T2PUI.Tmp.Button.Clear"));
+		//btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
+		
+		
+		WopedButton btnUpload = new WopedButton(new AbstractAction() {
+			public void actionPerformed(ActionEvent arg0) {
+				readFile();
+			}
+		});
 
-			/* Generate Button */
-			btnGenerate = new WopedButton(new AbstractAction() {
-				public void actionPerformed(ActionEvent arg0) {
-					generate();
-				}
-			});
-
-			btnGenerate.setMnemonic(KeyEvent.VK_A);
-			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			btnGenerate.setText("Generate"); // TODO: config auslagern
-			c1.gridy = 0;
-			c1.gridx = 0;
-			c1.insets = new Insets(10, 10, 10, 10);
-			c1.anchor = GridBagConstraints.WEST;
-			buttonPanel.add(btnGenerate, c1);
-
-			/* Delete Button */
-			btnErase = new WopedButton(new AbstractAction() {
-				public void actionPerformed(ActionEvent arg0) {
-					delete();
-
-				}
-			});
-
-			btnErase.setMnemonic(KeyEvent.VK_L);
-			btnErase.setText("Delete"); // Properties
-			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
-			c1.gridy = 0;
-			c1.gridx = 1;
-			c1.insets = new Insets(0, 0, 0, 0);
-			c1.anchor = GridBagConstraints.CENTER;
-			buttonPanel.add(btnErase, c1);
-
-			/* Upload Button */
-			btnUpload = new WopedButton(new AbstractAction() {
-				public void actionPerformed(ActionEvent arg0) {
-					uploadFile();
-				}
-			});
-
-			btnUpload.setMnemonic(KeyEvent.VK_C);
-			btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
-			btnUpload.setText("Upload"); // Properties
-			c1.gridy = 0;
-			c1.gridx = 2;
-			c1.insets = new Insets(10, 10, 10, 10);
-			c1.anchor = GridBagConstraints.EAST;
-			buttonPanel.add(btnUpload, c1);
-		}
+		btnUpload.setMnemonic(KeyEvent.VK_C);
+		//btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
+		btnUpload.setText(Messages.getString("T2PUI.Tmp.Button.Read"));
+		
+		buttonPanel.add(btnUpload);
+		buttonPanel.add(btnErase);
+		buttonPanel.add(langBox);
+		buttonPanel.add(Box.createHorizontalGlue());
+		buttonPanel.add(btnGenerate);
+		
 		return buttonPanel;
 	}
+	
+	private void request() {
+		if (requested) return;
+		requested = true;
+		
+		String inputText = textArea.getText();
 
-	public void generate() {
-		if (textArea.getText().equals("")) {
+		if (!inputText.isEmpty()) {
+			httpBackgroundWorker(inputText);
+			showLoadingBox();
+		} else{			
+			showErrorPopUp("T2PUI.Tmp.NoText.Title", "T2PUI.Tmp.NoText.Text");
+		}
+		
+		requested = false;
+	}
+	
+	private void showLoadingBox() {
+		JOptionPane jop = new JOptionPane();
+	    jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+	    jop.setMessage(Messages.getString("T2PUI.Tmp.Loading.Text"));
+	    
+	    loadDialog = jop.createDialog(this, Messages.getString("T2PUI.Tmp.Loading.Title"));
+	    jop.setOptions(new String[]{Messages.getString("T2PUI.Tmp.Loading.Cancel")});
+	    loadDialog.setVisible(true);
+	    
+	    // Thread gets blocked and awaits an UI action.
+	    
+	    if (bgTask != null && !bgTask.isDone() && !bgTask.isCancelled()) {
+	    	bgTask.cancel(true);
+	    }
+	}
+	
+	private void displayPMNL(String pnml) {
+		PNMLImport pnmlImport = new PNMLImport(mediator);
+		InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
 
-			String textMessages[] = { Messages.getString("Dialog.Ok"),
+		pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
 
-			};
-
-			int value = JOptionPane.showOptionDialog(null,
-					Messages.getStringReplaced("Action.Confirm.T2P.Empty.TextArea.Text", null),
-					Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
-
-		} else if (!FrameNetInitializer.getGenrateButton()) {
-			String textMessages[] = { Messages.getString("Dialog.Ok"),
-
-			};
-
-			int value = JOptionPane.showOptionDialog(null,
-					Messages.getStringReplaced("Action.Confirm.T2P.NotLoad.TextArea.Text", null),
-					Messages.getString("Action.Confirm.T2P.NotLoad.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
-
-		} else {
-
-			String textMessages[] = { Messages.getString("Dialog.Ok"), Messages.getString("Dialog.Cancel") };
-
-			int value = JOptionPane.showOptionDialog(null,
-					Messages.getStringReplaced("Action.Confirm.T2P.NewEditor.TextArea.Text", null),
-					Messages.getString("T2P.textBandTitle"), JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.QUESTION_MESSAGE, null, textMessages, textMessages[0]);
-
-			if (value == (JOptionPane.YES_OPTION)) {
-
-				WorldModelExecution WMex = new WorldModelExecution();
-				WorldModel world = WMex.getWorldModelBuilder().getWorldModel(textArea.getText());
-
-				PetrinetBuilder PNBuilder = new PetrinetBuilder(world);
-
-				PNMLImport pnmlImport = new PNMLImport(mediator);
-				String PNML = PNBuilder.buildPNML();
-				InputStream stream = new ByteArrayInputStream(PNML.getBytes(StandardCharsets.UTF_8));
-
-				pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
-
-				IEditor[] editor = pnmlImport.getEditor();
-
-				try {
-					((EditorVC) editor[0]).startBeautify(0, 0, 0);
-				} catch (ArithmeticException exc) {
-					close();
-
-					String textMessagesNV[] = { Messages.getString("Dialog.Ok"), };
-
-					JOptionPane.showOptionDialog(null,
-							Messages.getStringReplaced("Action.Confirm.T2P.NotValid.TextArea.Text", null),
-							Messages.getString("Action.Confirm.T2P.NotValid.TextArea.Title"),
-							JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, textMessagesNV,
-							textMessagesNV[0]);
-
-				}
-
-				close();
-
-			}
+		IEditor[] editor = pnmlImport.getEditor();
+		
+		try {
+			((EditorVC) editor[0]).startBeautify(0, 0, 0);
+		} catch (ArithmeticException exc) {
+			close();
+			
+			// error popup
 		}
 
+		close();
 	}
+	
+	private void showErrorPopUp(String titleId, String msgId) {
+		String text[] = { Messages.getString("Dialog.Ok") };
+		
+		String msg = Messages.getStringReplaced(msgId, null);
+		String title = Messages.getString(titleId);
+		int optionType = JOptionPane.YES_NO_CANCEL_OPTION;
+		int messageType = JOptionPane.ERROR_MESSAGE;
+		
+		int value = JOptionPane.showOptionDialog(
+				null, msg, title, optionType, messageType, null, text, text[0]
+		);
+	}
+	
+	
+	private void httpBackgroundWorker(String text) {
+		if (bgTask != null && !bgTask.isDone()) return;
+		
+		// TODO: Hardcoded URL!!!
+		String url = "http://193.196.7.214:8080/t2p/generate";
+		
+		bgTask = new SwingWorker<HttpResponse, Void>() {
+			HttpRequest req;
+			
+			@Override
+			protected HttpResponse doInBackground() throws Exception {
+				req = new HttpRequest(url, text);
+				return req.getResponse();
+			}
 
+			@Override
+			protected void done() {
+				try {
+					HttpResponse res = get();
+					
+					String PNML = res.body;
+					int httpCode = res.responseCode;
+					
+					if (!PNML.isEmpty() && httpCode == 200) {
+						displayPMNL(PNML);
+					} else {
+						if (req != null) req.cancel();
+						if (loadDialog != null) loadDialog.dispose();
+						
+						if (httpCode == 400) {
+							showErrorPopUp("T2PUI.Tmp.400Error.Title", "T2PUI.Tmp.400Error.Text");
+						} else if (httpCode == 500) {
+							showErrorPopUp("T2PUI.Tmp.500Error.Title", "T2PUI.Tmp.GeneralError.Text");
+						} else if (httpCode == 503) {
+							showErrorPopUp("T2PUI.Tmp.503Error.Title", "T2PUI.Tmp.503Error.Text");
+						} else {
+							showErrorPopUp("T2PUI.Tmp.GeneralError.Title", "T2PUI.Tmp.GeneralError.Text");
+						}
+					}
+				} catch (Exception e) {
+					if (req != null) req.cancel();
+					if (loadDialog != null) loadDialog.dispose();
+					
+					//showErrorPopUp("T2PUI.Tmp.GeneralError.Title", "T2PUI.Tmp.GeneralError.Text");
+				}
+			}			
+		};
+		
+		bgTask.execute();
+	}
+	
 	private void close() {
 		this.dispose();
 	}
 
-	public void delete() {
-
+	public void clearTextArea() {
 		if (textArea.getText() != null) {
 			textArea.setText(null);
 		}
-
 	}
 
-	public void uploadFile() {
-		OpenFile of = new OpenFile();
-
+	public void readFile() {
+		PlainTextFileReader r = new PlainTextFileReader();
 		try {
-			of.PickMe();
-		} catch (Exception e) {
-			e.getStackTrace();
+			textArea.setText(r.read());
+		} catch (NoFileException e) {
+			showErrorPopUp("T2PUI.Tmp.NoFile.Title", "T2PUI.Tmp.NoFile.Text");
 		}
-		textArea.setText(of.sb.toString());
-
 	}
-
 }

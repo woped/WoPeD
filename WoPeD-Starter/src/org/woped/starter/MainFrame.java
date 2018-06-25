@@ -1533,7 +1533,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
     private JCommandButton getP2TButton() {
         if (p2tButton == null) {
-            p2tButton = new JCommandButton(Messages.getString("P2T.text"), new P2T());
+            p2tButton = new JCommandButton(Messages.getString("P2T.text"), new process_to_text());
             p2tButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T, p2tButton));
 //			TODO(optional):
 //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
@@ -1545,7 +1545,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     
     private JCommandButton getT2PButton() {
 		if (t2pButton == null) {
-			t2pButton = new JCommandButton(Messages.getString("T2P.text"), new T2P()); //T2P
+			t2pButton = new JCommandButton(Messages.getString("T2P.text"), new text_to_process()); //T2P
 			t2pButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P, t2pButton));
 //			TODO(optional):
 //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
