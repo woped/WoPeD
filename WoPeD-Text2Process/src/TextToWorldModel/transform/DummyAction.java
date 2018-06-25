@@ -3,6 +3,7 @@
  */
 package TextToWorldModel.transform;
 
+import WorldModelToPetrinet.IDHandler;
 import worldModel.Action;
 
 public class DummyAction extends Action{
@@ -14,28 +15,23 @@ public class DummyAction extends Action{
 	 * @param verb
 	 */
 
-	private static int id=1;
 	private int dummyID;
 
 
-	public DummyAction(Action action) {
+	public DummyAction(Action action, IDHandler dummyIDHandler) {
 		super(action.getOrigin(), action.getWordIndex()+1, "Dummy Node");
 		setBaseForm("Dummy Node");
-		dummyID=id;
-		id++;
+		dummyID=dummyIDHandler.getNext();
 	}
 
-	public DummyAction() {
+	public DummyAction(IDHandler dummyIDHandler) {
 		super(null, -1, "Dummy Node");
 		setBaseForm("Dummy Node");
+		dummyID=dummyIDHandler.getNext();
 	}
 
 	public int getDummyID() {
 		return dummyID;
 	}
-
-	public static void resetStaticContext(){
-	    id=0;
-    }
 	
 }

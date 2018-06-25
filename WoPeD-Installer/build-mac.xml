@@ -22,6 +22,7 @@
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
 		<mkdir dir="dist/launch" />
+		<mkdir dir="dist/izpack" />
 		<mkdir dir="dist/doc" />
 		<mkdir dir="dist/doc/html" />
 		<mkdir dir="dist/doc/html/de" />
@@ -37,7 +38,7 @@
 		<mkdir dir="dist/run" />
 		<mkdir dir="dist/run/org" />
 		<mkdir dir="dist/run/org/woped" />
-		<mkdir dir="dist/run/org/woped/gui" />
+		<mkdir dir="dist/run/org/woped/starter" />
 	</target>
 
 	<target name="setversion">
@@ -50,7 +51,7 @@
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/Example.pnml" />
-		<copy todir="dist/run/org/woped/gui">
+		<copy todir="dist/run/org/woped/starter">
 			<fileset dir="../WoPeD-Starter/bin/org/woped/starter">
 				<include name="RunWoPeD*.class" />
 			</fileset>
@@ -96,6 +97,7 @@
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/spring-xml-2.1.4.RELEASE.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/ssj-2.1.3.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/stax-1.2.0.jar" />
+		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/swingx-1.6.1.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablefilter-swing-5.1.1.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/tablelayout-0.8.6.jar" />
 		<copy todir="dist/lib" file="../WoPeD-CommonLibs/lib/treelayout.core-1.0.1.jar" />
@@ -147,7 +149,11 @@
 			<fileset file="../WoPeD-Starter/doc/html/images/icons/tango/*.*" />
 		</copy>
 
-		<copy todir="dist/launch">
+		<copy todir="dist/izpack">
+			<fileset dir="build-tools/setup/izpack" />
+		</copy>
+		
+			<copy todir="dist/launch">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset file="build-tools/setup/Windows/*.ico" />
 			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
@@ -194,22 +200,25 @@
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST.mf">
 			<fileset dir="../WoPeD-AProMoRe/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
+			<fileset dir="../WoPeD-Configuration/bin" />
 			<fileset dir="../WoPeD-Core/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-Flamingo/bin" />
+			<fileset dir="../WoPeD-GUI/bin" />
 			<fileset dir="../WoPeD-ProcessMetrics/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Starter/bin" />
-			<fileset dir="../WoPeD-GUI/bin" />
-			<fileset dir="../WoPeD-Configuration/bin" />
 		</jar>
 	</target>
 
 	<target name="makeWindowsInstallerOnMac">
 		<try>
 			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+			<copy todir="dist/launch">
+				<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			</copy>
 			<exec dir="dist/launch" executable="/bin/sh">
 				<arg line="buildexeOnMac" />
 			</exec> 
@@ -230,47 +239,25 @@
 		</try>
 	</target>
 		
-	<target name="makeWindowsInstaller">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildexe.xml" />
-			</exec>
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
-			</exec>
-
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
-			</exec>
-
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
-		    <catch>
-			  <echo>Not running on Windows</echo>
-		    </catch>
-		</try>
+	<target name="makeWindowsInstaller">		
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildexe.xml" />
+		</exec>
+		<exec dir="dist" executable="cmd">
+			<arg line="/c java -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+		</exec>
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildsetup.xml" />
+		</exec>
+		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
 	</target>
 		
 	<target name="makeLinuxInstaller">
-		<try>
-			<exec dir="dist" executable="/bin/sh">
-				<arg line="buildLinuxSetup" />
-			</exec>
-			<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-				<tarfileset dir="dist" mode="755">
-					<include name="WoPeD-install-linux" />
-				</tarfileset>
-				<tarfileset dir="dist">
-					<include name="WoPeD-install-linux.jar" />
-				</tarfileset>
-			</tar>
-			
-		    <catch>
-			  	<echo>Not running on Linux</echo>
-		    </catch>
-		</try>
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist" executable="/usr/bin/java">
+			<arg line=" -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o ../installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.jar" />
+		</exec>
 	</target>
 		
 	<target name="makeMacInstaller">

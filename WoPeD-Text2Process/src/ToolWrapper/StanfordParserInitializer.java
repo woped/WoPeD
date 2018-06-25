@@ -25,7 +25,7 @@ public class StanfordParserInitializer {
 
     private StanfordParserInitializer(){
     }
-    public static StanfordParserInitializer getInstance(){
+    public synchronized static StanfordParserInitializer getInstance(){
         if (SPinitializer == null){
             synchronized (StanfordParserInitializer.class) {
                 if (SPinitializer == null) {
@@ -38,19 +38,23 @@ public class StanfordParserInitializer {
         return SPinitializer;
     }
 
-    public DocumentPreprocessor getDpp() {
+    public static synchronized void resetInstance(){
+        SPinitializer=null;
+    }
+
+    public synchronized DocumentPreprocessor getDpp() {
         return dpp;
     }
 
-    public LexicalizedParser getParser() {
+    public synchronized LexicalizedParser getParser() {
         return parser;
     }
 
-    public TreebankLanguagePack getTlp() {
+    public synchronized TreebankLanguagePack getTlp() {
         return tlp;
     }
 
-    public GrammaticalStructureFactory getGsf() {
+    public synchronized GrammaticalStructureFactory getGsf() {
         return gsf;
     }
 

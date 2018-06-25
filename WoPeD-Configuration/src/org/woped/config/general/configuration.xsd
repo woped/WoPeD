@@ -9,6 +9,7 @@
 				<xs:element name="tools" 			type="Tool"/>
 				<xs:element name="apromoreServers" 	type="ApromoreServers" 		minOccurs="0" 	maxOccurs="1"/>
 				<xs:element name="p2t" 				type="Process2Text"/>
+				<xs:element name="t2p" 				type="Text2Process"/>
 				<xs:element name="businessdashboard" type="BusinessDashboard"/>
 				<xs:element name="coloring" 		type="Coloring"/>
 				<xs:element name="metrics" 			type="Metrics"/>
@@ -122,6 +123,14 @@
 			<xs:element name="p2tServerHost" type="xs:string" minOccurs="0" />
 			<xs:element name="p2tServerPort" type="xs:int" minOccurs="0" />
 			<xs:element name="p2tServerURI" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Text2Process">
+		<xs:sequence>
+			<xs:element name="t2pUse" type="xs:boolean" minOccurs="0" />
+			<xs:element name="t2pServerHost" type="xs:string" minOccurs="0" />
+			<xs:element name="t2pServerPort" type="xs:int" minOccurs="0" />
+			<xs:element name="t2pServerURI" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="BusinessDashboard">

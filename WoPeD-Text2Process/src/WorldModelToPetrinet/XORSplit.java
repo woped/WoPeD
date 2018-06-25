@@ -6,19 +6,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class XORSplit {
+public class XORSplit extends PetrinetGateway {
 
     String transID;
     private int choiceCount;
     private String originID;
     private ArrayList<Transition> choices= new ArrayList<Transition>();
 
-    public XORSplit(int choiceCount,String originID){
+    public XORSplit(int choiceCount,String originID, PetrinetElementBuilder elementBuilder){
+        super(elementBuilder);
         this.choiceCount=choiceCount;
         this.originID=originID;
-        transID = new Transition("",false,false,"").getTransID();
+        transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<choiceCount;i++){
-            Transition choice = new Transition("choice",false,true,"");
+            Transition choice = elementBuilder.createTransition("choice",false,true,"");
             choice.setPartOfGateway(i+1,transID);
             choice.setOperatorType(OperatorTransitionModel.XOR_SPLIT_TYPE);
             choices.add(choice);
@@ -30,9 +31,9 @@ public class XORSplit {
         Iterator<Place> i = targets.iterator();
         int j=0;
         while(i.hasNext()){
-            petriNet.add(new Arc(source.getPlaceID(),choices.get(j).getTransID(),originID));
+            petriNet.add(elementBuilder.createArc(source.getID(),choices.get(j).getID(),originID));
             Place p = i.next();
-            petriNet.add(new Arc(choices.get(j).getTransID(),p.getPlaceID(),originID));
+            petriNet.add(elementBuilder.createArc(choices.get(j).getID(),p.getID(),originID));
             petriNet.add(choices.get(j));
             j++;
         }

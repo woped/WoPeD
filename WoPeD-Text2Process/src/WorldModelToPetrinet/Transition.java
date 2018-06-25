@@ -14,66 +14,46 @@ import org.w3c.dom.Element;
 
 public class Transition extends PetriNetElement {
 
-    String textofTrans, roleName, organizationalUnitName ="default", resourceName;
-    static int id = 1,  i = 1;
-    String transID, idGateway;
-    int textPositionX = 0;
-    int textPositionY = 0;
-    int transPositionX = 0;
-    int transPositionY = 0;
-    int triggerPositionX = 0;
-    int triggerPositionY = 0;
-    int resourcePositionX = 0;
-    int resourcePositionY = 0;
-    int actorPositionX = 0;
-    int actorPositionY = 0;
-    int dimensionX = 40;
-    int dimensionY = 40;
-    int triggerType = 200;
-    int triggerDimensionX = 24;
-    int triggerDimensionY = 22;
-    int resourceDimensionX = 60;
-    int resourceDimensionY = 22;
-    int operatorType;
+    private String roleName, organizationalUnitName = "all", resourceName;
+    private String idGateway;
+    private int textPositionX = 0;
+    private int textPositionY = 0;
+    private int transPositionX = 0;
+    private int transPositionY = 0;
+    private int triggerPositionX = 0;
+    private int triggerPositionY = 0;
+    private int resourcePositionX = 0;
+    private int resourcePositionY = 0;
+    private int actorPositionX = 0;
+    private int actorPositionY = 0;
+    private int dimensionX = 40;
+    private int dimensionY = 40;
+    private int triggerType = 200;
+    private int triggerDimensionX = 24;
+    private int triggerDimensionY = 22;
+    private int resourceDimensionX = 60;
+    private int resourceDimensionY = 22;
+    private int operatorType;
+    private int orientationCode=1;
+    private boolean hasResource = false, isGateway = false; //hasResource bezieht sich auf die Rolle, nicht auf die Ressource
 
-
-    int orientationCode=1;
-    boolean hasResource = false, isGateway = false;
-
-    public Transition(String text, boolean hasResource, boolean isGateway, String originID) {
-        super(originID);
-        this.textofTrans = text;
+    public Transition(String text, boolean hasResource, boolean isGateway, String originID, IDHandler idHandler) {
+        super(originID, idHandler);
+        this.text = text;
         this.hasResource = hasResource;
         this.isGateway = isGateway;
 
         // Set Id of transition
-        this.transID = "t" + id;
-        id++;
-
-        // if Gateway, set ID of Gateway
-/*        if (isGateway == true) {
-
-            idGateway = transID + "_op_" + i;
-            i++;
-
-            id = i;
-
-        }*/
-
+        this.ID = "t" + IDCounter;
     }
 
     public void setOrientationCode(int orientationCode) {
         this.orientationCode = orientationCode;
     }
 
-    public static void resetStaticContext(){
-        //TODO replace by ID handler -> Thread Safeness
-        id=1;
-    }
-
     public void setPartOfGateway(int subID,String transID){
-        idGateway=transID+"_op_"+subID;
-        this.transID=transID;
+        idGateway=transID;
+        this.ID=transID+"_op_"+subID;
     }
 
     // getter and setter for role
@@ -103,11 +83,6 @@ public class Transition extends PetriNetElement {
         this.resourceName = resourceName;
     }
 
-    // getter for ID of transition
-    public String getTransID() {
-        return transID;
-    }
-
     // getter and setter for type of trigger e.g. trigger type 200 for roles
     public int getTriggerType() {
         return triggerType;
@@ -129,25 +104,16 @@ public class Transition extends PetriNetElement {
 
             Element transitionTag;
 
-            if (isGateway == false) {
+            transitionTag = doc.createElement("transition");
+            transitionTag.setAttribute("id", ID);
+            doc.appendChild(transitionTag);
 
-                transitionTag = doc.createElement("transition");
-                transitionTag.setAttribute("id", transID);
-                doc.appendChild(transitionTag);
-
-            } else {
-
-                transitionTag = doc.createElement("transition");
-                transitionTag.setAttribute("id", idGateway);
-                doc.appendChild(transitionTag);
-
-            }
 
             Element name = doc.createElement("name");
             transitionTag.appendChild(name);
 
             Element text = doc.createElement("text");
-            text.appendChild(doc.createTextNode(textofTrans));
+            text.appendChild(doc.createTextNode(this.text));
             name.appendChild(text);
 
             Element graphicsOfText = doc.createElement("graphics");
@@ -179,7 +145,7 @@ public class Transition extends PetriNetElement {
             if (isGateway == true) {
 
                 Element operator = doc.createElement("operator");
-                operator.setAttribute("id", transID);
+                operator.setAttribute("id", idGateway);
                 operator.setAttribute("type", "" + getOperatorType());
                 toolSpecific.appendChild(operator);
             }
@@ -205,8 +171,9 @@ public class Transition extends PetriNetElement {
                 graphicsOfTrigger.appendChild(dimensionOfTrigger);
 
                 Element transResource = doc.createElement("transitionResource");
-                transResource.setAttribute("organizationalUnitName", organizationalUnitName);
                 transResource.setAttribute("roleName", roleName);
+                transResource.setAttribute("organizationalUnitName", organizationalUnitName);
+
                 toolSpecific.appendChild(transResource);
 
                 Element graphicsOfResource = doc.createElement("graphics");

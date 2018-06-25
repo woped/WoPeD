@@ -18,12 +18,12 @@ public class Constants {
     public static String CONF_GENERATE_IGNORE_SBAR_ON_NP = "T2P_GenerateIgnoreSBAROnNP";
 
     /* switches for debug output*/
-	public static final boolean DEBUG_FINAL_ACTIONS_RESULT = true;
-	public static final boolean DEBUG_MARKING = true;
-	public static final boolean DEBUG_REFERENCE_RESOLUTION = true;
-	public static final boolean DEBUG_EXTRACTION = true;
-	public static final boolean DEBUG_EXTRACTION_FINAL = true;
-	public static final boolean DEBUG_FRAME_ASSIGNMENT = true;
+	public static final boolean DEBUG_FINAL_ACTIONS_RESULT = false;
+	public static final boolean DEBUG_MARKING = false;
+	public static final boolean DEBUG_REFERENCE_RESOLUTION = false;
+	public static final boolean DEBUG_EXTRACTION = false;
+	public static final boolean DEBUG_EXTRACTION_FINAL = false;
+	public static final boolean DEBUG_FRAME_ASSIGNMENT = false;
 //	public static final boolean DEBUG_FINAL_ACTIONS_RESULT = true;
 //	public static final boolean DEBUG_MARKING = true;
 //	public static final boolean DEBUG_REFERENCE_RESOLUTION = true;
