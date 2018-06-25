@@ -42,7 +42,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
-import org.woped.t2p.WorldModelExecution;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -114,13 +113,7 @@ public class RunWoPeD extends JFrame {
 		m_filesToOpen = args;
 		initLogging();
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-
-		if (ConfigurationManager.getConfiguration().getProcess2TextUse()) {
-
-			(new Thread(new WorldModelExecution())).start();
-
-		}
-
+		
 		initUI();
 	}
 
