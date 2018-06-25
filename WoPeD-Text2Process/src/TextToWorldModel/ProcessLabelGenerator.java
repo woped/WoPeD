@@ -1,4 +1,4 @@
-package WorldModelToPetrinet;
+package TextToWorldModel;
 
 import TextToWorldModel.Constants;
 import TextToWorldModel.processing.ProcessingUtils;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProcessLabelGenerator {
 
-        private StanfordParserFunctionality stanford = new StanfordParserFunctionality();
+        private StanfordParserFunctionality stanford = StanfordParserFunctionality.getInstance();
         private FrameNetFunctionality framenet = new FrameNetFunctionality();
         private WordNetFunctionality wordnet= new WordNetFunctionality();
 

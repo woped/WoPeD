@@ -3,14 +3,10 @@
  */
 package TextToWorldModel.transform;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
+import TextToWorldModel.ProcessLabelGenerator;
 import ToolWrapper.WordNetFunctionality;
 import WorldModelToPetrinet.IDHandler;
 import edu.mit.jwi.item.POS;
@@ -86,8 +82,10 @@ public class TextAnalyzer {
 			markerDetection();
 			combineActions();
 			determineLinks();
-			buildFlows();			
-		
+			buildFlows();
+
+			createFinalLabelsForActions();
+
 			
 			if(Constants.DEBUG_FINAL_ACTIONS_RESULT) {
 				for(AnalyzedSentence s:f_analyzedSentences) {
@@ -103,7 +101,16 @@ public class TextAnalyzer {
 	}	
 
 	
+private void createFinalLabelsForActions(){
+	List<Action> actions = f_world.getActions();
+	Iterator<Action> i = actions.iterator();
+	ProcessLabelGenerator pg = new ProcessLabelGenerator();
+	while(i.hasNext()){
+		Action a = i.next();
+		a.setFinalLabel(pg.createTaskText(a));
+	}
 
+}
 	/**
 	 * 
 	 */

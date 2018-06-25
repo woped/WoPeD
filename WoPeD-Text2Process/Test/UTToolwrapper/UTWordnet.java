@@ -1,3 +1,4 @@
+package UTToolwrapper;
 
 import ToolWrapper.WordNetFunctionality;
 import ToolWrapper.WordNetInitializer;

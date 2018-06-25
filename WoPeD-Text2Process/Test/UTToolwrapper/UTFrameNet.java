@@ -1,3 +1,5 @@
+package UTToolwrapper;
+
 import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.FrameNetInitializer;
 import org.junit.Test;

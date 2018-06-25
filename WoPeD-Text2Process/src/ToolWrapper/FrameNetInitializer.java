@@ -14,15 +14,15 @@ import java.util.logging.Logger;
 public class FrameNetInitializer {
 
     //framenet source directory
-    private static String f_frameNetHome = "/NLPTools/FrameNet/fndata-1.5/";
+    private String f_frameNetHome = "/NLPTools/FrameNet/fndata-1.5/";
     //framenet initializer instance
     private static FrameNetInitializer fni;
     //framenet instance (dictionary)
-    private static FrameNet f_frameNet;
+    private FrameNet f_frameNet;
     //reduced annotation corpus
-    private static AnnotationCorpus f_corpus;
+    private AnnotationCorpus f_corpus;
     // TODO: prüfen ob weiterhin benötigt:
-    private static boolean generateButton = false;
+    private boolean generateButton = false;
 
     private FrameNetInitializer (){
         f_frameNet = new FrameNet();
@@ -41,28 +41,33 @@ public class FrameNetInitializer {
     }
 
     //getter
-    public static FrameNetInitializer getInstance(){
+    public synchronized static FrameNetInitializer getInstance(){
         if(fni == null){
             synchronized (FrameNetInitializer.class) {
                 if(fni == null){
                     fni = new FrameNetInitializer();
-                    init();
+                    fni.init();
                 }
             }
         }
         return fni;
     }
-    public FrameNet getFN() {
+
+    public synchronized static void resetInstance(){
+        fni=null;
+    }
+
+    public synchronized FrameNet getFN() {
         return f_frameNet;
     }
-    public static AnnotationCorpus getCorpus() {
+    public synchronized AnnotationCorpus getCorpus() {
         return f_corpus;
     }
-    public static  boolean getGenrateButton(){
+    public synchronized boolean getGenrateButton(){
         return generateButton;
     } // TODO: prüfen ob weiterhin benötigt
 
-    public static void init() {
+    public synchronized void init() {
         try {
 
             //start time for tracking tracking

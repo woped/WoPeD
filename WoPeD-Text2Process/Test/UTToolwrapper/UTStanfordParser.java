@@ -1,3 +1,5 @@
+package UTToolwrapper;
+
 import static org.junit.Assert.assertEquals;
 
 import ToolWrapper.StanfordParserFunctionality;
@@ -28,7 +30,7 @@ public class UTStanfordParser {
 
         /***check Functionality***/
         String testText = "It's always difficult to write a test sentence, that actually makes sense. The Thing is also, that I even need two of them.";
-        StanfordParserFunctionality spf = new StanfordParserFunctionality();
+        StanfordParserFunctionality spf =StanfordParserFunctionality.getInstance();
 
         Text analyzedText = spf.createText(testText);
 
