@@ -10,7 +10,7 @@
 	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="lib/jarbundler-2.2.0.jar"/>
 	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.jar"/>
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller" /> 
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -210,56 +210,10 @@
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Starter/bin" />
+			<fileset dir="../WoPeD-T2P/bin" />
 		</jar>
 	</target>
 
-	<target name="makeWindowsInstallerOnMac">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<copy todir="dist/launch">
-				<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
-			</copy>
-			<exec dir="dist/launch" executable="/bin/sh">
-				<arg line="buildexeOnMac" />
-			</exec> 
-						
-			<exec dir="dist" executable="/bin/sh">
-				<arg line="buildsetupOnMac" />
-			</exec>
-
-			<exec dir="dist/launch" executable="/bin/sh">
-				<arg line="buildsetupexeOnMac" />
-			</exec>
-
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
-		    <catch>
-			  	<echo>Not running on Mac</echo>
-		    </catch>
-		</try>
-	</target>
-		
-	<target name="makeWindowsInstaller">		
-		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-		<exec dir="dist/launch" executable="cmd">
-			<arg line="/c java -jar launch4j.jar buildexe.xml" />
-		</exec>
-		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
-		</exec>
-		<exec dir="dist/launch" executable="cmd">
-			<arg line="/c java -jar launch4j.jar buildsetup.xml" />
-		</exec>
-		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-	</target>
-		
-	<target name="makeLinuxInstaller">
-		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-		<exec dir="dist" executable="/usr/bin/java">
-			<arg line=" -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o ../installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.jar" />
-		</exec>
-	</target>
-		
 	<target name="makeMacInstaller">
 		<bundleapp outputdirectory="dist/mac"
 		        name="WoPeD"
