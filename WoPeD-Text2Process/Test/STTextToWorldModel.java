@@ -19,7 +19,7 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 
 public class STTextToWorldModel extends T2PScenarioTest {
-    private static String [] TestExamples = {"ST_Resource_Lemon_Chicken_Recipe.xml", "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
+    private static String [] TestExamples = {"ST_Ressource_Hotel_Service.xml", "ST_Resource_Lemon_Chicken_Recipe.xml", "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
     private final static double acceptanceThreshold=0.1;
     private static final String [] ELEMENT_TYPE_ACTIONS = {"Actions","Action"};
     private static final String [] ELEMENT_TYPE_ACTORS ={"Actors","Actor"};
