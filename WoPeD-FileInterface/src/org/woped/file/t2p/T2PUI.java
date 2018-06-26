@@ -28,6 +28,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
@@ -107,9 +108,11 @@ public class T2PUI extends JDialog {
 		
 		this.pack();
 		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
 		Dimension size = new Dimension(600, 440);
 		this.setSize(size);
-		this.setLocationRelativeTo(null);
+
 	}
 	
 	
