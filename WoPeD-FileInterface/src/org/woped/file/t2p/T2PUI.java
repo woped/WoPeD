@@ -38,6 +38,7 @@ import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -154,8 +155,8 @@ public class T2PUI extends JDialog {
 		});
 		
 		btnGenerate.setMnemonic(KeyEvent.VK_A);
-		//btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-		btnGenerate.setText(Messages.getString("T2PUI.Button.Generate"));
+		btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text"));
+		btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
 		
 		
 		WopedButton btnErase = new WopedButton(new AbstractAction() {
@@ -165,8 +166,8 @@ public class T2PUI extends JDialog {
 		});
 
 		btnErase.setMnemonic(KeyEvent.VK_L);
-		btnErase.setText(Messages.getString("T2PUI.Button.Clear"));
-		//btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
+		btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
+		btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
 		
 		
 		WopedButton btnUpload = new WopedButton(new AbstractAction() {
@@ -176,8 +177,8 @@ public class T2PUI extends JDialog {
 		});
 
 		btnUpload.setMnemonic(KeyEvent.VK_C);
-		//btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
-		btnUpload.setText(Messages.getString("T2PUI.Button.Read"));
+		btnUpload.setText(Messages.getString("T2PUI.Button.Read.Text"));
+		btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
 		
 		buttonPanel.add(btnUpload);
 		buttonPanel.add(btnErase);
