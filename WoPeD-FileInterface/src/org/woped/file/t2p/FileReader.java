@@ -1,4 +1,4 @@
-package org.woped.t2p;
+package org.woped.file.t2p;
 
 public interface FileReader {
 	String read() throws NoFileException;

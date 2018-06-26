@@ -29,6 +29,7 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -40,6 +41,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
+import org.woped.gui.translations.Messages;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
 
@@ -68,6 +70,14 @@ public class RunWoPeD extends JFrame {
 	 * 
 	 */
 	public static void main(String[] args) {
+		
+		if (!System.getProperty("java.version").startsWith("1.8"))
+		{
+			JOptionPane.showMessageDialog(null, Messages.getString("Wrong.Java.Version.Text", new Object[] {System.getProperty("java.version")}),
+					Messages.getString("Wrong.Java.Version.Title"), JOptionPane.OK_OPTION);
+			System.exit(0);
+		}
+		
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;

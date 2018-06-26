@@ -1,4 +1,4 @@
-package org.woped.t2p;
+package org.woped.file.t2p;
 
 import java.awt.Color;
 import java.awt.Dimension;

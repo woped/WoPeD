@@ -1,4 +1,4 @@
-package org.woped.t2p;
+package org.woped.file.t2p;
 
 import java.util.Scanner;
 import javax.swing.JFileChooser;

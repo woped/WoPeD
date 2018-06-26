@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
-package org.woped.t2p;
+package org.woped.file.t2p;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -47,12 +47,11 @@ import javax.swing.SwingWorker;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
-import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLImport;
+import org.woped.file.t2p.FileReader.NoFileException;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
-import org.woped.t2p.FileReader.NoFileException;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
@@ -68,7 +67,7 @@ public class T2PUI extends JDialog {
 	
 	private JDialog loadDialog;
 	
-	private ApplicationMediator mediator;
+	private AbstractApplicationMediator mediator;
 	
 	private boolean requested = false;
 	private SwingWorker<HttpResponse, Void> bgTask;
@@ -85,7 +84,7 @@ public class T2PUI extends JDialog {
 	 */
 	public T2PUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
 		super(owner, true);
-		this.mediator = (ApplicationMediator) mediator;
+		this.mediator = mediator;
 		initialize();
 	}
 	/**
