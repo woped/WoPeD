@@ -115,7 +115,7 @@ public class T2PUI extends JDialog {
 	private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
 		
 		Font f = new Font("Lucia Grande", Font.PLAIN, 13);
-		String hint = Messages.getString("T2PUI.Tmp.HowTo");
+		String hint = Messages.getString("T2PUI.HowTo");
 		
 		ta.setFont(f);
 		ta.changeHintText(hint);
@@ -141,7 +141,7 @@ public class T2PUI extends JDialog {
 		
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
 		
-		String[] lang = { Messages.getString("T2PUI.Tmp.Lang"), "en_US" };
+		String[] lang = { Messages.getString("T2PUI.Lang"), Messages.getString("T2PUI.Lang.English")};
 		JComboBox<String> langBox = new JComboBox<String>(lang);
 		langBox.setSelectedIndex(1);
 		
@@ -155,7 +155,7 @@ public class T2PUI extends JDialog {
 		
 		btnGenerate.setMnemonic(KeyEvent.VK_A);
 		//btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-		btnGenerate.setText(Messages.getString("T2PUI.Tmp.Button.Generate"));
+		btnGenerate.setText(Messages.getString("T2PUI.Button.Generate"));
 		
 		
 		WopedButton btnErase = new WopedButton(new AbstractAction() {
@@ -165,7 +165,7 @@ public class T2PUI extends JDialog {
 		});
 
 		btnErase.setMnemonic(KeyEvent.VK_L);
-		btnErase.setText(Messages.getString("T2PUI.Tmp.Button.Clear"));
+		btnErase.setText(Messages.getString("T2PUI.Button.Clear"));
 		//btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
 		
 		
@@ -177,7 +177,7 @@ public class T2PUI extends JDialog {
 
 		btnUpload.setMnemonic(KeyEvent.VK_C);
 		//btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
-		btnUpload.setText(Messages.getString("T2PUI.Tmp.Button.Read"));
+		btnUpload.setText(Messages.getString("T2PUI.Button.Read"));
 		
 		buttonPanel.add(btnUpload);
 		buttonPanel.add(btnErase);
@@ -198,7 +198,7 @@ public class T2PUI extends JDialog {
 			httpBackgroundWorker(inputText);
 			showLoadingBox();
 		} else{			
-			showErrorPopUp("T2PUI.Tmp.NoText.Title", "T2PUI.Tmp.NoText.Text");
+			showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
 		}
 		
 		requested = false;
@@ -207,10 +207,10 @@ public class T2PUI extends JDialog {
 	private void showLoadingBox() {
 		JOptionPane jop = new JOptionPane();
 	    jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-	    jop.setMessage(Messages.getString("T2PUI.Tmp.Loading.Text"));
+	    jop.setMessage(Messages.getString("T2PUI.Loading.Text"));
 	    
-	    loadDialog = jop.createDialog(this, Messages.getString("T2PUI.Tmp.Loading.Title"));
-	    jop.setOptions(new String[]{Messages.getString("T2PUI.Tmp.Loading.Cancel")});
+	    loadDialog = jop.createDialog(this, Messages.getString("T2PUI.Loading.Title"));
+	    jop.setOptions(new String[]{Messages.getString("T2PUI.Loading.Cancel")});
 	    loadDialog.setVisible(true);
 	    
 	    // Thread gets blocked and awaits an UI action.
@@ -283,20 +283,20 @@ public class T2PUI extends JDialog {
 						if (loadDialog != null) loadDialog.dispose();
 						
 						if (httpCode == 400) {
-							showErrorPopUp("T2PUI.Tmp.400Error.Title", "T2PUI.Tmp.400Error.Text");
+							showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
 						} else if (httpCode == 500) {
-							showErrorPopUp("T2PUI.Tmp.500Error.Title", "T2PUI.Tmp.GeneralError.Text");
+							showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
 						} else if (httpCode == 503) {
-							showErrorPopUp("T2PUI.Tmp.503Error.Title", "T2PUI.Tmp.503Error.Text");
+							showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
 						} else {
-							showErrorPopUp("T2PUI.Tmp.GeneralError.Title", "T2PUI.Tmp.GeneralError.Text");
+							showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
 						}
 					}
 				} catch (Exception e) {
 					if (req != null) req.cancel();
 					if (loadDialog != null) loadDialog.dispose();
 					
-					//showErrorPopUp("T2PUI.Tmp.GeneralError.Title", "T2PUI.Tmp.GeneralError.Text");
+					//showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
 				}
 			}			
 		};
@@ -319,7 +319,7 @@ public class T2PUI extends JDialog {
 		try {
 			textArea.setText(r.read());
 		} catch (NoFileException e) {
-			showErrorPopUp("T2PUI.Tmp.NoFile.Title", "T2PUI.Tmp.NoFile.Text");
+			showErrorPopUp("T2PUI.NoFile.Title", "T2PUI.NoFile.Text");
 		}
 	}
 }
