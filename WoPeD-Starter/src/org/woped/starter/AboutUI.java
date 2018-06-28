@@ -46,6 +46,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.woped.core.utilities.Platform;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -186,25 +187,26 @@ public class AboutUI extends JDialog {
 	private JScrollPane getChangeLogPanel() throws IOException {
 		if (changeLogPanel == null) {
 
-			// Try to find the current working directory where Changelog.txt is
-			// located
+			// Try to find the directory where Changelog.txt is located
 			String changeLog = "";
+			String path = new java.io.File(".").getCanonicalPath();
 			URL main = AboutUI.class.getResource("RunWoPeD.class");
 			File file = new File(main.getPath());
-			String path = file.getAbsolutePath();
-
-			// Check if we are running WoPeD from a jar file
-			if (path.contains("!")) {
-				int pos = path.indexOf("WoPeD-classes");
+			String mainpath = file.getAbsolutePath();
+			
+			if (mainpath.contains("!") && Platform.isMac()) {
+				
+				int pos = mainpath.indexOf("WoPeD-classes");
 				if (pos > -1) {
 					// Remove URL prefix
-					int ff = path.indexOf("file:") + 5;
-					path = path.substring(ff);
-					path = path.substring(0, pos - ff);
-					path = path.replace("%20", " ");
+					int ff = mainpath.indexOf("file:") + 5;
+					mainpath = mainpath.substring(ff);
+					mainpath = mainpath.substring(0, pos - ff);
+					mainpath = mainpath.replace("%20", " ");
+					path = mainpath;
 				}
 			} else {
-				// Running inside Eclipse, no jar file, go to folder directly
+				// Running inside Eclipse, no WoPeD app
 				int pos = path.indexOf("WoPeD-Starter");
 				if (pos > -1) {
 					path = path.substring(0, pos);

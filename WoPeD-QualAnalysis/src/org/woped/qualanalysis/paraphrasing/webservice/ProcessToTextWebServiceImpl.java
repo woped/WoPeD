@@ -39,7 +39,6 @@ public class ProcessToTextWebServiceImpl
         WebServiceException e = null;
         CONNECTIONSTRING = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":" + ConfigurationManager.getConfiguration().getProcess2TextServerPort() + ConfigurationManager.getConfiguration().getProcess2TextServerURI();
         try {
-        		System.out.println(CONNECTIONSTRING);
             url = new URL(CONNECTIONSTRING);
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);

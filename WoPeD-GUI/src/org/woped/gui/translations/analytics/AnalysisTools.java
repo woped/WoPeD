@@ -204,7 +204,6 @@ public class AnalysisTools {
 		try {
 		  File inFile = new File(file);
 		  if (!inFile.isFile()) {
-//		    System.out.println("Parameter is not an existing file");
 		    return;
 		  }
 
@@ -226,12 +225,8 @@ public class AnalysisTools {
 		  br.close();
 
 		  if (!inFile.delete()) {
-//		    System.out.println("Could not delete original file");
 		    return;
 		  }
-
-//		  if (!tempFile.renameTo(inFile))
-//		    System.out.println("Could not save new file");
 
 		}
 		catch (FileNotFoundException ex) {

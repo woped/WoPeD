@@ -18,7 +18,6 @@ public class OSXFullscreen {
 		} catch (ClassNotFoundException e1) {
 		} catch (Exception e) {
 			LoggerManager.info(Constants.GUI_LOGGER, "Failed to enable Mac Fullscreen: "+e);
-			//System.out.println("Failed to enable Mac Fullscreen: "+e);
 		}
 	}
 	@SuppressWarnings({"unchecked", "rawtypes"})
@@ -35,7 +34,6 @@ public class OSXFullscreen {
 		} catch (ClassNotFoundException e1) {
 		} catch (Exception e) {
 			LoggerManager.info(Constants.GUI_LOGGER, "Failed to toggle Mac Fullscreen: "+e);
-			//System.out.println("Failed to toggle Mac Fullscreen: "+e);
-		}
+			}
 	}
 }
