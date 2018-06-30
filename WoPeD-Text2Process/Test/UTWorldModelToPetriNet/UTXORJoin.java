@@ -37,9 +37,9 @@ public class UTXORJoin {
             "      </bounds>\n" +
             "      <scale>100</scale>\n" +
             "      <treeWidthRight>549</treeWidthRight>\n" +
-            "      <overviewPanelVisible>true</overviewPanelVisible>\n" +
+            "      <overviewPanelVisible>false</overviewPanelVisible>\n" +
             "      <treeHeightOverview>100</treeHeightOverview>\n" +
-            "      <treePanelVisible>true</treePanelVisible>\n" +
+            "      <treePanelVisible>false</treePanelVisible>\n" +
             "      <verticalLayout>false</verticalLayout>\n" +
             "      <resources>\n" +
             "\n" +
