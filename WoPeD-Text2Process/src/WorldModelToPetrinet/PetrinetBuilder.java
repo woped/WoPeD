@@ -349,7 +349,7 @@ public class PetrinetBuilder {
 
             }else{
                 /*do nothing, currently cant be handled*/
-                //TODO check if possible
+                //TODO check if occurence is possible
             }
 
         }
