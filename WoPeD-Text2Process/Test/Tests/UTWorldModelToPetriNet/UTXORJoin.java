@@ -1,5 +1,6 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.PetriNet;
 import WorldModelToPetrinet.Place;
 import WorldModelToPetrinet.XORJoin;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
 
-public class UTXORJoin {
+public class UTXORJoin extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.XORJoin*/
 
@@ -65,6 +66,6 @@ public class UTXORJoin {
 
         XORJoin xj = new XORJoin(sources.size(),"",pn.getElementBuilder());
         xj.addXORJoinToPetriNet(pn,sources,target);
-        assertEquals("XOR Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
+        assertEquals("XOR Join did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }
 }

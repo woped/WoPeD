@@ -1,4 +1,4 @@
-package UTToolwrapper;
+package Tests.UTToolwrapper;
 
 import static org.junit.Assert.assertEquals;
 

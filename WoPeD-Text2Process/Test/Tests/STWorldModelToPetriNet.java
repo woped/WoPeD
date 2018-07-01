@@ -1,3 +1,5 @@
+package Tests;
+
 import TextToWorldModel.WorldModelBuilder;
 import WorldModelToPetrinet.PetrinetBuilder;
 import org.junit.Test;
@@ -14,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertEquals;
 
-public class STWorldModelToPetriNet {
+public class STWorldModelToPetriNet extends T2PScenarioTest {
     private static String PetriNetPNML;
 
     private static String exspectedPNML="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -60,9 +62,9 @@ public class STWorldModelToPetriNet {
             "      </bounds>\n" +
             "      <scale>100</scale>\n" +
             "      <treeWidthRight>549</treeWidthRight>\n" +
-            "      <overviewPanelVisible>true</overviewPanelVisible>\n" +
+            "      <overviewPanelVisible>false</overviewPanelVisible>\n" +
             "      <treeHeightOverview>100</treeHeightOverview>\n" +
-            "      <treePanelVisible>true</treePanelVisible>\n" +
+            "      <treePanelVisible>false</treePanelVisible>\n" +
             "      <verticalLayout>false</verticalLayout>\n" +
             "      <resources>\n" +
             "<role Name=\"manager\"/>\n" +
@@ -83,7 +85,7 @@ public class STWorldModelToPetriNet {
         PetriNetPNML=PNBuilder.buildPNML();
         //System.out.println(PetriNetPNML);
         assertEquals("Generated PNML is invalid to its XSD.",true,validateXMLSchema(filePath+"pnml_wf.xsd"));
-        assertEquals("Generated PNML does not equal expectation.",true,PetriNetPNML.equals(exspectedPNML));
+        assertEquals("Generated PNML does not equal expectation.",true,euqualsWeakly(PetriNetPNML,exspectedPNML));
 
         }
     public static boolean validateXMLSchema(String xsdPath){

@@ -1,7 +1,7 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.ANDJoin;
-import WorldModelToPetrinet.ANDSplit;
 import WorldModelToPetrinet.PetriNet;
 import WorldModelToPetrinet.Place;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class UTANDJoin {
+public class UTANDJoin extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.ANDJoin*/
 
@@ -62,6 +62,6 @@ public class UTANDJoin {
 
         ANDJoin aj = new ANDJoin("",false,"",pn.getElementBuilder());
         aj.addANDJoinToPetriNet(pn,sources,target);
-        assertEquals("AND Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
+        assertEquals("AND Join did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }
 }

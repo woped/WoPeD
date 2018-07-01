@@ -1,5 +1,6 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.Arc;
 import WorldModelToPetrinet.IDHandler;
 import org.junit.Test;
@@ -7,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /*Unit Test for class WorldModelToPetriNet Arc*/
-public class UTArc {
+public class UTArc extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.Arc*/
 
@@ -20,6 +21,6 @@ public class UTArc {
     @Test
     public void evaluateArc(){
         Arc a = new Arc("1","1","", new IDHandler(1));
-        assertEquals("Arc did not create exspected PNML.", true,a.toString().equals(exspectedPNML));
+        assertEquals("Arc did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,a.toString()));
     }
 }

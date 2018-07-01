@@ -1,3 +1,5 @@
+package Tests;
+
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import worldModel.SpecifiedElement;
@@ -12,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class T2PScenarioTest {
+public abstract class T2PScenarioTest extends T2PTest {
 
     /*
-    Some Basic Utils for T2P Scenario Tests
+    Some Basic Utils specifically for T2P Scenario Tests
     including Commandline outputs, text cleansing and performance measurement
     */
 
@@ -76,17 +78,6 @@ public abstract class T2PScenarioTest {
 
     protected static void printScore(String message, double score){
         System.out.printf(message+" in Percent: %.2f%%%n", score*100);
-    }
-
-    protected static String sanitizeText(String text){
-        //get rid of tabs and newlines
-        text = text.replace("\t", "");
-        text = text.replace("\n", "");
-        //deal with x*space based tabs
-        while (text.contains("  ")){
-            text=text.replace("  "," ");
-        }
-        return text;
     }
 
     protected static List<? extends SpecifiedElement> getDisjointList(List<? extends SpecifiedElement> elements){

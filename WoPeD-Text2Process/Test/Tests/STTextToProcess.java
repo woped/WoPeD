@@ -1,17 +1,14 @@
+package Tests;
+
 import T2PWebservice.InvalidInputException;
 import T2PWebservice.T2PController;
 import TextToWorldModel.WorldModelBuilder;
 import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetFunctionality;
-import ToolWrapper.WordNetInitializer;
 import WorldModelToPetrinet.*;
-import org.apache.bcel.classfile.Constant;
 import org.junit.Test;
 import org.w3c.dom.NodeList;
-import worldModel.Action;
-import worldModel.Actor;
-import worldModel.SpecifiedElement;
 import worldModel.WorldModel;
 
 import javax.xml.xpath.XPath;

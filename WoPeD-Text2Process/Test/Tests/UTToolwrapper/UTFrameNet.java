@@ -1,4 +1,4 @@
-package UTToolwrapper;
+package Tests.UTToolwrapper;
 
 import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.FrameNetInitializer;
