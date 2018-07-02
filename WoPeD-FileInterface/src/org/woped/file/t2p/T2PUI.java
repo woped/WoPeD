@@ -49,6 +49,7 @@ import javax.swing.SwingWorker;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
+import org.woped.core.controller.IViewController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLImport;
 import org.woped.file.t2p.FileReader.NoFileException;
@@ -73,6 +74,8 @@ public class T2PUI extends JDialog {
 	
 	private boolean requested = false;
 	private SwingWorker<HttpResponse, Void> bgTask;
+	
+	private String inputText;
 	
 	public T2PUI(AbstractApplicationMediator mediator) {
 		this(null, mediator);
@@ -113,6 +116,23 @@ public class T2PUI extends JDialog {
 		Dimension size = new Dimension(600, 440);
 		this.setSize(size);
 
+		// set prev text if available
+		
+		int index = 0;
+		boolean doesContain = false;
+		
+		if (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
+			doesContain = true;
+			while(mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
+				index++;
+			}
+			index--;
+		}
+		
+		if (doesContain) {
+			String lastTextInput = ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index)).getEditorPanel().getT2PText();
+			textArea.setText(lastTextInput);
+		}
 	}
 	
 	
@@ -196,7 +216,7 @@ public class T2PUI extends JDialog {
 		if (requested) return;
 		requested = true;
 		
-		String inputText = textArea.getText();
+		inputText = textArea.getText();
 
 		if (!inputText.isEmpty()) {
 			httpBackgroundWorker(inputText);
@@ -232,8 +252,15 @@ public class T2PUI extends JDialog {
 
 		IEditor[] editor = pnmlImport.getEditor();
 		
+		EditorVC evc = ((EditorVC) editor[0]);
+		
 		try {
-			((EditorVC) editor[0]).startBeautify(0, 0, 0);
+			if (inputText != null) {
+				evc.getEditorPanel().showT2PBar(inputText);
+			}
+			
+			evc.startBeautify(0, 0, 0);
+
 		} catch (ArithmeticException exc) {
 			close();
 			
