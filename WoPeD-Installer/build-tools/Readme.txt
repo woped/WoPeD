@@ -2,7 +2,7 @@ WoPeD (Workflow Petrinet Designer) is an easy-to-use tool to
 draw, manage, simulate and analyse workflow process definitions 
 using an extended Petri net notation called "workflow nets".
    
-Copyright (C) 2003-2016		
+Copyright (C) 2003-2018		
  
 Contact
 -------
@@ -41,7 +41,8 @@ refer to the online user manual available within WoPeD or on the WoPeD
 website http://www.woped.org.
    
 Note: WoPeD is written in Java. It is necessary that you have installed 
-Java 8 or newer on your machine.  
+Java 8 on your machine. Please note that WoPeD does not yet support the 
+latest Java versions 9 and 10. 
 
 WoPeD is known to run on Microsoft Windows platforms, on MacOS X and on 
 many Linux distributions. Any reports of successfully having installed 
@@ -60,7 +61,7 @@ WoPeD-install.exe.
 
 For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and 
 decompress it with the tar utility. Then launch the contained executable 
-WoPeD-install. 
+WoPeD-install-linux.jar. 
 
 For MacOS, download WoPeD-install-macos-@wopedversion@.dmg, double-click on it
 to mount the image and launch the contained package file 
@@ -87,7 +88,6 @@ Root directory:
   ./License.txt                     (License file)
   ./Readme.txt                      (This file)
   ./WoPeD.exe                       (Launcher for Windows)
-  ./WoPeD                           (Launcher for Linux - alternatively)
   ./WoPeD-classes-@wopedversion@.jar         (WoPeD program classes)
 
 lib directory

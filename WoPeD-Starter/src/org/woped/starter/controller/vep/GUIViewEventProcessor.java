@@ -48,6 +48,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.file.t2p.T2PUI;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
@@ -56,7 +57,6 @@ import org.woped.starter.BugReportUI;
 import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
-import org.woped.qualanalysis.t2p.*;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

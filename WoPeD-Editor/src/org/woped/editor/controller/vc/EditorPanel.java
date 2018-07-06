@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
@@ -94,7 +95,11 @@ public class EditorPanel extends JPanel {
     private boolean automaticResize = false;
     private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
     private NetColorScheme m_understandColoring = null;
-
+    
+    private JSplitPane mainPaneWithT2PBar;
+    private JPanel t2pBar;
+    private String t2pText;
+    
 	public EditorPanel(IEditor editor, AbstractApplicationMediator centralMediator,
 			PropertyChangeSupport propertyChangeSupport, boolean loadUI) {
 		this.editor = editor;
@@ -115,7 +120,7 @@ public class EditorPanel extends JPanel {
 			m_scrollPane = new JScrollPane(editor.getGraph());
 			Dimension scrollPaneMinimumSize = new Dimension(0, 0);
 			m_scrollPane.setMinimumSize(scrollPaneMinimumSize);
-
+			
 			// TreePanel
 			treeviewPanel = getTreeviewPanel();
 			// Overview Panel
@@ -904,6 +909,44 @@ public class EditorPanel extends JPanel {
 			p2tSideBar.onSideBarShown(false);
         }
     }
+	
+	public String getT2PText() {
+		return t2pText;
+	}
+	
+	public void showT2PBar(String text) {
+		t2pText = text;
+		t2pBar = new JPanel(new GridBagLayout());
+		JLabel l = new JLabel("Eingabetext"); // TODO: hardcoded
+		l.setFont(HEADER_FONT);
+		JTextArea ta = new JTextArea(text);
+		ta.setWrapStyleWord(true);
+		ta.setLineWrap(true);
+		ta.setEditable(false);
+		
+		HideLabel t2pBarClose = new HideLabel(Messages.getImageIcon("AnalysisSideBar.Cancel"), t2pBar);
+		
+		t2pBar.add(l, new GridBagConstraints(0, 0, 2, 2, 0.0, 0.0, GridBagConstraints.NORTHWEST,
+				GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
+		t2pBar.add(t2pBarClose, new GridBagConstraints(3, 0, 1, 1, 0.0, 0.0,
+				GridBagConstraints.NORTHEAST, GridBagConstraints.REMAINDER, new Insets(0, 0, 0, 1), 0, 0));
+		t2pBar.add(ta, new GridBagConstraints(0, 1, 4, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST,
+				GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+		
+		JSplitPane scrollPaneWithT2PBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_scrollPane, t2pBar);
+		scrollPaneWithT2PBar.setOneTouchExpandable(true);
+		int position = (int) Math.max(m_scrollPane.getSize().getHeight() - 100.0d, 0);
+		scrollPaneWithT2PBar.setDividerLocation(position);
+		Dimension scrollPaneMinimumSize = new Dimension(0, 0);
+		scrollPaneWithT2PBar.setMinimumSize(scrollPaneMinimumSize);
+		m_mainSplitPane.setLeftComponent(scrollPaneWithT2PBar);
+	}
+	
+	public void hideT2PBar() {
+		if (t2pBar == null) return;
+		m_mainSplitPane.setLeftComponent(m_scrollPane);
+		t2pBar = null;
+	}
 
     /**
      * @author Svenja label with mouse listener and icon to close the
@@ -943,6 +986,8 @@ public class EditorPanel extends JPanel {
                         hideAnalysisBar();
                     } else if (panel == p2tSideBarPanel) {
                         hideP2TBar();
+                    } else if (panel == t2pBar) {
+                    	hideT2PBar();
                     }
                     propertyChangeSupport.firePropertyChange("Sidebar", null, null);
                 }

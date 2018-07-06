@@ -22,23 +22,26 @@
  */
 package org.woped.starter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.InputStreamReader;
-import java.util.EventObject;
 import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
+import org.woped.gui.translations.Messages;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
 
@@ -64,11 +67,17 @@ public class RunWoPeD extends JFrame {
 	/**
 	 * 
 	 * Main Entry Point. Starts WoPeD and the GUI.
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
 	 * 
 	 */
-	public static void main(String[] args) throws NoSuchMethodException, SecurityException {
+	public static void main(String[] args) {
+		
+		if (!System.getProperty("java.version").startsWith("1.8"))
+		{
+			JOptionPane.showMessageDialog(null, Messages.getString("Wrong.Java.Version.Text", new Object[] {System.getProperty("java.version")}),
+					Messages.getString("Wrong.Java.Version.Title"), JOptionPane.OK_OPTION);
+			System.exit(0);
+		}
+		
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;
@@ -109,62 +118,51 @@ public class RunWoPeD extends JFrame {
 
 	/**
 	 * Constructor
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
 	 **/
-	private RunWoPeD(String[] args) throws NoSuchMethodException, SecurityException {
+	private RunWoPeD(String[] args) {
 		m_filesToOpen = args;
 		initLogging();
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-
+		
 		initUI();
 	}
 
-	
-	public void about(EventObject event) {
-		m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
-	}
-
-	/**
-	 * General quit handler; fed to the OSXHandler as the method to call when a system quit event
-	 * occurs. A quit event is triggered by Cmd-Q, selecting Quit from the application or Dock menu,
-	 * or logging out
-	 */
-	public boolean quit(EventObject event, Object response) {
-		m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
-	    return true;
-	}
-
-	/**
-	 * Preferences dialog; fed to the OSXHandler as the method to call when "Preferences" is
-	 * selected from the application menu
-	 */
-	public void preferences(EventObject event) {
-		m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CONFIG));
-	}
-
-	/**
-	 * Method to handle document events from the Finder registered by OSXHandler
-	 */
-	public void openDocument(java.util.ArrayList<?> files) {
-		m_filesToOpen = new String[1];
-		File f = (File)files.get(0);
-		m_filesToOpen[0] = f.getAbsolutePath();            	    
-	}
-	
 	/**
 	 * Initialize GUI
-	 * @throws SecurityException 
-	 * @throws NoSuchMethodException 
 	 **/
-	private void initUI() throws NoSuchMethodException, SecurityException {
+	private void initUI() {
 		/* If we are running on a Mac, set associated screen menu handlers */
 		if (Platform.isMac()) {
-			
-			OSXHandler.setAboutHandler(this, getClass().getDeclaredMethod("about", new Class[]{EventObject.class}));
-            	OSXHandler.setQuitHandler(this, getClass().getDeclaredMethod("quit", new Class[]{EventObject.class, Object.class}));
-            	OSXHandler.setPreferencesHandler(this, getClass().getDeclaredMethod("preferences", new Class[]{EventObject.class}));
-            	OSXHandler.setFileHandler(this, getClass().getDeclaredMethod("openDocument", new Class[]{java.util.ArrayList.class}));         	
+			OSXAdapter.setOpenFileHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_filesToOpen = new String[1];
+					m_filesToOpen[0] = e.getActionCommand();
+				}
+			});
+
+			OSXAdapter.setQuitHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
+
+				}
+			});
+
+			OSXAdapter.setAboutHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
+
+				}
+			});
+
+			OSXAdapter.setPreferencesHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+							AbstractViewEvent.CONFIG));
+
+				}
+			});
 		}
 
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
