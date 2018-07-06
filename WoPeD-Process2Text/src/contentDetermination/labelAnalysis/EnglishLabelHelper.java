@@ -27,14 +27,12 @@ import net.didion.jwnl.dictionary.Dictionary;
 import contentDetermination.support.Distance;
 import contentDetermination.support.Noun2VerbTransformer;
 import contentDetermination.support.Stemmer;
-import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 public class EnglishLabelHelper {
 	
 	static String[] verbs = {"sing off", "logon", "deallocate", "pick up", "top up", "postprocess", "downselect", "don't", "hand-in", "re-sort", "rescore", "overview", "repost", "rollup", "overrule", "pre-configure", "upsell", "pickup", "wrap-up", "up-sell", "cross-sell", "inventorise", "recheck", "intake", "login", "reroute", "lookup", "handover", "setup", "hand-over", "goto", "feedback", "pick-up", "rollback"};
 	private Dictionary wordnet;
-	private MaxentTagger tagger;
-	
+
 	private static String WN_TEMP_FILE = "file_temp_properties.xml";
 	private static String WN_INIT_File = "file_properties.xml";
 	
@@ -49,9 +47,10 @@ public class EnglishLabelHelper {
 	}
 	
 	public String getTag(String s) {
-		return tagger.tagString(s);
+		//return tagger.tagString(s);
+		return null;
 	}
-	
+
 	public EnglishLabelHelper(String contextPath) throws JWNLException, IOException, ClassNotFoundException, URISyntaxException {
 		// Initialize WordNet (JWNL)
 		
@@ -59,7 +58,7 @@ public class EnglishLabelHelper {
 		InputStream input = classLoader.getResourceAsStream("file_properties.xml");
 	    JWNL.initialize(input, contextPath);
 		this.wordnet = Dictionary.getInstance();
-		
+
 //		// Tagger
 //		resource = classLoader.getResource("bidirectional-distsim-wsj-0-18.tagger");
 //		tagger = new MaxentTagger(resource.toURI().toString().replace("file:", ""));
@@ -130,7 +129,6 @@ public class EnglishLabelHelper {
 	
 	/**
 	 * Evaluates whether given word can be an adjective 
-	 * @param potAdj
 	 * @return true if the given word can be an adjective
 	 */
 	public boolean isNoun(String potNoun) {
@@ -526,7 +524,7 @@ public class EnglishLabelHelper {
 	 */
 	public String getSingularOfNoun(String noun) {
 		String tempTag = "";
-		tempTag = tagger.tagString(noun);
+		tempTag = "";//tagger.tagString(noun);
 		if (tempTag.contains("NNS") && noun.endsWith("s")) {
 			String action = noun.substring(0,noun.length()-1);
 			return action;
@@ -671,7 +669,6 @@ public class EnglishLabelHelper {
 	 * @param label action-noun label
 	 * @param labelSplit split action-noun label
 	 * @param props property object
-	 * @param activity function object 
 	 */
 	public void checkForGerundStyle(String label, String[] labelSplit, EnglishLabelProperties props) {
 		

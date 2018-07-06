@@ -6,7 +6,7 @@ import java.util.List;
 
 import textPlanning.recordClasses.ModifierRecord;
 
-import com.sun.tools.javac.util.Pair;
+import utils.Pair;
 
 public abstract class AbstractFragment {
 	

@@ -13,7 +13,7 @@ public class CustomTableModel extends DefaultTableModel{
 	private boolean editable = true;
 	
 	public CustomTableModel(Vector<?> object, Vector<String> columns) {
-		super(object, columns);
+		super();
 	}
 
 	@Override

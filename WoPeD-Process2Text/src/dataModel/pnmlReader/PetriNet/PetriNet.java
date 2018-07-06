@@ -34,7 +34,7 @@ public class PetriNet {
 			if (elem.getClass().toString().endsWith("Place")) {
 				System.out.println("PLACE (" + elem.getId() +"): "  + elem.getLabel());
 			} else {
-				System.out.println("TRANSITION (" + elem.getId() +"): "  + elem.getLabel());
+				System.out.println("TRANSITION (" + elem.getId() +"): "  + elem.getLabel() + " | Executing Role: "+elem.getRole());
 			}
 		}
 		for (Arc arc: arcs.values()) {

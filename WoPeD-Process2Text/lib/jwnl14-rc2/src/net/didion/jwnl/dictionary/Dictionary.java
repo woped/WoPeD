@@ -30,7 +30,7 @@ public abstract class Dictionary implements Installable {
 	}
 
 	protected static void setDictionary(Dictionary dictionary) {
-		_log.log(MessageLogLevel.INFO, "DICTIONARY_INFO_002", dictionary);
+		//_log.log(MessageLogLevel.INFO, "DICTIONARY_INFO_002", dictionary);
 		_dictionary = dictionary;
 	}
 

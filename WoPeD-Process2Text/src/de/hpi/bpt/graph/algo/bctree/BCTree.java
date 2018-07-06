@@ -16,7 +16,7 @@ import de.hpi.bpt.hypergraph.abs.IVertex;
  * 
  * @author Artem Polyvyanyy
  * 
- * Hopcroft, J.; Tarjan, R. (1973). "Efficient algorithms for graph manipulation". Communications of the ACM 16: 372-378.
+ * Hopcroft, J.; Tarjan, R. (1973). "Efficient algorithms for graph manipulation". Communications of the ACM 16: 372–378.
  * 
  * v	- number of vertices
  * e	- number of edges

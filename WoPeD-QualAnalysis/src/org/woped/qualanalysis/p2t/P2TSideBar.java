@@ -24,6 +24,8 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.paraphrasing.controller.WebServiceThread;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 @SuppressWarnings("serial")
 /**
@@ -410,10 +412,17 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	 * 
 	 * @param visible
 	 */
+
 	public void onSideBarShown(boolean visible) {
-		if (visible == true && this.firstTimeDisplayed == false) {
-			getText();
-			this.firstTimeDisplayed = true;
+		//checkt, ob der Prozess sound ist, bevor er an den Webservice übergeben wird. Alle anderen Prozesse werden nicht übersetzt.
+		IQualanalysisService analyseService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+		if(analyseService.isSound()) {
+			System.out.println("Prozess ist sound!");
+			if (visible == true && this.firstTimeDisplayed == false) {
+				getText();
+				this.firstTimeDisplayed = true;
+			}
 		}
+		System.out.println("Prozess ist nicht sound!");
 	}
 }

@@ -2,8 +2,8 @@ package dataModel.pnmlReader.PetriNet;
 
 public class Transition extends Element {
 
-	public Transition(String id, String label) {
-		super(id, label);
+	public Transition(String id, String label,String role) {
+		super(id, label,role);
 	}
 
 }
