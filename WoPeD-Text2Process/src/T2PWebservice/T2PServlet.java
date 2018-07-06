@@ -1,4 +1,6 @@
 package T2PWebservice;
+import WorldModelToPetrinet.PetrinetGenerationException;
+
 import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
@@ -28,6 +30,9 @@ public class T2PServlet extends HttpServlet {
                 writer.append(pnml);
             } catch (InvalidInputException e) {
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                writer.append(e.getMessage());
+            }catch (PetrinetGenerationException e) {
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 writer.append(e.getMessage());
             }catch(IOException e){
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);

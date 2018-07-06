@@ -39,12 +39,6 @@ public class STTextToProcess extends T2PScenarioTest {
         WorldModelBuilder WMbuilder;
         PetrinetBuilder PNbuilder;
 
-        //Initialize Tools
-        WordNetFunctionality wf = new WordNetFunctionality();
-        FrameNetFunctionality ff = new FrameNetFunctionality();
-        StanfordParserFunctionality sf = new StanfordParserFunctionality();
-
-
         for (int i = 0; i < TestExamples.length; i++) {
             printInfo(i, TestExamples[i]);
             parseTestFile(TestExamples[i]);
@@ -54,7 +48,11 @@ public class STTextToProcess extends T2PScenarioTest {
             WMbuilder = new WorldModelBuilder(sanitizeText(getPlainTextDescription()));
             WorldModel wm = WMbuilder.buildWorldModel(false);
             PNbuilder = new PetrinetBuilder(wm);
-            PNbuilder.buildPNML();
+            try {
+                PNbuilder.buildPNML();
+            } catch (PetrinetGenerationException e) {
+                e.printStackTrace();
+            }
             PetriNet petriNet = PNbuilder.getPetriNet();
 
 
@@ -65,11 +63,6 @@ public class STTextToProcess extends T2PScenarioTest {
             assertEquals("Generated Petrinet for Testexample " + (i + 1) + " " + TestExamples[i] + " fails the Requirements based on its Metadata.", true, score > acceptanceThreshold);
 
         }
-
-
-        wf = null;
-        ff = null;
-        sf = null;
 
     }
 
@@ -208,22 +201,19 @@ public class STTextToProcess extends T2PScenarioTest {
     }
 
 
-
-
-
     @Test
     public void evaluateT2PInputValidityCheck() {
         boolean invalidCharactersDetected=false;
         boolean invalidSizeDetected=false;
         try {
-            T2PController controllerx = new T2PController("<xml>I am a homeless datastructure, that arrived @ the wrong webservice.</xml>");
+            T2PController controller = new T2PController("<xml>I am a homeless datastructure, that arrived @ the wrong webservice.</xml>");
         } catch (InvalidInputException e) {
             invalidCharactersDetected=true;
         }
 
         try {
             String oversizedInput = new String(new char[20000]).replace('\0', 'x');
-            T2PController controllerx = new T2PController(oversizedInput);
+            T2PController controller = new T2PController(oversizedInput);
         } catch (InvalidInputException e) {
             invalidSizeDetected=true;
         }
@@ -235,7 +225,8 @@ public class STTextToProcess extends T2PScenarioTest {
     public void evaluateT2PMultiThread() throws InterruptedException, InvalidInputException {
 
         /* Evaluates the absence of undesired behaviour caused by parallel execution
-        Concurrent Tool Initialization Phase is not specifically covered in this testcase as it only happens once per deployment*/
+        Concurrent Tool Initialization Phase is not specifically covered in this testcase
+        as it only happens once per deployment (apart from reload caused by unexspected exceptions)*/
 
         filePath = System.getProperty("user.dir");
         filePath=filePath+"/TestData/";
@@ -245,7 +236,13 @@ public class STTextToProcess extends T2PScenarioTest {
             String[] PNMLS = generateThreads((int) (2+Math.random()*6), text);
 
             T2PController single = new T2PController(text);
-            String PNML=single.generatePetrinetFromText();
+            single.resetNLPTools();
+            String PNML= null;
+            try {
+                PNML = single.generatePetrinetFromText();
+            } catch (PetrinetGenerationException e) {
+                e.printStackTrace();
+            }
 
             //Evluate, if all concurrent executions of the same input deliver an equal result compared to a single execution.
             boolean equalResult = true;

@@ -2,6 +2,7 @@ package Tests;
 
 import TextToWorldModel.WorldModelBuilder;
 import WorldModelToPetrinet.PetrinetBuilder;
+import WorldModelToPetrinet.PetrinetGenerationException;
 import org.junit.Test;
 import worldModel.WorldModel;
 
@@ -82,7 +83,11 @@ public class STWorldModelToPetriNet extends T2PScenarioTest {
         WorldModelBuilder WMBuilder = new WorldModelBuilder("The manager finishes the document. If he likes it, he sends it to the office. Otherwise he throws it in the bin.");
         WorldModel wm = WMBuilder.buildWorldModel(true);
         PetrinetBuilder PNBuilder = new PetrinetBuilder(wm);
-        PetriNetPNML=PNBuilder.buildPNML();
+        try {
+            PetriNetPNML=PNBuilder.buildPNML();
+        } catch (PetrinetGenerationException e) {
+            e.printStackTrace();
+        }
         //System.out.println(PetriNetPNML);
         assertEquals("Generated PNML is invalid to its XSD.",true,validateXMLSchema(filePath+"pnml_wf.xsd"));
         assertEquals("Generated PNML does not equal expectation.",true,euqualsWeakly(PetriNetPNML,exspectedPNML));

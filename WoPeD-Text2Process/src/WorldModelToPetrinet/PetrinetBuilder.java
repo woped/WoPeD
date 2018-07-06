@@ -41,32 +41,15 @@ public class PetrinetBuilder {
     }
 
 
-    public String buildPNML() {
+    public String buildPNML() throws PetrinetGenerationException {
 
-        /*
-         * Also kurz dazu, wie ich es mir gedacht habe: Diese Klasse baut das XML zusammen, indem zuerst die Transitions, dann die Places und dann die Arcs erzeugt werden.
-         * Die Reihenfolge beim erzeugen: 1. Transitions, dann 2. Places und 3. Arcs ist auch wichtig, sonst geht es nicht, weil es aufeinander aufbaut.
-         * Sowohl die Transitions als auch die Places werden in einer Liste zwischengespeichert.
-         *
-         * Die getArcs()-Methode geht jetzt so vor: Ich hol mir die 3 flows aus dem WorldModel. Dann pr¸fe ich f¸r die flows, ob sie einen oder mehrere Nachfolger besitzen.
-         *
-         * Wenn der flow einen Nachfolger besitzt, dann erstelle ich eine Sequenz, indem ich eine Stelle, dann eine Transition und dann nochmals eine Stelle erzeuge und
-         * alles durch arcs verbinde. Ich merke mir am Ende, dass die Stelle das letzte Element ist, um mit der n‰chsten Transition daran anschlieﬂen zu kˆnnen.
-         *
-         * Wenn der flow mehrere Nachfolger besitzt, dann erstelle ich ein XOR-Split, indem ich zwei Transitions erzeuge und beide jeweils mit der vorherigen Stelle (die ich
-         * mir gemerkt habe) verbinde. F¸r jede Transition erstelle ich auch eine nachfolgende Stelle und merke mir sie wieder f¸r die n‰chsten Transitions.
-         * Alles wird wieder durch arcs verbunden.
-         *
-         * Was fehlt: Transitions nach dem XOR richtig an die 2 places, die ich mir gemerkt habe, anh‰ngen. Auﬂerdem sollten wieder nachfolgende places
-         * erstellt + gemerkt werden und alles durch arcs verbunden werden.
-         * */
         buildPetriNetfromWM();
         String PNML= petriNet.getPNML();
 
         return PNML;
     }
 
-    private void buildPetriNetfromWM(){
+    private void buildPetriNetfromWM() throws PetrinetGenerationException {
         flowsFromWM = processWM.getFlows();
         iteratorFlows = flowsFromWM.iterator();
         while (iteratorFlows.hasNext()) {
