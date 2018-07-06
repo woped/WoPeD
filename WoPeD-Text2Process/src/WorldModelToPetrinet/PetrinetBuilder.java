@@ -3,9 +3,8 @@ package WorldModelToPetrinet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import TextToWorldModel.ProcessLabelGenerator;
 import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
 import worldModel.Flow.FlowDirection;
@@ -36,6 +35,11 @@ public class PetrinetBuilder {
         petriNet= new PetriNet();
         elementBuilder=petriNet.getElementBuilder();
     }
+
+    public PetriNet getPetriNet() {
+        return petriNet;
+    }
+
 
     public String buildPNML() {
 
@@ -212,10 +216,8 @@ public class PetrinetBuilder {
         boolean hasResource = a.getObject() != null;
         boolean hasRole = a.getActorFrom() != null;
 
-        ProcessLabelGenerator mb= new ProcessLabelGenerator();
-
         //Transition Text
-        Transition t = elementBuilder.createTransition(mb.createTaskText(a),hasRole,isGateway, getOriginID(a));
+        Transition t = elementBuilder.createTransition(a.getFinalLabel(),hasRole,isGateway, getOriginID(a));
         //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasRole,isGateway, getOriginID(a));
 
         //Resource Text
@@ -347,7 +349,7 @@ public class PetrinetBuilder {
 
             }else{
                 /*do nothing, currently cant be handled*/
-                //TODO check if possible
+                //TODO check if occurence is possible
             }
 
         }

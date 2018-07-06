@@ -21,7 +21,7 @@ public class Flow extends OriginatedElement{
 	public enum FlowType {
 		concurrency,
 		sequence,
-		iteration,
+		iteration, // This flowtype is not implemented -> can't occur
 		choice,
 		multiChoice,
 		exception

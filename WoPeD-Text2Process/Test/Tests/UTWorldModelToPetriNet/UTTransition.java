@@ -1,12 +1,13 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.IDHandler;
 import WorldModelToPetrinet.Transition;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UTTransition {
+public class UTTransition extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.Transition*/
 
@@ -16,7 +17,7 @@ public class UTTransition {
     @Test
     public void evaluateTransition(){
         Transition t= new Transition("",false,false,"", new IDHandler(1));
-        assertEquals("Transition did not create exspected PNML.", true,t.toString().equals(exspectedPNML));
+        assertEquals("Transition did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,t.toString()));
     }
 
 }

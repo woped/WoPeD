@@ -1,6 +1,6 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
-import TextToWorldModel.transform.ElementsBuilder;
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.*;
 import org.junit.Test;
 
@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
 
-public class UTPetrinet {
+public class UTPetrinet extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.PetriNet*/
 

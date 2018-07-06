@@ -13,11 +13,11 @@ import java.net.URL;
 public class WordNetInitializer {
 
     //wordnet source directory
-    private static File wnDir;
+    private File wnDir;
     //wordnet initializer instance
     private static WordNetInitializer wni;
     //dictionary instance
-    private static IRAMDictionary dict;// = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
+    private IRAMDictionary dict;// = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
 
     private WordNetInitializer(){
         URL WordNetpath = WordNetInitializer.class.getResource("/WordNet/dict");
@@ -26,23 +26,28 @@ public class WordNetInitializer {
     }
 
     //getter
-    public static WordNetInitializer getInstance(){
+    public static synchronized WordNetInitializer getInstance(){
         if(wni == null){
             synchronized (FrameNetInitializer.class) {
                 if(wni == null){
                     wni = new WordNetInitializer();
-                    init();
+                    wni.init();
                 }
             }
         }
         return wni;
     }
-    public IRAMDictionary getDict() {
+
+    public static synchronized void resetInstance(){
+        wni=null;
+    }
+
+    public synchronized IRAMDictionary getDict() {
         return dict;
     }
 
     //actually opening and loading the dictionary
-    private static void init () {
+    private synchronized void init () {
 
         try {
             // construct the dictionary object and open it

@@ -1,12 +1,13 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.IDHandler;
 import WorldModelToPetrinet.Place;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UTPlace {
+public class UTPlace extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.Place*/
 
@@ -17,6 +18,6 @@ public class UTPlace {
     @Test
     public void evaluatePlace(){
         Place p= new Place(false,"", new IDHandler(1));
-        assertEquals("Place did not create exspected PNML.", true,p.toString().equals(exspectedPNML));
+        assertEquals("Place did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,p.toString()));
     }
 }

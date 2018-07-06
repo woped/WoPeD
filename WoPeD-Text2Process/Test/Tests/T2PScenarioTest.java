@@ -1,17 +1,29 @@
+package Tests;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 import worldModel.SpecifiedElement;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class T2PScenarioTest {
+public abstract class T2PScenarioTest extends T2PTest {
 
     /*
-    Some Basic Utils for T2P Scenario Tests
+    Some Basic Utils specifically for T2P Scenario Tests
     including Commandline outputs, text cleansing and performance measurement
     */
 
     protected static long startTime;
+    protected static String filePath;
+    protected static Document doc;
 
     protected void startPerformanceTrace(){
         startTime = System.nanoTime();
@@ -68,17 +80,6 @@ public abstract class T2PScenarioTest {
         System.out.printf(message+" in Percent: %.2f%%%n", score*100);
     }
 
-    protected static String sanitizeText(String text){
-        //get rid of tabs and newlines
-        text = text.replace("\t", "");
-        text = text.replace("\n", "");
-        //deal with x*space based tabs
-        while (text.contains("  ")){
-            text=text.replace("  "," ");
-        }
-        return text;
-    }
-
     protected static List<? extends SpecifiedElement> getDisjointList(List<? extends SpecifiedElement> elements){
         ArrayList<String> alreadyOccured=new ArrayList<String>();
         for (int i=0;i<elements.size();i++){
@@ -94,6 +95,29 @@ public abstract class T2PScenarioTest {
             }
         }
         return elements;
+    }
+
+    protected static void parseTestFile(String fileName){
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        try {
+            File inputFile = new File(filePath+fileName);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(inputFile);
+            doc.getDocumentElement().normalize();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected static String getPlainTextDescription(){
+        return doc.getElementsByTagName("PlainTextDescription").item(0).getChildNodes().item(0).getNodeValue().toString();
     }
 
 }

@@ -1,7 +1,7 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.ANDJoin;
-import WorldModelToPetrinet.ANDSplit;
 import WorldModelToPetrinet.PetriNet;
 import WorldModelToPetrinet.Place;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class UTANDJoin {
+public class UTANDJoin extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.ANDJoin*/
 
@@ -27,7 +27,22 @@ public class UTANDJoin {
             "<arc id=\"a2\" source=\"p2\" target=\"t1_op_1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a3\" source=\"p3\" target=\"t1_op_1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a4\" source=\"p4\" target=\"t1_op_1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
-            "  </net>\n" +
+            "<toolspecific tool=\"WoPeD\" version=\"1.0\">\n" +
+            "      <bounds>\n" +
+            "        <position x=\"2\" y=\"25\"/>\n" +
+            "        <dimension x=\"763\" y=\"574\"/>\n" +
+            "      </bounds>\n" +
+            "      <scale>100</scale>\n" +
+            "      <treeWidthRight>549</treeWidthRight>\n" +
+            "      <overviewPanelVisible>false</overviewPanelVisible>\n" +
+            "      <treeHeightOverview>100</treeHeightOverview>\n" +
+            "      <treePanelVisible>false</treePanelVisible>\n" +
+            "      <verticalLayout>false</verticalLayout>\n" +
+            "      <resources>\n" +
+            "\n" +
+            "\n" +
+            "      </resources>\n" +
+            "    </toolspecific>  </net>\n" +
             "</pnml>";
 
     @Test
@@ -47,6 +62,6 @@ public class UTANDJoin {
 
         ANDJoin aj = new ANDJoin("",false,"",pn.getElementBuilder());
         aj.addANDJoinToPetriNet(pn,sources,target);
-        assertEquals("AND Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
+        assertEquals("AND Join did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }
 }

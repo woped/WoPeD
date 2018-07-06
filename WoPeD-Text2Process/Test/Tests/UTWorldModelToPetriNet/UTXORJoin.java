@@ -1,5 +1,6 @@
-package UTWorldModelToPetriNet;
+package Tests.UTWorldModelToPetriNet;
 
+import Tests.T2PUnitTest;
 import WorldModelToPetrinet.PetriNet;
 import WorldModelToPetrinet.Place;
 import WorldModelToPetrinet.XORJoin;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
 
-public class UTXORJoin {
+public class UTXORJoin extends T2PUnitTest {
 
     /*Unit test for Class WorldModelToPetrinet.XORJoin*/
 
@@ -30,7 +31,22 @@ public class UTXORJoin {
             "<arc id=\"a4\" source=\"t1_op_2\" target=\"p1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a5\" source=\"p4\" target=\"t1_op_3\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a6\" source=\"t1_op_3\" target=\"p1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
-            "  </net>\n" +
+            "<toolspecific tool=\"WoPeD\" version=\"1.0\">\n" +
+            "      <bounds>\n" +
+            "        <position x=\"2\" y=\"25\"/>\n" +
+            "        <dimension x=\"763\" y=\"574\"/>\n" +
+            "      </bounds>\n" +
+            "      <scale>100</scale>\n" +
+            "      <treeWidthRight>549</treeWidthRight>\n" +
+            "      <overviewPanelVisible>false</overviewPanelVisible>\n" +
+            "      <treeHeightOverview>100</treeHeightOverview>\n" +
+            "      <treePanelVisible>false</treePanelVisible>\n" +
+            "      <verticalLayout>false</verticalLayout>\n" +
+            "      <resources>\n" +
+            "\n" +
+            "\n" +
+            "      </resources>\n" +
+            "    </toolspecific>  </net>\n" +
             "</pnml>";
 
     @Test
@@ -50,6 +66,6 @@ public class UTXORJoin {
 
         XORJoin xj = new XORJoin(sources.size(),"",pn.getElementBuilder());
         xj.addXORJoinToPetriNet(pn,sources,target);
-        assertEquals("XOR Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
+        assertEquals("XOR Join did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }
 }
