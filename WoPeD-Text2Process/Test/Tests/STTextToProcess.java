@@ -7,6 +7,7 @@ import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetFunctionality;
 import WorldModelToPetrinet.*;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.NodeList;
 import worldModel.WorldModel;
@@ -22,13 +23,13 @@ import static org.junit.Assert.assertEquals;
 
 public class STTextToProcess extends T2PScenarioTest {
 
-    private static String [] TestExamples = {"ST_Resource_Lemon_Chicken_Recipe.xml"}; //, "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
+    private static String [] TestExamples ={"ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml","ST_Resource_Lemon_Chicken_Recipe.xml"};
 
     private final static double acceptanceThreshold = 0.1;
 
-    private static final String [] ELEMENT_TYPE_PLACE = {"Places","Place"};
-    private static final String [] ELEMENT_TYPE_TRANSITION ={"Transitions","Transition"};
-    private static final String [] ELEMENT_TYPE_ARC ={"Arcs","Arc"};
+    private static final String [] ELEMENT_TYPE_PLACE = {"places","place"};
+    private static final String [] ELEMENT_TYPE_TRANSITION ={"transitions","transition"};
+    private static final String [] ELEMENT_TYPE_ARC ={"arcs","arc"};
 
 
     @Test
@@ -190,7 +191,7 @@ public class STTextToProcess extends T2PScenarioTest {
         for(int i=0;i<elementCount;i++){
 
             try {
-                String text = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"]/Name", doc.getDocumentElement());
+                String text = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"]/name/text", doc.getDocumentElement());
                 text=sanitizeText(text);
                 elementList.add(text);
             } catch (Exception e) {
@@ -221,6 +222,7 @@ public class STTextToProcess extends T2PScenarioTest {
         assertEquals("Invalid input not detected",true,invalidCharactersDetected&&invalidSizeDetected);
     }
 
+    @Ignore //Requires lot of performance and does not need to be run everytime
     @Test
     public void evaluateT2PMultiThread() throws InterruptedException, InvalidInputException {
 
