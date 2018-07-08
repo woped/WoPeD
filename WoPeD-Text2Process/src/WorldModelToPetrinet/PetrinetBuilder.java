@@ -16,17 +16,8 @@ public class PetrinetBuilder {
     private WorldModel processWM;
     private PetrinetElementBuilder elementBuilder;
     private List<Flow> flowsFromWM = new ArrayList<Flow>();
-    private List<Action> actionsFromWM = new ArrayList<Action>();
-    private List<Transition> transitionsFromWM = new ArrayList<Transition>();
-    private List<Place> places = new ArrayList<Place>();
-    private List<String> xml = new ArrayList<String>();
     private Iterator<Flow> iteratorFlows;
-    private Iterator<Action> iteratorActions;
-    private Iterator<Transition> iteratorTransitions;
-    private Iterator<Place> iteratorPlaces;
-    private Transition transition;
-    private Place place;
-    private Arc arc;
+
 
     private PetriNet petriNet;
 
@@ -165,43 +156,12 @@ public class PetrinetBuilder {
         return sources;
     }
 
-    //first approach for Transition Label generation
-   /* private String generateTransitionLabel(Action a) {
-        String transitionlabel="";
-        if(isDummyAction(a)){
-            transitionlabel+="";
-        }else {
-            if (a.getMarker() != null)
-                transitionlabel += a.getMarker() + " ";
-            transitionlabel += a.getVerb() + " ";
-            if (a.getCop() != null)
-                transitionlabel += a.getCop();
-        }
-        return transitionlabel;
-    }
-
-    public static String splitString(String msg, int lineSize) {
-        String res="";
-        //List<String> res = new ArrayList<>();
-
-        Pattern p = Pattern.compile("\\b.{1," + (lineSize-1) + "}\\b\\W?");
-        Matcher m = p.matcher(msg);
-
-        while(m.find()) {
-            System.out.println(m.group().trim());   // Debug
-            res =res+m.group()+"\n";
-            //res.add(m.group());
-        }
-        return res;
-    }*/
-
     private Transition createTransition(Action a, boolean isGateway){
         boolean hasResource = a.getObject() != null;
         boolean hasRole = a.getActorFrom() != null;
 
         //Transition Text
         Transition t = elementBuilder.createTransition(a.getFinalLabel(),hasRole,isGateway, getOriginID(a));
-        //Transition t = elementBuilder.createTransition(generateTransitionLabel(a),hasRole,isGateway, getOriginID(a));
 
         //Resource Text
         //TODO Refactor
