@@ -64,7 +64,7 @@ public class UTXORSplit extends T2PUnitTest {
         pn.add(targets.get(1));
         pn.add(targets.get(2));
 
-        XORSplit as = new XORSplit(targets.size(),"",pn.getElementBuilder());
+        XORSplit as = new XORSplit("choice",targets.size(),"",pn.getElementBuilder());
         as.addXORSplitToPetriNet(pn,source,targets);
         assertEquals("XOR Split did not create expected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }

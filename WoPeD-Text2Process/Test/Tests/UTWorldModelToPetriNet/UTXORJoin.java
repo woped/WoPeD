@@ -64,7 +64,7 @@ public class UTXORJoin extends T2PUnitTest {
         pn.add(sources.get(1));
         pn.add(sources.get(2));
 
-        XORJoin xj = new XORJoin(sources.size(),"",pn.getElementBuilder());
+        XORJoin xj = new XORJoin("",sources.size(),"",pn.getElementBuilder());
         xj.addXORJoinToPetriNet(pn,sources,target);
         assertEquals("XOR Join did not create exspected PNML.", true,euqualsWeakly(exspectedPNML,pn.getPNML()));
     }

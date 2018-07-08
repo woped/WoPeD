@@ -13,13 +13,13 @@ public class XORSplit extends PetrinetGateway {
     private String originID;
     private ArrayList<Transition> choices= new ArrayList<Transition>();
 
-    public XORSplit(int choiceCount,String originID, PetrinetElementBuilder elementBuilder){
+    public XORSplit(String label,int choiceCount,String originID, PetrinetElementBuilder elementBuilder){
         super(elementBuilder);
         this.choiceCount=choiceCount;
         this.originID=originID;
         transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<choiceCount;i++){
-            Transition choice = elementBuilder.createTransition("choice",false,true,"");
+            Transition choice = elementBuilder.createTransition(label,false,true,"");
             choice.setPartOfGateway(i+1,transID);
             choice.setOperatorType(OperatorTransitionModel.XOR_SPLIT_TYPE);
             choices.add(choice);

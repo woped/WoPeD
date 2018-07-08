@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import TextToWorldModel.Constants;
 import TextToWorldModel.ProcessLabelGenerator;
 import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
@@ -82,7 +83,7 @@ public class PetrinetBuilder {
             ANDJoin aj = new ANDJoin("",false,"",elementBuilder);
             aj.addANDJoinToPetriNet(petriNet,sources,target);
         }else{
-            XORJoin xj = new XORJoin(sources.size(),"",elementBuilder);
+            XORJoin xj = new XORJoin("",sources.size(),"",elementBuilder);
             xj.addXORJoinToPetriNet(petriNet,sources,target);
         }
     }
@@ -215,30 +216,52 @@ public class PetrinetBuilder {
         }
     }
 
+    private boolean checkIfCanBeChoiceLabel(Action splitAction){
+        if(splitAction.getMarker()!=null){
+            if(splitAction.getMarker().equals("if")){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void createSplit(Flow f){
         Place p1= getSourcePlaceForSplitFlow(f);
         List<Action> splitList = f.getMultipleObjects();
         ArrayList<Place> targetPlaces = new ArrayList<Place>();
         Iterator<Action> i = splitList.iterator();
+        String label="";
         while(i.hasNext()){
-
             Action a = i.next();
-            Place targetPlace = elementBuilder.createPlace(false,"");
-            targetPlaces.add(targetPlace);
-            petriNet.add(targetPlace);
 
-            Transition t = createTransition(a,false);
-            petriNet.add(t);
-            Place p2= elementBuilder.createPlace(false, getOriginID(a));
-            petriNet.add(p2);
-            petriNet.add(elementBuilder.createArc(targetPlace.getID(),t.getID(),getOriginID(a)));
-            petriNet.add(elementBuilder.createArc(t.getID(),p2.getID(),getOriginID(a)));
+                if(checkIfCanBeChoiceLabel(a)){
+                    Place targetPlace = elementBuilder.createPlace(false,getOriginID(a));
+                    targetPlaces.add(targetPlace);
+                    petriNet.add(targetPlace);
+                    label="choice if "+a.getFinalLabel();
+                }
+                else{
+                    Place targetPlace = elementBuilder.createPlace(false,"");
+                    targetPlaces.add(targetPlace);
+                    petriNet.add(targetPlace);
+
+                    Transition t = createTransition(a,false);
+                    petriNet.add(t);
+                    Place p2= elementBuilder.createPlace(false, getOriginID(a));
+                    petriNet.add(p2);
+                    petriNet.add(elementBuilder.createArc(targetPlace.getID(),t.getID(),getOriginID(a)));
+                    petriNet.add(elementBuilder.createArc(t.getID(),p2.getID(),getOriginID(a)));
+                }
+
+
         }
         if(f.getType().equals(FlowType.concurrency)){
-            ANDSplit as=new ANDSplit("",false,"",elementBuilder);
+            ANDSplit as=new ANDSplit("Split concurrently",false,"",elementBuilder);
             as.addANDSplitToPetriNet(petriNet,p1,targetPlaces);
         }else if(f.getType().equals(FlowType.choice)||f.getType().equals(FlowType.multiChoice) ||f.getType().equals(FlowType.iteration)){
-            XORSplit xs = new XORSplit(splitList.size(),"",elementBuilder);
+            if(label.equals(""))
+                label= "choice";
+            XORSplit xs = new XORSplit(label,splitList.size(),"",elementBuilder);
             xs.addXORSplitToPetriNet(petriNet,p1,targetPlaces);
         }
 

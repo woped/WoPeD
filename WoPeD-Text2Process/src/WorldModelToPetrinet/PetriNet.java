@@ -264,7 +264,7 @@ public class PetriNet {
             Place sink = elementBuilder.createPlace(false,"");
             placeList.add(sink);
             sink.setText("end");
-            XORJoin xj= new XORJoin(sinks.size(),"",elementBuilder);
+            XORJoin xj= new XORJoin("",sinks.size(),"",elementBuilder);
             xj.addXORJoinToPetriNet(this,sinks,sink);
         }else{
             sinks.get(0).setText("end");
