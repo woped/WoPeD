@@ -24,9 +24,7 @@ import static org.junit.Assert.assertEquals;
 public class STTextToProcess extends T2PScenarioTest {
 
     private static String [] TestExamples ={"ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml","ST_Resource_Lemon_Chicken_Recipe.xml"};
-
-    private final static double acceptanceThreshold = 0.1;
-
+    private final static double acceptanceThreshold = 0.4;
     private static final String [] ELEMENT_TYPE_PLACE = {"places","place"};
     private static final String [] ELEMENT_TYPE_TRANSITION ={"transitions","transition"};
     private static final String [] ELEMENT_TYPE_ARC ={"arcs","arc"};
@@ -62,9 +60,7 @@ public class STTextToProcess extends T2PScenarioTest {
             System.out.println("Petrinet for Testexample " + (i + 1) + " " + TestExamples[i] + " was generated in " + (int) performance + " milliseconds.");
             Double score = compareResults(petriNet, i);
             assertEquals("Generated Petrinet for Testexample " + (i + 1) + " " + TestExamples[i] + " fails the Requirements based on its Metadata.", true, score > acceptanceThreshold);
-
         }
-
     }
 
     private double compareResults(PetriNet petriNet, int currentTestcase) {
@@ -159,14 +155,6 @@ public class STTextToProcess extends T2PScenarioTest {
             }
         }
         prinComparisonTable(x);
-    }
-
-    private static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
-        double actual = (double)actualElementsCount;
-        double excspected= (double)exscpectedElementsCount;
-        double delta = Math.abs( actual - excspected);
-        double relativeDelta = delta/actual;
-        return 1-relativeDelta;
     }
 
     /*

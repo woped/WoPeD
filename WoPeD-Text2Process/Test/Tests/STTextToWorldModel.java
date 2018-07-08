@@ -12,13 +12,13 @@ import java.util.*;
 import static org.junit.Assert.assertEquals;
 
 public class STTextToWorldModel extends T2PScenarioTest {
+
     private static String [] TestExamples = {"ST_Ressource_Hotel_Service.xml", "ST_Resource_Lemon_Chicken_Recipe.xml", "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
-    private final static double acceptanceThreshold=0.1;
+    private final static double acceptanceThreshold=0.4;
     private static final String [] ELEMENT_TYPE_ACTIONS = {"Actions","Action"};
     private static final String [] ELEMENT_TYPE_ACTORS ={"Actors","Actor"};
     private static final String [] ELEMENT_TYPE_RESOURCES ={"Resources","Resource"};
     private static final String [] ELEMENT_TYPE_FLOWS ={"Flows","Flow"};
-
 
     @Test
     public void evaluateWorldModelBuild() {
@@ -90,7 +90,6 @@ public class STTextToWorldModel extends T2PScenarioTest {
         elementDeltaScores.put("ResourceDelta",(double)calculateResourceDelta(wm));
         printScore("Similarity Score for resources ",elementDeltaScores.get("ResourceDelta"));
 
-        //elementDeltaScores.put("FlowDelta",(double)calculateFlowDelta(wm));
         double deltasum = 0.0;
         for (double d : elementDeltaScores.values()) {
             deltasum += d;
@@ -126,44 +125,9 @@ public class STTextToWorldModel extends T2PScenarioTest {
         return calculateDeltaScore(actionCount,getWorldModelElementTypeCount(ELEMENT_TYPE_ACTIONS));
     }
 
-    private static double calculateFlowDelta(WorldModel wm){
-        int flowCount= wm.getFlows().size();
-        return calculateDeltaScore(flowCount,getWorldModelElementTypeCount(ELEMENT_TYPE_FLOWS));
-    }
-
     private static double calculateResourceDelta(WorldModel wm){
         int resourceCount= wm.getResources().size();
         return calculateDeltaScore(resourceCount,getWorldModelElementTypeCount(ELEMENT_TYPE_RESOURCES));
-    }
-
-    private static List<? extends SpecifiedElement> getInterpretedElementList(List<? extends SpecifiedElement> elements, String [] elementType){
-        if(elementType==ELEMENT_TYPE_ACTORS || elementType==ELEMENT_TYPE_RESOURCES){
-            elements=getDisjointList(elements);
-        }
-       for(int i=0;i<elements.size();i++){
-           if (elementType==ELEMENT_TYPE_ACTIONS){
-
-           }
-           if (elementType==ELEMENT_TYPE_ACTORS){
-
-           }
-           if (elementType==ELEMENT_TYPE_RESOURCES){
-               elements=getDisjointList(elements);
-           }
-       }
-        return elements;
-    }
-
-    private static boolean analyzeActor(){
-        return false;
-    }
-
-    private static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
-        double actual = (double)actualElementsCount;
-        double excspected= (double)exscpectedElementsCount;
-        double delta = Math.abs( actual - excspected);
-        double relativeDelta = delta/actual;
-        return 1-relativeDelta;
     }
 
     /*
@@ -186,8 +150,6 @@ public class STTextToWorldModel extends T2PScenarioTest {
         XPath xp = xpf.newXPath();
         int elementCount = getWorldModelElementTypeCount(elementType);
         for(int i=0;i<elementCount;i++){
-            //String id = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"][@id]",
-            //        doc.getDocumentElement());
             try {
                 String text = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"]/Name", doc.getDocumentElement());
                 text=sanitizeText(text);
