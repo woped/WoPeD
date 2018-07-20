@@ -7,8 +7,7 @@
 	<filter token="builtstamp" value="${DSTAMP}" />
 
 	<taskdef name="try" classname="ise.antelope.tasks.TryTask" classpath="lib/AntelopeTasks_3.4.2.jar" />
-	<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler" classpath="lib/jarbundler-2.2.0.jar"/>
-	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.jar"/>
+	<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0.2.jar"/>
 
 	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeMacInstaller, makeWindowsInstallerOnMac, makeLinuxInstaller" /> 
 
@@ -210,7 +209,6 @@
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Starter/bin" />
-			<fileset dir="../WoPeD-T2P/bin" />
 		</jar>
 	</target>
 
@@ -233,10 +231,6 @@
 			</exec>
 
 			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
-		    <catch>
-			  	<echo>Not running on Mac</echo>
-		    </catch>
 		</try>
 	</target>
 		
@@ -270,7 +264,7 @@
         		icon="dist/WoPeD.icns"
  		        applicationCategory="public.app-category.developer-tools"
 		        mainclassname="org.woped.starter.RunWoPeD"
-       	 		copyright="WoPeD copyright 2017">
+       	 		copyright="WoPeD copyright 2018">
  	            <option value="-Dapple.laf.useScreenMenuBar=true"/>
 		</bundleapp>
 
