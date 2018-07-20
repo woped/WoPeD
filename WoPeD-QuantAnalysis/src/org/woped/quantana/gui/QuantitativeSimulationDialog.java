@@ -18,6 +18,12 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.HashMap;
@@ -31,6 +37,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -44,6 +51,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
@@ -221,6 +229,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	// private JButton btnExport;
 
 	private JButton btnDiagram;
+
+	private JButton btnExportCSV;
+
+	private JButton btnExportHTML;
 
 	private JButton btnColumn[];
 
@@ -1272,6 +1284,41 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			constraints.gridy = 4;
 			buttonPanel.add(btnDiagram, constraints);
 
+			btnExportCSV = new JButton();
+			btnExportCSV.setText(Messages.getTitle("QuantAna.Button.ExportCSV"));
+			btnExportCSV
+					.setIcon(Messages.getImageIcon("QuantAna.Button.Export"));
+			btnExportCSV.setEnabled(false);
+			btnExportCSV.setMinimumSize(dimButton);
+			btnExportCSV.setMaximumSize(dimButton);
+			btnExportCSV.setPreferredSize(dimButton);
+			btnExportCSV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					exportCSV();
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 5;
+			buttonPanel.add(btnExportCSV, constraints);
+
+			btnExportHTML = new JButton();
+			btnExportHTML.setText(Messages.getTitle("QuantAna.Button.ExportHTML"));
+			btnExportHTML
+					.setIcon(Messages.getImageIcon("QuantAna.Button.Export"));
+			btnExportHTML.setEnabled(false);
+			btnExportHTML.setMinimumSize(dimButton);
+			btnExportHTML.setMaximumSize(dimButton);
+			btnExportHTML.setPreferredSize(dimButton);
+			btnExportHTML.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					exportHTML();
+				}
+			});
+			constraints.gridx = 0;
+			constraints.gridy = 6;
+			buttonPanel.add(btnExportHTML, constraints);
+
+
 			JButton btnClose = new JButton();
 			btnClose.setText(Messages.getTitle("QuantAna.Button.Close"));
 			btnClose.setIcon(Messages.getImageIcon("QuantAna.Button.Close"));
@@ -1284,16 +1331,16 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				}
 			});
 			constraints.gridx = 0;
-			constraints.gridy = 5;
+			constraints.gridy = 7;
 			buttonPanel.add(btnClose, constraints);
 
 			constraints.gridx = 0;
-			constraints.gridy = 6;
+			constraints.gridy = 8;
 			ptk = new JCheckBox(Messages.getTitle("QuantAna.Simulation.Ptk"));
 			buttonPanel.add(ptk, constraints);
 
 			constraints.gridx = 0;
-			constraints.gridy = 7;
+			constraints.gridy = 9;
 			startDashboard = new JCheckBox(
 					Messages.getTitle("QuantAna.Simulation.StartDashboard"));
 			if(ConfigurationManager.getConfiguration().getBusinessDashboardUseByDefault() == true){ 
@@ -1669,6 +1716,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			// b.repaint();
 		}
 		btnDiagram.setEnabled(true);
+		btnExportCSV.setEnabled(true);
+		btnExportHTML.setEnabled(true);
 		/*
 		 * btnProtocol.setEnabled(true); btnExport.setEnabled(true);
 		 */
@@ -1902,5 +1951,242 @@ public class QuantitativeSimulationDialog extends JDialog implements
 	
 	public JGraph getEditorGraph(){
 		return this.editor.getGraph();
+	}
+
+	public void exportCSV() {
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Spreadsheets", "csv");
+		chooser.setFileFilter(filter);
+		int result = chooser.showSaveDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			File f = chooser.getSelectedFile();
+			try {
+				PrintWriter p = new PrintWriter(f);
+
+				ServerTableModel stm = serverTableModel;
+				ResUtilTableModel rtm = resUtilTableModel;
+				HashMap<String, SimServer> serv = sim.getServerList();
+				HashMap<String, Resource> res = resAlloc.getResources();
+
+				simStatistics = sim.getRunStats();
+				SimRunStats rs = simStatistics.get(simStatistics.size() - 1);
+				double l_ = lambda / period;
+
+				p.println(Messages.getString("QuantAna.Simulation.Column.Names") + ", "
+						+ Messages.getString("QuantAna.Simulation.Column.L") + ", "
+						+ Messages.getString("QuantAna.Simulation.Column.CalcLambda") + ", "
+						+ Messages.getString("QuantAna.Simulation.Column.W") + ", "
+						+ Messages.getString("QuantAna.Simulation.Column.Ws") + ", "
+						+ Messages.getString("QuantAna.Simulation.Column.Wq") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.ZeroDelays") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.NumCalls") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.NumAccess") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.NumDeparture") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.MaxQueueLength") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.MaxWaitTime") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.NumServedWhenStopped") + ", "
+						+ Messages.getString("QuantAna.Simulation.Details.QLenWhenStopped"));
+
+				p.println("Process, "
+						+ String.format("%.2f", rs.getProcCompTime() * l_) + ", "
+						+ String.format("%.1f", lambda) + ", "
+						+ String.format("%.2f", rs.getProcCompTime()) + ", "
+						+ String.format("%.2f", rs.getProcCompTime()-rs.getProcWaitTime()) + ", "
+						+ String.format("%.2f", rs.getProcWaitTime()));
+
+				for (int i = 1; i <= numServers; i++) {
+					String id = produceID((String) stm.getValueAt(i, 0));
+					SimServer s = serv.get(id);
+					try {
+						SimReportServerStats sst = (SimReportServerStats) rs.getServStats().get(s);
+
+						p.println(stm.getValueAt(i, 0) + ", "
+								+ String.format("%.2f", sst.getAvgQLength() + sst.getAvgResNumber()) + ", "
+								+ String.format("%.1f", lambda * (getUnfoldedSum(id) * l_)) + ", "
+								+ String.format("%.2f", sst.getAvgServTime() + sst.getAvgWaitTime()) + ", "
+								+ String.format("%.2f", sst.getAvgServTime()) + ", "
+								+ String.format("%.2f", sst.getAvgWaitTime()) + ", "
+								+ String.format("%,.2f", sst.getAvgZeroDelays()) + ", "
+								+ String.format("%,.2f", sst.getAvgCalls()) + ", "
+								+ String.format("%,.2f", sst.getAvgAccesses()) + ", "
+								+ String.format("%,.2f", sst.getAvgDepartures()) + ", "
+								+ String.format("%,.2f", sst.getAvgMaxQLength()) + ", "
+								+ String.format("%,.2f", sst.getAvgMaxResNumber()) + ", "
+								+ String.format("%,.2f", sst.getMaxWaitTime()) + ", "
+								+ String.format("%,.2f", sst.getAvgNumServedWhenStopped()) + ", "
+								+ String.format("%,.2f", sst.getAvgQLengthWhenStopped()));
+					} catch (Exception e) { p.println(); }
+				}
+
+				p.println();
+				p.println(Messages.getString("QuantAna.Simulation.Column.Object") + ", " + Messages.getString("QuantAna.Simulation.Column.Util"));
+
+				for (int i = 0; i < resObjNum; i++) {
+					String name = (String) rtm.getValueAt(i, 0);
+					Resource r = res.get(name);
+					ResourceStats rst = rs.getResStats().get(r);
+					String util = String.format("%,.2f", rst.getUtilizationRatio() * 100);
+					p.println(r.getName() + ", " + util);
+				}
+
+				p.close();
+			} catch (FileNotFoundException e) {
+				JOptionPane.showMessageDialog(this, Messages.getString("QuantAna.Simulation.Log.csvError"), "", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+
+	public void exportHTML() {
+		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("HTML pages", "html", "htm");
+		chooser.setFileFilter(filter);
+		int result = chooser.showSaveDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION) {
+			File f = chooser.getSelectedFile();
+			try {
+				PrintWriter p = new PrintWriter(f);
+
+				ServerTableModel stm = serverTableModel;
+				ResUtilTableModel rtm = resUtilTableModel;
+				HashMap<String, SimServer> serv = sim.getServerList();
+				HashMap<String, Resource> res = resAlloc.getResources();
+
+				simStatistics = sim.getRunStats();
+				SimRunStats rs = simStatistics.get(simStatistics.size() - 1);
+				double l_ = lambda / period;
+
+				p.println("<!DOCTYPE HTML>\n" +
+						"<html>\n" +
+						"<head>\n" +
+						"<style>");
+
+				BufferedReader br = new BufferedReader(new InputStreamReader(QuantitativeSimulationDialog.class.getResource("stylesheet.css").openStream()));
+		        String line = br.readLine();
+		        while (line != null) {
+		        	p.print(line);
+			        line = br.readLine();
+				}
+		        br.close();
+
+		        p.println("</style>\n" +
+		        		"<title>" + Messages.getString("QuantAna.Simulation.Title") + "</title>\n" +
+		        		"</head>");
+
+		        p.println("<h1>" + Messages.getString("QuantAna.Simulation.Title") + "</h1>");
+
+		        p.println("<h2>" + Messages.getString("QuantAna.Simulation.GeneralProperties") + "</h2>");
+		        p.println("<p>" + Messages.getString("QuantAna.Simulation.Mean") + " " + txtLambda.getText() + "</p>");
+		        p.println("<p>" + Messages.getString("QuantAna.Simulation.Period") + " " + txtPeriod.getText() + " " + cboTimeUnits.getSelectedItem().toString() + "</p>");
+
+				p.println("<h2>" + Messages.getString("QuantAna.Simulation.TerminationRule") + "</h2>");
+				p.println("<p>" + Messages.getString("QuantAna.Simulation.NumRuns") + " " + txtRuns.getText() + "</p>");
+
+				if (stop1.isSelected()) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.CasesCompleted") + "</p>");
+				}
+				if (stop2.isSelected()) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.TimeElapsed") + "</p>");
+				}
+
+		        p.println("<h2>" + Messages.getString("QuantAna.Simulation.QueueingDiscipline") + "</h2>");
+				if (groupQD.getSelection().getActionCommand().equals("QUEUE_LIFO")) {
+					p.println("<p>LIFO</p>");
+				} else {
+					p.println("<p>FIFO</p>");
+				}
+
+				p.println("<h2>" + Messages.getString("QuantAna.Simulation.ArrivalRateDistribution") + "</h2>");
+				if (groupIAT.getSelection().getActionCommand().equals("IAT_UNIFORM")) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Constant") + ", " + Messages.getString("QuantAna.Simulation.Interval") + " " + txtIATInterval.getText() + "%</p>");
+				} else if (groupIAT.getSelection().getActionCommand().equals("IAT_GAUSS")) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Gaussian") + ", " + Messages.getString("QuantAna.Simulation.Deviation") + " " + txtIATStdDev.getText() + "</p>");
+				} else {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Poisson") + "</p>");
+				}
+
+				p.println("<h2>" + Messages.getString("QuantAna.Simulation.ServiceTimeDistribution") + "</h2>");
+				if (groupST.getSelection().getActionCommand().equals("ST_UNIFORM")) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Constant") + ", " + Messages.getString("QuantAna.Simulation.Interval") + " " + txtSTInterval.getText() + "%</p>");
+				} else if (groupST.getSelection().getActionCommand().equals("ST_GAUSS")) {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Gaussian") + ", " + Messages.getString("QuantAna.Simulation.Deviation") + " " + txtSTStdDev.getText() + "</p>");
+				} else {
+					p.println("<p>" + Messages.getString("QuantAna.Simulation.Poisson") + "</p>");
+				}
+
+				p.println("<h2>" + Messages.getString("QuantAna.Simulation.ServerStats") + "</h2>");
+				p.println("<table>\n" +
+						"  <thead>");
+				p.println("    <tr><th>" + Messages.getString("QuantAna.Simulation.Column.Names") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Column.L") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Column.CalcLambda") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Column.W") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Column.Ws") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Column.Wq") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.ZeroDelays") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.NumCalls") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.NumAccess") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.NumDeparture") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.MaxQueueLength") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.MaxCasesParallel") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.MaxWaitTime") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.NumServedWhenStopped") + "</th><th>"
+						+ Messages.getString("QuantAna.Simulation.Details.QLenWhenStopped") + "</th></tr>");
+				p.println("  </thead>");
+
+				p.println("    <tr><td>Process</td><td>"
+						+ String.format("%.2f", rs.getProcCompTime() * l_) + "</td><td>"
+						+ String.format("%.1f", lambda) + "</td><td>"
+						+ String.format("%.2f", rs.getProcCompTime()) + "</td><td>"
+						+ String.format("%.2f", rs.getProcCompTime()-rs.getProcWaitTime()) + "</td><td>"
+						+ String.format("%.2f", rs.getProcWaitTime()) + "</td></tr>");
+
+				for (int i = 1; i <= numServers; i++) {
+					String id = produceID((String) stm.getValueAt(i, 0));
+					SimServer s = serv.get(id);
+					try {
+						SimReportServerStats sst = (SimReportServerStats) rs.getServStats().get(s);
+
+						p.println("    <tr><td>" + stm.getValueAt(i, 0) + "</td><td>"
+								+ String.format("%.2f", sst.getAvgQLength() + sst.getAvgResNumber()) + "</td><td>"
+								+ String.format("%.1f", lambda * (getUnfoldedSum(id) * l_)) + "</td><td>"
+								+ String.format("%.2f", sst.getAvgServTime() + sst.getAvgWaitTime()) + "</td><td>"
+								+ String.format("%.2f", sst.getAvgServTime()) + "</td><td>"
+								+ String.format("%.2f", sst.getAvgWaitTime()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgZeroDelays()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgCalls()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgAccesses()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgDepartures()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgMaxQLength()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgMaxResNumber()) + "</td><td>"
+								+ String.format("%,.2f", sst.getMaxWaitTime()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgNumServedWhenStopped()) + "</td><td>"
+								+ String.format("%,.2f", sst.getAvgQLengthWhenStopped()) + "</td></tr>");
+					} catch (Exception e) { p.println(); }
+				}
+				p.println("</table>");
+				p.println("<h2>" + Messages.getString("QuantAna.Simulation.ResUtil") + "</h2>");
+				p.println("<table>\n" +
+						"  <thead>");
+				p.println("    <tr><th>" + Messages.getString("QuantAna.Simulation.Column.Object") + "</th><th>" + Messages.getString("QuantAna.Simulation.Column.Util") + "</th></tr>");
+				p.println("  </thead>");
+
+				for (int i = 0; i < resObjNum; i++) {
+					String name = (String) rtm.getValueAt(i, 0);
+					Resource r = res.get(name);
+					ResourceStats rst = rs.getResStats().get(r);
+					String util = String.format("%,.2f", rst.getUtilizationRatio() * 100);
+					p.println("    <tr><td>" + r.getName() + "</td><td>" + util + "</td></tr>");
+				}
+				p.println("</table>");
+				p.println("</body>\n" +
+						"</html>");
+				p.close();
+			} catch (FileNotFoundException e) {
+				JOptionPane.showMessageDialog(this, Messages.getString("QuantAna.Simulation.Log.htmlError"), "", JOptionPane.ERROR_MESSAGE);
+			} catch (IOException e1) {
+				JOptionPane.showMessageDialog(this, Messages.getString("QuantAna.Simulation.Log.htmlError"), "", JOptionPane.ERROR_MESSAGE);
+			}
+		}
 	}
 }
