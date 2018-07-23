@@ -12,13 +12,13 @@ public class XORJoin extends PetrinetGateway {
     private String originID;
     private ArrayList<Transition> joins= new ArrayList<Transition>();
 
-    public XORJoin(int sourceCount,String originID, PetrinetElementBuilder elementBuilder){
+    public XORJoin(String label,int sourceCount,String originID, PetrinetElementBuilder elementBuilder){
         super(elementBuilder);
         this.sourceCount=sourceCount;
         this.originID=originID;
         transID = elementBuilder.createTransition("",false,false,"").getID();
         for(int i=0;i<sourceCount;i++){
-            Transition source = elementBuilder.createTransition("",false,true,"");
+            Transition source = elementBuilder.createTransition(label,false,true,"");
             source.setPartOfGateway(i+1,transID);
             source.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
             source.setOrientationCode(3);

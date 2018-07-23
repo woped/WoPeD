@@ -2,6 +2,7 @@ package T2PWebservice;
 
 import TextToWorldModel.WorldModelBuilder;
 import WorldModelToPetrinet.PetrinetBuilder;
+import WorldModelToPetrinet.PetrinetGenerationException;
 import worldModel.WorldModel;
 
 import java.util.regex.MatchResult;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 public class T2PController extends Thread {
 
 
-    public static final int MAX_INPUT_LENGTH=15000; //The T
+    public static final int MAX_INPUT_LENGTH=15000;//Reject any Request larger than this
     private String text;
     private String PNML;
 
@@ -26,9 +27,13 @@ public class T2PController extends Thread {
         WorldModelBuilder.resetNLPTools();
     }
 
-    //Thread support only for Testing
+    //Thread support only for Testing -> Servlet does the Job in Production
     public void run(){
-       PNML= generatePetrinetFromText();
+        try {
+            PNML= generatePetrinetFromText();
+        } catch (PetrinetGenerationException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getPNML() {
@@ -39,7 +44,7 @@ public class T2PController extends Thread {
         return text;
     }
 
-    public String generatePetrinetFromText(){
+    public String generatePetrinetFromText() throws PetrinetGenerationException {
         WorldModelBuilder wmBuilder = new WorldModelBuilder(text);
         PetrinetBuilder pnBuilder = new PetrinetBuilder(wmBuilder.buildWorldModel(false));
         String PNML = pnBuilder.buildPNML();
@@ -49,6 +54,7 @@ public class T2PController extends Thread {
 
 
     private String minifyResult(String result){
+        //A few characters less to bother the internet with  ¯\_(ツ)_/¯
         result=result.replaceAll("\n","");
         result=result.replaceAll("\t","");
         while (result.contains("  ")){

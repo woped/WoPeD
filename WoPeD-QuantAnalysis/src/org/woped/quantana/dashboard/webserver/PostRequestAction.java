@@ -74,7 +74,6 @@ public class PostRequestAction extends ThinServerAction {
 					int col = p.col; 
 					int size_x = p.size_x; 
 					int size_y = p.size_y; 
-					System.out.println(row + col + size_x + size_y);
 					
 				}
 				storageengine.InsertUIconfig("SIM_ATTRIBUTES", sc);
@@ -133,9 +132,7 @@ public class PostRequestAction extends ThinServerAction {
 				
 			//zuerst Anzahl Elemente analysieren, danach mithilfe von Schleife dynamisch zuordnen
 				String numberOfSimulationsString  = request.getParameter("savedSimulation");
-				if(numberOfSimulationsString == null){
-					System.out.println("leeer");
-				}
+
 				int numberOfSimulations =  Integer.parseInt(numberOfSimulationsString);		
 				for(int i=0;i<numberOfSimulations;i++){
 

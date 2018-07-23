@@ -25,6 +25,14 @@ public abstract class T2PScenarioTest extends T2PTest {
     protected static String filePath;
     protected static Document doc;
 
+    protected static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
+        double actual = (double)actualElementsCount;
+        double excspected= (double)exscpectedElementsCount;
+        double delta = Math.abs( actual - excspected);
+        double relativeDelta = delta/actual;
+        return 1-relativeDelta;
+    }
+
     protected void startPerformanceTrace(){
         startTime = System.nanoTime();
     }

@@ -46,7 +46,11 @@ public class UTPetrinet extends T2PUnitTest {
         pn.add(pn.getElementBuilder().createArc(transitions[0].getID(),places[3].getID(),""));
         pn.add(pn.getElementBuilder().createArc(transitions[0].getID(),places[4].getID(),""));
         pn.add(pn.getElementBuilder().createArc(places[4].getID(),transitions[1].getID(),""));
-        pn.transformToWorkflowNet();
+        try {
+            pn.transformToWorkflowNet();
+        } catch (PetrinetGenerationException e) {
+            e.printStackTrace();
+        }
 
         //check absence of dangling Transitions
         boolean hasDanglingTransitions = false;
@@ -75,7 +79,11 @@ public class UTPetrinet extends T2PUnitTest {
         boolean sourceSinkNet= sinkCount==1 && sourceCount ==1;
 
         //Reapply the logic to Petrinet enhanced by Workflownet Properties, to see if it remains unchanged -> check via Metadata
-        pn.transformToWorkflowNet();
+        try {
+            pn.transformToWorkflowNet();
+        } catch (PetrinetGenerationException e) {
+            e.printStackTrace();
+        }
 
         boolean placeCount= pn.getPlaceList().size()==8;
         boolean transitionCount= pn.getTransitionList().size()==5;

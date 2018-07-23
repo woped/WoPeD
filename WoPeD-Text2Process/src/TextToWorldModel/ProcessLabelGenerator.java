@@ -83,7 +83,7 @@ public class ProcessLabelGenerator {
             return false;
         }
 
-        private String getEventText(Action a) {
+        public String getEventText(Action a) {
             StringBuilder _b = new StringBuilder();
             boolean _actorPlural = false;
             if(a.getActorFrom() != null) {
@@ -229,6 +229,11 @@ public class ProcessLabelGenerator {
                     }
                 }
             }
+
+            if(base.equals(_b) || a.getCop()!=null){
+                    _b.append(a.getCop());
+            }
+
             return _b.toString().replaceAll("  ", " ");
         }
 

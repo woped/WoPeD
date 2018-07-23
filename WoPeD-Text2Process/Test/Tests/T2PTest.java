@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public abstract class T2PTest {
 
     /*
-    Some Basic Utils specifically for all T2P Tests
+    Some Basic Utils for all T2P Tests
     */
 
     protected boolean euqualsWeakly(String exspected, String actual){
@@ -21,7 +21,6 @@ public abstract class T2PTest {
             if(!diff.operation.equals(diff_match_patch.Operation.EQUAL))
                 equals=false;
         }
-
         if(!equals){
             System.out.println("Actual and exscpect differ. The  following characters need to be fixed: ");
             LinkedList<diff_match_patch.Patch> pl = dmp.patch_make(actual, exspected);
@@ -32,9 +31,7 @@ public abstract class T2PTest {
                 System.out.println(patch.diffs.toString());
             }
         }
-
         return equals;
-
     }
 
     protected static String sanitizeText(String text){

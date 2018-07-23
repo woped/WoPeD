@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="woped" default="all">
+  
+  
+  <property file="woped.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.bin.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/bin/stanford-parser-2010-08-16.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/bin/stanford-parser.jar"/>
+  </path>
+  
+  <path id="library.commons-logging-1.2.classpath">
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/commons-logging-1.2/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="library.jaxen-1.1.2.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/jaxen-1.1.2.jar"/>
+  </path>
+  
+  <path id="library.junit-4.12.classpath">
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/junit-4.12/junit-4.12-javadoc.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/junit-4.12/junit-4.12-sources.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/junit-4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.lib1.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/jaxen-1.1-beta-6.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/jaxme-api-0.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/jsr173_1.0_api.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/msv-20030807.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/pull-parser-2.1.10.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/relaxngDatatype-20030807.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/xpp3-1.1.3.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/xsdlib-20030807.jar"/>
+  </path>
+  
+  <path id="library.lib2.classpath">
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/antlrworks-1.4.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/bpelBeans.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/commons-logging-1.1.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/confBeans.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/derby.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/derbyclient.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/derbyrun.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/flanagan-1.0.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/gson-2.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/httpclient-4.3.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/httpcore-4.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jaxb2-basics-runtime-0.6.5.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jbpt-0.1.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jcalendar-1.3.2.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jcommon-1.0.15.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jfreechart-1.0.12.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jfxrt.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jgraph-5.10.2-sources.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jgraph-5.10.2.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jgraphx-1.5.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/jsr-1.7.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/junit-4.8.2.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/log4j-1.2.8.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/mail-1.4.7.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/manager-client.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/manager-ws-model.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/metricsBeans.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/plugin-api-1.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/pnmlBeans.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/ruddi-1.0.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/slf4j-api-1.7.6.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/slf4j-simple-1.7.6.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-beans-3.2.5.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-context-3.2.5.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-core-3.2.5.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-expression-3.2.5.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-oxm-3.2.5.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-ws-core-2.1.4.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/spring-xml-2.1.4.RELEASE.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/ssj-2.1.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/stax-1.2.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/swingx-1.6.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/tablefilter-swing-5.1.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/tablelayout-0.8.6.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/treelayout.core-1.0.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/trident-1.2.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/xmlbeans-2.3.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-CommonLibs/lib/xmlbeansbuild-2.3.0.jar"/>
+  </path>
+  
+  <path id="library.lib3.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/WordNet/jwnl14-rc2/lib/commons-logging.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/WordNet/jwnl14-rc2/lib/junit-4.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/WordNet/jwnl14-rc2/lib/jwnl.jar"/>
+  </path>
+  
+  <path id="library.lib4.classpath">
+    <pathelement location="${basedir}/WoPeD-Flamingo/lib/batik-1.7.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-Flamingo/lib/sac-1.3.0.jar"/>
+    <pathelement location="${basedir}/WoPeD-Flamingo/lib/svnkit-1.3.7.jar"/>
+    <pathelement location="${basedir}/WoPeD-Flamingo/lib/w3c-1.3.0.jar"/>
+  </path>
+  
+  <path id="library.lib5.classpath">
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/commons-beanutils.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/commons-logging.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/forms.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/formsrt.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/foxtrot.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/looks.jar"/>
+    <pathelement location="${basedir}/WoPeD-Installer/build-tools/launcher/Windows/lib/xstream.jar"/>
+  </path>
+  
+  <path id="library.lib6.classpath">
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/bpstruct.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/hpi-bpt.jar"/>
+  </path>
+  
+  <path id="library.libs.classpath">
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/pnapi-1.0.5/libs/antlr-runtime-3.2.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/pnapi-1.0.5/libs/javailp-1.2a.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/pnapi-1.0.5/libs/lpsolve55j.jar"/>
+  </path>
+  
+  <path id="library.mockito.classpath">
+    <pathelement location="${basedir}/WoPeD-UnitTests/lib/mockito/mockito-all-1.10.19-javadoc.jar"/>
+    <pathelement location="${basedir}/WoPeD-UnitTests/lib/mockito/mockito-all-1.10.19-sources.jar"/>
+    <pathelement location="${basedir}/WoPeD-UnitTests/lib/mockito/mockito-all-1.10.19.jar"/>
+  </path>
+  
+  <path id="library.stanford-parser-2010-08-16.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/Stanford Parser/stanford-parser-2010-08-16/stanford-parser-2010-08-16.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/Stanford Parser/stanford-parser-2010-08-16/stanford-parser.jar"/>
+  </path>
+  
+  <path id="library.test.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/test/jsr173_1.0_ri.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/test/junit-3.8.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/test/junitperf-1.8.jar"/>
+  </path>
+  
+  <path id="library.tools.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/isorelax-20030108.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/jaxme-0.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/jaxme-js-0.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/jaxme-xs-0.3.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/jtidy-4aug2000r7-dev.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/xalan-2.5.1.jar"/>
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/tools/xercesImpl-2.6.2.jar"/>
+  </path>
+  
+  <path id="library.woped-sprachentext-editor_7_0.1.classpath">
+    <pathelement location="${basedir}/WoPeD-TranslationEditor/WoPeD-Sprachentext-Editor_7_0.1.jar"/>
+  </path>
+  
+  <path id="library.xalan-j-2.7.1.classpath">
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/xalan-j-2.7.1/xalan.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/xalan-j-2.7.1/xercesImpl.jar"/>
+    <pathelement location="${basedir}/WoPeD-Process2Text/lib/xalan-j-2.7.1/xml-apis.jar"/>
+  </path>
+  
+  <path id="library.xml-apis-2.0.2.classpath">
+    <pathelement location="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/lib/endorsed/xml-apis-2.0.2.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="jgoodies-forms.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/WoPeD-Text2Process/dom4j-1.6.1/src/module_dom4j-1.6.1.xml"/>
+  
+  <import file="${basedir}/WoPeD-Text2Process/WordNet/jwnl14-rc2/module_jwnl14-rc2.xml"/>
+  
+  <import file="${basedir}/WoPeD-Process2Text/lib/jwnl14-rc2/module_jwnl14-rc21.xml"/>
+  
+  <import file="${basedir}/WoPeD-Text2Process/Stanford Parser/module_stanford_parser.xml"/>
+  
+  <import file="${basedir}/module_woped.xml"/>
+  
+  <import file="${basedir}/WoPeD-Flamingo/module_woped-flamingo.xml"/>
+  
+  <import file="${basedir}/WoPeD-AProMoRe/module_woped-apromore.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.dom4j-1.6.1, clean.module.jwnl14-rc2, clean.module.jwnl14-rc21, clean.module.stanford_parser, clean.module.woped, clean.module.woped-flamingo, clean.module.woped-apromore" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.dom4j-1.6.1, compile.module.jwnl14-rc2, compile.module.jwnl14-rc21, compile.module.stanford_parser, compile.module.woped, compile.module.woped-flamingo, compile.module.woped-apromore" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
