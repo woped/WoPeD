@@ -158,7 +158,11 @@
 			<fileset file="build-tools/setup/Windows/buildsetup.xml" />
 			<fileset file="build-tools/setup/Windows/buildsetupexeOnMac" />
 		</copy>
-		
+
+		<copy todir="dist/launch" filtering="true" overwrite="true">
+			<fileset file="build-tools/launcher/Windows/buildexe.xml" />
+		</copy>
+
 		<copy todir="dist">
 			<fileset dir="build-tools/launcher/Linux" />
 			<fileset dir="build-tools/launcher/MacOS/" />
@@ -177,7 +181,7 @@
 			<fileset file="build-tools/*.txt" />
 			<fileset file="build-tools/*.mf" />
 			<fileset file="build-tools/setup/*.xml" />
-		</copy>
+			</copy>
 
 		<copy todir="dist" file="build-tools/setup/MacOS/makepackage" filtering="true" overwrite="true" />
 		<copy todir="dist" file="build-tools/setup/MacOS/runWoPeDOnMac.sh" filtering="true" overwrite="true" />
