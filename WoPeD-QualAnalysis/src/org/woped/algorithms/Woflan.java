@@ -1,4 +1,4 @@
-package org.processmining.framework.models.petrinet.algorithms;
+package org.woped.algorithms;
 
 import java.io.File;
 
