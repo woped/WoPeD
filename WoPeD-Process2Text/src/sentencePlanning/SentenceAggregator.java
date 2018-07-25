@@ -16,7 +16,6 @@ public class SentenceAggregator {
         int deleteCount = 0;
 
         for (int i = 0; i < textPlan.size(); i++) {
-
             // Determine current role
             String currRole = textPlan.get(i).getExecutableFragment().getRole();
             ExecutableFragment currFragment = textPlan.get(i).getExecutableFragment();

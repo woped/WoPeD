@@ -14,13 +14,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class PlanningHelper {
-
-
     /**
      * Creates an order for the top level of a given RPST Tree.
      */
     static ArrayList<RPSTNode<ControlFlow, Node>> sortTreeLevel(RPSTNode<ControlFlow, Node> lnode, Node startElem, RPST<ControlFlow, Node> rpst) {
-
         if (PlanningHelper.isSplit(lnode, rpst)) {
             ArrayList<RPSTNode<ControlFlow, Node>> unordered = new ArrayList<>();
 
@@ -91,7 +88,6 @@ public class PlanningHelper {
         return rpst.getChildren(node).size();
     }
 
-
     /**
      * Compute depth of a given component.
      */
@@ -117,7 +113,6 @@ public class PlanningHelper {
         }
         return Collections.max(depthValues);
     }
-
 
     /**
      * Returns type of given bond.
@@ -194,7 +189,6 @@ public class PlanningHelper {
         return false;
     }
 
-
     /**
      * Decides whether a given bond is an AND split.
      */
@@ -245,7 +239,6 @@ public class PlanningHelper {
     private static boolean isRigid(RPSTNode<ControlFlow, Node> node) {
         return node.getName().startsWith("R");
     }
-
 
     /**
      * Decides whether a given node is a gateway.
@@ -312,7 +305,6 @@ public class PlanningHelper {
         return c;
     }
 
-
     /**
      * Print a given RPST Tree.
      */
@@ -340,8 +332,7 @@ public class PlanningHelper {
         }
     }
 
-
-    public static boolean containsRigid(RPSTNode<ControlFlow, Node> root, int level, RPST<ControlFlow, Node> rpst) {
+    public static boolean containsRigid(RPSTNode<ControlFlow, Node> root, RPST<ControlFlow, Node> rpst) {
         if (root == null) {
             return false;
         }
@@ -354,5 +345,4 @@ public class PlanningHelper {
         }
         return false;
     }
-
 }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SurfaceRealizer {
-
     private final RealProMgr realproManager;
 
     public SurfaceRealizer() {

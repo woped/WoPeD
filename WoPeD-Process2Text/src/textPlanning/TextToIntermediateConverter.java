@@ -20,15 +20,14 @@ import textPlanning.recordClasses.ModifierRecord;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TextToIntermediateConverter {
-
+class TextToIntermediateConverter {
     private final RPST<ControlFlow, Node> rpst;
     private final ProcessModel process;
     private final EnglishLabelHelper lHelper;
     private final boolean imperative;
     private final String imperativeRole;
 
-    public TextToIntermediateConverter(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelHelper lHelper, String imperativeRole, boolean imperative) {
+    TextToIntermediateConverter(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelHelper lHelper, String imperativeRole, boolean imperative) {
         this.rpst = rpst;
         this.process = process;
         this.lHelper = lHelper;
@@ -41,39 +40,28 @@ public class TextToIntermediateConverter {
     //*********************************************************************************************
 
     // The following optional parallel paths are available.
+    ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node) {
+        // Create sentence "The following optional paths are available."
+        ExecutableFragment eFrag = new ExecutableFragment("execute", "paths", "", "");
+        ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
+        modRecord2.addAttribute("adv-type", "sentential");
+        eFrag.addMod("one or more of the", modRecord2);
+        ModifierRecord modRecord3 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
+        eFrag.addMod("following", modRecord3);
+        eFrag.bo_isSubject = true;
+        eFrag.bo_hasArticle = false;
+        eFrag.verb_IsPassive = true;
+        eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
 
-    public ConverterRecord convertORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor, boolean labeled) {
-        ConverterRecord record = null;
-
-        if (!labeled) {
-
-            // Create sentence "The following optional paths are available."
-            ExecutableFragment eFrag = new ExecutableFragment("execute", "paths", "", "");
-            ModifierRecord modRecord2 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
-            modRecord2.addAttribute("adv-type", "sentential");
-            eFrag.addMod("one or more of the", modRecord2);
-            ModifierRecord modRecord3 = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
-            eFrag.addMod("following", modRecord3);
-            eFrag.bo_isSubject = true;
-            eFrag.bo_hasArticle = false;
-            eFrag.verb_IsPassive = true;
-            eFrag.addAssociation(Integer.valueOf(node.getEntry().getId()));
-
-            ArrayList<DSynTSentence> preStatements = new ArrayList<>();
-            preStatements.add(new DSynTMainSentence(eFrag));
-            record = new ConverterRecord(null, null, preStatements, null);
-        } else {
-            System.out.println("NOT COVERED (OR)");
-        }
-        return record;
+        ArrayList<DSynTSentence> preStatements = new ArrayList<>();
+        preStatements.add(new DSynTMainSentence(eFrag));
+        return new ConverterRecord(null, null, preStatements, null);
     }
 
     //*********************************************************************************************
     //										XOR - SPLIT
     //*********************************************************************************************
-
-    public ArrayList<DSynTSentence> convertXORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
-
+    ArrayList<DSynTSentence> convertXORSimple(RPSTNode<ControlFlow, Node> node, GatewayExtractor gwExtractor) {
         ExecutableFragment eFragYes = null;
         ExecutableFragment eFragNo = null;
         String role = "";
@@ -89,9 +77,7 @@ public class TextToIntermediateConverter {
                                 Annotation anno = a.getAnnotations().get(0);
                                 String action = anno.getActions().get(0);
                                 String bo = anno.getBusinessObjects().get(0);
-//								
                                 role = a.getLane().getName();
-//								role = getRole(tNode);
 
                                 String addition = anno.getAddition();
                                 eFragYes = new ExecutableFragment(action, bo, role, addition);
@@ -104,7 +90,6 @@ public class TextToIntermediateConverter {
                                 String bo = anno.getBusinessObjects().get(0);
 
                                 role = a.getLane().getName();
-//								role = getRole(tNode);
 
                                 String addition = anno.getAddition();
                                 eFragNo = new ExecutableFragment(action, bo, role, addition);
@@ -141,10 +126,8 @@ public class TextToIntermediateConverter {
         return sentences;
     }
 
-    public ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node) {
-
+    ConverterRecord convertXORGeneral(RPSTNode<ControlFlow, Node> node) {
         // One of the following branches is executed.  (And then use bullet points for structuring)
-
         ExecutableFragment eFrag = new ExecutableFragment("execute", "one of the following branches", "", "");
         eFrag.bo_isSubject = true;
         eFrag.verb_IsPassive = true;
@@ -176,8 +159,7 @@ public class TextToIntermediateConverter {
     /**
      * Converts a loop construct with labeled entry condition into two sentences.
      */
-    public ConverterRecord convertLoop(RPSTNode<ControlFlow, Node> node, RPSTNode<ControlFlow, Node> firstActivity) {
-
+    ConverterRecord convertLoop(RPSTNode<ControlFlow, Node> node, RPSTNode<ControlFlow, Node> firstActivity) {
         // Labeled Case
         if (!node.getExit().getName().equals("")) {
             // Derive information from the gateway
@@ -240,14 +222,8 @@ public class TextToIntermediateConverter {
             postStatements.add(new DSynTConditionSentence(eFrag, cFrag));
             return new ConverterRecord(null, post, null, postStatements);
         }
-
         // Unlabeled case
         else {
-
-            // Generate general statement about loop
-//			String  role = process.getGateways().get(Integer.valueOf(node.getEntry().getId())).getLane().getName();
-
-
             ExecutableFragment eFrag = new ExecutableFragment("repeat", "step", "", "");
             ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADJ, ModifierRecord.TARGET_BO);
             eFrag.addMod("latter", modRecord);
@@ -274,7 +250,6 @@ public class TextToIntermediateConverter {
             ConditionFragment cFrag = new ConditionFragment("be", "dummy", "", "", ConditionFragment.TYPE_IF, new HashMap<>());
             cFrag.addMod("required", new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB));
             cFrag.bo_replaceWithPronoun = true;
-//			cFrag.verb_IsPassive = true;
             cFrag.bo_isSubject = true;
             cFrag.sen_headPosition = true;
 
@@ -297,14 +272,12 @@ public class TextToIntermediateConverter {
         }
     }
 
-
     //*********************************************************************************************
     //										SKIP - SPLIT
     //*********************************************************************************************
 
-    public ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node) {
+    ConverterRecord convertSkipGeneralUnlabeled(RPSTNode<ControlFlow, Node> node) {
         ConditionFragment pre = new ConditionFragment("be", "dummy", "", "", ConditionFragment.TYPE_IF, new HashMap<>());
-
         ModifierRecord mod = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         pre.addMod("necessary", mod);
         pre.bo_replaceWithPronoun = true;
@@ -313,13 +286,12 @@ public class TextToIntermediateConverter {
         pre.sen_hasComma = true;
         pre.addAssociation(Integer.valueOf(node.getEntry().getId()));
         return new ConverterRecord(pre, null, null, null);
-
     }
 
     /**
      * Converts a standard skip construct with labeled condition gateway into two sentences.
      */
-    public ConverterRecord convertSkipGeneral(RPSTNode<ControlFlow, Node> node) {
+    ConverterRecord convertSkipGeneral(RPSTNode<ControlFlow, Node> node) {
         // Derive information from the gateway
         GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
 
@@ -337,11 +309,9 @@ public class TextToIntermediateConverter {
     /**
      * Converts a standard skip construct with labeled condition gateway, leading to the end of the process, into two sentences.
      */
-    public ConverterRecord convertSkipToEnd(RPSTNode<ControlFlow, Node> node) {
-
+    ConverterRecord convertSkipToEnd(RPSTNode<ControlFlow, Node> node) {
         // Derive information from the gateway
         GatewayExtractor gwExtractor = new GatewayExtractor(node.getEntry(), lHelper);
-//		String role = process.getGateways().get(Integer.valueOf(node.getEntry().getId())).getLane().getName();
         String role = getRole(node);
 
         // Generate general statement about upcoming decision
@@ -394,15 +364,12 @@ public class TextToIntermediateConverter {
         return new ConverterRecord(pre, null, preStatements, null);
     }
 
-
     //*********************************************************************************************
     //										AND - SPLIT
     //*********************************************************************************************
 
-    public ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
-
+    ConverterRecord convertANDGeneral(RPSTNode<ControlFlow, Node> node, int activities) {
         // The process is split into three parallel branches.  (And then use bullet points for structuring)
-
         ExecutableFragment eFrag = new ExecutableFragment("split", "process", "", "into " + activities + " parallel branches");
         eFrag.bo_isSubject = true;
         eFrag.verb_IsPassive = true;
@@ -428,11 +395,9 @@ public class TextToIntermediateConverter {
     /**
      * Converts a simple and construct.
      */
-    public ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
-
+    ConverterRecord convertANDSimple(RPSTNode<ControlFlow, Node> node, int activities, ArrayList<Node> conditionNodes) {
         // get last element of both branches and combine them to a post condition
         // if one of them is a gateway, include gateway post condition in the and post condition
-
         ModifierRecord modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
         modRecord.addAttribute("adv-type", "sentential");
 
@@ -459,7 +424,6 @@ public class TextToIntermediateConverter {
             if (conditionNodes.size() == 1) {
                 Activity a = process.getActivity(Integer.valueOf(conditionNodes.get(0).getId()));
                 String verb = a.getAnnotations().get(0).getActions().get(0);
-//				role = process.getGateways().get(Integer.valueOf(node.getExit().getId())).getLane().getName();
                 role = getRole(node);
                 post = new ConditionFragment("finish", lHelper.getNoun(verb), role, "", ConditionFragment.TYPE_ONCE, new HashMap<>());
                 post.sen_headPosition = true;
@@ -487,8 +451,7 @@ public class TextToIntermediateConverter {
         return new ConverterRecord(null, post, null, null, modRecord);
     }
 
-    public ConverterRecord convertEvent(Event event) {
-
+    ConverterRecord convertEvent(Event event) {
         ConditionFragment cFrag;
         ExecutableFragment eFrag;
         ArrayList<DSynTSentence> preSentences;
@@ -670,14 +633,13 @@ public class TextToIntermediateConverter {
     }
 
     // For attached events only
-    public DSynTConditionSentence getAttachedEventPostStatement(Event event) {
+    DSynTConditionSentence getAttachedEventPostStatement(Event event) {
         ModifierRecord modRecord;
         ModifierRecord modRecord2;
         ExecutableFragment eFrag;
         ConditionFragment cFrag;
 
         switch (event.getType()) {
-
             case EventType.INTM_TIMER:
                 modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
                 eFrag = new ExecutableFragment("continue", "process", "", "");
@@ -694,7 +656,6 @@ public class TextToIntermediateConverter {
                 cFrag.addMod("otherwise", modRecord2);
                 configureFragment(cFrag);
                 return new DSynTConditionSentence(eFrag, cFrag);
-
             case EventType.INTM_ERROR:
                 modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
                 eFrag = new ExecutableFragment("continue", "process", "", "");
@@ -711,7 +672,6 @@ public class TextToIntermediateConverter {
                 cFrag.addMod("otherwise", modRecord2);
                 configureFragment(cFrag);
                 return new DSynTConditionSentence(eFrag, cFrag);
-
             case EventType.INTM_ESCALATION_CAT:
                 modRecord = new ModifierRecord(ModifierRecord.TYPE_ADV, ModifierRecord.TARGET_VERB);
                 eFrag = new ExecutableFragment("continue", "process", "", "");
@@ -728,7 +688,6 @@ public class TextToIntermediateConverter {
                 cFrag.addMod("otherwise", modRecord2);
                 configureFragment(cFrag);
                 return new DSynTConditionSentence(eFrag, cFrag);
-
             default:
                 System.out.println("NON-COVERED EVENT " + event.getType());
                 return null;
@@ -771,7 +730,6 @@ public class TextToIntermediateConverter {
         cFrag.bo_hasArticle = false;
     }
 
-
     /**
      * Returns role executing current RPST node.
      */
@@ -782,6 +740,4 @@ public class TextToIntermediateConverter {
         }
         return role;
     }
-
-
 }

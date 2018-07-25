@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="p2t">
+    <output-path>$PROJECT_DIR$/WoPeD-Process2Text/out</output-path>
+    <root id="archive" name="p2t.war">
+      <element id="library" level="project" name="xalan-j-2.7.1" />
+      <element id="library" level="project" name="junit-4.12" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="WoPeD-Process2Text" />
+          <element id="module-output" name="jwnl14-rc2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/commons-logging-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/junit-4.12.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/rpw-lkb.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/rpw.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/xalan.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/xercesImpl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/lib/xml-apis.jar" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/WoPeD-Process2Text/web/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

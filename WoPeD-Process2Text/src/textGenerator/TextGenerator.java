@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TextGenerator {
-
     private String contextPath = "";
 
     public TextGenerator(String contextPath) {
@@ -52,7 +51,7 @@ public class TextGenerator {
         EnglishLabelDeriver lDeriver = new EnglishLabelDeriver(lHelper);
 
         // Annotate model
-        model.annotateModel(0, lDeriver, lHelper);
+        model.annotateModel(lDeriver, lHelper);
 
         // Convert to RPST
         FormatConverter formatConverter = new FormatConverter();
@@ -60,7 +59,7 @@ public class TextGenerator {
         RPST<ControlFlow, Node> rpst = new RPST<>(p);
 
         // Check for Rigids
-        boolean containsRigids = PlanningHelper.containsRigid(rpst.getRoot(), 1, rpst);
+        boolean containsRigids = PlanningHelper.containsRigid(rpst.getRoot(), rpst);
 
         // Structure Rigid and convert back
         if (containsRigids) {
@@ -83,7 +82,7 @@ public class TextGenerator {
 
         // Referring Expression
         ReferringExpressionGenerator refExpGenerator = new ReferringExpressionGenerator(lHelper);
-        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, model, false);
+        sentencePlan = refExpGenerator.insertReferringExpressions(sentencePlan, false);
 
         // Discourse Marker
         DiscourseMarker discourseMarker = new DiscourseMarker();
@@ -125,5 +124,4 @@ public class TextGenerator {
         }
         return newFile.toString();
     }
-
 }

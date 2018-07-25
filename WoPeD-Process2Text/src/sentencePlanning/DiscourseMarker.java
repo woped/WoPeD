@@ -10,7 +10,6 @@ import textPlanning.IntermediateToDSynTConverter;
 import java.util.ArrayList;
 
 public class DiscourseMarker {
-
     private final ArrayList<String> SEQ_CONNECTIVES = new ArrayList<String>() {{
         add("then");
         add("afterwards");
@@ -54,5 +53,4 @@ public class DiscourseMarker {
         }
         return textPlan;
     }
-
 }

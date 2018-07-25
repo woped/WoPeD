@@ -6,7 +6,6 @@ import dataModel.intermediate.ConditionFragment;
 import java.util.ArrayList;
 
 public class ConverterRecord {
-
     public final ArrayList<DSynTSentence> preStatements;
     public final ArrayList<DSynTSentence> postStatements;
     public final ConditionFragment pre;
@@ -31,5 +30,4 @@ public class ConverterRecord {
     public boolean hasPreStatements() {
         return preStatements != null;
     }
-
 }

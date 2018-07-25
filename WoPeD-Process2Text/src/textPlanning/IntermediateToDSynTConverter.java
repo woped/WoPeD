@@ -1,6 +1,5 @@
 package textPlanning;
 
-
 import dataModel.dsynt.DSynTMainSentence;
 import dataModel.intermediate.AbstractFragment;
 import dataModel.intermediate.ConditionFragment;
@@ -10,9 +9,7 @@ import org.w3c.dom.Element;
 import textPlanning.recordClasses.ModifierRecord;
 import utils.Pair;
 
-
 public class IntermediateToDSynTConverter {
-
     public static final int VERB_TYPE_MAIN = 0;
     public static final int VERB_TYPE_CONDITION = 1;
     public static final int VERB_TYPE_SUBCONDITION = 2;
@@ -21,7 +18,6 @@ public class IntermediateToDSynTConverter {
      * Create DSynT representation for verb. Returns the according DSynT element.
      */
     public static Element createVerb(Document doc, AbstractFragment frag, int verbType) {
-
         Element verb = doc.createElement("dsyntnode");
         verb.setAttribute("class", "verb");
 
@@ -120,10 +116,6 @@ public class IntermediateToDSynTConverter {
      */
     public static void appendMods(Document doc, AbstractFragment frag, Element verbRoot, Element objectRoot) {
         Element lastVerbMod = null;
-//		Element lastRoleMod = null;
-//		Element lastBOMod = null;
-//		Element lastADDMod = null;
-
         for (String modS : frag.getAllMods()) {
             Element mod = doc.createElement("dsyntnode");
             switch (frag.getModType(modS)) {
@@ -163,7 +155,6 @@ public class IntermediateToDSynTConverter {
                     objectRoot.appendChild(mod);
                     break;
             }
-
             // FINISH: implement for other elements
         }
     }

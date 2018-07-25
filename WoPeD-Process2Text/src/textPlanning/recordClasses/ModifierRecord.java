@@ -5,7 +5,6 @@ import utils.Pair;
 import java.util.ArrayList;
 
 public class ModifierRecord {
-
     public static final int TARGET_VERB = 0;
     public static final int TARGET_ROLE = 1;
     public static final int TARGET_BO = 2;

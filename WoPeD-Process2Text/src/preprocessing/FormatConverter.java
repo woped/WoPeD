@@ -14,33 +14,31 @@ import de.hpi.bpt.process.Process;
 import de.hpi.bpt.process.Task;
 
 public class FormatConverter {
-	
 	private HashMap<Integer, Element> converterMap;
 	private int newElems;
-	
-	
+
 	/**
-	 * Reconstructs the ProcessModel format from HPI Process Model after Rigid Structuring 
+	 * Reconstructs the ProcessModel format from HPI Process Model after Rigid Structuring
 	 */
 	public ProcessModel transformFromRigidFormat(Process p) {
-		ProcessModel pm = new ProcessModel(0, "Structured Model");
-		
-		HashMap<String,Integer> idMap = new HashMap<String, Integer>();
-		HashMap<Integer,Element> elemMap = new HashMap<Integer, Element>();
+		ProcessModel pm = new ProcessModel();
+
+		HashMap<String,Integer> idMap = new HashMap<>();
+		HashMap<Integer,Element> elemMap = new HashMap<>();
 		newElems = 0;
-		
+
 		for (Task t: p.getTasks()) {
 			int id = Integer.valueOf(t.getName());
 			if (converterMap.containsKey(id)) {
 				Element elem = converterMap.get(id);
-				
-				if (elem.getClass().toString().endsWith("Activity")) { 
+
+				if (elem.getClass().toString().endsWith("Activity")) {
 					dataModel.process.Activity a = (dataModel.process.Activity) elem;
 					pm.addActivity(a);
 					idMap.put(t.getId(), a.getId());
 					elemMap.put(a.getId(), a);
 				}
-				if (elem.getClass().toString().endsWith("Event")) { 
+				if (elem.getClass().toString().endsWith("Event")) {
 					dataModel.process.Event e = (dataModel.process.Event) elem;
 					pm.addEvent(e);
 					idMap.put(t.getId(), e.getId());
@@ -50,7 +48,7 @@ public class FormatConverter {
 				System.out.println("ERROR: Transformation Problem");
 			}
 		}
-		
+
 		for (Gateway g: p.getGateways()) {
 			if (!g.getName().equals("") && converterMap.containsKey(Integer.valueOf(g.getName()))) {
 				int id = Integer.valueOf(g.getName());
@@ -83,7 +81,7 @@ public class FormatConverter {
 				}
 			}
 		}
-		
+
 		for (ControlFlow f: p.getControlFlow()) {
 			Element source = elemMap.get(idMap.get(f.getSource().getId()));
 			Element target = elemMap.get(idMap.get(f.getTarget().getId()));
@@ -92,35 +90,35 @@ public class FormatConverter {
 		}
 		return pm;
 	}
-	
+
 	/**
 	 * Transforms ProcessModel format to HPI Process Format (writes IDs to labels in order to save the information)
 	 */
 	public Process transformToRigidFormat(dataModel.process.ProcessModel pm) {
 		Process p = new Process();
-		converterMap = new HashMap<Integer, Element>();
-		HashMap <Integer, Node> elementMap = new HashMap<Integer, Node>();
-		
+		converterMap = new HashMap<>();
+		HashMap <Integer, Node> elementMap = new HashMap<>();
+
 		// Transform activities
 		for (dataModel.process.Activity a: pm.getActivites().values()) {
 			Task t = new Task(Integer.toString(a.getId()));
 			elementMap.put(a.getId(), t);
 			converterMap.put(a.getId(),a);
 		}
-		
+
 		// Transform events
 		for (dataModel.process.Event e: pm.getEvents().values()) {
 			Task et = new Task(Integer.toString(e.getId()));
 			elementMap.put(e.getId(), et);
 			converterMap.put(e.getId(),e);
 		}
-		
+
 		// Transform gateway
 		for (dataModel.process.Gateway g: pm.getGateways().values()) {
 			if (g.getType() == dataModel.process.GatewayType.XOR) {
 				Gateway gt = new Gateway(GatewayType.XOR,Integer.toString(g.getId()));
 				elementMap.put(g.getId(), gt);
-				
+
 			}
 			if (g.getType() == dataModel.process.GatewayType.OR) {
 				Gateway gt = new Gateway(GatewayType.OR,Integer.toString(g.getId()));
@@ -136,46 +134,44 @@ public class FormatConverter {
 			}
 			converterMap.put(g.getId(),g);
 		}
-		
+
 		// Transform arcs
 		for (dataModel.process.Arc arc: pm.getArcs().values()) {
 			if (arc.getSource() != null) {
 				p.addControlFlow(elementMap.get(arc.getSource().getId()), elementMap.get(arc.getTarget().getId()));
-			}	
+			}
 		}
 		return p;
 	}
-	
-	
+
 	/**
 	 * Transforms given ProcessModel to HPI format
 	 */
 	public Process transformToRPSTFormat(dataModel.process.ProcessModel pm) {
-		
 		Process p = new Process();
-		HashMap <Integer, Node> elementMap = new HashMap<Integer, Node>();
-		
+		HashMap <Integer, Node> elementMap = new HashMap<>();
+
 		// Transform activities
 		for (dataModel.process.Activity a: pm.getActivites().values()) {
 			Task t = new Task(a.getLabel());
 			t.setId(Integer.toString(a.getId()));
 			elementMap.put(a.getId(), t);
 		}
-		
+
 		// Transform events
 		for (dataModel.process.Event e: pm.getEvents().values()) {
 			Event et = new Event(e.getLabel());
 			et.setId(Integer.toString(e.getId()));
 			elementMap.put(e.getId(), et);
 		}
-		
+
 		// Transform gateway
 		for (dataModel.process.Gateway g: pm.getGateways().values()) {
 			if (g.getType() == dataModel.process.GatewayType.XOR) {
 				Gateway gt = new Gateway(GatewayType.XOR, g.getLabel());
 				gt.setId(Integer.toString(g.getId()));
 				elementMap.put(g.getId(), gt);
-				
+
 			}
 			if (g.getType() == dataModel.process.GatewayType.OR) {
 				Gateway gt = new Gateway(GatewayType.OR, g.getLabel());
@@ -193,18 +189,18 @@ public class FormatConverter {
 				elementMap.put(g.getId(), gt);
 			}
 		}
-		
+
 		// Transform arcs
 		for (dataModel.process.Arc arc: pm.getArcs().values()) {
 			if (arc.getSource() != null) {
 				p.addControlFlow(elementMap.get(arc.getSource().getId()), elementMap.get(arc.getTarget().getId()));
-			}	
+			}
 		}
 		return p;
 	}
-	
+
 	/**
-	 * Calculates new ID 
+	 * Calculates new ID
 	 */
 	private int getId() {
 		int max = -1;

@@ -29,28 +29,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class TextPlanner {
-
+    private static final String[] quantifiers = {"a", "the", "all", "any", "more", "most", "none", "some", "such", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
     private final RPST<ControlFlow, Node> rpst;
-    private ProcessModel process;
-    private TextToIntermediateConverter textToIMConverter;
-    private ArrayList<ConditionFragment> passedFragments;
+    private final ProcessModel process;
+    private final TextToIntermediateConverter textToIMConverter;
+    private final ArrayList<ConditionFragment> passedFragments;
+    private final ArrayList<ModifierRecord> passedMods; // used for Skips
+    private final boolean isAlternative;
+    private final ArrayList<DSynTSentence> sentencePlan;
+    private final ArrayList<Pair<Integer, DSynTSentence>> activitiySentenceMap;
+    private final EnglishLabelHelper lHelper;
+    private final EnglishLabelDeriver lDeriver;
+    private final boolean imperative;
+    private final String imperativeRole;
     private ModifierRecord passedMod = null; // used for AND-Splits
-    private ArrayList<ModifierRecord> passedMods; // used for Skips
-
     private boolean tagWithBullet = false;
     private boolean start = true;
-    private boolean isAlternative;
-
-    private ArrayList<DSynTSentence> sentencePlan;
-    private ArrayList<Pair<Integer, DSynTSentence>> activitiySentenceMap;
-    private EnglishLabelHelper lHelper;
-    private EnglishLabelDeriver lDeriver;
-
-    private static String[] quantifiers = {"a", "the", "all", "any", "more", "most", "none", "some", "such", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
-
-    private boolean imperative;
-    private String imperativeRole;
-    private boolean check = false;
 
     public TextPlanner(RPST<ControlFlow, Node> rpst, ProcessModel process, EnglishLabelDeriver lDeriver, EnglishLabelHelper lHelper, String imperativeRole, boolean imperative, boolean isAlternative) {
         this.rpst = rpst;
@@ -82,9 +76,9 @@ public class TextPlanner {
         // For each node of current level
         for (RPSTNode<ControlFlow, Node> node : orderedTopNodes) {
 
-            // If we face an end event
-            if ((PlanningHelper.isEvent(node.getExit()) && orderedTopNodes.indexOf(node) == orderedTopNodes.size() - 1)) {
-                boolean end = true;
+            if (PlanningHelper.isEvent(node.getExit())) {
+                orderedTopNodes.indexOf(node);
+                orderedTopNodes.size();
             }
             int depth = PlanningHelper.getDepth(node, rpst);
             if (PlanningHelper.isBond(node)) {
@@ -293,8 +287,6 @@ public class TextPlanner {
 
         ExecutableFragment eFrag;
 
-        ConditionFragment cFrag = null;
-
         // Start of the process
         if (start && !isAlternative) {
 
@@ -435,7 +427,7 @@ public class TextPlanner {
                     System.out.println("Incorporating Alternative " + attEvent);
                     // Transform alternative
                     ProcessModel alternative = alternativePaths.get(attEvent);
-                    alternative.annotateModel(0, lDeriver, lHelper);
+                    alternative.annotateModel(lDeriver, lHelper);
 
                     // Consider complexity of the process
                     if (alternative.getElemAmount() <= 3) {
@@ -494,7 +486,7 @@ public class TextPlanner {
 
             // General case (paths > 2)
         } else {
-            return textToIMConverter.convertANDGeneral(node, andNodes.size(), null);
+            return textToIMConverter.convertANDGeneral(node, andNodes.size());
         }
 
     }
@@ -504,7 +496,7 @@ public class TextPlanner {
      * Get ConverterRecord for OR
      */
     private ConverterRecord getORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst, process);
+        GatewayPropertyRecord orPropRec = new GatewayPropertyRecord(node, rpst);
 
         // Labeled Case
         if (orPropRec.isGatewayLabeled()) {
@@ -512,7 +504,7 @@ public class TextPlanner {
 
             // Unlabeled case
         } else {
-            return textToIMConverter.convertORSimple(node, null, false);
+            return textToIMConverter.convertORSimple(node);
         }
     }
 
@@ -520,7 +512,7 @@ public class TextPlanner {
      * Get ConverterRecord for XOR
      */
     private ConverterRecord getXORConverterRecord(RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
+        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst);
 
         // Labeled Case with Yes/No - arcs and Max. Depth of 1
         if (propRec.isGatewayLabeled() && propRec.hasYNArcs() && propRec.getMaxPathDepth() == 1) {
@@ -547,7 +539,7 @@ public class TextPlanner {
      * Get ConverterRecord for Skip
      */
     private ConverterRecord getSkipConverterRecord(ArrayList<RPSTNode<ControlFlow, Node>> orderedTopNodes, RPSTNode<ControlFlow, Node> node) {
-        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst, process);
+        GatewayPropertyRecord propRec = new GatewayPropertyRecord(node, rpst);
 
         // Yes-No Case
         if (propRec.isGatewayLabeled() && propRec.hasYNArcs()) {

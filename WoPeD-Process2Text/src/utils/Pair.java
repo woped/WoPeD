@@ -34,7 +34,6 @@ package utils;
  * deletion without notice.</b>
  */
 public class Pair<A, B> {
-
     public final A fst;
     public final B snd;
 
@@ -43,12 +42,12 @@ public class Pair<A, B> {
         this.snd = snd;
     }
 
-    public String toString() {
-        return "Pair[" + fst + "," + snd + "]";
-    }
-
     private static boolean equals(Object x, Object y) {
         return (x == null && y == null) || (x != null && x.equals(y));
+    }
+
+    public String toString() {
+        return "Pair[" + fst + "," + snd + "]";
     }
 
     public boolean equals(Object other) {

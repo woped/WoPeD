@@ -1,30 +1,14 @@
 package dataModel.process;
 
-
 public class Lane {
-	
-	private int id;
-	private String name;
-	private Pool pool;
-	
-	public Lane(int id, String name, Pool pool) {
-		this.id = id;
-		this.name = name;
-		this.pool = pool;
-	}
+    private final String name;
 
-	public int getId() {
-		return id;
-	}
+    public Lane(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
-
-	public Pool getPool() {
-		return pool;
-	}
-	
-	
+    public String getName() {
+        return name;
+    }
 
 }
