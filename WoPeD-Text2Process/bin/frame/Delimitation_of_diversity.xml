@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/06/2005 12:18:23 PST Tue" name="Delimitation_of_diversity" ID="1680" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Item&lt;/fen&gt; which encompasses characteristics or types whose diversity is indicated by adducing a &lt;fen&gt;Limit1&lt;/fen&gt; and a &lt;fen&gt;Limit2&lt;/fen&gt; which differ considerably from each other.  In some cases, the &lt;fen&gt;Limit2&lt;/fen&gt; and &lt;fen&gt;Limit1&lt;/fen&gt; are construed together as &lt;fen&gt;Limits&lt;/fen&gt;.  Alternatively, the values of a particular &lt;fen&gt;Variable&lt;/fen&gt; for the &lt;fen&gt;Item&lt;/fen&gt; and its &lt;fen&gt;Limits&lt;/fen&gt; may be profiled.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/06/2005 12:18:23 PST Tue" abbrev="Item" name="Item" ID="9562">
+        <definition>&lt;def-root&gt;The entity whose scalar property is specified.
+
+
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/06/2005 12:18:24 PST Tue" abbrev="Var" name="Variable" ID="9563">
+        <definition>&lt;def-root&gt;The scalar property that the &lt;fen&gt;Item&lt;/fen&gt; possesses.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/06/2005 12:18:24 PST Tue" abbrev="Low" name="Limit1" ID="9564">
+        <definition>&lt;def-root&gt;The first-mentioned possibility of the range of variation.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/06/2005 12:18:24 PST Tue" abbrev="Upp" name="Limit2" ID="9565">
+        <definition>&lt;def-root&gt;The second item of the range of variation.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/06/2005 12:18:24 PST Tue" abbrev="Val" name="Limits" ID="9566">
+        <definition>&lt;def-root&gt;The range of positions on the scale that the &lt;fen&gt;Item&lt;/fen&gt; occupies.
+&lt;ex&gt;Prices &lt;t&gt;range&lt;/t&gt; &lt;fex name="Limits"&gt;between 10 and 20 dollars&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/06/2005 12:18:24 PST Tue" abbrev="deg" name="Degree" ID="9567">
+        <definition>&lt;def-root&gt;The deviation of the Upper_limit and the Lower_limit from each other (and thus from some single value).
+
+&lt;ex&gt;The weights &lt;t&gt;range&lt;/t&gt; &lt;fex name="Degree"&gt;a lot&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Limit2" ID="9565"/>
+        <memberFE name="Limit1" ID="9564"/>
+        <memberFE name="Limits" ID="9566"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Position_on_a_scale</relatedFrame>
+        <relatedFrame>Diversity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="range.v" ID="13050" lemmaID="31792" cBy="664" cDate="12/06/2005 12:31:42 PST Tue">
+        <definition>COD: vary or extend between specified limits</definition>
+        <sentenceCount annotated="21" total="307"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="range"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="from_to.prep" ID="14414" lemmaID="50673" cBy="664" cDate="04/11/2007 05:24:01 PDT Wed">
+        <definition>FN: indicating extreme points of a range.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="from"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="to"/>
+    </lexUnit>
+</frame>

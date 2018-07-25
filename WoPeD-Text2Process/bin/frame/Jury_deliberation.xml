@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/28/2002 05:40:19 PST Thu" name="Jury_deliberation" ID="296" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Jury&lt;/fen&gt; discuss the &lt;fen&gt;Case&lt;/fen&gt; and its &lt;fen&gt;Charges&lt;/fen&gt; in order to evaluate the  &lt;fen&gt;Possible_sentence&lt;/fen&gt; of the Accused.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/03/2002 07:47:52 PDT Tue" abbrev="Jury" name="Jury" ID="3697">
+        <definition>&lt;def-root&gt;The group that debates the case.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="09/03/2002 07:48:17 PDT Tue" abbrev="Dur" name="Duration" ID="3698">
+        <definition>&lt;def-root&gt;The amount of time for which the deliberation is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/03/2002 07:51:37 PDT Tue" abbrev="Chg" name="Charges" ID="3700">
+        <definition>&lt;def-root&gt;The legal label for the crime that the defendant is accused of.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/03/2002 07:51:57 PDT Tue" abbrev="Cse" name="Case" ID="3701">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Case&lt;/fen&gt; which a Trial is convened to decide.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/03/2003 11:48:59 PDT Thu" abbrev="" name="Time" ID="4726">
+        <definition>&lt;def-root&gt;When the deliberation takes place.
+&lt;ex&gt;The jury &lt;t&gt;deliberated&lt;/t&gt; for three hours &lt;fex name="Time"&gt;last Tuesday.&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/03/2003 11:50:15 PDT Thu" abbrev="" name="Place" ID="4727">
+        <definition>&lt;def-root&gt;Where the deliberation takes place.
+&lt;ex&gt;The jury &lt;t&gt;deliberated&lt;/t&gt; for several hours &lt;fex name="Place"&gt;in the Oakland courhouse&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/03/2003 12:00:55 PDT Thu" abbrev="PS" name="Possible_sentence" ID="4728">
+        <definition>&lt;def-root&gt;A sentence that the jury considers during deliberation.
+&lt;ex&gt;The jury &lt;t&gt;deliberated&lt;/t&gt; &lt;fex name="PS"&gt;his guilt&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Possible_sentence" ID="4728"/>
+        <memberFE name="Case" ID="3701"/>
+        <memberFE name="Charges" ID="3700"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Discussion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Verdict</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Court_examination</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="deliberation.n" ID="7363" lemmaID="10030" cBy="664" cDate="09/03/2002 07:44:22 PDT Tue">
+        <definition>FN: the activity of the jury after the presentation of all the evidence and statement in a trial, as they try to decide about the guilt or innocence of the defendant</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="deliberation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="deliberate.v" ID="8007" lemmaID="10026" cBy="296" cDate="01/16/2003 12:53:02 PST Thu">
+        <definition>FN: a jury engaging in careful consideration to reach a verdict</definition>
+        <sentenceCount annotated="19" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deliberate"/>
+    </lexUnit>
+</frame>

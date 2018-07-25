@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="05/31/2002 11:48:04 PDT Fri" name="Cause_change_of_phase" ID="335" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cause&lt;/fen&gt; or &lt;fen&gt;Agent&lt;/fen&gt; causes an &lt;fen&gt;Undergoer&lt;/fen&gt; to undergo a change of phase.  The &lt;fen&gt;Result&lt;/fen&gt; of the change may be given, along with the &lt;fen&gt;Initial_state&lt;/fen&gt; and the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the change can occur.  Note that this frame contrasts with Cause_change_of_consistency in that this frame describes causation of a change of an &lt;fen&gt;Undergoer&lt;/fen&gt; &lt;ment&gt;between&lt;/ment&gt; different phases (i.e. solid to liquid or frozen to "unfrozen").
+
+&lt;ex&gt; &lt;fex name="Agent"&gt;Bob&lt;/fex&gt; &lt;t&gt;melted&lt;/t&gt; &lt;fex name="Undergoer"&gt;the butter&lt;/fex&gt;. &lt;/ex&gt; 
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Sally&lt;/fex&gt; &lt;t&gt;defrosted&lt;/t&gt; &lt;fex name="Undergoer"&gt;the chicken&lt;/fex&gt; &lt;fex name="Purpose"&gt;to eat for dinner&lt;/fex&gt;. &lt;/ex&gt;  &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Agt" name="Agent" ID="3303">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; causes the &lt;fen&gt;Undergoer&lt;/fen&gt; to change phase.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Ins" name="Instrument" ID="3304">
+        <definition>&lt;def-root&gt;This FE identifies the Instrument with which the &lt;fen&gt;Agent&lt;/fen&gt; intentionally affects the &lt;fen&gt;Undergoer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Mnr" name="Manner" ID="3305">
+        <definition>&lt;def-root&gt;This FE identifies the Manner in which the &lt;fen&gt;Agent&lt;/fen&gt; intentionally affects the &lt;fen&gt;Undergoer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Mns" name="Means" ID="3306">
+        <definition>&lt;def-root&gt;This FE identifies the Means by which the &lt;fen&gt;Agent&lt;/fen&gt; intentionally affects the &lt;fen&gt;Undergoer&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Und" name="Undergoer" ID="3307">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Undergoer&lt;/fen&gt; undergoes a change of phase brought about by the &lt;fen&gt;Agent&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Place" name="Place" ID="3308">
+        <definition>&lt;def-root&gt;This FE identifies the place where change of phase occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Purp" name="Purpose" ID="3309">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Agent&lt;/fen&gt; affects the &lt;fen&gt;Undergoer&lt;/fen&gt;,&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:33:13 PDT Mon" abbrev="Time" name="Time" ID="3310">
+        <definition>&lt;def-root&gt;This FE identifies the Time at which the change of phase occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="cir" name="Circumstances" ID="3311">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the phase change occurs&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="Degr" name="Degree" ID="3312">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Agent&lt;/fen&gt; changes the phase of the &lt;fen&gt;Undergoer&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="I_state" name="Initial_state" ID="3313">
+        <definition>&lt;def-root&gt;This is the original state of the &lt;fen&gt;Undergoer&lt;/fen&gt;.&lt;ex&gt; &lt;fex name="Undergoer"&gt;The rock &lt;/fex&gt; was &lt;t&gt;solidified&lt;/t&gt; &lt;fex name="Initial_state"&gt; from its molten state &lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="0000FF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="Result" name="Result" ID="3314">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Result&lt;/fen&gt; is the result of the change of phase.
+&lt;ex&gt; &lt;fex name="Undergoer"&gt;the butter &lt;/fex&gt; was &lt;t&gt;melted&lt;/t&gt; &lt;fex name="Result"&gt;to a runny consistency&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="Spd" name="Speed" ID="3315">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; at which the change of phase occurs.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 11:34:16 PDT Mon" abbrev="sub" name="Subregion" ID="3316">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Subregion&lt;/fen&gt; describes which part of a larger whole is being affected.
+
+&lt;ex&gt;These bottles &lt;t&gt;melted&lt;/t&gt; &lt;fex name="sub"&gt;at the top&lt;/fex&gt; and stuck together&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/29/2002 10:18:04 PDT Mon" abbrev="Cause" name="Cause" ID="3418">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cause&lt;/fen&gt; is the non-&lt;fen&gt;Agent&lt;/fen&gt; which brings about the change in the &lt;fen&gt;Undergoer&lt;/fen&gt;. &lt;ex&gt;&lt;fex name="Cause"&gt;The sun&lt;/fex&gt; &lt;t&gt;melted&lt;/t&gt; &lt;fex name="Undergoer"&gt;the ice&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="3303"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="296" cDate="07/30/2002 03:26:01 PDT Tue" abbrev="Container" name="Container" ID="3462">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Container&lt;/fen&gt; that holds the &lt;fen&gt;Undergoer&lt;/fen&gt; whose phase is being changed .&lt;ex&gt;&lt;t&gt;Melt&lt;/t&gt; the butter&lt;fex name="Container"&gt;in a medium-sized pan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="000000" coreType="Peripheral" cBy="296" cDate="07/30/2002 03:26:34 PDT Tue" abbrev="Dur" name="Duration" ID="3463">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Agent&lt;/fen&gt; changes the phase of the &lt;fen&gt;Undergoer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/01/2002 12:41:51 PDT Thu" abbrev="Depictive" name="Depictive" ID="3475">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; describes the state of the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Undergoer&lt;/fen&gt; at the time of phase change.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="296" cDate="08/01/2002 12:44:56 PDT Thu" abbrev="Med" name="Medium" ID="3476">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Medium&lt;/fen&gt; is the substance which surrounds the &lt;fen&gt;Undergoer&lt;/fen&gt; and facilitates its phase change.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/01/2002 04:00:45 PDT Thu" abbrev="H/C" name="Hot/Cold_source" ID="3478">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Hot/Cold_source&lt;/fen&gt; is the source of the heat or cool. &lt;ex&gt; &lt;fex name ="Agent"&gt; We &lt;/fex&gt; &lt;t&gt;froze&lt;/t&gt; &lt;fex name="Undergoer"&gt; the fish&lt;/fex&gt; &lt;fex name="Hot/Cold_source"&gt; on ice &lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Altered_phase</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Change_of_phase</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="freeze.v" ID="5913" lemmaID="15414" cBy="296" cDate="05/31/2002 11:51:26 PDT Fri">
+        <definition>COD:  turn into ice or another solid as a result of extreme cold. </definition>
+        <sentenceCount annotated="14" total="405"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="freeze"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="thaw.v" ID="5914" lemmaID="40020" cBy="296" cDate="05/31/2002 11:51:36 PDT Fri">
+        <definition>FN: cause to become soft or liquid as a result of warming up. </definition>
+        <sentenceCount annotated="6" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thaw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="melt.v" ID="5915" lemmaID="23933" cBy="296" cDate="05/31/2002 11:51:44 PDT Fri">
+        <definition>COD: make liquefied by heating. </definition>
+        <sentenceCount annotated="23" total="305"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="melt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="defrost.v" ID="5916" lemmaID="9970" cBy="296" cDate="05/31/2002 11:51:53 PDT Fri">
+        <definition>COD: thaw (frozen food)</definition>
+        <sentenceCount annotated="8" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="defrost"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="evaporate.v" ID="5917" lemmaID="13244" cBy="296" cDate="05/31/2002 11:52:02 PDT Fri">
+        <definition>COD: turn from liquid into vapour. </definition>
+        <sentenceCount annotated="11" total="132"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="evaporate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="liquefy.v" ID="6880" lemmaID="22468" cBy="296" cDate="07/29/2002 11:07:50 PDT Mon">
+        <definition>FN: cause to become a liquid</definition>
+        <sentenceCount annotated="6" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="liquefy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="solidify.v" ID="11115" lemmaID="36872" cBy="303" cDate="11/09/2004 02:32:51 PST Tue">
+        <definition>COD: make or become hard or solid.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="solidify"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flux.v" ID="12029" lemmaID="50004" cBy="303" cDate="05/04/2005 03:48:54 PDT Wed">
+        <definition>COD:  treat (a metal object) with a flux to promote melting.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flux"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="unfreeze.v" ID="12030" lemmaID="50005" cBy="303" cDate="05/04/2005 03:52:56 PDT Wed">
+        <definition>COD: thaw.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unfreeze"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="boil.v" ID="13496" lemmaID="4063" cBy="618" cDate="08/18/2006 03:41:52 PDT Fri">
+        <definition>FN: cause to come to the boiling (rapid vaporization) phase.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boil"/>
+    </lexUnit>
+</frame>

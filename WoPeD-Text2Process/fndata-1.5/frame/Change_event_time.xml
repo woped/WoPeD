@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="06/09/2003 02:20:42 PDT Mon" name="Change_event_time" ID="691" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame, an &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; changes the timing of an &lt;fen&gt;Event&lt;/fen&gt;. The &lt;fen&gt;Event&lt;/fen&gt; will then take place at the &lt;fen&gt;Destination_time&lt;/fen&gt; or with respect to a &lt;fen&gt;Destination_event&lt;/fen&gt;. This can be done with by certain &lt;fen&gt;Means&lt;/fen&gt;, in a certain &lt;fen&gt;Manner&lt;/fen&gt; or to a certain &lt;fen&gt;Degree&lt;/fen&gt;.
+
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 02:36:39 PDT Mon" abbrev="" name="Agent" ID="4577">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the animate entity which brings about the change in time of the &lt;fen&gt;Event&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The umpire&lt;/fex&gt; &lt;t&gt;postponed&lt;/t&gt; &lt;fex name="Event"&gt;the game&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 02:36:53 PDT Mon" abbrev="" name="Cause" ID="4578">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cause&lt;/fen&gt; is the non-sentient force which brings about the change of time for the &lt;fen&gt;Event&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Cause"&gt;The rain&lt;/fex&gt; &lt;t&gt;delayed&lt;/t&gt; &lt;fex name="Event"&gt;the baseball game&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="4577"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 02:37:12 PDT Mon" abbrev="" name="Event" ID="4579">
+        <definition>&lt;def-root&gt;The&lt;fen&gt;Event&lt;/fen&gt; is the occurrence which changes time.
+&lt;ex&gt;&lt;fex name="Event"&gt;The opening of the musical&lt;/fex&gt; was &lt;t&gt;delayed&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:37:24 PDT Mon" abbrev="" name="Manner" ID="4580">
+        <definition>&lt;def-root&gt;The Manner is the way in which the time change takes place.
+&lt;ex&gt;&lt;fex name="Agent"&gt;My mother&lt;/fex&gt; &lt;fex name="Manner"&gt;thoughtlessly&lt;/fex&gt; &lt;t&gt;delayed&lt;/t&gt; &lt;fex name="Event"&gt;my salon appointment&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:37:34 PDT Mon" abbrev="" name="Means" ID="4581">
+        <definition>&lt;def-root&gt;The Means describe the way in which the time change is accomplished.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The mayor&lt;/fex&gt; &lt;t&gt;delayed&lt;/t&gt; &lt;fex name="Event"&gt;the ribbon-cutting ceremony&lt;/fex&gt; &lt;fex name="Means"&gt;by pretending to be ill&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:37:44 PDT Mon" abbrev="" name="Degree" ID="4582">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; is the extent to which the time change takes place.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:38:48 PDT Mon" abbrev="" name="Destination_event" ID="4583">
+        <definition>&lt;def-root&gt;The Destination_event is the occasion which the timing of the Event occurs with respect to.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Consumers&lt;/fex&gt; should &lt;t&gt;postpone&lt;/t&gt; &lt;fex name="Event"&gt;purchasing a new car&lt;/fex&gt; &lt;fex name="Destination_event"&gt;until their credit rating is acceptable&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:38:59 PDT Mon" abbrev="" name="Destination_time" ID="4584">
+        <definition>&lt;def-root&gt;The Destination_time is the time at which the Event actually occurs.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The king&lt;/fex&gt; is &lt;t&gt;postponing&lt;/t&gt; &lt;fex name="Event"&gt;the festival&lt;/fex&gt; &lt;fex name="Destination_time"&gt;until July&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 02:51:54 PDT Mon" abbrev="" name="Interval" ID="4585">
+        <definition>&lt;def-root&gt;The Interval between the Landmark_time and the Destination_time may be expressed.
+&lt;ex&gt;&lt;fex name="Event"&gt;The lanch&lt;/fex&gt; will be &lt;t&gt;delayed&lt;/t&gt; &lt;fex name="Interval"&gt;for two months&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 03:52:33 PDT Mon" abbrev="" name="Landmark_time" ID="4587">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Landmark_time&lt;/fen&gt; is when the &lt;fen&gt;Event&lt;/fen&gt; was originally intended to take place.
+&lt;ex&gt;&lt;fex name="Event"&gt;The driving test&lt;/fex&gt; was &lt;t&gt;postponed&lt;/t&gt; &lt;fex name="Landmark_time"&gt;from July&lt;/fex&gt; &lt;fex name="Destination_time"&gt;to September&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+        <excludesFE name="Destination_time" ID="4584"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/12/2003 10:16:46 PDT Thu" abbrev="" name="Reason" ID="4623">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; is the reason or explanation for why the &lt;fen&gt;Event&lt;/fen&gt; occurs at a different time.
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 07:10:04 PST Thu" abbrev="pur" name="Purpose" ID="9714">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Agent&lt;/fen&gt; intends to bring about by changing the time the &lt;fen&gt;Event&lt;/fen&gt; will take place.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 07:12:00 PST Thu" abbrev="tim" name="Time" ID="9715">
+        <definition>&lt;def-root&gt;The time at which the delay occurred.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 07:13:00 PST Thu" abbrev="" name="Place" ID="9716">
+        <definition>&lt;def-root&gt;The location at which the expected time of the &lt;fen&gt;Event&lt;/fen&gt; changes.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_change</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Calendric_unit</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Holding_off_on</relatedFrame>
+        <relatedFrame>Waiting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="delay.v" ID="8759" lemmaID="10009" cBy="296" cDate="06/09/2003 02:46:39 PDT Mon">
+        <definition>COD: cause to become late or slow or postpone or defer. </definition>
+        <sentenceCount annotated="62" total="408"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="delay"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="postpone.v" ID="8760" lemmaID="29901" cBy="296" cDate="06/09/2003 02:46:58 PDT Mon">
+        <definition>COD:  arrange for (something) to take place at a time later than that first scheduled. </definition>
+        <sentenceCount annotated="29" total="245"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="postpone"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="defer.v" ID="8761" lemmaID="9927" cBy="296" cDate="06/09/2003 02:47:12 PDT Mon">
+        <definition>COD: put off to a later time; postpone. </definition>
+        <sentenceCount annotated="24" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="defer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="advance.v" ID="10115" lemmaID="587" cBy="445" cDate="02/26/2004 11:58:51 PST Thu">
+        <definition>COD: cause to occur at an earlier date than planned.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="advance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="move up.v" ID="10182" lemmaID="48791" cBy="445" cDate="03/04/2004 01:52:32 PST Thu">
+        <definition>FN: to cause to advance in time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="move back.v" ID="10351" lemmaID="48961" cBy="445" cDate="03/18/2004 01:56:45 PST Thu">
+        <definition>FN: to reschedule to an earlier time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="back"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="put off.v" ID="12120" lemmaID="50030" cBy="303" cDate="05/20/2005 02:48:20 PDT Fri">
+        <definition>FN: delay an event until a later time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="put"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hold over.v" ID="12121" lemmaID="50031" cBy="303" cDate="05/20/2005 02:58:17 PDT Fri">
+        <definition>FN: reschedule for a later time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hold"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="over"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="put over.v" ID="12122" lemmaID="50032" cBy="303" cDate="05/20/2005 03:07:02 PDT Fri">
+        <definition>COD: postpone something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="put"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="over"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="delay.n" ID="13275" lemmaID="10008" cBy="303" cDate="06/19/2006 05:54:30 PDT Mon">
+        <definition>COD: a period of time by which something is late or postponed.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="delay"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="hold up.a" ID="14754" lemmaID="50820" cBy="597" cDate="01/30/2008 04:25:42 PST Wed">
+        <definition>FN: to delay</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hold"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="up"/>
+    </lexUnit>
+</frame>

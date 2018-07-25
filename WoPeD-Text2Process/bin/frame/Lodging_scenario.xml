@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" name="Lodging_scenario" ID="1917" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Host&lt;/fen&gt; provides a &lt;fen&gt;Residence&lt;/fen&gt; for a &lt;fen&gt;Lodger&lt;/fen&gt; to temporarily stay.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" abbrev="Gro" name="Host" ID="11526">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Host&lt;/fen&gt; is the individual (or group of individuals) that own or control the &lt;fen&gt;Residence&lt;/fen&gt; and allow the  &lt;fen&gt;Lodger&lt;/fen&gt; to temporarily stay there.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" abbrev="Gre" name="Lodger" ID="11527">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Lodger&lt;/fen&gt; is the individual who is given permission to lodge in the &lt;fen&gt;Residence&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" abbrev="Time" name="Time" ID="11529">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; is when the &lt;fen&gt;Host&lt;/fen&gt; provides a Residence to the &lt;fen&gt;Lodger&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" abbrev="Place" name="Place" ID="11530">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is where the &lt;fen&gt;Host&lt;/fen&gt; provides a temporary &lt;fen&gt;Residence&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/29/2007 12:07:31 PDT Thu" abbrev="" name="Residence" ID="11535">
+        <definition>&lt;def-root&gt;The location controlled by the &lt;fen&gt;Host&lt;/fen&gt; which the &lt;fen&gt;Lodger&lt;/fen&gt; stays at temporarily.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Provide_lodging</relatedFrame>
+        <relatedFrame>Temporary_stay</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses">
+        <relatedFrame>Guest_and_host</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

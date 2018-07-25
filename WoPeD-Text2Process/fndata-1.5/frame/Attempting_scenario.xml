@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/07/2005 06:23:53 PST Wed" name="Attempting_scenario" ID="1683" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; has a particular &lt;fen&gt;Goal&lt;/fen&gt; in mind, and then uses some &lt;fen&gt;Means&lt;/fen&gt; that they believe will bring about the &lt;fen&gt;Goal&lt;/fen&gt;.  The &lt;fen&gt;Agent&lt;/fen&gt; succeeds or fails inasmuch as the result of the &lt;fen&gt;Means&lt;/fen&gt; action matches the &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Agt" name="Agent" ID="9608">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; makes an attempt to achieve a &lt;fen&gt;Goal&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;John&lt;/fex&gt; &lt;t&gt;attempted&lt;/t&gt; to climb Mt. Everest.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Goal" name="Goal" ID="9609">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is what the &lt;fen&gt;Agent&lt;/fen&gt; attempts to achieve.
+
+&lt;ex&gt;John &lt;t&gt;attempted&lt;/t&gt; &lt;fex name="Goal"&gt;to climb Mt. Everest GOAL&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Otcm" name="Outcome" ID="9610">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of an attempt to achieve a &lt;fen&gt;Goal&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Means" name="Means" ID="9611">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; action performed by the &lt;fen&gt;Agent&lt;/fen&gt; which they hope will bring about their &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Time" name="Time" ID="9613">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the attempt occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="Place" name="Place" ID="9615">
+        <definition>&lt;def-root&gt;The place where an attempt is made.
+
+&lt;ex&gt;&lt;fex name="Place"&gt;On the bridge&lt;/fex&gt; he &lt;t&gt;attempted&lt;/t&gt; to put the wig on.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/07/2005 06:23:53 PST Wed" abbrev="dur" name="Duration" ID="9617">
+        <definition>&lt;def-root&gt;The time period over which the attempts take place.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Attempt_distant_interaction_scenario</relatedFrame>
+        <relatedFrame>Attempt_obtain_food_scenario</relatedFrame>
+        <relatedFrame>Attempt_obtain_mineral_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Attempt</relatedFrame>
+        <relatedFrame>Success_or_failure</relatedFrame>
+        <relatedFrame>Purpose</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

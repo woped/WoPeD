@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/06/2001 01:57:51 PDT Fri" name="Cause_change_of_position_on_a_scale" ID="96" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame consists of words that indicate that an &lt;fen&gt;Agent&lt;/fen&gt; or a &lt;fen&gt;Cause&lt;/fen&gt; affects the position of an &lt;fen&gt;Item&lt;/fen&gt; on some scale (the &lt;fen&gt;Attribute&lt;/fen&gt;) to change it from an initial value (&lt;fen&gt;Value_1&lt;/fen&gt;) to an end value (&lt;fen&gt;Value_2&lt;/fen&gt;). The direction of the change (&lt;fen&gt;Path&lt;/fen&gt;) can be encoded as well as the magnitude of the change (&lt;fen&gt;Difference&lt;/fen&gt;).
+The rate of change of the value (&lt;fen&gt;Speed&lt;/fen&gt;) can optionally be indicated as well as a second scale (&lt;fen&gt;Co_Variable&lt;/fen&gt;), which the values are correlated with. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/06/2001 02:13:21 PDT Fri" abbrev="" name="Agent" ID="459">
+        <definition>&lt;def-root&gt;The person who causes an entity (Item) to change its positon on a scale with respect to some property (Variable).&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="006400" coreType="Peripheral" cBy="605" cDate="04/10/2001 01:39:07 PDT Tue" abbrev="Difference" name="Difference" ID="460">
+        <definition>&lt;def-root&gt;The distance between the orginial value (Value-1) and the final value (Value-2) of the entity on the scale (Variable).
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Coke&lt;/fex&gt; &lt;t&gt;raised&lt;/t&gt; &lt;fex name="Variable"&gt;the price&lt;/fex&gt; &lt;fex name="Item"&gt;of their soda&lt;/fex&gt; &lt;fex name="Difference"&gt;by 2%&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/10/2001 01:39:19 PDT Tue" abbrev="Variable" name="Attribute" ID="461">
+        <definition>&lt;def-root&gt;The scale along which the &lt;fen&gt;Item&lt;/fen&gt; ranges in value.
+&lt;ex&gt;&lt;fex name="Agent"&gt;They&lt;/fex&gt; &lt;t&gt;increased&lt;/t&gt; &lt;fex name="Attribute"&gt;the price of oil&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/10/2001 01:39:29 PDT Tue" abbrev="" name="Value_1" ID="462">
+        <definition>&lt;def-root&gt;The initial value of the entity (&lt;fen&gt;Item&lt;/fen&gt;) along the scale.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/10/2001 01:39:40 PDT Tue" abbrev="" name="Value_2" ID="463">
+        <definition>&lt;def-root&gt;The final position on the scale that the entity (&lt;fen&gt;Item&lt;/fen&gt;) assumes.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="800080" coreType="Extra-Thematic" cBy="605" cDate="04/10/2001 01:39:54 PDT Tue" abbrev="Co-Variable" name="Co_Variable" ID="464">
+        <definition>&lt;def-root&gt;The Co-Variable is the scale that the (dependent ) Variable is measured against.
+
+&lt;ex&gt;We &lt;t&gt;raise &lt;/t&gt; the temperature &lt;fex name="Co_Variable"&gt;with the pressure&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/10/2001 01:40:14 PDT Tue" abbrev="Path" name="Path" ID="465">
+        <definition>&lt;def-root&gt;Any expression that says something about the movement of the entity (Item) along the scale between its initial (Value-1) and its final position (Value-2).
+
+&lt;ex&gt;They &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Path"&gt;up&lt;/fex&gt; the price of oil.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Peripheral" cBy="605" cDate="04/10/2001 01:40:24 PDT Tue" abbrev="Speed" name="Speed" ID="466">
+        <definition>&lt;def-root&gt;The rate at which the entity's positon on the scale changes.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Ford&lt;/fex&gt; &lt;fex name="Speed"&gt;slowly&lt;/fex&gt; &lt;t&gt;raised&lt;/t&gt; &lt;fex name="Attribute"&gt;the price&lt;/fex&gt; &lt;fex name="Item"&gt;of their best-selling model&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/10/2001 02:02:07 PDT Tue" abbrev="Item" name="Item" ID="467">
+        <definition>&lt;def-root&gt;The entity whose position along a scale is being changed.
+
+&lt;ex&gt;&lt;fex name="Item"&gt;Oil&lt;/fex&gt; prices were &lt;t&gt;raised&lt;/t&gt; yesterday.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/26/2002 05:55:27 PST Tue" abbrev="Mns" name="Means" ID="2387">
+        <definition>&lt;def-root&gt;An act performed by the &lt;fen&gt;Agent&lt;/fen&gt; that brings about the change in the position of the &lt;fen&gt;Item&lt;/fen&gt; on the scale.
+&lt;ex&gt;They &lt;t&gt;increase&lt;/t&gt; the price of diamonds &lt;fex name="Mns"&gt;by withholding a sizable portion of the supply&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="000000" fgColor="FF69B4" coreType="Extra-Thematic" cBy="664" cDate="02/27/2002 03:18:19 PST Wed" abbrev="Purp" name="Purpose" ID="2403">
+        <definition>&lt;def-root&gt;The purpose for which an intentional act is performed.
+&lt;ex&gt;John &lt;t&gt;flattered&lt;/t&gt; her &lt;fex name="Purpose"&gt;to receive a raise&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="664" cDate="02/27/2002 03:18:29 PST Wed" abbrev="Time" name="Time" ID="2404">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/27/2002 03:21:38 PST Wed" abbrev="Cause" name="Cause" ID="2405">
+        <definition>&lt;def-root&gt;The force that causes the change.
+&lt;ex&gt;&lt;fex name="Cause"&gt;The rain&lt;/fex&gt; &lt;t&gt;increased&lt;/t&gt; the river's flow rate to an astonishing million gallons per second.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="459"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:59 PDT Thu" abbrev="Mnr" name="Manner" ID="5410">
+        <definition>&lt;def-root&gt;Any description of the &lt;fen&gt;Agent&lt;/fen&gt; changing the value of an &lt;fen&gt;Attribute&lt;/fen&gt; which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:59 PDT Thu" abbrev="Place" name="Place" ID="5411">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Agent&lt;/fen&gt; changes the value of an &lt;fen&gt;Attribute&lt;/fen&gt;.
+
+&lt;ex&gt;As a result, they &lt;t&gt;raised&lt;/t&gt; prices &lt;fex name="Place"&gt;in Peoria&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Attribute" ID="461"/>
+        <memberFE name="Item" ID="467"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Cause_proliferation_in_number</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Change_position_on_a_scale</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="increase.v" ID="1987" lemmaID="19534" cBy="605" cDate="04/10/2001 02:06:53 PDT Tue">
+        <definition>COD: make greater or larger</definition>
+        <sentenceCount annotated="83" total="502"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="increase"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="decrease.v" ID="1989" lemmaID="9850" cBy="605" cDate="04/10/2001 02:12:12 PDT Tue">
+        <definition>COD: make smaller or fewer in size, amount, intensity, or degree</definition>
+        <sentenceCount annotated="4" total="226"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="decrease"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="reduce.v" ID="1990" lemmaID="32265" cBy="605" cDate="04/10/2001 04:11:11 PDT Tue">
+        <definition>COD: make smaller or less in amount, degree, or size</definition>
+        <sentenceCount annotated="14" total="526"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reduce"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="reduction.n" ID="1991" lemmaID="32267" cBy="605" cDate="04/10/2001 04:12:12 PDT Tue">
+        <definition>COD: the action or fact of reducing something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reduction"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lower.v" ID="1992" lemmaID="22868" cBy="605" cDate="04/10/2001 04:20:57 PDT Tue">
+        <definition>COD: make  less in amount, extent, or value</definition>
+        <sentenceCount annotated="39" total="288"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lower"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="raise.v" ID="1995" lemmaID="31734" cBy="605" cDate="04/10/2001 04:27:59 PDT Tue">
+        <definition>COD: increase the amount, level, or strength of</definition>
+        <sentenceCount annotated="21" total="367"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="raise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="swell.v" ID="9502" lemmaID="39142" cBy="618" cDate="09/22/2003 04:38:01 PDT Mon">
+        <definition>COD: become or make greater in intensity, amount, or volume.</definition>
+        <sentenceCount annotated="1" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swell"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="growth.n" ID="9503" lemmaID="16947" cBy="618" cDate="09/22/2003 04:54:29 PDT Mon">
+        <definition>COD: the process of growing.</definition>
+        <sentenceCount annotated="11" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="growth"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="diminish.v" ID="10119" lemmaID="10695" cBy="445" cDate="02/26/2004 12:50:18 PST Thu">
+        <definition>FN: to make  less.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="diminish"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cut.v" ID="10820" lemmaID="9360" cBy="605" cDate="07/19/2004 06:49:31 PDT Mon">
+        <definition>COD: reduce the amount or quantity of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cut.n" ID="10821" lemmaID="9359" cBy="605" cDate="07/19/2004 06:51:13 PDT Mon">
+        <definition>COD: a reduction in amount or size.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="move.v" ID="11116" lemmaID="25100" cBy="303" cDate="11/09/2004 03:01:02 PST Tue">
+        <definition>FN: cause the position to change</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="curtail.v" ID="12580" lemmaID="9319" cBy="605" cDate="08/02/2005 11:36:20 PDT Tue">
+        <definition>COD: reduce in extent or quantity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="curtail"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="knock down.v" ID="12773" lemmaID="50261" cBy="664" cDate="10/11/2005 02:09:57 PDT Tue">
+        <definition>COD: reduce the price of an article.
+</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="knock"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="down"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="step up.v" ID="12774" lemmaID="50262" cBy="664" cDate="10/11/2005 02:12:06 PDT Tue">
+        <definition>COD: increase the amount, speed, or intensity of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="step"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="push.v" ID="13327" lemmaID="31272" cBy="303" cDate="06/27/2006 12:46:40 PDT Tue">
+        <definition>FN: force to change position</definition>
+        <sentenceCount annotated="11" total="296"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="push"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="push.n" ID="13328" lemmaID="31271" cBy="303" cDate="06/27/2006 12:48:45 PDT Tue">
+        <definition>FN: a change in position caused by some force.</definition>
+        <sentenceCount annotated="0" total="188"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="push"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="promote.v" ID="13372" lemmaID="30701" cBy="303" cDate="07/17/2006 12:25:52 PDT Mon">
+        <definition>COD:  increase the activity of </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="promote"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="enhance.v" ID="13373" lemmaID="12780" cBy="303" cDate="07/17/2006 12:26:41 PDT Mon">
+        <definition>FN: cause to increase (Biology)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="enhance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="add.v" ID="15656" lemmaID="450" cBy="976" cDate="03/03/2010 10:25:08 PST Wed">
+        <definition>FN: increase a value or attribute</definition>
+        <sentenceCount annotated="7" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="add"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/19/2004 04:10:38 PST Fri" name="Ambient_temperature" ID="1052" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Temperature&lt;/fen&gt; in a certain environment, determined by &lt;fen&gt;Time&lt;/fen&gt; and &lt;fen&gt;Place&lt;/fen&gt;, is specified.
+
+&lt;ex&gt;It's &lt;fex name="deg"&gt;too&lt;/fex&gt; &lt;t&gt;hot&lt;/t&gt; &lt;fex name="deg"&gt;to do anything&lt;/fex&gt; &lt;fex name="tim"&gt;today&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="pl"&gt;Nome&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="deg"&gt;pretty&lt;/fex&gt; &lt;t&gt;cold&lt;/t&gt; &lt;fex name="tim"&gt;this time of  year&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="tim"&gt;Last Tuesday&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; a &lt;fex name="deg"&gt;real&lt;/fex&gt; &lt;t&gt;scorcher&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="tim"&gt;Tomorrow&lt;/fex&gt; is gonna &lt;m&gt;be&lt;/m&gt;  &lt;t&gt;chilly&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="pl" name="Place" ID="6188">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; where  it is a certain &lt;fen&gt;Temperature&lt;/fen&gt; .
+
+
+&lt;ex&gt;&lt;fex name="Place"&gt;Chicago&lt;/fex&gt; is  &lt;t&gt;hot&lt;/t&gt; today .&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="att" name="Attribute" ID="6189">
+        <definition>&lt;def-root&gt;The temperature feature of the weather.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="tem" name="Temperature" ID="6190">
+        <definition>&lt;def-root&gt;A quantity or other characterization of the &lt;fen&gt;Temperature&lt;/fen&gt; of the environment.
+
+&lt;ex&gt;The &lt;t&gt;temperature&lt;/t&gt;  was &lt;fex name="tem"&gt;85 F&lt;/fex&gt; in the shade today&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Temperature" ID="233"/>
+        <excludesFE name="Degree" ID="6191"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="deg" name="Degree" ID="6191">
+        <definition>&lt;def-root&gt;A modifier expressing  the deviation of the &lt;fen&gt;Temperature&lt;/fen&gt; from the norm.
+
+&lt;ex&gt;It's like &lt;fex name="deg"&gt;totally&lt;/fex&gt; &lt;t&gt;chilly&lt;/t&gt;, dude, like, totally.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="tim" name="Time" ID="6192">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; during which an ambient environment has a particular &lt;fen&gt;Temperature&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/19/2004 04:10:39 PST Fri" abbrev="con" name="Circumstances" ID="6193">
+        <definition>&lt;def-root&gt;Some specification of the circumstances under which the ambient &lt;fen&gt;Temperature&lt;/fen&gt; is as specified.
+
+
+&lt;ex&gt;It's plenty &lt;t&gt;cool&lt;/t&gt; &lt;fex name="con"&gt;in the shade&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="976" cDate="04/13/2010 04:00:37 PDT Tue" abbrev="" name="Weather" ID="13796">
+        <definition>&lt;def-root&gt;The meteorological conditions which determine the ambient temperature of a locale.
+
+&lt;ex&gt;We get &lt;t&gt;warmer&lt;/t&gt; &lt;fex name="Weather"&gt;weather&lt;/fex&gt; this time of year.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Weather" ID="13796"/>
+        <memberFE name="Time" ID="6192"/>
+        <memberFE name="Place" ID="6188"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Temperature</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Add_Annotation" incorporatedFE="Attribute" POS="A" name="cool.a" ID="10369" lemmaID="8256" cBy="605" cDate="03/19/2004 05:35:34 PST Fri">
+        <definition>FN: having an environment with a fairly low temperature</definition>
+        <sentenceCount annotated="23" total="211"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="cool"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="cold.a" ID="10370" lemmaID="48952" cBy="605" cDate="03/19/2004 05:38:33 PST Fri">
+        <definition>FN: having an environment with a low temperature</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="cold"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="hot.a" ID="10371" lemmaID="18483" cBy="605" cDate="03/19/2004 05:39:48 PST Fri">
+        <definition>FN: having an environment with a  high temperature</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="hot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="warm.a" ID="10372" lemmaID="43448" cBy="605" cDate="03/19/2004 05:40:39 PST Fri">
+        <definition>FN: having an environment with a  fairly or comfortably high temperature</definition>
+        <sentenceCount annotated="18" total="178"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="warm"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Degree" POS="N" name="scorcher.n" ID="10373" lemmaID="34475" cBy="605" cDate="03/19/2004 05:42:28 PST Fri">
+        <definition>COD: a day or period of very hot weather</definition>
+        <sentenceCount annotated="1" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scorcher"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="chilly.a" ID="11101" lemmaID="6314" cBy="303" cDate="11/04/2004 06:27:45 PST Thu">
+        <definition>FN: Colder than is comfortable</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="chilly"/>
+    </lexUnit>
+    <lexUnit status="New" POS="N" name="temperature.n" ID="11313" lemmaID="49740" cBy="303" cDate="11/23/2004 03:29:41 PST Tue">
+        <definition>FN: the degree of heat of outside air</definition>
+        <sentenceCount annotated="1" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="temperature"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="freezing.a" ID="15572" lemmaID="49703" cBy="618" cDate="01/19/2010 09:55:57 PST Tue">
+        <definition>FN: having an environment with an extremely low temperature.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="freezing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cold.n" ID="15963" lemmaID="51190" cBy="664" cDate="07/30/2010 05:33:41 PDT Fri">
+        <definition>FN: low temperature, usually below freezing.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cold"/>
+    </lexUnit>
+</frame>

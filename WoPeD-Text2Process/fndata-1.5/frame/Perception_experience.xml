@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:22 PST Wed" name="Perception_experience" ID="70" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains perception words whose Perceivers have perceptual experiences that they do not necessarily intend to. For this reason we call the Perceiver role &lt;fen&gt;Perceiver_passive&lt;/fen&gt;. Comparing the Perception_experience frame to the Perception_active frame, we note that for some modalities there are different lexical items in each frame.  For instance, whereas Perception_experience has &lt;ment&gt;see&lt;/ment&gt;, Perception_active has &lt;ment&gt;look at&lt;/ment&gt;. For other sense modalities, we find the same lexical items in both frames.  To illustrate, consider the verb &lt;ment&gt;smell&lt;/ment&gt; where &lt;ment&gt;I smell something rotten&lt;/ment&gt; exemplifies its Perception_experience use and &lt;ment&gt;Smell this to see if it's fresh&lt;/ment&gt; exemplifies its Perception_active sense. This frame also includes words which are not specific to any sense modality, including &lt;ment&gt;detect, perceive, perception, sense&lt;/ment&gt;. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Perc-Pass" name="Perceiver_passive" ID="331">
+        <definition>&lt;def-root&gt;This FE is the being who has a perceptual experience, not necessarily on purpose. It is typically expressed as an External Argument.
+
+&lt;ex&gt;&lt;fex name="Perceiver_passive"&gt;The waiter&lt;/fex&gt; &lt;t&gt;smelled&lt;/t&gt; something foul in the kitchen.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="Phen" name="Phenomenon" ID="332">
+        <definition>&lt;def-root&gt;This FE is the entity or phenomenon that the perceiver experiences with his or her senses. It is typically expressed as Object with verbs.
+
+&lt;ex&gt;The waiter &lt;t&gt;smelled&lt;/t&gt; &lt;fex name="Phenomenon"&gt;something foul&lt;/fex&gt; in the kitchen.&lt;/ex&gt;
+
+&lt;ex&gt;I &lt;t&gt;saw&lt;/t&gt; &lt;fex name="Phenomenon"&gt;the baker&lt;/fex&gt; &lt;fex name="Phenomenon"&gt;prepare his special peanut butter pie&lt;/fex&gt;&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="BodP" name="Body_part" ID="333">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Body_part&lt;/fen&gt; is the location on the &lt;fen&gt;Perceiver_passive&lt;/fen&gt;'s body where the perceptual experience  takes place.  It is typically expressed in a PP.
+&lt;ex&gt;Marlow &lt;t&gt;felt&lt;/t&gt; something cold and hard &lt;fex name="Body_part"&gt;against the back of his neck&lt;/fex&gt;.&lt;/ex&gt;
+This Frame Element occurs less frequently than others, because many target words imply that a particular part of the body is involved (e.g. smelling must be done with the nose). However, the verb &lt;ment&gt;feel&lt;/ment&gt; does take this Frame Element, because touch is not localized on the body the same way other modalities are.  &lt;fen&gt;Body_part&lt;/fen&gt; may be expressed in other modalities when it adds specificity to what is implied by the target word in question.
+&lt;ex&gt;I &lt;t&gt;heard&lt;/t&gt; a ringing &lt;fex name="Body_part"&gt;in my right ear&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="Loc_perc" name="Location_of_perceiver" ID="334">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Location_of_perceiver&lt;/fen&gt; during the perceptual experience. It is typically expressed in a &lt;ment&gt;from&lt;/ment&gt;-PP.
+&lt;ex&gt;The witnesses &lt;t&gt;saw&lt;/t&gt; the robbery &lt;fex name="Loc_perc"&gt;from the their car&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="Dir" name="Direction" ID="335">
+        <definition>&lt;def-root&gt;This frame element is used for all path-like expressions, except those indicating the location of the perceiver (see above), that describe how the perceiver's attention is directed during the act of perception.
+&lt;ex&gt;The detective could easily &lt;t&gt;see&lt;/t&gt; &lt;fex name="Direction"&gt;into the house&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The detective &lt;t&gt;heard&lt;/t&gt; their conversation &lt;fex name="Direction"&gt;through the wall&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="State" name="Depictive" ID="336">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;State&lt;/fen&gt; indicates predicate expressions that apply to the &lt;fen&gt;Phenomenon&lt;/fen&gt;, providing some information about the state it is in while the &lt;fen&gt;Perceiver_passive&lt;/fen&gt; experiences it.
+
+&lt;ex&gt;The detective &lt;t&gt;saw&lt;/t&gt; the suspect &lt;fex name="Depictive"&gt;fleeing&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Pat &lt;t&gt;saw&lt;/t&gt; Kim &lt;fex name="Depictive"&gt;naked&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="" name="State" ID="337">
+        <definition>&lt;def-root&gt;&lt;fen&gt;State&lt;/fen&gt; is the location, activity, or other characteristic of the &lt;fen&gt;Phenomenon&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;saw&lt;/t&gt; the baker &lt;fex name="State"&gt;baking his special peanut butter pie&lt;/fex&gt;&lt;/ex&gt;.
+
+&lt;ex&gt;I &lt;t&gt;overheard&lt;/t&gt; the cat &lt;fex name="State"&gt;in the cupboard&lt;/fex&gt;&lt;/ex&gt;.
+
+&lt;ex&gt;I &lt;t&gt;heard&lt;/t&gt; fear &lt;fex name="State"&gt;in his voice&lt;/fex&gt;&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:23 PST Wed" abbrev="Manr" name="Manner" ID="338">
+        <definition>&lt;def-root&gt;Manner expressions may be of lexicographic interest if they describe properties of perception as such: &lt;ment&gt;clearly&lt;/ment&gt;, &lt;ment&gt;loudly&lt;/ment&gt;, etc.
+
+&lt;ex&gt;Pat &lt;t&gt;heard&lt;/t&gt; the shot &lt;fex name="Manner"&gt;clearly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:15:01 PDT Tue" abbrev="Degr" name="Degree" ID="1474">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; indicates the degree to which the Perception is experienced.
+
+&lt;ex&gt;A nightmare creature, &lt;fex name="Degr"&gt;barely&lt;/fex&gt; &lt;t&gt;perceived&lt;/t&gt; in the swirling dense smoke, was beating at the flames coming from its own body.&lt;/ex&gt;
+&lt;ex&gt;Older people &lt;t&gt;perceive&lt;/t&gt; &lt;fex name="Degr"&gt;less well&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:15:22 PDT Tue" abbrev="Mns" name="Means" ID="1477">
+        <definition>&lt;def-root&gt;The action whereby the Perceiver perceives.
+
+&lt;ex&gt;He &lt;t&gt;saw&lt;/t&gt; it &lt;fex name="Mns"&gt;by looking out the window&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="03/19/2007 01:16:31 PDT Mon" abbrev="Tim" name="Time" ID="11236">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; at which the &lt;fen&gt;Perceiver_passive&lt;/fen&gt; or the &lt;fen&gt;Body_part&lt;/fen&gt; perceives the &lt;fen&gt;Phenomenon&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/27/2007 11:48:11 PDT Fri" abbrev="" name="Duration" ID="11941">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="06/23/2008 02:59:46 PDT Mon" abbrev="con" name="Contrastive_context" ID="12864">
+        <definition>&lt;def-root&gt;An element of the discourse that serves to contextualize the &lt;fen&gt;Phenomenon&lt;/fen&gt;, with which it is directly related (i.e. filling a frame-element role of the Phenomenon or vice-versa).  It contrasts with other contextually relevant elements that potentially (but do not actually) fill the same role.
+
+&lt;ex&gt;Such a difference in note-taking accuracy can also be &lt;t&gt;seen&lt;/t&gt; &lt;fex name="Contrastive_context"&gt;for second-year pupils&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="06/24/2008 04:05:51 PDT Tue" abbrev="" name="Concessive" ID="12914">
+        <definition>&lt;def-root&gt;This FE signifies that the state-of-affairs expressed by the main clause (containing the target) occurs or holds, and something other than that state-of-affairs would be expected given the state-of-affairs in the concessive clause.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/24/2008 04:19:15 PDT Tue" abbrev="" name="Circumstances" ID="12915">
+        <definition>&lt;def-root&gt;A situation which pertains during the event.  This frame element is primarily used to highlight the event denoted by the target against a (potentially partially) causal or concessive background state-of-affairs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/24/2008 04:29:37 PDT Tue" abbrev="fre" name="Frequency" ID="12916">
+        <definition>&lt;def-root&gt;An expression of how often the event occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="10/02/2008 03:12:25 PDT Thu" abbrev="" name="Place" ID="13070">
+        <definition>&lt;def-root&gt;The general location within which the act of perception takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="000000" coreType="Peripheral" cBy="597" cDate="10/15/2008 01:24:13 PDT Wed" abbrev="Ground" name="Ground" ID="13085">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Ground&lt;/fen&gt; is the perceptual background against which the &lt;fen&gt;Phenomenon&lt;/fen&gt; is  experienced (or not experienced) by the &lt;fen&gt;Perceiver_passive&lt;/fen&gt;.  It can be distinguished from locative postnominal modifiers of the &lt;fen&gt;Phenomenon&lt;/fen&gt; in negative contexts.
+&lt;ex&gt;Pat didn't &lt;t&gt;see&lt;/t&gt; Kim  &lt;fex name="Ground"&gt;behind the bar&lt;/fex&gt;.&lt;/ex&gt;
+In this example, it is implied that Pat looked behind the bar and did not find Kim there. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="597" cDate="10/15/2008 01:34:45 PDT Wed" abbrev="" name="Obscuring_medium" ID="13086">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Obscuring_medium&lt;/fen&gt; is the medium through which the &lt;fen&gt;Phenomenon&lt;/fen&gt; makes itself perceivable to the &lt;fen&gt;Perceiver_passive&lt;/fen&gt;.  This is similar to the &lt;fen&gt;Direction&lt;/fen&gt;, but occurs in the opposite direction and implies a movement of the &lt;fen&gt;Phenomenon&lt;/fen&gt;.
+
+&lt;ex&gt;My mother &lt;t&gt;heard&lt;/t&gt; the scream &lt;fex name="Obscuring_medium"&gt;through the attic window&lt;/fex&gt;&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Body_part" ID="333"/>
+        <memberFE name="Perceiver_passive" ID="331"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Perception</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Punctual_perception</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Perception_body</relatedFrame>
+        <relatedFrame>Eclipse</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Perception_active</relatedFrame>
+    </frameRelation>
+    <lexUnit status="FN1_Sent" POS="V" name="detect.v" ID="1530" lemmaID="10418" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: discern (something intangible or barely perceptible)</definition>
+        <sentenceCount annotated="48" total="436"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="detect"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="feel.v" ID="1531" lemmaID="14126" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: be aware of (something happening) through physical sensation</definition>
+        <sentenceCount annotated="60" total="1115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="feel"/>
+        <semType name="Tactile_modality" ID="96"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hear.v" ID="1532" lemmaID="17677" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: perceive (a sound) with the ear</definition>
+        <sentenceCount annotated="67" total="884"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hear"/>
+        <semType name="Auditory_modality" ID="93"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="perceive.v" ID="1533" lemmaID="28394" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: become aware or conscious of</definition>
+        <sentenceCount annotated="66" total="413"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="perceive"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="perception.n" ID="1534" lemmaID="28400" cBy="731" cDate="02/08/2001 01:30:01 PST Thu">
+        <definition>FN: the process of becoming aware of something through the senses.</definition>
+        <sentenceCount annotated="16" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="perception"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="see.v" ID="1535" lemmaID="34838" cBy="731" cDate="02/08/2001 01:30:01 PST Thu">
+        <definition>COD: perceive with the eyes</definition>
+        <sentenceCount annotated="105" total="1515"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="see"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sense.v" ID="1536" lemmaID="35075" cBy="731" cDate="02/08/2001 01:30:01 PST Thu">
+        <definition>COD: perceive by a sense or senses' be vaguely or indefinably aware of</definition>
+        <sentenceCount annotated="65" total="338"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sense"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="smell.v" ID="1537" lemmaID="36506" cBy="731" cDate="02/08/2001 01:30:01 PST Thu">
+        <definition>FN: perceive or detect the odour of something by the faculty of smell.</definition>
+        <sentenceCount annotated="44" total="341"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smell"/>
+        <semType name="Olfactory_modality" ID="95"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="taste.v" ID="1538" lemmaID="39582" cBy="731" cDate="02/08/2001 01:30:01 PST Thu">
+        <definition>COD: perceive or experience the flavour of.</definition>
+        <sentenceCount annotated="25" total="232"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="taste"/>
+        <semType name="Gustatory_modality" ID="97"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="overhear.v" ID="9100" lemmaID="27292" cBy="296" cDate="07/11/2003 03:33:54 PDT Fri">
+        <definition>COD: hear accidentally or secretly. </definition>
+        <sentenceCount annotated="21" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="overhear"/>
+        <semType name="Auditory_modality" ID="93"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="experience.n" ID="10123" lemmaID="13537" cBy="445" cDate="02/26/2004 02:06:31 PST Thu">
+        <definition>COD: an event or occurrence which leaves an impression on one.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="experience"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="witness.v" ID="14553" lemmaID="44341" cBy="361" cDate="10/24/2007 11:48:07 PDT Wed">
+        <definition>FN: to see an event occur, especially as a bystander. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="witness"/>
+    </lexUnit>
+</frame>

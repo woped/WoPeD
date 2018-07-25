@@ -1,0 +1,635 @@
+<?xml version = "1.0"?>
+<TestInstance>
+    <PlainTextDescription>
+        In a bowl, mix the lemon juice, olive oil, Dijon mustard, garlic, red bell pepper, salt, and pepper.
+        Set aside 1/4 cup of the mixture to use for basting.
+        Place chicken in the bowl, and marinate at least 20 minutes in the refrigerator.
+        Preheat grill for high heat. Lightly oil grill grate.
+        Drain and discard marinade from the bowl, and place chicken on the grill.
+        Cook 6 to 8 minutes on each side, until juices run clear, basting occasionally with the reserved marinade.
+    </PlainTextDescription>
+    <WorldModel>
+        <Actions>
+            <Action id="1"><Name>mix</Name></Action>
+            <Action id="2"><Name>set aside</Name></Action>
+            <Action id="3"><Name>place</Name></Action>
+            <Action id="4"><Name>marinate</Name></Action>
+            <Action id="5"><Name>preheat</Name></Action>
+            <Action id="6"><Name>oil</Name></Action>
+            <Action id="7"><Name>drain and discard</Name></Action>
+            <Action id="8"><Name>cook</Name></Action>
+            <Action id="6"><Name>basting</Name></Action>
+        </Actions>
+        <Actors>
+        </Actors>
+        <Resources>
+            <Resource id="1"><Name>lemon juice</Name></Resource>
+            <Resource id="2"><Name>olive oil</Name></Resource>
+            <Resource id="3"><Name>Dijon mustard</Name></Resource>
+            <Resource id="4"><Name>garlic</Name></Resource>
+            <Resource id="5"><Name>red bell pepper</Name></Resource>
+            <Resource id="6"><Name>salt</Name></Resource>
+            <Resource id="7"><Name>pepper</Name></Resource>
+            <Resource id="8"><Name>chicken</Name></Resource>
+            <Resource id="9"><Name>grill</Name></Resource>
+            <Resource id="9"><Name>grill grate</Name></Resource>
+            <Resource id="9"><Name>marinade</Name></Resource>
+        </Resources>
+    </WorldModel>
+    <PetriNet>
+        <places>
+            <place id="p1">
+                <name>
+                    <text>p1</text>
+                    <graphics>
+                        <offset x="30" y="250"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="30" y="210"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p9">
+                <name>
+                    <text>p2</text>
+                    <graphics>
+                        <offset x="180" y="210"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="180" y="170"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p10">
+                <name>
+                    <text>p3</text>
+                    <graphics>
+                        <offset x="380" y="360"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="380" y="320"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p12">
+                <name>
+                    <text>p5</text>
+                    <graphics>
+                        <offset x="790" y="390"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="790" y="350"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p11">
+                <name>
+                    <text>p4</text>
+                    <graphics>
+                        <offset x="590" y="340"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="590" y="300"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p14">
+                <name>
+                    <text>p7</text>
+                    <graphics>
+                        <offset x="1060" y="240"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1060" y="200"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p13">
+                <name>
+                    <text>p6</text>
+                    <graphics>
+                        <offset x="950" y="390"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="950" y="350"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p16">
+                <name>
+                    <text>p9</text>
+                    <graphics>
+                        <offset x="1260" y="390"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1260" y="350"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p15">
+                <name>
+                    <text>p8</text>
+                    <graphics>
+                        <offset x="1170" y="260"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1170" y="220"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p18">
+                <name>
+                    <text>p11</text>
+                    <graphics>
+                        <offset x="960" y="510"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="960" y="470"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+            <place id="p17">
+                <name>
+                    <text>p10</text>
+                    <graphics>
+                        <offset x="1150" y="490"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1150" y="450"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+            </place>
+        </places>
+        <transitions>
+            <transition id="t4">
+                <name>
+                    <text>set aside 1/4 cup of mixture</text>
+                    <graphics>
+                        <offset x="260" y="400"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="260" y="360"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t5">
+                <name>
+                    <text>place chicken in the bowl</text>
+                    <graphics>
+                        <offset x="460" y="360"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="460" y="320"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t6">
+                <name>
+                    <text>marinade in refridgerator</text>
+                    <graphics>
+                        <offset x="680" y="330"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="680" y="290"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <trigger id="" type="202">
+                        <graphics>
+                            <position x="690" y="270"/>
+                            <dimension x="24" y="22"/>
+                        </graphics>
+                    </trigger>
+                    <time>20</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t7">
+                <name>
+                    <text>preheat grill for high heat</text>
+                    <graphics>
+                        <offset x="860" y="390"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="860" y="350"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t9">
+                <name>
+                    <text>lightly oil grill grate</text>
+                    <graphics>
+                        <offset x="1000" y="390"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1000" y="350"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t11">
+                <name>
+                    <text>Drain and discard marinade from the bowl</text>
+                    <graphics>
+                        <offset x="1130" y="190"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1130" y="150"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t13">
+                <name>
+                    <text>place chicken on the grill</text>
+                    <graphics>
+                        <offset x="1230" y="300"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1230" y="260"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t15">
+                <name>
+                    <text>Cook 6 to 8 minutes on each side</text>
+                    <graphics>
+                        <offset x="1260" y="480"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1260" y="440"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t17">
+                <name>
+                    <text>basting with the reserved marinade</text>
+                    <graphics>
+                        <offset x="1020" y="510"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="1020" y="470"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+            <transition id="t2">
+                <name>
+                    <text>mix lemon juice, olive oil, Dijon mustard, garlic, red bell pepper, salt and pepper in a bowl</text>
+                    <graphics>
+                        <offset x="110" y="260"/>
+                    </graphics>
+                </name>
+                <graphics>
+                    <position x="110" y="220"/>
+                    <dimension x="40" y="40"/>
+                </graphics>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <time>0</time>
+                    <timeUnit>1</timeUnit>
+                    <orientation>1</orientation>
+                </toolspecific>
+            </transition>
+        </transitions>
+        <arcs>
+            <arc id="a22" source="t5" target="p11">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a33" source="p16" target="t15">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a21" source="p10" target="t5">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a32" source="t13" target="p16">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a24" source="t6" target="p12">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a35" source="p17" target="t17">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a23" source="p11" target="t6">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a34" source="t15" target="p17">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a26" source="t7" target="p13">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a25" source="p12" target="t7">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a36" source="t17" target="p18">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a17" source="p1" target="t2">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a28" source="t9" target="p14">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a27" source="p13" target="t9">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a19" source="p9" target="t4">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a18" source="t2" target="p9">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a29" source="p14" target="t11">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a20" source="t4" target="p10">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a31" source="p15" target="t13">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+            <arc id="a30" source="t11" target="p15">
+                <inscription>
+                    <text>1</text>
+                    <graphics>
+                        <offset x="500.0" y="-12.0"/>
+                    </graphics>
+                </inscription>
+                <graphics/>
+                <toolspecific tool="WoPeD" version="1.0">
+                    <probability>1.0</probability>
+                    <displayProbabilityOn>false</displayProbabilityOn>
+                    <displayProbabilityPosition x="500.0" y="12.0"/>
+                </toolspecific>
+            </arc>
+        </arcs>
+    </PetriNet>
+</TestInstance>

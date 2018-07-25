@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/27/2001 06:14:27 PDT Wed" name="Process_stop" ID="144" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Process&lt;/fen&gt; stops at a certain &lt;fen&gt;Time&lt;/fen&gt; and &lt;fen&gt;Place&lt;/fen&gt;.  &lt;fen&gt;Reason&lt;/fen&gt; may also be specified.  A &lt;fen&gt;Duration&lt;/fen&gt; may be included in order to indicate the length of the persistence of the Paused-state before action resumes.  NB:  Refer to Process frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/27/2001 06:18:32 PDT Wed" abbrev="Prc" name="Process" ID="1122">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Process&lt;/fen&gt; which is halting.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/27/2001 06:18:32 PDT Wed" abbrev="Place" name="Place" ID="1123">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/27/2001 06:18:32 PDT Wed" abbrev="Cause" name="Cause" ID="1124">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Cause&lt;/fen&gt; of an event occur.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/27/2001 06:18:32 PDT Wed" abbrev="Time" name="Time" ID="1125">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/27/2001 07:22:48 PDT Wed" abbrev="Degr" name="Degree" ID="1126">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; to which the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/27/2001 07:22:48 PDT Wed" abbrev="Depict" name="Depictive" ID="1127">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/27/2001 07:22:48 PDT Wed" abbrev="Manr" name="Manner" ID="1129">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; of performing an action.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/27/2001 07:22:48 PDT Wed" abbrev="Result" name="Result" ID="1131">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Result&lt;/fen&gt; of an event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/15/2001 03:16:39 PST Thu" abbrev="Last" name="Last_subevent" ID="2114">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Last_subevent&lt;/fen&gt; of an event.
+
+&lt;ex&gt;The peace march &lt;t&gt;stopped&lt;/t&gt; &lt;fex name="Last"&gt;with a prayer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/15/2001 03:23:02 PST Thu" abbrev="Reas" name="Reason" ID="2115">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/15/2001 03:23:15 PST Thu" abbrev="Dur" name="Duration" ID="2116">
+        <definition>&lt;def-root&gt;The amount of time that a process remains stopped.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:54 PDT Thu" abbrev="Freq" name="Frequency" ID="5368">
+        <definition>&lt;def-root&gt;The number of times that the Process stops.,
+
+&lt;ex&gt;Mining activities on the opal fields &lt;t&gt;ceased&lt;/t&gt; &lt;fex name="Frequency"&gt;twice&lt;/fex&gt; in the last two weeks due to heavy rain storms&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_stop</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Process_stopped_state</relatedFrame>
+        <relatedFrame>Process_uncompleted_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="stop.v" ID="2788" lemmaID="38186" cBy="664" cDate="06/27/2001 06:20:36 PDT Wed">
+        <definition>COD: come or cause to come to an end. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stop"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="discontinue.v" ID="2789" lemmaID="10876" cBy="664" cDate="06/27/2001 06:20:54 PDT Wed">
+        <definition>COD: stop doing, providing, or making. </definition>
+        <sentenceCount annotated="0" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="discontinue"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="desist.v" ID="2791" lemmaID="10359" cBy="664" cDate="06/27/2001 06:21:32 PDT Wed">
+        <definition>COD: cease; abstain. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="desist"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="quit.v" ID="2792" lemmaID="31560" cBy="664" cDate="06/27/2001 06:22:41 PDT Wed">
+        <definition>COD: stop or discontinue. </definition>
+        <sentenceCount annotated="0" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="quit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cease.v" ID="2793" lemmaID="5844" cBy="664" cDate="06/27/2001 06:23:01 PDT Wed">
+        <definition>COD: come or bring to an end; stop. </definition>
+        <sentenceCount annotated="14" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cease"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cessation.n" ID="2794" lemmaID="5963" cBy="664" cDate="06/27/2001 06:23:20 PDT Wed">
+        <definition>COD: the fact or process of ceasing. </definition>
+        <sentenceCount annotated="17" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cessation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="discontinuation.n" ID="2795" lemmaID="44958" cBy="664" cDate="06/27/2001 06:24:39 PDT Wed">
+        <definition>FN: the act or instance of stopping (a process, creation, act)</definition>
+        <sentenceCount annotated="6" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="discontinuation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="halt.n" ID="14507" lemmaID="50716" cBy="361" cDate="08/02/2007 05:12:04 PDT Thu">
+        <definition>FN: stop</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="halt"/>
+    </lexUnit>
+</frame>

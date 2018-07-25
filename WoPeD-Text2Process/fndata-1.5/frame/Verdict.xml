@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="05/09/2002 05:37:58 PDT Thu" name="Verdict" ID="318" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame, which is a  part of the Trial sequence, a &lt;fen&gt;Judge&lt;/fen&gt; gives a &lt;fen&gt;Finding&lt;/fen&gt; with respect to the &lt;fen&gt;Charges&lt;/fen&gt; against the &lt;fen&gt;Defendant&lt;/fen&gt; in a particular &lt;fen&gt;Case&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/09/2002 05:38:37 PDT Thu" abbrev="Judge" name="Judge" ID="2757">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Judge&lt;/fen&gt; (which may be the jury, judge, magistrate or court) decides on the &lt;fen&gt;Finding&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/09/2002 05:39:08 PDT Thu" abbrev="Vdct" name="Finding" ID="2758">
+        <definition>&lt;def-root&gt;This FE identifies the outcome of the &lt;fen&gt;Judge&lt;/fen&gt;'s deliberation or consideration.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/09/2002 05:40:12 PDT Thu" abbrev="Defend" name="Defendant" ID="2759">
+        <definition>&lt;def-root&gt;The person who stands accused of a crime and is subject to the verdict.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="613" cDate="06/13/2002 04:59:18 PDT Thu" abbrev="Chrg" name="Charges" ID="3081">
+        <definition>&lt;def-root&gt;This FE refers to the &lt;fen&gt;Charges&lt;/fen&gt; with respect to which the verdict is being given.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="613" cDate="06/13/2002 05:02:20 PDT Thu" abbrev="Cse" name="Case" ID="3082">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Case&lt;/fen&gt; on which the verdict is being given.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/19/2002 09:45:27 PDT Wed" abbrev="Time" name="Time" ID="3132">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/19/2002 09:46:00 PDT Wed" abbrev="Place" name="Place" ID="3133">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/24/2002 11:14:46 PDT Mon" abbrev="LBasis" name="Legal_Basis" ID="3167">
+        <definition>&lt;def-root&gt;This FE indicates the basis in law of a verdict.
+&lt;ex&gt;He was found &lt;t&gt;guilty&lt;/t&gt; &lt;fex name="LBasis"&gt;under section 28 article 5&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/24/2002 03:50:40 PDT Mon" abbrev="cir" name="Circumstances" ID="3198">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; under which the verdict was reached.
+&lt;ex&gt;He was &lt;t&gt;convicted&lt;/t&gt; &lt;fex name="cir"&gt;on a four to three vote&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/01/2002 10:18:13 PDT Mon" abbrev="Mnr" name="Manner" ID="3296">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Judge&lt;/fen&gt; acts.
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/01/2002 10:19:28 PDT Mon" abbrev="Purp" name="Purpose" ID="3298">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Judge&lt;/fen&gt; returns a particular verdict.
+&lt;ex&gt;Did you &lt;t&gt;acquit&lt;/t&gt; him &lt;fex name="Purp"&gt;just to get the publicity&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="07/01/2002 10:38:16 PDT Mon" abbrev="Means" name="Means" ID="3299">
+        <definition>&lt;def-root&gt;This FE identifies an action that the &lt;fen&gt;Judge&lt;/fen&gt; performs in order to return the verdict.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="618" cDate="06/23/2003 02:14:23 PDT Mon" abbrev="" name="Reason" ID="4656">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for the verdict given.
+&lt;ex&gt;The jury &lt;t&gt;convicted&lt;/t&gt; him on all charges &lt;fex name="Reason"&gt;because of the overwhelming evidence against him&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Charges" ID="3081"/>
+        <memberFE name="Case" ID="3082"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+        <relatedFrame>Ruling_legally</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Jury_deliberation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="pronounce.v" ID="6172" lemmaID="30723" cBy="613" cDate="06/18/2002 10:26:26 PDT Tue">
+        <definition>COD: declare or announce</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pronounce"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="find.v" ID="6173" lemmaID="14391" cBy="613" cDate="06/18/2002 10:29:14 PDT Tue">
+        <definition>COD: (of a court) officially declare to be the case; (with against or for) make a decision against (or in favour of); judge to be guilty (or innocent). </definition>
+        <sentenceCount annotated="15" total="377"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="find"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="finding.n" ID="6174" lemmaID="14393" cBy="613" cDate="06/18/2002 10:30:19 PDT Tue">
+        <definition>COD: a conclusion reached as a result of an inquiry, investigation or trial</definition>
+        <sentenceCount annotated="0" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="finding"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="ruling.n" ID="6176" lemmaID="33747" cBy="613" cDate="06/18/2002 10:33:52 PDT Tue">
+        <definition>COD: an authoritative decision or pronouncement</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ruling"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="V" name="convict.v" ID="6177" lemmaID="8216" cBy="613" cDate="06/18/2002 10:36:07 PDT Tue">
+        <definition>COD: declare to be guilty of a criminal offence by the verdict of a jury or the decision of a judge in a court of law. </definition>
+        <sentenceCount annotated="60" total="242"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convict"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="N" name="conviction.n" ID="6178" lemmaID="8217" cBy="613" cDate="06/18/2002 10:37:17 PDT Tue">
+        <definition>COD: the act or process of convicting someone; an instance of being convicted</definition>
+        <sentenceCount annotated="39" total="282"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conviction"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="V" name="acquit.v" ID="6180" lemmaID="382" cBy="613" cDate="06/18/2002 10:39:02 PDT Tue">
+        <definition>COD: formally declare not guilty of a criminal charge</definition>
+        <sentenceCount annotated="23" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="acquit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="N" name="acquittal.n" ID="6181" lemmaID="383" cBy="613" cDate="06/18/2002 10:39:45 PDT Tue">
+        <definition>FN: a formal declaration that someone is not guilty of a criminal charge</definition>
+        <sentenceCount annotated="22" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="acquittal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="verdict.n" ID="6183" lemmaID="42868" cBy="613" cDate="06/18/2002 11:22:56 PDT Tue">
+        <definition>COD: a decision on an issue of fact in a civil or criminal case or inquest</definition>
+        <sentenceCount annotated="39" total="370"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="verdict"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Finding" POS="V" name="clear.v" ID="8315" lemmaID="6729" cBy="605" cDate="02/13/2003 01:37:02 PST Thu">
+        <definition>COD: show or declare officially to be innocent</definition>
+        <sentenceCount annotated="14" total="375"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clear"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="guilty.a" ID="8316" lemmaID="17039" cBy="840" cDate="02/13/2003 02:07:03 PST Thu">
+        <definition>COD: culpable of a specified wrongdoing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="guilty"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="not_guilty.a" ID="8317" lemmaID="47417" cBy="840" cDate="02/13/2003 02:16:00 PST Thu">
+        <definition>FN: not culpable of a specified wrongdoing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="not"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="guilty"/>
+    </lexUnit>
+</frame>

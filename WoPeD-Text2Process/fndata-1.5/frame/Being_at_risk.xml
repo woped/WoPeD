@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/14/2005 11:02:42 PDT Thu" name="Being_at_risk" ID="1560" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Asset&lt;/fen&gt; is in a state where it is exposed to or otherwise liable to be affected by a &lt;fen&gt;Harmful_event&lt;/fen&gt;, which may be metonymically evoked by reference to a &lt;fen&gt;Dangerous_entity&lt;/fen&gt;. Words expressing relative safety (i.e., lack of risk) are also in this frame.
+
+&lt;ex&gt;If you are a farmer, &lt;fex name="Asset"&gt;you&lt;/fex&gt; &lt;m&gt;are&lt;/m&gt; &lt;m&gt;at&lt;/m&gt; &lt;t&gt;risk&lt;/t&gt; &lt;fex name="Harmful_event"&gt;for hearing loss caused by noise exposure in your work&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Asset"&gt;No child&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;secure&lt;/t&gt; &lt;fex name="Harmful_event"&gt;from the temptation to do what "my friends" are doing&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Our nation is making a disastrous mistake thinking that &lt;fex name="Asset"&gt;we&lt;/fex&gt; can &lt;m&gt;have&lt;/m&gt; &lt;t&gt;security&lt;/t&gt; &lt;fex name="Dangerous_entity"&gt;from
+people&lt;/fex&gt;: There is only security with people. &lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Asset"&gt;You&lt;/fex&gt; don't &lt;m&gt;have&lt;/m&gt; &lt;t&gt;security&lt;/t&gt; &lt;fex name="Harmful_event"&gt;against impersonation&lt;/fex&gt; unless you have security against eavesdropping.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 11:18:45 PDT Thu" abbrev="ass" name="Asset" ID="8480">
+        <definition>&lt;def-root&gt;Something judged to be desirable or valuable which might be lost or damaged.
+
+&lt;ex&gt;There is a locked padlock that guarantees &lt;fex name="Asset"&gt;the information&lt;/fex&gt; is &lt;t&gt;secure&lt;/t&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 11:20:11 PDT Thu" abbrev="deg" name="Degree" ID="8481">
+        <definition>&lt;def-root&gt;A modifier expressing the deviation of the actual level of security from the expected value given the &lt;fen&gt;Asset&lt;/fen&gt; and the state indicated by the target itself.
+
+&lt;ex&gt;My mail is &lt;fex name="deg"&gt;totally&lt;/fex&gt; &lt;t&gt;secure&lt;/t&gt; in this box.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 11:26:46 PDT Thu" abbrev="har" name="Harmful_event" ID="8482">
+        <definition>&lt;def-root&gt;An action that may occur or a state which may hold which could result in the loss of or damage to the &lt;fen&gt;Asset&lt;/fen&gt;.
+
+&lt;ex&gt;Our system ensures that information stored within hardware is &lt;t&gt;secure&lt;/t&gt; &lt;fex name="har"&gt;from external software attack and physical theft&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Dangerous_entity" ID="8483"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 11:29:45 PDT Thu" abbrev="dan" name="Dangerous_entity" ID="8483">
+        <definition>&lt;def-root&gt;A concrete or abstract entity which may come to cause the loss of, or damage to the &lt;fen&gt;Asset&lt;/fen&gt; either due to its participation in a &lt;fen&gt;Harmful_event&lt;/fen&gt;.
+
+&lt;ex&gt;We make sure your BMW is &lt;t&gt;secure&lt;/t&gt; &lt;fex name="dan"&gt;against intruders&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 12:37:40 PDT Thu" abbrev="pla" name="Place" ID="8484">
+        <definition>&lt;def-root&gt;A particular location in which the &lt;fen&gt;Asset&lt;/fen&gt; is secure. Frequently, it is to be inferred that the characteristics of the location protect the &lt;fen&gt;Asset&lt;/fen&gt; from a potential &lt;fen&gt;Harmful_event&lt;/fen&gt;.
+
+&lt;ex&gt;Workers need to make sure their property is &lt;t&gt;secure&lt;/t&gt; &lt;fex name="pla"&gt;at work&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 12:42:46 PDT Thu" abbrev="tim" name="Time" ID="8485">
+        <definition>&lt;def-root&gt;The time period during which the &lt;fen&gt;Asset&lt;/fen&gt; enjoys  the specified level of security from a &lt;fen&gt;Harmful_event&lt;/fen&gt;.
+
+&lt;ex&gt; Israel is &lt;t&gt;insecure&lt;/t&gt; &lt;fex name="Time"&gt;today&lt;/fex&gt; not because it does
+not have enough military power.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/14/2005 01:30:07 PDT Thu" abbrev="exp" name="Explanation" ID="8486">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the state of security or insecurity of the &lt;fen&gt;Asset&lt;/fen&gt; logically follows.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/19/2006 02:30:50 PDT Wed" abbrev="sit" name="Situation" ID="10369">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Situation&lt;/fen&gt; under which the &lt;fen&gt;Asset&lt;/fen&gt; is safe or unsafe.
+
+&lt;ex&gt;Our children are &lt;t&gt;safe&lt;/t&gt; &lt;fex name="sit"&gt;with that criminal behind bars&lt;/fex&gt;.&lt;/ex&gt;
+
+Most expressions of &lt;fen&gt;Time&lt;/fen&gt; and &lt;fen&gt;Place&lt;/fen&gt; also express the &lt;fen&gt;Situation&lt;/fen&gt; and should be labeled as such on the 2nd FE layer.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/28/2006 08:36:23 PDT Fri" abbrev="dom" name="Domain" ID="10420">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Domain&lt;/fen&gt; in which the &lt;fen&gt;Asset&lt;/fen&gt; has a degree of safety.
+
+&lt;ex&gt;Students with Asthma need to &lt;m&gt;be&lt;/m&gt; &lt;fex name="dom"&gt;medically&lt;/fex&gt; &lt;t&gt;safe&lt;/t&gt; at school.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/24/2006 10:07:20 PDT Thu" abbrev="" name="Depictive" ID="10575">
+        <definition>&lt;def-root&gt;This FE describes a participant of the state of affairs introduced by the target as being in some state during the action. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/24/2006 10:09:56 PDT Thu" abbrev="" name="Frequency" ID="10576">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. A Frequency expression answers the question how often.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/24/2006 10:17:34 PDT Thu" abbrev="" name="Duration" ID="10577">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Harmful_event" ID="8482"/>
+        <memberFE name="Dangerous_entity" ID="8483"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Risk_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Run_risk</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="A" name="secure.a" ID="12442" lemmaID="34808" cBy="605" cDate="07/14/2005 11:18:12 PDT Thu">
+        <definition>COD: certain to remain safe and unthreatened.</definition>
+        <sentenceCount annotated="19" total="313"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="secure"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="security.n" ID="12443" lemmaID="34810" cBy="605" cDate="07/14/2005 11:37:07 PDT Thu">
+        <definition>COD: the state of being or feeling secure.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="security"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="safe.a" ID="12444" lemmaID="33924" cBy="605" cDate="07/14/2005 11:42:33 PDT Thu">
+        <definition>COD: protected from or not exposed to danger or risk; not likely to be harmed or lost.</definition>
+        <sentenceCount annotated="25" total="335"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="safe"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="insecure.a" ID="12446" lemmaID="20085" cBy="605" cDate="07/14/2005 12:44:00 PDT Thu">
+        <definition>FN: not secure</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="insecure"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unsafe.a" ID="13376" lemmaID="50407" cBy="618" cDate="07/19/2006 02:40:59 PDT Wed">
+        <definition>FN: not safe or secure; in danger.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unsafe"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="safety.n" ID="13385" lemmaID="33934" cBy="618" cDate="07/21/2006 06:28:16 PDT Fri">
+        <definition>COD: the condition of being safe.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="safety"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="risk.n" ID="13386" lemmaID="33341" cBy="618" cDate="07/21/2006 06:31:44 PDT Fri">
+        <definition>COD: the possibility that something unpleasant will happen.</definition>
+        <sentenceCount annotated="14" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="risk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="vulnerable.a" ID="13391" lemmaID="43287" cBy="618" cDate="07/25/2006 03:57:03 PDT Tue">
+        <definition>COD: exposed to being attacked or harmed, either physically or emotionally.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="vulnerable"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="vulnerability.n" ID="13392" lemmaID="43286" cBy="618" cDate="07/25/2006 04:51:30 PDT Tue">
+        <definition>FN: the state of being exposed to or likely to suffer harm.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vulnerability"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="danger.n" ID="13506" lemmaID="9548" cBy="618" cDate="08/21/2006 10:47:51 PDT Mon">
+        <definition>COD: the possibility of suffering harm or injury.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="danger"/>
+    </lexUnit>
+</frame>

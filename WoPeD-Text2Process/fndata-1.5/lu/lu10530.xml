@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="sign on.v" ID="10530" frame="Get_a_job" frameID="324" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Compense" name="Compensation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="cb" name="Contract_basis"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Empee" name="Employee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emper" name="Employer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Posit" name="Position"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Task" name="Task"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: commit oneself to employment</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="sign"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="ADV" name="on"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Employee"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Employee"/>
+                <annoSet ID="2607370"/>
+                <annoSet ID="2607410"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Employer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Employer"/>
+                <annoSet ID="2607410"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Position"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Position"/>
+                <annoSet ID="2607370"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Employee"/>
+            <FE name="Employer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Employer"/>
+                <annoSet ID="2607410"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Employee"/>
+            <FE name="Position"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Position"/>
+                <annoSet ID="2607370"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPfor-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="21" aPos="5082314" ID="1585733">
+            <text>Whatever his personal misgivings , Valenzuela hid them well and when his compulsory military service ended he signed on for a permanent career in the Air Force .</text>
+            <annotationSet cDate="08/16/2010 05:16:49 PDT Mon" status="UNANN" ID="2607369">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="wdt"/>
+                    <label end="11" start="9" name="PP$"/>
+                    <label end="20" start="13" name="jj"/>
+                    <label end="31" start="22" name="nns"/>
+                    <label end="33" start="33" name=","/>
+                    <label end="44" start="35" name="NP"/>
+                    <label end="48" start="46" name="VVD"/>
+                    <label end="53" start="50" name="PP"/>
+                    <label end="58" start="55" name="rb"/>
+                    <label end="62" start="60" name="cc"/>
+                    <label end="67" start="64" name="wrb"/>
+                    <label end="71" start="69" name="PP$"/>
+                    <label end="82" start="73" name="jj"/>
+                    <label end="91" start="84" name="jj"/>
+                    <label end="99" start="93" name="nn"/>
+                    <label end="105" start="101" name="VVD"/>
+                    <label end="108" start="107" name="PP"/>
+                    <label end="115" start="110" name="VVD"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="122" start="120" name="in"/>
+                    <label end="124" start="124" name="dt"/>
+                    <label end="134" start="126" name="jj"/>
+                    <label end="141" start="136" name="nn"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="148" start="146" name="dt"/>
+                    <label end="152" start="150" name="NP"/>
+                    <label end="158" start="154" name="NP"/>
+                    <label end="160" start="160" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/16/2010 05:16:49 PDT Mon" status="MANUAL" ID="2607370">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="118" start="110" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="2818" end="108" start="107" name="Employee"/>
+                    <label cBy="589" feID="2823" end="158" start="120" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="108" start="107" name="Ext"/>
+                    <label end="158" start="120" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="108" start="107" name="NP"/>
+                    <label end="158" start="120" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPas-(1)"/>
+    <subCorpus name="03-T-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1494" aPos="107403878" ID="1585753">
+            <text>` And so you signed on with International Models ? &quot;</text>
+            <annotationSet cDate="08/16/2010 05:16:53 PDT Mon" status="UNANN" ID="2607409">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="cc"/>
+                    <label end="7" start="6" name="rb"/>
+                    <label end="11" start="9" name="PP"/>
+                    <label end="18" start="13" name="VVD"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="40" start="28" name="NP"/>
+                    <label end="47" start="42" name="nns"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/16/2010 05:16:53 PDT Mon" status="MANUAL" ID="2607410">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="18" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="2819" end="47" start="23" name="Employer"/>
+                    <label cBy="589" feID="2818" end="11" start="9" name="Employee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="23" name="Dep"/>
+                    <label end="11" start="9" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="23" name="PP"/>
+                    <label end="11" start="9" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PPin-(1)"/>
+    <subCorpus name="05-T-PP-(1)"/>
+    <subCorpus name="06-NP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

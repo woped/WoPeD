@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" name="Product_delivery" ID="1570" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In order to facilitate the purchase of &lt;fen&gt;Goods&lt;/fen&gt; which start off in a location distant from a &lt;fen&gt;Purchaser&lt;/fen&gt;, a &lt;fen&gt;Deliverer&lt;/fen&gt; transports and hands off the &lt;fen&gt;Goods&lt;/fen&gt; to a &lt;fen&gt;Purchaser&lt;/fen&gt; or (more indirectly) a &lt;fen&gt;Goal&lt;/fen&gt; location which is accessible to the &lt;fen&gt;Purchaser&lt;/fen&gt;. 
+&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="del" name="Deliverer" ID="8567">
+        <definition>&lt;def-root&gt;This is the person who completes the movement of the &lt;fen&gt;Goods&lt;/fen&gt; after having transported it.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="goa" name="Goal" ID="8568">
+        <definition>&lt;def-root&gt;The end of the path and intended goal of the sending.
+&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="goo" name="Goods" ID="8569">
+        <definition>&lt;def-root&gt;The objects being delivered.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="veh" name="Vehicle" ID="8570">
+        <definition>&lt;def-root&gt;The vehicle employed by the &lt;fen&gt;Deliverer&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="dep" name="Depictive" ID="8571">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Goods&lt;/fen&gt; or the &lt;fen&gt;Deliverer&lt;/fen&gt; during the action.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="man" name="Manner" ID="8572">
+        <definition>&lt;def-root&gt;Any description of the delivery event  which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of the &lt;fen&gt;Deliverer&lt;/fen&gt; that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="rec" name="Purchaser" ID="8573">
+        <definition>&lt;def-root&gt;The individual who purchases and receives the &lt;fen&gt;Goods&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Goal" ID="8568"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="pur" name="Purpose" ID="8574">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Deliverer&lt;/fen&gt; hopes to bring about by delivering to the &lt;fen&gt;Purchaser&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="exp" name="Explanation" ID="8575">
+        <definition>&lt;def-root&gt;A state-of-affairs that explains why the &lt;fen&gt;Goods&lt;/fen&gt; were delivered.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="Time" name="Time" ID="8576">
+        <definition>&lt;def-root&gt;When the delivery takes place
+
+&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="CT" name="Co_theme" ID="8577">
+        <definition>&lt;def-root&gt;An additional theme delivered along with the main &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="con" name="Container" ID="8578">
+        <definition>&lt;def-root&gt;A container in which the &lt;fen&gt;Goods&lt;/fen&gt; is delivered.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="Place" name="Place" ID="8579">
+        <definition>&lt;def-root&gt;The location at which the delivery takes place.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="spe" name="Speed" ID="8580">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; at which the &lt;fen&gt;Deliverer&lt;/fen&gt; delivers the &lt;fen&gt;Goods&lt;/fen&gt;.
+
+&lt;ex&gt;This service is for our clients who need &lt;fex name="spe"&gt;speedy&lt;/fex&gt; &lt;t&gt;delivery&lt;/t&gt; of their goods.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="cir" name="Circumstances" ID="8581">
+        <definition>&lt;def-root&gt;The conditions under which the delivery takes place.
+
+&lt;ex&gt;Purchases over $400 are &lt;t&gt;delivered&lt;/t&gt; for free.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="sou" name="Source" ID="8582">
+        <definition>&lt;def-root&gt;The location of the &lt;fen&gt;Goods&lt;/fen&gt; before the delivery process begins.
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="mea" name="Means" ID="8583">
+        <definition>&lt;def-root&gt;The intermediate actions performed by the &lt;fen&gt;Deliverer&lt;/fen&gt; in order to move the &lt;fen&gt;Goods&lt;/fen&gt; to the &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="07/15/2005 06:18:50 PDT Fri" abbrev="pat" name="Path" ID="8584">
+        <definition>&lt;def-root&gt;The path along which the &lt;fen&gt;Goods&lt;/fen&gt; move while being delivered.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Delivery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Commerce_goods-transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

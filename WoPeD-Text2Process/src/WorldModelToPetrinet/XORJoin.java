@@ -1,6 +1,6 @@
 package WorldModelToPetrinet;
 
-import org.woped.core.model.petrinet.OperatorTransitionModel;
+//import org.woped.core.model.petrinet.OperatorTransitionModel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class XORJoin extends PetrinetGateway {
         for(int i=0;i<sourceCount;i++){
             Transition source = elementBuilder.createTransition(label,false,true,"");
             source.setPartOfGateway(i+1,transID);
-            source.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
+            source.setOperatorType(105);
             source.setOrientationCode(3);
             joins.add(source);
         }

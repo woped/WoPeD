@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/18/2005 12:32:52 PDT Mon" name="Becoming_detached" ID="1391" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The Becoming_detached frame covers two situations: a scene in which one thing comes to be physically detached from something else; or a scene in which two things come to be disconnected from each other. In the first, the frame includes an &lt;fen&gt;Item&lt;/fen&gt; that detaches from a &lt;fen&gt;Source&lt;/fen&gt;, creating an asymmetric relationship between the Item and the &lt;fen&gt;Source&lt;/fen&gt;. In the second, the &lt;fen&gt;Items&lt;/fen&gt; detach from each other, where each serves as a &lt;fen&gt;Source&lt;/fen&gt; relative to the other, creating a symmetric relationship between the two &lt;fen&gt;Items&lt;/fen&gt;. The &lt;fen&gt;Items&lt;/fen&gt; that were formerly attached re-appear as the two separate or potentially separate entities that they were throughout.
+
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="ite" name="Item" ID="7821">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Item&lt;/fen&gt; that detaches from the &lt;fen&gt;Source&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Source" ID="7823"/>
+        <excludesFE name="Items" ID="7824"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="sou" name="Source" ID="7823">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; identifies the location to which an &lt;fen&gt;Item&lt;/fen&gt; was attached before getting detached.
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <requiresFE name="Item" ID="7821"/>
+        <excludesFE name="Items" ID="7824"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="Items" name="Items" ID="7824">
+        <definition>&lt;def-root&gt;This FE identifies the plural &lt;fen&gt;Items&lt;/fen&gt; that are becoming detached from each other, resulting in their separation.
+
+
+Notice that when the FE &lt;fen&gt;Items&lt;/fen&gt; occurs, neither &lt;fen&gt;Item&lt;/fen&gt; nor &lt;fen&gt;Source&lt;/fen&gt; can occur.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="Mnr" name="Manner" ID="7826">
+        <definition>&lt;def-root&gt;Any description of the detaching event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously),  secondary effects (quietly, loudly), and general descriptions comparing events (the same way). 
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="Place" name="Place" ID="7827">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Item&lt;/fen&gt;  becomes detached. 
+
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="Time" name="Time" ID="7829">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Item&lt;/fen&gt; becomes detached from the &lt;fen&gt;Source&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/18/2005 12:32:53 PDT Mon" abbrev="Degr" name="Degree" ID="7831">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Item&lt;/fen&gt; ends up detached.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/31/2006 03:26:51 PDT Wed" abbrev="" name="Event_description" ID="10161">
+        <definition>&lt;def-root&gt;In general, this FE is used for phrases that describe the clause of the target as a whole. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Items" ID="7824"/>
+        <memberFE name="Item" ID="7821"/>
+        <memberFE name="Source" ID="7823"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Being_detached</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="detach.v" ID="13072" lemmaID="10408" cBy="664" cDate="12/09/2005 05:50:07 PST Fri">
+        <definition>FN: to stop being attached.</definition>
+        <sentenceCount annotated="2" total="340"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="detach"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="decouple.v" ID="13413" lemmaID="50410" cBy="618" cDate="08/04/2006 02:10:50 PDT Fri">
+        <definition>FN: separate or disengage from something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="decouple"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="unhook.v" ID="13414" lemmaID="42174" cBy="618" cDate="08/04/2006 02:14:25 PDT Fri">
+        <definition>FN: come apart from something after being connected via a hook.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unhook"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="unhinge.v" ID="14872" lemmaID="42171" cBy="597" cDate="03/17/2008 03:48:39 PDT Mon">
+        <definition>FN: detach a door or other hinged item</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unhinge"/>
+    </lexUnit>
+</frame>

@@ -1,6 +1,6 @@
 package WorldModelToPetrinet;
 
-import org.woped.core.model.petrinet.OperatorTransitionModel;
+//import org.woped.core.model.petrinet.OperatorTransitionModel;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ public class XORSplit extends PetrinetGateway {
         for(int i=0;i<choiceCount;i++){
             Transition choice = elementBuilder.createTransition(label,false,true,"");
             choice.setPartOfGateway(i+1,transID);
-            choice.setOperatorType(OperatorTransitionModel.XOR_SPLIT_TYPE);
+            choice.setOperatorType(104);
             choices.add(choice);
         }
     }

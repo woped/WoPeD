@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="06/09/2003 11:45:47 PDT Mon" name="Ride_vehicle" ID="690" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame a &lt;fen&gt;Theme&lt;/fen&gt; is moved by a &lt;fen&gt;Vehicle&lt;/fen&gt; which is not directly under their power. The &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, &lt;fen&gt;Goal&lt;/fen&gt;, or &lt;fen&gt;Area&lt;/fen&gt; of the motion may be indicated. The &lt;fen&gt;Distance&lt;/fen&gt; traveled or the &lt;fen&gt;Speed&lt;/fen&gt; of motion may also be indicated. A &lt;fen&gt;Route&lt;/fen&gt; or &lt;fen&gt;Road&lt;/fen&gt;may be present and the &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Theme&lt;/fen&gt; moves may be given.
+&lt;ex&gt;&lt;fex name="Theme"&gt;Mrs. Smith&lt;/fex&gt; &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Vehicle"&gt;on the train&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Theme"&gt;Sally&lt;/fex&gt; &lt;t&gt;flew&lt;/t&gt; &lt;fex name="Distance"&gt;3000 miles&lt;/fex&gt; &lt;fex name="Source"&gt;from San Francisco&lt;/fex&gt; &lt;fex name="Goal"&gt;to New York&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Every day, &lt;fex name="Theme"&gt;Martin&lt;/fex&gt; &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Vehicle"&gt;the bus&lt;/fex&gt; &lt;fex name="Road"&gt;on highway 880&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Theme"&gt;Mr. Bigglesworth&lt;/fex&gt; &lt;t&gt;rides&lt;/t&gt; &lt;fex name="Route"&gt;route 51&lt;/fex&gt;.&lt;/ex&gt;
+
+There is shared vocabulary between this frame and Carrying and Operate_vehicle. It is differentiated from Operate_vehicle in that the vehicle is not under the subject's control. It is differentiated from Carrying because the vehicle is not being used to transport goods.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:02:30 PDT Mon" abbrev="Thm" name="Theme" ID="4563">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; is the entity which moves by means of the &lt;fen&gt;Vehicle&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Theme"&gt;Margeret&lt;/fex&gt; &lt;t&gt;flew&lt;/t&gt; to Cabo San Lucas.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:04:20 PDT Mon" abbrev="" name="Vehicle" ID="4564">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Vehicle&lt;/fen&gt; is the means of conveyance of the &lt;fen&gt;Theme&lt;/fen&gt;. It is usually expressed in a &lt;ment&gt;PP&lt;/ment&gt;-complement or the direct object.
+&lt;ex&gt;Professor Frink &lt;t&gt;sailed&lt;/t&gt; to Italy &lt;fex name="Vehicle"&gt;on an oceanliner&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:08:44 PDT Mon" abbrev="" name="Source" ID="4565">
+        <definition>&lt;def-root&gt;Any expression which implies a definite starting-point of motion expresses the frame element &lt;fen&gt;Source&lt;/fen&gt;.
+&lt;ex&gt;We &lt;t&gt;flew&lt;/t&gt; &lt;fex name="Source"&gt;from Atlanta&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="4572"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:12:17 PDT Mon" abbrev="" name="Manner" ID="4566">
+        <definition>&lt;def-root&gt;The Manner describes a property of the motion not related to its trajectory.
+&lt;ex&gt;Samantha always &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Manner"&gt;gracefully&lt;/fex&gt; on the back of a motorcycle.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:14:23 PDT Mon" abbrev="" name="Path" ID="4567">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; describes the trajectory of the motion.
+&lt;ex&gt;The caravan &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Path"&gt;through the desert&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="4572"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:16:52 PDT Mon" abbrev="" name="Goal" ID="4568">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is the endpoint of the trajectory of motion.
+&lt;ex&gt;We &lt;t&gt;sailed&lt;/t&gt; &lt;fex name="Goal"&gt;to Morocco&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="4572"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:18:31 PDT Mon" abbrev="" name="Distance" ID="4569">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Distance&lt;/fen&gt; is the extent of the motion.
+&lt;ex&gt;We &lt;t&gt;flew&lt;/t&gt; &lt;fex name="Distance"&gt;300 miles&lt;/fex&gt; in 40 minutes.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:21:13 PDT Mon" abbrev="" name="Duration" ID="4570">
+        <definition>&lt;def-root&gt;The Duration is the amount of time the motion takes.
+&lt;ex&gt;We &lt;t&gt;rode&lt;/t&gt; in the van &lt;fex name="Duration"&gt;for 45 minutes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:23:01 PDT Mon" abbrev="" name="Speed" ID="4571">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the motion occurs.
+&lt;ex&gt;We&lt;t&gt;flew&lt;/t&gt;&lt;fex name="Speed"&gt;at nearly 600 miles per hour&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 12:24:27 PDT Mon" abbrev="" name="Area" ID="4572">
+        <definition>&lt;def-root&gt;The Area is the location where the motion takes place.
+&lt;ex&gt;We &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Area"&gt;around the state&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:25:31 PDT Mon" abbrev="" name="Road" ID="4573">
+        <definition>&lt;def-root&gt;The Road is the thoroughfare on which the Vehicle travels.
+&lt;ex&gt;We &lt;t&gt;ride&lt;/t&gt; the bus &lt;fex name="Road"&gt;on highway 580&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/09/2003 12:28:06 PDT Mon" abbrev="" name="Route" ID="4574">
+        <definition>&lt;def-root&gt;The Route is the usual path that the Vehicle travles.
+&lt;ex&gt;I &lt;t&gt;ride&lt;/t&gt; &lt;fex name="Route"&gt;the London-Birmingham route&lt;/fex&gt; almost everyday.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/12/2003 10:43:01 PDT Thu" abbrev="" name="Depictive" ID="4624">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Theme&lt;/fen&gt; or &lt;fen&gt;Vehicle&lt;/fen&gt; during the motion.
+&lt;ex&gt;We &lt;t&gt;flew&lt;/t&gt; to New Orleans &lt;fex name="Depictive"&gt;naked&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="618" cDate="08/26/2003 08:55:32 PDT Tue" abbrev="Time" name="Time" ID="4980">
+        <definition>&lt;def-root&gt;When the riding takes place.
+&lt;ex&gt;We will &lt;t&gt;fly&lt;/t&gt; back to New York &lt;fex name="Time"&gt;in September&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/26/2003 09:02:20 PDT Tue" abbrev="CT" name="Cotheme" ID="4981">
+        <definition>&lt;def-root&gt;A theme that rides in the same &lt;fen&gt;Vehicle&lt;/fen&gt; as the main &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;ex&gt;My family always &lt;t&gt;flies&lt;/t&gt; to New York &lt;fex name="CT"&gt;with our good friends, the Jacksons&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/26/2003 09:05:44 PDT Tue" abbrev="Pur" name="Purpose" ID="4982">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Theme&lt;/fen&gt; rides a vehicle.
+&lt;ex&gt;Jennifer &lt;t&gt;hitchhiked&lt;/t&gt; to the island &lt;fex name="Pur"&gt;to see her long lost friend, Mr. Moreau&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="4568"/>
+        <memberFE name="Path" ID="4567"/>
+        <memberFE name="Source" ID="4565"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Use_vehicle</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Board_vehicle</relatedFrame>
+        <relatedFrame>Disembarking</relatedFrame>
+        <relatedFrame>Use_vehicle</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="V" name="ride.v" ID="8752" lemmaID="33217" cBy="296" cDate="06/09/2003 12:34:00 PDT Mon">
+        <definition>COD: travel in or on (a vehicle or horse).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ride"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sail.v" ID="8753" lemmaID="33959" cBy="296" cDate="06/09/2003 12:36:00 PDT Mon">
+        <definition>COD: travel in a sailing boat as a sport or for recreation or travel in a ship or boat using sails or engine power or travel by ship on or across (a sea) or on (a route).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="8754" lemmaID="14858" cBy="296" cDate="06/09/2003 12:37:34 PDT Mon">
+        <definition>FN: travel by means of aircraft</definition>
+        <sentenceCount annotated="25" total="250"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="taxi.v" ID="8756" lemmaID="39633" cBy="296" cDate="06/09/2003 12:41:29 PDT Mon">
+        <definition>FN: move within an aircraft along the ground before take-off or after landing. </definition>
+        <sentenceCount annotated="5" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="taxi"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="take.v" ID="8757" lemmaID="39414" cBy="296" cDate="06/09/2003 12:43:16 PDT Mon">
+        <definition>COD: use as a means of transport</definition>
+        <sentenceCount annotated="6" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cruise.v" ID="8758" lemmaID="9119" cBy="296" cDate="06/09/2003 12:50:54 PDT Mon">
+        <definition>COD: sail, travel, or move slowly around without a precise destination, especially for pleasure. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cruise"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="coast.v" ID="8857" lemmaID="6969" cBy="296" cDate="06/16/2003 12:25:00 PDT Mon">
+        <definition>FN: move by means of a vehicle without using power</definition>
+        <sentenceCount annotated="8" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Vehicle" POS="V" name="jet.v" ID="8864" lemmaID="20930" cBy="296" cDate="06/16/2003 01:12:30 PDT Mon">
+        <definition>FN: travel by means of an jet aircraft</definition>
+        <sentenceCount annotated="27" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="hitchhike.v" ID="8917" lemmaID="18158" cBy="664" cDate="06/23/2003 02:51:42 PDT Mon">
+        <definition>COD:  travel by getting free lifts in passing vehicles. </definition>
+        <sentenceCount annotated="12" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hitchhike"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="ride.n" ID="13478" lemmaID="33216" cBy="618" cDate="08/16/2006 03:06:13 PDT Wed">
+        <definition>COD: an act of riding.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ride"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cruise.n" ID="13479" lemmaID="9118" cBy="618" cDate="08/16/2006 03:07:31 PDT Wed">
+        <definition>COD: an instance of cruising.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cruise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="flight.n" ID="14697" lemmaID="14707" cBy="597" cDate="01/24/2008 02:40:53 PST Thu">
+        <definition>FN: the ride one takes on something that flies</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flight"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bus.v" ID="15782" lemmaID="5019" cBy="618" cDate="04/19/2010 12:00:58 PDT Mon">
+        <definition>FN: ride in a bus (or similar large capacity vehicle).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bus"/>
+    </lexUnit>
+</frame>

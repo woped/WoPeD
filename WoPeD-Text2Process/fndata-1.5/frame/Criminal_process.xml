@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/16/2001 10:34:25 PDT Thu" name="Criminal_process" ID="200" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A Suspect is arrested by an Authority on certain Charges, then is arraigned as a Defendant.  If at any time the Defendant pleads guilty, then the Defendant is sentenced, otherwise the Defendant first goes to trial. If the Verdict after the trial is guilty, then the Defendant is sentenced.  In the end, the Defendant is either released or is given a Sentence by a Judge at the sentencing.
+
+&lt;ex&gt;&lt;/ex&gt;
+
+The core roles in this frame and its subframes include Jury, Judge, Defendant, Prosecution, Defense, Suspect, and an Authority such as the police/sheriff.  Non-core roles include Witness, Accomplice and Victim.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 10:35:43 PDT Thu" abbrev="Crt" name="Court" ID="1624">
+        <definition>&lt;def-root&gt;This FE identifies the court involved in a trial.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 10:37:00 PDT Thu" abbrev="P" name="Place" ID="1625">
+        <definition>&lt;def-root&gt;This FE identifies the place where the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 10:37:00 PDT Thu" abbrev="T" name="Time" ID="1626">
+        <definition>&lt;def-root&gt;This FE identifies the time when the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 10:37:00 PDT Thu" abbrev="Dfnd" name="Defendant" ID="1627">
+        <definition>&lt;def-root&gt;The Defendant is charged with an offense.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 10:37:00 PDT Thu" abbrev="Judge" name="Judge" ID="1628">
+        <definition>&lt;def-root&gt;The Judge heads the court where arraignment occurs and the case is tried.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:12:19 PDT Thu" abbrev="Prsc" name="Prosecution" ID="1629">
+        <definition>&lt;def-root&gt;This FE identifies the attorney(s) prosecuting the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:12:58 PDT Thu" abbrev="Chrg" name="Charges" ID="1630">
+        <definition>&lt;def-root&gt;This FE identifies the Charges brought against the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:14:17 PDT Thu" abbrev="Dfns" name="Defense" ID="1631">
+        <definition>&lt;def-root&gt;The Defense represents the interests of the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:15:12 PDT Thu" abbrev="Jury" name="Jury" ID="1632">
+        <definition>&lt;def-root&gt;This FE identifies the people who are charged by the Court to listen to the testimony, evidence, and arguments, and come to a consensus about the guilt or innocence of the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/09/2002 05:35:30 PDT Thu" abbrev="Off" name="Offense" ID="2755">
+        <definition>&lt;def-root&gt;This FE identifies the Offense which the Defendant is accused of committing.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Appeal</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Crime_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Sentencing</relatedFrame>
+        <relatedFrame>Arraignment</relatedFrame>
+        <relatedFrame>Trial</relatedFrame>
+        <relatedFrame>Arrest</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Criminal_investigation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

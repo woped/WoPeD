@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="05/22/2003 04:31:09 PDT Thu" name="Cause_change" ID="683" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; causes an &lt;fen&gt;Entity&lt;/fen&gt; to change, either in its category membership or in terms of the value of an &lt;fen&gt;Attribute&lt;/fen&gt;. In the former case, an &lt;fen&gt;Initial_category&lt;/fen&gt; and a &lt;fen&gt;Final_category&lt;/fen&gt; may be expressed, in the latter case an &lt;fen&gt;Initial_value&lt;/fen&gt; and a &lt;fen&gt;Final_value&lt;/fen&gt; can be specified.
+
+&lt;ex&gt;Our storylines follows the saga outlined by the Ultima Series, but &lt;fex name="age"&gt;we&lt;/fex&gt; have &lt;t&gt;modified&lt;/t&gt; &lt;fex name="ent"&gt;it&lt;/fex&gt; &lt;fex name="pur"&gt;in order to make our writing more cohesive&lt;/fex&gt;.&lt;/ex&gt;
+
+
+&lt;ex&gt;I don't think &lt;fex name="Agent"&gt;you&lt;/fex&gt; can &lt;t&gt;turn&lt;/t&gt; &lt;fex name="ent"&gt;that rabbit&lt;/fex&gt; &lt;fex name="finc"&gt;into a hat&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;How can &lt;fex name="age"&gt;a guy that&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; &lt;fex name="att"&gt;his name&lt;/fex&gt; &lt;fex name="iniv"&gt;from Bob Craft&lt;/fex&gt; &lt;fex name="finv"&gt;to Jack Ass&lt;/fex&gt; declare anyone defamed his character?&lt;/ex&gt;
+
+&lt;ex&gt; &lt;fex name="tim"&gt;At this juncture&lt;/fex&gt;, &lt;fex name="cau"&gt;a new development&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; &lt;fex name="ent"&gt;the political situation on the island&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="age"&gt;She&lt;/fex&gt; had &lt;fex name="tim"&gt;at some time earlier&lt;/fex&gt; &lt;fex name="deg"&gt;completely&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; &lt;fex name="att"&gt;her clothing and appearance&lt;/fex&gt; and now stood in front of me dressed like a garden gnome.&lt;/ex&gt;
+
+&lt;ex&gt;Hence, when &lt;fex name="ent"&gt;(Hg 0 )&lt;/fex&gt; is &lt;t&gt;converted&lt;/t&gt; &lt;fex name="finc"&gt;to Hg 2+&lt;/fex&gt; , it can be rapidly taken up in rain water, snow, or adsorbed onto small particles&lt;/ex&gt;
+&lt;ex&gt;Hence, when &lt;fex name="inic"&gt;(Hg 0 )&lt;/fex&gt; is &lt;t&gt;converted&lt;/t&gt; to Hg 2+ , it can be rapidly taken up in rain water, snow, or adsorbed onto small particles&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/23/2003 12:10:16 PDT Fri" abbrev="age" name="Agent" ID="4502">
+        <definition>&lt;def-root&gt;The sentient entity that effects a change in the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="age"&gt;The system administrator&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; the value from 'KDE' to 'GNOME', and then restarted the system.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="6856"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/23/2003 02:46:38 PDT Fri" abbrev="inic" name="Initial_category" ID="4503">
+        <definition>&lt;def-root&gt;The category of which the &lt;fen&gt;Entity&lt;/fen&gt; is a member before the &lt;fen&gt;Agent&lt;/fen&gt; causes a change.
+
+&lt;ex&gt;Her time with the Healer Craft has &lt;t&gt;changed&lt;/t&gt; her &lt;fex name="inic"&gt;from a shy, nervous young girl&lt;/fex&gt; into a confident (almost) young woman&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Initial_value" ID="6849"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/23/2003 02:47:54 PDT Fri" abbrev="finc" name="Final_category" ID="4504">
+        <definition>&lt;def-root&gt;The category that the &lt;fen&gt;Entity&lt;/fen&gt; belongs to after it has undergone the change.
+
+&lt;ex&gt;The radical message of the cross transformed Saul of Tarsus and &lt;t&gt;changed&lt;/t&gt; him from a persecutor of Christians &lt;fex name="finc"&gt;to a tender believer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Final_value" ID="6848"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2004 05:29:11 PDT Wed" abbrev="finv" name="Final_value" ID="6848">
+        <definition>&lt;def-root&gt;The value that the &lt;fen&gt;Attribute&lt;/fen&gt; assumes as a result of the change that the &lt;fen&gt;Entity&lt;/fen&gt; is caused to undergo.
+
+&lt;ex&gt;We &lt;t&gt;changed&lt;/t&gt; the size from 8 1/2x11 &lt;fex name="finv"&gt;to a larger 11 x 17&lt;/fex&gt; and gave it a complete graphical makeover. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Attribute" ID="6854"/>
+        <excludesFE name="Final_category" ID="4504"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2004 05:29:38 PDT Wed" abbrev="iniv" name="Initial_value" ID="6849">
+        <definition>&lt;def-root&gt;The value that the &lt;fen&gt;Attribute&lt;/fen&gt; has before the change takes place.
+
+&lt;ex&gt;My dad &lt;t&gt;changed&lt;/t&gt; his hair color &lt;fex name="iniv"&gt;from red&lt;/fex&gt;  to blue today.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Attribute" ID="6854"/>
+        <excludesFE name="Final_category" ID="4504"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2004 05:30:16 PDT Wed" abbrev="tim" name="Time" ID="6850">
+        <definition>&lt;def-root&gt;The time at which the change of the &lt;fen&gt;Entity&lt;/fen&gt; is caused.
+
+&lt;ex&gt;He &lt;t&gt;changed&lt;/t&gt; it &lt;fex name="tim"&gt;after David Bowie told him that only twerps have the same first and last name&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/14/2004 05:30:46 PDT Wed" abbrev="deg" name="Degree" ID="6851">
+        <definition>&lt;def-root&gt;The extent to which the initial and final categories or values differ from each other.
+
+&lt;ex&gt;We &lt;fex name="deg"&gt;significantly&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; its appearance during this time. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2004 05:31:09 PDT Wed" abbrev="man" name="Manner" ID="6852">
+        <definition>&lt;def-root&gt; Any description of the  event causing the change of the Entity which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of the Agent that also affect the action (deliberately, eagerly, carefully). 
+
+&lt;ex&gt;Taking out his Driver's Ed pass certificate, Blair &lt;fex name="man"&gt;carefully&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; the '6' of 1969 to an '8' making it read 23rd February 1989.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/14/2004 05:31:32 PDT Wed" abbrev="rea" name="Reason" ID="6853">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in bringing about the change in the &lt;fen&gt;Entity&lt;/fen&gt;. 
+
+&lt;ex&gt;I didn't &lt;t&gt;change&lt;/t&gt; its name &lt;fex name="rea"&gt;because I think it has already got used to it&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="07/14/2004 05:33:01 PDT Wed" abbrev="att" name="Attribute" ID="6854">
+        <definition>&lt;def-root&gt;A characteristic of the &lt;fen&gt;Entity&lt;/fen&gt; for which a value can be assigned or determined by calculation, measurement , or observation.
+
+
+&lt;ex&gt;We &lt;t&gt;changed&lt;/t&gt; &lt;fex name="att"&gt;the price&lt;/fex&gt; from $1.26 to $1.27 per pint.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Final_category" ID="4504"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2004 05:36:23 PDT Wed" abbrev="ent" name="Entity" ID="6855">
+        <definition>&lt;def-root&gt;The abstract or concrete thing or situation that the &lt;fen&gt;Agent&lt;/fen&gt; causes to change.
+
+&lt;ex&gt;The recent terrorist attacks had &lt;t&gt;changed&lt;/t&gt; &lt;fex name="ent"&gt;the political climate&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Core-Unexpressed" cBy="605" cDate="07/14/2004 06:33:26 PDT Wed" abbrev="cau" name="Cause" ID="6856">
+        <definition>&lt;def-root&gt;An event that causes a change in the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="cau"&gt;Major technological innovations&lt;/fex&gt; &lt;t&gt;changed&lt;/t&gt; the social and economic conditions.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2004 07:04:00 PDT Wed" abbrev="pur" name="Purpose" ID="6858">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Agent&lt;/fen&gt; intends to accomplish by effecting a change in the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;His real name is Jerry Rivers, but he &lt;t&gt;changed&lt;/t&gt; it &lt;fex name="pur"&gt;in order to sound more ethnic and appealing&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/18/2005 03:27:20 PDT Tue" abbrev="mea" name="Means" ID="9140">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; (or event resulting from the &lt;fen&gt;Cause&lt;/fen&gt;) that produces a change in the &lt;fen&gt;Entity&lt;/fen&gt;. 
+
+&lt;ex&gt;Ling said he had &lt;t&gt;transformed&lt;/t&gt; the car &lt;fex name="Means"&gt;by putting slicks on&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/22/2006 02:01:31 PDT Tue" abbrev="" name="Containing_event" ID="10559">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or state of affairs that holds at a time that includes the time during which the event or state of affairs reported by the target occurs and of which it is taken to be a part.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/22/2006 02:25:34 PDT Tue" abbrev="pla" name="Place" ID="10561">
+        <definition>&lt;def-root&gt;The location where the change of the &lt;fen&gt;Entity&lt;/fen&gt; is caused.
+
+&lt;ex&gt;&lt;fex name="pla"&gt;In his own room&lt;/fex&gt; he had &lt;t&gt;modified&lt;/t&gt; nothing.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="08/22/2006 02:40:47 PDT Tue" abbrev="" name="Duration" ID="10562">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="08/23/2006 11:25:25 PDT Wed" abbrev="" name="Circumstances" ID="10570">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="09/11/2006 01:28:37 PDT Mon" abbrev="" name="Role" ID="10602">
+        <definition>&lt;def-root&gt;The particular role that the &lt;fen&gt;Agent&lt;/fen&gt; plays in the Cause_change event. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="09/11/2006 01:30:18 PDT Mon" abbrev="" name="Event_description" ID="10603">
+        <definition>&lt;def-root&gt;In general, this FE is used for phrases that describe the clause of the target as a whole. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="09/11/2006 02:54:43 PDT Mon" abbrev="" name="Period_of_iterations" ID="10604">
+        <definition>&lt;def-root&gt;The length of time from when the event denoted by the target began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="09/11/2006 04:22:34 PDT Mon" abbrev="" name="Re_encoding" ID="10605">
+        <definition>&lt;def-root&gt;This FE presents the current frame as an integral part of a larger conceptualization expressed by another frame. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Attribute" ID="6854"/>
+        <memberFE name="Entity" ID="6855"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Change_event_time</relatedFrame>
+        <relatedFrame>Change_event_duration</relatedFrame>
+        <relatedFrame>Exchange_currency</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Reforming_a_system</relatedFrame>
+        <relatedFrame>Adjusting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Undergo_change</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="make.v" ID="8705" lemmaID="23215" cBy="664" cDate="05/22/2003 05:03:54 PDT Thu">
+        <definition>COD: </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="turn.v" ID="9268" lemmaID="41527" cBy="664" cDate="08/11/2003 04:45:22 PDT Mon">
+        <definition>FN: cause to change into a different kind of entity.</definition>
+        <sentenceCount annotated="10" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="turn"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="change.v" ID="9269" lemmaID="6040" cBy="664" cDate="08/11/2003 04:47:33 PDT Mon">
+        <definition>FN: alter into a different forms.</definition>
+        <sentenceCount annotated="11" total="280"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="change"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="convert.v" ID="9270" lemmaID="8201" cBy="664" cDate="08/11/2003 06:26:06 PDT Mon">
+        <definition>FN: modify to become.</definition>
+        <sentenceCount annotated="4" total="346"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convert"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="transform.v" ID="9271" lemmaID="41004" cBy="664" cDate="08/11/2003 06:27:39 PDT Mon">
+        <definition>FN: cause to have an altered nature.</definition>
+        <sentenceCount annotated="31" total="276"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="transform"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="modify.v" ID="10805" lemmaID="24694" cBy="605" cDate="07/14/2004 06:50:24 PDT Wed">
+        <definition>COD: make partial changes to (something) in order to improve it or lessen its severity</definition>
+        <sentenceCount annotated="38" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="modify"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="alter.v" ID="10806" lemmaID="1135" cBy="605" cDate="07/14/2004 06:52:26 PDT Wed">
+        <definition>COD: change in character, appearance, direction, etc.  </definition>
+        <sentenceCount annotated="19" total="228"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="alter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="modification.n" ID="10807" lemmaID="24692" cBy="605" cDate="07/14/2004 06:53:05 PDT Wed">
+        <definition>COD:  the action of modifying.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="modification"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="alteration.n" ID="10808" lemmaID="1137" cBy="605" cDate="07/14/2004 06:53:44 PDT Wed">
+        <definition>FN: the process of making something different without changing its category</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="alteration"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="conversion.n" ID="10809" lemmaID="8199" cBy="605" cDate="07/14/2004 06:55:13 PDT Wed">
+        <definition>COD: the process or action of converting or of being converted</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conversion"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="transformation.n" ID="10810" lemmaID="41006" cBy="605" cDate="07/14/2004 06:55:50 PDT Wed">
+        <definition>COD: a marked change in nature, form, or appearance.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="transformation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="vary.v" ID="13324" lemmaID="42741" cBy="303" cDate="06/26/2006 05:25:48 PDT Mon">
+        <definition>COD: modify or change (something) to make it less uniform.</definition>
+        <sentenceCount annotated="11" total="223"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vary"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="variation.n" ID="13325" lemmaID="42723" cBy="303" cDate="06/27/2006 12:31:00 PDT Tue">
+        <definition>COD: a change or slight difference in condition, amount, or level.</definition>
+        <sentenceCount annotated="14" total="154"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="variation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="reshape.v" ID="14025" lemmaID="50561" cBy="361" cDate="03/22/2007 02:33:02 PDT Thu">
+        <definition>COD: shape or form (something) differently or again.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reshape"/>
+    </lexUnit>
+</frame>

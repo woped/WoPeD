@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:08 PST Wed" name="Cure" ID="50" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame deals with a &lt;fen&gt;Healer&lt;/fen&gt; treating and curing an &lt;fen&gt;Affliction&lt;/fen&gt; (the injuries, disease, or pain) of the &lt;fen&gt;Patient&lt;/fen&gt;, sometimes also mentioning the use of a particular &lt;fen&gt;Treatment&lt;/fen&gt; or &lt;fen&gt;Medication&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:08 PST Wed" abbrev="Hlr" name="Healer" ID="208">
+        <definition>&lt;def-root&gt;The  Healer, anyone who treats or cures the Patient, occurs as the External Argument of verbs: &lt;ex&gt;&lt;fex name="Healer"&gt;Doctors&lt;/fex&gt; &lt;t&gt;alleviated&lt;/t&gt; his suffering. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:08 PST Wed" abbrev="Pat" name="Patient" ID="209">
+        <definition>&lt;def-root&gt;This   is the sufferer of the injury, disease or pain and can occur as an NP Object in this frame. However, Patient may not be expressed as a separate Frame Element but frequently occurs as the possessor of the Affliction, an example of  FE Conflation:  (See section on Conflation.) 
+
+&lt;ex&gt;Acupuncture &lt;t&gt;cured&lt;/t&gt; &lt;fex name="Patient"&gt;Pat&lt;/fex&gt; of his depression.&lt;/ex&gt;
+&lt;ex&gt;Acupunture &lt;t&gt;cured&lt;/t&gt; &lt;fex name="Patient"&gt;Pat's&lt;/fex&gt; depression.&lt;/ex&gt;
+The Patient may therefore not be tagged in a sentence although explicitly identified. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:08 PST Wed" abbrev="Affl" name="Affliction" ID="210">
+        <definition>&lt;def-root&gt;The Frame Element Affliction is generally the NP Object of a verb, frequently incorporating the Patient as a possessor, as described above: 
+&lt;ex&gt;This potion &lt;t&gt;heals&lt;/t&gt; &lt;fex name="Affliction"&gt;a broken heart&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The potion &lt;t&gt;healed&lt;/t&gt; &lt;fex name="Affliction"&gt;Kim's broken heart&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:08 PST Wed" abbrev="Trtm" name="Treatment" ID="211">
+        <definition>&lt;def-root&gt;The FE Treatment is used for treatments and means, distinguished by separate FEs in FN-1. 
+&lt;ex&gt;He emphasized treatment &lt;fex name="Treatment"&gt;by surgical means&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt;He will undergo &lt;fex name="Treatment"&gt;radiation&lt;/fex&gt; treatment. &lt;/ex&gt;
+
+A  method used to treat the Affliction can be the External Argument of these verbs, or expressed in a  PP Complement: 
+&lt;ex&gt;&lt;fex name="Treatment"&gt;These herbs&lt;/fex&gt; can &lt;t&gt;cure&lt;/t&gt; insomnia.&lt;/ex&gt;
+&lt;ex&gt;Insomnia can be &lt;t&gt;cured&lt;/t&gt; &lt;fex name="Treatment"&gt;with herbs&lt;/fex&gt;. &lt;/ex&gt;
+
+Target nouns (e.g. therapy, treatment, etc.) will NOT be tagged with this FE.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="103" cDate="07/02/2001 09:31:54 PDT Mon" abbrev="Degr" name="Degree" ID="1203">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="103" cDate="07/02/2001 09:31:56 PDT Mon" abbrev="Manr" name="Manner" ID="1204">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/24/2001 01:15:21 PDT Mon" abbrev="Med" name="Medication" ID="1996">
+        <definition>&lt;def-root&gt;The injested, applied, injected, etc. substance designed to cure the Patient.
+&lt;ex&gt;He needs prolonged &lt;t&gt;treatment&lt;/t&gt; &lt;fex name="Medication"&gt;with anibiotics&lt;/fex&gt;. &lt;/ex&gt;
+                            
+Note the tight relationship between Treatment and Medicine.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/24/2001 01:35:41 PDT Mon" abbrev="Motive" name="Motivation" ID="2007">
+        <definition>&lt;def-root&gt;The Reason for which an intentional act is performed.
+&lt;ex&gt;We &lt;t&gt;treated&lt;/t&gt; the pigeon &lt;fex name="Motive"&gt;for the hell of it&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:35:45 PDT Mon" abbrev="Place" name="Place" ID="2008">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/24/2001 01:35:47 PDT Mon" abbrev="Purp" name="Purpose" ID="2009">
+        <definition>&lt;def-root&gt;The purpose for which an intentional act is performed.
+&lt;ex&gt;John &lt;t&gt;resuscitated&lt;/t&gt; her &lt;fex name="Purpose"&gt;to receive a raise&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:35:51 PDT Mon" abbrev="Time" name="Time" ID="2010">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/20/2002 12:06:23 PDT Tue" abbrev="B_p" name="Body_part" ID="3584">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Body_part&lt;/fen&gt; is the specific area of the &lt;fen&gt;Patient&lt;/fen&gt;'s body which is treated.&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="840" cDate="03/27/2003 04:01:45 PST Thu" abbrev="Dur" name="Duration" ID="4322">
+        <definition>&lt;def-root&gt;The period of time that the &lt;fen&gt;Patient&lt;/fen&gt; recieves the &lt;fen&gt;Treatment&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Patient"&gt;The sailor&lt;/fex&gt; was treated &lt;fex name="Affliction"&gt;for venereal disease&lt;/fex&gt; &lt;fex name="Duration"&gt; for three months&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Healer" ID="208"/>
+        <memberFE name="Medication" ID="1996"/>
+        <memberFE name="Treatment" ID="211"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Body_part" ID="3584"/>
+        <memberFE name="Patient" ID="209"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Institutionalization</relatedFrame>
+        <relatedFrame>Medical_instruments</relatedFrame>
+        <relatedFrame>Medical_professionals</relatedFrame>
+        <relatedFrame>Medical_specialties</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Recovery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="alleviate.v" ID="899" lemmaID="1043" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>COD: make (pain or difficulty) less severe.</definition>
+        <sentenceCount annotated="29" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="alleviate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="cure.n" ID="900" lemmaID="9274" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>COD: a substance, treatment, or remedy that cures a disease, condition, or problem</definition>
+        <sentenceCount annotated="26" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cure"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cure.v" ID="901" lemmaID="9275" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>COD: end (a disease, condition, or problem) by treatment or remedial action; relieve of the symptoms of a disease or condition</definition>
+        <sentenceCount annotated="31" total="198"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cure"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="heal.v" ID="902" lemmaID="17666" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>FN: make sound or healthy again</definition>
+        <sentenceCount annotated="47" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="heal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rehabilitate.v" ID="903" lemmaID="32437" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>FN: restore to health or normal life by training and therapy after addiction or illness</definition>
+        <sentenceCount annotated="48" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rehabilitate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="rehabilitation.n" ID="904" lemmaID="32438" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>FN: the action or proicess of restoring to health or normal life by training and therapy after addiction or illness</definition>
+        <sentenceCount annotated="4" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rehabilitation"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="treat.v" ID="905" lemmaID="41134" cBy="731" cDate="02/08/2001 01:28:52 PST Thu">
+        <definition>COD: give medical care or attention to.</definition>
+        <sentenceCount annotated="37" total="320"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="treat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="treatment.n" ID="906" lemmaID="41138" cBy="731" cDate="02/08/2001 01:28:53 PST Thu">
+        <definition>COD: medical care for an illness or injury.</definition>
+        <sentenceCount annotated="43" total="216"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="treatment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="curable.a" ID="4019" lemmaID="9260" cBy="605" cDate="09/18/2001 04:16:02 PDT Tue">
+        <definition>FN: capable of being cured</definition>
+        <sentenceCount annotated="6" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="curable"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="incurable.a" ID="4020" lemmaID="19559" cBy="605" cDate="09/18/2001 04:17:29 PDT Tue">
+        <definition>COD: not able to be cured</definition>
+        <sentenceCount annotated="12" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="incurable"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="healer.n" ID="4021" lemmaID="17667" cBy="605" cDate="09/18/2001 04:19:39 PDT Tue">
+        <definition>FN: somebody who heals</definition>
+        <sentenceCount annotated="4" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="healer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="curative.a" ID="4022" lemmaID="9266" cBy="605" cDate="09/18/2001 04:24:23 PDT Tue">
+        <definition>COD: able to cure disease</definition>
+        <sentenceCount annotated="9" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="curative"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="curative.n" ID="4023" lemmaID="9267" cBy="605" cDate="09/18/2001 04:25:52 PDT Tue">
+        <definition>COD: a curative medicine or agent</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="curative"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="alleviation.n" ID="4024" lemmaID="1044" cBy="605" cDate="09/18/2001 04:27:23 PDT Tue">
+        <definition>FN: to make a condition more bearable </definition>
+        <sentenceCount annotated="7" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="alleviation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="remedy.n" ID="4025" lemmaID="32562" cBy="605" cDate="09/18/2001 05:15:58 PDT Tue">
+        <definition>COD: a medicine or treatment for a disease or injury</definition>
+        <sentenceCount annotated="36" total="424"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="remedy"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="rehabilitative.a" ID="4034" lemmaID="45201" cBy="605" cDate="09/19/2001 11:45:59 PDT Wed">
+        <definition>FN: having the function of restoring to health or normal life by training and therapy after imprisonment, addiction, or illness</definition>
+        <sentenceCount annotated="3" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="rehabilitative"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ease.v" ID="4035" lemmaID="12120" cBy="605" cDate="09/19/2001 12:12:09 PDT Wed">
+        <definition>COD: make or become less serious or severe</definition>
+        <sentenceCount annotated="10" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ease"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="palliate.v" ID="4036" lemmaID="27603" cBy="605" cDate="09/19/2001 12:40:29 PDT Wed">
+        <definition>COD: make (the symptoms of a disease) less severe without removing the cause.</definition>
+        <sentenceCount annotated="2" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="palliate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="palliation.n" ID="4037" lemmaID="27604" cBy="605" cDate="09/19/2001 12:41:16 PDT Wed">
+        <definition>FN: making the effects of a disease less severe for the patient (without curing the disease itself)</definition>
+        <sentenceCount annotated="8" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="palliation"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="palliative.n" ID="4038" lemmaID="27605" cBy="605" cDate="09/19/2001 12:43:38 PDT Wed">
+        <definition>COD: a palliative remedy or medicine.</definition>
+        <sentenceCount annotated="1" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="palliative"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="palliative.a" ID="4039" lemmaID="27606" cBy="605" cDate="09/19/2001 12:44:09 PDT Wed">
+        <definition>COD: relieving pain or alleviating a problem without dealing with the cause</definition>
+        <sentenceCount annotated="8" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="palliative"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="therapy.n" ID="4040" lemmaID="40070" cBy="605" cDate="09/19/2001 12:49:39 PDT Wed">
+        <definition>COD: treatment intended to relieve or heal a disorder. </definition>
+        <sentenceCount annotated="38" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="therapy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="therapeutic.a" ID="4041" lemmaID="40065" cBy="605" cDate="09/19/2001 01:17:50 PDT Wed">
+        <definition>COD: having a good effect on the body or mind</definition>
+        <sentenceCount annotated="21" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="therapeutic"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="therapist.n" ID="4042" lemmaID="40069" cBy="605" cDate="09/19/2001 01:25:21 PDT Wed">
+        <definition>FN: somebody specializing in a particular course of treatment or rehabilitation</definition>
+        <sentenceCount annotated="19" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="therapist"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="resuscitate.v" ID="7849" lemmaID="32966" cBy="840" cDate="12/25/2002 05:58:27 PST Wed">
+        <definition>COD: make active or vigorous again</definition>
+        <sentenceCount annotated="15" total="61"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="resuscitate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="remedy.v" ID="14873" lemmaID="32563" cBy="597" cDate="03/18/2008 02:23:56 PDT Tue">
+        <definition>FN: to cure using some remedy</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="remedy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="nurse.v" ID="15101" lemmaID="26293" cBy="597" cDate="06/11/2008 01:05:06 PDT Wed">
+        <definition>FN: act as a nurse; treat with special care</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nurse"/>
+    </lexUnit>
+</frame>

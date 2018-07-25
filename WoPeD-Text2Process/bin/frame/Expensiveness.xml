@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:29 PST Wed" name="Expensiveness" ID="83" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Payer&lt;/fen&gt; gives up (or potentially gives up) the use of an &lt;fen&gt;Asset&lt;/fen&gt; (generally money) in order to achieve an &lt;fen&gt;Intended_event&lt;/fen&gt;.  This event is often more specifically described as gaining possession of some &lt;fen&gt;Goods&lt;/fen&gt; or receiving a Service.  In the majority of cases, the &lt;fen&gt;Payer&lt;/fen&gt; is described generically (INI), and the situation depicted answers the question of how much of an &lt;fen&gt;Asset&lt;/fen&gt; would have to be given up to receive the &lt;fen&gt;Goods&lt;/fen&gt; or bring about the &lt;fen&gt;Intended_event&lt;/fen&gt;.
+
+&lt;ex&gt;It 'll &lt;t&gt;cost&lt;/t&gt; &lt;fex name="Payer"&gt;Sandra's parents&lt;/fex&gt; &lt;fex name="Asset"&gt;fifty grand a year&lt;/fex&gt; &lt;fex name="Intended_event"&gt;for her to attend that school&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Intended_event"&gt;That book&lt;/fex&gt; would &lt;t&gt;cost&lt;/t&gt; &lt;fex name="Payer"&gt;you&lt;/fex&gt; &lt;fex name="Asset"&gt;more than twenty dollars&lt;/fex&gt; &lt;fex name="Intended_event"&gt;to bind&lt;/fex&gt; &lt;fex name=""&gt;in a local book bindery&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Goods"&gt;Stamps&lt;/fex&gt; used to &lt;t&gt;cost&lt;/t&gt; &lt;fex name="Asset"&gt;only five cents&lt;/fex&gt;.  &lt;fex name="Payer"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;The &lt;t&gt;cost&lt;/t&gt; &lt;fex name="Intended_event"&gt;of a trip to a resort or spa&lt;/fex&gt; varies by region, dependent primarily on weather, not local economic conditions. &lt;fex name="Payer"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;Well, &lt;fex name="Intended_event"&gt;it&lt;/fex&gt; 'll &lt;t&gt;cost&lt;/t&gt; &lt;fex name="Payer"&gt;you&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Payer"&gt;For you&lt;/fex&gt;, &lt;fex name="Asset"&gt;thirty bucks&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Degree"&gt;practically&lt;/fex&gt; &lt;t&gt;free&lt;/t&gt;.  &lt;fex name="Intended_event"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:29 PST Wed" abbrev="Gds" name="Goods" ID="382">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Goods&lt;/fen&gt; is the item(s) whose price is being assessed.  &lt;fen&gt;Goods&lt;/fen&gt; is usually an External Argument: 
+&lt;ex&gt;&lt;fex name="Goods"&gt;These paintings&lt;/fex&gt; are very &lt;t&gt;pricey&lt;/t&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Intended_event" ID="4892"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:29 PST Wed" abbrev="Pyr" name="Payer" ID="383">
+        <definition>&lt;def-root&gt;The person whose &lt;fen&gt;Asset&lt;/fen&gt; is given up in order to achieve an &lt;fen&gt;Intended_event&lt;/fen&gt;.  This FE is often expressed as INI.  
+&lt;ex&gt;A holiday in Europe is very &lt;t&gt;expensive&lt;/t&gt; &lt;fex name="Payer"&gt;for me&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Europe is not &lt;t&gt;cheap&lt;/t&gt;. &lt;fex name="Payer"&gt;INI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:29 PST Wed" abbrev="Pymt" name="Asset" ID="384">
+        <definition>&lt;def-root&gt;The price of or payment made for the Goods. 
+&lt;ex&gt;The painting was &lt;t&gt;cheap&lt;/t&gt; &lt;fex name="Asset"&gt;at $600&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Asset"&gt;$600&lt;/fex&gt; is &lt;t&gt;exorbitant&lt;/t&gt; for that painting!&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:29 PST Wed" abbrev="Ori" name="Origin" ID="385">
+        <definition>&lt;def-root&gt;The place where a transaction would take place, generally where &lt;fen&gt;Goods&lt;/fen&gt; and services are created or sold.
+&lt;ex&gt;Shirts are &lt;t&gt;cheap&lt;/t&gt; &lt;fex name="Origin"&gt;at K-Mart&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/04/2002 03:31:35 PDT Wed" abbrev="Degr" name="Degree" ID="3712">
+        <definition>&lt;def-root&gt;This FE identifies the&lt;fen&gt;Degree&lt;/fen&gt; to which &lt;fen&gt;Goods&lt;/fen&gt; are cheap or expensive.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/31/2003 03:02:50 PDT Thu" abbrev="" name="Intended_event" ID="4892">
+        <definition>&lt;def-root&gt;The event that the &lt;fen&gt;Payer&lt;/fen&gt; brings about by deploying the &lt;fen&gt;Asset&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Intended_event"&gt;Attending summer school&lt;/fex&gt; is &lt;t&gt;expensive&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/31/2003 06:22:12 PDT Thu" abbrev="T" name="Time" ID="4893">
+        <definition>&lt;def-root&gt;The time when a transaction takes place.
+
+&lt;ex&gt;No, they've got a special on; it's really &lt;t&gt;cheap&lt;/t&gt; there &lt;fex name="Time"&gt;on Tuesdays&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 07:02:12 PDT Fri" abbrev="" name="Rate" ID="5644">
+        <definition>&lt;def-root&gt;The amount of an &lt;fen&gt;Asset&lt;/fen&gt; relative to some measure of the &lt;fen&gt;Goods&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Commerce_scenario</relatedFrame>
+        <relatedFrame>Abounding_with</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="A" name="affordable.a" ID="1772" lemmaID="2" cBy="731" cDate="02/08/2001 01:30:24 PST Thu">
+        <definition>FN: not unduly burdensome on one's budget.</definition>
+        <sentenceCount annotated="21" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="affordable"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="cheap.a" ID="1773" lemmaID="6163" cBy="731" cDate="02/08/2001 01:30:24 PST Thu">
+        <definition>COD: low in price. </definition>
+        <sentenceCount annotated="35" total="205"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="cheap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="costly.a" ID="1774" lemmaID="8519" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>COD: expensive. </definition>
+        <sentenceCount annotated="28" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="costly"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="exorbitant.a" ID="1775" lemmaID="13493" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>FN: unreasonably high in price or amount charged.</definition>
+        <sentenceCount annotated="21" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="exorbitant"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="expensive.a" ID="1776" lemmaID="13535" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>COD: costing a lot of money. </definition>
+        <sentenceCount annotated="32" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="expensive"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="free.a" ID="1777" lemmaID="15365" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>COD: available without charge. </definition>
+        <sentenceCount annotated="14" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="free"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="inexpensive.a" ID="1778" lemmaID="19793" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>COD: not costing a great deal; cheap. </definition>
+        <sentenceCount annotated="20" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="inexpensive"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="low-cost.a" ID="1779" lemmaID="34" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>FN: charged at a relatively low price.</definition>
+        <sentenceCount annotated="14" total="42"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="low-cost"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="low-priced.a" ID="1780" lemmaID="35" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>FN: charged at a lower price than usual</definition>
+        <sentenceCount annotated="7" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="low-priced"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="overpriced.a" ID="1781" lemmaID="38" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>FN: charged at too high a price.</definition>
+        <sentenceCount annotated="10" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="overpriced"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="pricey.a" ID="1782" lemmaID="30405" cBy="731" cDate="02/08/2001 01:30:25 PST Thu">
+        <definition>COD: (informal) expensive. </definition>
+        <sentenceCount annotated="17" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pricey"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cost.v" ID="9190" lemmaID="8510" cBy="664" cDate="07/31/2003 06:40:58 PDT Thu">
+        <definition>COD: require the payment of (a specified sum) in order to be bought or obtained.</definition>
+        <sentenceCount annotated="45" total="355"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cost"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cost.n" ID="9191" lemmaID="8509" cBy="664" cDate="07/31/2003 06:42:18 PDT Thu">
+        <definition>COD: the amount that something costs.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cost"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="expense.n" ID="9192" lemmaID="13533" cBy="664" cDate="07/31/2003 06:43:57 PDT Thu">
+        <definition>COD: cost incurred or required.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="expense"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="affordability.n" ID="9193" lemmaID="48263" cBy="664" cDate="07/31/2003 06:47:11 PDT Thu">
+        <definition>FN: degree to which something is affordable.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="affordability"/>
+    </lexUnit>
+</frame>

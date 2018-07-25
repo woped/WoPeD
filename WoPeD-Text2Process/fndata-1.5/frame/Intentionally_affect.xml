@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="09/24/2001 01:23:58 PDT Mon" name="Intentionally_affect" ID="230" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes a &lt;fen&gt;Patient&lt;/fen&gt; to be affected, sometimes by a particular &lt;fen&gt;Means&lt;/fen&gt; or by use of an &lt;fen&gt;Instrument&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;A professional dishwasher&lt;/fex&gt; doesn't &lt;t&gt;do&lt;/t&gt; &lt;fex name="Pat"&gt;dishes&lt;/fex&gt; &lt;fex name="Ins"&gt;with a rag&lt;/fex&gt; &lt;fex name="Time"&gt;anymore&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:30:24 PDT Mon" abbrev="Mns" name="Means" ID="1997">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the action indicated by the target. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="09/24/2001 01:30:58 PDT Mon" abbrev="eve" name="Event" ID="1999">
+        <definition>&lt;def-root&gt;This FE identifies the act that the &lt;fen&gt;Agent&lt;/fen&gt; performs intentionally.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/24/2001 01:30:59 PDT Mon" abbrev="Agt" name="Agent" ID="2000">
+        <definition>&lt;def-root&gt;The conscious entity, generally a person, that performs the intentional act that affects the &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/24/2001 01:30:59 PDT Mon" abbrev="Ins" name="Instrument" ID="2001">
+        <definition>&lt;def-root&gt;An entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that interacts with an &lt;fen&gt;Patient&lt;/fen&gt; to accomplish the action indicated by the target. &lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:30:59 PDT Mon" abbrev="Place" name="Place" ID="2003">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Agent&lt;/fen&gt; performs the intentional act.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:30:59 PDT Mon" abbrev="Purp" name="Purpose" ID="2004">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; intentionally affects a &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/24/2001 01:30:59 PDT Mon" abbrev="Time" name="Time" ID="2005">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; intentionally affects the &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/24/2001 01:32:45 PDT Mon" abbrev="Pat" name="Patient" ID="2006">
+        <definition>&lt;def-root&gt;Patient is the entity acted on and that may, but need not, undergo a change. 
+&lt;ex&gt;A professional dishwasher &lt;t&gt;does&lt;/t&gt; &lt;fex name="Patient"&gt;dishes&lt;/fex&gt; one at a time.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="04/08/2002 11:12:24 PDT Mon" abbrev="Mnr" name="Manner" ID="2583">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="08/28/2002 06:58:16 PDT Wed" abbrev="Reason" name="Reason" ID="3668">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in performing the action.
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:54 PDT Thu" abbrev="Degr" name="Degree" ID="5363">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Patient&lt;/fen&gt; is affected by the &lt;fen&gt;Event&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="10/16/2007 01:42:10 PDT Tue" abbrev="" name="Event_description" ID="12000">
+        <definition>&lt;def-root&gt;This FE describes the event. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Patient" ID="2006"/>
+        <memberFE name="Event" ID="1999"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Silencing</relatedFrame>
+        <relatedFrame>Rewards_and_punishments</relatedFrame>
+        <relatedFrame>Cutting</relatedFrame>
+        <relatedFrame>Apply_heat</relatedFrame>
+        <relatedFrame>Attack</relatedFrame>
+        <relatedFrame>Attaching</relatedFrame>
+        <relatedFrame>Inhibit_movement</relatedFrame>
+        <relatedFrame>Immobilization</relatedFrame>
+        <relatedFrame>Hiring</relatedFrame>
+        <relatedFrame>Cause_to_experience</relatedFrame>
+        <relatedFrame>Reparation</relatedFrame>
+        <relatedFrame>Rape</relatedFrame>
+        <relatedFrame>Firing</relatedFrame>
+        <relatedFrame>Replacing</relatedFrame>
+        <relatedFrame>Arranging</relatedFrame>
+        <relatedFrame>Adjusting</relatedFrame>
+        <relatedFrame>Extradition</relatedFrame>
+        <relatedFrame>Hiding_objects</relatedFrame>
+        <relatedFrame>Hit_target</relatedFrame>
+        <relatedFrame>Grooming</relatedFrame>
+        <relatedFrame>Cause_to_amalgamate</relatedFrame>
+        <relatedFrame>Closure</relatedFrame>
+        <relatedFrame>Gathering_up</relatedFrame>
+        <relatedFrame>Manipulation</relatedFrame>
+        <relatedFrame>Releasing</relatedFrame>
+        <relatedFrame>Soaking</relatedFrame>
+        <relatedFrame>Manipulate_into_doing</relatedFrame>
+        <relatedFrame>Taking</relatedFrame>
+        <relatedFrame>Processing_materials</relatedFrame>
+        <relatedFrame>Education_teaching</relatedFrame>
+        <relatedFrame>Using</relatedFrame>
+        <relatedFrame>Manipulate_into_shape</relatedFrame>
+        <relatedFrame>Arrest</relatedFrame>
+        <relatedFrame>Cause_to_perceive</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Arson</relatedFrame>
+        <relatedFrame>Import_export</relatedFrame>
+        <relatedFrame>Bungling</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="do.v" ID="4348" lemmaID="11346" cBy="664" cDate="10/26/2001 01:17:19 PDT Fri">
+        <definition>COD: work on (something) to bring it to completion or to a required state</definition>
+        <sentenceCount annotated="0" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="do"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="do_something_(with_to).v" ID="14334" lemmaID="50647" cBy="664" cDate="04/02/2007 07:28:15 PDT Mon">
+        <definition>FN: affect (an entity) by some unspecified action.</definition>
+        <sentenceCount annotated="3" total="240"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="do"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="something"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="do_what_(with_to).v" ID="14336" lemmaID="50649" cBy="664" cDate="04/02/2007 07:34:19 PDT Mon">
+        <definition>FN: affect (some entity) via an action that is in question.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="do"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="what"/>
+    </lexUnit>
+</frame>

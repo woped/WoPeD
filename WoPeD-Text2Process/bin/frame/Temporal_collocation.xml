@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/23/2007 07:52:16 PDT Fri" name="Temporal_collocation" ID="1895" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A Trajector is identified as occurring at the same time as some better-known Landmark.  We consider sequenced calendric units (e.g. Tuesday, 1987, January) as periods for the purposes of this frame.  Some lexical items allow certain types of frame elements while disallowing others (e.g. *&lt;t&gt;During&lt;/t&gt; Tuesday...).
+
+Several words of this frame (e.g. &lt;ment&gt;now.adv&lt;/ment&gt;) have deictic incorporation of the &lt;fen&gt;Landmark_period&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Trajector_event"&gt;He tried to take care of that&lt;/fex&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Landmark_event"&gt;his last visit&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;I especially like &lt;fex name="Trajector_entity"&gt;brunch&lt;/fex&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Landmark_period"&gt;Sunday&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Dinosaurs lived in &lt;t&gt;prehistoric&lt;/t&gt; &lt;fex name="Trajector_period"&gt;eras&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Trajector_event"&gt;He did it&lt;/fex&gt; &lt;t&gt;&lt;fex name="Landmark_period"&gt;then&lt;/fex&gt;&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/23/2007 07:52:16 PDT Fri" abbrev="TEn" name="Trajector_entity" ID="11268">
+        <definition>&lt;def-root&gt;The entity that occurs at some time.
+
+&lt;ex&gt;The &lt;t&gt;current&lt;/t&gt; &lt;fex name="Trajector_entity"&gt;President of Georgia&lt;/fex&gt; was born in Tbilisi.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Trajector_entity"&gt;Books&lt;/fex&gt; &lt;t&gt;in&lt;/t&gt; the early 19th century had fewer pictures.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Trajector_event" ID="12064"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/23/2007 07:52:16 PDT Fri" abbrev="LEv" name="Landmark_event" ID="11269">
+        <definition>&lt;def-root&gt;The event which designates the time at which a trajector occurs.
+
+&lt;ex&gt;&lt;t&gt;During&lt;/t&gt; &lt;fex name="Landmark_event"&gt;last night's walk&lt;/fex&gt; , I stubbed my toe.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Landmark_period" ID="12063"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/02/2007 06:07:26 PDT Thu" abbrev="Eve" name="Event_description" ID="11947">
+        <definition>&lt;def-root&gt;This FE describes the state of affairs reported by the target is understood to play a role in the state of affairs of the modifier.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="361" cDate="01/18/2008 01:46:42 PST Fri" abbrev="TPe" name="Trajector_period" ID="12062">
+        <definition>&lt;def-root&gt;The period that occurs with respect to some other time.
+
+&lt;ex&gt;&lt;t&gt;Future&lt;/t&gt; &lt;fex name="Trajector_period"&gt;eras&lt;/fex&gt; will be vastly changed from today.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Trajector_event" ID="12064"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="361" cDate="01/18/2008 01:48:41 PST Fri" abbrev="LPe" name="Landmark_period" ID="12063">
+        <definition>&lt;def-root&gt;The period in which a trajector takes place.  This period can be cyclical and, in that case, is interpreted contextually.
+
+&lt;ex&gt;I went to the store &lt;t&gt;on&lt;/t&gt; &lt;fex name="Landmark_period"&gt;Tuesday&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;In&lt;/t&gt; &lt;fex name="Landmark_period"&gt;the Triassic Era&lt;/fex&gt;, the first flying vertebrates appeared.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Landmark_event" ID="11269"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="361" cDate="01/18/2008 01:57:19 PST Fri" abbrev="TEv" name="Trajector_event" ID="12064">
+        <definition>&lt;def-root&gt;The event that occurs at some time.
+
+&lt;ex&gt;&lt;t&gt;Currently&lt;/t&gt;, &lt;fex name="Trajector_event"&gt;researchers are making new discoveries very quickly.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Trajector_period" ID="12062"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Core" cBy="361" cDate="03/07/2008 02:39:24 PST Fri" abbrev="LEn" name="Landmark_entity" ID="12350">
+        <definition>&lt;def-root&gt;The entity which designates the time of some trajector.  Note: this FE is infrequent or non-existent in English and is included for completeness.&lt;/def-root&gt;</definition>
+        <excludesFE name="Landmark_event" ID="11269"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Trajector-Landmark</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Simultaneity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Add_Annotation" POS="PREP" name="in.prep" ID="14080" lemmaID="50235" cBy="664" cDate="03/23/2007 09:50:43 PDT Fri">
+        <definition>COD: expressing a period of time during which an event takes place or a situation remains the case.</definition>
+        <sentenceCount annotated="0" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="on.prep" ID="14081" lemmaID="26702" cBy="664" cDate="03/23/2007 09:50:52 PDT Fri">
+        <definition>COD: at the time of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" POS="PREP" name="at.prep" ID="14082" lemmaID="2238" cBy="664" cDate="03/23/2007 09:51:13 PDT Fri">
+        <definition>COD: expressing the time when an event takes place.</definition>
+        <sentenceCount annotated="3" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="now.adv" ID="14083" lemmaID="26222" cBy="664" cDate="03/23/2007 10:18:09 PDT Fri">
+        <definition>COD: at the present time.</definition>
+        <sentenceCount annotated="0" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="now"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Landmark_period" POS="A" name="current.a" ID="14084" lemmaID="9301" cBy="664" cDate="03/23/2007 10:18:21 PDT Fri">
+        <definition>COD: happening or being used or done now.</definition>
+        <sentenceCount annotated="0" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="current"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="currently.adv" ID="14085" lemmaID="9302" cBy="664" cDate="03/23/2007 10:18:35 PDT Fri">
+        <definition>COD: at the present time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="currently"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="then.adv" ID="14086" lemmaID="40042" cBy="664" cDate="03/23/2007 10:23:06 PDT Fri">
+        <definition>COD: at that time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="then"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="when.adv" ID="14147" lemmaID="43901" cBy="361" cDate="03/26/2007 11:10:15 PDT Mon">
+        <definition>COD: at what time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="when"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Landmark_period" POS="A" name="modern.a" ID="14198" lemmaID="24679" cBy="361" cDate="03/28/2007 02:19:22 PDT Wed">
+        <definition>COD: of or relating to the present or recent times.</definition>
+        <sentenceCount annotated="16" total="490"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="modern"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="N" name="nowadays.n" ID="14199" lemmaID="50600" cBy="361" cDate="03/28/2007 02:20:33 PDT Wed">
+        <definition>COD: at the present time, in contrast with the past.</definition>
+        <sentenceCount annotated="0" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nowadays"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="N" name="back then.n" ID="14200" lemmaID="50601" cBy="361" cDate="03/28/2007 02:21:02 PDT Wed">
+        <definition>FN: referring to a past time or period relative to the present time. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="back_then"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="N" name="today.n" ID="14201" lemmaID="40594" cBy="361" cDate="03/28/2007 02:21:45 PDT Wed">
+        <definition>COD: at the present period of time; nowadays.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="today"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_event" POS="ADV" name="ultimately.adv" ID="14310" lemmaID="41744" cBy="664" cDate="04/02/2007 03:08:53 PDT Mon">
+        <definition>FN: at some unspecified future time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="ultimately"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="A" name="no longer.adv" ID="14368" lemmaID="50656" cBy="361" cDate="04/06/2007 04:55:38 PDT Fri">
+        <definition>FN: not any more being the case</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="no"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="longer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="within.prep" ID="14501" lemmaID="44331" cBy="361" cDate="08/01/2007 03:10:35 PDT Wed">
+        <definition>FN: not more time than period specified.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="within"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="A" name="future.a" ID="14541" lemmaID="15765" cBy="361" cDate="10/15/2007 02:30:00 PDT Mon">
+        <definition>FN: Happening in the future</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="future"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="recently.adv" ID="14550" lemmaID="32100" cBy="361" cDate="10/24/2007 11:37:21 PDT Wed">
+        <definition>FN: happening in recent time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="recently"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Landmark_period" POS="A" name="ancient.a" ID="14655" lemmaID="1360" cBy="361" cDate="01/16/2008 11:36:58 PST Wed">
+        <definition>FN: happening during the era of ancient times.</definition>
+        <sentenceCount annotated="23" total="216"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ancient"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Landmark_period" POS="A" name="prehistoric.a" ID="14656" lemmaID="30186" cBy="361" cDate="01/16/2008 11:37:23 PST Wed">
+        <definition>FN: happening during the era of prehistoric times. </definition>
+        <sentenceCount annotated="0" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="prehistoric"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="at the time.adv" ID="14671" lemmaID="50787" cBy="361" cDate="01/17/2008 12:07:16 PST Thu">
+        <definition>FN: then; at this partiular point in time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="time"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Landmark_period" POS="ADV" name="at present.adv" ID="14672" lemmaID="50788" cBy="597" cDate="01/17/2008 12:08:52 PST Thu">
+        <definition>FN: now, at the present time</definition>
+        <sentenceCount annotated="17" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="present"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="during.prep" ID="14673" lemmaID="11992" cBy="361" cDate="01/18/2008 04:47:27 PST Fri">
+        <definition>FN: happening at the same time as some other event or stretch of tim</definition>
+        <sentenceCount annotated="1" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="during"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="A" name="early.a" ID="15041" lemmaID="12080" cBy="361" cDate="06/05/2008 03:14:54 PDT Thu">
+        <definition>FN: happening at or near the beginning point of a given time line.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="early"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_period" POS="ADV" name="newly.adv" ID="15114" lemmaID="25758" cBy="597" cDate="06/12/2008 01:40:24 PDT Thu">
+        <definition>FN: happening very recently</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="newly"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="PREP" name="around.prep" ID="15238" lemmaID="1963" cBy="597" cDate="08/22/2008 10:30:46 PDT Fri">
+        <definition>FN: approximately</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="around"/>
+    </lexUnit>
+</frame>

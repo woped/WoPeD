@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="ballistic missile.n" ID="10636" frame="Weapon" frameID="426" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980215.0371" ID="11905"/>
+            <document description="apwsE950609.0178" ID="11906"/>
+            <document description="apwsE950331.0180" ID="11914"/>
+            <document description="apwsE950519.0374" ID="11918"/>
+            <document description="apwsE950405.0380" ID="11919"/>
+            <document description="apwsE950810.0621" ID="11920"/>
+            <document description="apwsE950605.0406" ID="11925"/>
+            <document description="apwsE950922.0345" ID="11928"/>
+            <document description="apwsE950605.0440" ID="11932"/>
+            <document description="apwsE950326.0251" ID="11948"/>
+            <document description="apwsE950421.0464" ID="11961"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="dep" name="Descriptor"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Typ" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Wep" name="Weapon"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wld" name="Wielder"/>
+        </frame>
+    </header>
+    <definition>FN: a guided missile or rocket which can be steered only during the propulsion phase </definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ballistic"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="missile"/>
+    <valences>
+        <governor type="Gov" lemma="acquire">
+            <annoSet ID="2094391"/>
+        </governor>
+        <governor type="Gov" lemma="control">
+            <annoSet ID="2094441"/>
+        </governor>
+        <governor type="Gov" lemma="counter">
+            <annoSet ID="2094519"/>
+        </governor>
+        <governor type="Gov" lemma="deliver">
+            <annoSet ID="2094393"/>
+        </governor>
+        <governor type="Gov" lemma="deploy">
+            <annoSet ID="2094419"/>
+        </governor>
+        <governor type="Gov" lemma="fire">
+            <annoSet ID="2094425"/>
+        </governor>
+        <governor type="Gov" lemma="make">
+            <annoSet ID="2094451"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Name"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="2094411"/>
+                <annoSet ID="2094423"/>
+                <annoSet ID="2094435"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Part"/>
+                <annoSet ID="2094435"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Type"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <annoSet ID="2094411"/>
+                <annoSet ID="2094423"/>
+                <annoSet ID="2094435"/>
+                <annoSet ID="2094441"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="2094419"/>
+                <annoSet ID="2094425"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Type"/>
+                <annoSet ID="2094519"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Weapon"/>
+            <pattern total="11">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094391"/>
+                <annoSet ID="2094393"/>
+                <annoSet ID="2094411"/>
+                <annoSet ID="2094419"/>
+                <annoSet ID="2094423"/>
+                <annoSet ID="2094425"/>
+                <annoSet ID="2094435"/>
+                <annoSet ID="2094441"/>
+                <annoSet ID="2094451"/>
+                <annoSet ID="2094489"/>
+                <annoSet ID="2094519"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="2094441"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Wielder"/>
+                <annoSet ID="2094489"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Name"/>
+            <FE name="Part"/>
+            <FE name="Type"/>
+            <FE name="Weapon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Part"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094435"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Name"/>
+            <FE name="Type"/>
+            <FE name="Weapon"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094411"/>
+                <annoSet ID="2094423"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Type"/>
+            <FE name="Weapon"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094419"/>
+                <annoSet ID="2094425"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094519"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Type"/>
+            <FE name="Weapon"/>
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="2094441"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Weapon"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="2094391"/>
+                <annoSet ID="2094393"/>
+                <annoSet ID="2094451"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Weapon"/>
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <valenceUnit GF="Dep" PT="A" FE="Wielder"/>
+                <annoSet ID="2094489"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="11905" sentNo="1" paragNo="6" aPos="122562025" ID="1323135">
+            <text>Netanyahu also said the world should pay equal attention to Iraq 's eastern neighbor , Iran , which is trying to acquire ballistic missiles and non-conventional weapons abilities .</text>
+            <annotationSet cDate="04/27/2005 12:26:59 PDT Wed" status="UNANN" ID="2094390">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="13" start="10" name="rb"/>
+                    <label end="18" start="15" name="VVD"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="35" start="30" name="md"/>
+                    <label end="39" start="37" name="VV"/>
+                    <label end="45" start="41" name="jj"/>
+                    <label end="55" start="47" name="nn"/>
+                    <label end="58" start="57" name="to"/>
+                    <label end="63" start="60" name="NP"/>
+                    <label end="66" start="65" name="POS"/>
+                    <label end="74" start="68" name="jj"/>
+                    <label end="83" start="76" name="nn"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="90" start="87" name="NP"/>
+                    <label end="92" start="92" name=","/>
+                    <label end="98" start="94" name="wdt"/>
+                    <label end="101" start="100" name="VBZ"/>
+                    <label end="108" start="103" name="VVG"/>
+                    <label end="111" start="110" name="to"/>
+                    <label end="119" start="113" name="VV"/>
+                    <label end="129" start="121" name="jj"/>
+                    <label end="138" start="131" name="nns"/>
+                    <label end="142" start="140" name="cc"/>
+                    <label end="159" start="144" name="jj"/>
+                    <label end="167" start="161" name="nns"/>
+                    <label end="177" start="169" name="nns"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:26:59 PDT Wed" status="MANUAL" ID="2094391">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="138" start="121" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="138" start="121" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="119" start="113" name="Gov"/>
+                    <label end="177" start="121" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11906" sentNo="1" paragNo="6" aPos="65611176" ID="1323136">
+            <text>ITAR-Tass said the mail was being stamped and delivered today along with special certificates saying it had been delivered by ballistic missile .</text>
+            <annotationSet cDate="04/27/2005 12:26:59 PDT Wed" status="UNANN" ID="2094392">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="13" start="10" name="VVD"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="22" start="19" name="nn"/>
+                    <label end="26" start="24" name="VBD"/>
+                    <label end="32" start="28" name="nn"/>
+                    <label end="40" start="34" name="VVN"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="54" start="46" name="VVN"/>
+                    <label end="60" start="56" name="nn"/>
+                    <label end="66" start="62" name="in"/>
+                    <label end="71" start="68" name="in"/>
+                    <label end="79" start="73" name="jj"/>
+                    <label end="92" start="81" name="nns"/>
+                    <label end="99" start="94" name="VVG"/>
+                    <label end="102" start="101" name="PP"/>
+                    <label end="106" start="104" name="VHD"/>
+                    <label end="111" start="108" name="VBN"/>
+                    <label end="121" start="113" name="VVN"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="134" start="126" name="jj"/>
+                    <label end="142" start="136" name="nn"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:26:59 PDT Wed" status="MANUAL" ID="2094393">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="142" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="142" start="126" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="121" start="113" name="Gov"/>
+                    <label end="142" start="123" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11914" sentNo="1" paragNo="18" aPos="48487317" ID="1323145">
+            <text>In Ukraine , all 46 of the SS-24 intercontinental ballistic missiles that were left on its territory when the Soviet Union dissolved have had their warheads removed , the Perry aide said .</text>
+            <annotationSet cDate="04/27/2005 12:27:03 PDT Wed" status="UNANN" ID="2094410">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="9" start="3" name="NP"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="18" start="17" name="cd"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="31" start="27" name="cd"/>
+                    <label end="48" start="33" name="jj"/>
+                    <label end="58" start="50" name="jj"/>
+                    <label end="67" start="60" name="nns"/>
+                    <label end="72" start="69" name="wdt"/>
+                    <label end="77" start="74" name="VBD"/>
+                    <label end="82" start="79" name="VVN"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="89" start="87" name="PP$"/>
+                    <label end="99" start="91" name="nn"/>
+                    <label end="104" start="101" name="wrb"/>
+                    <label end="108" start="106" name="dt"/>
+                    <label end="115" start="110" name="NP"/>
+                    <label end="121" start="117" name="NP"/>
+                    <label end="131" start="123" name="VVN"/>
+                    <label end="136" start="133" name="VHP"/>
+                    <label end="140" start="138" name="VHN"/>
+                    <label end="146" start="142" name="PP$"/>
+                    <label end="155" start="148" name="nns"/>
+                    <label end="163" start="157" name="VVN"/>
+                    <label end="165" start="165" name=","/>
+                    <label end="169" start="167" name="dt"/>
+                    <label end="175" start="171" name="NP"/>
+                    <label end="180" start="177" name="nn"/>
+                    <label end="185" start="182" name="VVD"/>
+                    <label end="187" start="187" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:03 PDT Wed" status="MANUAL" ID="2094411">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="67" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="7207" end="31" start="27" name="Name"/>
+                    <label cBy="618" feID="3921" end="48" start="33" name="Type"/>
+                    <label cBy="618" feID="3919" end="67" start="50" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="27" name="Dep"/>
+                    <label end="48" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="27" name="N"/>
+                    <label end="48" start="33" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11918" sentNo="1" paragNo="19" aPos="60233251" ID="1323149">
+            <text>It is increasing its ability to conduct guerrilla attacks against unsuspecting ships and is doing its utmost to deploy long-range ballistic missiles and acquire long-range strike aircraft .</text>
+            <annotationSet cDate="04/27/2005 12:27:04 PDT Wed" status="UNANN" ID="2094418">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="15" start="6" name="VVG"/>
+                    <label end="19" start="17" name="PP$"/>
+                    <label end="27" start="21" name="nn"/>
+                    <label end="30" start="29" name="to"/>
+                    <label end="38" start="32" name="VV"/>
+                    <label end="48" start="40" name="nn"/>
+                    <label end="56" start="50" name="nns"/>
+                    <label end="64" start="58" name="in"/>
+                    <label end="77" start="66" name="jj"/>
+                    <label end="83" start="79" name="nns"/>
+                    <label end="87" start="85" name="cc"/>
+                    <label end="90" start="89" name="VBZ"/>
+                    <label end="96" start="92" name="VVG"/>
+                    <label end="100" start="98" name="PP$"/>
+                    <label end="107" start="102" name="nn"/>
+                    <label end="110" start="109" name="to"/>
+                    <label end="117" start="112" name="VV"/>
+                    <label end="128" start="119" name="jj"/>
+                    <label end="138" start="130" name="jj"/>
+                    <label end="147" start="140" name="nns"/>
+                    <label end="151" start="149" name="cc"/>
+                    <label end="159" start="153" name="VV"/>
+                    <label end="170" start="161" name="jj"/>
+                    <label end="177" start="172" name="nn"/>
+                    <label end="186" start="179" name="nn"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:04 PDT Wed" status="MANUAL" ID="2094419">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="147" start="130" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3921" end="128" start="119" name="Type"/>
+                    <label cBy="618" feID="3919" end="147" start="130" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="128" start="119" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="128" start="119" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="117" start="112" name="Gov"/>
+                    <label end="147" start="119" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11919" sentNo="1" paragNo="18" aPos="49710573" ID="1323151">
+            <text>The United States already has pledged dlrs 70 million to help in Kazakhstan 's destruction of underground launch silos for the SS-18 `` Satan '' intercontinental ballistic missiles it inherited from the former Soviet Union .</text>
+            <annotationSet cDate="04/27/2005 12:27:05 PDT Wed" status="UNANN" ID="2094422">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="NP"/>
+                    <label end="16" start="11" name="NP"/>
+                    <label end="24" start="18" name="rb"/>
+                    <label end="28" start="26" name="VHZ"/>
+                    <label end="36" start="30" name="VVN"/>
+                    <label end="41" start="38" name="nns"/>
+                    <label end="44" start="43" name="cd"/>
+                    <label end="52" start="46" name="cd"/>
+                    <label end="55" start="54" name="to"/>
+                    <label end="60" start="57" name="VV"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="74" start="65" name="NP"/>
+                    <label end="77" start="76" name="POS"/>
+                    <label end="89" start="79" name="nn"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="104" start="94" name="jj"/>
+                    <label end="111" start="106" name="nn"/>
+                    <label end="117" start="113" name="nns"/>
+                    <label end="121" start="119" name="in"/>
+                    <label end="125" start="123" name="dt"/>
+                    <label end="131" start="127" name="cd"/>
+                    <label end="134" start="133" name="``"/>
+                    <label end="140" start="136" name="nn"/>
+                    <label end="143" start="142" name="''"/>
+                    <label end="160" start="145" name="jj"/>
+                    <label end="170" start="162" name="jj"/>
+                    <label end="179" start="172" name="nns"/>
+                    <label end="182" start="181" name="PP"/>
+                    <label end="192" start="184" name="VVD"/>
+                    <label end="197" start="194" name="in"/>
+                    <label end="201" start="199" name="dt"/>
+                    <label end="208" start="203" name="jj"/>
+                    <label end="215" start="210" name="NP"/>
+                    <label end="221" start="217" name="NP"/>
+                    <label end="223" start="223" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:05 PDT Wed" status="MANUAL" ID="2094423">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="179" start="162" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="7207" end="143" start="127" name="Name"/>
+                    <label cBy="618" feID="3921" end="160" start="145" name="Type"/>
+                    <label cBy="618" feID="3919" end="179" start="162" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="143" start="127" name="Dep"/>
+                    <label end="160" start="145" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="143" start="127" name="N"/>
+                    <label end="160" start="145" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11920" sentNo="2" paragNo="12" aPos="81633359" ID="1323152">
+            <text>Six surface-to-surface ballistic missiles were fired in the last test .</text>
+            <annotationSet cDate="04/27/2005 12:27:05 PDT Wed" status="UNANN" ID="2094424">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="21" start="4" name="jj"/>
+                    <label end="31" start="23" name="jj"/>
+                    <label end="40" start="33" name="nns"/>
+                    <label end="45" start="42" name="VBD"/>
+                    <label end="51" start="47" name="VVN"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="58" start="56" name="dt"/>
+                    <label end="63" start="60" name="jj"/>
+                    <label end="68" start="65" name="nn"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:05 PDT Wed" status="MANUAL" ID="2094425">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="40" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3921" end="21" start="4" name="Type"/>
+                    <label cBy="618" feID="3919" end="40" start="23" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="4" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="4" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="40" start="0" name="X"/>
+                    <label end="51" start="47" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="113" docID="11925" sentNo="1" paragNo="4" aPos="64481480" ID="1323157">
+            <text>The underground silo once held a nuclear-tipped Titan II intercontinental ballistic missile .</text>
+            <annotationSet cDate="04/27/2005 12:27:07 PDT Wed" status="UNANN" ID="2094434">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="14" start="4" name="jj"/>
+                    <label end="19" start="16" name="nn"/>
+                    <label end="24" start="21" name="rb"/>
+                    <label end="29" start="26" name="VVD"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="46" start="33" name="jj"/>
+                    <label end="52" start="48" name="nn"/>
+                    <label end="55" start="54" name="NP"/>
+                    <label end="72" start="57" name="jj"/>
+                    <label end="82" start="74" name="jj"/>
+                    <label end="90" start="84" name="nn"/>
+                    <label end="92" start="92" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:07 PDT Wed" status="MANUAL" ID="2094435">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="90" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3964" end="46" start="33" name="Part"/>
+                    <label cBy="618" feID="7207" end="55" start="48" name="Name"/>
+                    <label cBy="618" feID="3921" end="72" start="57" name="Type"/>
+                    <label cBy="618" feID="3919" end="90" start="74" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="33" name="Dep"/>
+                    <label end="55" start="48" name="Dep"/>
+                    <label end="72" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="33" name="AJP"/>
+                    <label end="55" start="48" name="N"/>
+                    <label end="72" start="57" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11928" sentNo="1" paragNo="16" aPos="92698238" ID="1323160">
+            <text>Among the more spectacular was power cutoffs to a base used for space launches , and to the central command of the Strategic Rocket Forces which control Russia 's intercontinental ballistic missiles .</text>
+            <annotationSet cDate="04/27/2005 12:27:08 PDT Wed" status="UNANN" ID="2094440">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="13" start="10" name="rbr"/>
+                    <label end="25" start="15" name="jj"/>
+                    <label end="29" start="27" name="VBD"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="43" start="37" name="nns"/>
+                    <label end="46" start="45" name="to"/>
+                    <label end="48" start="48" name="dt"/>
+                    <label end="53" start="50" name="nn"/>
+                    <label end="58" start="55" name="VVN"/>
+                    <label end="62" start="60" name="in"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="77" start="70" name="nns"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="83" start="81" name="cc"/>
+                    <label end="86" start="85" name="to"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="98" start="92" name="jj"/>
+                    <label end="106" start="100" name="nn"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="123" start="115" name="jj"/>
+                    <label end="130" start="125" name="nn"/>
+                    <label end="137" start="132" name="nns"/>
+                    <label end="143" start="139" name="wdt"/>
+                    <label end="151" start="145" name="VVP"/>
+                    <label end="158" start="153" name="NP"/>
+                    <label end="161" start="160" name="POS"/>
+                    <label end="178" start="163" name="jj"/>
+                    <label end="188" start="180" name="jj"/>
+                    <label end="197" start="190" name="nns"/>
+                    <label end="199" start="199" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:08 PDT Wed" status="MANUAL" ID="2094441">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="197" start="180" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3963" end="161" start="153" name="Wielder"/>
+                    <label cBy="618" feID="3921" end="178" start="163" name="Type"/>
+                    <label cBy="618" feID="3919" end="197" start="180" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="161" start="153" name="Gen"/>
+                    <label end="178" start="163" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="161" start="153" name="Poss"/>
+                    <label end="178" start="163" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="151" start="145" name="Gov"/>
+                    <label end="197" start="153" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11932" sentNo="1" paragNo="13" aPos="64497075" ID="1323165">
+            <text>British companies sold parts for a giant gun and machine tools capable of making ballistic missiles and artillery shells to Iraq right up to its invasion of Kuwait in August , 1990 .</text>
+            <annotationSet cDate="04/27/2005 12:27:10 PDT Wed" status="UNANN" ID="2094450">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="jj"/>
+                    <label end="16" start="8" name="nns"/>
+                    <label end="21" start="18" name="VVD"/>
+                    <label end="27" start="23" name="nns"/>
+                    <label end="31" start="29" name="in"/>
+                    <label end="33" start="33" name="dt"/>
+                    <label end="39" start="35" name="jj"/>
+                    <label end="43" start="41" name="nn"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="55" start="49" name="nn"/>
+                    <label end="61" start="57" name="nns"/>
+                    <label end="69" start="63" name="jj"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="79" start="74" name="VVG"/>
+                    <label end="89" start="81" name="jj"/>
+                    <label end="98" start="91" name="nns"/>
+                    <label end="102" start="100" name="cc"/>
+                    <label end="112" start="104" name="nn"/>
+                    <label end="119" start="114" name="nns"/>
+                    <label end="122" start="121" name="to"/>
+                    <label end="127" start="124" name="NP"/>
+                    <label end="133" start="129" name="rb"/>
+                    <label end="136" start="135" name="rb"/>
+                    <label end="139" start="138" name="to"/>
+                    <label end="143" start="141" name="PP$"/>
+                    <label end="152" start="145" name="nn"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="162" start="157" name="NP"/>
+                    <label end="165" start="164" name="in"/>
+                    <label end="172" start="167" name="NP"/>
+                    <label end="174" start="174" name=","/>
+                    <label end="179" start="176" name="cd"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:10 PDT Wed" status="MANUAL" ID="2094451">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="98" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="98" start="81" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="79" start="74" name="Gov"/>
+                    <label end="119" start="81" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11948" sentNo="2" paragNo="10" aPos="47381479" ID="1323184">
+            <text>The American discovery of Soviet ballistic missiles in Cuba in 1962 led to a standoff that ended when Moscow announced the missiles would be shipped back home .</text>
+            <annotationSet cDate="04/27/2005 12:27:18 PDT Wed" status="UNANN" ID="2094488">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="jj"/>
+                    <label end="21" start="13" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="31" start="26" name="jj"/>
+                    <label end="41" start="33" name="jj"/>
+                    <label end="50" start="43" name="nns"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="58" start="55" name="NP"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="66" start="63" name="cd"/>
+                    <label end="70" start="68" name="VVN"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="75" start="75" name="dt"/>
+                    <label end="84" start="77" name="nn"/>
+                    <label end="89" start="86" name="wdt"/>
+                    <label end="95" start="91" name="VVD"/>
+                    <label end="100" start="97" name="wrb"/>
+                    <label end="107" start="102" name="NP"/>
+                    <label end="117" start="109" name="VVD"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="130" start="123" name="nns"/>
+                    <label end="136" start="132" name="md"/>
+                    <label end="139" start="138" name="vb"/>
+                    <label end="147" start="141" name="VVN"/>
+                    <label end="152" start="149" name="rb"/>
+                    <label end="157" start="154" name="rb"/>
+                    <label end="159" start="159" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:18 PDT Wed" status="MANUAL" ID="2094489">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="50" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3963" end="31" start="26" name="Wielder"/>
+                    <label cBy="618" feID="3919" end="50" start="33" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="26" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="11961" sentNo="1" paragNo="10" aPos="53515277" ID="1323199">
+            <text>The THAAD system is supposed to counter ballistic missiles with ranges between 50 miles and 1,800 miles , and a fully operational system is supposed to be in the field by 2000 .</text>
+            <annotationSet cDate="04/27/2005 12:27:24 PDT Wed" status="UNANN" ID="2094518">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="15" start="10" name="nn"/>
+                    <label end="18" start="17" name="VBZ"/>
+                    <label end="27" start="20" name="VVN"/>
+                    <label end="30" start="29" name="to"/>
+                    <label end="38" start="32" name="VV"/>
+                    <label end="48" start="40" name="jj"/>
+                    <label end="57" start="50" name="nns"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="69" start="64" name="nns"/>
+                    <label end="77" start="71" name="in"/>
+                    <label end="80" start="79" name="cd"/>
+                    <label end="86" start="82" name="nns"/>
+                    <label end="90" start="88" name="cc"/>
+                    <label end="96" start="92" name="cd"/>
+                    <label end="102" start="98" name="nns"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="108" start="106" name="cc"/>
+                    <label end="110" start="110" name="dt"/>
+                    <label end="116" start="112" name="rb"/>
+                    <label end="128" start="118" name="jj"/>
+                    <label end="135" start="130" name="nn"/>
+                    <label end="138" start="137" name="VBZ"/>
+                    <label end="147" start="140" name="VVN"/>
+                    <label end="150" start="149" name="to"/>
+                    <label end="153" start="152" name="vb"/>
+                    <label end="156" start="155" name="in"/>
+                    <label end="160" start="158" name="dt"/>
+                    <label end="166" start="162" name="nn"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="174" start="171" name="cd"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/27/2005 12:27:24 PDT Wed" status="MANUAL" ID="2094519">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="57" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="57" start="40" name="Weapon"/>
+                    <label cBy="618" feID="3921" end="102" start="59" name="Type"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="102" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="102" start="59" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="38" start="32" name="Gov"/>
+                    <label end="102" start="40" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

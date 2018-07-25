@@ -7,7 +7,7 @@ public class PetrinetBuilderTest {
     For module testing during implementation phase
     TODO replace by JUnit representation
     */
-    public static void main(String [] args){
+    public static void main(String [] args) throws PetrinetGenerationException {
 
         //The Manager finishes the documents. if he likes it, he signs it and sends it away. If he doesnt like it, he throws it away.
 

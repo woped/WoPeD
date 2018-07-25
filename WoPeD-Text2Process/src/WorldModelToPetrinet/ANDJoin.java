@@ -1,6 +1,6 @@
 package WorldModelToPetrinet;
 
-import org.woped.core.model.petrinet.OperatorTransitionModel;
+//import org.woped.core.model.petrinet.OperatorTransitionModel;
 
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ANDJoin extends PetrinetGateway {
         this.originID=originID;
         join=elementBuilder.createTransition(text,hasResource,true,originID);
         join.setPartOfGateway(1,join.getID());
-        join.setOperatorType(OperatorTransitionModel.AND_JOIN_TYPE);
+        join.setOperatorType(102);
         join.setOrientationCode(3);
 
     }

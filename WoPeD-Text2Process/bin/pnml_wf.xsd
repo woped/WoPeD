@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns="pnml.woped.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="pnml.woped.org">
+    <xsd:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:annotation>
+        <xsd:documentation>	
+			This is the XML Schema for PNML 1.3.2c
+			according the Specification  http://www.informatik.hu-berlin.de/top/PNX/download/ISO-IEC-15909-2-Draft.0.5.0.pdf
+			and the Relax NG Files: 
+			(Basic PNML RNG) http://www.informatik.hu-berlin.de/top/pnml/basicPNML.rng
+			(PNML Type Extension PNTD) http://www.informatik.hu-berlin.de/top/pntd/ptNetb
+			(RNG for label graphics) http://www.informatik.hu-berlin.de/top/pnml/conv.rng
+			20.01.2005
+			Simon Landes (landes@woped.org)
+		
+ 
+	
+ </xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="pnml" type="pnmlType" />
+    <xsd:complexType name="pnmlType">
+        <xsd:sequence>
+            <xsd:element name="net" type="netType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="netNameType">
+        <xsd:annotation>
+            <xsd:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"
+ PetriNet </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+    <xsd:complexType name="netType">
+        <xsd:sequence>
+            <xsd:element name="name" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:complexContent mixed="false">
+                        <xsd:extension base="netNameType">
+                            <xsd:sequence>
+                                <xsd:element name="text" type="xsd:string" />
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="place" type="placeType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="transition" type="transitionType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="arc" type="arcType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="toolspecific" type="netToolspecificType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="graphics" minOccurs="0" />
+            <xsd:element name="page" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:complexContent mixed="false">
+                        <xsd:extension base="pageType" />
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="referencePlace" type="referencePlaceType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="text" type="textType" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="type" type="xsd:anyURI" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="netToolspecificType">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="toolspecificType">
+                <xsd:sequence>
+                    <xsd:element name="bounds" type="graphicsSimpleType" minOccurs="0" />
+                    <xsd:element name="scale" type="xsd:int" default="100" minOccurs="0" />
+                    <xsd:element name="treeWidth" type="xsd:int" minOccurs="0" />
+                    <xsd:element name="treeWidthRight" type="xsd:int" minOccurs="0" />
+                    <xsd:element name="overviewPanelVisible" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="treeHeightOverview" type="xsd:int" minOccurs="0" />
+                    <xsd:element name="treePanelVisible" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="verticalLayout" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="resources" type="resourcesType" minOccurs="0" />
+                    <xsd:element name="simulations" type="simulationsType" minOccurs="0" />
+                    <xsd:element ref="partnerLinks" minOccurs="0" />
+                    <xsd:element ref="variables" minOccurs="0" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="resourceMappingType">
+        <xsd:attribute name="resourceID" type="xsd:IDREF" />
+        <xsd:attribute name="resourceClass" type="xsd:IDREF" />
+    </xsd:complexType>
+    <xsd:complexType name="superModelType">
+        <xsd:attribute name="Name" type="xsd:IDREF" />
+    </xsd:complexType>
+    <xsd:complexType name="organizationUnitType">
+        <xsd:sequence>
+            <xsd:element name="SuperModel" type="superModelType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:ID" />
+    </xsd:complexType>
+    <xsd:complexType name="roleType">
+        <xsd:sequence>
+            <xsd:element name="SuperModel" type="superModelType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:ID" />
+    </xsd:complexType>
+    <xsd:complexType name="resourceType">
+        <xsd:attribute name="Name" type="xsd:ID" />
+    </xsd:complexType>
+    <xsd:complexType name="resourcesType">
+        <xsd:sequence>
+            <xsd:element name="resource" type="resourceType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="role" type="roleType" />
+                <xsd:element name="organizationUnit" type="organizationUnitType" />
+            </xsd:choice>
+            <xsd:element name="resourceMapping" type="resourceMappingType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="xsd:ID" />
+    </xsd:complexType>
+    <xsd:complexType name="nodeType">
+        <xsd:annotation>
+            <xsd:documentation> General Node Types </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="nodeNameType" minOccurs="0" />
+            <xsd:element name="graphics" type="graphicsNodeType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="nodeNameType">
+        <xsd:annotation>
+            <xsd:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="text" type="xsd:string" />
+            <xsd:element name="graphics" type="annotationGraphisType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="graphicsNodeType">
+        <xsd:sequence>
+            <xsd:element name="position" type="positionType" />
+            <xsd:element name="dimension" type="dimensionType" minOccurs="0" />
+            <xsd:element ref="fill" minOccurs="0" />
+            <xsd:element ref="line" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="placeType">
+        <xsd:annotation>
+            <xsd:documentation> Place Types</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="nodeType">
+                <xsd:sequence>
+                    <xsd:element name="initialMarking" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="text" type="xsd:string" />
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="toolspecific" type="placeToolspecificType" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="placeToolspecificType">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="toolspecificType">
+                <xsd:sequence>
+                    <xsd:element name="operator" type="operatorType" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="transitionType">
+        <xsd:annotation>
+            <xsd:documentation> Transition Types</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="nodeType">
+                <xsd:sequence>
+                    <xsd:element name="toolspecific" type="transitionToolspecificType" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="transitionToolspecificType">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="toolspecificType">
+                <xsd:sequence>
+                    <xsd:element name="trigger" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:complexContent mixed="false">
+                                <xsd:extension base="triggerType" />
+                            </xsd:complexContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:choice minOccurs="0">
+                        <xsd:element name="operator" type="operatorType" />
+                        <xsd:element name="subprocess" type="xsd:boolean" />
+                    </xsd:choice>
+                    <xsd:element name="transitionResource" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:complexContent mixed="false">
+                                <xsd:extension base="transitionResourceType" />
+                            </xsd:complexContent>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="time" type="xsd:int" minOccurs="0" />
+                    <xsd:element name="timeUnit" type="xsd:int" minOccurs="0" />
+                    <xsd:element name="orientation" type="xsd:int" minOccurs="0" />
+                    <xsd:choice minOccurs="0">
+                        <xsd:element ref="assign" />
+                        <xsd:element ref="invoke" />
+                        <xsd:element ref="reply" />
+                        <xsd:element ref="wait" />
+                        <xsd:element ref="receive" />
+                        <xsd:element ref="empty" />
+                    </xsd:choice>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="triggerType">
+        <xsd:sequence>
+            <xsd:element name="graphics" type="graphicsSimpleType" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required" />
+        <xsd:attribute name="type" type="xsd:int" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="operatorType">
+        <xsd:attribute name="id" type="xsd:string" use="required" />
+        <xsd:attribute name="type" type="xsd:int" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="transitionResourceType">
+        <xsd:sequence>
+            <xsd:element name="graphics" type="graphicsSimpleType" />
+        </xsd:sequence>
+        <xsd:attribute name="organizationalUnitName" type="xsd:IDREF" />
+        <xsd:attribute name="roleName" type="xsd:IDREF" />
+    </xsd:complexType>
+    <xsd:complexType name="arcType">
+        <xsd:annotation>
+            <xsd:documentation> Arc Types</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="inscription" type="arcNameType" minOccurs="0" />
+            <xsd:element name="graphics" type="graphicsArcType" minOccurs="0" />
+            <xsd:element name="toolspecific" type="arcToolspecificType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="source" type="xsd:IDREF" use="required" />
+        <xsd:attribute name="target" type="xsd:IDREF" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="arcToolspecificType">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="toolspecificType">
+                <xsd:sequence>
+                    <xsd:element name="route" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="probability" type="xsd:double" minOccurs="0" />
+                    <xsd:element name="displayProbabilityOn" type="xsd:boolean" minOccurs="0" />
+                    <xsd:element name="displayProbabilityPosition" type="positionType" minOccurs="0" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="arcInscriptionType">
+        <xsd:annotation>
+            <xsd:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="text" type="xsd:string" />
+            <xsd:element name="graphics" type="annotationGraphisType" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="graphicsArcType">
+        <xsd:sequence>
+            <xsd:element name="position" type="positionType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element ref="line" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="arcNameType">
+        <xsd:annotation>
+            <xsd:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pnml/conv.rng"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="text" type="xsd:int" />
+            <xsd:element name="graphics" type="annotationGraphisType" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="graphicsSimpleType">
+        <xsd:annotation>
+            <xsd:documentation> General Types </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="position" type="positionType" />
+            <xsd:element name="dimension" type="dimensionType" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="toolspecificType" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>Type for the Inheritance of the Toolspecific Types</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="tool" type="xsd:string" use="required" />
+        <xsd:attribute name="version" type="xsd:string" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="annotationGraphisType">
+        <xsd:annotation>
+            <xsd:documentation>Extension see "http://www.informatik.hu-berlin.de/top/pntd/ptNetb"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="offset" type="positionType" />
+            <xsd:element ref="fill" minOccurs="0" />
+            <xsd:element ref="line" minOccurs="0" />
+            <xsd:element ref="font" minOccurs="0" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="fill">
+        <xsd:annotation>
+            <xsd:documentation> Helper  Types / Elements</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:attribute name="color" />
+            <xsd:attribute name="gradient-color" />
+            <xsd:attribute name="gradient-rotation" type="xsd:token" />
+            <xsd:attribute name="images" type="xsd:anyURI" />
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="line">
+        <xsd:complexType>
+            <xsd:attribute name="shape" type="xsd:token" />
+            <xsd:attribute name="color" />
+            <xsd:attribute name="width" type="xsd:decimal" />
+            <xsd:attribute name="style" type="xsd:token" />
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="font">
+        <xsd:complexType>
+            <xsd:attribute name="family" />
+            <xsd:attribute name="style" />
+            <xsd:attribute name="weight" />
+            <xsd:attribute name="size" />
+            <xsd:attribute name="decoration">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:token">
+                        <xsd:enumeration value="underline" />
+                        <xsd:enumeration value="overline" />
+                        <xsd:enumeration value="line-through" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="align">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:token">
+                        <xsd:enumeration value="left" />
+                        <xsd:enumeration value="center" />
+                        <xsd:enumeration value="right" />
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:attribute>
+            <xsd:attribute name="rotation" type="xsd:decimal" />
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="dimensionType">
+        <xsd:attribute name="x" type="xsd:decimal" use="required" />
+        <xsd:attribute name="y" type="xsd:decimal" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="positionType">
+        <xsd:attribute name="x" type="xsd:decimal" use="required" />
+        <xsd:attribute name="y" type="xsd:decimal" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="pageType">
+        <xsd:annotation>
+            <xsd:documentation>structured &amp;amp; modular PNML Types</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="netType">
+                <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element name="net" type="netType" />
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="referencePlaceType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="graphics" type="graphicsNodeType" />
+            <xsd:element name="toolspecific" type="toolspecificType" />
+        </xsd:choice>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="ref" type="xsd:IDREF" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="instanceType">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="importPlace" type="importPlaceType" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="ref" type="xsd:anyURI" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="importPlaceType">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="graphics" type="graphicsNodeType" />
+            <xsd:element name="toolspecific" type="toolspecificType" />
+        </xsd:choice>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+        <xsd:attribute name="instance" type="xsd:IDREF" />
+        <xsd:attribute name="ref" type="xsd:NCName" use="required" />
+        <xsd:attribute name="parameter" type="xsd:NCName" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="simulationsType">
+        <xsd:annotation>
+            <xsd:documentation> Simulation Types </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="simulation" type="simulationType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="simulationType">
+        <xsd:sequence>
+            <xsd:element name="simulationname" type="xsd:string" />
+            <xsd:element name="simulationdate" type="xsd:dateTime" />
+            <xsd:element name="transitionsequence" type="transitionsequenceType" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="netFingerprint" type="xsd:string" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" use="required" />
+    </xsd:complexType>
+    <xsd:complexType name="transitionsequenceType">
+        <xsd:sequence>
+            <xsd:element name="occuredtransition" type="occuredtransitionType" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="occuredtransitionType">
+        <xsd:attribute name="transitionID" type="xsd:IDREF" />
+    </xsd:complexType>
+    <xsd:complexType name="tExtensibleElements">
+        <xsd:annotation>
+            <xsd:documentation>
+				This type is extended by other component types to allow elements and attributes from
+				other namespaces to be added at the modeled places.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+        </xsd:sequence>
+        <xsd:anyAttribute namespace="##other" processContents="lax" />
+    </xsd:complexType>
+    <xsd:element name="documentation" type="tDocumentation" />
+    <xsd:complexType name="tDocumentation" mixed="true">
+        <xsd:sequence>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+        <xsd:attribute name="source" type="xsd:anyURI" />
+        <xsd:attribute ref="xml:lang" />
+    </xsd:complexType>
+    <xsd:element name="partnerLinks" type="tPartnerLinks" />
+    <xsd:complexType name="tPartnerLinks">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="partnerLink" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="partnerLink" type="tPartnerLink" />
+    <xsd:complexType name="tPartnerLink">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:attribute name="name" type="xsd:NCName" use="required" />
+                <xsd:attribute name="partnerLinkType" type="xsd:QName" use="required" />
+                <xsd:attribute name="myRole" type="xsd:NCName" />
+                <xsd:attribute name="partnerRole" type="xsd:NCName" />
+                <xsd:attribute name="initializePartnerRole" type="tBoolean" />
+                <xsd:attribute name="WSDL" type="xsd:string" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="variables" type="tVariables" />
+    <xsd:complexType name="tVariables">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="variable" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="variable" type="tVariable" />
+    <xsd:complexType name="tVariable">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="from" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="BPELVariableName" use="required" />
+                <xsd:attribute name="messageType" type="xsd:QName" use="optional" />
+                <xsd:attribute name="type" type="xsd:QName" use="optional" />
+                <xsd:attribute name="element" type="xsd:QName" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="from" type="tFrom" />
+    <xsd:complexType name="tFrom" mixed="true">
+        <xsd:sequence>
+            <xsd:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+            <xsd:choice minOccurs="0">
+                <xsd:element ref="literal" minOccurs="1" />
+                <xsd:element ref="query" minOccurs="1" />
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="expressionLanguage" type="xsd:anyURI" />
+        <xsd:attribute name="variable" type="BPELVariableName" />
+        <xsd:attribute name="part" type="xsd:NCName" />
+        <xsd:attribute name="property" type="xsd:QName" />
+        <xsd:attribute name="partnerLink" type="xsd:NCName" />
+        <xsd:attribute name="endpointReference" type="tRoles" />
+        <xsd:anyAttribute namespace="##other" processContents="lax" />
+    </xsd:complexType>
+    <xsd:simpleType name="BPELVariableName">
+        <xsd:restriction base="xsd:NCName">
+            <xsd:pattern value="[^\.]+" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="tBoolean">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="yes" />
+            <xsd:enumeration value="no" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="tRoles">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="myRole" />
+            <xsd:enumeration value="partnerRole" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="literal" type="tLiteral" />
+    <xsd:complexType name="tLiteral" mixed="true">
+        <xsd:sequence>
+            <xsd:any minOccurs="0" maxOccurs="1" namespace="##any" processContents="lax" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="query" type="tQuery" />
+    <xsd:complexType name="tQuery" mixed="true">
+        <xsd:sequence>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+        <xsd:attribute name="queryLanguage" type="xsd:anyURI" />
+        <xsd:anyAttribute namespace="##other" processContents="lax" />
+    </xsd:complexType>
+    <xsd:element name="assign" type="tAssign" />
+    <xsd:complexType name="tAssign">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity">
+                <xsd:sequence>
+                    <xsd:choice maxOccurs="unbounded">
+                        <xsd:element ref="copy" minOccurs="1" />
+                        <xsd:element ref="extensionAssignOperation" minOccurs="1" />
+                    </xsd:choice>
+                </xsd:sequence>
+                <xsd:attribute name="validate" type="tBoolean" default="no" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tActivity">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="targets" minOccurs="0" />
+                    <xsd:element ref="sources" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:NCName" />
+                <xsd:attribute name="suppressJoinFailure" type="tBoolean" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="copy" type="tCopy" />
+    <xsd:complexType name="tCopy">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="from" minOccurs="1" />
+                    <xsd:element ref="to" minOccurs="1" />
+                </xsd:sequence>
+                <xsd:attribute name="keepSrcElementName" type="tBoolean" default="no" use="optional" />
+                <xsd:attribute name="ignoreMissingFromData" type="tBoolean" default="no" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="extensionAssignOperation" type="tExtensionAssignOperation" />
+    <xsd:complexType name="tExtensionAssignOperation">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="targets" type="tTargets" />
+    <xsd:complexType name="tTargets">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="joinCondition" minOccurs="0" />
+                    <xsd:element ref="target" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="joinCondition" type="tCondition" />
+    <xsd:element name="target" type="tTarget" />
+    <xsd:complexType name="tTarget">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:attribute name="linkName" type="xsd:NCName" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="sources" type="tSources" />
+    <xsd:complexType name="tSources">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="source" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="source" type="tSource" />
+    <xsd:complexType name="tSource">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="transitionCondition" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="linkName" type="xsd:NCName" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="to" type="tTo" />
+    <xsd:complexType name="tTo" mixed="true">
+        <xsd:sequence>
+            <xsd:element ref="documentation" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+            <xsd:element ref="query" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="expressionLanguage" type="xsd:anyURI" />
+        <xsd:attribute name="variable" type="BPELVariableName" />
+        <xsd:attribute name="part" type="xsd:NCName" />
+        <xsd:attribute name="property" type="xsd:QName" />
+        <xsd:attribute name="partnerLink" type="xsd:NCName" />
+        <xsd:anyAttribute namespace="##other" processContents="lax" />
+    </xsd:complexType>
+    <xsd:complexType name="tCondition">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="tExpression" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="transitionCondition" type="tCondition" />
+    <xsd:complexType name="tExpression" mixed="true">
+        <xsd:sequence>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+        </xsd:sequence>
+        <xsd:attribute name="expressionLanguage" type="xsd:anyURI" />
+        <xsd:anyAttribute namespace="##other" processContents="lax" />
+    </xsd:complexType>
+    <xsd:element name="invoke" type="tInvoke" />
+    <xsd:complexType name="tInvoke">
+        <xsd:annotation>
+            <xsd:documentation>
+				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
+				because there is another correlations element defined for the non-invoke activities.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity">
+                <xsd:sequence>
+                    <xsd:element name="correlations" type="tCorrelationsWithPattern" minOccurs="0" />
+                    <xsd:element ref="catch" minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element ref="catchAll" minOccurs="0" />
+                    <xsd:element ref="compensationHandler" minOccurs="0" />
+                    <xsd:element ref="toParts" minOccurs="0" />
+                    <xsd:element ref="fromParts" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="partnerLink" type="xsd:NCName" use="required" />
+                <xsd:attribute name="portType" type="xsd:QName" use="optional" />
+                <xsd:attribute name="operation" type="xsd:NCName" use="required" />
+                <xsd:attribute name="inputVariable" type="BPELVariableName" use="optional" />
+                <xsd:attribute name="outputVariable" type="BPELVariableName" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tCorrelationsWithPattern">
+        <xsd:annotation>
+            <xsd:documentation>
+				XSD Authors: The child element correlation needs to be a Local Element Declaration, 
+				because there is another correlation element defined for the non-invoke activities.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element name="correlation" type="tCorrelationWithPattern" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tCorrelationWithPattern">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tCorrelation">
+                <xsd:attribute name="pattern" type="tPattern" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tCatch">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivityContainer">
+                <xsd:attribute name="faultName" type="xsd:QName" />
+                <xsd:attribute name="faultVariable" type="BPELVariableName" />
+                <xsd:attribute name="faultMessageType" type="xsd:QName" />
+                <xsd:attribute name="faultElement" type="xsd:QName" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="catch" type="tCatch">
+        <xsd:annotation>
+            <xsd:documentation>
+				This element can contain all activities including the activities
+				compensate, compensateScope and rethrow.
+			</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="catchAll" type="tActivityContainer">
+        <xsd:annotation>
+            <xsd:documentation>
+				This element can contain all activities including the activities
+				compensate, compensateScope and rethrow.
+			</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="compensationHandler" type="tActivityContainer">
+        <xsd:annotation>
+            <xsd:documentation>
+				This element can contain all activities including the activities
+				compensate and compensateScope.
+			</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="toParts" type="tToParts" />
+    <xsd:complexType name="tToParts">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="toPart" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="toPart" type="tToPart" />
+    <xsd:complexType name="tToPart">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:attribute name="part" type="xsd:NCName" use="required" />
+                <xsd:attribute name="fromVariable" type="BPELVariableName" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="fromParts" type="tFromParts" />
+    <xsd:complexType name="tFromParts">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element ref="fromPart" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="fromPart" type="tFromPart" />
+    <xsd:complexType name="tFromPart">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:attribute name="part" type="xsd:NCName" use="required" />
+                <xsd:attribute name="toVariable" type="BPELVariableName" use="required" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="tPattern">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="request" />
+            <xsd:enumeration value="response" />
+            <xsd:enumeration value="request-response" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="tCorrelation">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:attribute name="set" type="xsd:NCName" use="required" />
+                <xsd:attribute name="initiate" type="tInitiate" default="no" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tActivityContainer">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:group minOccurs="1" ref="activity" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="tInitiate">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="yes" />
+            <xsd:enumeration value="join" />
+            <xsd:enumeration value="no" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:group name="activity">
+        <xsd:annotation>
+            <xsd:documentation>
+				All standard WS-BPEL 2.0 activities in alphabetical order. Basic activities
+				and structured activities.
+				Addtional constraints:
+				- rethrow activity can be used ONLY within a fault handler
+				  (i.e. "catch" and "catchAll" element)
+				- compensate or compensateScope activity can be used ONLY
+				  within a fault handler, a compensation handler or a termination handler
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:choice>
+            <xsd:element ref="assign" />
+            <xsd:element ref="empty" />
+            <xsd:element ref="invoke" />
+            <xsd:element ref="receive" />
+            <xsd:element ref="reply" />
+            <xsd:element ref="wait" />
+        </xsd:choice>
+    </xsd:group>
+    <xsd:element name="empty" type="tEmpty" />
+    <xsd:complexType name="tEmpty">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="receive" type="tReceive" />
+    <xsd:complexType name="tReceive">
+        <xsd:annotation>
+            <xsd:documentation>
+				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
+				because there is another correlations element defined for the invoke activity.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity">
+                <xsd:sequence>
+                    <xsd:element name="correlations" type="tCorrelations" minOccurs="0" />
+                    <xsd:element ref="fromParts" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="partnerLink" type="xsd:NCName" use="required" />
+                <xsd:attribute name="portType" type="xsd:QName" use="optional" />
+                <xsd:attribute name="operation" type="xsd:NCName" use="required" />
+                <xsd:attribute name="variable" type="BPELVariableName" use="optional" />
+                <xsd:attribute name="createInstance" type="tBoolean" default="no" />
+                <xsd:attribute name="messageExchange" type="xsd:NCName" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="reply" type="tReply" />
+    <xsd:complexType name="tReply">
+        <xsd:annotation>
+            <xsd:documentation>
+				XSD Authors: The child element correlations needs to be a Local Element Declaration, 
+				because there is another correlations element defined for the invoke activity.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity">
+                <xsd:sequence>
+                    <xsd:element name="correlations" type="tCorrelations" minOccurs="0" />
+                    <xsd:element ref="toParts" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="partnerLink" type="xsd:NCName" use="required" />
+                <xsd:attribute name="portType" type="xsd:QName" use="optional" />
+                <xsd:attribute name="operation" type="xsd:NCName" use="required" />
+                <xsd:attribute name="variable" type="BPELVariableName" use="optional" />
+                <xsd:attribute name="faultName" type="xsd:QName" />
+                <xsd:attribute name="messageExchange" type="xsd:NCName" use="optional" />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="tWait">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tActivity">
+                <xsd:choice>
+                    <xsd:element name="Year" type="xsd:int" />
+                    <xsd:element name="Month" type="xsd:int" />
+                    <xsd:element name="Day" type="xsd:int" />
+                    <xsd:element name="Hour" type="xsd:int" />
+                    <xsd:element name="Minute" type="xsd:int" />
+                    <xsd:element name="Second" type="xsd:int" />
+                    <xsd:element name="typ" type="xsd:int" />
+                </xsd:choice>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="wait" type="tWait" />
+    <xsd:complexType name="tCorrelations">
+        <xsd:annotation>
+            <xsd:documentation>
+				XSD Authors: The child element correlation needs to be a Local Element Declaration, 
+				because there is another correlation element defined for the invoke activity.
+			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tExtensibleElements">
+                <xsd:sequence>
+                    <xsd:element name="correlation" type="tCorrelation" minOccurs="1" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="textType">
+        <xsd:sequence>
+            <xsd:element name="phrase" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="phraseType" />
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="optional" />
+    </xsd:complexType>
+    <xsd:complexType name="phraseType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="ids" type="xsd:string" use="required" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xs:schema>

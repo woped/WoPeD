@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/23/2004 12:00:05 PDT Fri" name="Objective_influence" ID="1084" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Influencing_variable&lt;/fen&gt;, an &lt;fen&gt;Influencing_situation&lt;/fen&gt;, or an &lt;fen&gt;Influencing_entity&lt;/fen&gt; has an influence on a &lt;fen&gt;Dependent_entity&lt;/fen&gt;, &lt;fen&gt;Dependent_variable&lt;/fen&gt;,  or a &lt;fen&gt;Dependent_situation&lt;/fen&gt;. 
+
+
+&lt;ex&gt;More and more doctors realise that &lt;fex name="infs"&gt;diet&lt;/fex&gt; can &lt;t&gt;influence&lt;/t&gt; &lt;fex name="deps"&gt;disease&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Our subject is the body clock; how &lt;fex name="infs"&gt;it&lt;/fex&gt; &lt;t&gt;influences&lt;/t&gt; &lt;fex name="deps"&gt;our physiology and behaviour&lt;/fex&gt; and how it interacts with the rhythms in our environment.&lt;/ex&gt;
+
+&lt;ex&gt;But it is more likely that &lt;fex name="infe"&gt;a physical restraint&lt;/fex&gt; &lt;t&gt;influenced&lt;/t&gt; &lt;fex name="depe"&gt;the swirling liquids&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;It claimed, perhaps hollowly, that &lt;fex name="infe"&gt;NT&lt;/fex&gt; had yet to &lt;t&gt;impact&lt;/t&gt; &lt;fex name="deps"&gt;its business&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="infs"&gt;This kind of elementary boo-boo&lt;/fex&gt; would certainly &lt;t&gt;impact&lt;/t&gt; &lt;fex name="depv"&gt;video speed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 12:25:33 PDT Fri" abbrev="infe" name="Influencing_entity" ID="6321">
+        <definition>&lt;def-root&gt;A thing or person whose behavior has an effect on an &lt;fen&gt;Dependent_situation&lt;/fen&gt;, &lt;fen&gt;Dependent_variable&lt;/fen&gt;, or &lt;fen&gt;Dependent_entity&lt;/fen&gt;.
+
+
+&lt;ex&gt; Much of the acreage in this round is closer to the coastline, and as such has many implications in terms of how &lt;fex name="infe"&gt;it&lt;/fex&gt; could &lt;t&gt;impact&lt;/t&gt; upon fish spawning, local bird life, and even the Ministry of Defence in some cases&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Influencing_variable" ID="6323"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 12:28:04 PDT Fri" abbrev="depe" name="Dependent_entity" ID="6322">
+        <definition>&lt;def-root&gt;An entity, usually a thing, that is influenced in its behavior by an Influencing_entity or an Influencing_situation.
+
+&lt;ex&gt;The Committee is responsible for making recommendations to the Board regarding the group's activities as they &lt;t&gt;impact&lt;/t&gt; &lt;fex name="depe"&gt;on the environment&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_variable" ID="6325"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="04/23/2004 12:30:22 PDT Fri" abbrev="infv" name="Influencing_variable" ID="6323">
+        <definition>&lt;def-root&gt;A scalar variable (with unspecified value) which has  an effect on the Dependent_entity, Dependent_variable, or Dependent_situation.
+
+&lt;ex&gt; &lt;fex name="infv"&gt;Factors which&lt;/fex&gt; &lt;t&gt;influence&lt;/t&gt; the stability of the combination include the softness of the car and the trailer's suspension, plus the balance of the trailer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Influencing_situation" ID="6326"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="04/23/2004 12:39:51 PDT Fri" abbrev="deps" name="Dependent_situation" ID="6324">
+        <definition>&lt;def-root&gt;A situation that whose temporal or other characteristics are influenced by an Influencing_entity, Influencing_event, or Influencing_variable.
+
+&lt;ex&gt;The new network file system server line supports database or backup applications running alongside NFS input/output operations without one activity &lt;t&gt;impacting&lt;/t&gt; &lt;fex name="deps"&gt;another&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_entity" ID="6322"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="04/23/2004 12:42:33 PDT Fri" abbrev="depv" name="Dependent_variable" ID="6325">
+        <definition>&lt;def-root&gt;A scalar variable, whose value depends on the behavior of an Influencing_entity, a Influencing_variable, or an Influencing_situation.
+
+&lt;ex&gt;This kind of elementary boo-boo would certainly &lt;t&gt;impact&lt;/t&gt; &lt;fex name="depv"&gt;video speed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_situation" ID="6324"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 12:55:10 PDT Fri" abbrev="infs" name="Influencing_situation" ID="6326">
+        <definition>&lt;def-root&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Influencing_entity" ID="6321"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="285" cDate="07/19/2004 11:09:17 PDT Mon" abbrev="deg" name="Degree" ID="6964">
+        <definition>&lt;def-root&gt;The Degree to which the &lt;fen&gt;Influencing_entity&lt;/fen&gt; effects the &lt;fen&gt;Dependent_entity&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 01:43:35 PST Tue" abbrev="tim" name="Time" ID="9813">
+        <definition>&lt;def-root&gt;The time at which the influence occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 01:44:40 PST Tue" abbrev="pla" name="Place" ID="9814">
+        <definition>&lt;def-root&gt;The location at which the influencing occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 01:45:45 PST Tue" abbrev="man" name="Manner" ID="9815">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Influencing_entity&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="11/21/2006 04:12:08 PST Tue" abbrev="" name="Circumstances" ID="10845">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Transitive_action</relatedFrame>
+        <relatedFrame>Control</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Subjective_influence</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="V" name="influence.v" ID="10448" lemmaID="19883" cBy="605" cDate="04/23/2004 05:28:11 PDT Fri">
+        <definition>COD: have an influence on</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="influence"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="impact.v" ID="10449" lemmaID="19092" cBy="605" cDate="04/23/2004 05:28:46 PDT Fri">
+        <definition>COD:  have a strong effect</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="impact"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="effect.n" ID="10450" lemmaID="12259" cBy="605" cDate="04/23/2004 05:29:32 PDT Fri">
+        <definition>FN: an influence</definition>
+        <sentenceCount annotated="10" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="effect"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="influence.n" ID="10451" lemmaID="49025" cBy="605" cDate="04/23/2004 05:33:10 PDT Fri">
+        <definition>FN: effect</definition>
+        <sentenceCount annotated="52" total="305"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="influence"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="affect.v" ID="11090" lemmaID="669" cBy="605" cDate="10/29/2004 05:29:47 PDT Fri">
+        <definition>COD: have an effect on; make a difference to.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="affect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="impact.n" ID="11091" lemmaID="19091" cBy="605" cDate="10/29/2004 05:30:37 PDT Fri">
+        <definition>COD: a marked effect or influence</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="impact"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/02/2005 02:04:00 PST Wed" name="Delivery" ID="1344" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Deliverer&lt;/fen&gt; hands off a &lt;fen&gt;Theme&lt;/fen&gt; to a &lt;fen&gt;Recipient&lt;/fen&gt; or (more indirectly) a &lt;fen&gt;Goal&lt;/fen&gt; location, which is accessible to the &lt;fen&gt;Recipient&lt;/fen&gt;. 
+
+
+&lt;ex&gt;&lt;fex name="del"&gt;The staff of Ebags&lt;/fex&gt; &lt;t&gt;delivered&lt;/t&gt; &lt;fex name="Theme"&gt;the umbrella&lt;/fex&gt; &lt;fex name="Time"&gt;well ahead of schedule&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;In each class &lt;fex name="del"&gt;a dove&lt;/fex&gt; flew in and &lt;t&gt;delivered&lt;/t&gt; &lt;fex name="Theme"&gt;a red rose&lt;/fex&gt; &lt;fex name="rec"&gt;to Ginny&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;The Pontifical Delegation for the &lt;t&gt;delivery&lt;/t&gt; &lt;fex name="Theme"&gt;of the Icon of the Kazan Mother of God&lt;/fex&gt; will arrive tomorrow. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="del" name="Deliverer" ID="7587">
+        <definition>&lt;def-root&gt;This is the person who completes the movement of the &lt;fen&gt;Theme&lt;/fen&gt; after having transported it.
+
+&lt;ex&gt;That afternoon, &lt;fex name="del"&gt;a staff courier&lt;/fex&gt; &lt;t&gt;delivered&lt;/t&gt; the box from St. Petersburg to Largo.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="goa" name="Goal" ID="7589">
+        <definition>&lt;def-root&gt;The end of the path and intended goal of the sending.
+
+&lt;ex&gt;I &lt;t&gt;delivered&lt;/t&gt; the packages &lt;fex name="Goal"&gt;to the storage room&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="Theme" name="Theme" ID="7591">
+        <definition>&lt;def-root&gt;The objects being delivered.
+
+&lt;ex&gt;I &lt;t&gt;delivered&lt;/t&gt; &lt;fex name="Theme"&gt;the documents&lt;/fex&gt; to the court house.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="veh" name="Vehicle" ID="7592">
+        <definition>&lt;def-root&gt;The vehicle employed by the &lt;fen&gt;Deliverer&lt;/fen&gt;.
+
+&lt;ex&gt;I polished it until the last blemish had vanished, then &lt;t&gt;delivered&lt;/t&gt; it &lt;fex name="veh"&gt;by wheelbarrow&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="dep" name="Depictive" ID="7594">
+        <definition>&lt;def-root&gt;Depictive phrase describing the &lt;fen&gt;Deliverer&lt;/fen&gt; or &lt;fen&gt;Theme&lt;/fen&gt;
+
+&lt;ex&gt;They &lt;t&gt;delivered&lt;/t&gt; my cable box &lt;fex name="dep"&gt;broken&lt;/fex&gt; three times.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="man" name="Manner" ID="7596">
+        <definition>&lt;def-root&gt;Any description of the delivery event  which is not covered by more specific FEs, including epistemic modification (&lt;ment&gt;probably&lt;/ment&gt;, &lt;ment&gt;presumably&lt;/ment&gt;, &lt;ment&gt;mysteriously&lt;/ment&gt;),  secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of the &lt;fen&gt;Deliverer&lt;/fen&gt; that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).
+
+&lt;ex&gt; As was customary, she had &lt;fex name="man"&gt;eagerly&lt;/fex&gt; &lt;t&gt;delivered&lt;/t&gt; the morning paper to her parents' room&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="rec" name="Recipient" ID="7597">
+        <definition>&lt;def-root&gt;This is the &lt;fen&gt;Recipient&lt;/fen&gt; of the sent &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;Tess &lt;t&gt;delivered&lt;/t&gt; a package &lt;fex name="rec"&gt;to Abby and her kitty&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Goal" ID="7589"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="pur" name="Purpose" ID="7598">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Purpose&lt;/fen&gt; of the delivery.
+
+&lt;ex&gt;Rachel &lt;t&gt;delivered&lt;/t&gt; the letter to her mother &lt;fex name="Purpose"&gt;to see how she would react on getting it&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="Reas" name="Reason" ID="7599">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for the delivery.
+
+&lt;ex&gt;Letters are generally &lt;t&gt;delivered&lt;/t&gt; in the morning &lt;fex name="Reason"&gt;because that's when most people are home&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="Time" name="Time" ID="7600">
+        <definition>&lt;def-root&gt;When the delivery takes place
+
+&lt;ex&gt;I &lt;t&gt;delivered&lt;/t&gt; the letter to you &lt;fex name="Time"&gt;last week&lt;/fex&gt;, Sir.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="CT" name="Co_theme" ID="7601">
+        <definition>&lt;def-root&gt;An additional theme delivered along with the main &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt; I ordered a cappuccino and he &lt;t&gt;delivered&lt;/t&gt; it &lt;fex name="CT"&gt;along with a ricebubble sweet snack&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="con" name="Container" ID="7602">
+        <definition>&lt;def-root&gt;A container in which the &lt;fen&gt;Theme&lt;/fen&gt; is delivered.
+
+&lt;ex&gt;We &lt;t&gt;delivered&lt;/t&gt; the roses &lt;fex name="con"&gt;in a beautiful vase&lt;/fex&gt; as you requested.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/02/2005 02:04:00 PST Wed" abbrev="Place" name="Place" ID="7603">
+        <definition>&lt;def-root&gt;The location at which the delivery takes place.
+
+&lt;ex&gt;Barney &lt;t&gt;delivered&lt;/t&gt; the letter on Monday &lt;fex name="Place"&gt;in Sheboygan&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/03/2005 02:29:37 PDT Tue" abbrev="spe" name="Speed" ID="7943">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; at which the &lt;fen&gt;Deliverer&lt;/fen&gt; delivers the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;This service is for our clients who need &lt;fex name="spe"&gt;speedy&lt;/fex&gt; &lt;t&gt;delivery&lt;/t&gt; of their goods.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="05/03/2005 02:33:43 PDT Tue" abbrev="cir" name="Circumstances" ID="7944">
+        <definition>&lt;def-root&gt;The conditions under which the delivery takes place.
+
+&lt;ex&gt;Purchases over $400 are &lt;t&gt;delivered&lt;/t&gt; for free.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="05/04/2005 10:49:26 PDT Wed" abbrev="sou" name="Source" ID="7946">
+        <definition>&lt;def-root&gt;The location of the &lt;fen&gt;Theme&lt;/fen&gt; before the delivery process begins.
+
+&lt;ex&gt;We offer direct &lt;t&gt;delivery&lt;/t&gt; of all of your packages &lt;fex name="sou"&gt;from anywhere in the UK&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/04/2005 10:52:15 PDT Wed" abbrev="mea" name="Means" ID="7947">
+        <definition>&lt;def-root&gt;The Means are intermediate actions performed by the &lt;fen&gt;Deliverer&lt;/fen&gt; in order to move the package to the &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;He always &lt;t&gt;delivers&lt;/t&gt; the papers &lt;fex name="mea"&gt;by tossing them through people's windows&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="05/04/2005 10:53:53 PDT Wed" abbrev="pat" name="Path" ID="7948">
+        <definition>&lt;def-root&gt;The path along which the &lt;fen&gt;Theme&lt;/fen&gt; moves while being delivered.
+
+&lt;ex&gt;He &lt;t&gt;delivered&lt;/t&gt; it &lt;fex name="pat"&gt;through the transom&lt;/fex&gt; .&lt;/ex&gt;
+
+&lt;ex&gt;Oil &lt;t&gt;deliveries&lt;/t&gt; were &lt;m&gt;made&lt;/m&gt; &lt;fex name="pat"&gt;along the interstate&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/05/2007 11:54:34 PST Fri" abbrev="" name="Beneficiary" ID="10952">
+        <definition>&lt;def-root&gt;The person for whom the Delivery action occurs. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="01/05/2007 11:59:25 PST Fri" abbrev="" name="Event_description" ID="10953">
+        <definition>&lt;def-root&gt;This FE applies to appraisals of the Delivery event. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/05/2007 12:11:16 PST Fri" abbrev="" name="Period_of_iterations" ID="10954">
+        <definition>&lt;def-root&gt;The length of time from when the Delivery event began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Product_delivery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Sending</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="deliver.v" ID="11664" lemmaID="10057" cBy="605" cDate="03/02/2005 02:34:41 PST Wed">
+        <definition>FN: bring and hand over to the appropriate recipient.</definition>
+        <sentenceCount annotated="31" total="320"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deliver"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="delivery.n" ID="11665" lemmaID="10060" cBy="605" cDate="03/02/2005 02:36:08 PST Wed">
+        <definition>COD: the action of delivering something, especially letters or goods.</definition>
+        <sentenceCount annotated="52" total="504"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="delivery"/>
+    </lexUnit>
+</frame>

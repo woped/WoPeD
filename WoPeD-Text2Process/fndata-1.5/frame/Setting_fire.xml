@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="669" cDate="03/06/2002 03:35:03 PST Wed" name="Setting_fire" ID="283" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes either the creation of a &lt;fen&gt;Flame&lt;/fen&gt; by a &lt;fen&gt;Kindler&lt;/fen&gt; or the igniting of &lt;fen&gt;Flammables&lt;/fen&gt; by a &lt;fen&gt;Kindler&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Kindler"&gt;Taliban militants&lt;/fex&gt; recently &lt;t&gt;set fire&lt;/t&gt; &lt;fex name="Flammables"&gt;to several schools&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Flame"&gt;The fire&lt;/fex&gt; &lt;t&gt;ignited&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="03/06/2002 03:47:25 PST Wed" abbrev="Kindler" name="Kindler" ID="2449">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Kindler&lt;/fen&gt; is the person performing the intentional act.
+&lt;ex&gt; &lt;fex name="Kindler"&gt;Mark&lt;/fex&gt; &lt;t&gt;started&lt;/t&gt; &lt;fex name="Flame"&gt;the fire&lt;/fex&gt; with a magnifying glass. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="2455"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="03/06/2002 03:59:57 PST Wed" abbrev="Flame" name="Flame" ID="2450">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Flame&lt;/fen&gt; is what is created by the Kindler.
+&lt;ex&gt;&lt;fex name="Kindler"&gt;Oscar&lt;/fex&gt; &lt;t&gt;started&lt;/t&gt; &lt;fex name="Flame"&gt;the fire&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="03/06/2002 04:04:34 PST Wed" abbrev="Flambls" name="Flammables" ID="2451">
+        <definition>&lt;def-root&gt;The Flamables is the the object that is set on fire by the Kindler.
+&lt;ex&gt;&lt;fex name="Kindler"&gt;Tracy&lt;/fex&gt; &lt;t&gt;set&lt;/t&gt; &lt;fex name="Flammables"&gt;the couch&lt;/fex&gt; &lt;t&gt;on fire&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="03/11/2002 10:08:53 PST Mon" abbrev="Cause" name="Cause" ID="2455">
+        <definition>&lt;def-root&gt;The cause of the fire.
+&lt;ex&gt;&lt;fex name="Cause"&gt;A spark&lt;/fex&gt; &lt;t&gt;ignited&lt;/t&gt; &lt;fex name="Flammables"&gt;the curtains&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="03/11/2002 10:24:11 PST Mon" abbrev="Time" name="Time" ID="2456">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="03/11/2002 10:24:37 PST Mon" abbrev="Place" name="Place" ID="2457">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/19/2006 04:16:49 PST Thu" abbrev="man" name="Manner" ID="9865">
+        <definition>&lt;def-root&gt;Any description of the intentional act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of a &lt;fen&gt;Kindler&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/19/2006 04:19:00 PST Thu" abbrev="mea" name="Means" ID="9866">
+        <definition>&lt;def-root&gt;An event brought about by the &lt;fen&gt;Cause&lt;/fen&gt; or the &lt;fen&gt;Kindler&lt;/fen&gt; that actually makes the &lt;fen&gt;Flammables&lt;/fen&gt; catch fire.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="03/05/2009 01:47:31 PST Thu" abbrev="" name="Explanation" ID="13140">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="03/09/2009 10:16:13 PDT Mon" abbrev="" name="Containing_event" ID="13141">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or state of affairs that holds at a time that includes the time during which the event or state of affairs reported by the target occurs and of which it is taken to be a part.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="09/23/2009 04:02:04 PDT Wed" abbrev="" name="Depictive" ID="13453">
+        <definition>&lt;def-root&gt;This FE describes the &lt;fen&gt;Kindler&lt;/fen&gt; as being in some state during the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Flame" ID="2450"/>
+        <memberFE name="Flammables" ID="2451"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Arson</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="start fire.v" ID="5180" lemmaID="45513" cBy="669" cDate="03/06/2002 04:31:04 PST Wed">
+        <definition>FN: ignite</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="start"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="fire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="light.v" ID="5181" lemmaID="22297" cBy="669" cDate="03/06/2002 04:37:03 PST Wed">
+        <definition>FN: ignite something. "Alan gathered sticks and lit a fire."</definition>
+        <sentenceCount annotated="22" total="265"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="light"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ignite.v" ID="5182" lemmaID="18924" cBy="669" cDate="03/06/2002 04:40:17 PST Wed">
+        <definition>FN: cause to catch fire</definition>
+        <sentenceCount annotated="11" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ignite"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="torch.v" ID="5183" lemmaID="45514" cBy="669" cDate="03/06/2002 04:41:43 PST Wed">
+        <definition>COD: set fire to. "The shops had been looted and torched."</definition>
+        <sentenceCount annotated="5" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="torch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="kindle.v" ID="5193" lemmaID="21328" cBy="296" cDate="03/11/2002 10:55:23 PST Mon">
+        <definition>COD: light (a flame); set on fire. </definition>
+        <sentenceCount annotated="6" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="kindle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="combust.v" ID="5194" lemmaID="7274" cBy="296" cDate="03/11/2002 11:00:51 PST Mon">
+        <definition>COD: with obj. consume or be consumed by fire. </definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="combust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spark.v" ID="5195" lemmaID="37166" cBy="296" cDate="03/11/2002 11:12:09 PST Mon">
+        <definition>COD: with obj. ignite. </definition>
+        <sentenceCount annotated="7" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spark"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="alight.a" ID="15310" lemmaID="1007" cBy="597" cDate="03/05/2009 01:20:16 PST Thu">
+        <definition>FN: (set) on fire</definition>
+        <sentenceCount annotated="15" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="alight"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="ablaze.a" ID="15311" lemmaID="119" cBy="597" cDate="03/05/2009 01:20:52 PST Thu">
+        <definition>FN: (set) on fire</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ablaze"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="on fire.a" ID="15313" lemmaID="50983" cBy="597" cDate="03/06/2009 01:07:46 PST Fri">
+        <definition>FN: being burnt by flames; must occur with support verb 'set' in this frame</definition>
+        <sentenceCount annotated="20" total="337"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="fire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="set fire to.v" ID="15314" lemmaID="50984" cBy="597" cDate="03/09/2009 11:11:55 PDT Mon">
+        <definition>FN: ignite</definition>
+        <sentenceCount annotated="20" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="fire"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="PREP" name="to"/>
+    </lexUnit>
+</frame>

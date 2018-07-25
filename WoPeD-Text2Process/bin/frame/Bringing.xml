@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="11/16/2001 11:59:50 PST Fri" name="Bringing" ID="240" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame concerns the movement of a &lt;fen&gt;Theme&lt;/fen&gt; and an &lt;fen&gt;Agent&lt;/fen&gt; and/or &lt;fen&gt;Carrier&lt;/fen&gt;.   The &lt;fen&gt;Agent&lt;/fen&gt;, a person or other sentient entity, controls the shared &lt;fen&gt;Path&lt;/fen&gt; by moving the &lt;fen&gt;Theme&lt;/fen&gt; during the motion. In other words, the &lt;fen&gt;Agent&lt;/fen&gt; has overall motion in directing the motion of the &lt;fen&gt;Theme&lt;/fen&gt;.  The &lt;fen&gt;Carrier&lt;/fen&gt; may be a separate entity, or it may be the &lt;fen&gt;Agent&lt;/fen&gt;'s body. The &lt;fen&gt;Constant_location&lt;/fen&gt; may be a subregion of the &lt;fen&gt;Agent&lt;/fen&gt;'s body or (a subregion of) a vehicle that the &lt;fen&gt;Agent&lt;/fen&gt; uses.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Karl&lt;/fex&gt; &lt;t&gt;carried&lt;/t&gt; &lt;fex name="Theme"&gt;the books&lt;/fex&gt; &lt;fex name="Path"&gt;across campus&lt;/fex&gt; &lt;fex name="goa"&gt;to the library&lt;/fex&gt; &lt;fex name="CL"&gt;on his head&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Karl&lt;/fex&gt; &lt;t&gt;carried&lt;/t&gt; &lt;fex name="Theme"&gt;the books&lt;/fex&gt; &lt;fex name="Path"&gt;across campus&lt;/fex&gt; &lt;fex name="goa"&gt;to the library&lt;/fex&gt; &lt;fex name="CL"&gt;in his truck&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Karl&lt;/fex&gt; &lt;t&gt;carried&lt;/t&gt; &lt;fex name="Theme"&gt;the books&lt;/fex&gt; &lt;fex name="Path"&gt;across campus&lt;/fex&gt; &lt;fex name="goa"&gt;to the library&lt;/fex&gt; &lt;fex name="Carrier"&gt;by truck&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Carrier"&gt;The truck&lt;/fex&gt; &lt;t&gt;carried&lt;/t&gt; &lt;fex name="Theme"&gt;the books&lt;/fex&gt; &lt;fex name="Path"&gt;across campus&lt;/fex&gt; &lt;fex name="goa"&gt;to the library&lt;/fex&gt; &lt;fex name="CL"&gt;in specially designed boxes&lt;/fex&gt;.&lt;/ex&gt;
+The  FEs include &lt;fen&gt;Path&lt;/fen&gt;, &lt;fen&gt;Goal&lt;/fen&gt;, and &lt;fen&gt;Source&lt;/fen&gt;.  &lt;fen&gt;Area&lt;/fen&gt; is an area that contains the motion when the path is understood as irregular.  
+This frame emphasizes the path of movement as opposed to the FEs Source or Goal as in Filling or Placing. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/16/2001 12:02:38 PST Fri" abbrev="Agt" name="Agent" ID="2117">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is a sentient being who physically controls the movement of the &lt;fen&gt;Theme&lt;/fen&gt; via the carrier, accompanying the &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;Karl&lt;/fex&gt; &lt;t&gt;carried&lt;/t&gt; the books across the campus to the library.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/16/2001 12:04:48 PST Fri" abbrev="goa" name="Goal" ID="2118">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; identifies the endpoint of the path.  
+
+&lt;ex&gt;Karl &lt;t&gt;carried&lt;/t&gt; the books &lt;fex name="goa"&gt;to the library&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="2123"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/16/2001 12:06:07 PST Fri" abbrev="sou" name="Source" ID="2119">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; indicates the beginning of the path along which the &lt;fen&gt;Theme&lt;/fen&gt; travels.  
+
+&lt;ex&gt;Karl &lt;t&gt;hauled&lt;/t&gt; the books &lt;fex name="sou"&gt;from the library&lt;/fex&gt;  to the office.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="2123"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/16/2001 12:07:39 PST Fri" abbrev="Path" name="Path" ID="2120">
+        <definition>&lt;def-root&gt;Path along which carrying occurs.
+&lt;ex&gt;Karl &lt;t&gt;carried&lt;/t&gt; the books &lt;fex name="Path"&gt;across the campus&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2123"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/16/2001 12:08:38 PST Fri" abbrev="Theme" name="Theme" ID="2121">
+        <definition>&lt;def-root&gt;The objects being carried.
+&lt;ex&gt;Karl &lt;t&gt;toted&lt;/t&gt; &lt;fex name="Theme"&gt;the books&lt;/fex&gt; to the car.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="11/16/2001 12:10:50 PST Fri" abbrev="CL" name="Constant_location" ID="2122">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Constant_location&lt;/fen&gt; expresses the location of the &lt;fen&gt;Theme&lt;/fen&gt; relative to the &lt;fen&gt;Carrier&lt;/fen&gt;.  This relationship holds for the entire length of the carrying event.
+
+&lt;ex&gt;Karl &lt;t&gt;took&lt;/t&gt; the books to the library &lt;fex name="CL"&gt;in his car&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Karl &lt;t&gt;carried&lt;/t&gt; the books to the library &lt;fex name="CL"&gt;in his arms&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="11/21/2001 12:55:30 PST Wed" abbrev="Area" name="Area" ID="2123">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; is used for descriprion of a general area in which the carrying action takes place when the motion is understood to be irregular or not to consist of a single, linear path.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="11/21/2001 12:55:30 PST Wed" abbrev="Dep" name="Depictive" ID="2125">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Depictive&lt;/fen&gt; identifies a phrase describing the &lt;fen&gt;Carrier&lt;/fen&gt;, &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Theme&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="11/21/2001 12:55:30 PST Wed" abbrev="Dist" name="Distance" ID="2126">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Distance&lt;/fen&gt; the &lt;fen&gt;Theme&lt;/fen&gt; is carried.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="11/21/2001 12:55:30 PST Wed" abbrev="Manr" name="Manner" ID="2127">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt;  in which the &lt;fen&gt;Carrier&lt;/fen&gt; or &lt;fen&gt;Agent&lt;/fen&gt;carries the &lt;fen&gt;Theme&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/12/2003 10:49:59 PDT Thu" abbrev="" name="Speed" ID="4625">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the carrying or transporting occurs.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/29/2003 09:54:27 PDT Tue" abbrev="Pps" name="Purpose" ID="4850">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Carrier&lt;/fen&gt; or &lt;fen&gt;Agent&lt;/fen&gt;carries the &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;ex&gt;We had to &lt;t&gt;carry&lt;/t&gt; the heavy weights all the way to the top of the hill&lt;fex name="Pps"&gt;to show our strength&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/30/2003 02:49:07 PDT Wed" abbrev="Car" name="Carrier" ID="4863">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Carrier&lt;/fen&gt; provides support for the &lt;fen&gt;Theme&lt;/fen&gt;.  Movement of the &lt;fen&gt;Carrier&lt;/fen&gt; results in movement of the &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Car"&gt;The boat&lt;/fex&gt; &lt;t&gt;ferried&lt;/t&gt; the troops across the river.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/30/2003 03:23:22 PDT Wed" abbrev="Mns" name="Means" ID="4866">
+        <definition>&lt;def-root&gt;The actions the &lt;fen&gt;Agent&lt;/fen&gt; takes to move the &lt;fen&gt;Theme&lt;/fen&gt;.
+&lt;ex&gt;The books were &lt;t&gt;taken&lt;/t&gt; to the library &lt;fex name="Mns"&gt;by helicopter deliveries&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;I &lt;t&gt;haul&lt;/t&gt; books &lt;fex name="Mns"&gt;by putting them on top of my head&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:40:51 PDT Thu" abbrev="Place" name="Place" ID="5453">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the general area that serves as a setting for the specific motion of the &lt;fen&gt;Agent&lt;/fen&gt; and &lt;fen&gt;Theme&lt;/fen&gt; (with &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, or &lt;fen&gt;Goal&lt;/fen&gt;).  
+&lt;ex&gt;&lt;fex name="Place"&gt;Even in such a small port&lt;/fex&gt;, these boats would &lt;t&gt;transport&lt;/t&gt; many tons of trade-goods in to shore annually.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:40:51 PDT Thu" abbrev="Time" name="Time" ID="5454">
+        <definition>&lt;def-root&gt;The time in which the carrying event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/02/2006 11:47:01 PDT Fri" abbrev="" name="Explanation" ID="10186">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows. This often means that the Explanation causes the target's proposition, but not in all cases. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/06/2006 02:41:53 PDT Tue" abbrev="" name="Beneficiary" ID="10246">
+        <definition>&lt;def-root&gt;This FE describes the particpant for whom the bringing is beneficial. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="11/29/2006 03:34:01 PST Wed" abbrev="" name="Particular_iteration" ID="10884">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="12/01/2006 03:31:09 PST Fri" abbrev="" name="Frequency" ID="10899">
+        <definition>&lt;def-root&gt;This frame element is used to indicate the location of a participant in cases where the multiple participants of an event are not co-located in the typical fashion. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/05/2006 04:52:14 PST Tue" abbrev="" name="Degree" ID="10929">
+        <definition>&lt;def-root&gt;This frame element selects some gradable attribute and modifies the expected value for it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/06/2006 01:19:03 PST Wed" abbrev="" name="Co_participant" ID="10930">
+        <definition>&lt;def-root&gt;Co_participant is an entity that participates in a coordinated way in the same event as the primary protagonist, regardless of whether the protagonist, and hence the Co_participant, is more agent- or more undergoer-like.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/06/2006 01:37:43 PST Wed" abbrev="" name="Duration" ID="10931">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="597" cDate="07/25/2008 04:24:49 PDT Fri" abbrev="" name="Period_of_iterations" ID="13038">
+        <definition>&lt;def-root&gt;This FE is minimally distinct from Duration and Duration_of final_state in that the clause described is conveyed to be iterative.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="2118"/>
+        <memberFE name="Source" ID="2119"/>
+        <memberFE name="Path" ID="2120"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="2117"/>
+        <memberFE name="Carrier" ID="4863"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Smuggling</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Cause_motion</relatedFrame>
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Sending</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="V" name="lug.v" ID="4456" lemmaID="22926" cBy="296" cDate="11/21/2001 12:38:04 PST Wed">
+        <definition>COD: carry or drag with great effort</definition>
+        <sentenceCount annotated="14" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lug"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="haul.v" ID="4457" lemmaID="17562" cBy="296" cDate="11/21/2001 01:00:06 PST Wed">
+        <definition>COD: transport in a truck or cart</definition>
+        <sentenceCount annotated="45" total="749"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="haul"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wheel.v" ID="4458" lemmaID="43885" cBy="296" cDate="11/21/2001 01:03:23 PST Wed">
+        <definition>FN: carry in or on a vehicle with wheels</definition>
+        <sentenceCount annotated="13" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wheel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cart.v" ID="4459" lemmaID="5624" cBy="296" cDate="11/21/2001 01:06:11 PST Wed">
+        <definition>FN: carry, sometimes in a cart</definition>
+        <sentenceCount annotated="8" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cart"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="carry.v" ID="4470" lemmaID="5613" cBy="296" cDate="11/26/2001 12:56:27 PST Mon">
+        <definition>COD: move or transport from one place to another. </definition>
+        <sentenceCount annotated="24" total="377"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="carry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="hump.v" ID="4471" lemmaID="18658" cBy="296" cDate="11/26/2001 01:06:56 PST Mon">
+        <definition>COD: with obj. and adverbial of direction informal lift or carry (a heavy object) with difficulty. </definition>
+        <sentenceCount annotated="7" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hump"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="8730" lemmaID="14858" cBy="664" cDate="06/03/2003 03:09:40 PDT Tue">
+        <definition>FN: transport by air.</definition>
+        <sentenceCount annotated="16" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="transport.v" ID="8731" lemmaID="41061" cBy="664" cDate="06/03/2003 03:10:37 PDT Tue">
+        <definition>COD: take or carry from one place to another by means of a vehicle, aircraft, or ship.</definition>
+        <sentenceCount annotated="28" total="250"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="transport"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="take.v" ID="8732" lemmaID="39414" cBy="664" cDate="06/03/2003 03:12:09 PDT Tue">
+        <definition>COD: carry or bring with one; convey or guide. </definition>
+        <sentenceCount annotated="25" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drive.v" ID="8733" lemmaID="11795" cBy="664" cDate="06/03/2003 03:13:26 PDT Tue">
+        <definition>COD: convey in a car. </definition>
+        <sentenceCount annotated="23" total="211"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drive"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="schlep.v" ID="8734" lemmaID="47834" cBy="664" cDate="06/03/2003 03:18:35 PDT Tue">
+        <definition>COD:  haul or carry with difficulty.</definition>
+        <sentenceCount annotated="1" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="schlep"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Carrier" POS="V" name="truck.v" ID="8735" lemmaID="47835" cBy="664" cDate="06/03/2003 03:26:11 PDT Tue">
+        <definition>COD: convey by truck.</definition>
+        <sentenceCount annotated="3" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="truck"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tote.v" ID="8738" lemmaID="40813" cBy="664" cDate="06/03/2003 05:08:48 PDT Tue">
+        <definition>COD: carry. </definition>
+        <sentenceCount annotated="5" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tote"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="trundle.v" ID="8739" lemmaID="41388" cBy="664" cDate="06/03/2003 05:12:59 PDT Tue">
+        <definition>FN: to move (s.t. with wheels).</definition>
+        <sentenceCount annotated="11" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trundle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ferry.v" ID="8755" lemmaID="14193" cBy="296" cDate="06/09/2003 12:40:36 PDT Mon">
+        <definition>COD: convey by ferry or other transport, especially on short, regular trips. </definition>
+        <sentenceCount annotated="53" total="238"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ferry"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="jet.v" ID="8865" lemmaID="20930" cBy="296" cDate="06/16/2003 01:16:30 PDT Mon">
+        <definition>FN: transport by means of jet aircraft</definition>
+        <sentenceCount annotated="2" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jet"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="paddle.v" ID="8867" lemmaID="27500" cBy="296" cDate="06/16/2003 01:40:11 PDT Mon">
+        <definition>FN: transport by non-motorized watercraft</definition>
+        <sentenceCount annotated="1" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="paddle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="motor.v" ID="8870" lemmaID="25032" cBy="296" cDate="06/16/2003 01:44:39 PDT Mon">
+        <definition>FN: transport by means of motor vehicle</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="motor"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="row.v" ID="8881" lemmaID="33650" cBy="296" cDate="06/17/2003 09:11:24 PDT Tue">
+        <definition>FN: transport by means of non-motorized watercraft</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="row"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="convey.v" ID="9175" lemmaID="8210" cBy="618" cDate="07/30/2003 03:31:21 PDT Wed">
+        <definition>COD: transport or carry to a place.</definition>
+        <sentenceCount annotated="13" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convey"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Carrier" POS="V" name="bike.v" ID="9176" lemmaID="3555" cBy="618" cDate="07/30/2003 03:32:47 PDT Wed">
+        <definition>FN: to convey by bicycle.</definition>
+        <sentenceCount annotated="0" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bike"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bring.v" ID="9920" lemmaID="4627" cBy="605" cDate="11/18/2003 06:27:19 PST Tue">
+        <definition>COD: carry or accompany to a place. </definition>
+        <sentenceCount annotated="54" total="657"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bring"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bear.v" ID="12026" lemmaID="3106" cBy="303" cDate="05/04/2005 03:24:17 PDT Wed">
+        <definition>COD: carry.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fetch.v" ID="12027" lemmaID="14215" cBy="303" cDate="05/04/2005 03:28:46 PDT Wed">
+        <definition>COD: go for and bring back.</definition>
+        <sentenceCount annotated="16" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fetch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="get.v" ID="12028" lemmaID="16168" cBy="303" cDate="05/04/2005 03:43:05 PDT Wed">
+        <definition>FN: bring</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="get"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="portable.a" ID="13641" lemmaID="29806" cBy="618" cDate="10/31/2006 01:15:34 PST Tue">
+        <definition>COD: able to be easily carried or moved.</definition>
+        <sentenceCount annotated="21" total="179"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="portable"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="mobile.a" ID="13901" lemmaID="24640" cBy="361" cDate="02/28/2007 04:18:35 PST Wed">
+        <definition>COD: able to move or be moved freely or easily.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="mobile"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="transport.n" ID="14508" lemmaID="50717" cBy="361" cDate="08/02/2007 05:15:50 PDT Thu">
+        <definition>FN: the action of bringing something from one place to another by some carrier. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="transport"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bus.v" ID="15649" lemmaID="5019" cBy="618" cDate="02/22/2010 11:27:39 PST Mon">
+        <definition>FN: transport a group of items.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bus"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shuttle.v" ID="15650" lemmaID="35762" cBy="618" cDate="02/22/2010 11:28:51 PST Mon">
+        <definition>FN: transport a group, as in a bus or shuttle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shuttle"/>
+    </lexUnit>
+</frame>

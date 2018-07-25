@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="10/06/2006 09:03:33 PDT Fri" name="Control" ID="1799" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Controlling_entity&lt;/fen&gt;, &lt;fen&gt;Controlling_situation&lt;/fen&gt;, or &lt;fen&gt;Controlling_variable&lt;/fen&gt; control a &lt;fen&gt;Dependent_entity&lt;/fen&gt;, &lt;fen&gt;Dependent_situation&lt;/fen&gt;, or &lt;fen&gt;Dependent_variable&lt;/fen&gt;. The latter, dependent, element or some aspect of it is not just influenced, but determined by the controlling element.
+
+&lt;ex&gt;Can &lt;fex name="cone"&gt;you&lt;/fex&gt; &lt;t&gt;control&lt;/t&gt; &lt;fex name="depe"&gt;the robot&lt;/fex&gt;?&lt;/ex&gt;
+&lt;ex&gt;Although &lt;fex name="cone"&gt;you&lt;/fex&gt; may not be able to &lt;t&gt;control&lt;/t&gt; &lt;fex name="deps"&gt;every situation&lt;/fex&gt;, you can control your reaction.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="cone"&gt;Students&lt;/fex&gt; do not &lt;m&gt;have&lt;/m&gt; &lt;t&gt;control&lt;/t&gt; &lt;fex name="depv"&gt;over the temperature of the heating water&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Everyone knows that &lt;fex name="conv"&gt;the price of oil&lt;/fex&gt; &lt;t&gt;controls&lt;/t&gt; &lt;fex name="depv"&gt;the price of asphalt&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="10/06/2006 09:03:33 PDT Fri" abbrev="cone" name="Controlling_entity" ID="10665">
+        <definition>&lt;def-root&gt;A thing or person whose behavior controls a &lt;fen&gt;Dependent_situation&lt;/fen&gt;, &lt;fen&gt;Dependent_variable&lt;/fen&gt;, or &lt;fen&gt;Dependent_entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Controlling_situation" ID="10670"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="depe" name="Dependent_entity" ID="10666">
+        <definition>&lt;def-root&gt;An entity, usually a thing, that is influenced in its behavior by an Controlling_entity or an Controlling_situation.&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_situation" ID="10668"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="conv" name="Controlling_variable" ID="10667">
+        <definition>&lt;def-root&gt;A scalar variable (with unspecified value) which has an effect on the Dependent_entity, Dependent_variable, or Dependent_situation.&lt;/def-root&gt;</definition>
+        <excludesFE name="Controlling_entity" ID="10665"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="deps" name="Dependent_situation" ID="10668">
+        <definition>&lt;def-root&gt;A situation that whose temporal or other characteristics are influenced by an Controlling_entity, Controlling_event, or Controlling_variable.&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_variable" ID="10669"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="depv" name="Dependent_variable" ID="10669">
+        <definition>&lt;def-root&gt;A scalar variable, whose value depends on the behavior of an Influencing_entity, a Influencing_variable, or an Influencing_situation.
+
+&lt;ex&gt;Move the slider on the SpeedBar while playing audio or video material to &lt;t&gt;control&lt;/t&gt; &lt;fex name="depv"&gt;playback speed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Dependent_entity" ID="10666"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="cons" name="Controlling_situation" ID="10670">
+        <definition>&lt;def-root&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Controlling_variable" ID="10667"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="deg" name="Degree" ID="10671">
+        <definition>&lt;def-root&gt;The Degree to which the &lt;fen&gt;Influencing_entity&lt;/fen&gt; effects the &lt;fen&gt;Dependent_entity&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="tim" name="Time" ID="10672">
+        <definition>&lt;def-root&gt;The time at which the controlling occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="10/06/2006 09:03:34 PDT Fri" abbrev="pla" name="Place" ID="10673">
+        <definition>&lt;def-root&gt;The location at which the controlling occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="10/06/2006 09:03:35 PDT Fri" abbrev="man" name="Manner" ID="10674">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Influencing_entity&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Objective_influence</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Be_in_control</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="control.v" ID="13610" lemmaID="8149" cBy="618" cDate="10/11/2006 02:58:37 PDT Wed">
+        <definition>FN: to (primarily) determine various features of some situation or entity.</definition>
+        <sentenceCount annotated="3" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="control"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="determine.v" ID="13611" lemmaID="10437" cBy="618" cDate="10/11/2006 03:04:16 PDT Wed">
+        <definition>COD: cause to occur in a particular way; be the decisive factor in.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="determine"/>
+    </lexUnit>
+</frame>

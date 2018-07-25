@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="09/30/2003 05:09:39 PDT Tue" name="Absorb_heat" ID="830" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Entity&lt;/fen&gt; (generally food) is exposed to a &lt;fen&gt;Heat_source&lt;/fen&gt; whose &lt;fen&gt;Temperature&lt;/fen&gt; may also be specified.  Generally, the &lt;fen&gt;Entity&lt;/fen&gt; undergoes some sort of change as a result of this process.
+
+&lt;ex&gt;&lt;fex name="ent"&gt;Bacon&lt;/fex&gt; was &lt;t&gt;frying&lt;/t&gt; &lt;fex name="Container"&gt;in the pan&lt;/fex&gt;, and a great heap of eggs already lay steaming on a plate.&lt;/ex&gt;
+&lt;ex&gt;If &lt;fex name="ent"&gt;it&lt;/fex&gt; &lt;t&gt;cooks&lt;/t&gt; &lt;fex name="tem"&gt;at 400&lt;/fex&gt; &lt;fex name="dur"&gt;for an hour&lt;/fex&gt;, it 'll be nothing but a pile of ash!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/16/2003 06:20:46 PDT Thu" abbrev="ent" name="Entity" ID="5611">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Entity&lt;/fen&gt; (often a food item)  that absorbs heat.
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;Bacon&lt;/fex&gt; &lt;t&gt;frying&lt;/t&gt; in the pan and scenting the air &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/16/2003 06:32:13 PDT Thu" abbrev="" name="Container" ID="5612">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Container&lt;/fen&gt; that holds the &lt;fen&gt;Entity&lt;/fen&gt; that absorbs the heat.
+
+&lt;ex&gt;Five fat sausages were &lt;t&gt;frying&lt;/t&gt; &lt;fex name="Container"&gt;in the pan&lt;/fex&gt; &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/16/2003 06:35:49 PDT Thu" abbrev="" name="Heat_source" ID="5613">
+        <definition>&lt;def-root&gt;This FE identifies the object that directly supplies heat to the&lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;Food was placed to &lt;t&gt;sizzle&lt;/t&gt; &lt;fex name="Heat_source"&gt;on the barbecue &lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/16/2003 06:40:51 PDT Thu" abbrev="" name="Place" ID="5614">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the heat application occurs.
+
+&lt;ex&gt; &lt;fex name="Place"&gt;In the kitchen&lt;/fex&gt; the meat &lt;t&gt;sizzled&lt;/t&gt; in the oven and a big pan of potatoes stood on the hob &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/16/2003 06:44:08 PDT Thu" abbrev="" name="Medium" ID="5615">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Medium&lt;/fen&gt; is a substance through which heat is absorbed by the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;The golden meat was &lt;t&gt;simmering&lt;/t&gt; &lt;fex name="Medium"&gt;in a sauce that seemed lifted straight out of a French coq au vin rouge&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/16/2003 06:54:34 PDT Thu" abbrev="" name="Manner" ID="5616">
+        <definition>&lt;def-root&gt;Any description of the cooking event which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way).
+
+&lt;ex&gt;Get them &lt;t&gt;frying&lt;/t&gt; &lt;fex name="Manner"&gt;slowly&lt;/fex&gt;, iin a spoonful of olive oil.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/16/2003 07:33:38 PDT Thu" abbrev="" name="Time" ID="5617">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the heat absorption takes place.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Five minutes ago&lt;/fex&gt;the eggs weren't &lt;t&gt;boiling&lt;/t&gt; yet.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/30/2004 10:32:40 PST Tue" abbrev="Cau" name="Cause" ID="7310">
+        <definition>&lt;def-root&gt;The thing or state-of-affairs that leads to the &lt;fen&gt;Entity&lt;/fen&gt; being heated and undergoing change.
+
+&lt;ex&gt;The liquid nitrogen was &lt;t&gt;simmering&lt;/t&gt; &lt;fex name="cau"&gt;from the heat&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/30/2004 10:45:56 PST Tue" abbrev="tem" name="Temperature" ID="7311">
+        <definition>&lt;def-root&gt;The temperature that the &lt;fen&gt;Entity&lt;/fen&gt; stays at, resulting in change.
+
+&lt;ex&gt;No, that kind of batter should &lt;t&gt;bake&lt;/t&gt; &lt;fex name="tem"&gt;at a lower temperature&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Temperature" ID="233"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="664" cDate="11/30/2004 10:58:21 PST Tue" abbrev="Dur" name="Duration" ID="7312">
+        <definition>&lt;def-root&gt;The length of time that the &lt;fen&gt;Entity&lt;/fen&gt; is exposed to heat.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/25/2006 11:37:32 PDT Tue" abbrev="Cir" name="Circumstances" ID="10050">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/25/2006 11:42:59 PDT Tue" abbrev="Pur" name="Purpose" ID="10051">
+        <definition>&lt;def-root&gt;The reason why a state of affairs is caused or maintained by an (implicit) agent. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/25/2006 11:49:14 PDT Tue" abbrev="" name="Depictive" ID="10052">
+        <definition>&lt;def-root&gt;This FE describes the &lt;fen&gt;Entity&lt;/fen&gt; as being in some state during the action. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/25/2006 11:55:39 PDT Tue" abbrev="Res" name="Result" ID="10053">
+        <definition>&lt;def-root&gt;The final state of affairs after the absorbing heat event has finished. 
+
+&lt;ex&gt;The lobster &lt;t&gt;boiled&lt;/t&gt; &lt;fex name="Result"&gt;to death&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Container" ID="5612"/>
+        <memberFE name="Heat_source" ID="5613"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Becoming</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="sizzle.v" ID="9600" lemmaID="36095" cBy="664" cDate="10/03/2003 02:13:44 PDT Fri">
+        <definition>FN: to make a hissing sound in or as if in roasting or frying</definition>
+        <sentenceCount annotated="19" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sizzle"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="fry.v" ID="9783" lemmaID="15599" cBy="605" cDate="10/16/2003 07:25:56 PDT Thu">
+        <definition>FN: be cooked in hot fat or oil, or get very hot by exposure to a heat source</definition>
+        <sentenceCount annotated="0" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fry"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="bake.v" ID="9784" lemmaID="2710" cBy="605" cDate="10/16/2003 07:27:23 PDT Thu">
+        <definition>FN: to be cooked by dry heat, especially in an oven and as food</definition>
+        <sentenceCount annotated="1" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bake"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="simmer.v" ID="9785" lemmaID="35940" cBy="605" cDate="10/16/2003 07:29:07 PDT Thu">
+        <definition>FN: to cook slowly in a liquid just below the boiling point in a closed dish or pan</definition>
+        <sentenceCount annotated="14" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="simmer"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="cook.v" ID="9786" lemmaID="8245" cBy="605" cDate="10/16/2003 07:30:14 PDT Thu">
+        <definition>COD: (of food) be heated so as to reach an edible state.</definition>
+        <sentenceCount annotated="0" total="221"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cook"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="stew.v" ID="9787" lemmaID="38017" cBy="605" cDate="10/16/2003 07:31:23 PDT Thu">
+        <definition>FN: to become boiled slowly or by simmering heat</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stew"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="boil.v" ID="9788" lemmaID="4063" cBy="605" cDate="10/16/2003 07:32:11 PDT Thu">
+        <definition>FN: to be cooked by immersing in a boiling liquid</definition>
+        <sentenceCount annotated="1" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boil"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="scorch.v" ID="11847" lemmaID="34474" cBy="303" cDate="04/15/2005 05:28:24 PDT Fri">
+        <definition>FN: become burnt and crispy on the surface or edges.</definition>
+        <sentenceCount annotated="1" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scorch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sear.v" ID="11848" lemmaID="34705" cBy="303" cDate="04/15/2005 05:31:50 PDT Fri">
+        <definition>FN: become burned by intense heat, usually from a metal Heat_source</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sear"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="singe.v" ID="11849" lemmaID="35988" cBy="303" cDate="04/15/2005 05:38:52 PDT Fri">
+        <definition>FN: be burnt lightly or superficially, usually by a flame.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="singe"/>
+    </lexUnit>
+</frame>

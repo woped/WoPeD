@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/23/2005 02:15:56 PDT Thu" name="Redirecting" ID="1530" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An intentional &lt;fen&gt;Agent&lt;/fen&gt; or a causing event (&lt;fen&gt;Cause&lt;/fen&gt;) event causes a &lt;fen&gt;Theme&lt;/fen&gt; which is already in motion to take a different &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Direction&lt;/fen&gt;, or reach a different &lt;fen&gt;Goal&lt;/fen&gt; than the &lt;fen&gt;Original_path&lt;/fen&gt;.
+
+&lt;ex&gt;The hotel business didn't last - especially after &lt;fex name="Cause"&gt;the construction of a railroad&lt;/fex&gt;
+&lt;t&gt;diverted&lt;/t&gt; &lt;fex name="Theme"&gt;travelers&lt;/fex&gt; &lt;fex name="Goal"&gt;a few miles west to what is now the village of Eagle&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Pakistan government officials&lt;/fex&gt; helped and &lt;t&gt;diverted&lt;/t&gt; &lt;fex name="Theme"&gt;the trucks&lt;/fex&gt; &lt;fex name="Goal"&gt;to another camp in the no-man's land in Mach&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Prior to the arrival of the president's motorcade&lt;/fex&gt;, &lt;fex name="Agent"&gt;the police&lt;/fex&gt; &lt;t&gt;redirected&lt;/t&gt; &lt;fex name="Theme"&gt;the protesters&lt;/fex&gt; &lt;fex name="Direction"&gt;away from the main road&lt;/fex&gt;once more.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:15:57 PDT Thu" abbrev="Thm" name="Theme" ID="8320">
+        <definition>&lt;def-root&gt;The entity that is in motion, and changes path due to the action of an Agent or due to a Cause. &lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="ori" name="Original_path" ID="8321">
+        <definition>&lt;def-root&gt;The route that the &lt;fen&gt;Theme&lt;/fen&gt; was originally headed for.  In cases when the &lt;fen&gt;Theme&lt;/fen&gt; is an intentional actor or is controlled by an intentional actor, the &lt;fen&gt;Original_path&lt;/fen&gt; correlates with the (former) plan of the actor.  In other cases, the &lt;fen&gt;Original_path&lt;/fen&gt; corresponds to what would be expected for the path of the &lt;fen&gt;Theme&lt;/fen&gt; from general principles or physics.  (In some cases, the &lt;fen&gt;Original_path&lt;/fen&gt; may indicate the intended destination, and not just the path, of the &lt;fen&gt;Theme&lt;/fen&gt;.)
+
+&lt;ex&gt;VTA &lt;t&gt;detoured&lt;/t&gt; motorists &lt;fex name="ori"&gt;from southbound I-880&lt;/fex&gt; onto Airport Boulevard to access Coleman Avenue.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="Path" name="Path" ID="8322">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; refers to (a part of) the ground over which the &lt;fen&gt;Theme&lt;/fen&gt; ends up travelling after being diverted.
+
+
+&lt;ex&gt;Traffic was &lt;t&gt;redirected&lt;/t&gt; Tuesday &lt;fex name="Path"&gt;along Melrose Avenue&lt;/fex&gt; to make way for the scoreboard columns, Mellecker said.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="Goal" name="Goal" ID="8323">
+        <definition>&lt;def-root&gt;The location the &lt;fen&gt;Theme&lt;/fen&gt; ends up in after being redirected.
+
+
+&lt;ex&gt;Not knowing any better, he &lt;t&gt;redirected&lt;/t&gt; people &lt;fex name="Goal"&gt;to the city center&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="Time" name="Time" ID="8329">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the redirection of motion occurs.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Last Tuesday&lt;/fex&gt; they were &lt;t&gt;detouring&lt;/t&gt; everybody down onto 5th avenue .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="Manr" name="Manner" ID="8330">
+        <definition>&lt;def-root&gt;Any description of the redirection which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of the &lt;fen&gt;Agent&lt;/fen&gt; that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;ex&gt;Anything flagged as suspect by this system would be &lt;fex name="Manr"&gt;carefully&lt;/fex&gt; &lt;t&gt;diverted&lt;/t&gt; to another nearby area, remote from public access. and well shielded, for a second screening .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="Dep" name="Depictive" ID="8332">
+        <definition>&lt;def-root&gt;The state of the Theme or Agent during the redirection.
+
+&lt;ex&gt;The emergency personnel &lt;t&gt;redirected&lt;/t&gt; the cars back towards the border, &lt;fex name="Dep"&gt;unaware of the recent conflagration&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="" name="Place" ID="8333">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the location at which the redirection occurs.
+
+&lt;ex&gt;They &lt;t&gt;redirected&lt;/t&gt; us &lt;fex name=""&gt;at the corner of Alstone and Bokchoy Avenue&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="dir" name="Direction" ID="8335">
+        <definition>&lt;def-root&gt;This FE is used for expressions that indicate motion along a line from the current deitic center towards a reference point (which may be implicit) that does not necessarily correspond to the &lt;fen&gt;Goal&lt;/fen&gt;.  Often &lt;fen&gt;Direction&lt;/fen&gt; is defined with reference to the canonical orientation of the &lt;fen&gt;Theme&lt;/fen&gt;, the orientation imposed by an implicit observer, or the inherent orientation of the scene.
+
+&lt;ex&gt;Flight 93 left Newark, NJ, earlier that day, bound for San Francisco, but it was hijacked by four terrorists who &lt;t&gt;diverted&lt;/t&gt; it &lt;fex name="dir"&gt;back toward Washington, DC&lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2005 02:15:58 PDT Thu" abbrev="pur" name="Purpose" ID="8336">
+        <definition>&lt;def-root&gt;The state-of-affairs that the Agent intends to bring about by redirecting the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;She was talking about how the passengers &lt;t&gt;diverted&lt;/t&gt; the plane in order &lt;fex name="pur"&gt;to protect
+the nation's capital&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 02:52:53 PDT Thu" abbrev="age" name="Agent" ID="8337">
+        <definition>&lt;def-root&gt;An individual that determines the change in course of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;When we ended up over in Marrakech, or Dakar, &lt;fex name="age"&gt;they&lt;/fex&gt; &lt;t&gt;diverted&lt;/t&gt; us up to Tobruk.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/23/2005 03:04:18 PDT Thu" abbrev="cau" name="Cause" ID="8338">
+        <definition>&lt;def-root&gt;An event that brings about the change in the &lt;fen&gt;Path&lt;/fen&gt; of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;We even got a bonus morning in Tokyo's international airport when &lt;fex name="Cause"&gt;a bad storm&lt;/fex&gt;
+&lt;t&gt;diverted&lt;/t&gt; us on the way to Asia.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="8337"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="04/03/2007 04:48:37 PDT Tue" abbrev="mea" name="Means" ID="11618">
+        <definition>&lt;def-root&gt;The method by which the &lt;fen&gt;Agent&lt;/fen&gt; redirects the &lt;fen&gt;Theme&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Direction" ID="8335"/>
+        <memberFE name="Goal" ID="8323"/>
+        <memberFE name="Path" ID="8322"/>
+        <memberFE name="Original_path" ID="8321"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="redirect.v" ID="12331" lemmaID="32251" cBy="605" cDate="06/23/2005 03:30:24 PDT Thu">
+        <definition>COD: direct differently</definition>
+        <sentenceCount annotated="12" total="162"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="redirect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="detour.v" ID="12332" lemmaID="10455" cBy="605" cDate="06/23/2005 03:30:57 PDT Thu">
+        <definition>FN: cause to take a different route so as to avoid some location</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="detour"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" POS="V" name="divert.v" ID="12333" lemmaID="11296" cBy="605" cDate="06/23/2005 03:32:22 PDT Thu">
+        <definition>COD: cause to change course or take a different route.</definition>
+        <sentenceCount annotated="2" total="219"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="divert"/>
+    </lexUnit>
+</frame>

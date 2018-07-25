@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="08/15/2006 01:32:22 PDT Tue" name="Change_event_duration" ID="1770" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame, an &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; changes the duration of an &lt;fen&gt;Event&lt;/fen&gt;. The &lt;fen&gt;Event&lt;/fen&gt; will then take place for a &lt;fen&gt;New_duration&lt;/fen&gt;, rather than the &lt;fen&gt;Initial_duration&lt;/fen&gt;. This can be done with by certain &lt;fen&gt;Means&lt;/fen&gt;, in a certain &lt;fen&gt;Manner&lt;/fen&gt; or to a certain &lt;fen&gt;Degree&lt;/fen&gt;.
+
+&lt;ex&gt;Don't let &lt;fex name="Agent"&gt;him&lt;/fex&gt; &lt;t&gt;prolong&lt;/t&gt; &lt;fex name="Event"&gt;the discussion&lt;/fex&gt; &lt;fex name="New_duration"&gt;to an absurd length&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Harsh weather made it necessary to &lt;t&gt;cut&lt;/t&gt; &lt;fex name="Event"&gt;the tour&lt;/fex&gt; &lt;t&gt;short&lt;/t&gt; &lt;fex name="ini"&gt;from its original four months&lt;/fex&gt; &lt;fex name="new"&gt;to three&lt;/fex&gt;. &lt;fex name="Agent"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="08/15/2006 01:32:22 PDT Tue" abbrev="age" name="Agent" ID="10487">
+        <definition>&lt;def-root&gt;The sentient entity that changes the duration of the &lt;fen&gt;Event&lt;/fen&gt;.
+
+&lt;ex&gt;Don't let &lt;fex name="Agent"&gt;him&lt;/fex&gt; &lt;t&gt;prolong&lt;/t&gt; the discussion to an absurd length.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:22 PDT Tue" abbrev="new" name="New_duration" ID="10490">
+        <definition>&lt;def-root&gt;The new duration of the Event.
+
+&lt;ex&gt;Don't let him &lt;t&gt;prolong&lt;/t&gt; the discussion &lt;fex name="new"&gt;to an absurd length&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:22 PDT Tue" abbrev="ini" name="Initial_duration" ID="10491">
+        <definition>&lt;def-root&gt;The planned duration of the &lt;fen&gt;Event&lt;/fen&gt; before the change takes place.
+
+&lt;ex&gt;Harsh weather combined made it necessary to &lt;t&gt;cut&lt;/t&gt; the tour &lt;t&gt;short&lt;/t&gt; &lt;fex name="ini"&gt;from its original four months&lt;/fex&gt; to three.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="tim" name="Time" ID="10492">
+        <definition>&lt;def-root&gt;The time at which the change in duration of the Event is caused.
+
+&lt;ex&gt;&lt;fex name="tim"&gt;Last week&lt;/fex&gt;, he unnecessarily &lt;t&gt;prolonged&lt;/t&gt; the agony, thinking that he could tough it out.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="deg" name="Degree" ID="10493">
+        <definition>&lt;def-root&gt;The extent to which the initial and final durations differ from each other.
+
+&lt;ex&gt;Too bad we can't &lt;t&gt;extend&lt;/t&gt; our vacation &lt;fex name="deg"&gt;even more&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="man" name="Manner" ID="10494">
+        <definition>&lt;def-root&gt;Any description of the  event causing the change of the Event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of the Agent that also affect the action (deliberately, eagerly, carefully). 
+
+&lt;ex&gt;Rain &lt;fex name="man"&gt;so cruelly&lt;/fex&gt; &lt;t&gt;cut&lt;/t&gt; &lt;t&gt;short&lt;/t&gt; the game against Bangladesh.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="rea" name="Reason" ID="10495">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in bringing about the change of duration.
+
+&lt;ex&gt;&lt;fex name="rea"&gt;Why&lt;/fex&gt; would someone &lt;t&gt;cut&lt;/t&gt; our time &lt;t&gt;short&lt;/t&gt; like that?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="eve" name="Event" ID="10497">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Event&lt;/fen&gt;'s duration is changed.
+
+&lt;ex&gt;Don't let him &lt;t&gt;prolong&lt;/t&gt; &lt;fex name="eve"&gt;the discussion&lt;/fex&gt; to an absurd length.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Core" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="cau" name="Cause" ID="10498">
+        <definition>&lt;def-root&gt;An event that causes the change in Event duration.
+
+&lt;ex&gt;&lt;fex name="cau"&gt;Rain&lt;/fex&gt; so cruelly &lt;t&gt;cut&lt;/t&gt; &lt;t&gt;short&lt;/t&gt; the game against Bangladesh.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="pur" name="Purpose" ID="10499">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Agent&lt;/fen&gt; intends to accomplish by  changing the duration of the Event.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/15/2006 01:32:23 PDT Tue" abbrev="mea" name="Means" ID="10500">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; (or event resulting from the &lt;fen&gt;Cause&lt;/fen&gt;) that produces a change in the Event's duration.
+
+&lt;ex&gt;It seems they are bent on &lt;t&gt;prolonging&lt;/t&gt; conflict &lt;fex name="mea"&gt;by ignoring normal wartime conventions&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_change</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="prolong.v" ID="13465" lemmaID="30681" cBy="618" cDate="08/15/2006 01:54:26 PDT Tue">
+        <definition>COD: extend the duration of.</definition>
+        <sentenceCount annotated="22" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prolong"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="abbreviate.v" ID="13466" lemmaID="87" cBy="618" cDate="08/15/2006 02:11:20 PDT Tue">
+        <definition>COD: shorten.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="abbreviate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="drag_out.v" ID="13467" lemmaID="50421" cBy="618" cDate="08/15/2006 02:12:32 PDT Tue">
+        <definition>COD: protract something unnecessarily.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drag"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="protract.v" ID="13468" lemmaID="30871" cBy="618" cDate="08/15/2006 02:13:28 PDT Tue">
+        <definition>COD: prolong; draw out.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="protract"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="extend.v" ID="13469" lemmaID="13635" cBy="618" cDate="08/15/2006 02:51:47 PDT Tue">
+        <definition>FN: make longer; prolong.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="extend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cut short.v" ID="13470" lemmaID="50422" cBy="618" cDate="08/15/2006 02:59:53 PDT Tue">
+        <definition>FN: abbreviate, stop prior to completion.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="short"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shorten.v" ID="13471" lemmaID="35648" cBy="618" cDate="08/15/2006 03:06:55 PDT Tue">
+        <definition>COD: decrease the duration of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shorten"/>
+    </lexUnit>
+</frame>

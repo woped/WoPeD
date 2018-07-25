@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_jwnl14-rc2" default="compile.module.jwnl14-rc2">
+  <dirname property="module.jwnl14-rc2.basedir" file="${ant.file.module_jwnl14-rc2}"/>
+  
+  <property name="module.jdk.home.jwnl14-rc2" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.jwnl14-rc2" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.jwnl14-rc2" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.jwnl14-rc2" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="jwnl14-rc2.output.dir" value="${module.jwnl14-rc2.basedir}/../../../out/production/jwnl14-rc2"/>
+  <property name="jwnl14-rc2.testoutput.dir" value="${module.jwnl14-rc2.basedir}/../../../out/test/jwnl14-rc2"/>
+  
+  <path id="jwnl14-rc2.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="jwnl14-rc2.module.production.classpath">
+    <path refid="${module.jdk.classpath.jwnl14-rc2}"/>
+    <path refid="library.tools.classpath"/>
+    <path refid="library.xalan-j-2.7.1.classpath"/>
+    <path refid="library.lib5.classpath"/>
+    <path refid="library.commons-logging-1.2.classpath"/>
+    <path refid="library.lib3.classpath"/>
+    <path refid="library.lib4.classpath"/>
+    <path refid="library.lib2.classpath"/>
+    <path refid="library.jaxen-1.1.2.classpath"/>
+    <path refid="library.xml-apis-2.0.2.classpath"/>
+  </path>
+  
+  <path id="jwnl14-rc2.runtime.production.module.classpath">
+    <pathelement location="${jwnl14-rc2.output.dir}"/>
+    <path refid="library.tools.classpath"/>
+    <path refid="library.xalan-j-2.7.1.classpath"/>
+    <path refid="library.lib5.classpath"/>
+    <path refid="library.commons-logging-1.2.classpath"/>
+    <path refid="library.lib3.classpath"/>
+    <path refid="library.lib4.classpath"/>
+    <path refid="library.lib2.classpath"/>
+    <path refid="library.jaxen-1.1.2.classpath"/>
+    <path refid="library.xml-apis-2.0.2.classpath"/>
+  </path>
+  
+  <path id="jwnl14-rc2.module.classpath">
+    <path refid="${module.jdk.classpath.jwnl14-rc2}"/>
+    <pathelement location="${jwnl14-rc2.output.dir}"/>
+    <path refid="library.tools.classpath"/>
+    <path refid="library.xalan-j-2.7.1.classpath"/>
+    <path refid="library.lib5.classpath"/>
+    <path refid="library.commons-logging-1.2.classpath"/>
+    <path refid="library.lib3.classpath"/>
+    <path refid="library.lib4.classpath"/>
+    <path refid="library.lib2.classpath"/>
+    <path refid="library.jaxen-1.1.2.classpath"/>
+    <path refid="library.xml-apis-2.0.2.classpath"/>
+  </path>
+  
+  <path id="jwnl14-rc2.runtime.module.classpath">
+    <pathelement location="${jwnl14-rc2.testoutput.dir}"/>
+    <pathelement location="${jwnl14-rc2.output.dir}"/>
+    <path refid="library.tools.classpath"/>
+    <path refid="library.xalan-j-2.7.1.classpath"/>
+    <path refid="library.lib5.classpath"/>
+    <path refid="library.commons-logging-1.2.classpath"/>
+    <path refid="library.lib3.classpath"/>
+    <path refid="library.lib4.classpath"/>
+    <path refid="library.lib2.classpath"/>
+    <path refid="library.jaxen-1.1.2.classpath"/>
+    <path refid="library.xml-apis-2.0.2.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.jwnl14-rc2">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.jwnl14-rc2">
+    <patternset refid="excluded.from.module.jwnl14-rc2"/>
+  </patternset>
+  
+  
+  <target name="compile.module.jwnl14-rc2" depends="compile.module.jwnl14-rc2.production,compile.module.jwnl14-rc2.tests" description="Compile module jwnl14-rc2"/>
+  
+  <target name="compile.module.jwnl14-rc2.production" depends="register.custom.compilers" description="Compile module jwnl14-rc2; production classes"/>
+  
+  <target name="compile.module.jwnl14-rc2.tests" depends="register.custom.compilers,compile.module.jwnl14-rc2.production" description="compile module jwnl14-rc2; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.jwnl14-rc2" description="cleanup module">
+    <delete dir="${jwnl14-rc2.output.dir}"/>
+    <delete dir="${jwnl14-rc2.testoutput.dir}"/>
+  </target>
+</project>

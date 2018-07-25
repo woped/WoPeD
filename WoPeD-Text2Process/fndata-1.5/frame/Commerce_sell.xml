@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="07/12/2001 01:11:04 PDT Thu" name="Commerce_sell" ID="172" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These are words describing basic commercial transactions involving a buyer and a seller exchanging money and goods, taking the perspective of the seller.  The words vary individually in the patterns of frame element realization they allow. For example, the typical patterns for SELL:
+SELLER sells GOODS to BUYER for MONEY.
+Robin sold a car to Abby for $5,000.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Byr" name="Buyer" ID="1396">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt; has the &lt;fen&gt;Money&lt;/fen&gt; and wants the &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;ex&gt;Lee &lt;t&gt;sold&lt;/t&gt; a textbook &lt;fex name="Buyer"&gt;to Abby&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Gds" name="Goods" ID="1397">
+        <definition>&lt;def-root&gt;The FE Goods is anything (including labor or time, for example) which is exchanged for Money in a transaction. 
+&lt;ex&gt;Kim &lt;t&gt;sold&lt;/t&gt; &lt;fex name="Goods"&gt;the sweater&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Mns" name="Means" ID="1398">
+        <definition>&lt;def-root&gt;The means by which a commercial transaction occurs.
+&lt;ex&gt;Abby &lt;t&gt;sold&lt;/t&gt; the car &lt;fex name="Means"&gt;for cash&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Mny" name="Money" ID="1399">
+        <definition>&lt;def-root&gt;Money is the thing given in exchange for Goods in a transaction.
+&lt;ex&gt;Sam &lt;t&gt;sold&lt;/t&gt; the car &lt;fex name="Money"&gt;for $12,000&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Rate" name="Rate" ID="1400">
+        <definition>&lt;def-root&gt;In some cases, price or payment is described per unit of &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;ex&gt; The farmers' market &lt;t&gt;sells&lt;/t&gt; apples  &lt;fex name="Rate"&gt;for one dollar a pound&lt;/fex&gt; &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Slr" name="Seller" ID="1401">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Seller&lt;/fen&gt; has possession of the &lt;fen&gt;Goods&lt;/fen&gt; and exchanges them for &lt;fen&gt;Money&lt;/fen&gt; from a &lt;fen&gt;Buyer&lt;/fen&gt;.
+&lt;ex&gt;So far, &lt;fex name="Seller"&gt;my company&lt;/fex&gt; has &lt;t&gt;sold&lt;/t&gt; more than three million copies.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:50:02 PDT Mon" abbrev="Unit" name="Unit" ID="1402">
+        <definition>&lt;def-root&gt;This FE is any unit in which goods or services can be measured.
+Generally, it occurs in a &lt;ment&gt;by&lt;/ment&gt;-PP. 
+&lt;ex&gt;Bob &lt;t&gt;sells&lt;/t&gt; peppers &lt;fex name="Unit"&gt;by the pound&lt;/fex&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:29:31 PDT Tue" abbrev="Place" name="Place" ID="1724">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:29:31 PDT Tue" abbrev="Purp" name="Purpose" ID="1725">
+        <definition>&lt;def-root&gt;The purpose for which an intentional act is performed.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="08/21/2001 08:29:31 PDT Tue" abbrev="Reas" name="Reason" ID="1726">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:29:31 PDT Tue" abbrev="Time" name="Time" ID="1727">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/25/2003 12:26:25 PDT Fri" abbrev="" name="Manner" ID="4443">
+        <definition>&lt;def-root&gt;Any description of the selling event which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of the &lt;fen&gt;Seller&lt;/fen&gt; that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).
+&lt;ex&gt;Stuart &lt;fex name="Manner"&gt;reluctantly&lt;/fex&gt; &lt;t&gt;sold&lt;/t&gt; her his last rock.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/25/2003 01:05:30 PDT Fri" abbrev="" name="Result" ID="4444">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Seller&lt;/fen&gt; after the sale has occurred.
+&lt;ex&gt;I &lt;t&gt;sold&lt;/t&gt; the whole lot &lt;fex name="Result"&gt;at a loss&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="05/02/2003 04:40:25 PDT Fri" abbrev="iter" name="Period_of_iteration" ID="4471">
+        <definition>&lt;def-root&gt;The length of time from when the commerce event began to be repeated to when it stopped.
+&lt;ex&gt;I have been &lt;t&gt;selling&lt;/t&gt; materials to the factories &lt;fex name=""&gt;for over 5 years&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/23/2003 02:41:14 PDT Wed" abbrev="POG" name="Purpose_of_Goods" ID="4821">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt;'s intended purpose for the &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;ex&gt;He &lt;t&gt;sold&lt;/t&gt; the filing robot to me &lt;fex name="POG"&gt;for filing all my legal documents&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="000000" fgColor="FFFF00" coreType="Extra-Thematic" cBy="605" cDate="10/27/2003 03:19:47 PST Mon" abbrev="" name="Reversive" ID="5701">
+        <definition>&lt;def-root&gt;This FE indicates that the selling act reverses an earlier separate act in which the current &lt;fen&gt;Seller&lt;/fen&gt; bought the &lt;fen&gt;Goods&lt;/fen&gt; from the current &lt;fen&gt;Buyer&lt;/fen&gt;.
+
+&lt;ex&gt; There is a plan for Mercer to buy the ground and &lt;t&gt;sell&lt;/t&gt; it &lt;fex name="Reversive"&gt;back&lt;/fex&gt; to the club for more money.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="800080" coreType="Extra-Thematic" cBy="605" cDate="10/28/2003 03:07:16 PST Tue" abbrev="" name="Relay" ID="5710">
+        <definition>&lt;def-root&gt;This FE indicates that the selling act constitues a re-selling by the current &lt;fen&gt;Seller&lt;/fen&gt; of  &lt;fen&gt;Goods&lt;/fen&gt; that they bought earlier from a third person who is not the &lt;fen&gt;Buyer&lt;/fen&gt; of the current selling act.
+
+&lt;ex&gt;The Chambers villa has been &lt;t&gt;sold&lt;/t&gt; &lt;fex name="Relay"&gt;on&lt;/fex&gt; to a local construction company&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Giving</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Renting_out</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Commerce_goods-transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Exporting</relatedFrame>
+        <relatedFrame>Carry_goods</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="retail.v" ID="2983" lemmaID="32970" cBy="296" cDate="07/12/2001 02:09:53 PDT Thu">
+        <definition>COD: sell (goods)</definition>
+        <sentenceCount annotated="24" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="retail"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="retailer.n" ID="2984" lemmaID="32973" cBy="296" cDate="07/12/2001 02:10:33 PDT Thu">
+        <definition>FN: one who sells goods </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="retailer"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sell.v" ID="2986" lemmaID="34999" cBy="296" cDate="07/12/2001 02:11:24 PDT Thu">
+        <definition>COD: hand over in exchange for money.</definition>
+        <sentenceCount annotated="65" total="492"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sell"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="vend.v" ID="2988" lemmaID="42805" cBy="296" cDate="07/12/2001 02:13:02 PDT Thu">
+        <definition>COD:  offer (small items) for sale, especially from a slot machine. </definition>
+        <sentenceCount annotated="5" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="vendor.n" ID="2989" lemmaID="44963" cBy="296" cDate="07/12/2001 02:13:46 PDT Thu">
+        <definition>COD: a person or company offering something for sale, especially a trader in the street. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vendor"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sale.n" ID="8745" lemmaID="33989" cBy="664" cDate="06/04/2003 07:46:00 PDT Wed">
+        <definition>COD: the exchange of a commodity for money; the process of selling something. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sale"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="auction.v" ID="14624" lemmaID="2334" cBy="361" cDate="11/01/2007 12:10:56 PDT Thu">
+        <definition>FN: selling to highest bidder</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="auction"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="auction.n" ID="14675" lemmaID="2333" cBy="597" cDate="01/22/2008 01:34:07 PST Tue">
+        <definition>FN: the process of selling goods to the highest bidder</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="auction"/>
+    </lexUnit>
+</frame>

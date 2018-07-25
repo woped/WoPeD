@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="05/28/2001 04:45:44 PDT Mon" name="Arraignment" ID="120" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;At a court hearing, a &lt;fen&gt;Defendant&lt;/fen&gt; is informed of the &lt;fen&gt;Charges&lt;/fen&gt; against him or her, (usually) enters a plea, and a decision is made by a &lt;fen&gt;Judge&lt;/fen&gt; as to the amount of bail, if any.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="05/28/2001 04:51:43 PDT Mon" abbrev="Def" name="Defendant" ID="616">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Defendant&lt;/fen&gt; is charged with a crime by a &lt;fen&gt;Judge&lt;/fen&gt;.
+&lt;ex&gt; &lt;fex name="Defendant"&gt;Jan&lt;/fex&gt; was &lt;t&gt;arraigned&lt;/t&gt; on eight counts of treason.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="05/28/2001 04:52:26 PDT Mon" abbrev="P" name="Place" ID="618">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the arraignment occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="05/28/2001 04:52:26 PDT Mon" abbrev="T" name="Time" ID="619">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the arraignment occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="05/28/2001 05:55:14 PDT Mon" abbrev="Jud" name="Judge" ID="623">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Judge&lt;/fen&gt; is the head of the court where the arraignment occurs.
+&lt;ex&gt; Jan was &lt;t&gt;arraigned&lt;/t&gt; on eight counts of treason &lt;fex name="Judge"&gt;before Duncan Smith&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:34:19 PDT Thu" abbrev="Chrg" name="Charges" ID="1635">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Charges&lt;/fen&gt; is the crime with which the &lt;fen&gt;Defendant&lt;/fen&gt; is charged.
+&lt;ex&gt;Jan was &lt;t&gt;arraigned&lt;/t&gt; &lt;fex name="Charges"&gt;on eight counts of treason&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:49 PDT Thu" abbrev="Dur" name="Duration" ID="5327">
+        <definition>&lt;def-root&gt;The length of time that the arraignment takes.
+
+&lt;ex&gt;Just a &lt;fex name="Dur"&gt;short&lt;/fex&gt; little &lt;t&gt;arraignment&lt;/t&gt;, and then you'll walk, alright?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:49 PDT Thu" abbrev="Manr" name="Manner" ID="5328">
+        <definition>&lt;def-root&gt;Any description of the arraignment which is not covered by more specific FEs, including secondary effects (openly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Judge&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully).
+
+&lt;ex&gt;Everyone 's always &lt;fex name="Manner"&gt;very carefully&lt;/fex&gt; &lt;t&gt;arraigned&lt;/t&gt; before they meet trial, don't you worry none.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Criminal_process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Bail_decision</relatedFrame>
+        <relatedFrame>Notification_of_charges</relatedFrame>
+        <relatedFrame>Entering_of_plea</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Arrest</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="arraign.v" ID="2424" lemmaID="1969" cBy="145" cDate="05/28/2001 04:46:28 PDT Mon">
+        <definition>COD: call before a court to answer a criminal charge</definition>
+        <sentenceCount annotated="13" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="arraign"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="arraignment.n" ID="2425" lemmaID="1970" cBy="145" cDate="05/28/2001 04:46:59 PDT Mon">
+        <definition>FN: the calling of a defendant before a court to answer a criminal charge</definition>
+        <sentenceCount annotated="18" total="148"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arraignment"/>
+    </lexUnit>
+</frame>

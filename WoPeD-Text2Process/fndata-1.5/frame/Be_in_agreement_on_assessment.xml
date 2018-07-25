@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/16/2005 05:14:07 PDT Thu" name="Be_in_agreement_on_assessment" ID="1496" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Cognizers&lt;/fen&gt; have a similarity (or dissimilarity) in their &lt;fen&gt;Opinion&lt;/fen&gt;. The &lt;fen&gt;Cognizers&lt;/fen&gt; may be expressed separately, with &lt;fen&gt;Cognizer_2&lt;/fen&gt; being the basis for establishing the &lt;fen&gt;Opinion&lt;/fen&gt; of &lt;fen&gt;Cognizer_1&lt;/fen&gt;.  Rather than a specific &lt;fen&gt;Opinion&lt;/fen&gt;, a phenomenon about which a similar or differing &lt;fen&gt;Opinion&lt;/fen&gt; is held, the &lt;fen&gt;Topic&lt;/fen&gt;, may be specified. A specific &lt;fen&gt;Opinion&lt;/fen&gt; may also go unmentioned when the &lt;fen&gt;Opinion&lt;/fen&gt;s of the &lt;fen&gt;Cognizers&lt;/fen&gt; are understood as answers to a &lt;fen&gt;Question&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Cognizers"&gt;Dr. Gerry and Mr. Pond&lt;/fex&gt; &lt;t&gt;agree&lt;/t&gt; &lt;fex name="Question"&gt;in their impressions&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt; &lt;fex name="Cognizers"&gt;This copyeditor and I&lt;/fex&gt; &lt;fex name="Degree"&gt;mostly&lt;/fex&gt; &lt;t&gt;see&lt;/t&gt; &lt;t&gt;eye&lt;/t&gt; &lt;t&gt;to&lt;/t&gt; &lt;t&gt;eye&lt;/t&gt; &lt;fex name="Topic"&gt;on things&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Cognizer_1"&gt;I&lt;/fex&gt; &lt;t&gt;agree&lt;/t&gt; &lt;fex name="cog2"&gt;with you&lt;/fex&gt; &lt;fex name="Opinion"&gt;that everything should be monitored to keep the person from wasting time and protecting the interests of the company&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/16/2005 05:14:07 PDT Thu" abbrev="cogs" name="Cognizers" ID="8177">
+        <definition>&lt;def-root&gt;This FE marks constituents that express the set of &lt;fen&gt;Cognizers&lt;/fen&gt; whose similarity of opinion is at issue. 
+
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Cognizer_1" ID="8178"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/16/2005 05:14:08 PDT Thu" abbrev="cog1" name="Cognizer_1" ID="8178">
+        <definition>&lt;def-root&gt;When there is an asymmetry, &lt;fen&gt;Cognizer_1&lt;/fen&gt; is the individual characterized by their similarity in opinion to &lt;fen&gt;Cognizer_2&lt;/fen&gt;, whose opinion is assumed to be known.  &lt;fen&gt;Cognizer_1&lt;/fen&gt; is often an external argument.
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Cognizer_2" ID="8179"/>
+        <excludesFE name="Cognizers" ID="8177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/16/2005 05:14:08 PDT Thu" abbrev="cog2" name="Cognizer_2" ID="8179">
+        <definition>&lt;def-root&gt;When the &lt;fen&gt;Cognizers&lt;/fen&gt; are expressed separately, &lt;fen&gt;Cognizer_2&lt;/fen&gt; is the one whose opinion is assumed to be known; it serves as a basis for establishing the opinion of &lt;fen&gt;Cognizer_1&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Cognizer_1" ID="8178"/>
+        <excludesFE name="Cognizers" ID="8177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="que" name="Question" ID="8180">
+        <definition>&lt;def-root&gt;This FE denotes an implicit question in response to which the &lt;fen&gt;Cognizers&lt;/fen&gt; give their &lt;fen&gt;Opinion&lt;/fen&gt;s, which are then assessed for their similarity.  The &lt;fen&gt;Question&lt;/fen&gt; may concern the identitiy of a particular entity, as in the first example below, or it may be of the yes/no-type, as in the second example below.
+
+
+&lt;ex&gt;I think we &lt;t&gt;see&lt;/t&gt; &lt;t&gt;eye&lt;/t&gt; &lt;t&gt;to&lt;/t&gt; &lt;t&gt;eye&lt;/t&gt; &lt;fex name="que"&gt;in our ultimate goal&lt;/fex&gt;, which is that we want to see a democratic Serbia.&lt;/ex&gt;
+
+
+&lt;ex&gt;&lt;fex name="Cognizers"&gt;Almost all anarchists&lt;/fex&gt;, in contrast, would &lt;t&gt;agree&lt;/t&gt; &lt;fex name="que"&gt;in their condemnation of warfare, ie, violent conflict between governments&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Topic" ID="8188"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="Deg" name="Degree" ID="8181">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Cognizers&lt;/fen&gt; are similar in their &lt;fen&gt;Opinion&lt;/fen&gt;s.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="Tim" name="Time" ID="8182">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Cognizers&lt;/fen&gt; are in agreement or disagreement.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="Pla" name="Place" ID="8183">
+        <definition>&lt;def-root&gt;The Place is the general area in which the Cognizers are in agreement or disagreement.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="000000" coreType="Peripheral" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="man" name="Manner" ID="8184">
+        <definition>&lt;def-root&gt;This FE is for descriptions of the agreement state not covered by more specific FEs, especially characterizations of the state as a whole or of one of the &lt;fen&gt;Cognizers&lt;/fen&gt; or &lt;fen&gt;Cognizer_1&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="exp" name="Explanation" ID="8185">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the agreement or disagreement logically follows. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="06/16/2005 05:14:09 PDT Thu" abbrev="Dep" name="Depictive" ID="8186">
+        <definition>&lt;def-root&gt;This FE is used for any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the state of the &lt;fen&gt;Cognizers&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/16/2005 05:47:30 PDT Thu" abbrev="opi" name="Opinion" ID="8187">
+        <definition>&lt;def-root&gt;A state of affairs believed by the &lt;fen&gt;Cognizers&lt;/fen&gt;.
+
+&lt;ex&gt;We &lt;t&gt;agree&lt;/t&gt; &lt;fex name="opi"&gt;that babies should not be dropped from helicopters&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Question" ID="8180"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Core" cBy="605" cDate="06/16/2005 05:52:24 PDT Thu" abbrev="top" name="Topic" ID="8188">
+        <definition>&lt;def-root&gt;A phenomenon that the &lt;fen&gt;Cognizers&lt;/fen&gt; are considering with respect to their &lt;fen&gt;Opinion&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Question" ID="8180"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/02/2006 04:03:03 PDT Fri" abbrev="" name="Circumstances" ID="10222">
+        <definition>&lt;def-root&gt;The state-of-affiars under which aggreement occurs (as independent of the act of agreement). &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Opinion" ID="8187"/>
+        <memberFE name="Topic" ID="8188"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Similarity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Opinion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Quarreling</relatedFrame>
+        <relatedFrame>Point_of_dispute</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="agree.v" ID="12256" lemmaID="835" cBy="618" cDate="06/21/2005 04:52:52 PDT Tue">
+        <definition>COD: have the same opinion about something.</definition>
+        <sentenceCount annotated="22" total="254"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="agree"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="see eye to eye.v" ID="12257" lemmaID="50091" cBy="618" cDate="06/21/2005 04:54:25 PDT Tue">
+        <definition>FN: completeley agree on a topic or issue.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="see"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="eye"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="PREP" name="to"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="eye"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="concur.v" ID="13421" lemmaID="7653" cBy="618" cDate="08/04/2006 03:36:07 PDT Fri">
+        <definition>FN: agree on an opinion.</definition>
+        <sentenceCount annotated="21" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="concur"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="agreement.n" ID="13442" lemmaID="50173" cBy="618" cDate="08/10/2006 01:27:54 PDT Thu">
+        <definition>COD: accordance in opinion or feeling.
+</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="agreement"/>
+    </lexUnit>
+</frame>

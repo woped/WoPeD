@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="06/11/2001 04:01:26 PDT Mon" name="Notification_of_charges" ID="129" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The judge or other court officer (the Authority) informs the Accused of the Charges against him/her, i.e. the alleged actions and the relevant laws.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="06/11/2001 04:05:32 PDT Mon" abbrev="" name="Arraign_authority" ID="811">
+        <definition>&lt;def-root&gt;The judge or other authority of the court in which the accused person is arraigned.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="06/11/2001 04:06:45 PDT Mon" abbrev="Acc" name="Accused" ID="812">
+        <definition>&lt;def-root&gt;The person being charged with an offense against the law.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="08/06/2001 10:23:35 PDT Mon" abbrev="Chrg" name="Charges" ID="1563">
+        <definition>&lt;def-root&gt;The crime with which the Accused is charged&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:26:31 PDT Thu" abbrev="Place" name="Place" ID="1633">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:26:35 PDT Thu" abbrev="Time" name="Time" ID="1634">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="06/25/2003 11:17:26 PDT Wed" abbrev="CE" name="Containing_event" ID="4687">
+        <definition>&lt;def-root&gt;The larger event which contains the Notification of Charges event.
+&lt;ex&gt;Seven people have been &lt;t&gt;indicted&lt;/t&gt; &lt;fex name="CE"&gt;in the seven-year investigation&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Arraignment</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Entering_of_plea</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="charge.v" ID="2602" lemmaID="6091" cBy="145" cDate="06/11/2001 04:07:28 PDT Mon">
+        <definition>COD: Charge a person with a crime</definition>
+        <sentenceCount annotated="25" total="195"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="charge"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="charge.n" ID="3647" lemmaID="6090" cBy="243" cDate="08/06/2001 03:44:27 PDT Mon">
+        <definition>COD: a formal accusation made against a prisoner brought to trial</definition>
+        <sentenceCount annotated="51" total="402"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="charge"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="indict.v" ID="7941" lemmaID="19631" cBy="296" cDate="01/15/2003 11:36:48 PST Wed">
+        <definition>COD: formally accuse or charge with a serious crime. </definition>
+        <sentenceCount annotated="26" total="260"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="indict"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="indictment.n" ID="7942" lemmaID="19633" cBy="296" cDate="01/15/2003 11:37:20 PST Wed">
+        <definition>COD: a formal charge or accusation of a serious crime. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="indictment"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="accuse.v" ID="7943" lemmaID="327" cBy="296" cDate="01/15/2003 11:39:21 PST Wed">
+        <definition>COD: charge with an offence or crime. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="accuse"/>
+    </lexUnit>
+</frame>

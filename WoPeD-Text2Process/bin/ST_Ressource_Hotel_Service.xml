@@ -1,0 +1,58 @@
+<?xml version = "1.0"?>
+<TestInstance>
+    <PlainTextDescription>
+        The Evanstonian is an upscale independent hotel. When a guest calls room service at The Evanstonian, the room-service manager takes down the order. She then submits an order ticket to the kitchen to begin preparing the food. She also gives an order to the sommelier (i.e., the wine waiter) to fetch wine from the cellar and to prepare any other alcoholic beverages. Eighty percent of room-service orders include wine or some other alcoholic beverage. Finally, she assigns the order to the waiter. While the kitchen and the sommelier are doing their tasks, the waiter readies a cart (i.e., puts a tablecloth on the cart and gathers silverware). The waiter is also responsible for nonalcoholic drinks. Once the food, wine, and cart are ready, the waiter delivers it to the guest’s room. After returning to the room-service station, the waiter debits the guest’s account. The waiter may wait to do the billing if he has another order to prepare or deliver.
+    </PlainTextDescription>
+    <WorldModel>
+        <Actions>
+            <Action id="1"><Name>call</Name></Action>
+            <Action id="2"><Name>take</Name></Action>
+            <Action id="3"><Name>submit</Name></Action>
+            <Action id="4"><Name>give</Name></Action>
+            <Action id="5"><Name>assign</Name></Action>
+            <Action id="6"><Name>do</Name></Action>
+            <Action id="7"><Name>do</Name></Action>
+            <Action id="8"><Name>ready</Name></Action>
+            <Action id="9"><Name>deliver</Name></Action>
+            <Action id="10"><Name>returning</Name></Action>
+            <Action id="11"><Name>debit</Name></Action>
+        </Actions>
+        <Actors>
+            <Actor id="1"><Name>guest</Name></Actor>
+            <Actor id="2"><Name>manager</Name></Actor>
+            <Actor id="3"><Name>kitchen</Name></Actor>
+            <Actor id="4"><Name>sommelier</Name></Actor>
+            <Actor id="5"><Name>waiter</Name></Actor>
+        </Actors>
+        <Resources>
+            <Resource id="1"><Name>room service</Name></Resource>
+            <Resource id="2"><Name>order</Name></Resource>
+            <Resource id="3"><Name>order ticket</Name></Resource>
+            <Resource id="4"><Name>cart</Name></Resource>
+            <Resource id="5"><Name>account</Name></Resource>
+        </Resources>
+        <Flows>
+            <Flow>
+                <previousAction></previousAction>
+                <followingActions>
+                    <followingAction>
+
+                    </followingAction>
+                </followingActions>
+                <direction></direction>
+                <type></type>
+            </Flow>
+        </Flows>
+    </WorldModel>
+    <PetriNet>
+        <places>
+
+        </places>
+        <transitions>
+
+        </transitions>
+        <arcs>
+
+        </arcs>
+    </PetriNet>
+</TestInstance>

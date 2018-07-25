@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="guilty.a" ID="10511" frame="Guilt_or_innocence" frameID="1110" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="acc" name="Accused"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="jud" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="mis" name="Misdeed"/>
+        </frame>
+    </header>
+    <definition>COD: justly chargeable with a particular fault or error</definition>
+    <lexeme POS="A" name="guilty"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Accused"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <annoSet ID="2596489"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Misdeed"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Misdeed"/>
+                <annoSet ID="2596489"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Accused"/>
+            <FE name="Misdeed"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Accused"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Misdeed"/>
+                <annoSet ID="2596489"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="02-T-PPOF-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="77" aPos="72033286" ID="1580934">
+            <text>No one believed him guilty of financial dishonesty but the governor , John Elphinstone ( thirteenth Baron Elphinstone , q.v. ) , demanded restitution of the money .</text>
+            <annotationSet cDate="07/16/2010 05:43:34 PDT Fri" status="UNANN" ID="2596488">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="dt"/>
+                    <label end="5" start="3" name="nn"/>
+                    <label end="14" start="7" name="VVD"/>
+                    <label end="18" start="16" name="PP"/>
+                    <label end="25" start="20" name="jj"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="38" start="30" name="jj"/>
+                    <label end="49" start="40" name="nn"/>
+                    <label end="53" start="51" name="cc"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="66" start="59" name="nn"/>
+                    <label end="68" start="68" name=","/>
+                    <label end="73" start="70" name="NP"/>
+                    <label end="85" start="75" name="NP"/>
+                    <label end="87" start="87" name="("/>
+                    <label end="98" start="89" name="nn"/>
+                    <label end="104" start="100" name="NP"/>
+                    <label end="116" start="106" name="NP"/>
+                    <label end="118" start="118" name=","/>
+                    <label end="123" start="120" name="NP"/>
+                    <label end="125" start="125" name=")"/>
+                    <label end="127" start="127" name=","/>
+                    <label end="136" start="129" name="VVD"/>
+                    <label end="148" start="138" name="nn"/>
+                    <label end="151" start="150" name="in"/>
+                    <label end="155" start="153" name="dt"/>
+                    <label end="161" start="157" name="nn"/>
+                    <label end="163" start="163" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 05:43:35 PDT Fri" status="MANUAL" ID="2596489">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="25" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6420" end="18" start="16" name="Accused"/>
+                    <label cBy="571" feID="6421" end="49" start="27" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="16" name="Ext"/>
+                    <label end="49" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="16" name="NP"/>
+                    <label end="49" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

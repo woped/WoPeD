@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="02/13/2002 04:16:19 PST Wed" name="Seeking" ID="269" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cognizer_agent&lt;/fen&gt; attempts to find some &lt;fen&gt;Sought_entity&lt;/fen&gt; by examining some &lt;fen&gt;Ground&lt;/fen&gt;.  The success or failure of this activity (the &lt;fen&gt;Outcome&lt;/fen&gt;) may be indicated.
+NB:  This frame should be compared to the Scrutiny frame, in which the primary focus is on the &lt;fen&gt;Ground&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/14/2002 11:18:19 PST Thu" abbrev="Agt" name="Cognizer_agent" ID="2327">
+        <definition>&lt;def-root&gt;The person who attempts to find the Sought_entity.
+&lt;fex name="Cognizer_agent"&gt;John&lt;/fex&gt;  &lt;t&gt;looked&lt;/t&gt; for his pencil.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/14/2002 11:19:00 PST Thu" abbrev="Ground" name="Ground" ID="2328">
+        <definition>&lt;def-root&gt;This is the entity to which the Cognizer pays attention. It is referred to as &lt;t&gt;Ground&lt;/t&gt; because it serves as the background or context for the Phenomenon. This FE can be expressed as an NP Object or as a PP Complement: Leslie &lt;t&gt;examined&lt;/t&gt; &lt;fex name="Ground"&gt;the glass&lt;/fex&gt; for cracks. Kim &lt;t&gt;searched&lt;/t&gt; &lt;fex name="Ground"&gt;in the woods&lt;/fex&gt; for mushrooms. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/14/2002 11:19:04 PST Thu" abbrev="Phen" name="Sought_entity" ID="2329">
+        <definition>&lt;def-root&gt;This is the entity that the Ground may contain. Typically, it is expressed as a&lt;ment&gt;for&lt;/ment&gt;-PP. 
+Leslie &lt;t&gt;examined&lt;/t&gt; the glass &lt;fex name="Sought_entity"&gt;for cracks&lt;/fex&gt;. 
+Kim &lt;t&gt;searched&lt;/t&gt; in the woods &lt;fex name="Sought_entity"&gt;for mushrooms&lt;/fex&gt;. 
+Some words in this frame allow alternate expressions of the Ground and the Sought_entity:  We searched the yard for my contact lens. We searched for my contact lends in the yard. &lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/15/2002 05:26:10 PST Fri" abbrev="Manr" name="Manner" ID="2330">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/15/2002 05:26:22 PST Fri" abbrev="Mns" name="Means" ID="2332">
+        <definition>&lt;def-root&gt;An act of the &lt;fen&gt;Cognizer_agent&lt;/fen&gt; that allows them to look for the &lt;fen&gt;Sought_entity&lt;/fen&gt;.
+&lt;ex&gt;They &lt;t&gt;foraged&lt;/t&gt; for clams &lt;fex name="Mns"&gt;by visiting the pools at low tide&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/15/2002 05:26:34 PST Fri" abbrev="Otcm" name="Outcome" ID="2334">
+        <definition>&lt;def-root&gt;The failure or success of an attempt.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:58 PDT Thu" abbrev="Place" name="Place" ID="5402">
+        <definition>&lt;def-root&gt;A spatial setting larger than the Ground in which the Seeking event occurs.
+
+&lt;ex&gt;&lt;fex name="Place"&gt;In Paris&lt;/fex&gt; police were &lt;t&gt;hunting&lt;/t&gt; for suspects in two of the city's southerns suburbs today&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:58 PDT Thu" abbrev="Time" name="Time" ID="5403">
+        <definition>&lt;def-root&gt;This FE identifies the time when the Seeking occurs.
+
+&lt;ex&gt;The police were &lt;t&gt;hunting&lt;/t&gt; for evidence in my house &lt;fex name="Time"&gt;yesterday&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:58 PDT Thu" abbrev="Purp" name="Purpose" ID="5404">
+        <definition>&lt;def-root&gt;An action that the Cognizer intends to accomplish by performing the search.
+
+&lt;ex&gt;Police were &lt;t&gt;hunting&lt;/t&gt; for evidence in my house &lt;fex name="Purpose"&gt;to mislead their real suspect about the state of the investigation&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="02/04/2008 04:43:59 PST Mon" abbrev="Deg" name="Degree" ID="12108">
+        <definition>&lt;def-root&gt;This FE identifies the amount of effort put into an attempt.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Seeking_to_achieve</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Shopping</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Searching_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Criminal_investigation</relatedFrame>
+        <relatedFrame>Locating</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="sniff.v" ID="4898" lemmaID="36638" cBy="664" cDate="02/13/2002 04:20:04 PST Wed">
+        <definition>COD: discover something by covert investigation. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sniff"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="listen.v" ID="4899" lemmaID="22494" cBy="664" cDate="02/13/2002 04:20:19 PST Wed">
+        <definition>COD: make an effort to hear something. </definition>
+        <sentenceCount annotated="5" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="listen"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="watch.v" ID="4900" lemmaID="43529" cBy="664" cDate="02/13/2002 04:21:18 PST Wed">
+        <definition>FN: keep on the lookout for (something or someone)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="watch"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="look.v" ID="4901" lemmaID="22738" cBy="664" cDate="02/13/2002 04:21:40 PST Wed">
+        <definition>COD: (look for) attempt to find. </definition>
+        <sentenceCount annotated="2" total="205"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="look"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="grope.v" ID="4902" lemmaID="16895" cBy="664" cDate="02/13/2002 04:21:57 PST Wed">
+        <definition>COD: feel about or search blindly or uncertainly with the hands.</definition>
+        <sentenceCount annotated="10" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grope"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fumble.v" ID="4903" lemmaID="15667" cBy="664" cDate="02/13/2002 04:22:15 PST Wed">
+        <definition>FN: seek with clumsy, uncertain movements of the hands</definition>
+        <sentenceCount annotated="16" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fumble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="feel.v" ID="4904" lemmaID="14126" cBy="664" cDate="02/13/2002 04:22:33 PST Wed">
+        <definition>COD: perceive, examine, or search by touch. NB: Only searching relevant in this frame.</definition>
+        <sentenceCount annotated="5" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="feel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="forage.v" ID="4905" lemmaID="15009" cBy="664" cDate="02/13/2002 04:22:49 PST Wed">
+        <definition>COD: search widely for food or provisions</definition>
+        <sentenceCount annotated="15" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="forage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="hunt.v" ID="4906" lemmaID="18684" cBy="664" cDate="02/13/2002 04:23:11 PST Wed">
+        <definition>COD: search diligently for. </definition>
+        <sentenceCount annotated="13" total="249"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hunt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="nose.v" ID="4907" lemmaID="26143" cBy="664" cDate="02/13/2002 04:23:42 PST Wed">
+        <definition>COD: look around or pry into something. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nose"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="probe.v" ID="4908" lemmaID="30529" cBy="664" cDate="02/13/2002 04:23:58 PST Wed">
+        <definition>COD: physically explore or examine. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="probe"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="rummage.v" ID="4909" lemmaID="33763" cBy="664" cDate="02/13/2002 04:24:26 PST Wed">
+        <definition>COD: search unsystematically and untidily for something</definition>
+        <sentenceCount annotated="0" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rummage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pan.v" ID="4912" lemmaID="27637" cBy="664" cDate="02/13/2002 05:20:37 PST Wed">
+        <definition>COD: wash gravel in a pan to separate out (gold). </definition>
+        <sentenceCount annotated="5" total="132"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pan"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="pat down.v" ID="4913" lemmaID="45459" cBy="664" cDate="02/13/2002 05:21:52 PST Wed">
+        <definition>FN: use one's hands to search someone else's body for contraband</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pat"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="down"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="seek.v" ID="4915" lemmaID="34853" cBy="664" cDate="02/13/2002 05:22:47 PST Wed">
+        <definition>COD: attempt to find. </definition>
+        <sentenceCount annotated="15" total="366"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="seek"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="search.v" ID="4916" lemmaID="34707" cBy="664" cDate="02/13/2002 05:23:08 PST Wed">
+        <definition>COD: examine thoroughly in order to find something. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="search"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="palpate.v" ID="4917" lemmaID="27622" cBy="664" cDate="02/13/2002 05:23:47 PST Wed">
+        <definition>COD: examine (a part of the body) by touch, especially for medical purposes. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="palpate"/>
+    </lexUnit>
+</frame>

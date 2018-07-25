@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/11/2001 08:48:38 PDT Mon" name="Light_movement" ID="131" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Emitter&lt;/fen&gt; emits a &lt;fen&gt;Beam&lt;/fen&gt; of light from a &lt;fen&gt;Source&lt;/fen&gt;, along a &lt;fen&gt;Path&lt;/fen&gt;, and/or towards a &lt;fen&gt;Goal&lt;/fen&gt;.  Essentially, this frame denotes the (semi-)fictive motion of the the &lt;fen&gt;Beam&lt;/fen&gt;.
+&lt;ex&gt;Avoid allowing &lt;fex name="Beam"&gt;light&lt;/fex&gt; to &lt;t&gt;shine&lt;/t&gt; &lt;fex name="Goal"&gt;into neighbors' gardens&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Beam"&gt;Clear yellow sunlight&lt;/fex&gt; &lt;t&gt;shone&lt;/t&gt; &lt;fex name="Path"&gt;through the window-panes&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;She thinks &lt;fex name="Emit"&gt;the sun&lt;/fex&gt; &lt;t&gt;shines&lt;/t&gt; &lt;fex name="Src"&gt;out of his backside&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;...when &lt;fex name="Emit"&gt;the candles&lt;/fex&gt; &lt;t&gt;shine&lt;/t&gt; &lt;fex name="Src"&gt;out&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Beam"&gt;It&lt;/fex&gt; &lt;t&gt;shines&lt;/t&gt; &lt;fex name="Goal"&gt;in my eyes&lt;/fex&gt;. ('It' is both Beam and Emitter, though only one will show up in the display.) &lt;/ex&gt;
+&lt;ex&gt;...&lt;fex name="Beam"&gt;light&lt;/fex&gt; &lt;t&gt;shines&lt;/t&gt; &lt;fex name="Path"&gt;down&lt;/fex&gt; &lt;fex name="Goal"&gt;on the world&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Beam"&gt;The moonlight&lt;/fex&gt; &lt;t&gt;shone&lt;/t&gt; &lt;fex name="Path"&gt;off the fields&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Beam"&gt;The candlelight&lt;/fex&gt; &lt;t&gt;glinted&lt;/t&gt; &lt;fex name="Src"&gt;from pearls and rubies&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/11/2001 08:52:01 PDT Mon" abbrev="Degr" name="Degree" ID="830">
+        <definition>&lt;def-root&gt;Degree to which the light movement occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/11/2001 08:52:01 PDT Mon" abbrev="Dep" name="Depictive" ID="831">
+        <definition>&lt;def-root&gt;Depictive phrase describing the external argument.
+&lt;ex&gt;Their swords &lt;t&gt;glowed&lt;/t&gt; &lt;fex name="Depictive"&gt;red&lt;/fex&gt; in the setting sun.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/11/2001 08:52:01 PDT Mon" abbrev="Manr" name="Manner" ID="834">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/11/2001 08:52:01 PDT Mon" abbrev="Result" name="Result" ID="836">
+        <definition>&lt;def-root&gt;Result of an event&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/11/2001 09:00:48 PDT Mon" abbrev="Emit" name="Emitter" ID="839">
+        <definition>&lt;def-root&gt;This FE identifies the entity at the &lt;fen&gt;Source&lt;/fen&gt; from which the &lt;fen&gt;Beam&lt;/fen&gt; originates.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/03/2003 12:16:57 PDT Tue" abbrev="Src" name="Source" ID="4524">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the location the &lt;fen&gt;Beam&lt;/fen&gt; occupies initially before its change of location.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/03/2003 12:26:48 PDT Tue" abbrev="" name="Beam" ID="4525">
+        <definition>&lt;def-root&gt;The light that travels from a &lt;fen&gt;Source&lt;/fen&gt; along a &lt;fen&gt;Path&lt;/fen&gt; to a &lt;fen&gt;Goal&lt;/fen&gt;. 
+&lt;ex&gt;&lt;fex name="Beam"&gt;Sunlight&lt;/fex&gt; &lt;t&gt;gleamed&lt;/t&gt; from the water of the bay.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Beam"&gt;Lamplight&lt;/fex&gt; &lt;t&gt;flickered&lt;/t&gt; through the foggy air.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/03/2003 12:28:10 PDT Tue" abbrev="" name="Path" ID="4526">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Path&lt;/fen&gt; refers to where the &lt;fen&gt;Beam&lt;/fen&gt; travels over or to a landmark the &lt;fen&gt;Beam&lt;/fen&gt; travels by.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/03/2003 12:29:59 PDT Tue" abbrev="" name="Goal" ID="4527">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is the location the &lt;fen&gt;Beam&lt;/fen&gt; ends up in.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="4524"/>
+        <memberFE name="Path" ID="4526"/>
+        <memberFE name="Goal" ID="4527"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Emitter" ID="839"/>
+        <memberFE name="Beam" ID="4525"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Location_of_light</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="V" name="glow.v" ID="2632" lemmaID="16390" cBy="664" cDate="06/13/2001 05:24:53 PDT Wed">
+        <definition>FN: to give forth steady light, reflected from light which fills an area.</definition>
+        <sentenceCount annotated="14" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glow"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="twinkle.v" ID="9210" lemmaID="41631" cBy="664" cDate="08/08/2003 04:54:15 PDT Fri">
+        <definition>COD: shine with a gleam that changes constantly from bright to faint. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twinkle"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="twinkle.n" ID="9211" lemmaID="41630" cBy="664" cDate="08/08/2003 04:54:55 PDT Fri">
+        <definition>COD: a twinkling sparkle or gleam. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="twinkle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sparkle.v" ID="9212" lemmaID="37168" cBy="664" cDate="08/08/2003 04:55:25 PDT Fri">
+        <definition>COD: shine brightly with flashes of light. </definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sparkle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shine.v" ID="9215" lemmaID="35526" cBy="664" cDate="08/08/2003 05:03:13 PDT Fri">
+        <definition>COD: give out a bright light; glow with reflected light. </definition>
+        <sentenceCount annotated="33" total="368"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shine"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="shine.n" ID="9216" lemmaID="35525" cBy="664" cDate="08/08/2003 05:04:59 PDT Fri">
+        <definition>COD: a quality of brightness, especially through reflecting light. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shine"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="shimmer.v" ID="9217" lemmaID="35519" cBy="664" cDate="08/08/2003 05:05:42 PDT Fri">
+        <definition>COD:  shine with a soft tremulous light. </definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shimmer"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="sheen.n" ID="9218" lemmaID="35447" cBy="664" cDate="08/08/2003 05:06:14 PDT Fri">
+        <definition>COD: a soft lustre on a surface. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sheen"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="scintillation.n" ID="9219" lemmaID="34451" cBy="664" cDate="08/08/2003 05:06:42 PDT Fri">
+        <definition>COD: a flash of light. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scintillation"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="scintillate.v" ID="9220" lemmaID="34450" cBy="664" cDate="08/08/2003 05:06:50 PDT Fri">
+        <definition>COD: emit flashes of light; sparkle. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scintillate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="refulgence.n" ID="9222" lemmaID="32361" cBy="664" cDate="08/08/2003 05:07:02 PDT Fri">
+        <definition>FN: a very bright shine. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="refulgence"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="glow.n" ID="9226" lemmaID="16389" cBy="664" cDate="08/08/2003 05:08:33 PDT Fri">
+        <definition>COD: a steady radiance of light or heat. </definition>
+        <sentenceCount annotated="10" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glow"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="glitter.v" ID="9229" lemmaID="16354" cBy="664" cDate="08/08/2003 05:11:59 PDT Fri">
+        <definition>COD: shine with a bright, shimmering reflected light. </definition>
+        <sentenceCount annotated="10" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glitter"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="glitter.n" ID="9230" lemmaID="16353" cBy="664" cDate="08/08/2003 05:16:12 PDT Fri">
+        <definition>COD: a bright, shimmering reflected light. </definition>
+        <sentenceCount annotated="1" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glitter"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="glister.v" ID="9231" lemmaID="16352" cBy="664" cDate="08/08/2003 05:16:50 PDT Fri">
+        <definition>COD: sparkle; glitter. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glister"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="glister.n" ID="9232" lemmaID="45008" cBy="664" cDate="08/08/2003 05:16:58 PDT Fri">
+        <definition>COD: a sparkle. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glister"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="glistening.a" ID="9233" lemmaID="45006" cBy="664" cDate="08/08/2003 05:17:04 PDT Fri">
+        <definition>FN: shining  or sparkling, as on something wet.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="glistening"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="glisten.v" ID="9234" lemmaID="16350" cBy="664" cDate="08/08/2003 05:23:21 PDT Fri">
+        <definition>COD: shine or sparkle (as on something wet or moist)</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glisten"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="glint.v" ID="9235" lemmaID="16344" cBy="664" cDate="08/08/2003 05:24:52 PDT Fri">
+        <definition>COD: give out or reflect small flashes of light. </definition>
+        <sentenceCount annotated="10" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glint"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="glint.n" ID="9236" lemmaID="16343" cBy="664" cDate="08/08/2003 05:25:32 PDT Fri">
+        <definition>COD: a small flash of light, especially a reflected one. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glint"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="glimmer.v" ID="9237" lemmaID="16339" cBy="664" cDate="08/08/2003 05:26:41 PDT Fri">
+        <definition>COD: shine faintly with a wavering light.</definition>
+        <sentenceCount annotated="3" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glimmer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="glimmer.n" ID="9238" lemmaID="16338" cBy="664" cDate="08/08/2003 05:27:52 PDT Fri">
+        <definition>COD: a faint or wavering light. </definition>
+        <sentenceCount annotated="1" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glimmer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="gleam.v" ID="9240" lemmaID="16321" cBy="664" cDate="08/08/2003 05:28:51 PDT Fri">
+        <definition>COD: shine brightly, especially with reflected light. </definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gleam"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="gleam.n" ID="9241" lemmaID="16320" cBy="664" cDate="08/08/2003 05:30:07 PDT Fri">
+        <definition>COD: a faint or brief light. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gleam"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flicker.v" ID="9242" lemmaID="14703" cBy="664" cDate="08/08/2003 05:30:30 PDT Fri">
+        <definition>COD: shine or burn unsteadily and fitfully. </definition>
+        <sentenceCount annotated="6" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flicker"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="flicker.n" ID="9243" lemmaID="14702" cBy="664" cDate="08/08/2003 05:31:42 PDT Fri">
+        <definition>COD: an instance of flickering. </definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flicker"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flash.v" ID="9245" lemmaID="14620" cBy="664" cDate="08/08/2003 05:34:24 PDT Fri">
+        <definition>COD: shine or cause to shine in a bright but brief, sudden, or intermittent way. </definition>
+        <sentenceCount annotated="10" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flash"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="flash.n" ID="9246" lemmaID="14619" cBy="664" cDate="08/08/2003 05:35:59 PDT Fri">
+        <definition>COD: a sudden brief burst of bright light. </definition>
+        <sentenceCount annotated="5" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flash"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flare.v" ID="9247" lemmaID="14615" cBy="664" cDate="08/08/2003 05:37:48 PDT Fri">
+        <definition>COD: burn, shine, or be revealed with a sudden intensity. </definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flare"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="flame.v" ID="9248" lemmaID="14596" cBy="664" cDate="08/08/2003 05:38:50 PDT Fri">
+        <definition>COD: give off flames. </definition>
+        <sentenceCount annotated="3" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flame"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="coruscation.n" ID="9249" lemmaID="8481" cBy="664" cDate="08/08/2003 05:39:18 PDT Fri">
+        <definition>FN: flash or sparkle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coruscation"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="coruscate.v" ID="9250" lemmaID="8480" cBy="664" cDate="08/08/2003 05:39:21 PDT Fri">
+        <definition>COD: to flash or sparkle. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coruscate"/>
+    </lexUnit>
+</frame>

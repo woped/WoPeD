@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="04/19/2006 09:49:10 PDT Wed" name="Front_for" ID="1734" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An individual or organization, the &lt;fen&gt;Front&lt;/fen&gt;, serves as a cover for an &lt;fen&gt;Illicit_activity&lt;/fen&gt; or an &lt;fen&gt;Illicit_organization&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/19/2006 09:51:22 PDT Wed" abbrev="fro" name="Front" ID="10046">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Front&lt;/fen&gt; acts as a legitimate individual, organization, or enterprise, but is truly a cover for an illicit organization or activity.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/19/2006 09:52:21 PDT Wed" abbrev="ill_org" name="Illicit_organization" ID="10047">
+        <definition>&lt;def-root&gt;The existence and activities of the &lt;fen&gt;Illicit_organization&lt;/fen&gt; are concealed by the &lt;fen&gt;Front&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Illicit_activity" ID="10048"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/19/2006 09:54:24 PDT Wed" abbrev="ill_act" name="Illicit_activity" ID="10048">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Illicit_activity&lt;/fen&gt; of the &lt;fen&gt;Illicit_organization&lt;/fen&gt;is concealed by (the activities of) the &lt;fen&gt;Front&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Illicit_organization" ID="10047"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 01:24:37 PDT Fri" abbrev="tim" name="Time" ID="10189">
+        <definition>&lt;def-root&gt;The time at which the deceptive activity occurs&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 01:28:23 PDT Fri" abbrev="pur" name="Purpose" ID="10190">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Front&lt;/fen&gt; is attempting to bring about.
+
+&lt;ex&gt;He &lt;t&gt;fronted&lt;/t&gt; for the mob &lt;fex name="pur"&gt;to get out of paying protection&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 01:30:49 PDT Fri" abbrev="pla" name="Place" ID="10191">
+        <definition>&lt;def-root&gt;The place where the fronting occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 01:31:28 PDT Fri" abbrev="mea" name="Means" ID="10192">
+        <definition>&lt;def-root&gt;The action taken by the &lt;fen&gt;Front&lt;/fen&gt; to ensure successful deceit of authorities.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 01:36:25 PDT Fri" abbrev="man" name="Manner" ID="10193">
+        <definition>&lt;def-root&gt;Any description of the similarity of the event to some other event, particularly descriptions of the &lt;fen&gt;Front&lt;/fen&gt; that also affect the details of the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Prevarication</relatedFrame>
+        <relatedFrame>Posing_as</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="front.v" ID="13178" lemmaID="15540" cBy="618" cDate="04/19/2006 09:55:51 PDT Wed">
+        <definition>FN: act legitimately so as to to conceal an organization or their activities.</definition>
+        <sentenceCount annotated="1" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="front"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="front.n" ID="13179" lemmaID="15539" cBy="618" cDate="04/19/2006 09:56:58 PDT Wed">
+        <definition>COD: a person or organization serving as a cover for subversive activities.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="front"/>
+        <semType name="Participating_entity" ID="226"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="blind.n" ID="14264" lemmaID="3833" cBy="618" cDate="03/30/2007 12:49:56 PDT Fri">
+        <definition>FN: a cover for illicit activity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blind"/>
+    </lexUnit>
+</frame>

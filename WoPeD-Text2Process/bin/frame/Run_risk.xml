@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/16/2002 02:23:39 PDT Tue" name="Run_risk" ID="378" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Protagonist&lt;/fen&gt; is described as being exposed to a potentially dangerous situation that may end in a &lt;fen&gt;Bad_outcome&lt;/fen&gt; for him- or herself.  An &lt;fen&gt;Asset&lt;/fen&gt; which is in danger of loss may stand in for the &lt;fen&gt;Bad_outcome&lt;/fen&gt;. There is no implication that the &lt;fen&gt;Protagonist&lt;/fen&gt; intentionally exposes themselves to the risky situation. The &lt;fen&gt;Protagonist&lt;/fen&gt; may be attempting to achieve some Purpose, which involves being in a dangerous situation. The &lt;fen&gt;Severity&lt;/fen&gt; of risk involved may also be expressed.
+
+&lt;ex&gt;There was a &lt;t&gt;risk&lt;/t&gt; &lt;fex name="Bad_outcome"&gt;of fire&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Protagonist"&gt;Original thinkers&lt;/fex&gt; &lt;m&gt;incur&lt;/m&gt; &lt;fex name="Severity"&gt;greater&lt;/fex&gt; &lt;t&gt;risks&lt;/t&gt; &lt;fex name="Asset"&gt;to their careers&lt;/fex&gt; &lt;fex name="Severity"&gt;than their pedestrian colleagues&lt;/fex&gt;.&lt;/ex&gt;
+
+NOTE: This Frame is currently in the process of being changed so that some instances of &lt;ment&gt;at risk.n&lt;/ment&gt; will be moved to the Being_at_risk frame, and some will be moved to the Risky_situation frame. In the Being_at_risk frame, &lt;ment&gt;risk&lt;/ment&gt; is almost always supported with &lt;ment&gt;at&lt;/ment&gt;, and its external argument is the Asset. Risky_situation uses of &lt;ment&gt;risk&lt;/ment&gt; include the following:
+
+&lt;ex&gt;Smoking poses a &lt;t&gt;risk&lt;/t&gt; to your health.&lt;/ex&gt;
+&lt;ex&gt;Smoking is a health &lt;t&gt;risk&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;The most imminent &lt;t&gt;risk&lt;/t&gt; is to our infrastructure.&lt;/ex&gt;
+
+but (possibly ; still under discussion) not: &lt;ment&gt;The most imminent RISK is that our infrastructure may not be able to handle the load.&lt;/ment&gt;
+
+In the Risky_situation frame, the external argument is the Situation, and the Bad_outcome in not expressible.
+
+The verb risk.v will remain in the Run_risk frame, in the sense of &lt;em&gt;he risked his life for his country&lt;/em&gt;. The construction &lt;ment&gt;run risk&lt;/ment&gt; also will remain in the Run_risk frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 02:38:08 PDT Tue" abbrev="Protagonist" name="Protagonist" ID="3642">
+        <definition>&lt;def-root&gt;The person who is at risk of some &lt;fen&gt;Bad_outcome&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/27/2002 02:41:26 PDT Tue" abbrev="Place" name="Place" ID="3644">
+        <definition>&lt;def-root&gt;The place where there is risk.
+&lt;ex&gt;There is always some &lt;t&gt;danger&lt;/t&gt; to rich men &lt;fex name="Place"&gt;in a bar like this&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/27/2002 02:41:26 PDT Tue" abbrev="Sev" name="Severity" ID="3645">
+        <definition>&lt;def-root&gt;The probability of something bad happening to the &lt;fen&gt;Protagonist&lt;/fen&gt;.
+&lt;ex&gt;If he is uncertain of right and wrong, he is in &lt;fex name="Sev"&gt;dire&lt;/fex&gt; &lt;t&gt;peril&lt;/t&gt; of losing his immortal soul.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/27/2002 02:41:26 PDT Tue" abbrev="Time" name="Time" ID="3646">
+        <definition>&lt;def-root&gt;The time when the risk pertains.
+&lt;ex&gt;&lt;fex name="Time"&gt;Even after the end of Apartheit&lt;/fex&gt; we still run the &lt;t&gt;risk&lt;/t&gt; of letting racism continue forever.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 02:43:28 PDT Tue" abbrev="Bad" name="Bad_outcome" ID="3647">
+        <definition>&lt;def-root&gt;A situation that the &lt;fen&gt;Protagonist&lt;/fen&gt; would like to avoid.
+&lt;ex&gt;There was no &lt;t&gt;risk&lt;/t&gt; &lt;fex name="Bad"&gt;of his returning&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 02:44:29 PDT Tue" abbrev="Asset" name="Asset" ID="3648">
+        <definition>&lt;def-root&gt;Something desirable possessed by or directly associated with the &lt;fen&gt;Protagonist&lt;/fen&gt; which might be lost or damaged.
+&lt;ex&gt;The &lt;t&gt;risk&lt;/t&gt; &lt;fex name="Asset"&gt;to his reputation&lt;/fex&gt; was significant.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Bad_outcome" ID="3647"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Core" cBy="618" cDate="07/02/2003 03:28:06 PDT Wed" abbrev="Act" name="Action" ID="4723">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Action&lt;/fen&gt; that creates the risk.
+&lt;ex&gt;&lt;fex name="Action"&gt;Implementing this program&lt;/fex&gt; &lt;supp&gt;runs&lt;/supp&gt; the &lt;t&gt;risk&lt;/t&gt; of offending our core constituents.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 01:51:58 PDT Wed" abbrev="fre" name="Frequency" ID="10434">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Frequency&lt;/fen&gt; with which the &lt;fen&gt;Protagonist&lt;/fen&gt; runs risks.
+
+&lt;ex&gt;Some people have no problem with &lt;t&gt;risking&lt;/t&gt; their hides &lt;fex name="fre"&gt;every day&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 01:57:17 PDT Wed" abbrev="Pur" name="Purpose" ID="10435">
+        <definition>&lt;def-root&gt;The desired action or goal that the &lt;fen&gt;Protagonist&lt;/fen&gt; hopes to bring about.
+
+&lt;ex&gt;They all &lt;t&gt;risked&lt;/t&gt; being caught &lt;fex name="Pur"&gt;in order to come to the United States&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 03:45:58 PDT Wed" abbrev="exp" name="Explanation" ID="10436">
+        <definition>&lt;def-root&gt;An &lt;fen&gt;Explanation&lt;/fen&gt; for why the &lt;fen&gt;Protagonist&lt;/fen&gt; has put the &lt;fen&gt;Asset&lt;/fen&gt;is in a dangerous situation.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 03:52:05 PDT Wed" abbrev="ite" name="Iteration" ID="10437">
+        <definition>&lt;def-root&gt;The number of times that the &lt;fen&gt;Protagonist&lt;/fen&gt; risks an &lt;fen&gt;Asset&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 04:15:47 PDT Wed" abbrev="cir" name="Circumstances" ID="10438">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; indicates the state of affairs under which the risky situation holds.
+
+&lt;ex&gt;Putting forward new ideas &lt;t&gt;risks&lt;/t&gt; sparking controversy &lt;fex name="cir"&gt;if you don't frame your argument properly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/02/2006 04:55:05 PDT Wed" abbrev="ben" name="Beneficiary" ID="10440">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Protagonist&lt;/fen&gt; intends for his/her actions to benefit &lt;fen&gt;Beneficiary&lt;/fen&gt; in some way.
+
+&lt;ex&gt;They would &lt;t&gt;risk&lt;/t&gt; all &lt;fex name="ben"&gt;for their closest friends&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Bad_outcome" ID="3647"/>
+        <memberFE name="Asset" ID="3648"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Action" ID="4723"/>
+        <memberFE name="Protagonist" ID="3642"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Likelihood</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Risk_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Protecting</relatedFrame>
+        <relatedFrame>Wagering</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="risk.n" ID="6667" lemmaID="33341" cBy="605" cDate="07/16/2002 03:11:18 PDT Tue">
+        <definition>COD: a situation involving exposure to danger. </definition>
+        <sentenceCount annotated="13" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="risk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="endangered.a" ID="6670" lemmaID="45884" cBy="605" cDate="07/16/2002 04:23:16 PDT Tue">
+        <definition>COD: at risk, especially of extinction. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="endangered"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="peril.n" ID="6672" lemmaID="28457" cBy="605" cDate="07/16/2002 04:24:00 PDT Tue">
+        <definition>COD: a situation of serious and immediate danger. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peril"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="risk.v" ID="13383" lemmaID="33342" cBy="618" cDate="07/20/2006 06:08:54 PDT Thu">
+        <definition>FN: (of a situation or action) inviting risk or danger.</definition>
+        <sentenceCount annotated="60" total="496"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="risk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="wager.v" ID="15663" lemmaID="43320" cBy="618" cDate="03/08/2010 02:14:14 PST Mon">
+        <definition>FN: put in danger, as if gambling.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wager"/>
+    </lexUnit>
+</frame>

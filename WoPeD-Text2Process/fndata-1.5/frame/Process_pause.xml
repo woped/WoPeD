@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" name="Process_pause" ID="1765" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Process&lt;/fen&gt; stops making progress towards completion, but should resume and continue.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Prc" name="Process" ID="10398">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Process&lt;/fen&gt; which is halting.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Place" name="Place" ID="10399">
+        <definition>&lt;def-root&gt;Where the pause takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Cause" name="Cause" ID="10400">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Cause&lt;/fen&gt; of the pause.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Time" name="Time" ID="10401">
+        <definition>&lt;def-root&gt;When the pause in the &lt;fen&gt;Process&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Degr" name="Degree" ID="10402">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; to which the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Depict" name="Depictive" ID="10403">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Manr" name="Manner" ID="10404">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; of performing an action.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Result" name="Result" ID="10405">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Result&lt;/fen&gt; of the pause.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Last" name="Last_subevent" ID="10406">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Last_subevent&lt;/fen&gt; of an event.
+
+&lt;ex&gt;The peace march &lt;t&gt;stopped&lt;/t&gt; &lt;fex name="Last"&gt;with a prayer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Reas" name="Reason" ID="10407">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which a pause occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Dur" name="Duration" ID="10408">
+        <definition>&lt;def-root&gt;The amount of time that a &lt;fen&gt;Process&lt;/fen&gt; remains stopped.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/19/2006 05:21:18 PDT Wed" abbrev="Freq" name="Iterations" ID="10409">
+        <definition>&lt;def-root&gt;The number of times that the &lt;fen&gt;Process&lt;/fen&gt; stops.,
+
+&lt;ex&gt;Mining activities on the opal fields &lt;t&gt;ceased&lt;/t&gt; &lt;fex name="Freq"&gt;twice&lt;/fex&gt; in the last two weeks due to heavy rain storms&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_pause</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Process_stopped_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>
