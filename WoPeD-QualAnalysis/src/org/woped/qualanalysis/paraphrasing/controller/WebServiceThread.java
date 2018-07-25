@@ -1,6 +1,11 @@
 package org.woped.qualanalysis.paraphrasing.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.StringReader;
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.util.*;
 
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
@@ -9,17 +14,22 @@ import javax.xml.ws.WebServiceException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlException;
+import org.apache.xmlbeans.XmlOptions;
 import org.w3c.dom.Document;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.bpel.Partnerlink;
+import org.woped.core.model.petrinet.*;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.translations.Messages;
-import org.woped.pnml.NetType;
-import org.woped.pnml.PhraseType;
-import org.woped.pnml.PnmlDocument;
-import org.woped.pnml.PnmlType;
-import org.woped.pnml.TextType;
+import org.woped.pnml.*;
 import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.p2t.Process2Text;
+import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.xml.sax.InputSource;
@@ -44,23 +54,15 @@ public class WebServiceThread extends Thread {
 
 		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
 			try {
-
-				CurrentNetPnml currentNetPnml = new CurrentNetPnml(editor);
-				currentNetPnml.setPnmlString();
-
-				if (currentNetPnml.isProcessable() == true) {
-					ProcessToTextWebServiceImpl pttService = new ProcessToTextWebServiceImpl();
-					ProcessToTextWebService port = pttService.getProcessToTextWebServicePort();
-					String text = currentNetPnml.getPnmlString();
-					String output = port.generateTextFromProcessSpecification(text);
-					isFinished = true;
-					paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
-					paraphrasingPanel.setThreadInProgress(false);
-				} else {
-					isFinished = true;
-					JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Error.NotProcessable.Message"),
-							Messages.getString("Paraphrasing.Webservice.Error.NotProcessable.Title"), JOptionPane.ERROR_MESSAGE);
-				}
+				ByteArrayOutputStream stream = new ByteArrayOutputStream();
+				new PNMLExport().saveToStream(editor, stream);
+				String text = stream.toString();
+				ProcessToTextWebServiceImpl pttService = new ProcessToTextWebServiceImpl();
+				ProcessToTextWebService port = pttService.getProcessToTextWebServicePort();
+				String output = port.generateTextFromProcessSpecification(text);
+				isFinished = true;
+				paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
+				paraphrasingPanel.setThreadInProgress(false);
 			} catch (WebServiceException wsEx) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
@@ -84,12 +86,10 @@ public class WebServiceThread extends Thread {
 	}
 
 	/**
-	 * Extracts the phrases from an PNML file and saves it to the result
-	 * variable
-	 * 
-	 * @author Martin Meitz
+	 * Extracts the phrases from an PNML file and saves it to the result variable
+	 *
 	 * @throws XmlException
-	 * 
+	 * @author Martin Meitz
 	 */
 	@SuppressWarnings("unused")
 	private String extractDescriptionFromWebservice(String xmlString) throws XmlException {
