@@ -417,12 +417,13 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		//checkt, ob der Prozess sound ist, bevor er an den Webservice übergeben wird. Alle anderen Prozesse werden nicht übersetzt.
 		IQualanalysisService analyseService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
 		if(analyseService.isSound()) {
-			System.out.println("Prozess ist sound!");
+//			System.out.println("Prozess ist sound!");
 			if (visible == true && this.firstTimeDisplayed == false) {
 				getText();
 				this.firstTimeDisplayed = true;
 			}
 		}
-		System.out.println("Prozess ist nicht sound!");
+//		else
+//			System.out.println("Prozess ist nicht sound!");
 	}
 }
