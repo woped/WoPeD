@@ -45,6 +45,7 @@ public class ProcessToTextWebServiceImpl
         }
         PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION = url;
         PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION = e;
+        System.out.println(CONNECTIONSTRING);
     }
 
     public ProcessToTextWebServiceImpl() {

@@ -16,7 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext/")
+@WebService(name = "p2t", targetNamespace = "http://ws.processtotext/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
