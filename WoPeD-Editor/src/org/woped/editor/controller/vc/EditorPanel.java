@@ -917,7 +917,7 @@ public class EditorPanel extends JPanel {
 	public void showT2PBar(String text) {
 		t2pText = text;
 		t2pBar = new JPanel(new GridBagLayout());
-		JLabel l = new JLabel("Eingabetext"); // TODO: hardcoded
+		JLabel l = new JLabel(Messages.getString("P2T.openP2T.header"));
 		l.setFont(HEADER_FONT);
 		JTextArea ta = new JTextArea(text);
 		ta.setWrapStyleWord(true);
