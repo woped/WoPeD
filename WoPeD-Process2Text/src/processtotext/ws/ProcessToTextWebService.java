@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.PrintWriter;
 
 @SuppressWarnings("unused")
-@WebService(serviceName = "p2t")
+@WebService(serviceName = "ProcessToTextWebServiceService")
 public class ProcessToTextWebService {
     @Resource
     private WebServiceContext context;

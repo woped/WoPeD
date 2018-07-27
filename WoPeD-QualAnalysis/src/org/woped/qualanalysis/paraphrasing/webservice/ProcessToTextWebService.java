@@ -35,7 +35,7 @@ public interface ProcessToTextWebService {
     @RequestWrapper(localName = "generateTextFromProcessSpecification", targetNamespace = "http://ws.processtotext/", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecification")
     @ResponseWrapper(localName = "generateTextFromProcessSpecificationResponse", targetNamespace = "http://ws.processtotext/", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecificationResponse")
     public String generateTextFromProcessSpecification(
-        @WebParam(name = "processSpecification", targetNamespace = "")
+        @WebParam(name = "processSpecification", targetNamespace = "http://ws.processtotext/")
         String processSpecification)
         throws Exception_Exception
     ;
