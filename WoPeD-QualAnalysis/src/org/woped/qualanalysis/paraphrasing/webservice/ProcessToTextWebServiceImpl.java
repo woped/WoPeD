@@ -20,14 +20,14 @@ import org.woped.core.config.ConfigurationManager;
  * Generated source version: 2.2
  *
  */
-@WebServiceClient(name = "p2t", targetNamespace = "http://ws.processtotext/")
+@WebServiceClient(name = "ProcessToTextWebServiceService", targetNamespace = "http://ws.processtotext/")
 public class ProcessToTextWebServiceImpl
     extends Service
 {
 
     private static URL PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION = null;
     private static WebServiceException PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION = null;
-    private static QName PROCESSTOTEXTWEBSERVICESERVICE_QNAME = new QName("http://ws.processtotext/", "p2t");
+    private static QName PROCESSTOTEXTWEBSERVICESERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebServiceService");
     private static String CONNECTIONSTRING = "";
 
     /**
