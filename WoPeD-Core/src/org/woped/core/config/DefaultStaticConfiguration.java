@@ -16,6 +16,7 @@ import org.woped.config.ApromoreServer;
  * @author Philip Allgaier
  *
  */
+@SuppressWarnings("JavadocReference")
 public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	// Default values
 	public static int DEFAULT_ARROW_WIDTH = 1;
