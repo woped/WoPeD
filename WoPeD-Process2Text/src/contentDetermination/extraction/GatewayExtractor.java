@@ -3,7 +3,6 @@ package contentDetermination.extraction;
 import contentDetermination.labelAnalysis.EnglishLabelHelper;
 import de.hpi.bpt.process.Node;
 import textPlanning.recordClasses.ModifierRecord;
-
 import java.util.HashMap;
 
 public class GatewayExtractor {
