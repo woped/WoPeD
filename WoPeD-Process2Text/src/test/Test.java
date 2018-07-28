@@ -14,7 +14,7 @@ public class Test {
     private static final String TEST_FAILED = ANSI_RED + "\u2716\t" + ANSI_RESET;
     private static final String TEST_EXCEPTION = ANSI_RED + "\u2757\t" + ANSI_RESET;
 
-    private static final String BASE_PATH = "./WoPeD-Process2Text/test/";
+    private static final String BASE_PATH = "./test/";
     private static final SortedMap<String, List<String>> tests = new TreeMap<>();
 
     static {
