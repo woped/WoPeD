@@ -20,14 +20,14 @@ import org.woped.core.config.ConfigurationManager;
  * Generated source version: 2.2
  *
  */
-@WebServiceClient(name = "ProcessToTextWebServiceService", targetNamespace = "http://ws.processtotext/")
+@WebServiceClient(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext/")
 public class ProcessToTextWebServiceImpl
     extends Service
 {
 
-    private static URL PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION = null;
-    private static WebServiceException PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION = null;
-    private static QName PROCESSTOTEXTWEBSERVICESERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebServiceService");
+    private static URL PROCESSTOTEXTWEBSERVICE_WSDL_LOCATION = null;
+    private static WebServiceException PROCESSTOTEXTWEBSERVICE_EXCEPTION = null;
+    private static QName PROCESSTOTEXTWEBSERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebService");
     private static String CONNECTIONSTRING = "";
 
     /**
@@ -43,25 +43,25 @@ public class ProcessToTextWebServiceImpl
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
-        PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION = url;
-        PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION = e;
+        PROCESSTOTEXTWEBSERVICE_WSDL_LOCATION = url;
+        PROCESSTOTEXTWEBSERVICE_EXCEPTION = e;
         System.out.println(CONNECTIONSTRING);
     }
 
     public ProcessToTextWebServiceImpl() {
-    	super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICESERVICE_QNAME);
+    	super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICE_QNAME);
     }
 
     public ProcessToTextWebServiceImpl(WebServiceFeature... features) {
-        super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICESERVICE_QNAME, features);
+        super(__getWsdlLocation(), PROCESSTOTEXTWEBSERVICE_QNAME, features);
     }
 
     public ProcessToTextWebServiceImpl(URL wsdlLocation) {
-        super(wsdlLocation, PROCESSTOTEXTWEBSERVICESERVICE_QNAME);
+        super(wsdlLocation, PROCESSTOTEXTWEBSERVICE_QNAME);
     }
 
     public ProcessToTextWebServiceImpl(URL wsdlLocation, WebServiceFeature... features) {
-        super(wsdlLocation, PROCESSTOTEXTWEBSERVICESERVICE_QNAME, features);
+        super(wsdlLocation, PROCESSTOTEXTWEBSERVICE_QNAME, features);
     }
 
     public ProcessToTextWebServiceImpl(URL wsdlLocation, QName serviceName) {
@@ -95,15 +95,15 @@ public class ProcessToTextWebServiceImpl
     }
 
     private static URL __getWsdlLocation() {
-        if (PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION!= null) {
-            throw PROCESSTOTEXTWEBSERVICESERVICE_EXCEPTION;
+        if (PROCESSTOTEXTWEBSERVICE_EXCEPTION!= null) {
+            throw PROCESSTOTEXTWEBSERVICE_EXCEPTION;
         }
 
         // Ensure that for each call, we generate a new URL to reflect potential
         // configuration changes.
         generateURL();
 
-        return PROCESSTOTEXTWEBSERVICESERVICE_WSDL_LOCATION;
+        return PROCESSTOTEXTWEBSERVICE_WSDL_LOCATION;
     }
 
 }

@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.PrintWriter;
 
 @SuppressWarnings("unused")
-@WebService(serviceName = "ProcessToTextWebServiceService")
+@WebService(serviceName = "ProcessToTextWebService")
 public class ProcessToTextWebService {
     @Resource
     private WebServiceContext context;

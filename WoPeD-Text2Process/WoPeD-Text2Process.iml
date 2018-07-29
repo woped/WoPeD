@@ -39,7 +39,6 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/de" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/dom4j-1.6.1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/fndata-1.5" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="false" />
@@ -49,10 +48,12 @@
       <excludeFolder url="file://$MODULE_DIR$/NLPTools" />
       <excludeFolder url="file://$MODULE_DIR$/Stanford Parser" />
       <excludeFolder url="file://$MODULE_DIR$/commons-lang3-3.4" />
+      <excludeFolder url="file://$MODULE_DIR$/dom4j-1.6.1" />
       <excludeFolder url="file://$MODULE_DIR$/javax.servlet-api-4.0.1" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/web" />
     </content>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="commons-lang3-3.4.jar">
@@ -243,7 +244,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library name="edu.mit.jwi_2.4.0.jar">
         <CLASSES>
@@ -274,6 +274,15 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/../WoPeD-CommonLibs/lib/javax.servlet-api-4.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/../WoPeD-CommonLibs/lib/junit-4.8.2.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -283,7 +292,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../WoPeD-CommonLibs/lib/javax.servlet-api-4.0.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/dom4j-1.6.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

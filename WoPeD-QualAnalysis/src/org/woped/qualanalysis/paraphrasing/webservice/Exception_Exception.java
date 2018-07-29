@@ -50,5 +50,8 @@ public class Exception_Exception
     public org.woped.qualanalysis.paraphrasing.webservice.Exception getFaultInfo() {
         return faultInfo;
     }
+    public void setFaultInfo(org.woped.qualanalysis.paraphrasing.webservice.Exception f) {
+        faultInfo = f;
+    }
 
 }
