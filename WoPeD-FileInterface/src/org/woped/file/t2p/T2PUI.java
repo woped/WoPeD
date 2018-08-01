@@ -55,6 +55,7 @@ import org.woped.file.PNMLImport;
 import org.woped.file.t2p.FileReader.NoFileException;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+import org.woped.core.config.ConfigurationManager;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
@@ -286,9 +287,12 @@ public class T2PUI extends JDialog {
 	
 	private void httpBackgroundWorker(String text) {
 		if (bgTask != null && !bgTask.isDone()) return;
-		
+
+
+		String url = "http://" + ConfigurationManager.getConfiguration().getText2ProcessServerHost() + ":" + ConfigurationManager.getConfiguration().getText2ProcessServerPort() + ConfigurationManager.getConfiguration().getText2ProcessServerURI() + "/generate";
+
 		// TODO: Hardcoded URL!!!
-		String url = "http://193.196.7.214:8080/t2p/generate";
+	//	String url = "http://193.196.7.214:8080/t2p/generate";
 		
 		bgTask = new SwingWorker<HttpResponse, Void>() {
 			HttpRequest req;
