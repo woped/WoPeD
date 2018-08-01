@@ -26,15 +26,10 @@ public class ProcessToTextWebService {
     @WebMethod(operationName = "generateTextFromProcessSpecification")
     public String generateTextFromProcessSpecification(@WebParam(name = "processSpecification") String processSpecification) {
         try {
-            File tempFile = File.createTempFile("TempXmlDat", ".pnml");
-            PrintWriter writer = new PrintWriter(tempFile, "UTF-8");
-            writer.println(processSpecification);
-            writer.close();
             ServletContext servletContext = (ServletContext) this.context.getMessageContext().get("javax.xml.ws.servlet.context");
             String contextPath = servletContext.getRealPath("/");
             TextGenerator textGenerator = new TextGenerator(contextPath);
-            String result = textGenerator.toText(tempFile.getAbsolutePath());
-            tempFile.delete();
+            String result = textGenerator.toText(processSpecification);
             return result;
         } catch (Exception e) {
             return null;

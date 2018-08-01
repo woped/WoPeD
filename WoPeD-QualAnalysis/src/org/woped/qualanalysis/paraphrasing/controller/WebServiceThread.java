@@ -60,6 +60,7 @@ public class WebServiceThread extends Thread {
 				ProcessToTextWebServiceImpl pttService = new ProcessToTextWebServiceImpl();
 				ProcessToTextWebService port = pttService.getProcessToTextWebServicePort();
 				String output = port.generateTextFromProcessSpecification(text);
+				output = output.replaceAll("\\s*\n\\s*", "");
 				isFinished = true;
 				paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 				paraphrasingPanel.setThreadInProgress(false);

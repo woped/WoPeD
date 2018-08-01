@@ -11,15 +11,15 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class PNMLReader {
-    public PetriNet getPetriNetFromPNML(File file) {
+    public PetriNet getPetriNetFromPNMLString(InputStream input) {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
+            Document doc = db.parse(input);
             doc.getDocumentElement().normalize();
 
             PetriNet petriNet = new PetriNet();

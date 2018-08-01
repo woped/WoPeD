@@ -18,8 +18,7 @@ import sentencePlanning.SentenceAggregator;
 import sentenceRealization.SurfaceRealizer;
 import textPlanning.PlanningHelper;
 import textPlanning.TextPlanner;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -39,9 +38,9 @@ public class TextGenerator {
 
     public String toText(String input, boolean surfaceOnly) throws Exception {
         String imperativeRole = "";
-        File inputFile = new File(input);
+        ByteArrayInputStream is = new ByteArrayInputStream( input.getBytes() );
         PNMLReader pnmlReader = new PNMLReader();
-        PetriNet petriNet = pnmlReader.getPetriNetFromPNML(inputFile);
+        PetriNet petriNet = pnmlReader.getPetriNetFromPNMLString(is);
         PetriNetToProcessConverter pnConverter = new PetriNetToProcessConverter();
         ProcessModel model = pnConverter.convertToProcess(petriNet);
 
@@ -95,14 +94,14 @@ public class TextGenerator {
         // Cleaning
         surfaceText = surfaceRealizer.postProcessText(surfaceText);
 
-        if (surfaceOnly) {
+        /*if (surfaceOnly) {
             return surfaceText;
-        }
+        }*/
 
-        return appendTextToFile(input, surfaceText);
+        return surfaceText;
     }
 
-    private String appendTextToFile(String file, String text) {
+ /*   private String appendTextToFile(String file, String text) {
         StringBuilder newFile = new StringBuilder();
         try {
             FileInputStream fstream = new FileInputStream(file);
@@ -123,5 +122,5 @@ public class TextGenerator {
             e.printStackTrace();
         }
         return newFile.toString();
-    }
+    }*/
 }

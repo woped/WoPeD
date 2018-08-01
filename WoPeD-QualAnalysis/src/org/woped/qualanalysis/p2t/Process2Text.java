@@ -46,8 +46,10 @@ public class Process2Text {
 		int endOfNet = -1;
 		String temp = null;
 		
-		endOfNet = xmlText.indexOf(endOfNetTag) + endOfNetTag.length();
-		temp = xmlText.substring(endOfNet);
+//		endOfNet = xmlText.indexOf(endOfNetTag) + endOfNetTag.length();
+//		temp = xmlText.substring(endOfNet);
+
+		temp = xmlText;
 		
 		start = temp.indexOf(startTag) + startTag.length(); // beginning of the content
 		stop = temp.indexOf(stopTag);	// end of the content

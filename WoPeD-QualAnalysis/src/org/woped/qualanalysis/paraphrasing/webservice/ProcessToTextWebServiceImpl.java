@@ -37,7 +37,7 @@ public class ProcessToTextWebServiceImpl
     public static void generateURL(){
     	URL url = null;
         WebServiceException e = null;
-        CONNECTIONSTRING = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":" + ConfigurationManager.getConfiguration().getProcess2TextServerPort() + ConfigurationManager.getConfiguration().getProcess2TextServerURI();
+        CONNECTIONSTRING = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":" + ConfigurationManager.getConfiguration().getProcess2TextServerPort() + ConfigurationManager.getConfiguration().getProcess2TextServerURI() + "/ProcessToTextWebService?wsdl";
         try {
             url = new URL(CONNECTIONSTRING);
         } catch (MalformedURLException ex) {
@@ -45,7 +45,7 @@ public class ProcessToTextWebServiceImpl
         }
         PROCESSTOTEXTWEBSERVICE_WSDL_LOCATION = url;
         PROCESSTOTEXTWEBSERVICE_EXCEPTION = e;
-        System.out.println(CONNECTIONSTRING);
+ //       System.out.println(CONNECTIONSTRING);
     }
 
     public ProcessToTextWebServiceImpl() {
