@@ -584,15 +584,19 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		URL url = null;
 		String connection = "http://" + getServerURLText().getText() + ":"
 				+ getServerPortText().getText()
-				+ getManagerPathText().getText();
+				+ getManagerPathText().getText() +
+				"/ProcessToTextWebService?wsdl";
+		String arg[] = {connection};
+
 		try {
 			url = new URL(connection);
 			URLConnection urlConnection = url.openConnection();
+
 			if (urlConnection.getContent() != null) {
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel(),
-								Messages.getString("Paraphrasing.Webservice.Success.Message"),
+								Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
 								Messages.getString("Paraphrasing.Webservice.Success.Title"),
 								JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -600,16 +604,16 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -618,7 +622,10 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		URL url = null;
 		String connection = "http://" + getServerURLText_T2P().getText() + ":"
 				+ getServerPortText_T2P().getText()
-				+ getManagerPathText_T2P().getText();
+				+ getManagerPathText_T2P().getText()
+				+ "";
+		String arg[] = {connection};
+
 		try {
 			url = new URL(connection);
 			URLConnection urlConnection = url.openConnection();
@@ -626,7 +633,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel_T2P(),
-								Messages.getString("Paraphrasing.Webservice.Success.Message"),
+								Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
 								Messages.getString("Paraphrasing.Webservice.Success.Title"),
 								JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -634,16 +641,16 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel_T2P(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel_T2P(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
