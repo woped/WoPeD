@@ -51,6 +51,11 @@ public class WebServiceThread extends Thread {
 
 	public void run() {
 		IEditor editor = paraphrasingPanel.getEditor();
+		String url = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":"
+				+ ConfigurationManager.getConfiguration().getProcess2TextServerPort()
+				+ ConfigurationManager.getConfiguration().getProcess2TextServerURI() + "/ProcessToTextWebService?wsdl";
+
+		String[] arg = {url};
 
 		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
 			try {
@@ -67,12 +72,12 @@ public class WebServiceThread extends Thread {
 			} catch (WebServiceException wsEx) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
-						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception ex) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
-						Messages.getString("Paraphrasing.Webservice.Error.Exception.Message"),
+						Messages.getString("Paraphrasing.Webservice.Error.Exception.Message", arg),
 						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 
 			} finally {
