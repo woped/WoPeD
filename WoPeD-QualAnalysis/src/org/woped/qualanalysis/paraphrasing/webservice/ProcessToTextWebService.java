@@ -16,7 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext")
+@WebService(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -32,8 +32,8 @@ public interface ProcessToTextWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "generateTextFromProcessSpecification", targetNamespace = "http://ws.processtotext", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecification")
-    @ResponseWrapper(localName = "generateTextFromProcessSpecificationResponse", targetNamespace = "http://ws.processtotext", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecificationResponse")
+    @RequestWrapper(localName = "generateTextFromProcessSpecification", targetNamespace = "http://ws.processtotext/", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecification")
+    @ResponseWrapper(localName = "generateTextFromProcessSpecificationResponse", targetNamespace = "http://ws.processtotext/", className = "org.woped.qualanalysis.paraphrasing.webservice.GenerateTextFromProcessSpecificationResponse")
     public String generateTextFromProcessSpecification(
         @WebParam(name = "processSpecification", targetNamespace = "")
         String processSpecification)
