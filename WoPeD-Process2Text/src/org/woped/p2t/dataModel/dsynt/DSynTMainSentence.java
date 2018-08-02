@@ -1,6 +1,6 @@
 package org.woped.p2t.dataModel.dsynt;
 
-import com.sun.org.apache.xerces.internal.dom.DocumentImpl;
+import org.apache.xerces.dom.DocumentImpl;
 import org.woped.p2t.dataModel.intermediate.ExecutableFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
