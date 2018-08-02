@@ -1,4 +1,4 @@
-package contentDetermination.support;
+package org.woped.p2t.contentDetermination.support;
 
 import net.didion.jwnl.data.*;
 import net.didion.jwnl.dictionary.Dictionary;

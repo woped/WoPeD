@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package org.woped.p2t.processtotext.ws;
+package processtotext.ws;
 
 import org.woped.p2t.textGenerator.TextGenerator;
 
@@ -24,7 +24,7 @@ public class ProcessToTextWebService {
     @WebMethod(operationName = "generateTextFromProcessSpecification")
     public String generateTextFromProcessSpecification(@WebParam(name = "processSpecification") String processSpecification) {
         try {
-            ServletContext servletContext = (ServletContext) this.context.getMessageContext().get("javax.xml.org.woped.p2t.processtotext.ws.servlet.context");
+            ServletContext servletContext = (ServletContext) this.context.getMessageContext().get("javax.xml.org.ws.servlet.context");
             String contextPath = servletContext.getRealPath("/");
             TextGenerator textGenerator = new TextGenerator(contextPath);
             String result = textGenerator.toText(processSpecification);

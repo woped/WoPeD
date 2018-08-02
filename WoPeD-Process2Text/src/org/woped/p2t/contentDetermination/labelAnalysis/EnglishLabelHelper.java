@@ -1,7 +1,7 @@
 package org.woped.p2t.contentDetermination.labelAnalysis;
 
-import contentDetermination.support.Distance;
-import contentDetermination.support.Noun2VerbTransformer;
+import org.woped.p2t.contentDetermination.support.Distance;
+import org.woped.p2t.contentDetermination.support.Noun2VerbTransformer;
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.data.*;

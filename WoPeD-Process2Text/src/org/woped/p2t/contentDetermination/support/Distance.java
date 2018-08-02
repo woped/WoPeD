@@ -1,4 +1,4 @@
-package contentDetermination.support;
+package org.woped.p2t.contentDetermination.support;
 
 public class Distance {
     //****************************
