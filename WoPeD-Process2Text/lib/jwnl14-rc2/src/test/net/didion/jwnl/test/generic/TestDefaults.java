@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 /**
  * Contains static variables that the JUnit tests need to access. Controls which wordnet
- * is accessed for the test scripts. 
+ * is accessed for the Petrinets scripts.
  * @author brett
  *
  */

@@ -38,7 +38,7 @@ public class AntonymRelationshipTest extends TestCase {
                      * There should be only ONE relationship found at this point, and it should match the ugly synset.
                      */
                     if (!s.getTargetSynset().equals(uglySynset)) {
-                        fail("Unmatched Synsets in relationship finder test");
+                        fail("Unmatched Synsets in relationship finder Petrinets");
                     } 
                 }
             }
@@ -47,10 +47,10 @@ public class AntonymRelationshipTest extends TestCase {
         } catch(Exception e) {
            
             e.printStackTrace();
-            fail("Exception in Relationship Finder test caught");
+            fail("Exception in Relationship Finder Petrinets caught");
         }
         
-        System.out.println("RelationshipFinder test passed.");
+        System.out.println("RelationshipFinder Petrinets passed.");
         
     }
 }

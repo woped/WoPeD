@@ -21,7 +21,7 @@ public class DatabaseIndexWordTest extends TestCase {
     assertTrue(senses.length > 0);
    
 } catch(Exception e) {
-    fail("Exception in Database test caught.");
+    fail("Exception in Database Petrinets caught.");
     e.printStackTrace();
 }
     }

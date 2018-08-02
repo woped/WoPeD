@@ -36,11 +36,11 @@ public class SenseKeyTest extends TestCase {
 			
 		} catch(Exception e) {
             e.printStackTrace();
-            fail("Exception in Sense Key test caught");
+            fail("Exception in Sense Key Petrinets caught");
 			
 		}
 		
-		System.out.println("Sense key test passed.");
+		System.out.println("Sense key Petrinets passed.");
 		
 	}
 	

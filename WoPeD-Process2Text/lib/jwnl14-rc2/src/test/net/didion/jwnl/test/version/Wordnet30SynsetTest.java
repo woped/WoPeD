@@ -32,11 +32,11 @@ public class Wordnet30SynsetTest extends TestCase {
             }
             
             if (!match) {
-                fail("Term 'tank' not found in test grab.");
+                fail("Term 'tank' not found in Petrinets grab.");
             }
             
         } catch(Exception e) {
-            fail("Exception in Synset 3.0 test caught");
+            fail("Exception in Synset 3.0 Petrinets caught");
             e.printStackTrace();
         }
         

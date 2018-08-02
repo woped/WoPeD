@@ -31,15 +31,15 @@ public class Wordnet21SynsetTest extends TestCase {
             }
             
             if (!match) {
-                fail("Term 'tank' not found in test grab.");
+                fail("Term 'tank' not found in Petrinets grab.");
             }
             
         } catch(Exception e) {
-            fail("Exception in Synset 2.1 test caught");
+            fail("Exception in Synset 2.1 Petrinets caught");
             e.printStackTrace();
         }
         
-        System.out.println("Synset 2.1 test passed.");
+        System.out.println("Synset 2.1 Petrinets passed.");
         
     }
 }
