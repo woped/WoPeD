@@ -1,4 +1,4 @@
-package org.woped.understandability;
+package org.woped.qualanalysis.understandability;
 
 import java.awt.Color;
 import java.util.Iterator;

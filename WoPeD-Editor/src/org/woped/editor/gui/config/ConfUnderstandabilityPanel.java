@@ -26,7 +26,7 @@ import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
-import org.woped.understandability.NetColorScheme;
+import org.woped.qualanalysis.understandability.NetColorScheme;
 
 /**
  * @authors Bernhard von Hasseln, Matthias Mruzek and Markus Noeltner<br>

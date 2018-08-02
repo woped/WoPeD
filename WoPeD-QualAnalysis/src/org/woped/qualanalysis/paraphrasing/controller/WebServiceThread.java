@@ -33,6 +33,7 @@ import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.xml.sax.InputSource;
+import org.woped.p2t.textGenerator.*;
 
 public class WebServiceThread extends Thread {
 
@@ -58,6 +59,7 @@ public class WebServiceThread extends Thread {
 		String[] arg = {url};
 
 		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
+// Use Webservice to call P2T
 			try {
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				new PNMLExport().saveToStream(editor, stream);
@@ -85,6 +87,28 @@ public class WebServiceThread extends Thread {
 				paraphrasingPanel.enableButtons(true);
 				paraphrasingPanel.setThreadInProgress(false);
 			}
+
+//	Alternative code for calling P2T locally (not via Webservice)
+/*			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			new PNMLExport().saveToStream(editor, stream);
+			String text = stream.toString();
+			String output = "";
+			org.woped.p2t.textGenerator.TextGenerator tg = new org.woped.p2t.textGenerator.TextGenerator();
+			try {
+				output = tg.toText(text, true);
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			output = output.replaceAll("\\s*\n\\s*", "");
+			isFinished = true;
+			paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
+			paraphrasingPanel.setThreadInProgress(false);
+			paraphrasingPanel.showLoadingAnimation(false);
+			paraphrasingPanel.enableButtons(true);
+			paraphrasingPanel.setThreadInProgress(false);
+*/
 		} else {
 			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
 					Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);

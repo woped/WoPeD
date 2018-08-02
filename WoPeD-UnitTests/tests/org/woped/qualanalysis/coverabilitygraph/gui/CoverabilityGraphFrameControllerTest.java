@@ -8,7 +8,7 @@ import org.woped.editor.controller.vc.EditorPanel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.starter.DefaultEditorFrame;
 import org.woped.tests.TestNetGenerator;
-import org.woped.understandability.NetColorScheme;
+import org.woped.qualanalysis.understandability.NetColorScheme;
 
 import javax.swing.*;
 import java.util.HashMap;

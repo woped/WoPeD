@@ -1,4 +1,4 @@
-package org.woped.algorithms;
+package org.woped.qualanalysis.algorithms;
 
 import java.io.File;
 

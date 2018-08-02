@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.woped.algorithms.Woflan;
+import org.woped.qualanalysis.algorithms.Woflan;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;

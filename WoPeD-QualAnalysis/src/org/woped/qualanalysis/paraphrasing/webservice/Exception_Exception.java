@@ -10,7 +10,7 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "Exception", targetNamespace = "http://ws.processtotext/")
+@WebFault(name = "Exception", targetNamespace = "http://ws.processtotext")
 public class Exception_Exception
     extends java.lang.Exception
 {
@@ -45,7 +45,7 @@ public class Exception_Exception
     /**
      * 
      * @return
-     *     returns fault bean: processtotext.ws.Exception
+     *     returns fault bean: ws.Exception
      */
     public org.woped.qualanalysis.paraphrasing.webservice.Exception getFaultInfo() {
         return faultInfo;

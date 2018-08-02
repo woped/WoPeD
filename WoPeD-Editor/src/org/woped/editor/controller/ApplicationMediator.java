@@ -42,7 +42,7 @@ import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
-import org.woped.understandability.NetColorScheme;
+import org.woped.qualanalysis.understandability.NetColorScheme;
 
 import javax.swing.*;
 import java.beans.PropertyChangeEvent;

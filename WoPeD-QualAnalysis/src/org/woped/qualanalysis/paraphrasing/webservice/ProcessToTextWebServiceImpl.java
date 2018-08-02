@@ -20,14 +20,14 @@ import org.woped.core.config.ConfigurationManager;
  * Generated source version: 2.2
  *
  */
-@WebServiceClient(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext/")
+@WebServiceClient(name = "ProcessToTextWebService", targetNamespace = "http://ws.processtotext")
 public class ProcessToTextWebServiceImpl
     extends Service
 {
 
     private static URL PROCESSTOTEXTWEBSERVICE_WSDL_LOCATION = null;
     private static WebServiceException PROCESSTOTEXTWEBSERVICE_EXCEPTION = null;
-    private static QName PROCESSTOTEXTWEBSERVICE_QNAME = new QName("http://ws.processtotext/", "ProcessToTextWebService");
+    private static QName PROCESSTOTEXTWEBSERVICE_QNAME = new QName("http://ws.processtotext", "ProcessToTextWebService");
     private static String CONNECTIONSTRING = "";
 
     /**
@@ -78,7 +78,7 @@ public class ProcessToTextWebServiceImpl
      */
     @WebEndpoint(name = "ProcessToTextWebServicePort")
     public ProcessToTextWebService getProcessToTextWebServicePort() {
-        return super.getPort(new QName("http://ws.processtotext/", "ProcessToTextWebServicePort"), ProcessToTextWebService.class);
+        return super.getPort(new QName("http://ws.processtotext", "ProcessToTextWebServicePort"), ProcessToTextWebService.class);
     }
 
     /**
@@ -90,7 +90,7 @@ public class ProcessToTextWebServiceImpl
      */
     @WebEndpoint(name = "ProcessToTextWebServicePort")
     public ProcessToTextWebService getProcessToTextWebServicePort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://ws.processtotext/", "ProcessToTextWebServicePort"), ProcessToTextWebService.class, features);
+        return super.getPort(new QName("http://ws.processtotext", "ProcessToTextWebServicePort"), ProcessToTextWebService.class, features);
     }
 
     private static URL __getWsdlLocation() {

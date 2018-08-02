@@ -6,7 +6,7 @@ import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.tests.TestNetGenerator;
-import org.woped.understandability.NetColorScheme;
+import org.woped.qualanalysis.understandability.NetColorScheme;
 
 import java.awt.geom.Point2D;
 import java.util.Vector;

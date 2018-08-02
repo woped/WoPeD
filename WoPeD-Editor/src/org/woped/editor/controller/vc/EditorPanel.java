@@ -41,7 +41,7 @@ import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.expert.components.GraphTreeModelSelector;
-import org.woped.understandability.NetColorScheme;
+import org.woped.qualanalysis.understandability.NetColorScheme;
 
 @SuppressWarnings("serial")
 public class EditorPanel extends JPanel {
