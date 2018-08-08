@@ -1,5 +1,3 @@
-package org.woped.p2t.test;
-
 import org.woped.p2t.textGenerator.TextGenerator;
 
 import java.nio.file.Path;
@@ -18,7 +16,7 @@ public class Test {
     private static final String TEST_FAILED = ANSI_RED + "\u2716\t" + ANSI_RESET;
     private static final String TEST_EXCEPTION = ANSI_RED + "\u2757\t" + ANSI_RESET;
 
-    private static final String BASE_PATH = "./WoPeD-Process2Text/bin/org/woped/p2t/test/Petrinets/";
+    private static final String BASE_PATH = "./WoPeD-Process2Text/test/Petrinets/";
 
     private static final SortedMap<String, List<String>> tests = new TreeMap<>();
 

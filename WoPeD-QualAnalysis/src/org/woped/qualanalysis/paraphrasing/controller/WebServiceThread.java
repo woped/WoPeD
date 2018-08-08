@@ -33,7 +33,7 @@ import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.xml.sax.InputSource;
-import org.woped.p2t.textGenerator.*;
+//import org.woped.p2t.textGenerator.*;
 
 public class WebServiceThread extends Thread {
 
@@ -101,8 +101,8 @@ public class WebServiceThread extends Thread {
 				e.printStackTrace();
 			}
 
-			output = output.replaceAll("\\s*\n\\s*", "");
 			isFinished = true;
+			output = output.replaceAll("\\s*\n\\s*", "");
 			paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 			paraphrasingPanel.setThreadInProgress(false);
 			paraphrasingPanel.showLoadingAnimation(false);

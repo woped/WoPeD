@@ -190,7 +190,7 @@ public class TextPlanner {
                 }
 
                 // Pass post fragment
-                if (convRecord.post != null) {
+                if (convRecord != null && convRecord.post != null) {
                     passedFragments.add(convRecord.post);
                 }
                 //**************************************  ACTIVITIES  **************************************
