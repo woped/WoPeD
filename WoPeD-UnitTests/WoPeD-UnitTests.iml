@@ -14,7 +14,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -38,12 +39,14 @@
     <orderEntry type="module" module-name="WoPeD-Configuration" />
     <orderEntry type="module" module-name="WoPeD-Starter" />
     <orderEntry type="module-library">
-      <library name="mockito-all-1.10.19.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/mockito/mockito-all-1.10.19.jar!/" />
+          <root url="jar://$MODULE_DIR$/../WoPeD-CommonLibs/lib/mockito-all-1.10.19.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../WoPeD-CommonLibs/lib/mockito-all-1.10.19.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
