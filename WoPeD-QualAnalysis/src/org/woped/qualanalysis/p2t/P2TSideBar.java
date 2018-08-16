@@ -416,14 +416,15 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	public void onSideBarShown(boolean visible) {
 		//checkt, ob der Prozess sound ist, bevor er an den Webservice übergeben wird. Alle anderen Prozesse werden nicht übersetzt.
 		IQualanalysisService analyseService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
-		if(analyseService.isSound()) {
-//			System.out.println("Prozess ist sound!");
+		if(analyseService.isWorkflowNet()) {
 			if (visible == true && this.firstTimeDisplayed == false) {
 				getText();
 				this.firstTimeDisplayed = true;
 			}
 		}
-//		else
-//			System.out.println("Prozess ist nicht sound!");
+		else
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("PetriNet.NotSound"),
+					Messages.getString("AnalysisSideBar.SoundnessAnalysis"), JOptionPane.ERROR_MESSAGE);
 	}
 }

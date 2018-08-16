@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EnglishLabelHelper {
-    private static final String[] verbs = {"sing off", "logon", "deallocate", "pick up", "top up", "postprocess", "downselect", "don't", "hand-in", "re-sort", "rescore", "overview", "repost", "rollup", "overrule", "pre-configure", "upsell", "pickup", "wrap-up", "up-sell", "cross-sell", "inventorise", "recheck", "intake", "login", "reroute", "lookup", "handover", "setup", "hand-over", "goto", "feedback", "pick-up", "rollback"};
+    private static final String[] verbs = {"sign off", "logon", "deallocate", "pick up", "top up", "postprocess", "downselect", "don't", "hand-in", "re-sort", "rescore", "overview", "repost", "rollup", "overrule", "pre-configure", "upsell", "pickup", "wrap-up", "up-sell", "cross-sell", "inventorise", "recheck", "intake", "login", "reroute", "lookup", "handover", "setup", "hand-over", "goto", "feedback", "pick-up", "rollback"};
     private Dictionary wordnet;
 
     public EnglishLabelHelper(String contextPath) throws JWNLException {

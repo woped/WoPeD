@@ -183,8 +183,10 @@ public interface IQualanalysisService {
     public boolean isSound();
 
     /**
-     * method to get rid of all stuff that is not needed any more <br />
-     * e.g. temporary files etc.
+     * method to check if the given petrinet is sound or not
+     *
+     * @return true if the petrinet is sound otherwise false
      */
+
     public void cleanup();
 }
