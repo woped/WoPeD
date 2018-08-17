@@ -121,6 +121,7 @@ public class RunWoPeD extends JFrame {
 	 **/
 	private RunWoPeD(String[] args) {
 		m_filesToOpen = args;
+
 		initLogging();
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
 		

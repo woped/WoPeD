@@ -151,23 +151,17 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
              editorList.add(frame.getEditor());
              ((EditorVC) frame.getEditor()).getEditorPanel().setContainer(frame);
-             frame.pack();
-             frame.setVisible(true);
 
              // Notify MainFrame
              super.addEditor(frame.getEditor());
 
              try {
-                 frame.setMaximum(true);
-                 frame.setSelected(true);
+                  frame.setSelected(true);
              } catch (Exception e) {
                  LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
              }
-
         }
     }
-       
-    
 
     public void quit() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXIT);

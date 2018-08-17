@@ -144,11 +144,10 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
 
         setTitle(m_editor.getName());
 
-        this.pack();
         if (!editor.isSubprocessEditor()) {
         	this.setSize(800,600);
         }
-        this.repaint();
+
         this.setVisible(true);
     }
 
