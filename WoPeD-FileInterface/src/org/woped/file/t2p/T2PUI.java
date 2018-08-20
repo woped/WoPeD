@@ -351,10 +351,8 @@ public class T2PUI extends JDialog {
 
 	public void readFile() {
 		PlainTextFileReader r = new PlainTextFileReader();
-		try {
-			textArea.setText(r.read());
-		} catch (NoFileException e) {
-			showErrorPopUp("T2PUI.NoFile.Title", "T2PUI.NoFile.Text");
-		}
+		String txt = r.read();
+		if (txt != null)
+			textArea.setText(txt);
 	}
 }
