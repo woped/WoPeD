@@ -30,7 +30,7 @@ public class PlainTextFileReader implements FileReader {
             lastdir = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
         }
 
-        if (Platform.isMac()) {
+        if (!Platform.isMac()) {
             chooser.setCurrentDirectory(new File(lastdir));
             chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "ASCII text", "txt"));
 
