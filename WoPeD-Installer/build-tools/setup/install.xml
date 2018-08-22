@@ -78,7 +78,11 @@
 				<os family="unix" />
 			</file>
 
-			<executable src="WoPeD" targetfile="$INSTALL_PATH/WoPeD" stage="never" 
+			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH">
+				<os family="unix" />
+			</file>
+
+			<executable src="WoPeD" targetfile="$INSTALL_PATH/WoPeD" stage="never"
 						keep="true" workingDirectory="$INSTALL_PATH">
 				<os family="unix" />
 			</executable>
@@ -91,10 +95,9 @@
 				<os family="unix" />
 			</file>
 
-			<file src="Readme.txt" targetdir="$INSTALL_PATH" />				
+			<file src="Readme.txt" targetdir="$INSTALL_PATH" />
 			<file src="License.txt" targetdir="$INSTALL_PATH" />
 			<file src="Changelog.txt" targetdir="$INSTALL_PATH" />
-			<file src="WoPeD-classes-@wopedversion@.jar" targetdir="$INSTALL_PATH" />			
 			<file src="lib/antlrworks-1.4.0.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="lib/bpelBeans.jar" targetdir="$INSTALL_PATH/lib" />
 			<file src="lib/commons-logging-1.1.1.jar" targetdir="$INSTALL_PATH/lib" />

@@ -291,9 +291,6 @@ public class T2PUI extends JDialog {
 
 		String url = "http://" + ConfigurationManager.getConfiguration().getText2ProcessServerHost() + ":" + ConfigurationManager.getConfiguration().getText2ProcessServerPort() + ConfigurationManager.getConfiguration().getText2ProcessServerURI() + "/generate";
 
-		// TODO: Hardcoded URL!!!
-	//	String url = "http://193.196.7.214:8080/t2p/generate";
-		
 		bgTask = new SwingWorker<HttpResponse, Void>() {
 			HttpRequest req;
 			
