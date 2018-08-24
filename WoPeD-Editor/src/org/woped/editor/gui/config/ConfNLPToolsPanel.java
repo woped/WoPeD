@@ -593,6 +593,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			URLConnection urlConnection = url.openConnection();
 
 			if (urlConnection.getContent() != null) {
+				arg[0] = "P2T";
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel(),
@@ -630,6 +631,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			url = new URL(connection);
 			URLConnection urlConnection = url.openConnection();
 			if (urlConnection.getContent() != null) {
+				arg[0] = "T2P";
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel_T2P(),
