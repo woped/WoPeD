@@ -45,7 +45,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 
 	public ApromoreExportFrame(AbstractApplicationMediator mediator) {
 		super(mediator);
-		setTitle(Messages.getString("Apromore.UI.Export.Title"));
+		setTitle(Messages.getString("Apromore.UI.ExportDialog.Title"));
 		initialize();
 	}
 

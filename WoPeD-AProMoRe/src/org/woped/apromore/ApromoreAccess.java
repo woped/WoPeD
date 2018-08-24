@@ -163,7 +163,7 @@ public class ApromoreAccess {
 			return;
 		}
 		showDialog(Messages.getString("Apromore.UI.Validation.ConnectionOk"),
-				Messages.getString("Apromore.textBandTitle"), JOptionPane.INFORMATION_MESSAGE);
+				Messages.getString("Apromore.UI.TextBand.Title"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public String[][] getProcessList() throws Exception {

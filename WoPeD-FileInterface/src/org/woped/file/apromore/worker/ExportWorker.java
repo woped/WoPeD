@@ -40,7 +40,7 @@ public class ExportWorker extends SwingWorker<Void, Void> {
 					JOptionPane
 							.showMessageDialog(
 									null,
-									Messages.getString("Apromore.UI.UpdateDialog.Succes"),
+									Messages.getString("Apromore.UI.UpdateDialog.Success"),
 									Messages.getString("Apromore.UI.UpdateDialog.Title"),
 									JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e) {
@@ -61,7 +61,7 @@ public class ExportWorker extends SwingWorker<Void, Void> {
 							.getSelectedItem().toString(), parent
 							.getProcessNameText().getText(), version);
 					parent.showDialog(
-							Messages.getString("Apromore.UI.ExportDialog.Succes"),
+							Messages.getString("Apromore.UI.ExportDialog.Success"),
 							Messages.getString("Apromore.UI.ExportDialog.Title"),
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {

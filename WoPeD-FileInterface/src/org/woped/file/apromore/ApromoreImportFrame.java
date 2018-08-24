@@ -34,7 +34,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 	public ApromoreImportFrame(AbstractApplicationMediator mediator) {
 		super(mediator);
-		this.setTitle(Messages.getString("Apromore.UI.Import.Title"));
+		this.setTitle(Messages.getString("Apromore.UI.ImportDialog.Title"));
 		this.initialize();
 		this.pack();
 		this.setModal(true);

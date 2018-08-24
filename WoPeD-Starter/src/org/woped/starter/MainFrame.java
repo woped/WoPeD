@@ -318,9 +318,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         osxFileMenu.addMenuItem(Messages.getTitle("Action.Export"), "Action.Export").addAction(mediator, ActionFactory.ACTIONID_EXPORT, AbstractViewEvent.EXPORT);
 
         osxFileMenu.addSeparator();
-        OSXMenu apromoreMenu = new OSXMenu(Messages.getString("Apromore.textBandTitle"));
-        apromoreMenu.addMenuItem(Messages.getString("Apromore.aproImport.text"), "Action.ImportApromore").addAction(mediator, ActionFactory.ACTIONID_IMPORTAPRO, AbstractViewEvent.IMPORTAPRO);
-        apromoreMenu.addMenuItem(Messages.getString("Apromore.aproExport.text"), "Action.ExportApromore").addAction(mediator, ActionFactory.ACTIONID_EXPORTAPRO, AbstractViewEvent.EXPORTAPRO);
+        OSXMenu apromoreMenu = new OSXMenu(Messages.getString("Apromore.UI.TextBand.Title"));
+        apromoreMenu.addMenuItem(Messages.getString("Apromore.UI.TextBand.Import.Text"), "Action.ImportApromore").addAction(mediator, ActionFactory.ACTIONID_IMPORTAPRO, AbstractViewEvent.IMPORTAPRO);
+        apromoreMenu.addMenuItem(Messages.getString("Apromore.UI.TextBand.Export.Text"), "Action.ExportApromore").addAction(mediator, ActionFactory.ACTIONID_EXPORTAPRO, AbstractViewEvent.EXPORTAPRO);
         osxFileMenu.addSubMenu(apromoreMenu);
         menuAdapter.addMenu(osxFileMenu);
 
@@ -532,7 +532,27 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     }
 
     private void setTooltip(JCommandButton button, String prefix) {
-        button.setActionRichTooltip(new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip")));
+        button.setActionRichTooltip(getTooltip(prefix));
+    }
+
+    private RichTooltip getTooltip(String prefix) {
+        String text, tooltip;
+
+        // First attempt to read the matching string from the message file
+        // with the "legacy" lowercase property name. If that fails, attempt to
+        // read with a capital letter as well.
+
+        text = Messages.getString(prefix + ".text");
+        if(text.startsWith("!")) {
+            text = Messages.getString(prefix + ".Text");
+        }
+
+        tooltip = Messages.getString(prefix + ".tooltip");
+        if(tooltip.startsWith("!")) {
+            tooltip = Messages.getString(prefix + ".Tooltip");
+        }
+
+        return new RichTooltip(text, tooltip);
     }
 
     /**
@@ -575,14 +595,14 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
                     setTooltip(button, prefix);
                 } else {
                     shortcut += KeyEvent.getKeyText(shortcutKS.getKeyCode());
-                    RichTooltip rt = new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip"));
+                    RichTooltip rt = getTooltip(prefix);
                     //rt.addFooterSection(shortcut); //Alternative display of Shortcut
                     rt.setTitle(rt.getTitle() + " (" + shortcut + ")");
                     button.setActionRichTooltip(rt);
                 }
 
             } catch (NullPointerException nex) {
-                RichTooltip rt = new RichTooltip(Messages.getString(prefix + ".text"), Messages.getString(prefix + ".tooltip"));
+                RichTooltip rt = getTooltip(prefix);
                 //rt.addFooterSection(shortcut); //Alternative display of Shortcut
                 button.setActionRichTooltip(rt);
             } catch (Exception ex) {
@@ -839,7 +859,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private JRibbonBand getApromoreBand() {
 
         if (apromoreBand == null) {
-            apromoreBand = new JRibbonBand(Messages.getString("Apromore.textBandTitle"), null);
+            apromoreBand = new JRibbonBand(Messages.getString("Apromore.UI.TextBand.Title"), null);
             apromoreBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(apromoreBand));
             apromoreBand.addCommandButton(getImportApromoreButton(), RibbonElementPriority.TOP);
             apromoreBand.addCommandButton(getExportApromoreButton(), RibbonElementPriority.TOP);
@@ -1200,10 +1220,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private JCommandButton getImportApromoreButton() {
 
         if (importApromoreButton == null) {
-            importApromoreButton = new JCommandButton(Messages.getString("Apromore.aproImport.text"), new apromore_import());
+            importApromoreButton = new JCommandButton(Messages.getString("Apromore.UI.TextBand.Import.Text"), new apromore_import());
             importApromoreButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_IMPORTAPRO, AbstractViewEvent.IMPORTAPRO, importApromoreButton));
             addShortcutToJCommandButton("Action.ImportApromore", importApromoreButton, ActionFactory.ACTIONID_IMPORTAPRO);
-            setTooltip(importApromoreButton, "Apromore.aproImport", true);
+            setTooltip(importApromoreButton, "Apromore.UI.TextBand.Import", true);
         }
 
         return importApromoreButton;
@@ -1212,10 +1232,10 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private JCommandButton getExportApromoreButton() {
 
         if (exportApromoreButton == null) {
-            exportApromoreButton = new JCommandButton(Messages.getString("Apromore.aproExport.text"), new apromore_export());
+            exportApromoreButton = new JCommandButton(Messages.getString("Apromore.UI.TextBand.Export.Text"), new apromore_export());
             exportApromoreButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_EXPORTAPRO, AbstractViewEvent.EXPORTAPRO, exportApromoreButton));
             addShortcutToJCommandButton("Action.ExportApromore", exportApromoreButton, ActionFactory.ACTIONID_EXPORTAPRO);
-            setTooltip(exportApromoreButton, "Apromore.aproExport", true);
+            setTooltip(exportApromoreButton, "Apromore.UI.TextBand.Export", true);
         }
 
         return exportApromoreButton;
