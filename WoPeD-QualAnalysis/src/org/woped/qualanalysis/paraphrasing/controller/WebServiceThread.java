@@ -33,7 +33,7 @@ import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.xml.sax.InputSource;
-import org.woped.p2t.textGenerator.*;
+//import org.woped.p2t.textGenerator.*;
 
 public class WebServiceThread extends Thread {
 

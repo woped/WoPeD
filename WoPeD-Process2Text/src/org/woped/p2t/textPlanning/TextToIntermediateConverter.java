@@ -234,10 +234,20 @@ class TextToIntermediateConverter {
             eFrag.addSentence(eFrag2);
 
             org.woped.p2t.dataModel.process.Activity a = process.getActivity(Integer.valueOf(firstActivity.getExit().getId()));
-            String role = a.getLane().getName();
-            if (role.equals("")) {
-                role = a.getPool().getName();
+
+            // Loops require roles --> If no role is set, the catch block sets a default role 'Process'
+            String role;
+            try {
+                role = a.getLane().getName();
+                if (role.equals("")) {
+                    role = a.getPool().getName();
+                }
             }
+            catch (NullPointerException e) {
+                role = "process";
+      //          System.out.println("Class TextToIntermediateConverter.java occured a: "+e+". Make sure to use roles when handeling loops. Default Role 'Process' used now.");
+            }
+
             eFrag2.setRole(role);
             ExecutableFragment eFrag3 = new ExecutableFragment(a.getAnnotations().get(0).getActions().get(0), a.getAnnotations().get(0).getBusinessObjects().get(0), "", a.getAnnotations().get(0).getAddition());
             eFrag3.sen_isCoord = false;
