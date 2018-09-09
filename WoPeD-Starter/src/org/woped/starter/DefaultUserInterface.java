@@ -151,6 +151,8 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
              editorList.add(frame.getEditor());
              ((EditorVC) frame.getEditor()).getEditorPanel().setContainer(frame);
+             frame.pack();
+             frame.setVisible(true);
 
              // Notify MainFrame
              super.addEditor(frame.getEditor());
