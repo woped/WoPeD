@@ -72,7 +72,8 @@ public class CoverabilityGraphFrameControllerTest {
 
 
     private EditorVC createDemoEditor() {
-        NetColorScheme scheme = mock(NetColorScheme.class);
+        NetColorScheme scheme;
+        scheme = mock(NetColorScheme.class);
         EditorPanel panel = mock(EditorPanel.class);
         when(panel.getUnderstandColoring()).thenReturn(scheme);
 

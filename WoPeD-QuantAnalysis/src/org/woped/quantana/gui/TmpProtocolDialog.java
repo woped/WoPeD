@@ -20,6 +20,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
 
 import org.woped.gui.translations.Messages;
@@ -129,24 +130,46 @@ public class TmpProtocolDialog extends JDialog {
 	
 	public void writeXES() {
 		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("XES Log", "xes");
+		chooser.setFileFilter(filter);
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
+			String filePath = f.getAbsolutePath();
+			if(!filePath.toLowerCase().endsWith(".xes")) {
+			    f = new File(filePath + ".xes");
+			}
+			if (f.exists()) {
+				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
+					return;
+				}
+			}
 			try {
 				PrintWriter p = new PrintWriter(f);
 				this.xesLog.writeXES(p);
 				p.close();
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(this, Messages.getString("QuantAna.Simulation.Log.xesError"), "", JOptionPane.ERROR_MESSAGE);
-			}
+			}					
 		}		
 	}
 
 	public void writeCSV() {
 		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Log", "csv");
+		chooser.setFileFilter(filter);
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
+			String filePath = f.getAbsolutePath();
+			if(!filePath.toLowerCase().endsWith(".csv")) {
+			    f = new File(filePath + ".csv");
+			}
+			if (f.exists()) {
+				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
+					return;
+				}
+			}
 			try {
 				PrintWriter p = new PrintWriter(f);
 				this.xesLog.writeCSV(p);

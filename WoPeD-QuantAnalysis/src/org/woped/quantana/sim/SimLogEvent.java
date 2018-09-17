@@ -22,12 +22,12 @@ public class SimLogEvent {
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(baseDate);
-		cal.add(Calendar.MILLISECOND, (int)(startTime*60*1000));
+		cal.add(Calendar.SECOND, (int)(startTime*60));
 		Date start = cal.getTime();
 		
 		cal = Calendar.getInstance();
 		cal.setTime(baseDate);
-		cal.add(Calendar.MILLISECOND, (int)((startTime+duration)*60*1000));
+		cal.add(Calendar.SECOND, (int)((startTime+duration)*60));
 		Date completion = cal.getTime();
 
 		p.print("  <event>\n" +
@@ -48,12 +48,12 @@ public class SimLogEvent {
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(baseDate);
-		cal.add(Calendar.MILLISECOND, (int)(startTime*60*1000));
+		cal.add(Calendar.SECOND, (int)(startTime*60));
 		Date start = cal.getTime();
 		
 		cal = Calendar.getInstance();
 		cal.setTime(baseDate);
-		cal.add(Calendar.MILLISECOND, (int)((startTime+duration)*60*1000));
+		cal.add(Calendar.SECOND, (int)((startTime+duration)*60));
 		Date completion = cal.getTime();
 
 		p.println(String.join(", ", (new Integer(caseID)).toString(), dateFormat.format(start), dateFormat.format(completion), this.activity, this.resource));

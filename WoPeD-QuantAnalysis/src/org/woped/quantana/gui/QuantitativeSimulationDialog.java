@@ -1960,6 +1960,15 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
+			String filePath = f.getAbsolutePath();
+			if(!filePath.toLowerCase().endsWith(".csv")) {
+			    f = new File(filePath + ".csv");
+			}
+			if (f.exists()) {
+				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
+					return;
+				}
+			}
 			try {
 				PrintWriter p = new PrintWriter(f);
 
@@ -2044,6 +2053,16 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
+			String filePath = f.getAbsolutePath();
+			if(!filePath.toLowerCase().endsWith(".html") && !filePath.toLowerCase().endsWith(".htm")) {
+			    f = new File(filePath + ".html");
+			}
+			if (f.exists()) {
+				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
+					return;
+				}
+			}
+
 			try {
 				PrintWriter p = new PrintWriter(f);
 

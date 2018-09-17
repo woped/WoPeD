@@ -59,7 +59,7 @@ public class SimLog {
 				"		<string key=\"org:resource\" value=\"UNKNOWN\"/>\n" + 
 				"	</global>\n" + 
 				"	<classifier name=\"Activity classifier\" keys=\"concept:name lifecycle:transition\"/>\n" + 
-				"	<classifier name=\"Resource classifier\" keys=\"org:resource\"/>");
+				"	<classifier name=\"Resource classifier\" keys=\"org:resource\"/>\n");
 		for (Integer traceID : this.traces.keySet()) {
 			traces.get(traceID).writeXES(p, this.baseDate, dateFormat);
 		}
