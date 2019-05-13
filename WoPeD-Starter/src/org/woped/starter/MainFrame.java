@@ -170,7 +170,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private JCommandButton pauseButton = null;
 
     private JCommandButton facebookButton = null;
-    private JCommandButton googleplusButton = null;
+//    private JCommandButton googleplusButton = null;
     private JCommandButton twitterButton = null;
     private JCommandButton signUpButton = null;
     private JCommandButton communityButton = null;
@@ -481,7 +481,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         //AbstractApplicationMediator mediator = m_mediator;
         osxCommunityMenu = new OSXMenu(Messages.getTitle("Task.Community"));
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Facebook.text")).addAction(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK);
-        osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text")).addAction(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS);
+ //       osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text")).addAction(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS);
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Twitter.text")).addAction(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER);
         osxCommunityMenu.addSeparator();
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Register.text")).addAction(m_mediator, ActionFactory.ACTIONID_REGISTER, AbstractViewEvent.REGISTER);
@@ -1066,7 +1066,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
             socialMediaBand = new JRibbonBand(Messages.getString("Community.socialmediaBandTitle"), null);
             socialMediaBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesNone(socialMediaBand));
             socialMediaBand.addCommandButton(getFacebookButton(), RibbonElementPriority.TOP);
-            socialMediaBand.addCommandButton(getGoogleplusButton(), RibbonElementPriority.TOP);
+//            socialMediaBand.addCommandButton(getGoogleplusButton(), RibbonElementPriority.TOP);
             socialMediaBand.addCommandButton(getTwitterButton(), RibbonElementPriority.TOP);
 
 
@@ -1936,7 +1936,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         return facebookButton;
     }
 
-    private JCommandButton getGoogleplusButton() {
+/*    private JCommandButton getGoogleplusButton() {
 
         if (googleplusButton == null) {
             googleplusButton = new JCommandButton(Messages.getString("Community.Googleplus.text"), new Google_plus_icon());
@@ -1945,7 +1945,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         }
 
         return googleplusButton;
-    }
+    }*/
 
     private JCommandButton getTwitterButton() {
 

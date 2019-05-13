@@ -3,23 +3,27 @@ package org.woped.quantana.sim;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
 
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 
 public class SimGraph {
 	Map<String, SimNode> Nodes = new HashMap<String, SimNode>();
-	ModelElementContainer mec = null;
+	ModelElementContainer supermec = null;
 	SimNode sink = null;
-	SimNode source = null;	
-	Map<String, AbstractPetriNetElementModel> allTrans = null;
+	SimNode source = null;
 
 	/**
 	 * 
@@ -28,25 +32,58 @@ public class SimGraph {
 	 * @param res
 	 */
 	public SimGraph(IEditor editor) {
-		this.mec = editor.getModelProcessor().getElementContainer();
+		this.supermec = editor.getModelProcessor().getElementContainer();
 		IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);		
-		buildGraph();		
-		AbstractPetriNetElementModel el = (AbstractPetriNetElementModel) qualanService.getSinkPlaces().iterator().next();
+		buildGraph(this.supermec, "");
+		AbstractPetriNetElementModel el = qualanService.getSinkPlaces().iterator().next();
 		sink = Nodes.get(el.getId());
-		el = (AbstractPetriNetElementModel) qualanService.getSourcePlaces().iterator().next();
-		source = Nodes.get(el.getId());				
+		el = qualanService.getSourcePlaces().iterator().next();
+		source = Nodes.get(el.getId());
+		resourceCheck(editor);
+	}
+
+	private void resourceCheck(IEditor editor) {
+		Vector<String> problemList = new Vector<String>();
+		for (SimNode n : Nodes.values()) {
+			if (n.hasResource()) {
+				if (numResources(editor, n.getrole(), n.getgroup()) < 1) {
+					problemList.add(n.getname());
+				}
+			}
+		}
+		if (problemList.size() > 0) {
+			String MsgText = Messages.getString("QuantAna.Simulation.resourceProblem");
+			for (String s : problemList) {
+				MsgText += "\n"+s;
+			}
+			JOptionPane.showMessageDialog(null, MsgText, Messages.getString("QuantAna.Simulation.resourceProblemTitle"), JOptionPane.WARNING_MESSAGE);
+		}
+	}
+
+	private int numResources(IEditor editor, String role, String group) {
+	    Vector<?> res = editor.getModelProcessor().getResources();
+		int count = 0;
+		Vector<?> rlist;
+
+		for (int i = 0; i < res.size(); i++) {
+			String name = res.get(i).toString();
+	        rlist = editor.getModelProcessor().getResourceClassesResourceIsAssignedTo(name);
+
+			if (rlist.contains(role) && rlist.contains(group)) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	public String[] getTransitions(){
-		String[] transitions = new String[allTrans.size()];
-		int ind = 0;
+		Vector<String> transitions = new Vector<String>();
 		for(SimNode n :Nodes.values()){
 			if (n.isTransition()){
-				transitions[ind]=n.getname()+ " (" + n.getid() + ")";
-				ind++;
+				transitions.addElement(n.getname()+ " (" + n.getid() + ")");
 			}
 		}		
-		return transitions;
+		return transitions.toArray(new String[transitions.size()]);
 	}
 	
 	public int getNumTransitionsGT0(){
@@ -58,10 +95,10 @@ public class SimGraph {
 	}
 
 
-public boolean isTransitionGT0(String id){
+	public boolean isTransitionGT0(String id){
         SimNode n = Nodes.get(id);        	
         return (n.isTransition() && n.gettime() > 0);
-  }
+	}
 
 	
 	public String[] getTransitionsGT0(){
@@ -74,14 +111,15 @@ public boolean isTransitionGT0(String id){
               }
         }        
         return trans;
-  }
+	}
 
 	
-	SimNode createSimNode(AbstractPetriNetElementModel el) {
+	SimNode createSimNode(AbstractPetriNetElementModel el, ModelElementContainer mec, String namePrefix) {
 		SimNode n = new SimNode(el.getId(), el.getNameValue());
 		switch (el.getType()) {
 		case AbstractPetriNetElementModel.PLACE_TYPE:
 			n.settype(SimNode.NT_PLACE);
+			n.setid(namePrefix+n.getid());
 			break;
 		case AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE:
 			n.settype(SimNode.NT_TRANSITION);
@@ -117,62 +155,130 @@ public boolean isTransitionGT0(String id){
 				n.settype(SimNode.NT_AND_SPLIT);
 			}
 			break;
-		case AbstractPetriNetElementModel.SUBP_TYPE:
-			n.settype(SimNode.NT_TRANSITION);
-			n.settime(((TransitionModel) el).getToolSpecific().getTime());
-			n.settimeunit((byte) ((TransitionModel) el).getToolSpecific()
-					.getTimeUnit());
-			break;
 		default:
 			n.settype(SimNode.NT_UNKNOWN);
 		}
 		return n;
 	}
 
-	void buildGraph() {
+	Map<String, SimNode> buildGraph(ModelElementContainer mec, String namePrefix) {
+		Map<String, SimNode> myNodes = new HashMap<String, SimNode>();
 		// first run through all elements creates the map with all SimNodes
-		AbstractPetriNetElementModel el = null;
 		SimNode node = null;
-		for (Iterator<?> i = mec
-				.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values()
-				.iterator(); i.hasNext();) {
-			el = (AbstractPetriNetElementModel) i.next();
-			Nodes.put(el.getId(), createSimNode(el));
+		for (AbstractPetriNetElementModel el : mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE).values()) {
+			myNodes.put(namePrefix+el.getId(), createSimNode(el, mec, namePrefix));
 		}
-		allTrans = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
+		Map<String, AbstractPetriNetElementModel> allTrans = mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
 		allTrans.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
 		allTrans.putAll(mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));		
-		for (Iterator<AbstractPetriNetElementModel> i = allTrans.values().iterator(); i.hasNext();) {
-			el = (AbstractPetriNetElementModel) i.next();
-			node = createSimNode(el);
-			Nodes.put(el.getId(), node);			
-			addResource(el, node);			
+		for (AbstractPetriNetElementModel el : allTrans.values()) {
+			if (el.getType() != AbstractPetriNetElementModel.SUBP_TYPE) {
+				node = createSimNode(el, mec, namePrefix);
+				myNodes.put(el.getId(), node);
+				addResource(el, node);
+			} else {
+				SimNode entryNode = new SimNode(el.getId()+"_SubProcessEntry", el.getNameValue()+"_SubProcessEntry");
+				entryNode.settype(SimNode.NT_SUBPROCESS);
+				entryNode.settime(((TransitionModel) el).getToolSpecific().getTime());
+				entryNode.settimeunit((byte) ((TransitionModel) el).getToolSpecific().getTimeUnit());
+				myNodes.put(entryNode.getId(), entryNode);
+
+				SimNode exitNode = new SimNode(el.getId()+"_SubProcessExit", el.getNameValue()+"_SubProcessExit");
+				exitNode.settype(SimNode.NT_SUBPROCESS);
+				exitNode.settime(((TransitionModel) el).getToolSpecific().getTime());
+				exitNode.settimeunit((byte) ((TransitionModel) el).getToolSpecific().getTimeUnit());
+				myNodes.put(exitNode.getId(), exitNode);
+
+				ModelElementContainer subModelContainer = ((SubProcessModel)el).getElementContainer();
+				Map<String, SimNode> subNodes = buildGraph(subModelContainer, el.getNameValue()+"_" + namePrefix);
+
+				SimNode subSink = null;
+				SimNode subSource = null;
+				for (SimNode n : subNodes.values()) {
+					if (n.gettype() == SimNode.NT_PLACE && n.getarcIn().size() == 0) {
+						subSource = n;
+					}
+					if (n.gettype() == SimNode.NT_PLACE && n.getarcOut().size() == 0) {
+						subSink = n;
+					}
+				}
+				entryNode.getarcOut().add(new SimArc(entryNode, subSource));
+				exitNode.getarcIn().add(new SimArc(exitNode, subSink));
+				subSource.getarcIn().add(new SimArc(subSource, entryNode));
+				subSink.getarcOut().add(new SimArc(subSink, exitNode));
+			}
 		}
-		
 		// second run through all elements creates the arc with probability and
 		// pre and post SimNodes
-		createArcPrePostNode();		
+		createArcPrePostNode(mec, myNodes, namePrefix);
+		Nodes.putAll(myNodes);
+		return myNodes;
 	}
 
-	public void createArcPrePostNode() {
-		for (SimNode n : Nodes.values()) {
-			for (Iterator<?> target = mec.getTargetElements(n.getid()).values()
-					.iterator(); target.hasNext();) {
-				AbstractPetriNetElementModel postNode = (AbstractPetriNetElementModel) target
-						.next();
-				double p = (mec.findArc(n.getid(), postNode.getId()))
-						.getProbability();
-				if (p == 0.0)
-					p = 1;
-				SimArc arc = new SimArc(n, Nodes.get(postNode.getId()), p);
-				n.getarcOut().add(arc);
-			}
-			for (Iterator<?> source = mec.getSourceElements(n.getid()).values()
-					.iterator(); source.hasNext();) {
-				AbstractPetriNetElementModel preNode = (AbstractPetriNetElementModel) source
-						.next();
-				SimArc arc = new SimArc(n, Nodes.get(preNode.getId()));
-				n.getarcIn().add(arc);
+	public void createArcPrePostNode(ModelElementContainer mec, Map<String, SimNode> myNodes, String namePrefix) {
+		for (SimNode n : myNodes.values()) {
+			String nid;
+			if (n.gettype() == SimNode.NT_SUBPROCESS) {
+				nid = n.getid().substring(0, n.getid().lastIndexOf('_'));
+				if (n.getid().endsWith("_SubProcessExit")) {
+					for (AbstractPetriNetElementModel postNode : mec.getTargetElements(nid).values()) {
+						double p = (mec.findArc(nid, postNode.getId())).getProbability();
+						if (p == 0.0)
+							p = 1;
+						SimArc arc;
+						if (postNode.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
+							arc = new SimArc(n, myNodes.get(postNode.getId()+"_SubProcessEntry"), p);
+						else
+							if (postNode.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
+								arc = new SimArc(n, myNodes.get(namePrefix+postNode.getId()), p);
+							else
+								arc = new SimArc(n, myNodes.get(postNode.getId()), p);
+						n.getarcOut().add(arc);
+					}
+				}
+				if (n.getid().endsWith("SubProcessEntry")) {
+					for (AbstractPetriNetElementModel preNode : mec.getSourceElements(nid).values()) {
+						SimArc arc;
+						if (preNode.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
+							arc = new SimArc(n, myNodes.get(preNode.getId()+"_SubProcessExit"));
+						else
+							if (preNode.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
+								arc = new SimArc(n, myNodes.get(namePrefix+preNode.getId()));
+							else
+								arc = new SimArc(n, myNodes.get(preNode.getId()));
+						n.getarcIn().add(arc);
+					}
+				}
+			} else {
+				nid = n.getid();
+				if (n.gettype() == SimNode.NT_PLACE) {
+					nid = nid.substring(namePrefix.length());
+				}
+				for (AbstractPetriNetElementModel postNode : mec.getTargetElements(nid).values()) {
+					double p = (mec.findArc(nid, postNode.getId())).getProbability();
+					if (p == 0.0)
+						p = 1;
+					SimArc arc;
+					if (postNode.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
+						arc = new SimArc(n, myNodes.get(postNode.getId()+"_SubProcessEntry"), p);
+					else
+						if (postNode.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
+							arc = new SimArc(n, myNodes.get(namePrefix+postNode.getId()), p);
+						else
+							arc = new SimArc(n, myNodes.get(postNode.getId()), p);
+					n.getarcOut().add(arc);
+				}
+				for (AbstractPetriNetElementModel preNode : mec.getSourceElements(nid).values()) {
+					SimArc arc;
+					if (preNode.getType() == AbstractPetriNetElementModel.SUBP_TYPE)
+						arc = new SimArc(n, myNodes.get(preNode.getId()+"_SubProcessExit"));
+					else
+						if (preNode.getType() == AbstractPetriNetElementModel.PLACE_TYPE)
+							arc = new SimArc(n, myNodes.get(namePrefix+preNode.getId()));
+						else
+							arc = new SimArc(n, myNodes.get(preNode.getId()));
+					n.getarcIn().add(arc);
+				}
 			}
 		}
 	}
@@ -204,7 +310,7 @@ public boolean isTransitionGT0(String id){
 
 			text += n + " << [ ";
 			for (Iterator<SimArc> i = n.getarcIn().iterator(); i.hasNext();) {
-				SimArc a = (SimArc) i.next();
+				SimArc a = i.next();
 				text += a.getTarget();
 			}
 			text += " ]\n";

@@ -60,8 +60,11 @@ import org.jgraph.JGraph;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.ResourceClassModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.Constants;
@@ -1549,7 +1552,12 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			sp.setResUse(SimRunner.RES_NOT_USED);
 		}
 
-		unfoldNet(simgraph, sp.getPeriod() / sp.getLambda(), epsilon);
+		try {
+			unfoldNet(simgraph, sp.getPeriod() / sp.getLambda(), epsilon);
+		} catch (java.lang.StackOverflowError e) {
+			unfoldedNet = null;
+			JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Simulation.unfoldingFailed"), "Unfolding Error", JOptionPane.WARNING_MESSAGE);
+		}
 		// sim = new SimRunner(simgraph, new ResourceUtilization(resAlloc), sp);
 
 		// -->CN
@@ -1692,7 +1700,20 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		resObjNum = resAlloc.getResources().size();
 	}
 
+	private HashMap<String, AbstractPetriNetElementModel> getAllTransModels(ModelElementContainer mec) {
+		HashMap<String, AbstractPetriNetElementModel> lst = new HashMap<String, AbstractPetriNetElementModel>();
+		lst.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
+		lst.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+		lst.putAll(mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
+		for (AbstractPetriNetElementModel p : mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE).values()) {
+			lst.putAll(getAllTransModels( ((SubProcessModel)p).getElementContainer() ));
+		}
+		return lst;
+	}
+
+
 	private LinkedList<TransitionModel> getTransModels() {
+		HashMap<String, AbstractPetriNetElementModel> allTransitions = getAllTransModels(editor.getModelProcessor().getElementContainer());
 		LinkedList<TransitionModel> lst = new LinkedList<TransitionModel>();
 		ArrayList<String> ids = new ArrayList<String>();
 		for (SimNode n : simgraph.getNodes().values()) {
@@ -1700,8 +1721,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 				ids.add(n.getid());
 		}
 		for (int i = 0; i < ids.size(); i++) {
-			lst.add((TransitionModel) editor.getModelProcessor()
-					.getElementContainer().getElementById(ids.get(i)));
+			String id = ids.get(i);
+			if (id.endsWith("_SubProcessExit") || id.endsWith("_SubProcessEntry"))
+				id = id.substring(0, id.lastIndexOf("_SubProcess"));
+			lst.add( (TransitionModel) allTransitions.get(id));
 		}
 		return lst;
 	}
@@ -1960,15 +1983,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
-			String filePath = f.getAbsolutePath();
-			if(!filePath.toLowerCase().endsWith(".csv")) {
-			    f = new File(filePath + ".csv");
-			}
-			if (f.exists()) {
-				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
-					return;
-				}
-			}
 			try {
 				PrintWriter p = new PrintWriter(f);
 
@@ -2053,16 +2067,6 @@ public class QuantitativeSimulationDialog extends JDialog implements
 		int result = chooser.showSaveDialog(this);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File f = chooser.getSelectedFile();
-			String filePath = f.getAbsolutePath();
-			if(!filePath.toLowerCase().endsWith(".html") && !filePath.toLowerCase().endsWith(".htm")) {
-			    f = new File(filePath + ".html");
-			}
-			if (f.exists()) {
-				if (JOptionPane.showConfirmDialog(null, Messages.getString("File.Warning.Overwrite.Text"), Messages.getString("File.Warning.Overwrite.Title"), JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.OK_OPTION) {
-					return;
-				}
-			}
-
 			try {
 				PrintWriter p = new PrintWriter(f);
 

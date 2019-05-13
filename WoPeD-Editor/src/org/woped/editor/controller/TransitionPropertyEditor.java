@@ -77,7 +77,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel contentPanel = null;
 	private JPanel bpelContentPanel = null;
 	private JPanel bpelPanel = null;
-//	private JTabbedPane tabPane = null;
+	private JTabbedPane tabPane = null;
 	private JPanel activityChoosePanel = null;
 
 	private JComboBox<BPELadditionalPanel> activityChooseComboBox = null;
@@ -197,16 +197,16 @@ public class TransitionPropertyEditor extends JDialog implements
 		getNameTextField().requestFocus();
 	}
 
-/*	private JTabbedPane getTabbedPane() {
+	private JTabbedPane getTabbedPane() {
 		if (tabPane == null) {
 			tabPane = new JTabbedPane();
 			tabPane.addTab(Messages.getString("Transition.Properties.General"),
 					getContentPanel());
-//			tabPane.addTab(Messages.getString("Transition.Properties.BPEL"),
-//					getBPELContentPanel());
+			tabPane.addTab(Messages.getString("Transition.Properties.BPEL"),
+					getBPELContentPanel());
 		}
 		return tabPane;
-	}*/
+	}
 
 	// ********************main panel 1: ContentPanel********************
 

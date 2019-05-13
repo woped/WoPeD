@@ -229,4 +229,8 @@ public class SimNode {
 	public void incIteration(){
 		this.iteration++;
 	}
+
+	public String getId() {
+		return id;
+	}
 }

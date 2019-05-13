@@ -187,7 +187,7 @@ public class PetriNetToProcessConverter {
                         String label2 = sucXOR.getLabel();
 
                         int newId = model.getNewId();
-                        model.addActivity(new org.woped.p2t.dataModel.process.Activity(newId, xorTitle + ": " + label2, roleAsLane, roleAsPool, ActivityType.NONE));
+                        model.addActivity(new org.woped.p2t.dataModel.process.Activity(newId, xorTitle + " " + label2, roleAsLane, roleAsPool, ActivityType.NONE));
                         transformedElems.put(elemId, newId);
                         transformedElemsRev.put(newId, elemId);
                         if (precElem != -1) {

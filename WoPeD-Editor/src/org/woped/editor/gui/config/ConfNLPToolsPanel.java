@@ -1,17 +1,17 @@
 /*
- * 
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author 
- * 
+ *
+ * Copyright (C) 2004-2005, see @author in JavaDoc for the author
+ *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -113,17 +113,17 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
 		ConfigurationManager.getConfiguration().setText2ProcessServerHost(
 				getServerURLText_T2P().getText());
-				
+
 		ConfigurationManager.getConfiguration().setText2ProcessServerURI(
 				getManagerPathText_T2P().getText());
-		
+
 		if (getServerPortText_T2P().getText().equals("")) {
 			ConfigurationManager.getConfiguration()
 					.setText2ProcessServerPort(0);
 		} else
 			ConfigurationManager.getConfiguration().setText2ProcessServerPort(
 					Integer.parseInt(getServerPortText_T2P().getText()));
-		
+
 		return true;
 	}
 
@@ -141,7 +141,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		getServerPortText().setText(
 				""
 						+ ConfigurationManager.getConfiguration()
-								.getProcess2TextServerPort());
+						.getProcess2TextServerPort());
 		getUseBox().setSelected(
 				ConfigurationManager.getConfiguration().getProcess2TextUse());
 
@@ -151,11 +151,11 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		getManagerPathText_T2P().setText(
 				ConfigurationManager.getConfiguration()
 						.getText2ProcessServerURI());
-		
+
 		getServerPortText_T2P().setText(
 				""
 						+ ConfigurationManager.getConfiguration()
-								.getText2ProcessServerPort());
+						.getText2ProcessServerPort());
 	}
 
 	private void initialize() {
@@ -174,7 +174,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		c.gridx = 0;
 		c.gridy = 1;
 		contentPanel.add(getSettingsPanel(), c);
-		
+
 		c.weightx = 1;
 		c.gridx = 0;
 		c.gridy = 3;
@@ -203,7 +203,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return serverURLText;
 	}
-	
+
 	private JTextField getServerURLText_T2P() {
 		if (serverURLText_T2P == null) {
 			serverURLText_T2P = new JTextField();
@@ -215,10 +215,10 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return serverURLText_T2P;
 	}
-	
-	
-	
-	
+
+
+
+
 
 	private JPanel getEnabledPanel() {
 		if (enabledPanel == null) {
@@ -364,7 +364,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		settingsPanel_T2P.setVisible(getUseBox_T2P().isSelected());
 		return settingsPanel_T2P;
 	}
-	
+
 	class CheckboxListener implements ItemListener {
 
 		public void itemStateChanged(ItemEvent ie) {
@@ -385,7 +385,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return serverURLLabel;
 	}
-	
+
 	private JLabel getServerURLLabel_T2P() {
 		if (serverURLLabel_T2P == null) {
 			serverURLLabel_T2P = new JLabel("<html>"
@@ -415,7 +415,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return serverPortLabel_T2P;
 	}
-	
+
 	private JTextField getServerPortText() {
 		if (serverPortText == null) {
 			serverPortText = new JTextField();
@@ -427,7 +427,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return serverPortText;
 	}
-	
+
 	private JTextField getServerPortText_T2P() {
 		if (serverPortText_T2P == null) {
 			serverPortText_T2P = new JTextField();
@@ -454,7 +454,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
 		return useBox;
 	}
-	
+
 	private JCheckBox getUseBox_T2P() {
 		if (useBox == null) {
 			useBox = new JCheckBox(
@@ -479,7 +479,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return managerPathLabel;
 	}
-	
+
 	private JLabel getManagerPathLabel_T2P() {
 		if (managerPathLabel_T2P == null) {
 			managerPathLabel_T2P = new JLabel("<html>"
@@ -501,7 +501,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return managerPathText;
 	}
-	
+
 	private JTextField getManagerPathText_T2P() {
 		if (managerPathText_T2P == null) {
 			managerPathText_T2P = new JTextField();
@@ -532,7 +532,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
 		return testButton;
 	}
-	
+
 	private WopedButton getTestButton_T2P() {
 		if (testButton_T2P == null) {
 			testButton_T2P = new WopedButton();
@@ -565,7 +565,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 		return defaultButton;
 	}
-	
+
 	private WopedButton getDefaultButton_T2P() {
 		if (defaultButton_T2P == null) {
 			defaultButton_T2P = new WopedButton();
@@ -656,7 +656,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		}
 
 	}
-	
+
 	private void setDefaultValues() {
 		getServerURLText().setText(
 				ConfigurationManager.getStandardConfiguration()
@@ -667,7 +667,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		getServerPortText().setText(
 				""
 						+ ConfigurationManager.getStandardConfiguration()
-								.getProcess2TextServerPort());
+						.getProcess2TextServerPort());
 	}
 
 	private void setDefaultValues_T2P() {
@@ -680,7 +680,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		getServerPortText_T2P().setText(
 				""
 						+ ConfigurationManager.getStandardConfiguration()
-								.getText2ProcessServerPort());
+						.getText2ProcessServerPort());
 	}
-	
+
 }
