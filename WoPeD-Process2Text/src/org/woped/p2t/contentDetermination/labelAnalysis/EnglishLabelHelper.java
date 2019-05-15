@@ -1,11 +1,11 @@
 package org.woped.p2t.contentDetermination.labelAnalysis;
 
-import org.woped.p2t.contentDetermination.support.Distance;
-import org.woped.p2t.contentDetermination.support.Noun2VerbTransformer;
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
 import net.didion.jwnl.data.*;
 import net.didion.jwnl.dictionary.Dictionary;
+import org.woped.p2t.contentDetermination.support.Distance;
+import org.woped.p2t.contentDetermination.support.Noun2VerbTransformer;
 
 import java.io.InputStream;
 import java.util.HashSet;

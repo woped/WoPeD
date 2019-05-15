@@ -60,7 +60,7 @@ public class WebServiceThread extends Thread {
 
 		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
 // Use Webservice to call P2T
-/*			try {
+			try {
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				new PNMLExport().saveToStream(editor, stream);
 				String text = stream.toString();
@@ -87,9 +87,9 @@ public class WebServiceThread extends Thread {
 				paraphrasingPanel.enableButtons(true);
 				paraphrasingPanel.setThreadInProgress(false);
 			}
-*/
+
 //	Alternative code for calling P2T locally (not via Webservice)
-			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+/*			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			new PNMLExport().saveToStream(editor, stream);
 			String text = stream.toString();
 			String output = "";
@@ -108,7 +108,7 @@ public class WebServiceThread extends Thread {
 			paraphrasingPanel.showLoadingAnimation(false);
 			paraphrasingPanel.enableButtons(true);
 			paraphrasingPanel.setThreadInProgress(false);
-
+*/
 		} else {
 			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
 					Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
