@@ -1781,7 +1781,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
                 }
                 // Normal dir access
                 else {
-                    path = "../WoPeD-FileInterface/bin/" + innerPath;
+                    path = this.getClass().getResource("/" + innerPath).toExternalForm().replaceAll("file:", "");
                     File sampleDir = new File(path);
                     if (sampleDir.isDirectory()) {
                         for (int idx = 0; idx < sampleDir.listFiles().length; idx++) {
