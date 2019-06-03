@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.woped.p2t.dataModel.process.Arc;
 import org.woped.p2t.dataModel.process.Element;
 import org.woped.p2t.dataModel.process.ProcessModel;
+import dataModel.process.ActivityType;
 import de.hpi.bpt.process.ControlFlow;
 import de.hpi.bpt.process.Event;
 import de.hpi.bpt.process.Gateway;
@@ -155,6 +156,7 @@ public class FormatConverter {
 		for (org.woped.p2t.dataModel.process.Activity a: pm.getActivites().values()) {
 			Task t = new Task(a.getLabel());
 			t.setId(Integer.toString(a.getId()));
+			// if (a.getType() == ActivityType.TYPE_MAP.get("Subprocess")) t.setDescription("sub");
 			elementMap.put(a.getId(), t);
 		}
 

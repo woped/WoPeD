@@ -1,6 +1,7 @@
 package org.woped.p2t.textPlanning;
 
 
+import dataModel.process.ActivityType;
 import org.woped.p2t.contentDetermination.extraction.GatewayExtractor;
 import org.woped.p2t.contentDetermination.labelAnalysis.EnglishLabelDeriver;
 import org.woped.p2t.contentDetermination.labelAnalysis.EnglishLabelHelper;
@@ -336,6 +337,9 @@ public class TextPlanner {
         // Standard case
         eFrag = new ExecutableFragment(anno.getActions().get(0), anno.getBusinessObjects().get(0), "", anno.getAddition());
         eFrag.addAssociation(activity.getId());
+        if (activity.getType() == ActivityType.TYPE_MAP.get("Subprocess")) {
+            eFrag.setAddition("in a subprocess");
+        }
         String role = getRole(activity, eFrag);
         eFrag.setRole(role);
         if (anno.getActions().size() == 2) {
