@@ -40,6 +40,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	private Process2Text naturalTextParser = null;
 	private JButton buttonLoad = null;
 	private JButton buttonExport = null;
+	private JButton buttonSprachausgabe = null;
 	private JLabel labelLoading = null;
 	private WebServiceThread webService = null;
 	private boolean threadInProgress = false;
@@ -94,7 +95,9 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		button.setPreferredSize(dim);
 		button.setBorderPainted(false);
 	}
-
+public JButton Test(){
+		return null;
+	}
 	public JButton getbuttonLoad() {
 		if (buttonLoad == null) {
 			buttonLoad = new JButton();
@@ -122,6 +125,20 @@ public class P2TSideBar extends JPanel implements ActionListener {
 
 		return buttonExport;
 	}
+	public JButton getButtonSprachausgabe() {
+		if (buttonSprachausgabe == null) {
+			buttonSprachausgabe = new JButton();
+			buttonSprachausgabe.setIcon(Messages.getImageIcon("Paraphrasing.Sprachausgabe"));
+			buttonSprachausgabe.setToolTipText(Messages.getString("Paraphrasing.Sprachausgabe.Title"));
+			buttonSprachausgabe.setEnabled(true);
+			buttonSprachausgabe.addActionListener(this);
+			defineButtonSize(buttonSprachausgabe);
+			buttonSprachausgabe.setBorderPainted(false);
+		}
+
+		return buttonSprachausgabe;
+
+	}
 
 	/**
 	 * Method to initialize and add the the components to the sidebar
@@ -134,6 +151,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.add(getbuttonLoad());
 		buttonPanel.add(getbuttonExport());
+		buttonPanel.add(getButtonSprachausgabe());
 
 		this.add(buttonPanel, BorderLayout.NORTH);
 
@@ -311,6 +329,16 @@ public class P2TSideBar extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Export.Numberelements.Message"),
 						Messages.getString("Paraphrasing.Export.Numberelements.Title"),
 						JOptionPane.INFORMATION_MESSAGE);
+			}
+		}
+		else if (e.getSource() == buttonSprachausgabe){
+
+			try {
+				/*TextToSpeech tts = new TextToSpeech();
+				tts.setVoice("cmu-slt-hsmm");
+				tts.speak(textpane.getText(), 2.0f, false, false);*/
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
 		}
 	}
