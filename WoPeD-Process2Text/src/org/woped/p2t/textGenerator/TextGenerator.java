@@ -44,6 +44,13 @@ public class TextGenerator {
         PetriNetToProcessConverter pnConverter = new PetriNetToProcessConverter();
         ProcessModel model = pnConverter.convertToProcess(petriNet);
 
+        //check number splits/joins
+        pnConverter.printConversion();
+
+        //Show Activities
+        System.out.println(model.getActivites());
+
+
         HashMap<Integer, String> transformedElemsRev = pnConverter.transformedElemsRev;
 
         EnglishLabelHelper lHelper = new EnglishLabelHelper(contextPath);

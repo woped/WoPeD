@@ -39,12 +39,13 @@ public class PetriNetToProcessConverter {
 
     private int x = 0;
     private static String xorTitle;
+    //private static String andTitle;
 
     private void transformElem(org.woped.p2t.dataModel.pnmlReader.PetriNet.Element elem, int precElem, PetriNet petriNet, org.woped.p2t.dataModel.process.ProcessModel model, org.woped.p2t.dataModel.process.Pool pool, org.woped.p2t.dataModel.process.Lane lane) {
         // Id of current petri net element
         String elemId = elem.getId();
         String elemType = "";
-        // If element not already ecists
+        // If element not already excists
         if (!transformedElems.keySet().contains(elemId)) {
 
             // Places ...
