@@ -166,9 +166,11 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		String[] singleIDs = ids.split(",");
 
 		for (String id : singleIDs) {
-			highlightIDinText(id);
-			id = id.split("_op_")[0]; // ignore the path option
-			highlightIDinProcess(id);
+			if(id.contains("t")) {
+				highlightIDinText(id);
+				id = id.split("_op_")[0]; // ignore the path option
+				highlightIDinProcess(id);
+			}
 		}
 	}
 
