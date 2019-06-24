@@ -132,7 +132,7 @@ public abstract class Messages
 
     public static String getCursorIconLocation(String propertiesPrefix)
     {
-        return getString(propertiesPrefix + ".CursorIcon");
+        return getString(propertiesPrefix + ".Icon");
     }
 
     public static ImageIcon getImageIcon(String propertiesPrefix)

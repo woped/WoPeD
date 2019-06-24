@@ -203,7 +203,8 @@ public class PetriNetToProcessConverter {
                         //Normal Transition
                         int newId = model.getNewId();
                         String label = elem.getLabel();
-                        model.addActivity(new org.woped.p2t.dataModel.process.Activity(newId, label, roleAsLane, roleAsPool, ActivityType.NONE));
+                        int type = elem.getId().contains("sub") ? ActivityType.TYPE_MAP.get("Subprocess") : ActivityType.NONE;
+                        model.addActivity(new org.woped.p2t.dataModel.process.Activity(newId, label, roleAsLane, roleAsPool, type));
                         transformedElems.put(elemId, newId);
                         transformedElemsRev.put(newId, elemId);
                         if (precElem != -1) {

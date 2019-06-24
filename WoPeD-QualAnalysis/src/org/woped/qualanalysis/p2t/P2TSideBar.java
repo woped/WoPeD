@@ -18,8 +18,6 @@ import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.text.BadLocationException;
 
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
@@ -37,13 +35,11 @@ import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
  */
 public class P2TSideBar extends JPanel implements ActionListener {
 
-	private static final String VOICENAME="kevin16";
 	private IEditor editor = null;
 	private JEditorPane textpane = null;
 	private Process2Text naturalTextParser = null;
 	private JButton buttonLoad = null;
 	private JButton buttonExport = null;
-	private JButton buttonTextToSpeech = null;
 	private JLabel labelLoading = null;
 	private WebServiceThread webService = null;
 	private boolean threadInProgress = false;
@@ -127,19 +123,6 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		return buttonExport;
 	}
 
-	public JButton getButtonTextToSpeech() {
-		if (buttonTextToSpeech == null) {
-			buttonTextToSpeech = new JButton();
-			buttonTextToSpeech.setIcon(Messages.getImageIcon("Paraphrasing.Sprachausgabe"));
-			buttonTextToSpeech.setToolTipText(Messages.getString("Paraphrasing.Sprachausgabe.Title"));
-			buttonTextToSpeech.setEnabled(true);
-			buttonTextToSpeech.addActionListener(this);
-			defineButtonSize(buttonTextToSpeech);
-			buttonTextToSpeech.setBorderPainted(false);
-		}
-		return buttonTextToSpeech;
-	}
-
 	/**
 	 * Method to initialize and add the the components to the sidebar
 	 */
@@ -151,7 +134,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		buttonPanel.setLayout(new FlowLayout());
 		buttonPanel.add(getbuttonLoad());
 		buttonPanel.add(getbuttonExport());
-		buttonPanel.add(getButtonTextToSpeech());
+
 		this.add(buttonPanel, BorderLayout.NORTH);
 
 		this.labelLoading = new JLabel("", Messages.getImageIcon("Paraphrasing.Output.Load.Animation"), JLabel.CENTER);
@@ -183,14 +166,11 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		String[] singleIDs = ids.split(",");
 
 		for (String id : singleIDs) {
-			if(id.contains("t")){
-				highlightIDinText(id);
-				id = id.split("_op_")[0]; // ignore the path option
-				highlightIDinProcess(id);
-			}
+			highlightIDinText(id);
+			id = id.split("_op_")[0]; // ignore the path option
+			highlightIDinProcess(id);
 		}
 	}
-
 
 	/**
 	 * Handles the highlighting of the elements in the text
@@ -333,25 +313,6 @@ public class P2TSideBar extends JPanel implements ActionListener {
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
-
-		else if (e.getSource() == buttonTextToSpeech){
-
-			Voice voice;
-			VoiceManager vm = VoiceManager.getInstance();
-			voice= vm.getVoice(VOICENAME);
-			voice.allocate();
-
-			try {
-
-				String text = textpane.getText().replaceAll("\\<.*?>","");
-				if(text !=null){
-					voice.speak(text);
-				}
-			} catch ( Exception e2) {
-				JOptionPane.showMessageDialog(null,e2.getMessage(),"Fehler", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-
 	}
 
 	/**

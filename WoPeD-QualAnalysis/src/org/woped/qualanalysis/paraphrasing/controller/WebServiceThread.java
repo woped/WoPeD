@@ -58,7 +58,8 @@ public class WebServiceThread extends Thread {
 
 		String[] arg = {url};
 
-		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
+		int n = editor.getModelProcessor().getElementContainer().getRootElements().size();
+		if (n > 3) {
 // Use Webservice to call P2T
 			try {
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -75,12 +76,12 @@ public class WebServiceThread extends Thread {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
-						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Title"), JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception ex) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Exception.Message", arg),
-						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+						Messages.getString("Paraphrasing.Webservice.Error.Exception.Title"), JOptionPane.INFORMATION_MESSAGE);
 
 			} finally {
 				paraphrasingPanel.showLoadingAnimation(false);
@@ -109,8 +110,12 @@ public class WebServiceThread extends Thread {
 			paraphrasingPanel.enableButtons(true);
 			paraphrasingPanel.setThreadInProgress(false);
 		} else {
+			isFinished = true;
+			paraphrasingPanel.showLoadingAnimation(false);
+			paraphrasingPanel.enableButtons(true);
+			paraphrasingPanel.setThreadInProgress(false);
 			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
-					Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+					Messages.getString("Paraphrasing.Webservice.Numberelements.Title"), JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
