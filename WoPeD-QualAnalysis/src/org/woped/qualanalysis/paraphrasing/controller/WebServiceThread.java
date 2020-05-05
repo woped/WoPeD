@@ -33,7 +33,7 @@ import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
 import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
 import org.xml.sax.InputSource;
-import org.woped.p2t.textGenerator.*;
+//import org.woped.p2t.textGenerator.*;
 
 public class WebServiceThread extends Thread {
 
@@ -58,9 +58,10 @@ public class WebServiceThread extends Thread {
 
 		String[] arg = {url};
 
-		int n = editor.getModelProcessor().getElementContainer().getRootElements().size();
-		if (n > 3) {
-// Use Webservice to call P2T
+		int numOfNodes = editor.getModelProcessor().getElementContainer().getRootElements().size();
+		if (numOfNodes > 3) {
+
+			// Start of alternative code to use Webservice to call P2T
 			try {
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				new PNMLExport().saveToStream(editor, stream);
@@ -72,25 +73,30 @@ public class WebServiceThread extends Thread {
 				isFinished = true;
 				paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 				paraphrasingPanel.setThreadInProgress(false);
-			} catch (WebServiceException wsEx) {
+			}
+			catch (WebServiceException wsEx) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
 						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Title"), JOptionPane.INFORMATION_MESSAGE);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Exception.Message", arg),
 						Messages.getString("Paraphrasing.Webservice.Error.Exception.Title"), JOptionPane.INFORMATION_MESSAGE);
 
-			} finally {
+			}
+			finally {
 				paraphrasingPanel.showLoadingAnimation(false);
 				paraphrasingPanel.enableButtons(true);
 				paraphrasingPanel.setThreadInProgress(false);
 			}
-//	Alternative code for calling P2T locally (not via Webservice)
-			/**
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			// End of alternative to use Webservice to call P2T*/
+
+			// Alternative code for calling P2T locally (not via Webservice)
+/*
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			new PNMLExport().saveToStream(editor, stream);
 			String text = stream.toString();
 			String output = "";
@@ -108,67 +114,16 @@ public class WebServiceThread extends Thread {
 			paraphrasingPanel.setThreadInProgress(false);
 			paraphrasingPanel.showLoadingAnimation(false);
 			paraphrasingPanel.enableButtons(true);
-			paraphrasingPanel.setThreadInProgress(false);
-		} else {
-			isFinished = true;
+			paraphrasingPanel.setThreadInProgress(false);*/
+			// End of alternative code for calling P2T locally (not via Webservice)
+		}
+		else { // numOfNodes of Petri net in editor is 3 or smaller
+ 			isFinished = true;
 			paraphrasingPanel.showLoadingAnimation(false);
 			paraphrasingPanel.enableButtons(true);
 			paraphrasingPanel.setThreadInProgress(false);
 			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
 					Messages.getString("Paraphrasing.Webservice.Numberelements.Title"), JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
-
-	 * Extracts the phrases from an PNML file and saves it to the result variable
-	 *
-	 * @throws XmlException
-	 * @author Martin Meitz
-	 */
-			/**
-	@SuppressWarnings("unused")
-	private String extractDescriptionFromWebservice(String xmlString) throws XmlException {
-		DocumentBuilderFactory xmlBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder xmlBuilder;
-		String result = null;
-		try {
-			xmlBuilder = xmlBuilderFactory.newDocumentBuilder();
-			Document document = xmlBuilder.parse(new InputSource(new StringReader(xmlString)));
-			XPath xPath = XPathFactory.newInstance().newXPath();
-			result = xPath.evaluate("/pnml/text", document.getChildNodes());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-
-	@SuppressWarnings("unused")
-	private void extractDescription(String xmlString) throws XmlException {
-
-		PnmlDocument pnmlDoc = PnmlDocument.Factory.parse(xmlString);
-		PnmlType pnmlTag = pnmlDoc.getPnml();
-
-		if (pnmlTag.getNetArray().length > 0) {
-			NetType netTag = pnmlTag.getNetArray(0);
-
-			if (netTag.isSetText()) {
-				TextType textTag = netTag.getText();
-
-				if (textTag.getPhraseArray().length > 0) {
-					PhraseType[] phraseTag = textTag.getPhraseArray();
-
-					this.result = new String[phraseTag.length][2];
-					for (int i = 0; i < phraseTag.length; i++) {
-						this.result[i][0] = phraseTag[i].getIds().trim();
-						this.result[i][1] = phraseTag[i].getStringValue().trim();
-					}
-				} else {
-					JOptionPane.showMessageDialog(null,
-							Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Message"),
-							Messages.getString("Paraphrasing.Webservice.Parsing.Empty.Title"),
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-			}**/
 		}
 	}
 }
