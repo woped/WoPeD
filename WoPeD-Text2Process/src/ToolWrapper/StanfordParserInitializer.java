@@ -62,7 +62,7 @@ public class StanfordParserInitializer {
         try {
             ObjectInputStream in;
             InputStream is;
-            URL u = StanfordParserInitializer.class.getResource("/StanfordParser/englishFactored.ser.gz");
+            URL u = StanfordParserInitializer.class.getResource("/Stanford/englishFactored.ser.gz");
             URLConnection uc = u.openConnection();
             is = uc.getInputStream();
             in = new ObjectInputStream(new GZIPInputStream(new BufferedInputStream(is)));

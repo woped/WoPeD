@@ -48,6 +48,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 
 //import T2PWebservice.T2PController;
+import T2PWebservice.T2PController;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
@@ -226,8 +227,8 @@ public class T2PUI extends JDialog {
 		} else{			
 			showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
 		}
-
-/*		String pnml = "";
+/*
+		/*String pnml = "";
 		try {
 			T2PController tp = new T2PController(inputText);
 			tp.resetNLPTools();
