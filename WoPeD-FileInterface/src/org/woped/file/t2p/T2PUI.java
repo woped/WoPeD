@@ -47,7 +47,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 
-import T2PWebservice.T2PController;
+//import T2PWebservice.T2PController;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
