@@ -12,7 +12,7 @@ public class ANDJoin extends PetrinetGateway {
         this.originID=originID;
         join=elementBuilder.createTransition(text,hasResource,true,originID);
         join.setPartOfGateway(1,join.getID());
-        join.setOperatorType(105); // AND-JOIN TYPE for PNML transition element
+        join.setOperatorType(102); // AND-JOIN TYPE for PNML transition element
         join.setOrientationCode(3);
 
     }

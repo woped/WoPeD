@@ -38,6 +38,8 @@ import org.woped.editor.controller.bpel.*;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 import org.woped.pnml.*;
+import org.woped.pnml.NetType.Page;
+import org.woped.pnml.TextType.Phrase;
 
 import javax.swing.*;
 import java.awt.geom.Point2D;
@@ -380,7 +382,7 @@ public class PNMLExport {
                 initTransition(iNet.addNewTransition(), (TransitionModel) currentModel, null);
                 // Create the page and add the sub-net to it
                 // by calling ourselves recursively
-                NetType.Page newPage = iNet.addNewPage();
+                Page newPage = iNet.addNewPage();
                 // Associate the new page with the ID of the sub-process model
                 // so it can be assigned back later on when importing the net
                 newPage.setId(currentModel.getId());
@@ -865,7 +867,7 @@ public class PNMLExport {
             //write every row of the table to the file
             for (int i = 0; i < tableSize; i++) {
                 String[] row = elementContainer.getParaphrasingModel().getElementByRow(i);
-                TextType.Phrase phrase = textType.addNewPhrase();
+                Phrase phrase = textType.addNewPhrase();
                 phrase.setIds(row[0].trim());
                 phrase.setStringValue(row[1].trim());
                 LoggerManager.debug(Constants.FILE_LOGGER, "   ... Description (ID:" + row[0] + ") set");
