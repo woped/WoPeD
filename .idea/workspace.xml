@@ -8,25 +8,29 @@
       <artifact name="t2p" />
     </artifacts-to-build>
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Fixed wrong Stanford library in T2P&#10;Added option to bypass Webservice in T2PUI (FileInterface)&#10;Fixed some more minor build errors">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/t2p.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/t2p.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/FrameNetReader.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/WoPeD_Text2Process.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/edu_mit_jwi_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/test.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/tools.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/xml_apis_2_0_2.xml" beforeDir="false" />
+    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-FileInterface/WoPeD-FileInterface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-FileInterface/WoPeD-FileInterface.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-FileInterface/src/org/woped/file/t2p/T2PUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-FileInterface/src/org/woped/file/t2p/T2PUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/FrameNet/FrameNetReader.jar" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/lib/FrameNetReader.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/Stanford/stanford-corenlp-3.9.2-models.jar" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/lib/stanford-corenlp-3.9.2-models.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/Stanford/stanford-corenlp-3.9.2.jar" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/lib/stanford-corenlp-3.9.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/WordNet/edu.mit.jwi_2.4.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/lib/edu.mit.jwi_2.4.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/WoPeD-Text2Process.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/WoPeD-Text2Process.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/src/WorldModelToPetrinet/ANDJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Text2Process/src/WorldModelToPetrinet/ANDJoin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -571,7 +575,8 @@
       <workItem from="1588849160984" duration="61000" />
       <workItem from="1588851110689" duration="798000" />
       <workItem from="1589037251492" duration="2091000" />
-      <workItem from="1589126975733" duration="1180000" />
+      <workItem from="1589126975733" duration="1413000" />
+      <workItem from="1589177736921" duration="363000" />
     </task>
     <task id="LOCAL-00001" summary="Adapted master build to IntelliJ">
       <created>1532514709268</created>
@@ -839,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589037299057</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure">
+      <created>1589128309153</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1589128309153</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -870,7 +882,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Make use of new version of P2T server" />
     <MESSAGE value="Fixed problems with new P2T webservice consumption" />
     <MESSAGE value="Add WoPeD-Installer to IntelliJ modules" />
     <MESSAGE value="Replace hard-coded Server string for T2P with config-Entries" />
@@ -895,7 +906,8 @@
     <MESSAGE value="Some more tidying up" />
     <MESSAGE value="Fixed Text2Process module, merge with branch T2P19&#10;Updated library dependencies in Text2Process" />
     <MESSAGE value="Fixed wrong Stanford library in T2P&#10;Added option to bypass Webservice in T2PUI (FileInterface)&#10;Fixed some more minor build errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed wrong Stanford library in T2P&#10;Added option to bypass Webservice in T2PUI (FileInterface)&#10;Fixed some more minor build errors" />
+    <MESSAGE value="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1589127198677">
@@ -906,30 +918,30 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="671" y="432" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589038510448" />
-    <state x="1001" y="351" width="1240" height="704" key="CommitChangelistDialog2" timestamp="1589099380535">
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2" timestamp="1589128307601">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1001" y="351" width="1240" height="704" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589099380535" />
-    <state x="261" y="335" width="1651" height="880" key="DiffContextDialog" timestamp="1588772088317">
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589128307601" />
+    <state x="261" y="335" width="1651" height="880" key="DiffContextDialog" timestamp="1589128273878">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="261" y="335" width="1651" height="880" key="DiffContextDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1588772088317" />
-    <state width="1459" height="335" key="GridCell.Tab.0.bottom" timestamp="1589127963844">
+    <state x="261" y="335" width="1651" height="880" key="DiffContextDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589128273878" />
+    <state width="1459" height="335" key="GridCell.Tab.0.bottom" timestamp="1589128392028">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="335" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589127963844" />
-    <state width="1459" height="335" key="GridCell.Tab.0.center" timestamp="1589127963844">
+    <state width="1459" height="335" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589128392028" />
+    <state width="1459" height="335" key="GridCell.Tab.0.center" timestamp="1589128392027">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="335" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589127963844" />
-    <state width="1459" height="335" key="GridCell.Tab.0.left" timestamp="1589127963843">
+    <state width="1459" height="335" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589128392027" />
+    <state width="1459" height="335" key="GridCell.Tab.0.left" timestamp="1589128392027">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="335" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589127963843" />
-    <state width="1459" height="335" key="GridCell.Tab.0.right" timestamp="1589127963844">
+    <state width="1459" height="335" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589128392027" />
+    <state width="1459" height="335" key="GridCell.Tab.0.right" timestamp="1589128392028">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="335" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589127963844" />
+    <state width="1459" height="335" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589128392028" />
     <state width="1459" height="374" key="GridCell.Tab.1.bottom" timestamp="1589030037537">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -946,14 +958,14 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state width="1459" height="374" key="GridCell.Tab.1.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589030037536" />
-    <state x="913" y="278" width="1555" height="837" key="SettingsEditor" timestamp="1589128157903">
+    <state x="913" y="278" width="1555" height="837" key="SettingsEditor" timestamp="1589178100096">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="913" y="278" width="1555" height="837" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589128157903" />
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589099390771">
+    <state x="913" y="278" width="1555" height="837" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589178100096" />
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589128348568">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589099390771" />
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589128348568" />
     <state x="761" y="516" width="1214" height="580" key="VcsDiffUtil.ChangesDialog" timestamp="1588767260892">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
