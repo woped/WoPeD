@@ -27,10 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" afterDir="false" />
+    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder">
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/processtotext/ws/ProcessToTextWebService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +90,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.1770551" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -104,17 +102,7 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/lib" />
-      <recent name="$PROJECT_DIR$/WoPeD-Process2Text" />
-      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/res" />
-      <recent name="$PROJECT_DIR$/WoPeD-Text2Process/lib" />
-      <recent name="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/Stanford" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -123,6 +111,16 @@
       <recent name="$PROJECT_DIR$/WoPeD-Installer/lib" />
       <recent name="$PROJECT_DIR$/WoPeD-Process2Text/bin" />
       <recent name="$PROJECT_DIR$/WoPeD-Installer/dist/launch/test" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/lib" />
+      <recent name="$PROJECT_DIR$/WoPeD-Process2Text" />
+      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/res" />
+      <recent name="$PROJECT_DIR$/WoPeD-Text2Process/lib" />
+      <recent name="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/Stanford" />
     </key>
   </component>
   <component name="RunManager" selected="Application.RunWoPeD">
@@ -584,7 +582,7 @@
       <workItem from="1589192827880" duration="1104000" />
       <workItem from="1589612714835" duration="2864000" />
       <workItem from="1589615636127" duration="513000" />
-      <workItem from="1589618969277" duration="76000" />
+      <workItem from="1589618969277" duration="385000" />
     </task>
     <task id="LOCAL-00001" summary="Adapted master build to IntelliJ">
       <created>1532514709268</created>
@@ -880,7 +878,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589616086853</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder">
+      <created>1589619168332</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1589619168332</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -911,7 +916,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Two more test files" />
     <MESSAGE value="Create src folder structure in WoPeD style (with package org.woped.p2t)" />
     <MESSAGE value="Create src folder structure in WoPeD style (with package org.woped.p2t) - small fix" />
     <MESSAGE value="Wrongly moved files in P2T source code" />
@@ -936,7 +940,8 @@
     <MESSAGE value="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module" />
     <MESSAGE value="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module&#10;Fixed bug to deal with subprocesses in PNML" />
     <MESSAGE value="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice" />
+    <MESSAGE value="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1589127198677">
@@ -951,10 +956,10 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="671" y="432" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589038510448" />
-    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2" timestamp="1589616085596">
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2" timestamp="1589619167424">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589616085596" />
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589619167424" />
     <state x="261" y="335" width="2114" height="880" key="DiffContextDialog" timestamp="1589616149352">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -995,18 +1000,18 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="847" y="396" width="1140" height="708" key="IDE.errors.dialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589191531990" />
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor" timestamp="1589618994225">
+    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor" timestamp="1589619314426">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589618994225" />
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589616097167">
+    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589619314426" />
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589619178778">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589616097167" />
-    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog" timestamp="1589615948533">
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589619178778" />
+    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog" timestamp="1589619225497">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589615948533" />
+    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589619225497" />
     <state width="1051" height="545" key="XDebugger.FullValuePopup" timestamp="1589614615906">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
