@@ -1,5 +1,6 @@
 package org.woped.p2t.textGenerator;
 
+import de.hpi.bpt.process.Process;
 import org.woped.p2t.contentDetermination.labelAnalysis.EnglishLabelDeriver;
 import org.woped.p2t.contentDetermination.labelAnalysis.EnglishLabelHelper;
 import org.woped.p2t.dataModel.dsynt.DSynTSentence;
@@ -47,10 +48,6 @@ public class TextGenerator {
         //check number splits/joins
         pnConverter.printConversion();
 
-        //Show Activities
-        System.out.println(model.getActivites());
-
-
         HashMap<Integer, String> transformedElemsRev = pnConverter.transformedElemsRev;
 
         EnglishLabelHelper lHelper = new EnglishLabelHelper(contextPath);
@@ -61,13 +58,12 @@ public class TextGenerator {
 
         // Convert to RPST
         FormatConverter formatConverter = new FormatConverter();
-        de.hpi.bpt.process.Process p = formatConverter.transformToRPSTFormat(model);
+        Process p = formatConverter.transformToRPSTFormat(model);
         RPST<ControlFlow, Node> rpst = new RPST<>(p);
 
         // Check for Rigids
         boolean containsRigids = PlanningHelper.containsRigid(rpst.getRoot(), rpst);
-
-        // Structure Rigid and convert back
+         // Structure Rigid and convert back
         if (containsRigids) {
             p = formatConverter.transformToRigidFormat(model);
             RigidStructurer rigidStructurer = new RigidStructurer();

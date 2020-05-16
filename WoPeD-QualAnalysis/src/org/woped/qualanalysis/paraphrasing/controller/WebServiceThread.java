@@ -1,39 +1,16 @@
 package org.woped.qualanalysis.paraphrasing.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringReader;
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.util.*;
-
-import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.ws.WebServiceException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathFactory;
-
-import org.apache.xmlbeans.XmlCursor;
-import org.apache.xmlbeans.XmlException;
-import org.apache.xmlbeans.XmlOptions;
-import org.w3c.dom.Document;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
-import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.bpel.Partnerlink;
-import org.woped.core.model.petrinet.*;
-import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.translations.Messages;
-import org.woped.pnml.*;
+import org.woped.p2t.textGenerator.TextGenerator;
 import org.woped.qualanalysis.p2t.P2TSideBar;
 import org.woped.qualanalysis.p2t.Process2Text;
 import org.woped.qualanalysis.paraphrasing.webservice.PNMLExport;
-import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebService;
-import org.woped.qualanalysis.paraphrasing.webservice.ProcessToTextWebServiceImpl;
-import org.xml.sax.InputSource;
-//import org.woped.p2t.textGenerator.*;
+
+import javax.swing.*;
+import javax.xml.ws.WebServiceException;
+import java.io.ByteArrayOutputStream;
 
 public class WebServiceThread extends Thread {
 
@@ -54,47 +31,58 @@ public class WebServiceThread extends Thread {
 		IEditor editor = paraphrasingPanel.getEditor();
 		String url = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":"
 				+ ConfigurationManager.getConfiguration().getProcess2TextServerPort()
-				+ ConfigurationManager.getConfiguration().getProcess2TextServerURI() + "/ProcessToTextWebService?wsdl";
+				+ ConfigurationManager.getConfiguration().getProcess2TextServerURI()
+				+ "/generate";
 
 		String[] arg = {url};
 
-		int numOfNodes = editor.getModelProcessor().getElementContainer().getRootElements().size();
-		if (numOfNodes > 3) {
-
-			// Start of alternative code to use Webservice to call P2T
+		if (editor.getModelProcessor().getElementContainer().getRootElements().size() > 3) {
 			try {
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				new PNMLExport().saveToStream(editor, stream);
 				String text = stream.toString();
-				ProcessToTextWebServiceImpl pttService = new ProcessToTextWebServiceImpl();
-				ProcessToTextWebService port = pttService.getProcessToTextWebServicePort();
-				String output = port.generateTextFromProcessSpecification(text);
+				String output = "";
+
+				// Use WebService to call P2T
+/*				HttpRequest req = new HttpRequest(url, text);
+				HttpResponse res = req.getResponse();
+				output = res.getBody();*/
+				// End of call for WebService
+
+				// Alternatively call P2T directly with bypass of WebService
+				TextGenerator tg = new TextGenerator();
+				try {
+					output = tg.toText(text, true);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+				// End of alternative code
+
+				//End Comment here!
+				//Do Not Comment the Following!!
 				output = output.replaceAll("\\s*\n\\s*", "");
 				isFinished = true;
 				paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 				paraphrasingPanel.setThreadInProgress(false);
-			}
-			catch (WebServiceException wsEx) {
+			} catch (WebServiceException wsEx) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
-						Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Title"), JOptionPane.INFORMATION_MESSAGE);
-			}
-			catch (Exception ex) {
+						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+			} catch (Exception ex) {
 				isFinished = true;
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Exception.Message", arg),
-						Messages.getString("Paraphrasing.Webservice.Error.Exception.Title"), JOptionPane.INFORMATION_MESSAGE);
+						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 
-			}
-			finally {
+			} finally {
 				paraphrasingPanel.showLoadingAnimation(false);
 				paraphrasingPanel.enableButtons(true);
 				paraphrasingPanel.setThreadInProgress(false);
 			}
-			// End of alternative to use Webservice to call P2T*/
 
-			// Alternative code for calling P2T locally (not via Webservice)
+//	Alternative code for calling P2T locally (not via Webservice)
 /*
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			new PNMLExport().saveToStream(editor, stream);
@@ -114,16 +102,12 @@ public class WebServiceThread extends Thread {
 			paraphrasingPanel.setThreadInProgress(false);
 			paraphrasingPanel.showLoadingAnimation(false);
 			paraphrasingPanel.enableButtons(true);
-			paraphrasingPanel.setThreadInProgress(false);*/
-			// End of alternative code for calling P2T locally (not via Webservice)
-		}
-		else { // numOfNodes of Petri net in editor is 3 or smaller
- 			isFinished = true;
-			paraphrasingPanel.showLoadingAnimation(false);
-			paraphrasingPanel.enableButtons(true);
 			paraphrasingPanel.setThreadInProgress(false);
+
+		} else {
 			JOptionPane.showMessageDialog(null, Messages.getString("Paraphrasing.Webservice.Numberelements.Message"),
-					Messages.getString("Paraphrasing.Webservice.Numberelements.Title"), JOptionPane.INFORMATION_MESSAGE);
+					Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
+		}*/
 		}
 	}
 }

@@ -45,7 +45,7 @@ public class PetriNetToProcessConverter {
         // Id of current petri net element
         String elemId = elem.getId();
         String elemType = "";
-        // If element not already excists
+        // If element not already exists
         if (!transformedElems.keySet().contains(elemId)) {
 
             // Places ...
