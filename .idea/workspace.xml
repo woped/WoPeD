@@ -27,295 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module">
-      <change afterPath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/HttpRequest.java" afterDir="false" />
+    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/p2t.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/WoPeD-Process2Text.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/WoPeD-Process2Text.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/AUTHORS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/COPYING" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/ChangeLog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/INSTALL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/NEWS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/acinclude.m4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/aclocal.m4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/compile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/config.h.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/configure" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/configure.ac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/depcomp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/Makefile.am" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/Makefile.am" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/Makefile.in" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/Makefile.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/adj.exc" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/adj.exc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/adv.exc" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/adv.exc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/cntlist" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/cntlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/cntlist.rev" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/cntlist.rev" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/data.adj" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/data.adj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/data.adv" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/data.adv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/data.noun" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/data.noun" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/data.verb" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/data.verb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/frames.vrb" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/frames.vrb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/index.adj" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/index.adj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/index.adv" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/index.adv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/index.noun" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/index.noun" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/index.sense" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/index.sense" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/index.verb" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/index.verb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/lexnames" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/lexnames" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/log.grind.3.0" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/log.grind.3.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/noun.exc" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/noun.exc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/sentidx.vrb" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/sentidx.vrb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/sents.vrb" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/sents.vrb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/verb.Framestext" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/verb.Framestext" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/dict/verb.exc" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/dict/verb.exc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/tk/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/tk/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/tk/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/tk/tk.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/tk/tkDecls.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/wn.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/include/wngrind.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/install-sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/binsrch.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/morph.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/search.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnglobal.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnhelp.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/wn.xbm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/wnb.man" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnres/wngloss.man" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnrtl.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/lib/wnutil.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/missing" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/stubs.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/tkAppInit.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/wn.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/bin/WordNet-3.0/src/wnb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/JWNLResource_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/PrincetonResource_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/changes.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/config/database_properties.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/config/file_properties.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/config/map_properties.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/sql/create.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/sql/create_sense_key.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/JWNLResource_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/PrincetonResource_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/JWNL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/JWNLException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/JWNLRuntimeException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Adjective.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/DatabaseDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/DictionaryElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/DictionaryElementType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Exc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/FileDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/IndexWord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/IndexWordSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/LexFileIdMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/POS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Pointer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/PointerTarget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/PointerType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/PointerUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Synset.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/SynsetProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Verb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/VerbFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/Word.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/NodePrinter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/PointerTargetNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/PointerTargetNodeList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/PointerTargetTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/PointerTargetTreeNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/PointerTargetTreeNodeList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/list/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/AsymmetricRelationship.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/Relationship.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/RelationshipFinder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/RelationshipList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/SymmetricRelationship.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/data/relationship/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/AbstractCachingDictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/DatabaseBackedDictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/Dictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/FileBackedDictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/MapBackedDictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/MorphologicalProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/POSKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/ConnectionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/DatabaseManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/DatabaseManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/Query.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/SenseAndUsageDatabaseManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/database/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/AbstractDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/DictionaryCatalog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/DictionaryCatalogSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/DictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/DictionaryFileType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/ObjectDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/RandomAccessDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file_manager/FileManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file_manager/FileManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file_manager/RemoteFileManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/file_manager/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/AbstractDelegatingOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/BaseFormSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/DefaultMorphologicalProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/DetachSuffixesOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/LookupExceptionsOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/LookupIndexWordOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/Operation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/RemovePrepPhrasesOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/TokenizerOperation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/morph/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/dictionary/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/AbstractPrincetonDatabaseDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/AbstractPrincetonFileDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/MutableVerb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/PrincetonWN16DatabaseDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/PrincetonWN16FileDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/PrincetonWN17DatabaseDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/PrincetonWN17FileDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/PrincetonWN30DatabaseDictionaryElementFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/data/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/AbstractPrincetonDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/AbstractPrincetonRandomAccessDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/PrincetonChannelDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/PrincetonObjectDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/PrincetonRandomAccessDictionaryFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/princeton/file/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/DeepCloneable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/Grep.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/MessageLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/MessageLogLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/Resolvable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/ResourceBundleSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/TokenizerParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/TypeCheckingList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/cache/Cache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/cache/CacheSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/cache/LRUCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/cache/LRUCacheSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/cache/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/AbstractValueParam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/Createable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/Element.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/Installable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/NameValueParam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/Param.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/ParamList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/ValueParam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/factory/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/util/package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/utilities/DictionaryToDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/utilities/DictionaryToDatabaseWithUsageCount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/utilities/DictionaryToMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/net/didion/jwnl/utilities/Examples.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/generic/AntonymRelationshipTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/generic/ExamplesTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/generic/SenseKeyTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/generic/TestDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/mysql/DatabaseIndexWordTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/version/Wordnet21SynsetTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2/src/test/net/didion/jwnl/test/version/Wordnet30SynsetTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/res/file_properties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/res/file_properties.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/AUTHORS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/COPYING" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/ChangeLog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/INSTALL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/NEWS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/acinclude.m4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/aclocal.m4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/compile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/config.h.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/configure" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/configure.ac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/depcomp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/adj.exc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/adv.exc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/cntlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/cntlist.rev" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/data.adj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/data.adv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/data.noun" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/data.verb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/frames.vrb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/index.adj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/index.adv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/index.noun" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/index.sense" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/index.verb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/lexnames" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/log.grind.3.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/noun.exc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/sentidx.vrb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/sents.vrb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/verb.Framestext" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/dict/verb.exc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/tk/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/tk/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/tk/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/tk/tk.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/tk/tkDecls.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/wn.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/include/wngrind.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/install-sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/binsrch.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/morph.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/search.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnglobal.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnhelp.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/wn.xbm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/wnb.man" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnres/wngloss.man" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnrtl.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/lib/wnutil.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/missing" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/Makefile.am" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/Makefile.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/stubs.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/tkAppInit.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/wn.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/WordNet-3.0/src/wnb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/dataModel/pnmlReader/PetriNetToProcessConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/dataModel/pnmlReader/PetriNetToProcessConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/textGenerator/TextGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/textGenerator/TextGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/WoPeD-QualAnalysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-QualAnalysis/WoPeD-QualAnalysis.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -375,10 +89,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/contentDetermination" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.1770551" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -869,7 +583,8 @@
       <workItem from="1589192052684" duration="745000" />
       <workItem from="1589192827880" duration="1104000" />
       <workItem from="1589612714835" duration="2864000" />
-      <workItem from="1589615636127" duration="313000" />
+      <workItem from="1589615636127" duration="513000" />
+      <workItem from="1589618969277" duration="76000" />
     </task>
     <task id="LOCAL-00001" summary="Adapted master build to IntelliJ">
       <created>1532514709268</created>
@@ -1158,7 +873,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589179015557</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice">
+      <created>1589616086853</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1589616086853</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1189,7 +911,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Replace hard-coded Server string for T2P with config-Entries" />
     <MESSAGE value="Two more test files" />
     <MESSAGE value="Create src folder structure in WoPeD style (with package org.woped.p2t)" />
     <MESSAGE value="Create src folder structure in WoPeD style (with package org.woped.p2t) - small fix" />
@@ -1214,7 +935,8 @@
     <MESSAGE value="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure" />
     <MESSAGE value="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module" />
     <MESSAGE value="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module&#10;Fixed bug to deal with subprocesses in PNML" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eliminated dependency from WoPeD-Core in WoPeD-Text2Process module&#10;Fixed bug to deal with subprocesses in PNML" />
+    <MESSAGE value="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tidy up of Process2Text dependencies&#10;Make use of jwnl (Wordnet API) as JAR&#10;Get rid of unnecessary files&#10;More streamlined call of P2T Webservice" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1589127198677">
@@ -1229,30 +951,30 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="671" y="432" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589038510448" />
-    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2" timestamp="1589614647418">
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2" timestamp="1589616085596">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589614647418" />
-    <state x="261" y="335" width="2114" height="880" key="DiffContextDialog" timestamp="1589614467487">
+    <state x="1001" y="351" width="1257" height="831" key="CommitChangelistDialog2/0.23.2560.1361@0.23.2560.1361" timestamp="1589616085596" />
+    <state x="261" y="335" width="2114" height="880" key="DiffContextDialog" timestamp="1589616149352">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="261" y="335" width="2114" height="880" key="DiffContextDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589614467487" />
-    <state width="997" height="411" key="GridCell.Tab.0.bottom" timestamp="1589615612774">
+    <state x="261" y="335" width="2114" height="880" key="DiffContextDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149352" />
+    <state width="997" height="369" key="GridCell.Tab.0.bottom" timestamp="1589616149298">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="411" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589615612774" />
-    <state width="997" height="411" key="GridCell.Tab.0.center" timestamp="1589615612774">
+    <state width="997" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
+    <state width="997" height="369" key="GridCell.Tab.0.center" timestamp="1589616149298">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="411" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589615612774" />
-    <state width="997" height="411" key="GridCell.Tab.0.left" timestamp="1589615612774">
+    <state width="997" height="369" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
+    <state width="997" height="369" key="GridCell.Tab.0.left" timestamp="1589616149298">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="411" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589615612774" />
-    <state width="997" height="411" key="GridCell.Tab.0.right" timestamp="1589615612774">
+    <state width="997" height="369" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
+    <state width="997" height="369" key="GridCell.Tab.0.right" timestamp="1589616149298">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="411" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589615612774" />
+    <state width="997" height="369" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
     <state width="1459" height="374" key="GridCell.Tab.1.bottom" timestamp="1589030037537">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -1273,18 +995,18 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="847" y="396" width="1140" height="708" key="IDE.errors.dialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589191531990" />
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor" timestamp="1589615194062">
+    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor" timestamp="1589618994225">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589615194062" />
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589179030244">
+    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589618994225" />
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589616097167">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589179030244" />
-    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog" timestamp="1589614828868">
+    <state x="1092" y="416" key="Vcs.Push.Dialog.v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589616097167" />
+    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog" timestamp="1589615948533">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589614828868" />
+    <state x="769" y="533" width="1214" height="580" key="VcsDiffUtil.ChangesDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589615948533" />
     <state width="1051" height="545" key="XDebugger.FullValuePopup" timestamp="1589614615906">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -1323,11 +1045,6 @@
           <url>jar://$PROJECT_DIR$/WoPeD-Installer/dist/mac/WoPeD.app/Contents/Java/WoPeD-classes-3.7.1.jar!/org/woped/quantana/gui/CapacityAnalysisDialog.class</url>
           <line>891</line>
           <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/textGenerator/TextGenerator.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

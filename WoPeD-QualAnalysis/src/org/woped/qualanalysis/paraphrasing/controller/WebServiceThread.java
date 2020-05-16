@@ -44,19 +44,19 @@ public class WebServiceThread extends Thread {
 				String output = "";
 
 				// Use WebService to call P2T
-/*				HttpRequest req = new HttpRequest(url, text);
+				HttpRequest req = new HttpRequest(url, text);
 				HttpResponse res = req.getResponse();
-				output = res.getBody();*/
+				output = res.getBody();
 				// End of call for WebService
 
 				// Alternatively call P2T directly with bypass of WebService
-				TextGenerator tg = new TextGenerator();
+/*				TextGenerator tg = new TextGenerator();
 				try {
 					output = tg.toText(text, true);
 				}
 				catch (Exception e) {
 					e.printStackTrace();
-				}
+				}*/
 				// End of alternative code
 
 				//End Comment here!
