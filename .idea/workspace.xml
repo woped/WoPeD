@@ -5,7 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="t2p" />
+      <artifact name="p2t" />
     </artifacts-to-build>
   </component>
   <component name="BranchesTreeState">
@@ -27,8 +27,136 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder">
-      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/src/processtotext/ws/ProcessToTextWebService.java" beforeDir="false" />
+    <list default="true" id="0fe078b1-bc4e-4c3c-990f-f7f38dbe9262" name="Default" comment="Moved NLP libraries of T2P module into lib folder&#10;Tidy up project structure">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/WoPeD_Text2Process_Web_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ant.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-AProMoRe/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-AProMoRe/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-AProMoRe/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-AProMoRe/WoPeD-AProMoRe.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.externalToolBuilders/updateBPELbeans.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/WoPeD-BPELExport.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-BPELExport/WoPeD-BPELExport.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-BPELExport/WoPeD-BPELExport.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-CommonLibs/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-CommonLibs/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-CommonLibs/WoPeD-CommonLibs.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.externalToolBuilders/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.externalToolBuilders/updateBeans.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Configuration/WoPeD-Configuration.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/.settings/org.eclipse.ltk.core.refactoring.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/.settings/org.eclipse.wst.validation.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Core/WoPeD-Core.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Editor/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-FileInterface/.externalToolBuilders/updatePNMLbeans.launch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-FileInterface/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-FileInterface/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Flamingo/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Flamingo/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Flamingo/WoPeD-Flamingo.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Flamingo/module_woped-flamingo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-GUI/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-GUI/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-GUI/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-GUI/WoPeD-GUI.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Installer/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Installer/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Installer/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Installer/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Installer/WoPeD-Installer.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.mylyn/.taskListIndex/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.mylyn/repositories.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.mylyn/tasks.xml.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.resources/.root/2.tree" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.egit.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.epp.logging.aeri.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.m2e.discovery.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.context.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.monitor.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.mylyn.tasks.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.team.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.editors.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.ide.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/http-cache.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.cfs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/_0.si" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history.lucene60/segments_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/server-config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.core/index.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.8.3.20180227-2137.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.ui.intro/introstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.metadata/version.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/.jsdtscope" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/org.eclipse.wst.common.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/org.eclipse.wst.jsdt.ui.superType.container" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/.settings/org.eclipse.wst.jsdt.ui.superType.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Process2Text/WoPeD-Process2Text.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-Process2Text/WoPeD-Process2Text.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProcessMetrics/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProcessMetrics/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProcessMetrics/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProcessMetrics/WoPeD-ProcessMetrics.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProjectFiles/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProjectFiles/Documents/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-ProjectFiles/WoPeD-ProjectFiles.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/WoPeD-QualAnalysis.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller/WebServiceThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QuantAnalysis/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QuantAnalysis/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QuantAnalysis/.settings/org.eclipse.jdt.ui.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QuantAnalysis/WoPeD-QuantAnalysis.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-QuantAnalysis/WoPeD-QuantAnalysis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WoPeD-QuantAnalysis/WoPeD-QuantAnalysis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/.settings/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/WoPeD-Process2Text/WoPeD-Process2Text.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/WoPeD-Process2Text/lib/batik-1.7/samples/tests/resources/java/resources.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Starter/WoPeD-Starter.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-Text2Process/.settings/org.jboss.ide.eclipse.as.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-UnitTests/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-UnitTests/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WoPeD-UnitTests/WoPeD-UnitTests.eml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +179,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="T2P_19" />
+        <entry key="$PROJECT_DIR$" value="t2p-project-2020" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,6 +209,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="null)&#9;null&#9;null&#10;System.out.println&#9;null&#9;null&#10;Prozess ist sound&#9;null&#9;null&#10;ModelElement&#9;PSI&#9;JAVA://org.woped.core.model.ModelElementContainer" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
@@ -90,29 +219,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.1770551" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.webservices" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../Test/code/WoPeD-Text2Process/WoPeD-Text2Process.eml" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/../Test/code/WoPeD-Starter" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller" />
-      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/lib" />
-      <recent name="$PROJECT_DIR$/WoPeD-Installer/lib" />
-      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/bin" />
-      <recent name="$PROJECT_DIR$/WoPeD-Installer/dist/launch/test" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -122,6 +238,26 @@
       <recent name="$PROJECT_DIR$/WoPeD-Text2Process/lib" />
       <recent name="$PROJECT_DIR$/WoPeD-Text2Process/NLPTools/Stanford" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WoPeD-QualAnalysis/src/org/woped/qualanalysis/paraphrasing/controller" />
+      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/lib" />
+      <recent name="$PROJECT_DIR$/WoPeD-Installer/lib" />
+      <recent name="$PROJECT_DIR$/WoPeD-Process2Text/bin" />
+      <recent name="$PROJECT_DIR$/WoPeD-Installer/dist/launch/test" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="TomeeConfiguration" />
+      </set>
+    </option>
   </component>
   <component name="RunManager" selected="Application.RunWoPeD">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -147,23 +283,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed (1)" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 13.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="P2T" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 13.0.0.Final" ALTERNATIVE_JRE_ENABLED="false">
       <option name="PORT" value="80" />
       <option name="LOCAL" value="false" />
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/" />
-      <deployment />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/p2t" />
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="p2t">
+          <settings DEPLOYMENT_METHOD="Staging" />
+        </artifact>
+      </deployment>
       <server-settings>
         <data>
-          <option name="serverGroup" value="" />
           <option name="stagingRemotePath" value="" />
-          <option name="transportHostId" value="" />
           <option name="transportStagingTarget">
             <TransportTarget>
               <option name="id" value="a9edd285-b2d9-47e9-9595-9b0ff7245122" />
               <id>a9edd285-b2d9-47e9-9595-9b0ff7245122</id>
             </TransportTarget>
           </option>
-          <server-group />
           <transport-target>
             <TransportTarget>
               <option name="id" value="a9edd285-b2d9-47e9-9595-9b0ff7245122" />
@@ -171,7 +309,6 @@
             </TransportTarget>
           </transport-target>
           <staging-path />
-          <host-id />
         </data>
       </server-settings>
       <predefined_log_file enabled="true" id="JBoss" />
@@ -181,48 +318,9 @@
       </RunnerSettings>
       <method v="2">
         <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Unnamed" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 13.0.0.Final" ALTERNATIVE_JRE_ENABLED="false" show_console_on_std_err="true" show_console_on_std_out="true">
-      <option name="PORT" value="80" />
-      <option name="LOCAL" value="false" />
-      <option name="OPEN_IN_BROWSER" value="false" />
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/t2p/" />
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
-      <deployment>
-        <artifact name="t2p">
-          <settings DEPLOYMENT_METHOD="Native" />
-        </artifact>
-      </deployment>
-      <server-settings>
-        <data>
-          <option name="stagingRemotePath" value="" />
-          <option name="transportHostId" value="" />
-          <option name="transportStagingTarget">
-            <TransportTarget>
-              <option name="id" value="386873ad-e6f4-4477-8b6f-aa4922c608af" />
-              <id>386873ad-e6f4-4477-8b6f-aa4922c608af</id>
-            </TransportTarget>
-          </option>
-          <transport-target>
-            <TransportTarget>
-              <option name="id" value="386873ad-e6f4-4477-8b6f-aa4922c608af" />
-              <id>386873ad-e6f4-4477-8b6f-aa4922c608af</id>
-            </TransportTarget>
-          </transport-target>
-          <staging-path />
-          <host-id />
-        </data>
-      </server-settings>
-      <log_file alias="log" path="$USER_HOME$/Downloads" />
-      <predefined_log_file enabled="true" id="JBoss" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57081" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="p2t" />
+        </option>
       </method>
     </configuration>
     <configuration default="true" type="JBossConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -359,7 +457,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="P2T" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="p2t">
+          <settings>
+            <option name="CONTEXT_PATH" value="/p2t" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_WoPeD" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52991" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="false" />
+      </method>
+    </configuration>
+    <configuration name="T2P" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="t2p">
@@ -426,18 +594,18 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.RunWoPeD" />
-      <item itemvalue="JBoss Server.Unnamed (1)" />
-      <item itemvalue="JBoss Server.Unnamed" />
+      <item itemvalue="JBoss Server.P2T" />
       <item itemvalue="JUnit.All in WoPeD-Text2Process (3)" />
       <item itemvalue="JUnit.STTextToProcess" />
       <item itemvalue="JUnit.All in WoPeD-Text2Process" />
       <item itemvalue="JUnit.All in WoPeD-Process2Text" />
-      <item itemvalue="TomEE Server.Unnamed" />
+      <item itemvalue="TomEE Server.P2T" />
+      <item itemvalue="TomEE Server.T2P" />
     </list>
     <recent_temporary>
       <list>
@@ -583,6 +751,7 @@
       <workItem from="1589612714835" duration="2864000" />
       <workItem from="1589615636127" duration="513000" />
       <workItem from="1589618969277" duration="385000" />
+      <workItem from="1589794230406" duration="2081000" />
     </task>
     <task id="LOCAL-00001" summary="Adapted master build to IntelliJ">
       <created>1532514709268</created>
@@ -944,10 +1113,46 @@
     <option name="LAST_COMMIT_MESSAGE" value="Re-enable Webservice call of P2T as default&#10;Added jwnl.jar to P2T builder" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1589127198677">
+    <state x="1082" y="550" key="#JBoss_Server" timestamp="1589784852147">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589127198677" />
+    <state x="1082" y="550" key="#JBoss_Server/0.23.2560.1361@0.23.2560.1361" timestamp="1589784852147" />
+    <state x="782" y="204" key="#P2T" timestamp="1589796119299">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="782" y="204" key="#P2T/0.23.2560.1361@0.23.2560.1361" timestamp="1589796119299" />
+    <state x="783" y="234" key="#Project_Structure" timestamp="1589794013399">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="783" y="234" key="#Project_Structure/0.23.2560.1361@0.23.2560.1361" timestamp="1589794013399" />
+    <state x="1079" y="537" key="#TomEE_Server" timestamp="1589784729542">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="1079" y="537" key="#TomEE_Server/0.23.2560.1361@0.23.2560.1361" timestamp="1589784729542" />
+    <state x="684" y="232" key="#Unnamed" timestamp="1589796072365">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="684" y="232" key="#Unnamed/0.23.2560.1361@0.23.2560.1361" timestamp="1589796072365" />
+    <state x="1023" y="213" key="#Unnamed_(1)" timestamp="1589784875734">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="1023" y="213" key="#Unnamed_(1)/0.23.2560.1361@0.23.2560.1361" timestamp="1589784875734" />
+    <state x="1416" y="489" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589782377654">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="1416" y="489" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1361@0.23.2560.1361" timestamp="1589782377654" />
+    <state x="823" y="287" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1589796053416">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="823" y="287" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.23.2560.1361@0.23.2560.1361" timestamp="1589796053416" />
+    <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1589782019356">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="1677" y="412" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589782019356" />
+    <state x="343" y="588" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589791372500">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="343" y="588" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589791372500" />
     <state x="1109" y="514" width="525" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589613177591">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -964,46 +1169,46 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="261" y="335" width="2114" height="880" key="DiffContextDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149352" />
-    <state width="997" height="369" key="GridCell.Tab.0.bottom" timestamp="1589616149298">
+    <state width="911" height="325" key="GridCell.Tab.0.bottom" timestamp="1589797148788">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="369" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
-    <state width="997" height="369" key="GridCell.Tab.0.center" timestamp="1589616149298">
+    <state width="911" height="325" key="GridCell.Tab.0.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148788" />
+    <state width="911" height="325" key="GridCell.Tab.0.center" timestamp="1589797148788">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="369" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
-    <state width="997" height="369" key="GridCell.Tab.0.left" timestamp="1589616149298">
+    <state width="911" height="325" key="GridCell.Tab.0.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148788" />
+    <state width="911" height="325" key="GridCell.Tab.0.left" timestamp="1589797148787">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="369" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
-    <state width="997" height="369" key="GridCell.Tab.0.right" timestamp="1589616149298">
+    <state width="911" height="325" key="GridCell.Tab.0.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148787" />
+    <state width="911" height="325" key="GridCell.Tab.0.right" timestamp="1589797148788">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="997" height="369" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589616149298" />
-    <state width="1459" height="374" key="GridCell.Tab.1.bottom" timestamp="1589030037537">
+    <state width="911" height="325" key="GridCell.Tab.0.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148788" />
+    <state width="911" height="325" key="GridCell.Tab.1.bottom" timestamp="1589797148785">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="374" key="GridCell.Tab.1.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589030037537" />
-    <state width="1459" height="374" key="GridCell.Tab.1.center" timestamp="1589030037536">
+    <state width="911" height="325" key="GridCell.Tab.1.bottom/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148785" />
+    <state width="911" height="325" key="GridCell.Tab.1.center" timestamp="1589797148784">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="374" key="GridCell.Tab.1.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589030037536" />
-    <state width="1459" height="374" key="GridCell.Tab.1.left" timestamp="1589030037536">
+    <state width="911" height="325" key="GridCell.Tab.1.center/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148784" />
+    <state width="911" height="325" key="GridCell.Tab.1.left" timestamp="1589797148784">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="374" key="GridCell.Tab.1.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589030037536" />
-    <state width="1459" height="374" key="GridCell.Tab.1.right" timestamp="1589030037536">
+    <state width="911" height="325" key="GridCell.Tab.1.left/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148784" />
+    <state width="911" height="325" key="GridCell.Tab.1.right" timestamp="1589797148785">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state width="1459" height="374" key="GridCell.Tab.1.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589030037536" />
+    <state width="911" height="325" key="GridCell.Tab.1.right/0.23.2560.1361@0.23.2560.1361" timestamp="1589797148785" />
     <state x="847" y="396" width="1140" height="708" key="IDE.errors.dialog" timestamp="1589191531990">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="847" y="396" width="1140" height="708" key="IDE.errors.dialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589191531990" />
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor" timestamp="1589619314426">
+    <state x="125" y="268" width="1276" height="824" key="SettingsEditor" timestamp="1589796213350">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="1010" y="373" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589619314426" />
+    <state x="125" y="268" width="1276" height="824" key="SettingsEditor/0.23.2560.1361@0.23.2560.1361" timestamp="1589796213350" />
     <state x="1092" y="416" key="Vcs.Push.Dialog.v2" timestamp="1589619178778">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
@@ -1016,14 +1221,22 @@
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state width="1051" height="545" key="XDebugger.FullValuePopup/0.23.2560.1361@0.23.2560.1361" timestamp="1589614615906" />
+    <state x="873" y="304" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1589784239222">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="873" y="304" key="com.intellij.javaee.view.ServerArtifactsDialog/0.23.2560.1361@0.23.2560.1361" timestamp="1589784239222" />
     <state x="737" y="599" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589037315227">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
     <state x="737" y="599" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1361@0.23.2560.1361" timestamp="1589037315227" />
-    <state x="935" y="254" width="1312" height="946" key="find.popup" timestamp="1589127733184">
+    <state x="935" y="254" width="1312" height="946" key="find.popup" timestamp="1589791400237">
       <screen x="0" y="23" width="2560" height="1361" />
     </state>
-    <state x="935" y="254" width="1312" height="946" key="find.popup/0.23.2560.1361@0.23.2560.1361" timestamp="1589127733184" />
+    <state x="935" y="254" width="1312" height="946" key="find.popup/0.23.2560.1361@0.23.2560.1361" timestamp="1589791400237" />
+    <state x="828" y="280" key="new project wizard" timestamp="1589782987742">
+      <screen x="0" y="23" width="2560" height="1361" />
+    </state>
+    <state x="828" y="280" key="new project wizard/0.23.2560.1361@0.23.2560.1361" timestamp="1589782987742" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1050,6 +1263,16 @@
           <url>jar://$PROJECT_DIR$/WoPeD-Installer/dist/mac/WoPeD.app/Contents/Java/WoPeD-classes-3.7.1.jar!/org/woped/quantana/gui/CapacityAnalysisDialog.class</url>
           <line>891</line>
           <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/WoPeD-Process2Text/src/org/woped/p2t/textGenerator/TextGenerator.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/WoPeD-Process2Text/lib/jwnl14-rc2.jar!/net/didion/jwnl/JWNL.class</url>
+          <line>121</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
