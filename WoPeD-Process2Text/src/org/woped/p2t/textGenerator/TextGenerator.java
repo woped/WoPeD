@@ -19,6 +19,8 @@ import org.woped.p2t.sentencePlanning.SentenceAggregator;
 import org.woped.p2t.sentenceRealization.SurfaceRealizer;
 import org.woped.p2t.textPlanning.PlanningHelper;
 import org.woped.p2t.textPlanning.TextPlanner;
+
+import javax.servlet.ServletContext;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -103,27 +105,4 @@ public class TextGenerator {
 
         return surfaceText;
     }
-
- /*   private String appendTextToFile(String file, String text) {
-        StringBuilder newFile = new StringBuilder();
-        try {
-            FileInputStream fstream = new FileInputStream(file);
-            DataInputStream in = new DataInputStream(fstream);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-            String strLine;
-
-            //Read File Line By Line
-            while ((strLine = br.readLine()) != null) {
-                if (!strLine.equals("</pnml>")) {
-                    newFile.append(strLine).append("\n");
-                } else {
-                    newFile.append(text).append("\n</pnml>");
-                }
-            }
-            in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return newFile.toString();
-    }*/
 }

@@ -50,7 +50,7 @@ public class WebServiceThread extends Thread {
 				// End of call for WebService
 
 				// Alternatively call P2T directly with bypass of WebService
-/*				TextGenerator tg = new TextGenerator();
+			/*	TextGenerator tg = new TextGenerator(new java.io.File( "." ).getCanonicalPath()+"/WoPeD-Process2Text/bin");
 				try {
 					output = tg.toText(text, true);
 				}
