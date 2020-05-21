@@ -16,7 +16,7 @@ public class P2TController extends Thread {
         TextGenerator tg = new TextGenerator(s);
 
         try {
-            output = tg.toText(text, true);
+            output = tg.toText(text, false);
 
         }
         catch (Exception e) {
