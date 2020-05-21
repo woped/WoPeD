@@ -102,8 +102,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        TextGenerator textGenerator = new TextGenerator();
-
         int successful = 0;
         int failed = 0;
         int error = 0;
@@ -115,7 +113,7 @@ public class Test {
             String result;
 
             try {
-
+                TextGenerator textGenerator = new TextGenerator(new java.io.File( "." ).getCanonicalPath()+ "/WoPeD-Process2Text/bin");
                 System.out.print(test.getKey()+ ": ");
                 String content = new String(Files.readAllBytes(Paths.get(BASE_PATH + test.getKey())));
                 File f = new File (BASE_PATH + test.getKey());

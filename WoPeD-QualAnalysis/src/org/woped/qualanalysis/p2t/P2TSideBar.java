@@ -40,7 +40,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	private JButton buttonLoad = null;
 	private JButton buttonExport = null;
 	private JLabel labelLoading = null;
-	private Process2Text.WebServiceThread webService = null;
+	private WebServiceThread webService = null;
 	private boolean threadInProgress = false;
 	private boolean firstTimeDisplayed = false;
 
@@ -236,7 +236,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		if (e.getSource() == this.buttonLoad) {
 			showLoadingAnimation(true);
 
-			new Process2Text.WebServiceThread(this);
+			new WebServiceThread(this);
 
 			// If we already have a text/process description, ask for overwrite
 			// confirmation.
@@ -331,7 +331,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		}
 
 		this.setThreadInProgress(true);
-		webService = new Process2Text.WebServiceThread(this);
+		webService = new WebServiceThread(this);
 		webService.start();
 		while (!webService.getIsFinished()) {
 			try {

@@ -32,9 +32,6 @@ public class TextGenerator {
         this.contextPath = contextPath;
     }
 
-    public TextGenerator() {
-    }
-
     public String toText(String input) throws Exception {
         return toText(input, false);
     }
