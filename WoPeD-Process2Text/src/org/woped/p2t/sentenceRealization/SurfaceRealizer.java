@@ -74,16 +74,6 @@ public class SurfaceRealizer {
         surfaceText = surfaceText.replaceAll(" the a ", " a ");
         surfaceText = surfaceText.replaceAll("branches were executed ", "branches were executed, ");
 
-        String surfaceTextLower =surfaceText.toLowerCase();
-        if(surfaceTextLower.contains("xor")) {
-            surfaceText = surfaceTextLower.replaceAll("xor", "process is split up into parallel paths");
-        }
-            else if(surfaceTextLower.contains("and")){
-                surfaceText = surfaceTextLower.replaceAll("and","Process runs in parallel ");
-        }
-            else if (surfaceTextLower.contains("split")){
-                surfaceText = surfaceTextLower.replaceAll("split", "Only one branch can executed");
-        }
         return surfaceText;
     }
 }
