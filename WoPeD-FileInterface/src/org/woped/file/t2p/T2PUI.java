@@ -47,7 +47,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 
-//import T2PWebservice.T2PController;
+//import T2PWebservice.T2PController;  /* Uncomment to call T2P locally, don't forget to update dependency in project structure
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.vc.EditorVC;
@@ -219,15 +219,20 @@ public class T2PUI extends JDialog {
 		inputText = textArea.getText();
 
 		if (!inputText.isEmpty()) {
+			// Call of T2P via webservice
 			httpBackgroundWorker(inputText);
 			showLoadingBox();
-/*			try {
+			// End of option to call T2P webservice
+
+// Alternative code to call T2P locally
+			/*try {
 				T2PController tp = new T2PController(inputText);
 				String pnml = tp.generatePetrinetFromText();
 			}
 			catch (Exception e) {
 				e.getStackTrace();
 			}*/
+// End of alternative code
 		} else {
 			showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
 		}
