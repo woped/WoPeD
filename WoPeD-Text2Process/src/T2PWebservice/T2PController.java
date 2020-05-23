@@ -30,7 +30,7 @@ public class T2PController extends Thread {
     //Thread support only for Testing -> Servlet does the Job in Production
     public void run(){
         try {
-            PNML= generatePetrinetFromText();
+            PNML = generatePetrinetFromText();
         } catch (PetrinetGenerationException e) {
             e.printStackTrace();
         }
@@ -46,12 +46,12 @@ public class T2PController extends Thread {
 
     public String generatePetrinetFromText() throws PetrinetGenerationException {
         WorldModelBuilder wmBuilder = new WorldModelBuilder(text);
-        PetrinetBuilder pnBuilder = new PetrinetBuilder(wmBuilder.buildWorldModel(false));
+        WorldModel wm = wmBuilder.buildWorldModel(false);
+        PetrinetBuilder pnBuilder = new PetrinetBuilder(wm);
         String PNML = pnBuilder.buildPNML();
-        PNML=minifyResult(PNML);
+        PNML = minifyResult(PNML);
         return PNML;
     }
-
 
     private String minifyResult(String result){
         //A few characters less to bother the internet with  ¯\_(ツ)_/¯

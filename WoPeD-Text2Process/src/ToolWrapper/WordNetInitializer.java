@@ -54,10 +54,10 @@ public class WordNetInitializer {
             dict.open();
 
             //loading into memory
-            System.out.print("\n Loading Wordnet into memory ... ");
+            System.out.print("\nLoading WordNet into memory ...");
             long t = System.currentTimeMillis();
             dict.load(true);
-            System.out.printf(" done (%1d msec )\n", System.currentTimeMillis() - t);
+            System.out.printf(" done (%1d ms)\n", System.currentTimeMillis() - t);
 
 
         } catch (IOException ioe) {

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class FrameNetInitializer {
 
     //framenet source directory
-    private String f_frameNetHome = "/NLPTools/FrameNet/fndata-1.5/";
+    private String f_frameNetHome = FrameNetInitializer.class.getResource("/fndata-1.5").getPath();
     //framenet initializer instance
     private static FrameNetInitializer fni;
     //framenet instance (dictionary)
@@ -26,23 +26,11 @@ public class FrameNetInitializer {
 
     private FrameNetInitializer (){
         f_frameNet = new FrameNet();
-
-        String path = FrameNetInitializer.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        path = (new File(path)).getParentFile().getPath();
-
-        try {
-            path = URLDecoder.decode(path, "UTF-8");
-        } catch (UnsupportedEncodingException e2) {
-
-            e2.printStackTrace();
-        }
-
-        f_frameNetHome = path + f_frameNetHome;
     }
 
     //getter
     public synchronized static FrameNetInitializer getInstance(){
-        if(fni == null){
+        if(fni == null) {
             synchronized (FrameNetInitializer.class) {
                 if(fni == null){
                     fni = new FrameNetInitializer();
@@ -53,7 +41,7 @@ public class FrameNetInitializer {
         return fni;
     }
 
-    public synchronized static void resetInstance(){
+    public synchronized static void resetInstance() {
         fni=null;
     }
 
@@ -65,13 +53,14 @@ public class FrameNetInitializer {
     }
     public synchronized boolean getGenrateButton(){
         return generateButton;
-    } // TODO: prüfen ob weiterhin benötigt
+    }
 
     public synchronized void init() {
         try {
 
             //start time for tracking tracking
             long _start = System.currentTimeMillis();
+            System.out.print("Loading FrameNet into memory ...");
 
             // Reading FrameNet
             DatabaseReader reader = new FNDatabaseReader(new File(f_frameNetHome), false);
@@ -80,22 +69,22 @@ public class FrameNetInitializer {
             _l.setLevel(Level.SEVERE);
 
             //logging loading time
-            long _annoStart = System.currentTimeMillis();
-            System.out.println("Loaded FrameNet in: "+(_annoStart-_start)+"ms");
+             System.out.printf(" done (%1d ms)\n", System.currentTimeMillis() - _start);
 
             //reading valence patterns from reduced corpus
+            _start = System.currentTimeMillis();
+            System.out.print("Loading FrameNet annotations into memory ...");
             f_corpus = new AnnotationCorpus(f_frameNet,_l);
             f_corpus.setScanSubCorpuses(false);
             f_corpus.parse(new File(f_frameNetHome+"lu"));
 
             //logging loading time
-            System.out.println("Loaded FrameNet-Annotations in: "+(System.currentTimeMillis()-_annoStart)+"ms");
+            System.out.printf(" done (%1d ms)\n", System.currentTimeMillis() -_start);
             generateButton = true;
 
         } catch (Exception ex) {
-            System.err.print("could not initialize FrameNetWrapper: "+ex.getMessage());
+            System.err.print("Could not initialize FrameNet wrapper: "+ex.getMessage());
             ex.printStackTrace();
         }
     }
-
 }
