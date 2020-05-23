@@ -3,7 +3,7 @@ package org.woped.qualanalysis.p2t;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.gui.translations.Messages;
-import org.woped.p2t.textGenerator.TextGenerator;
+//import org.woped.p2t.textGenerator.TextGenerator;
 
 import javax.swing.*;
 import javax.xml.ws.WebServiceException;
@@ -41,13 +41,13 @@ public class WebServiceThread extends Thread {
 				String output = "";
 
 				// Use WebService to call P2T
-/*				HttpRequest req = new HttpRequest(url, text);
+				HttpRequest req = new HttpRequest(url, text);
 				HttpResponse res = req.getResponse();
-				output = res.getBody();*/
+				output = res.getBody();
 				// End of call for WebService
 
 				// Alternatively call P2T directly with bypass of WebService
-				TextGenerator tg = new TextGenerator(new java.io.File( "." ).getCanonicalPath()+"/WoPeD-Process2Text/bin");
+/*				TextGenerator tg = new TextGenerator(new java.io.File( "." ).getCanonicalPath()+"/WoPeD-Process2Text/bin");
 				try {
 					output = tg.toText(text);
 				}
@@ -56,7 +56,7 @@ public class WebServiceThread extends Thread {
 				}
 				// End of alternative code
 
-				//End Comment here!
+				//End Comment here!*/
 				//Do Not Comment the Following!!
 				output = output.replaceAll("\\s*\n\\s*", "");
 				isFinished = true;
