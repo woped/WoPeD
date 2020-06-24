@@ -33,14 +33,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
@@ -586,16 +584,15 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 		URL url = null;
 		String connection = "http://" + getServerURLText().getText() + ":"
 				+ getServerPortText().getText()
-				+ getManagerPathText().getText() +
-				"/ProcessToTextWebService?wsdl";
-		String arg[] = {connection};
+				+ getManagerPathText().getText();
+		String arg[] = {connection, ""};
 
 		try {
 			url = new URL(connection);
 			URLConnection urlConnection = url.openConnection();
 
 			if (urlConnection.getContent() != null) {
-				arg[0] = "P2T";
+				arg[1] = "P2T";
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel(),
@@ -627,13 +624,13 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 				+ getServerPortText_T2P().getText()
 				+ getManagerPathText_T2P().getText()
 				+ "";
-		String arg[] = {connection};
+		String arg[] = {connection, ""};
 
 		try {
 			url = new URL(connection);
 			URLConnection urlConnection = url.openConnection();
 			if (urlConnection.getContent() != null) {
-				arg[0] = "T2P";
+				arg[1] = "T2P";
 				JOptionPane
 						.showMessageDialog(
 								this.getSettingsPanel_T2P(),
