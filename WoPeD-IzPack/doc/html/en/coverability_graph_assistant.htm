@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coverability Graph Assistant</title>
+    <link rel="stylesheet" type="text/css" href="../woped.css">
+</head>
+<body>
+
+<h2>Coverability Graph Assistant</h2>
+
+<p>
+    This assistant guides the user through the generation of the minimal coverability graph of the underlying Petri net. A <i>minimal</i>
+    coverability graph does not contain nodes, that are strictly larger then any other node of the graph. The assistant uses the algorithm
+    presented in <i>Minimal Coverability Set for Petri Nets: Karp and Miller Algorithm with Pruning</i>
+    <a href="http://pageperso.lif.univ-mrs.fr/~pierre-alain.reynier/publis/PetriNets11.pdf" target="_blank" class="button">(Link)</a>
+    written by <i>Pierre-Alain Reynier</i> and <i>Frédéric Servais</i> to calculate the <i>minimal coverability tree</i> which is afterwards
+    converted into an graph.
+</p>
+
+<h3>User Interface</h3>
+<p style="text-align: center"><img src="../images/coverability_graph_assistant_window.png" style="width: 80%"></p>
+<p>
+    The assistant view is divided into two regions. In region one the current graph is shown, while in region two additional information
+    about the current process is displayed. </p>
+
+<h4>Legend</h4>
+
+<img class="node" src="../images/cga_unprocessed.png">
+<p class="clearfix">Unprocessed node - The node has not been analyzed yet</p>
+<img class="node" src="../images/cga_processing.png">
+<p class="clearfix">Currently processed node - The node is being analyzed</p>
+<img class="node" src="../images/cga_active.png">
+<p class="clearfix">Active node - Currently part of the minimal coverability set</p>
+<img class="node" src="../images/cga_inactive.png">
+<p class="clearfix">Inactive node - Marking covered by an active node</p>
+<img class="node" src="../images/cga_less_active.png">
+<p class="clearfix">Deactivated node - Node has been deactivated by the currently processed node</p>
+<img class="node" src="../images/cga_less_inactive.png">
+<p class="clearfix">Less node - The node is the reason for the deactivation of an active node</p>
+<img class="node" src="../images/cga_larger.png">
+<p class="clearfix">Larger node - The node is larger or equal than the currently processed node</p>
+
+<h4>Menu Bar</h4>
+
+<img class="icon clearfix" src="../images/cg_start.png">
+<p class="clearfix">Starts the Assistant</p>
+<img class="icon" src="../images/cg_stop.png">
+<p class="clearfix">Stops the Assistant</p>
+<img class="icon" src="../images/cg_reset.png">
+<p class="clearfix">Resets the Assistant</p>
+
+<h3>Procedure</h3>
+<p>
+    The process is also divided into two parts. In the first step the coverability tree is built by
+    analysing node by node. If all nodes have
+    been analyzed, the resulting tree is converted into an graph in a second step.
+</p>
+
+<h4>Part 1: Building the coverability tree</h4>
+<p>
+    A unprocessed node (marked with an ?) can be analyzed by clicking at the node or by clicking the button "choose random node" from the
+    sidebar. The analysis performs a couple of sequential checks on the contained marking which are listed below. In part 1 the labels of
+    the node are extended in some cases with a prefix and a suffix number. The prefix number indicates the step in which the node has been
+    analyzed and the suffix number in which step the has been deactivated, e.g the label <img src="../images/cga_inactive.png"
+                                                                                              style="vertical-align: middle; height: 1.4em;">
+    means that the node with the marking <code>(p4)</code> has been analyzed in step 4 and has been deactivated in step 5.
+</p>
+<p>
+    <strong>Check 1:</strong><br>
+    The first check ensures that the parent node is still active (has not been disabled).
+    If not the node is disabled and no further check is executed.
+</p>
+<p>
+    <strong>Check 2:</strong><br>
+    The second check validates if the new marking covers an currently active node. If so the token count of the resulting marking is set to
+    &omega; for the strictly larger place. A marking is strictly larger than another marking iff the token count of all places is greater or
+    equal than the token count of the respective place and at least one place contains more tokens than its counter part in the smaller
+    marking.
+</p>
+<p>
+    <strong>Check 3:</strong><br>
+    The third test checks if an existing active node covers the new marking. If so the node is deactivated and no further checks are
+    executed on this node.
+</p>
+<p>
+    <strong>Check 4:</strong><br>
+    The fourth test checks if the new marking covers the marking of an active node or <b>ANY OF THEIR ANCESTORS</b>. If so, the respective
+    active node is deactivated.
+</p>
+<p>
+    <strong>Check 5:</strong><br>
+    The last test checks if an there are enabled transitions in the new marking.If so, for each of these transitions, a new, unprocessed
+    node is added to the graph and linked to the current node.
+</p>
+
+<h4>Part 2: Converting the tree into a graph</h4>
+<p>
+    If the tree does not contain unprocessed nodes anymore, the tree can be converted into a minimal coverability graph with a double click
+    on an empty space of the graph or by clicking the respective button in the sidebar. In the conversion all arcs from an active node to an
+    inactive node are redirected automatically to the active node, that covers the inactive node. All inactive nodes are removed from the
+    graph.
+</p>
+
+<h3>Example</h3>
+<p>
+    Do see all the different checks in an example you can use the net <i>Minimal Coverabiliy Set</i> from the samples and anlayse the nodes
+    in the following order: <code>t5 -> t1 -> t3 -> t4 -> t6 -> t4 -> t3 -> t4 -> t3 -> t3</code>
+</p>
+<p style="text-align: center" class="clearfix">
+    <div class="halfPage">
+        <img src="../images/cg_tree.png"/>
+<p style="text-align: center">
+    <small>The minimal coverability tree of the sample net</small>
+</p>
+</div>
+<div class="halfPage">
+    <img src="../images/cg_mcg.png"/>
+    <p style="text-align: center">
+        <small>The minimal coverability graph of the sample net</small>
+    </p>
+</div>
+</p>
+
+<p><a href="reachability_graph.htm" class="button">&lt;&lt; Back to coverability graph</a></p>
+</body>
+</html>

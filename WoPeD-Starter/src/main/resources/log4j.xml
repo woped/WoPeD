@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- Appender definition (output destination) -->
+	<!-- Layouts:
+		-> PatternLayout
+		c{n}: outputs the logger in hierachie depth n (from down)
+		C{n}: outputs fullqual. Classname in hierachie depth n (from up)
+		d{ddMMMyyyyHH:mm:ss}: outputs the date (example)
+		F: filename
+		l: location info
+		L: line number
+		m: application supplied message
+		M: method name
+		n: seperator character
+		p: priority off logging event
+		r: milliseconds from app.start to event
+		t: thread name, that created loggin event
+		x: nested diagnostics context
+		X: mapped diagnostics context
+	-->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd/HH:mm:ss}] %5p %c: %m[%F:%L]%n" />
+		</layout>
+	</appender>
+	<appender name="LOGFILE"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="log/WoPeD.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d] %r %5p %c: %m%n" />
+		</layout>
+	</appender>
+	<!-- Logger definition -->
+	<!-- Levels: (importance of logging)
+		### Infomation Log ###
+		-> DEBUG (significant events 4 developer)
+		-> INFO	 (significant events 4 user)
+		### Problems Log ###
+		-> WARN	 (wrong user interaction etc.)
+		-> ERROR (wrong application behaviour)
+		-> FATAL (not recommeded, application crash)
+		### # ###
+		-> log   (build-in Level)
+	-->
+	<logger name="CORE_LOGGER">
+		<level value="info" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="EDITOR_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="FILE_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="CONFIG_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="GUI_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="QUANTANA_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="QUALANALYSIS_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="TRANSLATIONS_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="APROMORE_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="DASHBOARDWEBSRV_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="DASHBOARDSTORE_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<!-- 		<appender-ref ref="LOGFILE"/>-->
+	</logger>
+	<logger name="COVERABILITY_GRAPH_LOGGER">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+</log4j:configuration>

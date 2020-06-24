@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Soundness</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+<h2><span lang=EN-US>Simulation</span></h2>
+
+<p><span lang=EN-US>Simulation is a method of
+quantitative analysis where a business process model is executed and
+statistical data gathered.</span></p>
+
+<p><span lang=EN-US>The business process model must give
+the average service time of transitions, the split probabilities of XOR splits
+and the group / role signature of each transition.</span></p>
+
+<p><span lang=EN-US>When you open the simulation dialog
+you will see a lot of information. Just follow it in the normal reading
+direction from left to right and from top to bottom. </span></p>
+
+<p><span lang=EN-US>At first you have to give the average
+number of new cases per period &#955;, then the period &#960; itself. You
+should choose the appropriate time unit for your period. Next you select the
+kind of queuing discipline you prefer. After that give the number of simulation
+runs. This specifies how often a simulation is repeated. The results shown in the
+tables below are the average values of all simulations runs. Next you may
+change the termination rule. You can choose between exiting when at least &#955;
+cases were finished, when the period has elapsed or both. Selecting both rules
+means its logical disjunction. Then the simulation stops when the first of the
+two constraints is true.</span></p>
+
+<p><span lang=EN-US>The last two adjustments concern the
+probability distribution of the arrival process and the service processes. You
+can choose a constant distribution with parameter &#962; where each value in
+the interval [(1-&#962;) &#955;, (1+&#962;) &#955;] around mean &#955; or average
+service time &#956; respectively has the same probability. &#962; must be an integer
+between 0 and 100. Or you choose a Poisson distribution with parameter &#955;&#960;. The third alternative is the normal or Gaussian
+distribution with mean &#955; and the standard deviation &#963; which must be given
+as parameter.</span></p>
+
+<p><span lang=EN-US>If you prefer another standard time
+unit than 1 minute, which is the default, you can change it in the time model
+dialog by clicking on [Time model].</span></p>
+
+<p><span lang=EN-US>After giving all necessary
+information you can start the simulation by clicking on [Start]. A wait dialog
+appears until all operations are done. Then the tables show the updated results.
+In addition three more buttons are activated. In the tables you can see the
+statistics of the whole process and each transition, here called servers, and
+the utilization ratios of all resource objects.</span></p>
+
+<p><span lang=EN-US>The column titles of the first table
+have the following meaning:</span></p>
+
+<ul>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>L      the
+average number of cases in the system</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Lq</span><span
+lang=EN-US>     the average number of cases
+waiting</span></p></li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Ls     the average number of cases being served</span></p>
+	</li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>W     the
+average completion time of cases (including service time and wait time)</span></p>
+	</li>
+	<li>
+	<p style='mso-list:l0 level1 lfo1'><span lang=EN-US>Wq</span><span
+lang=EN-US>    the average wait time of cases</span></p></li>
+</ul>
+
+<p><span lang=EN-US>By clicking on a button in the Details
+column another window opens and gives additional information.</span></p>
+
+<p><span lang=EN-US>After the simulation is done you can
+examine the protocol by clicking the [Protocol] button, export data into CSV
+files by clicking [Export] or have a look at a chart where the operation of
+each case by a certain resource at a particular server is shown by clicking on
+[Diagram].</span></p>
+
+<p><span lang=EN-US>With [Close] you can close the
+dialog.</span></p>
+
+</body>
+
+</html>

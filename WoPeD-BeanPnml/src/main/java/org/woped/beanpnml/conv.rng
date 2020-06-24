@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- jing (RELAX NG validator) does not recognize SGML's !DOCTYPE
+     Thus, for validating this schema the following line must be hided. -->
+<!-- <!DOCTYPE grammar PUBLIC "-//thaiopensource//DTD RNG 20010705//EN" "">
+-->
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+
+ <a:documentation>
+    Conventions Document (conv.rng)
+    RELAX NG implementation
+    version: 0.1 (2003-06-18)
+    (c) 2003
+        Michael Weber, mweber@informatik.hu-berlin.de
+ </a:documentation>
+
+ <a:documentation>
+    First, we define several short cuts for label definitions.  They are
+    used for simple data or if the label data are not really specified.
+    The usage of these short cuts is documented at the end of this file.
+    Furthermore, these short cuts also can be used if the rest of the 
+    Conventions Document is ignored.
+ </a:documentation>
+
+ <define name="attribute.content">
+  <a:documentation>
+     The definition attribute.content describes the content of a 
+     simple text label without graphics (i.e. attribute to net objects).
+     It can be used as a schema for those labels.
+  </a:documentation>
+  <optional>
+   <element name="text">
+    <a:documentation>
+       A text label may have a value;
+       if not, then there must be a default.
+    </a:documentation>
+    <text/>
+   </element>
+  </optional>
+ </define>
+
+ <define name="annotationstandard.content">
+  <a:documentation>
+     The definition annotationstandard.content describes the 
+     standard stuff of an annotation.
+     Each annotation may have graphical or tool specific information.
+  </a:documentation>
+  <optional>
+   <element name="graphics">
+    <ref name="annotationgraphics.content"/>
+   </element>
+  </optional>
+  <zeroOrMore>
+   <ref name="toolspecific.element"/>
+  </zeroOrMore>
+ </define>
+
+ <define name="simpletextlabel.content">
+  <a:documentation>
+     A simple text label is an annotation to a net object containing 
+     unspecified text.
+     Its sub-elements occur in any order.
+     A simple text label behaves like an attribute to a net object.
+     Furthermore, it contains the standard annotation content.
+  </a:documentation>
+  <interleave>
+   <ref name="attribute.content"/>
+   <ref name="annotationstandard.content"/>
+  </interleave>
+ </define>
+
+ <define name="nonnegativeintegerlabel.content">
+  <a:documentation>
+     A non negative integer label is an annotation with a natural
+     number as its value.
+     Its sub-elements occur in any order.
+     It contains the standard annotation content.
+  </a:documentation>
+  <interleave>
+   <element name="text">
+    <data type="nonNegativeInteger"
+          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"/>
+   </element>
+   <ref name="annotationstandard.content"/>
+  </interleave>
+ </define>
+
+ <define name="complexlabel.content">
+  <a:documentation>
+     A complex label is a sub-structured annotation to a net object.
+     The definition complexlabel.content can be used as a general 
+     schema for those labels.
+     A complex label is at least a simple text label. It may further
+     contain XML structured data.  The subelement text contains the
+     string representation of the structured data.
+  </a:documentation>
+  <interleave>
+   <ref name="attribute.content"/>
+   <optional>
+    <element name="structure">
+     <ref name="anyElement"/>
+    </element>
+   </optional>
+   <ref name="annotationstandard.content"/>
+  </interleave>
+ </define>
+
+<!-- The following definitions are the Conventions Document's 
+     label definitions -->
+
+ <define name="Name">
+  <a:documentation>
+     Label definition for a user given identifier of an element describing 
+     its meaning.
+     <contributed>Michael Weber</contributed>
+     <date>2003-06-16</date>
+  </a:documentation>
+  <element name="name">
+   <ref name="simpletextlabel.content"/>
+  </element>
+ </define>
+
+ <define name="PTMarking">
+  <a:documentation>
+     Label definition for initial marking in nets like P/T-nets.
+     <contributed>Michael Weber</contributed>
+     <date>2003-06-16</date>
+     <reference>
+      W. Reisig: Place/transition systems. In: LNCS 254. 1987.
+     </reference>
+  </a:documentation>
+  <element name="initialMarking">
+   <ref name="nonnegativeintegerlabel.content"/>
+  </element>
+ </define>
+
+ <define name="PTArcInscription">
+  <a:documentation>
+     Label definition for arc inscriptions in nets like P/T-nets.
+     <contributed>Michael Weber</contributed>
+     <date>2003-06-16</date>
+     <reference>
+      W. Reisig: Place/transition systems. In: LNCS 254. 1987.
+     </reference>
+  </a:documentation>
+  <element name="inscription">
+   <ref name="nonnegativeintegerlabel.content"/>
+  </element>
+ </define>
+			 	
+</grammar>
+
+<!--
+  Here follows how to use the short cuts of label definitions.
+
+  An annotation is used as follows:
+  <define name="Inscription">
+   <element name="inscription">
+    <ref name="simpletextlabel.content"/>
+   </element>
+  </define>
+
+  With more details about the data type of the value:
+  <define name="PTInscription">
+   <element name="inscription">
+    <interleave>
+     <element name="text">
+      <data type="nonNegativeInteger"
+        datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+      </data>
+     </element>
+     <ref name="annotationstandard.content"/>
+    </interleave>
+   </element>
+  </define>
+
+
+ There are two posibilities to define an attribute
+
+  1. The values of the attribute are not specified:
+  <define name="ArcType">
+   <element name="type">
+    <ref name="attribute.content"/>
+   </element>
+  </define>
+
+  2. The values of the attribute are specified:
+  <define name="ArcType">
+   <element name="type">
+    <element name="text">
+     <choice>
+      <value>normal</value>
+      <value>read</value>
+      <value>inhibitor</value>
+      <value>reset</value>
+     </choice>
+    </element>
+   </element>
+  </define>
+-->
+
+
+<!--
+BEGIN RCS-Info
+
+ $Log: conv.rng,v $
+ Revision 1.1  2005/10/24 14:32:21  silenco
+ initial version for release candidate  1.0.0
+
+ Revision 1.1  2005/09/19 14:36:50  silenco
+ Initial Version
+
+ Revision 1.4  2003/07/10 14:28:34  mweber
+ using of name spaces corrected
+
+ Revision 1.3  2003/06/19 15:11:11  mweber
+ a comment on jing
+
+END RCS-Info
+-->
+
+<!--
+Local Variables:
+mode: xml
+sgml-indent-step: 1
+End:
+-->

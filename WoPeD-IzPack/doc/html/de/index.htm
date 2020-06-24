@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>WoPeD Handbuch</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="..\jquery-1.10.2.js"></script>
+<script src="..\wopedJQuery.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+<p>WoPeD (<b>Wo</b>rkflow <b>Pe</b>tri net <b>D</b>esigner) ist ein plattformunabh&auml;ngiges Softwaretool zur Modellierung, Simulation und Analyse von 
+Gesch&auml;ftsprozessen mit <a href="../en/workflownet.htm">
+Workflow-Netzen</a>.</p>
+
+<div class="Master">
+<div class="MasterItem" id="download">Herunterladen von WoPeD</div>
+<div class="MasterItem" id="installation">Installieren von WoPeD</div>
+<div class="MasterItem" id="start">Starten von WoPeD</div>
+<div class="MasterItem" id="use">Verwenden von WoPeD</div>
+</div>
+
+<form method="get" class='Form' target='_self'>
+	<input type='hidden' name='selection' id='selection' value=''/>
+</form>
+
+<div class="Detail"></div>
+
+<p id="germanVersion"><font color="#FF0000">Bitte beachten: Bis auf diese Startseite ist das deutsche Benutzerhandbuch noch nicht verf&uuml;gbar! Die Links verweisen direkt auf die englischsprachige Version.</font></p><p>&nbsp;</p>
+
+<script>
+var downloadText = $('<p>Bevor WoPeD installiert werden kann, muss die Java Runtime Environment (JRE - Version 1.7 oder h&ouml;her) auf dem Zielrechner installiert werden. Die aktuelle Version von WoPeD ist auf der <a href="http://www.woped.org"><img border="0" src="../images/icons/tango/website.gif" width="16" height="16">WoPeD</a>-Homepage oder auf <a href="http://sourceforge.net/projects/woped"><img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Sourceforge</a> erh&auml;ltlich.</p>' );
+var installationText = $('<p>Nun kann es losgehen. Das herunter geladene Archiv auspacken und das enthaltene ausf&uuml;hrbare Programm <i>WoPeD-install-windows-@wopedversion@.exe</i> (im Falle eines Windows-basierten Systems) bzw. <i>WoPeD-install-linux-@wopedversion@</i> (im Falle eines Unix-basierten Systems) bzw. <i>WoPeD-install-mac-@wopedversion@.dmg</i> aufrufen. In allen F&auml;llen wird ein &quot;Wizard&quot; durch den Installationsvorgang f&uuml;hren, bitte einfach den dortigen Instruktionen folgen. </p>');
+var startText = $('<p>Nach erfolgreicher Installation befinden sich Verkn&uuml;pfungen zum Starten von WoPeD auf dem Desktop und im Startmen&uuml; (zumindest im Falle  Windows-basierter Systeme und der meisten Unix-basierten GUI-Systeme). Bei MacOS-Systemen befindet sich ein Application Bundle im Programme-Ordner. Alternativ kann WoPeD auch durch direktes Aufrufen oder Doppelklicken der Datei WoPeD.exe bzw. WoPeD (im Falle von Unix) bzw. WoPeD.app (im Falle von MacOS) im Installationsordner gestartet werden. Es kann auch sinnvoll sein, WoPeD als Anwendung an die Dateierweiterung &quot;*.pnml&quot; zu binden, womit das Programm direkt durch Doppelklick auf die PNML-Datei mit der entsprechenden ge&ouml;ffneten Datei gestartet wird. Dies ist bei Mac schon voreingestellt.</p>');  		
+var useText = $('<p>Nach dem Start erscheint das Hauptfenster, das die folgenden Komponenten enth&auml;lt:</p><ul><li><a href="../en/menubar.htm">Men&uuml;bar</a></li><li><a href="../en/drawing.htm">Zeichenfl&auml;che</a></li><li><a href="../en/statusbar.htm">Statusbar</a></li></ul>');
+
+$( document ).ready( $.docReady(downloadText, installationText, startText, useText));
+
+$( ".MasterItem" ).click( function(){
+	$("input[name='selection']").val($(this).attr('id'));//document.getElementById('selection').value = 
+	$(".Form").submit();
+});
+</script> 
+</body>
+</html>

@@ -1,0 +1,111 @@
+<izpack:installation version="5.0"
+                     xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+	
+	<guiprefs width="640" height="560" resizable="no">
+ 	   	<modifier key="useHeadingPanel" value="yes"/>
+       	<modifier key="useHeadingForSummary" value="yes"/>
+    	<modifier key="headingLineCount" value="2"/>
+    	<modifier key="headingFontSize" value="1.5"/>
+    	<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+    	<modifier key="headingPanelCounter" value="progressbar"/>
+    	<modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+    	<modifier key="langDisplayType" value="native"/>
+    	<modifier key="layoutAnchor" value="NORTHWEST"/>
+	</guiprefs>
+	
+	<natives>
+		<native type="izpack" name="ShellLink.dll">
+			<os family="windows" />
+		</native> 
+
+		<native type="izpack" name="ShellLink_x64.dll">
+			<os family="windows" />
+		</native> 
+	</natives>
+
+	<locale>
+  		<langpack iso3="eng" /> 
+  		<langpack iso3="deu" /> 
+  	</locale>
+  	
+  	<resources>
+		<res id="LicencePanel.licence" src="License.txt"></res>
+		<res id="InfoPanel.info" src="Readme.txt"></res>
+		<res id="Installer.image.0" src="helloPanel.png" />
+		<res id="Installer.image.1" src="infoPanel.png" />
+		<res id="Installer.image.2" src="licencePanel.png" />
+		<res id="Installer.image.3" src="packsPanel.png" />
+		<res id="Installer.image.4" src="targetPanel.png" />
+		<res id="Installer.image.5" src="installPanel.png" />
+		<res id="Installer.image.6" src="shortcutPanel.png" />
+		<res id="Installer.image.7" src="finishPanel.png" />
+		<res id="installer.langsel.img" src="WoPeD-logo.jpg" />
+		<res id="packsLang.xml_eng" src="install-eng.xml" />
+		<res id="packsLang.xml_deu" src="install-deu.xml" />
+		<res id="shortcutSpec.xml" src="shortcut-win.xml" />
+		<res id="ProcessPanel.Spec.xml" src="process.xml" />
+	</resources>
+	
+	<info>
+		<appname>WoPeD</appname>
+		<appversion>@wopedversion@</appversion>
+		<authors>
+			<author name="Responsible: Thomas Freytag" email="info@woped.org"></author>
+		</authors>
+		<url>http://www.woped.org</url>
+	</info>
+
+	<panels>
+		<panel classname="HelloPanel"></panel>
+		<panel classname="InfoPanel"></panel>
+		<panel classname="LicencePanel"></panel>
+		<panel classname="TargetPanel"></panel>
+		<panel classname="PacksPanel"></panel>		
+		<panel classname="InstallPanel"></panel>
+		<panel classname="ShortcutPanel"></panel>
+		<panel classname="SimpleFinishPanel"></panel>
+	</panels>
+	
+	<packs>
+		<pack name="Executable" required="yes" id="id1">
+			<description>Executable files</description>
+			
+			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
+				<include name="WoPeD.exe" />
+				<include name="Readme.txt" />
+				<include name="License.txt" />
+				<include name="Changelog.txt" />
+				<os family="windows" />
+			</fileset>
+			
+			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
+				<include name="WoPeD-Starter.jar" />
+				<include name="Readme.txt" />
+				<include name="License.txt" />
+				<include name="Changelog.txt" />
+				<include name="WoPeD.png" />
+				<os family="unix" />
+			</fileset>
+		</pack>
+		
+		<pack name="PDF Documentation" required="no" id="id1">
+			<description>Additional manual and user doc files</description>
+			
+			<fileset dir="." targetdir="${INSTALL_PATH}/doc" override="true">
+				<include name="doc/pdf/de/*" />
+				<include name="doc/pdf/en/*" />
+			</fileset>
+		</pack>
+		
+		<pack name="HTML Manual" required="no" id="id1">
+			<description>Separate HTML Manual files</description>
+			
+			<fileset dir="." targetdir="${INSTALL_PATH}/doc" override="true">
+				<include name="doc/html/*" />
+			</fileset>
+		</pack>
+						
+	</packs>
+</izpack:installation>

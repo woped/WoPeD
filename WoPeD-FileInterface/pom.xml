@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.woped</groupId>
+		<artifactId>WoPeD</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>WoPeD-FileInterface</artifactId>
+	<packaging>jar</packaging>
+
+	<name>WoPeD-FileInterface</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.coderazzi</groupId>
+			<artifactId>tablefilter-swing</artifactId>
+			<version>5.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.swinglabs</groupId>
+			<artifactId>swingx</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-CommonLibs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-Editor</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-QuantAnalysis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-BPELExport</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-AProMoRe</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-Configuration</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-ProcessMetrics</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-GUI</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-Core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.woped</groupId>
+			<artifactId>WoPeD-QualAnalysis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<!-- http://mojo.codehaus.org/xmlbeans-maven-plugin/index.html -->
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>xmlbeans-maven-plugin</artifactId>
+					<version>2.3.3</version>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>xmlbeans</goal>
+							</goals>
+						</execution>
+					</executions>
+					<inherited>true</inherited>
+					<configuration>
+						<schemaDirectory>src/main/resource</schemaDirectory>
+						<!-- <classGenerationDirectory></classGenerationDirectory> -->
+						<sourceGenerationDirectory>src/main/resource</sourceGenerationDirectory>
+						<outputJar>src/main/resource/test.jar</outputJar>
+						<xmlConfigs>
+							<xmlConfig implementation="java.io.File">src/main/java/org/woped/file/pnml_wf.xsd</xmlConfig>
+						</xmlConfigs>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

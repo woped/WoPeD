@@ -1,0 +1,70 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Workflow Nets</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+
+<h2 style="margin-bottom: 0">Workflow nets</h2>
+
+<div class="plain">
+  <p style="margin-top: 0; margin-bottom: 0">Workflow Nets (WF-Nets) are a 
+  notational basis for designing business processes. They are an extension of 
+  classical Petri Nets, being established by
+  <a href="http://wwwis.win.tue.nl/~wvdaalst">
+  <img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Wil van der Aalst</a>. A 
+  WF-Net is supposed to have a very regular structure: It must contain exactly 
+  one place without input arcs (called <i>input place</i>) and exactly one place 
+  without output arcs (called <i>output place</i>). Moreover, the net graph (extended 
+  by one &quot;virtual&quot; transition with an arc from the output place and an arc to 
+  the input place) must be strongly connected, i. e. from each node there must 
+  exist a directed path to every other node. </p>
+  <h3>Operator transitions</h3>
+  <p style="margin-bottom: 0">Four <a href="operatortransition.htm">operator 
+  transition</a> types are added to express branching decisions in a more 
+  compact way: AND-split, AND-join, XOR-split and XOR-join, each of them being 
+  associated with a graphical symbol. Conceptionally, operator transitions 
+  are no more than shortcuts (&quot;syntactic sugar&quot;) for an underlying equivalent 
+  standard Petri Net construct, such that the formal nature and executability is 
+  preserved.</p>
+  <h3 style="margin-bottom: 0">Subprocesses</h3>
+  <p style="margin-bottom: 0">A subprocess concept is added to handle the 
+  graphical and logical complexity of large workflow process definitions by 
+  modularity. This allows workflow processes contain other WF-Nets as a 
+  subprocess. The net notation is simply extended by a <a href="subprocess.htm">
+  subprocess transition</a> symbol standing for a particular subprocess. </p>
+  <h3 style="margin-bottom: 0">Triggers</h3>
+  <p style="margin-bottom: 0"><a href="trigger.htm">Triggers</a> are added to 
+  the standard Petri net notation in order to represent different kinds of 
+  interactive dependency between the process and its operative environment. 
+  Three types of trigger are distinguished (plus a fourth, &quot;empty&quot; trigger type). 
+  WF-nets allow to assign exactly one trigger type to every transition (including 
+  operator transitions). The trigger type is graphically represented by a 
+  small, self-explaining icon near the associated transition symbol. </p>
+  <h3 style="margin-bottom: 0">Soundness</h3>
+  <p style="margin-bottom: 0">A very important property of a WF-net is
+  <a href="soundness.htm">soundness</a>. 
+  <h3 style="margin-bottom: 0">Resources</h3>
+  <p style="margin-bottom: 0">Several notations are added to map workflow tasks 
+  onto <a href="resource.htm">resources</a> by assigning one or more resource classes to all 
+  resource-triggered transitions. The classes must be defined and maintained in 
+  a separate resource model, consisting of organisational hierarchies, groups 
+  and roles.</p>
+  <h3 style="margin-bottom: 0">Performance Parameters</h3>
+  <p style="margin-bottom: 0">The following quantitative performance parameters&nbsp; 
+  are assigned to the elements of a Workflow Net: Average number of cases per time 
+    unit (arrival rate), average execution duration of a 
+    each workflow task, branching probabilities of 
+    every arc following an XOR-split transition.</p>
+  </div>
+
+</body>
+
+</html>

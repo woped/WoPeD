@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+    <meta name="ProgId" content="FrontPage.Editor.Document">
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Arcs</title>
+    <link rel="stylesheet" type="text/css" href="../woped.css">
+    <script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+    <script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+
+<h2>Arcs</h2>
+<p>An arc connects places with transitions of the Petri net or vice versa, i. e.
+    it always is referring to element of different types. </p>
+
+<h3>Creating </h3>
+
+<p>In order to draw a new arc between two existing net elements (which must
+    always be one <a href="place.htm">place</a> and one <a href="transition.htm">
+        transition</a>) do the following:</p>
+
+<ul>
+    <li>Left-click on the center of the element where the arc shall start</li>
+    <li>Keep
+        the mouse button pressed down
+    </li>
+    <li>Drag the mouse pointer to the center of the element where the arc shall
+        end
+    </li>
+    <li>Release the mouse button</li>
+    <li>A new arc will be drawn between the two specified elements</li>
+</ul>
+<p><img border="0" src="../images/icons/check_warning.gif" width="16" height="16">&nbsp; Note that the center of an element
+    is defined as the area where the mouse cursor turns into a pointing finger. At
+    all other positions the mouse cursor appears as a cross. Be also aware
+    that - due to Petri net syntax - arcs are only allowed to be drawn between
+    different element types. </p>
+
+<h3>Removing</h3>
+<p>To remove an arc, move the mouse to its location, right-click and choose &quot;
+    <img border="0" src="../images/remove.gif" width="16" height="16"> Remove&quot; from the context
+    menu.</p>
+
+<h3>Smart Drawing</h3>
+<p>WoPeD supports <i>smart-drawing</i> which can save a lot of time when
+    creating large nets. To use this advanced feature, just do the following:</p>
+
+<ul>
+    <li>Start drawing an arc specifying the starting element as explained above</li>
+    <li>Now drag the mouse cursor to an empty editor position</li>
+    <li>Release the
+        mouse button
+    </li>
+    <li>A new element (place or transition - context-dependent) is automatically created and a new arc will
+        be drawn to it
+    </li>
+</ul>
+<p>With smart-drawing, Petri nets can be created from scratch just by beginning
+    with one place and successively extending the net by adding elements directly in
+    the described manner. </p>
+
+<p><img border="0" src="../images/icons/check_warning.gif" width="16" height="16">&nbsp; Note that this feature is only defined for normal
+    transitions, not for <a href="operatortransition.htm">operator transitions</a>.</p>
+
+<h3>Arc Routing</h3>
+<p>To learn how to modify the topology of arcs see <a href="arcrouting.htm">arc
+    routing</a>.</p>
+
+<h3>Arc Weight</h3>
+<p>
+    It is not possible in WoPeD to add multiple arcs between the same elements. Instead you could set the weight of the arc to an arbitrary
+    positive number. The weight of an incoming arc of a transition means that the transition will consume the number of tokens
+    corresponding to the weight upon firing. Therefore, the source place must contain at least this number of tokens so that the transition
+    can be activated. The weight of an outgoing arc of a transition means that the transition will produce the number of tokens upon firing.
+    Outgoing weights do not depend in any way on the incoming weights.
+</p>
+<img src="../images/arc_weight.jpg" style="margin:auto; display: block" width="100%"/>
+<p>
+    To set the arc weight the commands <code>increase arc weight</code> and <code>decrease arc weight</code> from the context menu can be
+    used. In addition the arc properties dialog provides the possibility to set the weight direct to an specific number. When a arc weight
+    that differs from the standard weight of one is set, the weight is displayed in the middle of the arc.
+</p>
+<img src="../images/arc_properties.jpg" style="margin: auto; display: block"/>
+<p>
+    <img border="0" src="../images/icons/check_warning.gif" width="16" height="16">
+    &nbsp; Note that arcs with a weight that differs from the standard arc weight of one are not allowed in workflow nets. According to this
+    restriction some functions can not be used if arc weights are set.
+</p>
+</body>
+</html>

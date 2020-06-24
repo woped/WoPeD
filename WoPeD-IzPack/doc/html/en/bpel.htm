@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>BPEL</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+
+<h2>BPEL</h2>
+
+<p>BPEL (Business Process Execution Language) for <a href="webservices.htm">Web services</a> is an <a href="xml.htm">XML</a>-based language designed to enable task-sharing for a distributed computing or grid computing environment - even across multiple organizations - using a combination of Web services. Written by developers from BEA Systems, IBM, and Microsoft, BPEL combines and replaces IBM's WebServices Flow Language (WSFL) and Microsoft's XLANG specification. (BPEL is also sometimes identified as BPELWS or BPEL4WS.) </p>
+<p></p>
+<p>&nbsp;</p>
+<p>Using BPEL, a programmer formally describes a business process that will take place across the Web in such a way that any cooperating entity can perform one or more steps in the process the same way. In a supply chain process, for example, a BPEL program might describe a business protocol that formalizes what pieces of information a product order consists of, and what exceptions may have to be handled. The BPEL program would not, however, specify how a given Web service should process a given order internally. </p>
+<h3>Petri net Rules:</h3>
+<p>Your <a href="petrinet.htm">petri net</a> has to fulfil the following conditions so that you can generate BPEL-code:</p>
+<ul>
+  	<li>it has to be <a href="soundness.htm">sound</a></li>
+  	<li>it has to have only one beginning and one ending</li>
+	<li>it is not allowed to include loops</li>
+	<li>opened AND, OR and XOR have to be closed</li> 
+	
+</ul>
+
+<p>&nbsp;</p>
+<p>The transitions of your <a href="petrinet.htm">petri net</a> have to be assigned by BPEL-activities in 
+order to create a BPEL-process out of your <a href="petrinet.htm">petri net</a>. You can do this in the 
+<a href="transprop.htm">transition property dialog</a>. Therefore you have to 
+right click a transition of your <a href="petrinet.htm">petri net</a> and choose properties, immediately the <a href="transprop.htm">transition property dialog</a> will open and you can assign a BPEL-activity to the transition in the BPEL-tab. </p>
+
+</body>
+
+</html>

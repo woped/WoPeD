@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<izpack:shortcuts version="5.0"
+                  xmlns:izpack="http://izpack.org/schema/shortcuts"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://izpack.org/schema/shortcuts http://izpack.org/schema/5.0/izpack-shortcuts-5.0.xsd">
+  	<skipIfNotSupported/>
+  	<programGroup defaultName="WoPeD" location="applications"/>
+  	<shortcut
+    	name="WoPeD"
+    	target="$INSTALL_PATH\WoPeD.exe"
+    	commandLine=""
+    	workingDirectory="$INSTALL_PATH"
+    	description="Start WoPeD - The Workflow Petrinet Designer"
+    	iconFile=""
+    	iconIndex="0"
+    	initialState="normal"
+    	programGroup="yes"
+    	desktop="yes"
+    	applications="no"
+    	startMenu="no"
+    	startup="no">
+    		<createForPack name="Executable"/>
+  	</shortcut>
+  	<shortcut
+    	name="WoPeD Manual"
+    	target="$INSTALL_PATH\doc\html\en\index.htm"
+    	commandLine=""
+    	workingDirectory="$INSTALL_PATH\doc\html\en"
+    	description="Browse the WoPeD User Manual"
+    	iconFile=""
+    	iconIndex="0"
+    	initialState="normal"
+    	programGroup="yes"
+    	desktop="no"
+    	applications="no"
+    	startMenu="no"
+    	startup="no">
+    		<createForPack name="HTML Manual"/>
+  	</shortcut>
+  	<shortcut
+    	name="WoPeD Docs"
+    	target="$INSTALL_PATH\doc\pdf"
+    	commandLine=""
+    	workingDirectory="$INSTALL_PATH\doc\pdf"
+    	description="Browse the WoPeD PDF Documentation"
+    	iconFile=""
+    	iconIndex="0"
+    	initialState="normal"
+    	programGroup="yes"
+    	desktop="no"
+    	applications="no"
+    	startMenu="no"
+    	startup="no">
+    		<createForPack name="PDF Documentation"/>
+  	</shortcut>
+</izpack:shortcuts>

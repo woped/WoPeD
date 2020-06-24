@@ -1,0 +1,41 @@
+package org.woped.quantana.model;
+
+import javax.swing.table.AbstractTableModel;
+
+public class TasksTableModel extends AbstractTableModel {
+	
+	private static final long serialVersionUID	= 13L;
+	
+	private String[] columnNames;
+	private Object[][] data;
+	
+	public TasksTableModel(String[] cols, Object[][] obj){
+		columnNames = cols;
+		data = obj;
+	}
+
+	public int getColumnCount() {
+		return columnNames.length;
+	}
+
+	public int getRowCount() {
+		return data.length;
+	}
+
+	public String getColumnName(int col) {
+		return columnNames[col];
+	}
+
+	public Object getValueAt(int row, int col) {
+		return data[row][col];
+	}
+
+	public boolean isCellEditable(int row, int col) {
+		return false;
+	}
+
+	public void setValueAt(Object value, int row, int col) {
+		data[row][col] = value;
+		fireTableCellUpdated(row, col);
+	}
+}

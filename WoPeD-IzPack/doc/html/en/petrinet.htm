@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Petri Nets</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+
+<h2>Petri Nets</h2>
+
+<p>Petri Nets are a graphical and mathematical modeling notation going 
+back to <span class="link-external">
+<a href="http://en.wikipedia.org/wiki/Carl_Adam_Petri" target="_blank">
+<img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Carl Adam Petri</a></span>'s dissertation published in 1962 at the Technical 
+University Darmstadt (Germany). A Petri Net consists of <a href="place.htm">
+places</a>, <a href="transition.htm">transitions</a>, and connecting <a href="arc.htm">arcs</a>. Places are drawn as circles, transitions as rectangles 
+and arcs as arrows. Input arcs connect places with transitions, output arcs 
+connect transitions with places. Places are passive components and are modelling 
+the system state. They can contain <a href="token.htm">tokens</a>, depicted as black dots. </p>
+<p>The current state of the Petri Net (also called the marking) is given by the 
+number of tokens on each place. Transitions are active components modelling 
+activities which can occur and cause a change of the state by a new assignment 
+of tokens to places. Transitions are only allowed to occur if they are enabled, 
+which means that there is at least one token on each input place. By occurring, 
+the transition removes a token from each input place and adds a token on each 
+output place. The repeated occurrence of transitions and the resulting sequence 
+of markings is called the <a href="tokengame.htm">token game</a>. </p>
+
+<p>Petri Nets are traditionally used for describing and analyzing systems that 
+are oncurrent, asynchronous, distributed, parallel, nondeterministic and/or 
+stochastic. Due to their graphical nature, Petri Nets can be used as a 
+visualization technique like flow charts or block diagrams but with much more 
+scope on concurrency aspects. As a strict mathematical notation, it is possible 
+to apply formal concepts like linear algebraic equations or probability theory 
+for investigating the behavior of the modelled system. A large number of 
+software tools were developed to apply these techniques, a comprehensive 
+overview can be found in the <span class="link-external">
+<a target="_blank" href="http://www.informatik.uni-hamburg.de/TGI/PetriNets/tools/db.htm">
+<img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Petri 
+net tools database</a></span> which is part of the <a href="http://www.daimi.au.dk/PetriNets/tools/db.htm" target="_blank"> <span class="link-external">
+</span></a><span class="link-external">
+<a target="_blank" href="http://www.informatik.uni-hamburg.de/TGI/PetriNets/tools/db.htm">
+<img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Petri net homepage</a></span> 
+hosted by the University of Aarhus (Denmark).</p>
+<p>In the last decade, Petri Nets have also become a powerful concept in the 
+area of business process modelling and workflow management. An important recent approach is the class of
+<a href="workflownet.htm">w</a><a target="_top" href="workflownet.htm">orkflow nets</a>, extending the original Petri Net notation by many useful features needed in the 
+area of business processes modelling without sacrificing the mathematical nature 
+of the underlying Petri Net formalism.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

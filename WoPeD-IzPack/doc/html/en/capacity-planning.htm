@@ -1,0 +1,72 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Capacity Planning</title>
+<link rel="stylesheet" type="text/css" href="../woped.css">
+<script id='injectedScriptByC4Br' src="../jquery-1.10.2.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+<h2><span lang=EN-US>Capacity Planning</span></h2>
+
+<p><span lang=EN-US>This is a method of quantitative
+analysis used to determine the necessary number of resources in order to run
+the business process optimally.</span></p>
+
+<p><span lang=EN-US>In order to use this feature your
+process model must be extended by specifying at least the average service time
+of each transition, if it is greater than zero, and the split probabilities at
+each XOR split transition. Give special attention to the requirement, that the
+sum of all probabilities per XOR split is exactly 100%. The probability values
+can be changed by opening the properties dialog of the appropriate arc in the
+context menu.</span></p>
+
+<p><span lang=EN-US>If you use a resource model, you
+should also specify the group and role each transition requires. You can choose
+them in the transition properties dialog after selecting the Resource trigger.</span></p>
+
+<p><span lang=EN-US>After opening the Capacity Planning
+dialog, you have to give a period of time, the average number of new cases
+which arrive at the process within the just specified period and a threshold value.
+Please note that internally the program uses a standard time unit which is
+displayed just above the first table. You can change the standard time unit by
+double-clicking the button [Time model].</span></p>
+
+<p><span lang=EN-US>When you click on the button [Calculate]
+the calculation starts and the results are displayed in both tables below. By
+the way, right after opening the dialog the calculation is already done with
+the standard time unit.</span></p>
+
+<p><span lang=EN-US>The first table shows the average
+service time of each transition, if it is greater than zero, in the second
+column as specified in the model. In column three you can see how often each
+case is processed by a particular transition on average which is more than one
+in the case that this transition is part of a cycle. Column five gives you the
+sum of repetitions of all cases as you specified before. In columns four and six
+you can see the amount of time needed by a transition to process one or all
+cases. The last row of column four shows you the whole time needed (on average)
+to operate one case. The same holds for the last line of column six regarding
+all cases. The last column of the first table reminds you of the specified
+group and role for that transition.</span></p>
+
+<p><span lang=EN-US>There is a number displayed on the
+right above the table. This gives the number of decimal places shown in the
+table. You can change it by clicking on the left hand or right hand arrow.</span></p>
+
+<p><span lang=EN-US>The second table shows the calculated
+minimum number of required resources per resource classes. Column two states
+the whole number of time units all resources in this resource class need to process
+all the new cases per period. It is just the sum of the demands of all
+transitions that require this resource class. Column three gives the results.
+Note that these are valid for the given average utilization ratio. The standard
+value is 80%. Again you can change it by clicking the arrows.</span></p>
+
+<p><span lang=EN-US>With [Close] you close the dialog.</span></p>
+
+</body>
+
+</html>

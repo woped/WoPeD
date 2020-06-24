@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>WoPeD manual</title>
+<link rel="stylesheet" type="text/css" href="..\woped.css">
+<script id='injectedScriptByC4Br' src="..\jquery-1.10.2.js"></script>
+<script src="..\wopedJQuery.js"></script>
+<script id='injectedGeneralScriptByC4Br' src="../wopedGeneral.js"></script>
+</head>
+
+<body>
+
+<p>WoPeD (<b>Wo</b>rkflow <b>Pe</b>tri net <b>D</b>esigner) is a platform-independent software tool for modelling, simulating and 
+analyzing business processes with <a href="workflownet.htm">workflow nets</a>.</p>
+
+<div class="Master">
+<div class="MasterItem" id="download">Downloading WoPeD</div>
+<div class="MasterItem" id="installation">Installing WoPeD</div>
+<div class="MasterItem" id="start">Starting WoPeD</div>
+<div class="MasterItem" id="use">Using WoPeD</div>
+</div>
+
+<form method="get" class='Form' target='_self'>
+	<input type='hidden' name='selection' id='selection' value=''/>
+</form>
+
+<div class="Detail"></div>
+
+<script>
+var downloadText = $('<p>Before installing WoPeD, please install the Java Runtime Environment (JRE - Version 1.7 or higher) on your computer. The current release of WoPeD can be downloaded either from <a href="http://woped.dhbw-karlsruhe.de/"><img border="0" src="../images/icons/tango/website.gif" width="16" height="16">WoPeD homepage</a> or from <a href="http://sourceforge.net/projects/woped"><img border="0" src="../images/icons/tango/website.gif" width="16" height="16">Sourceforge</a> project site.</p>' );
+var installationText = $('<p>Now you are ready to go. Please unpack the downloaded archive and run the contained executable program<i>WoPeD-install-windows-@wopedversion@.exe</i> (in case of a Windows-based system) or <i>WoPeD-install-linux-@wopedversion@</i> (in case of a Linux-based system) or <i>Windows-install-macos-@wopedversion@.dmg</i> (in case of a MacOS-based system). In all cases, a wizard will guide you through the setup procedure - just follow the instructions. </p>');
+var startText = $('<p>After successful installation, you will find shortcuts on the desktop and in the start menu (in case of a Windows-based system and for most - maybe not all - Linux systems) to launch WoPeD. On MacOS systems, there will be an icon in the Applications folder. Alternatively, you can start WoPeD either by running the executable file WoPeD.exe (in case of Windows) or WoPeD (in case of Unix) or WoPeD.app (in case of MacOS) in the installation target folder. You may also want to associate the file extension &quot;*.pnml&quot; to WoPeD, letting you start the program with directly opening a given Petri net file by just double-clicking on it. This feature is already enabled on MacOS.</p>');  		
+var useText = $('<p>After starting WoPeD (and after closing the registration screen), the WoPeD main window becomes visible, showing the main WoPeD user interface:</p><ul><li><a href="menubar.htm">Menubar</a></li><li><a href="drawing.htm">Drawing area</a></li><li><a href="statusbar.htm">Statusbar</a></li></ul><p>&nbsp;</p>');
+
+$( document ).ready( $.docReady(downloadText, installationText, startText, useText));
+
+$( ".MasterItem" ).click( function(){
+	$("input[name='selection']").val($(this).attr('id'));
+	$(".Form").submit();
+});
+</script>
+
+</body>
+</html>

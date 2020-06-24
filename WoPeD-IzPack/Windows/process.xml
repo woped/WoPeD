@@ -1,0 +1,10 @@
+<izpack:processing version="5.0"
+  xmlns:izpack="http://izpack.org/schema/processing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://izpack.org/schema/processing http://izpack.org/schema/5.0/izpack-processing-5.0.xsd">
+	<job name="Start WoPeD">
+		<os family="windows" />
+		<executefile name="$INSTALL_PATH/WoPeD.exe" />
+	</job>
+	<onFail previous="true" next="false" />
+	<onSuccess previous="true" next="true" />
+</izpack:processing>
