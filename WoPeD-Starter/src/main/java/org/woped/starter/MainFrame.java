@@ -1,10 +1,36 @@
 package org.woped.starter;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Frame;
-import java.awt.Toolkit;
-import java.awt.Window;
+import org.pushingpixels.flamingo.api.common.JCommandButton;
+import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
+import org.pushingpixels.flamingo.api.common.RichTooltip;
+import org.pushingpixels.flamingo.api.common.popup.JCommandPopupMenu;
+import org.pushingpixels.flamingo.api.common.popup.JPopupPanel;
+import org.pushingpixels.flamingo.api.common.popup.PopupPanelCallback;
+import org.pushingpixels.flamingo.api.ribbon.*;
+import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizePolicies;
+import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizeSequencingPolicies;
+import org.woped.config.general.WoPeDRecentFile;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.*;
+import org.woped.core.gui.IUserInterface;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
+import org.woped.editor.action.ActionButtonListener;
+import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.controller.VisualController;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewEvents;
+import org.woped.gui.images.svg.*;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphRibbonMenu;
+import org.woped.gui.translations.Messages;
+import org.woped.starter.osxMenu.OSXFullscreen;
+import org.woped.starter.osxMenu.OSXMenu;
+import org.woped.starter.osxMenu.OSXMenuAdapter;
+import org.woped.starter.osxMenu.OSXMenuItem;
+
+import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
@@ -18,121 +44,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JSeparator;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
-
-import org.pushingpixels.flamingo.api.common.JCommandButton;
-import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
-import org.pushingpixels.flamingo.api.common.RichTooltip;
-import org.pushingpixels.flamingo.api.common.popup.JCommandPopupMenu;
-import org.pushingpixels.flamingo.api.common.popup.JPopupPanel;
-import org.pushingpixels.flamingo.api.common.popup.PopupPanelCallback;
-import org.pushingpixels.flamingo.api.ribbon.JRibbonBand;
-import org.pushingpixels.flamingo.api.ribbon.JRibbonComponent;
-import org.pushingpixels.flamingo.api.ribbon.JRibbonFrame;
-import org.pushingpixels.flamingo.api.ribbon.RibbonContextualTaskGroup;
-import org.pushingpixels.flamingo.api.ribbon.RibbonElementPriority;
-import org.pushingpixels.flamingo.api.ribbon.RibbonTask;
-import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizePolicies;
-import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizeSequencingPolicies;
-import org.woped.config.general.WoPeDRecentFile;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractEventProcessor;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IEditor;
-import org.woped.core.controller.VEPController;
-import org.woped.core.controller.ViewEvent;
-import org.woped.core.gui.IUserInterface;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Platform;
-import org.woped.editor.action.ActionButtonListener;
-import org.woped.editor.controller.ActionFactory;
-import org.woped.editor.controller.VisualController;
-import org.woped.gui.images.svg.F_icon;
-import org.woped.gui.images.svg.Twitter_icon;
-import org.woped.gui.images.svg.analyze_capacityplanning;
-import org.woped.gui.images.svg.analyze_coloring;
-import org.woped.gui.images.svg.analyze_metric;
-import org.woped.gui.images.svg.analyze_metric_builder;
-import org.woped.gui.images.svg.analyze_metric_mass_import;
-import org.woped.gui.images.svg.analyze_quantitative_simulation;
-import org.woped.gui.images.svg.analyze_reachability_graph;
-import org.woped.gui.images.svg.analyze_semanticalanalysis;
-import org.woped.gui.images.svg.analyze_tokengame;
-import org.woped.gui.images.svg.apromore_export;
-import org.woped.gui.images.svg.apromore_import;
-import org.woped.gui.images.svg.document_new;
-import org.woped.gui.images.svg.document_save;
-import org.woped.gui.images.svg.edit_copy;
-import org.woped.gui.images.svg.edit_paste;
-import org.woped.gui.images.svg.editor_copy;
-import org.woped.gui.images.svg.editor_cut;
-import org.woped.gui.images.svg.editor_group;
-import org.woped.gui.images.svg.editor_paste;
-import org.woped.gui.images.svg.editor_redo;
-import org.woped.gui.images.svg.editor_undo;
-import org.woped.gui.images.svg.editor_ungroup;
-import org.woped.gui.images.svg.file_close;
-import org.woped.gui.images.svg.file_exportas;
-import org.woped.gui.images.svg.file_new;
-import org.woped.gui.images.svg.file_open;
-import org.woped.gui.images.svg.file_print;
-import org.woped.gui.images.svg.file_recent;
-import org.woped.gui.images.svg.file_save;
-import org.woped.gui.images.svg.file_saveas;
-import org.woped.gui.images.svg.format_justify_left;
-import org.woped.gui.images.svg.forms_and_join;
-import org.woped.gui.images.svg.forms_and_join_xor_split;
-import org.woped.gui.images.svg.forms_and_split;
-import org.woped.gui.images.svg.forms_and_split_join;
-import org.woped.gui.images.svg.forms_place;
-import org.woped.gui.images.svg.forms_subprocess;
-import org.woped.gui.images.svg.forms_transition;
-import org.woped.gui.images.svg.forms_xor_join;
-import org.woped.gui.images.svg.forms_xor_join_and_split;
-import org.woped.gui.images.svg.forms_xor_split;
-import org.woped.gui.images.svg.forms_xor_split_join;
-import org.woped.gui.images.svg.help_about;
-import org.woped.gui.images.svg.help_configuration;
-import org.woped.gui.images.svg.help_contents;
-import org.woped.gui.images.svg.help_manual;
-import org.woped.gui.images.svg.help_reportbug;
-import org.woped.gui.images.svg.help_smaplenets;
-import org.woped.gui.images.svg.process_to_text;
-import org.woped.gui.images.svg.register;
-import org.woped.gui.images.svg.text_to_process;
-import org.woped.gui.images.svg.tokengame_edit_autoPlay;
-import org.woped.gui.images.svg.tokengame_edit_step_by_step;
-import org.woped.gui.images.svg.tokengame_play_jump_into_subprocess;
-import org.woped.gui.images.svg.tokengame_play_jump_out_of_subprocess;
-import org.woped.gui.images.svg.tokengame_play_pause;
-import org.woped.gui.images.svg.tokengame_play_seek_backward;
-import org.woped.gui.images.svg.tokengame_play_seek_forward;
-import org.woped.gui.images.svg.tokengame_play_start;
-import org.woped.gui.images.svg.tokengame_play_stop;
-import org.woped.gui.images.svg.tokengame_tokengame_exit;
-import org.woped.gui.images.svg.view_change_modelling_direction;
-import org.woped.gui.images.svg.view_optimize_layout;
-import org.woped.gui.images.svg.window_arrange;
-import org.woped.gui.images.svg.window_cascadewindows;
-import org.woped.gui.images.svg.woped_community;
-import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphRibbonMenu;
-import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewEvents;
-import org.woped.starter.osxMenu.OSXFullscreen;
-import org.woped.starter.osxMenu.OSXMenu;
-import org.woped.starter.osxMenu.OSXMenuAdapter;
-import org.woped.starter.osxMenu.OSXMenuItem;
-
 public class MainFrame extends JRibbonFrame implements IUserInterface {
-	//
+    //
 
     private static final long serialVersionUID = 1L;
 
@@ -235,7 +148,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
     private JCommandButton p2tButton = null;
     private JCommandButton t2pButton = null;
-    
+
     private JCommandButton configurationButton = null;
     private JCommandButton manualButton = null;
     private JCommandButton contentsButton = null;
@@ -257,7 +170,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private JCommandButton pauseButton = null;
 
     private JCommandButton facebookButton = null;
-//    private JCommandButton googleplusButton = null;
+    //    private JCommandButton googleplusButton = null;
     private JCommandButton twitterButton = null;
     private JCommandButton signUpButton = null;
     private JCommandButton communityButton = null;
@@ -436,7 +349,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     }
 
 
-	/* OSX MENU */
+    /* OSX MENU */
     /*********/
 
     /**
@@ -498,12 +411,12 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         OSXMenu p2tMenu = new OSXMenu(Messages.getString("P2T.openP2T.text"));
         p2tMenu.addMenuItem(Messages.getString("P2T.text")).addAction(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T);
         osxAnalyzeMenu.addSubMenu(p2tMenu);
-        
+
         OSXMenu t2pMenu = new OSXMenu(Messages.getString("T2P.openT2P.text"));
-		t2pMenu.addMenuItem(Messages.getString("T2P.text")).addAction(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P);
-		osxAnalyzeMenu.addSubMenu(t2pMenu);
-        
-        
+        t2pMenu.addMenuItem(Messages.getString("T2P.text")).addAction(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P);
+        osxAnalyzeMenu.addSubMenu(t2pMenu);
+
+
         menuAdapter.addMenu(osxAnalyzeMenu);
     }
 
@@ -568,7 +481,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         //AbstractApplicationMediator mediator = m_mediator;
         osxCommunityMenu = new OSXMenu(Messages.getTitle("Task.Community"));
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Facebook.text")).addAction(m_mediator, ActionFactory.ACTIONID_FACEBOOK, AbstractViewEvent.FACEBOOK);
- //       osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text")).addAction(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS);
+        //       osxCommunityMenu.addMenuItem(Messages.getString("Community.Googleplus.text")).addAction(m_mediator, ActionFactory.ACTIONID_GOOGLEPLUS, AbstractViewEvent.GOOGLEPLUS);
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Twitter.text")).addAction(m_mediator, ActionFactory.ACTIONID_TWITTER, AbstractViewEvent.TWITTER);
         osxCommunityMenu.addSeparator();
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Register.text")).addAction(m_mediator, ActionFactory.ACTIONID_REGISTER, AbstractViewEvent.REGISTER);
@@ -732,7 +645,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 
     /***********/
-	/* TASKBAR */
+    /* TASKBAR */
 
     private JCommandButton getTaskbarButtonPaste() {
 
@@ -858,7 +771,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         return analyzeTask;
     }
     /*********/
-	/* TASKS */
+    /* TASKS */
 
     private RibbonTask getViewTask() {
 
@@ -941,7 +854,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     }
 
     /*********/
-	/* BANDS */
+    /* BANDS */
 
     private JRibbonBand getApromoreBand() {
 
@@ -1216,7 +1129,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         return recentButton;
     }
     /***********/
-	/* BUTTONS */
+    /* BUTTONS */
 
     private JCommandPopupMenu getRecentMenu() {
         m_recentMenu = new JCommandPopupMenu();
@@ -1649,18 +1562,18 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
         return p2tButton;
     }
-    
+
     private JCommandButton getT2PButton() {
-		if (t2pButton == null) {
-			t2pButton = new JCommandButton(Messages.getString("T2P.text"), new text_to_process()); //T2P
-			t2pButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P, t2pButton));
+        if (t2pButton == null) {
+            t2pButton = new JCommandButton(Messages.getString("T2P.text"), new text_to_process()); //T2P
+            t2pButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P, t2pButton));
 //			TODO(optional):
 //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton, ActionFactory.ACTIONID_METRIC);
-			setTooltip(t2pButton, "T2P");
-		}
+            setTooltip(t2pButton, "T2P");
+        }
 
-		return t2pButton;
-	}
+        return t2pButton;
+    }
 
     private JCommandButton getChangeOrientationButton() {
 
@@ -2190,14 +2103,14 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     public void addEditor(IEditor editor) {
         getRibbon().setSelectedTask(getEditTask());
     }
-    
+
     @Override
     public void addTextEditor(IEditor editor) {
-       // getRibbon().setSelectedTask(getEditTask());
+        // getRibbon().setSelectedTask(getEditTask());
     }
-    
-    
-    
+
+
+
 
     @Override
     public void removeEditor(IEditor editor) {
