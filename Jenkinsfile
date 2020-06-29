@@ -30,9 +30,11 @@ pipeline {
             }
         }
         stage('deploy exe') {
+            /*
             when {
                 buildingTag()
             }
+            */
             steps {
                 sh 'mvn      -s $MVN_SET \\\n' +
                         '     deploy:deploy-file \\\n' +
