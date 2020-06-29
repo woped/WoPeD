@@ -23,7 +23,7 @@ pipeline {
         }
         stage('deploy jar') {
             steps {
-                sh 'mvn -s $MVN_SET deploy'
+                sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }
         }
     }
