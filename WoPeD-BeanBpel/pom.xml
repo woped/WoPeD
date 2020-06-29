@@ -7,8 +7,8 @@
 		<artifactId>WoPeD</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>WoPeD-BeanBpel</artifactId>
 
+	<artifactId>WoPeD-BeanBpel</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -29,7 +29,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
@@ -50,7 +49,6 @@
 					<outputJar>${project.build.directory}/bpelBeans-${project.version}.jar</outputJar>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
@@ -82,6 +80,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
