@@ -37,7 +37,7 @@ pipeline {
             */
             steps {
                 sh 'mvn      -s $MVN_SET \\\n' +
-                        '     deploy:deploy-file \\\n' +
+                        '     deploy \\\n' +
                         '    -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/ \\\n' +
                         '    -DrepositoryId=maven-snapshots \\\n' +
                         '    -DgroupId=org.woped \\\n' +
