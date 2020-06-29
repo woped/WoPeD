@@ -89,7 +89,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
 	public static String DEFAULT_TEXT2PROCESS_HOST = "woped.dhbw-karlsruhe.de";
-	public static int DEFAULT_TEXT2PROCESS_PORT = 8080;
+	public static int DEFAULT_TEXT2PROCESS_PORT = 8081;
 	public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
 	public static boolean DEFAULT_TEXT2PROCESS_USE = false;
 
