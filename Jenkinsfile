@@ -22,6 +22,9 @@ pipeline {
             }
         }
         stage('deploy jar') {
+            when {
+                buildingTag()
+            }
             steps {
                 sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }
