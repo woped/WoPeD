@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 	<artifactId>WoPeD-BeanConfiguration</artifactId>
 
@@ -30,7 +30,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
@@ -51,7 +50,6 @@
 					<outputJar>${project.build.directory}/configBeans-${project.version}.jar</outputJar> 
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>

@@ -18,10 +18,13 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn install -Dmaven.test.skip=true'
+                sh 'mvn clean install -Dmaven.test.skip=true'
             }
         }
         stage('deploy jar') {
+            when {
+                buildingTag()
+            }
             steps {
                 sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }

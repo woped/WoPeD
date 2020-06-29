@@ -7,12 +7,11 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>WoPeD-QualAnalysis</artifactId>
 	<packaging>jar</packaging>
-
 	<name>WoPeD-QualAnalysis</name>
 
 	<properties>
@@ -22,14 +21,12 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>treelayout.core</artifactId>
@@ -37,26 +34,25 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/treelayout.core-1.0.1.jar</systemPath>
 		</dependency>
-
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-CommonLibs</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-GUI</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Flamingo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

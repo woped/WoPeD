@@ -7,12 +7,11 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>WoPeD-ProcessMetrics</artifactId>
 	<packaging>jar</packaging>
-
 	<name>WoPeD-ProcessMetrics</name>
 
 	<properties>
@@ -30,7 +29,6 @@
 	</repositories>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>jbpt</artifactId>
@@ -38,7 +36,6 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/jbpt-0.1.0.jar</systemPath>
 		</dependency>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>antlrworks</artifactId>
@@ -46,21 +43,20 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/antlrworks-1.4.0.jar</systemPath>
 		</dependency>
-
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-GUI</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-QualAnalysis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

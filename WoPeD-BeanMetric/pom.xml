@@ -5,8 +5,9 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
+
 	<artifactId>WoPeD-BeanMetric</artifactId>
 
 	<dependencies>
@@ -16,7 +17,6 @@
 			<version>2.4.0</version>
 		</dependency>
 	</dependencies>
-
 
 	<build>
 		<plugins>
@@ -29,7 +29,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
@@ -47,10 +46,9 @@
 					<verbose>false</verbose>
 					<quiet>false</quiet>
 					<javaSource>1.8</javaSource>
-					<outputJar>${project.build.directory}/metricsBeans-${project.version}.jar</outputJar> 
+					<outputJar>${project.build.directory}/metricsBeans-${project.version}.jar</outputJar>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-install-plugin</artifactId>
@@ -82,5 +80,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

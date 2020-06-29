@@ -7,12 +7,11 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>WoPeD-QuantAnalysis</artifactId>
 	<packaging>jar</packaging>
-
 	<name>WoPeD-QuantAnalysis</name>
 
 	<properties>
@@ -22,13 +21,11 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.3</version>
 		</dependency>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>ssj</artifactId>
@@ -36,7 +33,6 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/ssj-2.1.3.jar</systemPath>
 		</dependency>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>jcommon</artifactId>
@@ -44,7 +40,6 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/jcommon-1.0.15.jar</systemPath>
 		</dependency>
-
 		<dependency>
 			<groupId>PLATZHALTER</groupId>
 			<artifactId>jfreechart</artifactId>
@@ -52,12 +47,10 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/jfreechart-1.0.12.jar</systemPath>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-CommonLibs</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.xmlbeans</groupId>
@@ -65,32 +58,30 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
 			<artifactId>xmlbeans</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Configuration</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-GUI</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-QualAnalysis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

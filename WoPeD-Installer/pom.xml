@@ -4,11 +4,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.woped</groupId>
+		<artifactId>WoPeD</artifactId>
+		<version>${revision}</version>
+	</parent>
+
 	<artifactId>WoPeD-Installer</artifactId>
 	<packaging>jar</packaging>
 	<groupId>org.woped</groupId>
-	<version>0.0.1-SNAPSHOT</version>
-
 	<name>WoPeD-Installer</name>
 
 	<properties>
@@ -33,7 +37,6 @@
 				<version>1.7.25</version>
 			</plugin>
 		</plugins>
-
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -48,10 +51,9 @@
 							</goals>
 							<configuration>
 								<headerType>gui</headerType>
-								<jar>target/WoPeD-Starter.jar</jar>
+								<jar>target/WoPeD-Installer-${project.version}.jar</jar>
 								<outfile>./../WoPeD-IzPack/Windows/WoPeD.exe</outfile>
 								<priority>normal</priority>
-								<customProcName>false</customProcName>
 								<stayAlive>false</stayAlive>
 								<icon>WoPeD.ico</icon>
 								<jre>
@@ -74,6 +76,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
 </project>
