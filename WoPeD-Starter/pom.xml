@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.woped</groupId>
 		<artifactId>WoPeD</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>WoPeD-Starter</artifactId>
@@ -42,6 +42,31 @@
 
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>flatten-maven-plugin</artifactId>
+					<version>1.2.3</version>
+					<configuration>
+						<updatePomFile>true</updatePomFile>
+						<flattenMode>resolveCiFriendliesOnly</flattenMode>
+					</configuration>
+					<executions>
+						<execution>
+							<id>flatten</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>flatten</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>flatten.clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-assembly-plugin</artifactId>
@@ -78,10 +103,10 @@
 							<configuration>
 								<tasks>
 									<copy
-										file="${basedir}/target/WoPeD-Starter-${version}-jar-with-dependencies.jar"
+										file="${basedir}/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar"
 										tofile="${basedir}/../WoPeD-Installer/target/WoPeD-Starter.jar" />
 									<copy
-										file="${basedir}/target/WoPeD-Starter-${version}-jar-with-dependencies.jar"
+										file="${basedir}/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar"
 										tofile="${basedir}/../WoPeD-IzPack/Linux/WoPeD-Starter.jar" />
 								</tasks>
 							</configuration>
@@ -115,57 +140,57 @@
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-CommonLibs</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Editor</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-BPELExport</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Configuration</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-GUI</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-FileInterface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-QualAnalysis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-Flamingo</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-AProMoRe</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.woped</groupId>
 			<artifactId>WoPeD-QuantAnalysis</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 </project>
