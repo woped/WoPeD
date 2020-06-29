@@ -29,23 +29,5 @@ pipeline {
                 sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }
         }
-        stage('deploy exe') {
-            /*
-            when {
-                buildingTag()
-            }
-            */
-            steps {
-                sh 'mvn      -s $MVN_SET \\\n' +
-                        '     deploy \\\n' +
-                        '    -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/ \\\n' +
-                        '    -DrepositoryId=maven-snapshots \\\n' +
-                        '    -DgroupId=org.woped \\\n' +
-                        '    -DartifactId=Installer \\\n' +
-                        '    -Dversion=3.7.1  \\\n' +
-                        '    -Dpackaging=exe \\\n' +
-                        '    -Dfile=WoPeD-IzPack/target/WoPeD-Installer.exe'
-            }
-        }
     }
 }
