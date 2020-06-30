@@ -72,13 +72,6 @@ public class RunWoPeD extends JFrame {
 	 */
 	public static void main(String[] args) {
 		
-		if (!System.getProperty("java.version").startsWith("1.8"))
-		{
-			JOptionPane.showMessageDialog(null, Messages.getString("Wrong.Java.Version.Text", new Object[] {System.getProperty("java.version")}),
-					Messages.getString("Wrong.Java.Version.Title"), JOptionPane.OK_OPTION);
-			System.exit(0);
-		}
-		
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;
