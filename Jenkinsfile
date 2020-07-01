@@ -40,7 +40,7 @@ pipeline {
                         -DgroupId=de.dhbw.woped 
                         -DartifactId=WoPeD-IzPack 
                         -Dversion=3.7.1 
-                        -DrepositoryId=some.id 
+                        -DrepositoryId=maven-snapshots 
                         -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
                 }
             }
