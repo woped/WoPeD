@@ -33,10 +33,10 @@ pipeline {
             }
             steps {
                 sh """mvn deploy:deploy-file
-                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/${REPOSITORY}/
+                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/$REPOSITORY/
                         -DgroupId=de.dhbw.woped 
                         -DartifactId=WoPeD-IzPack 
-                        -Dversion=${VERSION} 
+                        -Dversion=$VERSION 
                         -DrepositoryId=some.id 
                         -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
             }
