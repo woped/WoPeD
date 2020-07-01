@@ -10,13 +10,17 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>3.7.1</revision>
+		<revision>3.7.1-SNAPSHOT</revision>
 	</properties>
 
 	<name>Workflow Petri Net Designer</name>
 	<url>https://woped.dhbw-karlsruhe.de/</url>
 
 	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://vesta.dh-karlsruhe.de/nexus/repository/maven-releases/</url>
+		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<url>http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/</url>
