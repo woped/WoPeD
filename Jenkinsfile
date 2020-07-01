@@ -32,16 +32,9 @@ pipeline {
                 VERSION = getVersion()
             }
             steps {
-                sh "echo"
+                sh "echo $VERSION $REPOSITORY"
                 configFileProvider([configFile(fileId: 'nexus-credentials', variable: 'MAVEN_SETTINGS')]) {
-                    sh """
-                        mvn -s $MAVEN_SETTINGS deploy:deploy-file
-                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/
-                        -DgroupId=de.dhbw.woped 
-                        -DartifactId=WoPeD-IzPack 
-                        -Dversion=3.7.1 
-                        -DrepositoryId=maven-snapshots 
-                        -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
+                    sh "mvn -s $MAVEN_SETTINGS deploy:deploy-file -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/ -DgroupId=de.dhbw.woped -DartifactId=WoPeD-IzPack -Dversion=3.7.1 -DrepositoryId=maven-snapshots -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe"
                 }
             }
         }
