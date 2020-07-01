@@ -31,10 +31,10 @@ pipeline {
         stage('deploy exe') {
             steps {
                 sh 'mvn deploy:deploy-file ' +
-                        "-Durl=http://vesta.dh-karlsruhe.de/nexus/repository/$REPOSITORY/ \\\n" +
+                        "-Durl=http://vesta.dh-karlsruhe.de/nexus/repository/${REPOSITORY}/ \\\n" +
                         '-DgroupId=de.dhbw.woped \\\n' +
                         '-DartifactId=WoPeD-IzPack \\\n' +
-                        "-Dversion=$VERSION \\\n" +
+                        "-Dversion=${VERSION} \\\n" +
                         '-DrepositoryId=some.id \\\n' +
                         '-Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe \\'
             }
