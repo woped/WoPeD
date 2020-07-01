@@ -33,13 +33,16 @@ pipeline {
             }
             steps {
                 sh "echo"
-                sh """mvn deploy:deploy-file
+                configFileProvider([configFile(fileId: 'nexus-credentials', variable: 'MAVEN_SETTINGS')]) {
+                    sh """
+                        mvn -s $MAVEN_SETTINGS deploy:deploy-file
                         -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/
                         -DgroupId=de.dhbw.woped 
                         -DartifactId=WoPeD-IzPack 
                         -Dversion=3.7.1 
                         -DrepositoryId=some.id 
                         -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
+                }
             }
         }
     }
