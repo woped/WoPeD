@@ -1,6 +1,7 @@
 package org.woped.file.t2p;
 
 import org.junit.Test;
+import javax.swing.*;
 import java.io.File;
 import static org.junit.Assert.*;
 
@@ -11,6 +12,7 @@ public class PlainTextFileReaderTest {
     public void read() {
         PlainTextFileReader ptfr = new PlainTextFileReader();
         StringBuilder sb;
+        JFileChooser chooser = new JFileChooser();
         String usrPath = System.getProperty("user.dir");
         String[] filetype = {"txt","doc","docx"}; //
 
@@ -33,4 +35,5 @@ public class PlainTextFileReaderTest {
             assertTrue(sb.toString().contains("A manager is managing a project"));
             }
      }
+
 }
