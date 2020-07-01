@@ -20,7 +20,8 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean install -Dmaven.test.skip=true'
+                sh 'mvn compile'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
         stage('deploy jar') {
