@@ -32,11 +32,12 @@ pipeline {
                 VERSION = getVersion()
             }
             steps {
+                sh "echo"
                 sh """mvn deploy:deploy-file
-                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/$REPOSITORY/
+                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/maven-snapshots/
                         -DgroupId=de.dhbw.woped 
                         -DartifactId=WoPeD-IzPack 
-                        -Dversion=$VERSION 
+                        -Dversion=3.7.1 
                         -DrepositoryId=some.id 
                         -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
             }
