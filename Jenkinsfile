@@ -32,13 +32,13 @@ pipeline {
                 VERSION = getVersion()
             }
             steps {
-                sh 'mvn deploy:deploy-file ' +
-                        "-Durl=http://vesta.dh-karlsruhe.de/nexus/repository/${REPOSITORY}/ \\\n" +
-                        '-DgroupId=de.dhbw.woped \\\n' +
-                        '-DartifactId=WoPeD-IzPack \\\n' +
-                        "-Dversion=${VERSION} \\\n" +
-                        '-DrepositoryId=some.id \\\n' +
-                        '-Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe \\'
+                sh """mvn deploy:deploy-file
+                        -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/${REPOSITORY}/
+                        -DgroupId=de.dhbw.woped 
+                        -DartifactId=WoPeD-IzPack 
+                        -Dversion=${VERSION} 
+                        -DrepositoryId=some.id 
+                        -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe """
             }
         }
     }
