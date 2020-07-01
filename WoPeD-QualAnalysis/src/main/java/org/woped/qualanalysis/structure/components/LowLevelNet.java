@@ -128,7 +128,7 @@ public class LowLevelNet {
 
                 }
                 SINKFOUND = sink.isVisited();
-                done = R.isEmpty(); // Abbruchbedingung überprüfen
+                done = R.isEmpty(); // Abbruchbedingung ueberpruefen
             }
             // resetTempData();
 
