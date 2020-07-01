@@ -1,8 +1,6 @@
 pipeline {
     environment {
         MVN_SET = credentials('nexus-credentials')
-        REPOSITORY = getRepository()
-        VERSION = getVersion()
     }
     agent {
         docker {
@@ -29,6 +27,10 @@ pipeline {
             }
         }
         stage('deploy exe') {
+            environment {
+                REPOSITORY = getRepository()
+                VERSION = getVersion()
+            }
             steps {
                 sh 'mvn deploy:deploy-file ' +
                         "-Durl=http://vesta.dh-karlsruhe.de/nexus/repository/${REPOSITORY}/ \\\n" +
