@@ -51,7 +51,7 @@ import org.woped.core.utilities.Platform;
 public abstract class Messages
 {
 
-    private static final String         BUNDLE_NAME     = "org.woped.gui.translations.Messages";               //$NON-NLS-1$
+    private static final String         BUNDLE_NAME     = "Messages";               //$NON-NLS-1$
 
     public static boolean exists(String key)
     {

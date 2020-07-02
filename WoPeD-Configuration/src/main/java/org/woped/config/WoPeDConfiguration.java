@@ -20,7 +20,7 @@ import org.woped.core.utilities.LoggerManager;
  */
 public abstract class WoPeDConfiguration implements IConfiguration {
 
-	protected static ResourceBundle rb = PropertyResourceBundle.getBundle("org.woped.gui.translations.Messages");
+	protected static ResourceBundle rb = PropertyResourceBundle.getBundle("Messages");
 	
 	protected String defaultHomedir = "";
 	protected String currentWorkingdir = "";

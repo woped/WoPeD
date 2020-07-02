@@ -18,6 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.source>11</maven.compiler.source>
+		<woped.builtstamp>${maven.build.timestamp}</woped.builtstamp> 
 	</properties>
 
 	<dependencies>
@@ -50,6 +51,13 @@
 				<includes>
 					<include>**/*</include>
 				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>Messages.properties</include>
+				</includes>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 	</build>
