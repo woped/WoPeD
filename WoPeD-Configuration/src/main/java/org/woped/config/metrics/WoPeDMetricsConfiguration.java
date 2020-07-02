@@ -42,7 +42,7 @@ public class WoPeDMetricsConfiguration extends WoPeDConfiguration implements
 		IMetricsConfiguration {
 
 	private ResourceBundle rb = PropertyResourceBundle
-			.getBundle("org.woped.gui.translations.Messages");
+			.getBundle("Messages");
 
 	private org.woped.config.metrics.ConfigurationDocument confDoc = null;
 	
