@@ -28,27 +28,14 @@ pipeline {
         }
         stage('deploy exe') {
             environment {
-                REPOSITORY = getRepository()
                 VERSION = getVersion()
             }
             steps {
-                sh "echo $VERSION $REPOSITORY"
                 configFileProvider([configFile(fileId: 'nexus-credentials', variable: 'MAVEN_SETTINGS')]) {
                     sh "mvn -s $MAVEN_SETTINGS deploy:deploy-file -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/WoPeD-Installers/ -DgroupId=de.dhbw.woped -DartifactId=WoPeD-IzPack -Dversion=3.7.1-SNAPSHOT -DrepositoryId=WoPeD-Installers -Dpackaging=exe -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe"
                 }
             }
         }
-    }
-}
-
-def getRepository() {
-    pom = readMavenPom file: 'pom.xml'
-    version = pom.version
-
-    if(version.toString().contains("SNAPSHOT")) {
-        return "maven-snapshots"
-    } else {
-        return "maven-releases"
     }
 }
 
