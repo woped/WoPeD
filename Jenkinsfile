@@ -18,16 +18,28 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean install -Dmaven.test.skip=true'
+                sh 'mvn install -Dmaven.test.skip=true'
             }
         }
         stage('deploy jar') {
-            when {
-                buildingTag()
-            }
             steps {
                 sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }
         }
+        stage('deploy exe') {
+            environment {
+                VERSION = getVersion()
+            }
+            steps {
+                configFileProvider([configFile(fileId: 'nexus-credentials', variable: 'MAVEN_SETTINGS')]) {
+                    sh "mvn -s $MAVEN_SETTINGS deploy:deploy-file -Durl=http://vesta.dh-karlsruhe.de/nexus/repository/WoPeD-Installers/ -DgroupId=de.dhbw.woped -DartifactId=WoPeD-IzPack -Dversion='${VERSION}' -DrepositoryId=WoPeD-Installers -Dpackaging=exe -Dfile=./WoPeD-IzPack/target/WoPeD-Installer.exe"
+                }
+            }
+        }
     }
+}
+
+def getVersion() {
+    pom = readMavenPom file: 'pom.xml'
+    return pom.version
 }
