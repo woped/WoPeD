@@ -14,6 +14,14 @@
 	<packaging>jar</packaging>
 	<name>WoPeD-CommonLibs</name>
 
+	<repositories>
+		<repository>
+			<id>data-local</id>
+			<name>data</name>
+			<url>file://${project.basedir}/../repo</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -21,6 +29,16 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>PLATZHALTER</groupId>
+			<artifactId>jgraph</artifactId>
+			<version>5.10.2</version>
+		</dependency>
+		<dependency>
+			<groupId>PLATZHALTER</groupId>
+			<artifactId>jgraphx</artifactId>
+			<version>1.5.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
@@ -51,16 +69,6 @@
 			<groupId>de.dhbw.woped</groupId>
 			<artifactId>bpelBeans</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>jgraph</groupId>
-			<artifactId>jgraph</artifactId>
-			<version>5.13.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinyjee.jgraphx</groupId>
-			<artifactId>jgraphx</artifactId>
-			<version>1.10.4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
