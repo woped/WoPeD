@@ -33,7 +33,7 @@ public class WebServiceThread extends Thread {
 		paraphrasingPanel.showLoadingAnimation(true);
 		String url = "http://" + ConfigurationManager.getConfiguration().getProcess2TextServerHost() + ":"
 				+ ConfigurationManager.getConfiguration().getProcess2TextServerPort()
-				+ ConfigurationManager.getConfiguration().getProcess2TextServerURI() + "/generate";
+				+ ConfigurationManager.getConfiguration().getProcess2TextServerURI() + "/generateText";
 
 		String[] arg = { url, "P2T" };
 
@@ -46,9 +46,9 @@ public class WebServiceThread extends Thread {
 				QualanalysisServiceImplement soundnesscheck = new QualanalysisServiceImplement(editor);
 				if (soundnesscheck.isSound()) {
 					// Use WebService to call P2T
-//				/*request = new HttpRequest(url, text);
-//				response = request.getResponse();
-//				output = response.getBody(); */
+				request = new HttpRequest(url, text);
+				response = request.getResponse();
+				output = response.getBody();
 
 					// End of call for WebService
 					// Alternatively call P2T directly with bypass of WebService
