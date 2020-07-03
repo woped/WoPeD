@@ -24,6 +24,7 @@ public class HttpRequest {
 			con.setRequestMethod("POST");
 			con.setRequestProperty("User-Agent", "Mozilla/5.0");
 			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+			con.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
 			con.setDoOutput(true);
 
 			out = new DataOutputStream(con.getOutputStream());
