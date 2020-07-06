@@ -197,18 +197,6 @@ public class T2PUI extends JDialog {
 		btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
 		btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
 		
-		
-		WopedButton btnUpload = new WopedButton(new AbstractAction() {
-			public void actionPerformed(ActionEvent arg0) {
-				readFile();
-			}
-		});
-
-		btnUpload.setMnemonic(KeyEvent.VK_C);
-		btnUpload.setText(Messages.getString("T2PUI.Button.Read.Text"));
-		btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
-		
-		buttonPanel.add(btnUpload);
 		buttonPanel.add(btnErase);
 		buttonPanel.add(langBox);
 		buttonPanel.add(Box.createHorizontalGlue());
@@ -454,12 +442,5 @@ public class T2PUI extends JDialog {
 		if (textArea.getText() != null) {
 			textArea.setText(null);
 		}
-	}
-
-	public void readFile() {
-		PlainTextFileReader r = new PlainTextFileReader();
-		String txt = r.read();
-		if (txt != null)
-			textArea.setText(txt);
 	}
 }
