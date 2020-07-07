@@ -56,6 +56,7 @@
 			<author name="Responsible: Thomas Freytag" email="info@woped.org"></author>
 		</authors>
 		<url>http://www.woped.org</url>
+		<pack200>lzma</pack200>
 	</info>
 
 	<panels>
@@ -79,15 +80,6 @@
 				<include name="License.txt" />
 				<include name="Changelog.txt" />
 				<os family="windows" />
-			</fileset>
-			
-			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
-				<include name="WoPeD-Starter.jar" />
-				<include name="Readme.txt" />
-				<include name="License.txt" />
-				<include name="Changelog.txt" />
-				<include name="WoPeD.png" />
-				<os family="unix" />
 			</fileset>
 		</pack>
 		
