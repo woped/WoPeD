@@ -148,8 +148,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	/**
 	 * @param is
 	 *            InputStream with config file content
-	 * @param configType
-	 *            type indicator for type of currently handled configuration
 	 * @return indicates whether loading was successful
 	 */
 	public boolean readConfig(InputStream is) {
@@ -171,8 +169,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
 	 * @param file
-	 * @param configType
-	 *            type indicator for type of currently handled configuration
 	 * @return
 	 */
 	public boolean readConfig(File file) {
@@ -203,7 +199,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	/**
 	 * TODO: DOCUMENTATION (silenco)
 	 * 
-	 * @param confDoc
+	 * @param configDoc
 	 * @return
 	 */
 	public boolean readConfig(XmlObject configDoc) {
@@ -370,8 +366,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the insertCOPYwhencopied.
-	 * 
-	 * @param insertCOPYwhencopied
+	 *
+	 * @param insertCOPYwhenCopied
 	 *            The insertCOPYwhencopied to set
 	 */
 	public void setInsertCOPYwhenCopied(boolean insertCOPYwhenCopied) {
@@ -463,7 +459,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	/**
 	 * Sets the recentFiles.
 	 * 
-	 * @param recentFiles
+	 * @param path
+	 * @param name
 	 *            The recentFiles to set / public void setRecentFiles(Vector
 	 *            recentFiles) { getConfDocument().getConfiguration().getGeneral
 	 *            ().setRecentFilesArray ((RecentFile[])recentFiles.toArray());
@@ -594,7 +591,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	/**
 	 * Sets the home directory.
 	 * 
-	 * @param homedir
+	 * @param hd
 	 *            The home directory to set
 	 */
 	public void setHomedir(String hd) {

@@ -107,7 +107,7 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
         }
 
         catch (IOException e) {
-             JOptionPane.showMessageDialog(jComp, Messages.getString("Help.Message.noDefaultBrowser") + url.toString());
+             JOptionPane.showMessageDialog(jComp, Messages.getString("Help.Message.noDefaultBrowser") + " " + url.toString());
         }
     }
 }

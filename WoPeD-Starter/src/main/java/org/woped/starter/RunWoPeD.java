@@ -22,16 +22,12 @@
  */
 package org.woped.starter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.Enumeration;
 import java.util.Locale;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -42,7 +38,6 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
-import org.woped.gui.translations.Messages;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
 
@@ -62,8 +57,8 @@ public class RunWoPeD extends JFrame {
 
 	private static RunWoPeD m_instance = null;
 
-	private String[] m_filesToOpen = null;
-	private DefaultApplicationMediator m_dam = null;
+	private String[] m_filesToOpen;
+	private final DefaultApplicationMediator m_dam;
 
 	/**
 	 * 
@@ -103,11 +98,7 @@ public class RunWoPeD extends JFrame {
 			m_instance.WaitForSetupFinished();
 		}
 
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				m_instance.run();
-			}
-		});
+		SwingUtilities.invokeLater(() -> m_instance.run());
 	}
 
 	/**
@@ -128,36 +119,20 @@ public class RunWoPeD extends JFrame {
 	private void initUI() {
 		/* If we are running on a Mac, set associated screen menu handlers */
 		if (Platform.isMac()) {
-			OSXAdapter.setOpenFileHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			Desktop d = Desktop.getDesktop();
+
+			d.setOpenFileHandler(e ->{
 					m_filesToOpen = new String[1];
-					m_filesToOpen[0] = e.getActionCommand();
-				}
-			});
+					m_filesToOpen[0] = e.getFiles().get(0).getAbsolutePath();});
 
-			OSXAdapter.setQuitHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
+			d.setQuitHandler((e,r)->m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT)));
 
-				}
-			});
+			d.setAboutHandler(e->m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT)));
 
-			OSXAdapter.setAboutHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
-
-				}
-			});
-
-			OSXAdapter.setPreferencesHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-							AbstractViewEvent.CONFIG));
-
-				}
-			});
+			d.setPreferencesHandler(e->m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+							AbstractViewEvent.CONFIG)));
 		}
 
 		System.setProperty("apple.laf.useScreenMenuBar", "true");

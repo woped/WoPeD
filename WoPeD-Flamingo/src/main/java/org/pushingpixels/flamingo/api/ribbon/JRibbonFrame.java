@@ -29,21 +29,7 @@
  */
 package org.pushingpixels.flamingo.api.ribbon;
 
-import java.awt.AWTEvent;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
-import java.awt.Image;
-import java.awt.LayoutManager;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.AWTEventListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -653,7 +639,7 @@ public class JRibbonFrame extends JFrame {
 					}
 					if (image128 != null) {
 						try {
-							Class appClass = Class
+							/*							Class appClass = Class
 									.forName("com.apple.eawt.Application");
 							if (appClass != null) {
 								Object appInstance = appClass.newInstance();
@@ -664,7 +650,9 @@ public class JRibbonFrame extends JFrame {
 									setDockImageMethod.invoke(appInstance,
 											image128);
 								}
-							}
+							}*/
+							Taskbar taskbar = Taskbar.getTaskbar();
+							taskbar.setIconImage(image128);
 						} catch (Throwable t) {
 							t.printStackTrace();
 							// give up

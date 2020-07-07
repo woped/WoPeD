@@ -51,11 +51,7 @@ public class HelpBrowser
 
     private HelpBrowser() {
     }   
-      
-    /**
-     * 
-     * @param currURL
-     */
+
     public void showURL(String currFileName) {
     	String helpDir         	= Messages.getString("Help.Dir");
     	String contentFileName 	= Messages.getString("Help.File.Contents");
@@ -72,8 +68,8 @@ public class HelpBrowser
  		if (!new File(docPath).exists()) {
 			// locate HTML help files in local folder
 			docPath = new File(".").getAbsolutePath();
-			pos = docPath.lastIndexOf(".");
-			docPath = docPath.substring(0, pos) + "/doc";
+			pos = docPath.lastIndexOf(".")-1;
+			docPath = docPath.substring(0, pos) + "/WoPeD-Starter/doc";
  		}
 			
  		docPath = "file:" + docPath;
