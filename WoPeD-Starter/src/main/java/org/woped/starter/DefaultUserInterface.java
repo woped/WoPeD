@@ -54,7 +54,7 @@ import org.woped.starter.osxMenu.OSXFullscreen;
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends MainFrame implements IUserInterface, InternalFrameListener {
     public static final int DEFAULT_FRAME_DISTANCE = 20;
-    private JDesktopPane desktop = null;
+    private JDesktopPane desktop;
     // Used VC
     private StatusBarVC statusBar = null;
     private DefaultEditorFrame frame = null;
@@ -66,10 +66,12 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
     public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar) {
         super();
-        if ( Platform.isMac() ) {
+  /*       Programmable fullscreen support no more supported in Java 9+
+       if ( Platform.isMac() ) {
             final Window currentWindow = (Window) SwingUtilities.getRoot(this);
             OSXFullscreen.enableOSXFullscreen(currentWindow);
-        }
+        }*/
+
         // Adaption of constructor signature
         this.statusBar = statusBar;
 

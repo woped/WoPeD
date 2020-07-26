@@ -196,7 +196,7 @@ public class AboutUI extends JDialog {
 			
 			if (mainpath.contains("!") && Platform.isMac()) {
 				
-				int pos = mainpath.indexOf("WoPeD-classes");
+				int pos = mainpath.indexOf("WoPeD-Starter");
 				if (pos > -1) {
 					// Remove URL prefix
 					int ff = mainpath.indexOf("file:") + 5;
@@ -206,11 +206,12 @@ public class AboutUI extends JDialog {
 					path = mainpath;
 				}
 			} else {
-				// Running inside Eclipse, no WoPeD app
-				int pos = path.indexOf("WoPeD-Starter");
+				// Running inside IDE, no WoPeD app
+				int pos = mainpath.indexOf("WoPeD-Starter");
 				if (pos > -1) {
-					path = path.substring(0, pos);
-					path += "WoPeD-Installer" + File.separator + "build-tools";
+					mainpath = mainpath.substring(0, pos);
+					mainpath += "WoPeD-Starter";
+					path = mainpath;
 				}
 			}
 
@@ -243,6 +244,7 @@ public class AboutUI extends JDialog {
 			panel2.add(panel);
 			changeLogPanel = new JScrollPane(panel2);
 			changeLogPanel.setPreferredSize(getAboutPanel().getSize());
+			text.setCaretPosition(0);
 		}
 		return changeLogPanel;
 	}

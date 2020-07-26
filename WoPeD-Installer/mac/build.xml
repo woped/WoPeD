@@ -1,0 +1,75 @@
+<project default="makeMacInstaller" name="INSTALLER">
+    <tstamp/>
+    <property file="build.properties"/>
+    <taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="lib/appbundler-1.0ea.jar"/>
+    <filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}"/>
+    <filter token="builtstamp" value="${DSTAMP}"/>
+
+    <target name="clean">
+        <delete dir="dist" />
+    </target>
+
+    <target name="makeMacInstaller" depends="clean">
+        <mkdir dir="dist" />
+
+        <copy todir="dist" filtering="true">
+            <fileset file="../../WoPeD-Starter/*.txt"/>
+        </copy>
+
+        <copy todir="dist" filtering="true">
+            <fileset file="Info.plist"/>
+            <fileset file="*.sh"/>
+            <fileset file="*.pkgproj"/>
+             <fileset file="makepackage"/>
+        </copy>
+
+        <copy todir="dist">
+             <fileset file="*.icns"/>
+            <fileset file="*.jpg"/>
+        </copy>
+
+        <bundleapp outputdirectory="dist"
+                   name="WoPeD"
+                   displayname="WoPeD"
+                   identifier="org.woped"
+                   shortversion="${WOPEDVERSION}${SNAPSHOT}"
+                   icon="WoPeD.icns"
+                   applicationCategory="public.app-category.developer-tools"
+                   mainclassname="org.woped.starter.RunWoPeD"
+                   copyright="WoPeD copyright 2020">
+            <option value="-Dapple.laf.useScreenMenuBar=true -Dname=WoPeD"/>
+        </bundleapp>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc" filtering="true">
+            <fileset file="../../WoPeD-Starter/doc/**"/>
+        </copy>
+
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/nets"/>
+
+        <copy todir="dist/WoPeD.app/Contents/Java">
+            <fileset file="../../WoPeD-Starter/target/WoPeD-Starter-${WOPEDVERSION}${SNAPSHOT}-jar-with-dependencies.jar"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java">
+            <fileset file="dist/*.txt"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/nets">
+            <fileset file="nets/*.*"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Resources">
+            <fileset file="WoPeD-document.icns"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents">
+            <fileset file="Info.plist"/>
+        </copy>
+
+        <exec  dir="dist" executable="/bin/sh">
+            <arg line="makepackage"/>
+        </exec>
+
+     </target>
+</project>

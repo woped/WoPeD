@@ -459,7 +459,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         getTreeviewComponent();
         osxViewMenu.addCheckboxMenuItem(Messages.getString("Sidebar.Treeview.Title"), treeviewCheckbox).addAction(mediator, ActionFactory.ACTIONID_SHOWTREEVIEW, AbstractViewEvent.VIEWEVENTTYPE_GUI);
         osxViewMenu.addSeparator();
-        //Fullscreen support
+        /* Programmable fullscreen support no more supported in Java 9+
 
 
         osxViewMenu.addMenuItem(Messages.getTitle("Action.Fullscreen"), "Action.Fullscreen").addActionListener(new ActionListener() {
@@ -467,7 +467,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
             public void actionPerformed(ActionEvent evt) {
                 OSXFullscreen.toggleOSXFullscreen(currentWindow);
             }
-        });
+        });*/
 
         menuAdapter.addMenu(osxViewMenu);
     }

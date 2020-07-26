@@ -79,7 +79,7 @@ public class T2PUI extends JDialog {
 	private boolean requested = false;
 	private SwingWorker<HttpURLConnection, Void> bgTask;
 	private SwingWorker<HttpResponse, Void> bgTaskHttp;
-	
+
 	private String inputText;
 	
 	public T2PUI(AbstractApplicationMediator mediator) {
@@ -217,29 +217,16 @@ public class T2PUI extends JDialog {
 		return buttonPanel;
 	}
 	
-	private void request() {
+	private void request()  {
 		if (requested) return;
 		requested = true;
 		
 		inputText = textArea.getText();
 
 		if (!inputText.isEmpty()) {
-
-
-			// new worker calling the T2P-SpringBoot-Server with json-Objects
 			jsonBackgroundWorker(inputText);
-
-			// old worker call JBoss-Server
-			//httpBackgroundWorker(inputText);
-			// display loading box
 			showLoadingBox();
-/*			try {
-				T2PController tp = new T2PController(inputText);
-				String pnml = tp.generatePetrinetFromText();
-			}
-			catch (Exception e) {
-				e.getStackTrace();
-			} */
+
 		} else {
 			showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
 		}
@@ -263,7 +250,7 @@ public class T2PUI extends JDialog {
 	    }
 	}
 	
-	private void displayPMNL(String pnml) {
+	private void displayPNML(String pnml) {
 		PNMLImport pnmlImport = new PNMLImport(mediator);
 		InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
 
@@ -310,13 +297,16 @@ public class T2PUI extends JDialog {
 	 */
 	private void jsonBackgroundWorker(String text) {
 
+		String connectionStr = "http://" + ConfigurationManager.getConfiguration().getText2ProcessServerHost() + ":"
+				+ ConfigurationManager.getConfiguration().getText2ProcessServerPort()
+				+ ConfigurationManager.getConfiguration().getText2ProcessServerURI() + "/generatePNML";
+
 		bgTask = new SwingWorker<HttpURLConnection, Void>() {
 			@Override
 			protected HttpURLConnection doInBackground() throws IOException {
 				// Forming the Url out of the configuration
-				URL t2pUrl = new URL("http://" + ConfigurationManager.getConfiguration().getText2ProcessServerHost() + ":" + ConfigurationManager.getConfiguration().getText2ProcessServerPort() + ConfigurationManager.getConfiguration().getText2ProcessServerURI() + "/generatePNML");
 				HttpURLConnection connection;
-				connection = (HttpURLConnection) t2pUrl.openConnection();
+				connection = (HttpURLConnection) new URL(connectionStr).openConnection();
 
 				// Setting the connection properties
 				connection.setRequestMethod("POST");
@@ -352,11 +342,10 @@ public class T2PUI extends JDialog {
 							while ((responseLine = bufferedReader.readLine()) != null) {
 								responseJson.append(responseLine.trim());
 							}
-							System.out.println(responseJson.toString());
 							String pnml = responseJson.toString();
 							// Extracting the pnml-xml from the json body
 							if (!pnml.isEmpty()) {
-								displayPMNL(pnml);
+								displayPNML(pnml);
 							} else {
 								// TODO: error handling
 
@@ -376,76 +365,44 @@ public class T2PUI extends JDialog {
 							break;
 					}
 				} catch (MalformedURLException e) {
-					System.err.println("The URL is malformed, please check it.");
-					e.printStackTrace();
+					String[] arg = {connectionStr};
+					JOptionPane.showMessageDialog(null,
+							Messages.getString("T2PUI.500Error.Text", arg)
+									+ Messages.getString("T2PUI.Webservice.Settings"),
+							Messages.getString("T2PUI.500Error.Title"),
+							JOptionPane.ERROR_MESSAGE);
+					return;
 				} catch (IOException e) {
-					System.err.println("Was not able to establish the connection with the given URL. Make sure the server is " +
-							"running, url and port are correct and you have a working internet connection.");
-					e.printStackTrace();
-				}catch ( InterruptedException e) {
-					System.err.println("Connection was interrupted.");
-					e.printStackTrace();
-				}catch ( ExecutionException e) {
-					System.err.println("Your request couldn't be processed.");
-					e.printStackTrace();
+					String[] arg = {connectionStr};
+					JOptionPane.showMessageDialog(null,
+							Messages.getString("T2PUI.500Error.Text", arg)
+									+ Messages.getString("T2PUI.Webservice.Settings"),
+							Messages.getString("T2PUI.500Error.Title"),
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				} catch ( InterruptedException e) {
+					String[] arg = {connectionStr};
+					JOptionPane.showMessageDialog(null,
+							Messages.getString("T2PUI.500Error.Text", arg)
+									+ Messages.getString("T2PUI.Webservice.Settings"),
+							Messages.getString("T2PUI.500Error.Title"),
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				} catch ( ExecutionException e) {
+					String[] arg = {connectionStr};
+					JOptionPane.showMessageDialog(null,
+							Messages.getString("T2PUI.500Error.Text", arg) + "\n"
+									+ Messages.getString("T2PUI.Webservice.Settings"),
+							Messages.getString("T2PUI.500Error.Title"),
+							JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 			}
 		};
 
 		bgTask.execute();
 	}
-	
-	private void httpBackgroundWorker(String text) {
-		if (bgTaskHttp != null && !bgTaskHttp.isDone()) return;
 
-
-		String url = "http://" + ConfigurationManager.getConfiguration().getText2ProcessServerHost() + ":" + ConfigurationManager.getConfiguration().getText2ProcessServerPort() + ConfigurationManager.getConfiguration().getText2ProcessServerURI() + "/generate";
-
-		bgTaskHttp = new SwingWorker<HttpResponse, Void>() {
-			HttpRequest req;
-			
-			@Override
-			protected HttpResponse doInBackground() throws Exception {
-				req = new HttpRequest(url, text);
-				return req.getResponse();
-			}
-
-			@Override
-			protected void done() {
-				try {
-					HttpResponse res = get();
-					
-					String PNML = res.body;
-					int httpCode = res.responseCode;
-					
-					if (!PNML.isEmpty() && httpCode == 200) {
-						displayPMNL(PNML);
-					} else {
-						if (req != null) req.cancel();
-						if (loadDialog != null) loadDialog.dispose();
-						
-						if (httpCode == 400) {
-							showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
-						} else if (httpCode == 500) {
-							showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
-						} else if (httpCode == 503) {
-							showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
-						} else {
-							showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-						}
-					}
-				} catch (Exception e) {
-					if (req != null) req.cancel();
-					if (loadDialog != null) loadDialog.dispose();
-					
-					//showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-				}
-			}			
-		};
-
-		bgTaskHttp.execute();
-	}
-	
 	private void close() {
 		this.dispose();
 	}

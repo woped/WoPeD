@@ -25,6 +25,7 @@ import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.paraphrasing.Constants;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
+import org.woped.qualanalysis.service.QualanalysisServiceImplement;
 
 @SuppressWarnings("serial")
 /**
@@ -34,7 +35,7 @@ import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
  */
 public class P2TSideBar extends JPanel implements ActionListener {
 
-	private IEditor editor = null;
+	private IEditor editor;
 	private JEditorPane textpane = null;
 	private Process2Text naturalTextParser = null;
 	private JButton buttonLoad = null;
@@ -202,7 +203,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 			for (String find : textsToHighlight) {
 
 				for (int index = 0; index + find.length() < textpane.getText().length(); index++) {
-					String match = null;
+					String match;
 
 					try {
 						match = textpane.getText(index, find.length());
@@ -211,7 +212,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 					}
 					// if the text is found
 					if (find.equals(match)) {
-						javax.swing.text.DefaultHighlighter.DefaultHighlightPainter highlightPainter = null;
+						javax.swing.text.DefaultHighlighter.DefaultHighlightPainter highlightPainter;
 						highlightPainter = new javax.swing.text.DefaultHighlighter.DefaultHighlightPainter(
 								new Color(255, 0, 0, 128));
 
@@ -234,18 +235,18 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Process "load" button
 		if (e.getSource() == this.buttonLoad) {
-			showLoadingAnimation(true);
-
-			new WebServiceThread(this);
-
 			// If we already have a text/process description, ask for overwrite
 			// confirmation.
+
 			if (naturalTextParser != null && naturalTextParser.getXmlText().length() > 0) {
 				if (JOptionPane.showConfirmDialog(null, Messages.getString("Paraphrasing.Load.Question.Content"),
 						Messages.getString("Paraphrasing.Load.Question.Title"),
 						JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION)
 					return;
 			}
+
+			showLoadingAnimation(true);
+			new WebServiceThread(this);
 
 			if (this.getThreadInProgress() == false) {
 				getText();
@@ -324,9 +325,24 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		clean();
 
 		// Ensure their are no arc weights
-		if(editor.getModelProcessor().usesArcWeights()){
+		if (editor.getModelProcessor().usesArcWeights()) {
 			this.textpane.setText(Messages.getString("P2T.Error.ArcWeights.title"));
 			showErrorMessage("P2T.Error.ArcWeights");
+			return;
+		}
+
+		if (editor.getModelProcessor().getElementContainer().getRootElements().size() < 4) {
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("Paraphrasing.Webservice.NumberElements.Message"),
+					Messages.getString("Paraphrasing.Webservice.NumberElements.Title"),
+					JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		if (! new QualanalysisServiceImplement(editor).isSound()) {
+			JOptionPane.showMessageDialog(null,
+					Messages.getString("PetriNet.NotSound"),
+					Messages.getString("AnalysisSideBar.SoundnessAnalysis"), JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
@@ -417,7 +433,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	public void onSideBarShown(boolean visible) {
 		//checkt, ob der Prozess sound ist, bevor er an den Webservice übergeben wird. Alle anderen Prozesse werden nicht übersetzt.
 		IQualanalysisService analyseService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
-		if(analyseService.isWorkflowNet()) {
+		if(analyseService.isSound()) {
 			if (visible == true && this.firstTimeDisplayed == false) {
 				getText();
 				this.firstTimeDisplayed = true;
