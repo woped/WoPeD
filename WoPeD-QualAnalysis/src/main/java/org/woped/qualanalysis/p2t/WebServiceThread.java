@@ -61,6 +61,7 @@ public class WebServiceThread extends Thread {
 			case HttpServletResponse.SC_SERVICE_UNAVAILABLE:
 			case HttpServletResponse.SC_NOT_FOUND:
 			case HttpServletResponse.SC_METHOD_NOT_ALLOWED:
+			case -1:
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Paraphrasing.Webservice.Error.Contact", arg) + "\n"
 								+ Messages.getString("Paraphrasing.Webservice.Settings"),

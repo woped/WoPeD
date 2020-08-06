@@ -604,14 +604,14 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
+							Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
 							JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
+							Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
 							JOptionPane.ERROR_MESSAGE);
 		}
@@ -642,14 +642,14 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel_T2P(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
+							Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
 							JOptionPane.ERROR_MESSAGE);
 		} catch (IOException ex) {
 			JOptionPane
 					.showMessageDialog(
 							this.getSettingsPanel_T2P(),
-							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message", arg),
+							Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
 							Messages.getString("Paraphrasing.Webservice.Error.Title"),
 							JOptionPane.ERROR_MESSAGE);
 		}

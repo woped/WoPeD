@@ -244,8 +244,9 @@ public class P2TSideBar extends JPanel implements ActionListener {
 						JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION)
 					return;
 			}
+			getText();
 
-			showLoadingAnimation(true);
+/*			showLoadingAnimation(true);
 			new WebServiceThread(this);
 
 			if (this.getThreadInProgress() == false) {
@@ -255,10 +256,10 @@ public class P2TSideBar extends JPanel implements ActionListener {
 						Messages.getString("Paraphrasing.Webservice.ThreadInProgress.Message"),
 						Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.INFORMATION_MESSAGE);
 			}
-			showLoadingAnimation(false);
+			showLoadingAnimation(false);*/
 		}
-		// Process "export "button
-		else if (e.getSource() == this.buttonExport) {
+		// Process "export" button
+		if (e.getSource() == this.buttonExport) {
 
 			boolean fileTypeOk = false;
 			if (this.textpane.getText().length() > 0) {
@@ -321,13 +322,13 @@ public class P2TSideBar extends JPanel implements ActionListener {
 	 * Starts the webservice to get the description of the Petri-Net.
 	 */
 	private void getText() {
-		this.textpane.setText(Messages.getString("P2T.loading"));
 		clean();
 
 		// Ensure their are no arc weights
 		if (editor.getModelProcessor().usesArcWeights()) {
 			this.textpane.setText(Messages.getString("P2T.Error.ArcWeights.title"));
 			showErrorMessage("P2T.Error.ArcWeights");
+			this.textpane.setText(Messages.getString("P2T.ArcError"));
 			return;
 		}
 
@@ -336,6 +337,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 					Messages.getString("Paraphrasing.Webservice.NumberElements.Message"),
 					Messages.getString("Paraphrasing.Webservice.NumberElements.Title"),
 					JOptionPane.ERROR_MESSAGE);
+			this.textpane.setText(Messages.getString("P2T.SizeError"));
 			return;
 		}
 
@@ -343,10 +345,12 @@ public class P2TSideBar extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("PetriNet.NotSound"),
 					Messages.getString("AnalysisSideBar.SoundnessAnalysis"), JOptionPane.ERROR_MESSAGE);
+			this.textpane.setText(Messages.getString("P2T.SoundError"));
 			return;
 		}
 
-		this.setThreadInProgress(true);
+		this.textpane.setText(Messages.getString("P2T.loading"));
+		this.showLoadingAnimation(true);
 		webService = new WebServiceThread(this);
 		webService.start();
 		while (!webService.getIsFinished()) {
