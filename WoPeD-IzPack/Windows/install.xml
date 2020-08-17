@@ -83,6 +83,14 @@
 				<include name="Changelog.txt" />
 				<os family="windows" />
 			</fileset>
+			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
+				<include name="../Linux/WoPeD-Starter.jar" />
+				<include name="Readme.txt" />
+				<include name="License.txt" />
+				<include name="Changelog.txt" />
+				<include name="WoPeD.png" />
+				<os family="unix" />
+			</fileset>
 		</pack>
 
 		<pack name="PDF Documentation" required="no" id="id1">
