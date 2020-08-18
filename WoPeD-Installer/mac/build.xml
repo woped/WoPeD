@@ -71,5 +71,9 @@
             <arg line="makepackage"/>
         </exec>
 
+        <move todir="../installers">
+            <fileset file="dist/*.pkg"/>
+        </move>
+
      </target>
 </project>
