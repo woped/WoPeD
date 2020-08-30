@@ -95,7 +95,38 @@
 						</execution>
 					</executions>
 				</plugin>
-						<plugin>
+				<plugin>
+					<groupId>sh.tak.appbundler</groupId>
+					<artifactId>appbundle-maven-plugin</artifactId>
+					<version>1.2.0</version>
+					<configuration>
+						<mainClass>org.woped.starter.RunWoPeD</mainClass>
+						<generateDiskImageFile>true</generateDiskImageFile>
+						<bundleName>WoPeD</bundleName>
+						<iconFile>../WoPeD-Installer/mac/WoPeD.icns</iconFile>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>bundle</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.plexus</groupId>
+							<artifactId>plexus-archiver</artifactId>
+							<version>4.1.0</version>
+						</dependency>
+						<dependency>
+							<groupId>org.codehaus.plexus</groupId>
+							<artifactId>plexus-velocity</artifactId>
+							<version>1.2</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<executions>
 						<execution>
