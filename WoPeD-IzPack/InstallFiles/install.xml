@@ -84,7 +84,7 @@
 				<os family="windows" />
 			</fileset>
 			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
-				<include name="../Linux/WoPeD-Starter.jar" />
+				<include name="WoPeD-Starter.jar" />
 				<include name="Readme.txt" />
 				<include name="License.txt" />
 				<include name="Changelog.txt" />
@@ -93,7 +93,7 @@
 			</fileset>
 		</pack>
 
-		<pack name="PDF Documentation" required="no" id="id1">
+		<pack name="PDF Documentation" required="no" id="id2">
 			<description>Additional manual and user doc files</description>
 
 			<fileset dir="." targetdir="${INSTALL_PATH}/doc"
@@ -103,7 +103,7 @@
 			</fileset>
 		</pack>
 
-		<pack name="HTML Manual" required="no" id="id1">
+		<pack name="HTML Manual" required="no" id="id3">
 			<description>Separate HTML Manual files</description>
 
 			<fileset dir="." targetdir="${INSTALL_PATH}/doc"
