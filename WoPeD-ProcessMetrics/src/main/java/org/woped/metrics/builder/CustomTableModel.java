@@ -12,8 +12,8 @@ public class CustomTableModel extends DefaultTableModel{
 	private static final long serialVersionUID = -8152725519048713038L;
 	private boolean editable = true;
 	
-	public CustomTableModel(Vector<?> object, Vector<String> columns) {
-		super();
+	public CustomTableModel(Vector<? extends Vector> data, Vector<String> columns) {
+		super(data, columns);
 	}
 
 	@Override
