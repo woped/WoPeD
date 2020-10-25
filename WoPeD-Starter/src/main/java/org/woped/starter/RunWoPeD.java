@@ -25,6 +25,7 @@ package org.woped.starter;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Locale;
 
 import javax.swing.JFrame;
@@ -66,10 +67,12 @@ public class RunWoPeD extends JFrame {
 	 * 
 	 */
 	public static void main(String[] args) {
-		
+
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;
+		boolean logTofile = true;
+
 
 		for (String arg : args) {
 
@@ -82,9 +85,12 @@ public class RunWoPeD extends JFrame {
 			if (arg.equals("-english")) {
 				forceEnglish = true;
 			}
+			if(arg.equals("-ide")) {
+				logTofile = false;
+			}
 		}
 
-		if (startDelayed || forceGerman || forceEnglish)
+		if (startDelayed || forceGerman || forceEnglish || !logTofile)
 			args = null;
 
 		if (forceGerman)
@@ -92,7 +98,7 @@ public class RunWoPeD extends JFrame {
 		if (forceEnglish)
 			Locale.setDefault(Locale.ENGLISH);
 
-		m_instance = new RunWoPeD(args);
+		m_instance = new RunWoPeD(args, logTofile);
 
 		if (startDelayed) {
 			m_instance.WaitForSetupFinished();
@@ -104,12 +110,12 @@ public class RunWoPeD extends JFrame {
 	/**
 	 * Constructor
 	 **/
-	private RunWoPeD(String[] args) {
+	private RunWoPeD(String[] args, boolean logToFile) {
 		m_filesToOpen = args;
 
-		initLogging();
+		initLogging(logToFile);
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-		
+
 		initUI();
 	}
 
@@ -121,18 +127,19 @@ public class RunWoPeD extends JFrame {
 		if (Platform.isMac()) {
 			Desktop d = Desktop.getDesktop();
 
-			d.setOpenFileHandler(e ->{
-					m_filesToOpen = new String[1];
-					m_filesToOpen[0] = e.getFiles().get(0).getAbsolutePath();});
+			d.setOpenFileHandler(e -> {
+				m_filesToOpen = new String[1];
+				m_filesToOpen[0] = e.getFiles().get(0).getAbsolutePath();
+			});
 
-			d.setQuitHandler((e,r)->m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT)));
+			d.setQuitHandler((e, r) -> m_dam
+					.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT)));
 
-			d.setAboutHandler(e->m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT)));
+			d.setAboutHandler(e -> m_dam
+					.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT)));
 
-			d.setPreferencesHandler(e->m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-							AbstractViewEvent.CONFIG)));
+			d.setPreferencesHandler(e -> m_dam.fireViewEvent(
+					new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CONFIG)));
 		}
 
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -157,11 +164,16 @@ public class RunWoPeD extends JFrame {
 
 	/**
 	 * Init loggers for different WoPeD components
+	 * @param logToFile 
 	 **/
-	private void initLogging() {
+	private void initLogging(boolean logToFile) {
 
-		DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j.xml"));
-
+		if(logToFile) {
+		DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
+		} else {
+			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_console.xml"));
+		}
+		
 		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)),
 				Constants.GUI_LOGGER);
 		LoggerManager.register(
