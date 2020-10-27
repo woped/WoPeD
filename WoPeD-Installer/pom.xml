@@ -80,6 +80,7 @@
 						</execution>
 					</executions>
 				</plugin>
+
 				<!-- Step 2: Erstelle WoPeD.exe aus WoPeD-Starter-${project.version}-jar-with-dependencies.jar 
 					in WoPeD-Starter/target -->
 				<plugin>
@@ -87,7 +88,7 @@
 					<artifactId>launch4j-maven-plugin</artifactId>
 					<executions>
 						<execution>
-							<id>l4j-clui</id>
+							<id>l4j-clui1</id>
 							<phase>prepare-package</phase>
 							<goals>
 								<goal>launch4j</goal>
@@ -96,6 +97,26 @@
 								<headerType>gui</headerType>
 								<jar>./../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar</jar>
 								<outfile>./target/staging/WoPeD.exe</outfile>
+								<priority>normal</priority>
+								<stayAlive>false</stayAlive>
+								<icon>WoPeD.ico</icon>
+								<jre>
+									<path>%JAVA_HOME%</path>
+								</jre>
+							</configuration>
+						</execution>
+						<!-- Step 4: Installer-Exe für Windows in /Windows erzeugen -->
+						<!-- Wird erst nach izpack-maven-plugin in Step 4 ausgeführt, muss jedoch hier aufgeführt werden. -->
+						<execution>
+							<id>l4j-clui2</id>
+							<phase>package</phase>
+							<goals>
+								<goal>launch4j</goal>
+							</goals>
+							<configuration>
+								<headerType>gui</headerType>
+								<jar>target/stagingOutput/WoPeD-Installer.jar</jar>
+								<outfile>target/Windows/WoPeD-Installer.exe</outfile>
 								<priority>normal</priority>
 								<stayAlive>false</stayAlive>
 								<icon>WoPeD.ico</icon>
@@ -136,32 +157,6 @@
 					</dependencies>
 				</plugin>
 
-				<!-- Step 4: Installer-Exe für Windows in /Windows erzeugen -->
-				<plugin>
-					<groupId>com.akathist.maven.plugins.launch4j</groupId>
-					<artifactId>launch4j-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>l4j-clui2</id>
-							<phase>package</phase>
-							<goals>
-								<goal>launch4j</goal>
-							</goals>
-							<configuration>
-								<headerType>gui</headerType>
-								<jar>target/stagingOutput/WoPeD-Installer.jar</jar>
-								<outfile>target/Windows/WoPeD-Installer.exe</outfile>
-								<priority>normal</priority>
-								<stayAlive>false</stayAlive>
-								<icon>WoPeD.ico</icon>
-								<jre>
-									<path>%JAVA_HOME%</path>
-								</jre>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-
 				<!-- Step 5: Installer-Jar für Linux nach /Linux verschieben -->
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
@@ -180,7 +175,6 @@
 									</copy>
 								</tasks>
 							</configuration>
-
 						</execution>
 					</executions>
 				</plugin>
