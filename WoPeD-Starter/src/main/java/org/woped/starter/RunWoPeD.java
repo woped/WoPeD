@@ -71,8 +71,6 @@ public class RunWoPeD extends JFrame {
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;
-		boolean logTofile = true;
-
 
 		for (String arg : args) {
 
@@ -85,12 +83,9 @@ public class RunWoPeD extends JFrame {
 			if (arg.equals("-english")) {
 				forceEnglish = true;
 			}
-			if(arg.equals("-ide")) {
-				logTofile = false;
-			}
 		}
 
-		if (startDelayed || forceGerman || forceEnglish || !logTofile)
+		if (startDelayed || forceGerman || forceEnglish)
 			args = null;
 
 		if (forceGerman)
@@ -98,7 +93,7 @@ public class RunWoPeD extends JFrame {
 		if (forceEnglish)
 			Locale.setDefault(Locale.ENGLISH);
 
-		m_instance = new RunWoPeD(args, logTofile);
+		m_instance = new RunWoPeD(args);
 
 		if (startDelayed) {
 			m_instance.WaitForSetupFinished();
@@ -110,10 +105,10 @@ public class RunWoPeD extends JFrame {
 	/**
 	 * Constructor
 	 **/
-	private RunWoPeD(String[] args, boolean logToFile) {
+	private RunWoPeD(String[] args) {
 		m_filesToOpen = args;
 
-		initLogging(logToFile);
+		initLogging();
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
 
 		initUI();
@@ -164,16 +159,17 @@ public class RunWoPeD extends JFrame {
 
 	/**
 	 * Init loggers for different WoPeD components
-	 * @param logToFile 
+	 * 
+	 * @param logToFile
 	 **/
-	private void initLogging(boolean logToFile) {
-
-		if(logToFile) {
-		DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
+	private void initLogging() {
+		
+		if (isRunningFromJar()) {
+			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
 		} else {
 			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_console.xml"));
 		}
-		
+
 		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)),
 				Constants.GUI_LOGGER);
 		LoggerManager.register(
@@ -213,6 +209,15 @@ public class RunWoPeD extends JFrame {
 				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER);
 
 		LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+	}
+
+	private boolean isRunningFromJar() {
+		String className = this.getClass().getName().replace('.', '/');
+		String classJar = this.getClass().getResource("/" + className + ".class").toString();
+		if (classJar.startsWith("jar:")) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
