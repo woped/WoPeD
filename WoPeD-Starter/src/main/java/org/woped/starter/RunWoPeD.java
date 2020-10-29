@@ -25,6 +25,7 @@ package org.woped.starter;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Locale;
 
 import javax.swing.JFrame;
@@ -66,7 +67,7 @@ public class RunWoPeD extends JFrame {
 	 * 
 	 */
 	public static void main(String[] args) {
-		
+
 		boolean startDelayed = false;
 		boolean forceGerman = false;
 		boolean forceEnglish = false;
@@ -109,7 +110,7 @@ public class RunWoPeD extends JFrame {
 
 		initLogging();
 		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-		
+
 		initUI();
 	}
 
@@ -121,18 +122,19 @@ public class RunWoPeD extends JFrame {
 		if (Platform.isMac()) {
 			Desktop d = Desktop.getDesktop();
 
-			d.setOpenFileHandler(e ->{
-					m_filesToOpen = new String[1];
-					m_filesToOpen[0] = e.getFiles().get(0).getAbsolutePath();});
+			d.setOpenFileHandler(e -> {
+				m_filesToOpen = new String[1];
+				m_filesToOpen[0] = e.getFiles().get(0).getAbsolutePath();
+			});
 
-			d.setQuitHandler((e,r)->m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT)));
+			d.setQuitHandler((e, r) -> m_dam
+					.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT)));
 
-			d.setAboutHandler(e->m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT)));
+			d.setAboutHandler(e -> m_dam
+					.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT)));
 
-			d.setPreferencesHandler(e->m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-							AbstractViewEvent.CONFIG)));
+			d.setPreferencesHandler(e -> m_dam.fireViewEvent(
+					new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.CONFIG)));
 		}
 
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -157,10 +159,16 @@ public class RunWoPeD extends JFrame {
 
 	/**
 	 * Init loggers for different WoPeD components
+	 * 
+	 * @param logToFile
 	 **/
 	private void initLogging() {
-
-		DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j.xml"));
+		
+		if (isRunningFromJar()) {
+			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
+		} else {
+			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_console.xml"));
+		}
 
 		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)),
 				Constants.GUI_LOGGER);
@@ -201,6 +209,15 @@ public class RunWoPeD extends JFrame {
 				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER);
 
 		LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+	}
+
+	private boolean isRunningFromJar() {
+		String className = this.getClass().getName().replace('.', '/');
+		String classJar = this.getClass().getResource("/" + className + ".class").toString();
+		if (classJar.startsWith("jar:")) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

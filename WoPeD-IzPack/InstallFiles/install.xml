@@ -32,16 +32,15 @@
 	</locale>
 
 	<resources>
-		<res id="LicencePanel.licence" src="License.txt"></res>
-		<res id="InfoPanel.info" src="Readme.txt"></res>
+		<res id="LicencePanel.licence" src="License.txt" />
+		<res id="InfoPanel.info" src="Readme.txt" />
 		<res id="Installer.image.0" src="helloPanel.png" />
 		<res id="Installer.image.1" src="infoPanel.png" />
 		<res id="Installer.image.2" src="licencePanel.png" />
 		<res id="Installer.image.3" src="packsPanel.png" />
 		<res id="Installer.image.4" src="targetPanel.png" />
-		<res id="Installer.image.5" src="installPanel.png" />
 		<res id="Installer.image.6" src="shortcutPanel.png" />
-		<res id="ProcessPanel.Spec.xml" src="process.xml" />
+		<res id="Installer.image.5" src="installPanel.png" />
 		<res id="Installer.image.7" src="finishPanel.png" />
 		<res id="installer.langsel.img" src="WoPeD-logo.jpg" />
 		<res id="packsLang.xml_eng" src="install-eng.xml" />
@@ -67,9 +66,8 @@
 		<panel classname="LicencePanel"></panel>
 		<panel classname="TargetPanel"></panel>
 		<panel classname="PacksPanel"></panel>
-		<panel classname="InstallPanel"></panel>
 		<panel classname="ShortcutPanel"></panel>
-		<panel classname="ProcessPanel"></panel>
+		<panel classname="InstallPanel"></panel>
 		<panel classname="SimpleFinishPanel"></panel>
 	</panels>
 
@@ -82,6 +80,7 @@
 				<include name="Readme.txt" />
 				<include name="License.txt" />
 				<include name="Changelog.txt" />
+				<include name="runWoPeD.cmd" />
 				<os family="windows" />
 			</fileset>
 			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
@@ -113,5 +112,12 @@
 			</fileset>
 		</pack>
 
+		<!-- <pack name="RunWoped" required="true" id="id4" hidden="true"> <description> 
+			Test </description> <executable targetfile="$INSTALL_PATH/Woped.exe" type="bin" 
+			stage="postinstall" failure="warn" keep="true"> <os family="windows" /> <args> 
+			<arg value="-delay" /> </args> </executable> <executable targetfile="$INSTALL_PATH/Woped-Starter.jar" 
+			type="jar" class="org.woped.starter.RunWoPeD" stage="postinstall" failure="warn" 
+			keep="true"> <os family="unix" /> <args> <arg value="-delay" /> </args> </executable> 
+			</pack> -->
 	</packs>
 </izpack:installation>
