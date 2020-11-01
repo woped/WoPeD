@@ -32,27 +32,91 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 				<artifactId>launch4j-maven-plugin</artifactId>
 				<version>1.7.25</version>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.izpack</groupId>
+				<artifactId>izpack-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
+				<!-- Step 1: Erstelle Ordnerstruktur für den Install-Prozess -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>step1-folder</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<mkdir dir="target/staging" />
+									<mkdir dir="target/stagingOutput" />
+									<mkdir dir="target/staging/doc" />
+									<mkdir dir="target/Windows" />
+									<mkdir dir="target/Linux" />
+									<copy todir="target/staging">
+										<fileset dir="${basedir}/InstallFiles" />
+									</copy>
+									<copy todir="target/staging/doc">
+										<fileset dir="${basedir}/doc" />
+									</copy>
+									<copy tofile="target/staging/WoPeD-Starter.jar">
+										<fileset
+											file="./../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />
+									</copy>
+								</tasks>
+							</configuration>
+
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- Step 2: Erstelle WoPeD.exe aus WoPeD-Starter-${project.version}-jar-with-dependencies.jar 
+					in WoPeD-Starter/target -->
 				<plugin>
 					<groupId>com.akathist.maven.plugins.launch4j</groupId>
 					<artifactId>launch4j-maven-plugin</artifactId>
 					<executions>
 						<execution>
-							<id>l4j-clui</id>
+							<id>l4j-clui1</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>launch4j</goal>
+							</goals>
+							<configuration>
+								<headerType>gui</headerType>
+								<jar>./../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar</jar>
+								<outfile>./target/staging/WoPeD.exe</outfile>
+								<priority>normal</priority>
+								<stayAlive>false</stayAlive>
+								<icon>WoPeD.ico</icon>
+								<jre>
+									<path>%JAVA_HOME%</path>
+								</jre>
+							</configuration>
+						</execution>
+						<!-- Step 4: Installer-Exe für Windows in /Windows erzeugen -->
+						<!-- Wird erst nach izpack-maven-plugin in Step 4 ausgeführt, muss jedoch hier aufgeführt werden. -->
+						<execution>
+							<id>l4j-clui2</id>
 							<phase>package</phase>
 							<goals>
 								<goal>launch4j</goal>
 							</goals>
 							<configuration>
 								<headerType>gui</headerType>
-								<jar>target/WoPeD-Starter.jar</jar>
-								<outfile>./../WoPeD-IzPack/InstallFiles/WoPeD.exe</outfile>
+								<jar>target/stagingOutput/WoPeD-Installer.jar</jar>
+								<outfile>target/Windows/WoPeD-Installer.exe</outfile>
 								<priority>normal</priority>
 								<stayAlive>false</stayAlive>
 								<icon>WoPeD.ico</icon>
@@ -63,6 +127,59 @@
 						</execution>
 					</executions>
 				</plugin>
+
+				<!-- Step 3: Installer-Jar erzeugen mit IzPack -->
+				<plugin>
+					<groupId>org.codehaus.izpack</groupId>
+					<artifactId>izpack-maven-plugin</artifactId>
+					<version>5.1.3</version>
+					<executions>
+						<execution>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>izpack</goal>
+							</goals>
+							<configuration>
+								<baseDir>./target/staging</baseDir>
+								<installFile>./target/staging/install.xml</installFile>
+								<output>./target/stagingOutput/WoPeD-Installer.jar</output>
+								<!-- Benötigt für Update auf IzPack 5.1.3 https://stackoverflow.com/questions/52870386/an-attached-artifact-must-have-a-different-id-than-its-corresponding-main-artifa/53132888 -->
+								<classifier>BugFix</classifier>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.izpack</groupId>
+							<artifactId>izpack-panel</artifactId>
+							<version>5.1.3</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- Step 5: Installer-Jar für Linux nach /Linux verschieben -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>step5</id>
+							<phase>package</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<copy tofile="target/Linux/WoPeD-Installer.jar">
+										<fileset
+											file="./target/stagingOutput/WoPeD-Installer.jar" />
+									</copy>
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
