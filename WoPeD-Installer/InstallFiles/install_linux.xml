@@ -32,16 +32,15 @@
 	</locale>
 
 	<resources>
-		<res id="LicencePanel.licence" src="License.txt"></res>
-		<res id="InfoPanel.info" src="Readme.txt"></res>
+		<res id="LicencePanel.licence" src="License.txt" />
+		<res id="InfoPanel.info" src="Readme.txt" />
 		<res id="Installer.image.0" src="helloPanel.png" />
 		<res id="Installer.image.1" src="infoPanel.png" />
 		<res id="Installer.image.2" src="licencePanel.png" />
 		<res id="Installer.image.3" src="packsPanel.png" />
 		<res id="Installer.image.4" src="targetPanel.png" />
-		<res id="Installer.image.5" src="installPanel.png" />
 		<res id="Installer.image.6" src="shortcutPanel.png" />
-		<res id="ProcessPanel.Spec.xml" src="process.xml" />
+		<res id="Installer.image.5" src="installPanel.png" />
 		<res id="Installer.image.7" src="finishPanel.png" />
 		<res id="installer.langsel.img" src="WoPeD-logo.jpg" />
 		<res id="packsLang.xml_eng" src="install-eng.xml" />
@@ -67,30 +66,20 @@
 		<panel classname="LicencePanel"></panel>
 		<panel classname="TargetPanel"></panel>
 		<panel classname="PacksPanel"></panel>
-		<panel classname="InstallPanel"></panel>
 		<panel classname="ShortcutPanel"></panel>
-		<panel classname="ProcessPanel"></panel>
+		<panel classname="InstallPanel"></panel>
 		<panel classname="SimpleFinishPanel"></panel>
 	</panels>
 
 	<packs>
 		<pack name="Executable" required="yes" id="id1">
 			<description>Executable files</description>
-
-			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
-				<include name="WoPeD.exe" />
-				<include name="Readme.txt" />
-				<include name="License.txt" />
-				<include name="Changelog.txt" />
-				<os family="windows" />
-			</fileset>
 			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
 				<include name="WoPeD-Starter.jar" />
 				<include name="Readme.txt" />
 				<include name="License.txt" />
 				<include name="Changelog.txt" />
 				<include name="WoPeD.png" />
-				<os family="unix" />
 			</fileset>
 		</pack>
 
@@ -112,6 +101,5 @@
 				<include name="doc/html/*" />
 			</fileset>
 		</pack>
-
 	</packs>
 </izpack:installation>

@@ -134,15 +134,32 @@
 					<artifactId>izpack-maven-plugin</artifactId>
 					<version>5.1.3</version>
 					<executions>
+					<!-- Step 3.1: Installer für Windows erzeugen -> Wird im nächsten Schritt in eine Exe gepackt-->
 						<execution>
 							<phase>prepare-package</phase>
+							<id>windows</id>
 							<goals>
 								<goal>izpack</goal>
 							</goals>
 							<configuration>
 								<baseDir>./target/staging</baseDir>
-								<installFile>./target/staging/install.xml</installFile>
+								<installFile>./target/staging/install_windows.xml</installFile>
 								<output>./target/stagingOutput/WoPeD-Installer.jar</output>
+								<!-- Benötigt für Update auf IzPack 5.1.3 https://stackoverflow.com/questions/52870386/an-attached-artifact-must-have-a-different-id-than-its-corresponding-main-artifa/53132888 -->
+								<classifier>BugFix</classifier>
+							</configuration>
+						</execution>
+						<!-- Step 3.2: Installer für Linux erzeugen und direkt in dem Linux-Output-Ordner ablegen -->
+						<execution>
+							<phase>prepare-package</phase>
+							<id>linux</id>
+							<goals>
+								<goal>izpack</goal>
+							</goals>
+							<configuration>
+								<baseDir>./target/staging</baseDir>
+								<installFile>./target/staging/install_linux.xml</installFile>
+								<output>./target/Linux/WoPeD-Installer.jar</output>
 								<!-- Benötigt für Update auf IzPack 5.1.3 https://stackoverflow.com/questions/52870386/an-attached-artifact-must-have-a-different-id-than-its-corresponding-main-artifa/53132888 -->
 								<classifier>BugFix</classifier>
 							</configuration>
