@@ -76,20 +76,11 @@
 			<description>Executable files</description>
 
 			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
-				<include name="WoPeD.exe" />
-				<include name="Readme.txt" />
-				<include name="License.txt" />
-				<include name="Changelog.txt" />
-				<include name="runWoPeD.cmd" />
-				<os family="windows" />
-			</fileset>
-			<fileset dir="." targetdir="${INSTALL_PATH}" override="true">
 				<include name="WoPeD-Starter.jar" />
 				<include name="Readme.txt" />
 				<include name="License.txt" />
 				<include name="Changelog.txt" />
 				<include name="WoPeD.png" />
-				<os family="unix" />
 			</fileset>
 		</pack>
 
@@ -111,13 +102,5 @@
 				<include name="doc/html/*" />
 			</fileset>
 		</pack>
-
-		<!-- <pack name="RunWoped" required="true" id="id4" hidden="true"> <description> 
-			Test </description> <executable targetfile="$INSTALL_PATH/Woped.exe" type="bin" 
-			stage="postinstall" failure="warn" keep="true"> <os family="windows" /> <args> 
-			<arg value="-delay" /> </args> </executable> <executable targetfile="$INSTALL_PATH/Woped-Starter.jar" 
-			type="jar" class="org.woped.starter.RunWoPeD" stage="postinstall" failure="warn" 
-			keep="true"> <os family="unix" /> <args> <arg value="-delay" /> </args> </executable> 
-			</pack> -->
 	</packs>
 </izpack:installation>
