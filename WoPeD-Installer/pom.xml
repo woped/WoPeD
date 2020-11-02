@@ -65,14 +65,14 @@
 									<mkdir dir="target/Windows" />
 									<mkdir dir="target/Linux" />
 									<copy todir="target/staging">
-										<fileset dir="${basedir}/InstallFiles" />
+										<fileset dir="${basedir}/installFiles" />
 									</copy>
 									<copy todir="target/staging/doc">
-										<fileset dir="${basedir}/doc" />
+										<fileset dir="${basedir}/../WoPeD-Starter/doc" />
 									</copy>
 									<copy tofile="target/staging/WoPeD-Starter.jar">
 										<fileset
-											file="./../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />
+											file="${basedir}/../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />
 									</copy>
 								</tasks>
 							</configuration>

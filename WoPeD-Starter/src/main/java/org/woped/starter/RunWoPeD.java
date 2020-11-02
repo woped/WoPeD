@@ -163,7 +163,7 @@ public class RunWoPeD extends JFrame {
 	 * @param logToFile
 	 **/
 	private void initLogging() {
-		
+
 		if (isRunningFromJar()) {
 			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
 		} else {
@@ -214,10 +214,7 @@ public class RunWoPeD extends JFrame {
 	private boolean isRunningFromJar() {
 		String className = this.getClass().getName().replace('.', '/');
 		String classJar = this.getClass().getResource("/" + className + ".class").toString();
-		if (classJar.startsWith("jar:")) {
-			return true;
-		}
-		return false;
+		return classJar.startsWith("jar:");
 	}
 
 	/**
