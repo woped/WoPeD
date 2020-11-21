@@ -67,11 +67,11 @@
             <fileset file="Info.plist"/>
         </copy>
 
-        <exec  dir="dist" executable="/bin/sh">
+        <exec dir="dist" executable="/bin/sh">
             <arg line="makepackage"/>
         </exec>
 
-        <move todir="../installers">
+        <move todir="../target/MacOS">
             <fileset file="dist/*.pkg"/>
         </move>
 
