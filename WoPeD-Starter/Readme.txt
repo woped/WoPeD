@@ -40,9 +40,9 @@ This is just a short introductive description. For more information
 refer to the online user manual available within WoPeD or on the WoPeD 
 website http://www.woped.org.
    
-Note: WoPeD is written in Java. It is necessary that you have installed 
-Java 8 on your machine. Please note that WoPeD does not yet support the 
-latest Java versions 9 and 10. 
+Note: WoPeD is written in Java. It is necessary that you have installed
+Java 11 or later on your machine. Please note that WoPeD does not support
+earlier Java versions anymore.
 
 WoPeD is known to run on Microsoft Windows platforms, on MacOS X and on 
 many Linux distributions. Any reports of successfully having installed 
