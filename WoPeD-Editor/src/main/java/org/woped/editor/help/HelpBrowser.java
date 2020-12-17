@@ -28,6 +28,8 @@
 package org.woped.editor.help;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.translations.Messages;
@@ -52,11 +54,11 @@ public class HelpBrowser
     private HelpBrowser() {
     }   
 
-    public void showURL(String currFileName) {
+    public void showURL(String currFileName) throws UnsupportedEncodingException {
     	String helpDir         	= Messages.getString("Help.Dir");
     	String contentFileName 	= Messages.getString("Help.File.Contents");
     	String indexFileName   	= Messages.getString("Help.File.Index");
-    	String docPath			= this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();;
+    	String docPath			= this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
     	  	
     	if (currFileName == null) {
         	currFileName = Messages.getString("Help.File.Index");
@@ -64,15 +66,18 @@ public class HelpBrowser
    	
      	int pos = docPath.lastIndexOf("/");
     	docPath = docPath.substring(0, pos) + "/doc";
-    	
- 		if (!new File(docPath).exists()) {
+
+    	docPath = URLDecoder.decode(docPath, "utf-8");
+    	docPath = new File(docPath).getPath();
+
+  		if (!new File(docPath).exists()) {
 			// locate HTML help files in local folder
 			docPath = new File(".").getAbsolutePath();
 			pos = docPath.lastIndexOf(".")-1;
 			docPath = docPath.substring(0, pos) + "/WoPeD-Starter/doc";
- 		}
-			
- 		docPath = "file:" + docPath;
+		}
+
+		docPath = "file:" + docPath;
  		currFileName =  docPath + "/" + helpDir + currFileName;
 		contentFileName = docPath + "/" + helpDir + contentFileName;
 		indexFileName = docPath + "/" + helpDir + indexFileName;

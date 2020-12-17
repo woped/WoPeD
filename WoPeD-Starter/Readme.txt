@@ -63,9 +63,8 @@ For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and
 decompress it with the tar utility. Then launch the contained executable 
 WoPeD-install-linux.jar. 
 
-For MacOS, download WoPeD-install-macos-@wopedversion@.dmg, double-click on it
-to mount the image and launch the contained package file 
-WoPeD-install-macos.pkg. 
+For MacOS, download WoPeD-install-macos-@wopedversion@.pkg, double-click on it
+to launch the contained installer script.
 
 In all three cases, a setup wizard appears and will guide you through 
 the installation process, letting you choose several installation

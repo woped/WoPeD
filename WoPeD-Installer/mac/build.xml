@@ -40,11 +40,39 @@
             <option value="-Dapple.laf.useScreenMenuBar=true -Dname=WoPeD"/>
         </bundleapp>
 
-        <copy todir="dist/WoPeD.app/Contents/Java/doc" filtering="true">
-            <fileset file="../../WoPeD-Starter/doc/**"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/pdf"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/pdf/de"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/pdf/en"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/html"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/html/de"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/html/en"/>
+        <mkdir dir="dist/WoPeD.app/Contents/Java/doc/html/images"/>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/pdf/de">
+            <fileset file="../../WoPeD-Starter/doc/pdf/de/*.pdf"/>
         </copy>
 
-        <mkdir dir="dist/WoPeD.app/Contents/Java/doc"/>
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/pdf/en">
+            <fileset file="../../WoPeD-Starter/doc/pdf/en/*.pdf"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/html/de" filtering="true">
+            <fileset file="../../WoPeD-Starter/doc/html/de/*.*"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/html/en" filtering="true">
+            <fileset file="../../WoPeD-Starter/doc/html/en/*.*"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/html">
+            <fileset file="../../WoPeD-Starter/doc/html/*.*"/>
+        </copy>
+
+        <copy todir="dist/WoPeD.app/Contents/Java/doc/html/images">
+            <fileset file="../../WoPeD-Starter/doc/html/images/**"/>
+        </copy>
+
         <mkdir dir="dist/WoPeD.app/Contents/Java/nets"/>
 
         <copy todir="dist/WoPeD.app/Contents/Java">
