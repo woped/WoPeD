@@ -85,7 +85,7 @@
 		<pack name="PDF Documentation" required="no" id="id2">
 			<description>Additional manual and user doc files</description>
 
-			<fileset dir="." targetdir="${INSTALL_PATH}/doc"
+			<fileset dir="." targetdir="${INSTALL_PATH}"
 				override="true">
 				<include name="doc/pdf/de/*.pdf" />
 				<include name="doc/pdf/en/*.pdf" />
@@ -95,9 +95,9 @@
 		<pack name="HTML Manual" required="no" id="id3">
 			<description>Separate HTML Manual files</description>
 
-			<fileset dir="." targetdir="${INSTALL_PATH}/doc"
+			<fileset dir="." targetdir="${INSTALL_PATH}"
 				override="true">
-				<include name="doc/html/*" />
+				<include name="doc/html/**" />
 			</fileset>
 		</pack>
 	</packs>

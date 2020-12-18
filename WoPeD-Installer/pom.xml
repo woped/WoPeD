@@ -59,16 +59,37 @@
 							</goals>
 							<configuration>
 								<tasks>
+									<filter token="wopedversion" value="${project.version}"/>
 									<mkdir dir="target/staging" />
 									<mkdir dir="target/stagingOutput" />
 									<mkdir dir="target/staging/doc" />
+									<mkdir dir="target/staging/doc/html" />
+									<mkdir dir="target/staging/doc/html/de" />
+									<mkdir dir="target/staging/doc/html/en" />
+									<mkdir dir="target/staging/doc/html/images" />
+									<mkdir dir="target/staging/doc/pdf" />
 									<mkdir dir="target/Windows" />
 									<mkdir dir="target/Linux" />
 									<copy todir="target/staging">
 										<fileset dir="${basedir}/installFiles" />
 									</copy>
-									<copy todir="target/staging/doc">
-										<fileset file="${basedir}/../WoPeD-Starter/doc/**"/>
+									<copy todir="target/staging" filtering="true">
+										<fileset file="${basedir}/installFiles/*.txt" />
+									</copy>
+									<copy todir="target/staging/doc/pdf" filtering="false">
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/pdf"/>
+									</copy>
+									<copy todir="target/staging/doc/html/images" filtering="false">
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/images"/>
+									</copy>
+									<copy todir="target/staging/doc/html" filtering="false">
+										<fileset file="${basedir}/../WoPeD-Starter/doc/html/*.*" />
+									</copy>
+									<copy todir="target/staging/doc/html/de" filtering="true">
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/de" />
+									</copy>
+									<copy todir="target/staging/doc//html/en" filtering="true">
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/en" />
 									</copy>
 									<copy tofile="target/staging/WoPeD-Starter.jar">
 										<fileset file="${basedir}/../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />

@@ -25,6 +25,7 @@ package org.woped.editor.help.action;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -93,17 +94,23 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
 
         try
         {
-           if (Platform.isWindows()) {
+            if (!new File(url.getFile()).exists())
+            {
+                JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.MalformedURL") + " " + url);
+                return;
+            }
+
+            if (Platform.isWindows()) {
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
                 Runtime.getRuntime().exec(cmd);
             } 
-           if (Platform.isUnix()) {
-        	   Runtime.getRuntime().exec("xdg-open " + url);
-           }
+            if (Platform.isUnix()) {
+        	    Runtime.getRuntime().exec("xdg-open " + url);
+            }
            
-           if (Platform.isMac()) {
-        	   java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
-           }
+            if (Platform.isMac()) {
+        	    java.awt.Desktop.getDesktop().browse(java.net.URI.create(url.toString()));
+            }
         }
 
         catch (IOException e) {
