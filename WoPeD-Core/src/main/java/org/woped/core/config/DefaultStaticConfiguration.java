@@ -71,8 +71,8 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static String DEFAULT_COUNTRY = "";
 	public static String DEFAULT_VARIANT = "";
 	public static int DEFAULT_APROMORE_CURRENTINDEX = 0;
-	public static String DEFAULT_APROMORE_SERVERNAME = "";
-	public static String DEFAULT_APROMORE_SERVERURL = "";
+	public static String DEFAULT_APROMORE_SERVERNAME = "AProMore DHBW Karlsruhe";
+	public static String DEFAULT_APROMORE_SERVERURL = "apromore.dhbw-karlsruhe.de";
 	public static int DEFAULT_APROMORE_SERVERPORT = 9000;
 	public static String DEFAULT_APROMORE_MANAGERPATH = "manager/services/manager";
 	public static String DEFAULT_APROMORE_USERNAME = "";
@@ -84,7 +84,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static boolean DEFAULT_APROMORE_USE = false;
 
 	public static String DEFAULT_PROCESS2TEXT_HOST = "woped.dhbw-karlsruhe.de";
-	public static int DEFAULT_PROCESS2TEXT_PORT = 8080;
+	public static int DEFAULT_PROCESS2TEXT_PORT = 8082;
 	public static String DEFAULT_PROCESS2TEXT_URI = "/p2t";
 	public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
