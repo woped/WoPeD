@@ -2,7 +2,7 @@ WoPeD (Workflow Petrinet Designer) is an easy-to-use tool to
 draw, manage, simulate and analyse workflow process definitions 
 using an extended Petri net notation called "workflow nets".
    
-Copyright (C) 2003-2020
+Copyright (C) 2003-2021
  
 Contact
 -------
