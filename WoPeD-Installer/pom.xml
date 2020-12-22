@@ -68,6 +68,8 @@
 									<mkdir dir="target/staging/doc/html/en" />
 									<mkdir dir="target/staging/doc/html/images" />
 									<mkdir dir="target/staging/doc/pdf" />
+									<mkdir dir="target/staging/doc/pdf/de" />
+									<mkdir dir="target/staging/doc/pdf/en" />
 									<mkdir dir="target/Windows" />
 									<mkdir dir="target/Linux" />
 									<copy todir="target/staging">
@@ -76,8 +78,11 @@
 									<copy todir="target/staging" filtering="true">
 										<fileset file="${basedir}/installFiles/*.txt" />
 									</copy>
-									<copy todir="target/staging/doc/pdf" filtering="false">
-										<fileset dir="${basedir}/../WoPeD-Starter/doc/pdf"/>
+									<copy todir="target/staging/doc/pdf/de" filtering="false">
+										<fileset file="${basedir}/../WoPeD-Starter/doc/pdf/de/*.pdf"/>
+									</copy>
+									<copy todir="target/staging/doc/pdf/en" filtering="false">
+										<fileset file="${basedir}/../WoPeD-Starter/doc/pdf/en/*.pdf"/>
 									</copy>
 									<copy todir="target/staging/doc/html/images" filtering="false">
 										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/images"/>
