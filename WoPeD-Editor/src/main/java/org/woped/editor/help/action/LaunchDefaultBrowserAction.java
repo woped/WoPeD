@@ -94,12 +94,6 @@ public class LaunchDefaultBrowserAction extends MouseAdapter
 
         try
         {
-            if (!new File(url.getFile()).exists())
-            {
-                JOptionPane.showMessageDialog(null, Messages.getString("Help.Message.MalformedURL") + " " + url);
-                return;
-            }
-
             if (Platform.isWindows()) {
                 cmd = WIN_PATH + " " + WIN_FLAG + " " + url;
                 Runtime.getRuntime().exec(cmd);

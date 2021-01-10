@@ -159,12 +159,11 @@ public class RunWoPeD extends JFrame {
 
 	/**
 	 * Init loggers for different WoPeD components
-	 * 
-	 * @param logToFile
+	 *
 	 **/
 	private void initLogging() {
 
-		if (isRunningFromJar()) {
+		if (isRunningFromJar() && !Platform.isMac()) {
 			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_file.xml"));
 		} else {
 			DOMConfigurator.configure(RunWoPeD.class.getResource("/log4j_console.xml"));
