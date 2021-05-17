@@ -16,17 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -653,17 +643,19 @@ public class CapacityAnalysisDialog extends JDialog {
 	}
 
 	private JTable getTasksTable() {
+		double val;
 		if (tasksTable == null) {
 			tasksMatrix = new double[numTransGT0 + 1][colTasks.length - 2];
 			tableTasksMatrix = new Object[numTransGT0 + 1][colTasks.length];
 			String[] trans = graph.getTransitionsGT0();
 			String[] gr = getGroupRoles(trans);
-			double[] times = graph.getTimesGT0();
+			double[] times = graph.getTimesGT0(tm);
 			double[] runs = graph.getRunsGT0();
 			int j = trans.length;
 
 			for (int i = 0; i < j; i++) {
 				tasksMatrix[i][3] = runs[i];
+
 				tasksMatrix[i][0] = times[i];
 
 				tableTasksMatrix[i][0] = trans[i];
@@ -813,7 +805,7 @@ public class CapacityAnalysisDialog extends JDialog {
 				Node m = a.getTarget();
 				if (!m.isJoinReached()) {
 					double val = a.getProbability() * np.getSecond().getTempRuns();
-					if (!(val < epsilon)) {
+					if (val >= epsilon) {
 						Node y = new Node(m.getId(), m.getName());
 						y.setTempRuns(val);
 						m.incIteration();
@@ -1005,7 +997,9 @@ public class CapacityAnalysisDialog extends JDialog {
 		updParameters();
 		calculateNumOfRuns();
 		double[] runs = graph.getRunsGT0();
-		double[] times = graph.getTimesGT0();
+		double[] times = graph.getTimesGT0(tm);
+		double val;
+		double unit;
 
 		for (int r = 0; r < numTransGT0; r++) {
 			tasksMatrix[r][3] = runs[r];

@@ -210,6 +210,13 @@ public class Node {
 		return andSplit;
 	}
 
+	public boolean isPlace() {
+		return type == TYPE_PLACE;
+	}
+
+	public boolean isXorSplit() {
+		return type == TYPE_XOR_SPLIT;
+	}
 	public void setAndSplit(boolean andSplit) {
 		this.andSplit = andSplit;
 	}

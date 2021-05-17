@@ -1564,11 +1564,8 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 		if (startDashboard.isSelected()) {
 			try {
-				
-
 				storageengine = StorageEngine.getInstance();
 
-				
 
 					if (dashboard == null) {
 						dashboard = new DashboardRunner(storageengine,port);
@@ -1577,7 +1574,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 
 						}
 					}
-				
+
 				
 				storageengine.setOwner(this);
 				storageengine.setSimParameters(sp);

@@ -36,7 +36,6 @@ public class TimeModelDialog extends JDialog {
 	
 	private JPanel timeModelPanel = null;
 	private JLabel lblTimeUnit = null;
-	private JTextField txtTimeUnit = null;
 	private JComboBox cboTimeUnit = null;
 	private JLabel lblTimeModel = null;
 	private JLabel lblHourToMin = null;
@@ -123,11 +122,9 @@ public class TimeModelDialog extends JDialog {
 		lblTimeUnit.setMinimumSize(new Dimension(80, 20));
 		lblTimeUnit.setMaximumSize(new Dimension(80, 20));
 		lblTimeUnit.setPreferredSize(new Dimension(80, 20));
-		txtTimeUnit = new JTextField();
-		txtTimeUnit.setText(tm.getStdUnitMultiple()+"");
 		cboTimeUnit = new JComboBox(Constants.TIMEUNITS);
 		cboTimeUnit.setSelectedItem(Constants.TIMEUNITS[tm.getStdUnit()]);
-		cboTimeUnit.setMinimumSize(new Dimension(110, txtTimeUnit.getHeight()));
+		cboTimeUnit.setMinimumSize(new Dimension(110, lblTimeUnit.getHeight()));
 
 		timeModelPanel = new JPanel();
 		timeModelPanel.setBorder(BorderFactory.createCompoundBorder(
@@ -152,10 +149,6 @@ public class TimeModelDialog extends JDialog {
 		timeModelPanel.add(lblTimeUnit, constraints);
 
 		constraints.gridx = 1;
-		constraints.gridy = 0;
-		timeModelPanel.add(txtTimeUnit, constraints);
-
-		constraints.gridx = 2;
 		constraints.gridy = 0;
 		timeModelPanel.add(cboTimeUnit, constraints);
 
@@ -266,7 +259,7 @@ public class TimeModelDialog extends JDialog {
 		tm.setCvWeekToDay(Double.parseDouble(txtWeekToDay.getText()));
 		tm.setCvYearToMonth(Double.parseDouble(txtYearToMon.getText()));
 		tm.setStdUnit(cboTimeUnit.getSelectedIndex());
-		tm.setStdUnitMultiple(Double.parseDouble(txtTimeUnit.getText()));
+		//tm.setStdUnitMultiple(Double.parseDouble(lblTimeUnit.getText()));
 
 		for (int i = 0; i < nodes.length; i++){
 			if (nodes[i].isTransition() || nodes[i].getType() == Node.TYPE_SUBP){
