@@ -15,12 +15,15 @@ import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Platform;
+import java.io.IOException;
 
 import java.awt.*;
 import java.io.*;
 import java.util.Optional;
 import java.util.Scanner;
 import javax.swing.*;
+
+
 
 public class PlainTextFileReader implements FileReader {
 	private JFileChooser chooser = new JFileChooser();
@@ -55,6 +58,7 @@ public class PlainTextFileReader implements FileReader {
             chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "ASCII text", "txt"));
 			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "Word", "doc"));
 			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "Word (2007 - 365)", "docx"));
+			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "PDF", "pdf"));
 
             // Open the prepared file input dialog
             res = chooser.showOpenDialog(null);
