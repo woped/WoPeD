@@ -76,6 +76,8 @@ public class PlainTextFileReader implements FileReader {
 			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "Word", "doc"));
 			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "Word (2007 - 365)", "docx"));
 			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "PDF", "pdf"));
+			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "RTF", "rtf"));
+			chooser.addChoosableFileFilter(new FileFilterImpl(FileFilterImpl.SAMPLEFilter, "PowerPoint (PPT)", "ppt"));
 
             // Open the prepared file input dialog
             res = chooser.showOpenDialog(null);
@@ -86,23 +88,7 @@ public class PlainTextFileReader implements FileReader {
 
 				String fileType = getExtensionByStringHandling(file).get();
 
-				//sb = readTextFromFile(file, sb); TODO: Test with Windows
-
-				switch (fileType) {
-					case "docx":
-					case "doc":
-						sb = readTextFromWordDocumentX(file, sb);
-						break;
-					case "txt":
-						sb = readTxtFile(file, sb);
-						break;
-					case "pdf":
-						sb = readTextFromPDF(file, sb);
-						break;
-					default:
-						//JFrame errorDialog: file extension not known
-						break;
-				}
+				sb = readTextFromFile(file, sb);
             } else {
 				return null;
 			}
