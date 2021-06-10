@@ -12,13 +12,29 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.hwpf.HWPFOldDocument;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.tika.Tika;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.ocr.TesseractOCRConfig;
+import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Platform;
 import java.io.IOException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.metadata.TikaCoreProperties;
+import org.apache.tika.parser.AutoDetectParser;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
 
 import java.awt.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import javax.swing.*;
@@ -36,7 +52,7 @@ public class PlainTextFileReader implements FileReader {
 
 
 	@Override
-	public String read()  {
+	public String read() {
 		sb = new StringBuilder();
 		int res = 0;
 		File file;
@@ -77,6 +93,9 @@ public class PlainTextFileReader implements FileReader {
 					case "txt":
 						sb = readTxtFile(file, sb);
 						break;
+					case "pdf":
+						sb = readTextFromPDF(file, sb);
+						break;
 					default:
 						//JFrame errorDialog: file extension not known
 						break;
@@ -91,14 +110,14 @@ public class PlainTextFileReader implements FileReader {
 			String fn;
 			FileDialog fileDialog;
 
-            fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
+			fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
             fileDialog.setDirectory(lastdir);
 
-            // Set fileFilter to txt files here
+            // Set fileFilter to files here --> all files you need in return statement
 			fileDialog.setFilenameFilter(new FilenameFilter() {
 				@Override
 				public boolean accept(File dir, String name) {
-					return name.endsWith(".txt");
+					return name.endsWith(".txt") || name.endsWith(".pdf") || name.endsWith(".docx") || name.endsWith(".doc") || name.endsWith(".pptx") || name.endsWith(".png");
 				}
 			});
 
@@ -114,7 +133,23 @@ public class PlainTextFileReader implements FileReader {
 
 			file = new File(abspath);
 
-			sb = readTxtFile(file, sb);
+			String fileTypeMac = getExtensionByStringHandling(file).get();
+
+			switch(fileTypeMac){
+				case "txt":
+					sb = readTxtFile(file, sb);
+					break;
+				case "pdf":
+					sb = readTextFromPDF(file, sb);
+					break;
+				case "doc":
+				case "docx":
+					/*sb = readTextFromFile(file, sb);
+					break;*/
+				default:
+					break;
+			}
+
 		}
 
 		// Set the new working dir to the current files location
@@ -224,6 +259,65 @@ public class PlainTextFileReader implements FileReader {
 		}
 		return sb;
 	}
+
+	private StringBuilder readTextFromPDF(File file, StringBuilder sb) {
+		try {
+			String content = new Tika().parseToString(file);
+			sb.append(content);
+
+		} catch (IOException | TikaException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return sb;
+	}
+
+	/*private StringBuilder readTextFromFile(File file, StringBuilder sb) {
+		InputStream fileStream = null;
+		try {
+			fileStream = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		Parser parser = new AutoDetectParser();
+		Metadata metadata = new Metadata();
+		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
+
+		TesseractOCRConfig config = new TesseractOCRConfig();
+		PDFParserConfig pdfConfig = new PDFParserConfig();
+		pdfConfig.setExtractInlineImages(true);
+
+		ParseContext parseContext = new ParseContext();
+		parseContext.set(TesseractOCRConfig.class, config);
+		parseContext.set(PDFParserConfig.class, pdfConfig);
+		parseContext.set(Parser.class, parser);
+
+		try{
+			parser.parse(fileStream, handler, metadata, parseContext);
+			String text = handler.toString();
+			sb.append(text);
+			if(text.trim().isEmpty()){
+				System.out.println("Ging net");
+			} else {
+				System.out.println("Ging");
+			}
+			return sb;
+		} catch (IOException | SAXException | TikaException e){
+			System.out.println("Ging net");
+		} finally {
+			try{
+				fileStream.close();
+			} catch(IOException e){
+				try {
+					throw new Exception(e);
+				} catch (Exception exception) {
+					exception.printStackTrace();
+				}
+			}
+		}
+	return sb;
+	}*/
+
 
 }
 
