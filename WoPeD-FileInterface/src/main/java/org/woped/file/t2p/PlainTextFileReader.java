@@ -16,6 +16,7 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
 import org.apache.tika.parser.ocr.TesseractOCRConfig;
 import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.woped.core.config.ConfigurationManager;
@@ -85,6 +86,8 @@ public class PlainTextFileReader implements FileReader {
 
 				String fileType = getExtensionByStringHandling(file).get();
 
+				//sb = readTextFromFile(file, sb); TODO: Test with Windows
+
 				switch (fileType) {
 					case "docx":
 					case "doc":
@@ -117,7 +120,7 @@ public class PlainTextFileReader implements FileReader {
 			fileDialog.setFilenameFilter(new FilenameFilter() {
 				@Override
 				public boolean accept(File dir, String name) {
-					return name.endsWith(".txt") || name.endsWith(".pdf") || name.endsWith(".docx") || name.endsWith(".doc") || name.endsWith(".pptx") || name.endsWith(".png");
+					return name.endsWith(".txt") || name.endsWith(".pdf") || name.endsWith(".doc") || name.endsWith(".ppt") || name.endsWith(".rtf");
 				}
 			});
 
@@ -133,22 +136,7 @@ public class PlainTextFileReader implements FileReader {
 
 			file = new File(abspath);
 
-			String fileTypeMac = getExtensionByStringHandling(file).get();
-
-			switch(fileTypeMac){
-				case "txt":
-					sb = readTxtFile(file, sb);
-					break;
-				case "pdf":
-					sb = readTextFromPDF(file, sb);
-					break;
-				case "doc":
-				case "docx":
-					/*sb = readTextFromFile(file, sb);
-					break;*/
-				default:
-					break;
-			}
+			sb = readTextFromFile(file, sb);
 
 		}
 
@@ -272,52 +260,47 @@ public class PlainTextFileReader implements FileReader {
 		return sb;
 	}
 
-	/*private StringBuilder readTextFromFile(File file, StringBuilder sb) {
-		InputStream fileStream = null;
-		try {
-			fileStream = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		Parser parser = new AutoDetectParser();
-		Metadata metadata = new Metadata();
-		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
+	private StringBuilder readTextFromFile(File file, StringBuilder sb) {
 
-		TesseractOCRConfig config = new TesseractOCRConfig();
-		PDFParserConfig pdfConfig = new PDFParserConfig();
-		pdfConfig.setExtractInlineImages(true);
+ 		try {
+			InputStream fileStream = new FileInputStream(file);
+			AutoDetectParser parser = new AutoDetectParser();
+			Metadata metadata = new Metadata();
+			BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
 
-		ParseContext parseContext = new ParseContext();
-		parseContext.set(TesseractOCRConfig.class, config);
-		parseContext.set(PDFParserConfig.class, pdfConfig);
-		parseContext.set(Parser.class, parser);
+			TesseractOCRConfig config = new TesseractOCRConfig();
+			PDFParserConfig pdfConfig = new PDFParserConfig();
+			pdfConfig.setExtractInlineImages(true);
 
-		try{
-			parser.parse(fileStream, handler, metadata, parseContext);
-			String text = handler.toString();
-			sb.append(text);
-			if(text.trim().isEmpty()){
-				System.out.println("Ging net");
-			} else {
-				System.out.println("Ging");
-			}
-			return sb;
-		} catch (IOException | SAXException | TikaException e){
-			System.out.println("Ging net");
-		} finally {
+			ParseContext parseContext = new ParseContext();
+			parseContext.set(TesseractOCRConfig.class, config);
+			parseContext.set(PDFParserConfig.class, pdfConfig);
+			parseContext.set(Parser.class, parser);
+
 			try{
-				fileStream.close();
-			} catch(IOException e){
-				try {
+				parser.parse(fileStream, handler, metadata, parseContext);
+				String text = handler.toString();
+				sb.append(text);
+				if(text.trim().isEmpty()){
+					System.out.println("The file could not be read");
+				} else {
+					System.out.println("The file could be read");
+				}
+				return sb;
+			} catch (IOException | SAXException | TikaException e){
+				System.out.println("The file could not be read");
+			} finally {
+				try{
+					fileStream.close();
+				} catch(IOException e){
 					throw new Exception(e);
-				} catch (Exception exception) {
-					exception.printStackTrace();
 				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	return sb;
-	}*/
-
+	}
 
 }
 
