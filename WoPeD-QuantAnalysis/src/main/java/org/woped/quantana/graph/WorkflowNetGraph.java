@@ -1,5 +1,6 @@
 package org.woped.quantana.graph;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,6 +12,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
+import org.woped.quantana.model.TimeModel;
 
 public class WorkflowNetGraph {
 	static String zyklen = "";
@@ -316,12 +318,18 @@ public class WorkflowNetGraph {
 		return times;
 	}
 	
-	public double[] getTimesGT0(){
+	public double[] getTimesGT0(TimeModel tm) {
 		double[] times = new double[getNumTransitionsGT0()];
 		int idx = 0;
+		double time = 1;
+		int unit = 2;
+		double factor;
 		for (int i = 0; i < nodeArray.length; i++){
 			if (isTransitionGT0(nodeArray[i].getId())){
-				times[idx] = nodeArray[i].getTime();
+				time = nodeArray[i].getTime();
+				unit = nodeArray[i].getTimeUnit();
+				factor = tm.getStdUnitMultiple();
+				times[idx] = tm.cv(unit, time) * factor;
 				idx++;
 			}
 		}
