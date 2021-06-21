@@ -313,6 +313,25 @@ public class PlainTextFileReader implements FileReader {
             try {
                 parser.parse(fileStream, handler, metadata, parseContext);
                 String text = handler.toString();
+                String pptxWatermark = "Evaluation only.Evaluation only.\n" +
+                        "Created with Aspose.Slides for Java 19.12.Created with Aspose.Slides for Java 19.12.\n" +
+                        "\n" +
+                        "Copyright 2004-2019 Aspose Pty Ltd.Copyright 2004-2019 Aspose Pty Ltd.";
+                String docxWatermark = "Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs \n" +
+                        "please visit: https://products.aspose.com/words/\n" +
+                        "\n" +
+                        "Evaluation Only. Created with Aspose.Words. Copyright 2003-2020 Aspose Pty Ltd.";
+                if (text.contains(pptxWatermark)) {//removes the watermark for pptx documents. Only works if the watermark stays at the end for the document
+                                                    //if the watermark changes, just put the new text in the string vars
+                    int startOfWatermark = text.indexOf(pptxWatermark);
+                    text = text.substring(0, startOfWatermark);
+                    text = text.trim();
+                } else if (text.contains(docxWatermark)) { //removes the watermark for docx documents. Only works if the watermark stays at the beginning for the document
+                                                            //if the watermark changes, just put the new text in the string vars
+                    int endOfWatermark = docxWatermark.length();
+                    text = text.substring(endOfWatermark + 1);
+                    text = text.trim();
+                }
                 sb.append(text);
                 if (text.trim().isEmpty()) {
                     System.out.println("The file could not be read");
