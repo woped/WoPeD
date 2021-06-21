@@ -131,7 +131,7 @@ public class PlainTextFileReader implements FileReader {
             fileDialog.setFilenameFilter(new FilenameFilter() {
                 @Override
                 public boolean accept(File dir, String name) {
-                    return name.endsWith(".txt") || name.endsWith(".pdf") || name.endsWith(".doc") || name.endsWith(".ppt") || name.endsWith(".rtf");
+                    return name.endsWith(".txt") || name.endsWith(".pdf") || name.endsWith(".doc") || name.endsWith(".docx") || name.endsWith(".ppt") || name.endsWith(".pptx") || name.endsWith(".rtf");
                 }
             });
 
@@ -146,8 +146,32 @@ public class PlainTextFileReader implements FileReader {
 
             file = new File(abspath);
 
-            sb = readTextFromFile(file, sb);
+            File tempFile;
+            String fileType = getExtensionByStringHandling(file).get();
 
+            if ("pptx".equals(fileType)) { //converts pptx doc to pdf and reads it
+                String fileNameWithoutExtension = FilenameUtils.removeExtension(file.getName());
+                String newFileName = fileNameWithoutExtension + ".pdf";
+                Presentation pres = new Presentation(abspath);
+                pres.save(newFileName, SaveFormat.Pdf);
+                tempFile = new File(newFileName);
+                sb = readTextFromFile(tempFile, sb);
+                tempFile.delete();
+            } else if ("docx".equals(fileType)) { //converts docx to pdf and reads it
+                try {
+                    Document doc = new Document(abspath);
+                    String fileNameWithoutExtension = FilenameUtils.removeExtension(file.getName());
+                    String newFileName = fileNameWithoutExtension + ".pdf";
+                    doc.save(newFileName);
+                    tempFile = new File(newFileName);
+                    sb = readTextFromFile(tempFile, sb);
+                    tempFile.delete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                sb = readTextFromFile(file, sb);
+            }
         }
 
         // Set the new working dir to the current files location
