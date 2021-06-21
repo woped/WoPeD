@@ -4,8 +4,7 @@ package org.woped.file.t2p;
 import com.aspose.slides.Presentation;
 import com.aspose.slides.SaveFormat;
 import com.aspose.words.Document;
-import com.aspose.words.PdfCompliance;
-import com.aspose.words.PdfSaveOptions;
+
 import org.apache.poi.OldFileFormatException;
 import org.apache.poi.hwpf.extractor.Word6Extractor;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -17,11 +16,11 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.hwpf.HWPFOldDocument;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.extractor.WordExtractor;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.microsoft.ooxml.OOXMLParser;
+
 import org.apache.tika.parser.ocr.TesseractOCRConfig;
 import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.woped.core.config.ConfigurationManager;
@@ -31,7 +30,7 @@ import org.woped.core.utilities.Platform;
 import java.io.IOException;
 
 import org.apache.tika.metadata.Metadata;
-import org.apache.tika.metadata.TikaCoreProperties;
+
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.sax.BodyContentHandler;
@@ -39,10 +38,6 @@ import org.xml.sax.SAXException;
 
 import java.awt.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import javax.swing.*;
