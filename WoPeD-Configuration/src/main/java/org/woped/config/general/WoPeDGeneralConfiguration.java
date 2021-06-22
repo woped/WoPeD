@@ -28,7 +28,7 @@ import org.woped.core.utilities.LoggerManager;
 /**
  * Class that provides access to the general WoPeD configuration settings.
  * Access to it at runtime is to be gained through ConfigurationManager.
- * 
+ *
  * @see ConfigurationManager
  * @author Philip Allgaier
  *
@@ -66,7 +66,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 				return false;
 
 			isLoaded = true;
-				
+
 			// <business dashboard> tag is not existing yet -> create it
 			if (getConfDocument().getConfiguration().getBusinessdashboard() == null)
 				getConfDocument().getConfiguration().addNewBusinessdashboard();
@@ -98,7 +98,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
+	 *
 	 * @return indicates whether loading was successful
 	 */
 	public boolean readConfig() {
@@ -167,7 +167,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
+	 *
 	 * @param file
 	 * @return
 	 */
@@ -198,7 +198,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
+	 *
 	 * @param configDoc
 	 * @return
 	 */
@@ -241,7 +241,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 				setHomedir(config.getGeneral().getHomedir());
 			else
 				setHomedir(getDefaultHomedir());
-			
+
 			LoggerManager.info(Constants.CONFIG_LOGGER,
 					rb.getString("Init.Config.SettingHomeDir") + ": " + getHomedir());
 
@@ -261,6 +261,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 			// TPN Export
 			setTpnSaveElementAsName(config.getTools().getExporting()
 					.getTpnExportElementAsName());
+
+			// YAWL Export
+
+			setYAWLExportExplicitPlaces(config.getTools().getExporting().getYawlExportExplicitPlaces());
+			setYAWLExportGroups(config.getTools().getExporting().getYawlExportGroups());
 
 			// Tools
 			setUseWoflan(config.getTools().getWoflan().getUseWoflan());
@@ -288,7 +293,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
+	 *
 	 * @param file
 	 * @return
 	 */
@@ -333,7 +338,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the editingOnCreation.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isEditingOnCreation() {
@@ -343,7 +348,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the editingOnCreation.
-	 * 
+	 *
 	 * @param editingOnCreation
 	 *            The editingOnCreation to set
 	 */
@@ -357,7 +362,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the insertCOPYwhencopied.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isInsertCOPYwhenCopied() {
@@ -377,7 +382,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the exportToolspecific.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isExportToolspecific() {
@@ -387,7 +392,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the importToolspecific.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isImportToolspecific() {
@@ -397,7 +402,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the exportToolspecific.
-	 * 
+	 *
 	 * @param exportToolspecific
 	 *            The exportToolspecific to set
 	 */
@@ -408,7 +413,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the importToolspecific.
-	 * 
+	 *
 	 * @param importToolspecific
 	 *            The importToolspecific to set
 	 */
@@ -419,7 +424,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the recentFiles.
-	 * 
+	 *
 	 * @return Vector
 	 */
 	public Vector<WoPeDRecentFile> getRecentFiles() {
@@ -428,7 +433,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * TODO: optimize?
-	 * 
+	 *
 	 * @param name
 	 * @param path
 	 */
@@ -458,7 +463,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the recentFiles.
-	 * 
+	 *
 	 * @param path
 	 * @param name
 	 *            The recentFiles to set / public void setRecentFiles(Vector
@@ -483,7 +488,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns if window is to be maximized on start-up.
-	 * 
+	 *
 	 * @return Dimension
 	 */
 	public boolean isMaximizeWindow() {
@@ -493,7 +498,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the windowSize.
-	 * 
+	 *
 	 * @return Dimension
 	 */
 	public Dimension getWindowSize() {
@@ -504,7 +509,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the windowX.
-	 * 
+	 *
 	 * @return int
 	 */
 	public int getWindowX() {
@@ -513,7 +518,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the windowY.
-	 * 
+	 *
 	 * @return int
 	 */
 	public int getWindowY() {
@@ -522,7 +527,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the windowSize.
-	 * 
+	 *
 	 * @param windowSize
 	 *            The windowSize to set
 	 */
@@ -540,7 +545,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the windowX.
-	 * 
+	 *
 	 * @param windowX
 	 *            The windowX to set
 	 */
@@ -550,7 +555,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the windowY.
-	 * 
+	 *
 	 * @param windowY
 	 *            The windowY to set
 	 */
@@ -560,7 +565,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the logdir.
-	 * 
+	 *
 	 * @param logdir
 	 *            The logdir to set
 	 */
@@ -574,7 +579,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the home directory.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getHomedir() {
@@ -590,7 +595,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the home directory.
-	 * 
+	 *
 	 * @param hd
 	 *            The home directory to set
 	 */
@@ -600,7 +605,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the useWoflan.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isUseWoflan() {
@@ -610,7 +615,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the woflanPath.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getWoflanPath() {
@@ -620,7 +625,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the useWoflan.
-	 * 
+	 *
 	 * @param useWoflan
 	 *            The useWoflan to set
 	 */
@@ -631,7 +636,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the woflanPath.
-	 * 
+	 *
 	 * @param woflanPath
 	 *            The woflanPath to set
 	 */
@@ -642,7 +647,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Returns the smartEditing.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public boolean isSmartEditing() {
@@ -652,7 +657,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/**
 	 * Sets the smartEditing.
-	 * 
+	 *
 	 * @param smartEditing
 	 *            The smartEditing to set
 	 */
@@ -758,7 +763,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.woped.editor.config.IConfiguration#getPortColor()
 	 */
 	public Color getPortColor() {
@@ -767,7 +772,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.woped.editor.config.IConfiguration#setPortColor(java.awt.Color)
 	 */
 	public void setPortColor(Color color) {
@@ -776,7 +781,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.woped.editor.config.IConfiguration#setLocaleLanguage(java.lang.String
 	 * )
@@ -788,7 +793,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.woped.editor.config.IConfiguration#getLocaleLanguage()
 	 */
 	public String getLocaleLanguage() {
@@ -802,7 +807,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.woped.editor.config.IConfiguration#setLocaleCountry(java.lang.String)
 	 */
@@ -813,7 +818,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.woped.editor.config.IConfiguration#getLocaleCountry()
 	 */
 	public String getLocaleCountry() {
@@ -827,7 +832,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.woped.editor.config.IConfiguration#setLocaleVariant(java.lang.String)
 	 */
@@ -838,7 +843,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.woped.editor.config.IConfiguration#getLocaleVariant()
 	 */
 	public String getLocaleVariant() {
@@ -1469,8 +1474,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public void addApromoreServer(int ID, String name, String url, int port,
-			String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort) {
+								  String path, String user, String pwd, boolean useProxy,
+								  String proxyUrl, int proxyPort) {
 		if (isSetApromoreServers()) {
 			setServerAttribute(ID, name, url, port, path, user, pwd, useProxy,
 					proxyUrl, proxyPort);
@@ -1482,8 +1487,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	}
 
 	private void setServerAttribute(int ID, String name, String url, int port,
-			String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort) {
+									String path, String user, String pwd, boolean useProxy,
+									String proxyUrl, int proxyPort) {
 		getConfDocument().getConfiguration().getApromoreServers()
 				.addNewApromoreServer();
 		int i = getApromoreServerListLength();
@@ -1508,8 +1513,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public void changeApromoreServerSettings(int ID, String name, String url,
-			int port, String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort) {
+											 int port, String path, String user, String pwd, boolean useProxy,
+											 String proxyUrl, int proxyPort) {
 		ApromoreServer[] servers = getApromoreServers();
 		for (ApromoreServer server : servers) {
 			if (server.getApromoreServerID() == ID) {
@@ -1654,9 +1659,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public int getBusinessDashboardServerPort() {
-		
+
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
-		
+
 		if (bd.isSetServerport()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
 					.getServerport();
@@ -1667,15 +1672,15 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 
 	@Override
 	public void setBusinessDashboardServerPort(int port) {
-		
+
 		getConfDocument().getConfiguration().getBusinessdashboard().setServerport(port);
-		
+
 	}
 
 	@Override
 	public boolean getBusinessDashboardUseByDefault() {
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
-		
+
 		if (bd.isSetUsebydefault()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
 					.getUsebydefault();
@@ -1687,13 +1692,13 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	@Override
 	public void setBusinessDashboardUseByDefault(boolean bAutoStart) {
 		getConfDocument().getConfiguration().getBusinessdashboard().setUsebydefault(bAutoStart);
-		
+
 	}
 
 	@Override
 	public int getBusinessDashboardMaxValues() {
 		BusinessDashboard bd = getConfDocument().getConfiguration().getBusinessdashboard();
-		
+
 		if (bd.isSetMaxvalues()) {
 			return getConfDocument().getConfiguration().getBusinessdashboard()
 					.getMaxvalues();
@@ -1705,6 +1710,65 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements
 	@Override
 	public void setBusinessDashboardMaxValues(int maxvalues) {
 		getConfDocument().getConfiguration().getBusinessdashboard().setMaxvalues(maxvalues);
-		
+
+	}
+
+	// YAWL
+
+	/**
+	 * Returns the yawlEnabled
+	 *
+	 * @return boolean
+	 */
+	public boolean isYAWLEnabled() {
+		return getConfDocument().getConfiguration().getTools().getYawlEnabled();
+	}
+
+	/**
+	 * Sets the yawlEnabled
+	 *
+	 * @return boolean
+	 */
+	public void setYAWLEnabled(boolean yawlEnabled) {
+		getConfDocument().getConfiguration().getTools().setYawlEnabled(yawlEnabled);
+	}
+
+	/**
+	 * Returns the exportExplicitPlaces
+	 *
+	 * @return boolean
+	 */
+	public boolean isYAWLExportExplicitPlaces() {
+		return getConfDocument().getConfiguration().getTools().getExporting()
+				.getYawlExportExplicitPlaces();
+	}
+
+	/**
+	 * Sets the exportExplicitPlaces
+	 *
+	 * @param exportExplicitPlaces
+	 *            The exportToolspecific to set
+	 */
+	public void setYAWLExportExplicitPlaces(boolean exportExplicitPlaces) {
+		getConfDocument().getConfiguration().getTools().getExporting()
+				.setYawlExportExplicitPlaces(exportExplicitPlaces);
+	}
+
+	/**
+	 * Returns the exportGroups
+	 *
+	 * @return boolean
+	 */
+	public boolean isYAWLExportGroups() {
+		return getConfDocument().getConfiguration().getTools().getExporting().getYawlExportGroups();
+	}
+
+	/**
+	 * Sets the exportGroups
+	 *
+	 * @param exportGroups
+	 */
+	public void setYAWLExportGroups(boolean exportGroups) {
+		getConfDocument().getConfiguration().getTools().getExporting().setYawlExportGroups(exportGroups);
 	}
 }

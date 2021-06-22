@@ -9,7 +9,7 @@ import org.woped.config.ApromoreServer;
 
 /**
  * Interface defining the public capabilities of the general WoPeD configuration
- * 
+ *
  * @author Philip Allgaier
  *
  */
@@ -448,7 +448,7 @@ public interface IGeneralConfiguration extends IConfiguration {
 	public int getApromoreProxyPort();
 
 	public void setApromoreProxyPort(int port);
-	
+
 	public boolean isSetApromorePassword();
 
 	//
@@ -480,12 +480,12 @@ public interface IGeneralConfiguration extends IConfiguration {
 	public ApromoreServer[] getApromoreServers();
 
 	public void addApromoreServer(int ID, String name, String url, int port,
-			String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort);
+								  String path, String user, String pwd, boolean useProxy,
+								  String proxyUrl, int proxyPort);
 
 	public void changeApromoreServerSettings(int ID, String name, String url,
-			int port, String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort);
+											 int port, String path, String user, String pwd, boolean useProxy,
+											 String proxyUrl, int proxyPort);
 
 	public void removeApromoreServer(int index);
 
@@ -520,17 +520,30 @@ public interface IGeneralConfiguration extends IConfiguration {
 	public boolean getText2ProcessUse();
 
 	public void setText2ProcessUse(boolean selected);
-	
+
 	//dashboard
 	public int getBusinessDashboardServerPort();
 
 	public void setBusinessDashboardServerPort(int port);
-	
+
 	public boolean getBusinessDashboardUseByDefault();
 
 	public void setBusinessDashboardUseByDefault(boolean bAutoStart);
-	
+
 	public int getBusinessDashboardMaxValues();
 
 	public void setBusinessDashboardMaxValues(int maxvalues);
+
+	// YAWL
+	public boolean isYAWLEnabled();
+
+	public void setYAWLEnabled(boolean yawlEnabled);
+
+	public boolean isYAWLExportExplicitPlaces();
+
+	public void setYAWLExportExplicitPlaces(boolean exportExplicitPlaces);
+
+	public boolean isYAWLExportGroups();
+
+	public void setYAWLExportGroups(boolean exportGroups);
 }
