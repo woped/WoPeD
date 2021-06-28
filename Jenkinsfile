@@ -6,6 +6,7 @@ pipeline {
         docker {
             image 'maven:3.6.3-jdk-11'
             args '-u root'
+            label 'maven'
         }
     }
 
@@ -53,7 +54,6 @@ pipeline {
 
     post {
         always {
-            echo 'I will always say Hello again!'
 
             cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
@@ -62,6 +62,12 @@ pipeline {
                     patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
                                [pattern: '.propsfile', type: 'EXCLUDE']])
 
+        }
+
+        failure {
+        mail to: 'jodhauth@gmail.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
         }
 
     }
