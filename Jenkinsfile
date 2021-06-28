@@ -22,6 +22,11 @@ pipeline {
             }
         }
         stage('deploy jar') {
+
+            when {
+                branch 'RELEASE_*'
+            }
+
             steps {
                 sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
             }
