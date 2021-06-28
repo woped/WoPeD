@@ -54,6 +54,14 @@ pipeline {
     post {
         always {
             echo 'I will always say Hello again!'
+
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
+
         }
 
     }
