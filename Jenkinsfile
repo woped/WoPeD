@@ -63,9 +63,6 @@ pipeline {
 
         }
 
-        failure {
-
-    }
 }
 
 def getVersion() {
