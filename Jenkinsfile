@@ -21,16 +21,7 @@ pipeline {
                 sh 'mvn install -Dmaven.test.skip=true'
             }
         }
-        stage('deploy jar') {
 
-            when {
-                branch 'RELEASE_*'
-            }
-
-            steps {
-                sh 'mvn -s $MVN_SET deploy -Dmaven.test.skip=true'
-            }
-        }
         stage('deploy installers') {
             environment {
                 VERSION = getVersion()
