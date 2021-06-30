@@ -52,7 +52,7 @@
 					<verbose>false</verbose>
 					<quiet>false</quiet>
 					<javaSource>11</javaSource>
-					<outputJar>${project.build.directory}/metricsBeans-${project.version}.jar</outputJar>
+					<outputJar>${project.build.directory}/metricsBeans-${revision}.jar</outputJar>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -69,7 +69,7 @@
 				</executions>
 				<configuration>
 					<generatePom>true</generatePom>
-					<file>${project.build.directory}/metricsBeans-${project.version}.jar</file>
+					<file>${project.build.directory}/metricsBeans-${revision}.jar</file>
 					<groupId>de.dhbw.woped</groupId>
 					<artifactId>metricsBeans</artifactId>
 					<version>${project.version}</version>
