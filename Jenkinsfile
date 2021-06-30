@@ -38,7 +38,13 @@ pipeline {
     }
 }
 
-def getVersion() {
+def getVersion() {   
     pom = readMavenPom file: 'pom.xml'
-    return pom.version
+    version = pom.version
+    
+    if (version.toString().contains('SNAPSHOT')) {
+        return version + '-' + "${currentBuild.startTimeInMillis}"
+    } else {
+        return version
+    }
 }
