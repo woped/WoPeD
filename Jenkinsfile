@@ -62,7 +62,7 @@ pipeline {
                                [pattern: '.propsfile', type: 'EXCLUDE']])
 
         }
-
+    }
 }
 
 def getVersion() {
