@@ -18,10 +18,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn install -Dmaven.test.skip=true'
+                sh 'mvn install -X -Dmaven.test.skip=true'
             }
         }
-
         stage('deploy installers') {
             environment {
                 VERSION = getVersion()
