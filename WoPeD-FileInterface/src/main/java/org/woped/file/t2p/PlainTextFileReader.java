@@ -321,6 +321,11 @@ public class PlainTextFileReader implements FileReader {
                         "please visit: https://products.aspose.com/words/\n" +
                         "\n" +
                         "Evaluation Only. Created with Aspose.Words. Copyright 2003-2020 Aspose Pty Ltd.";
+                String docxWatermarkMac = "\n" +
+                        "Created with an evaluation copy of Aspose.Words. To discover the full versions of \n" +
+                        "our APIs please visit: https://products.aspose.com/words/\n" +
+                        "\n" +
+                        "Evaluation Only. Created with Aspose.Words. Copyright 2003-2020 Aspose Pty Ltd.\n";
                 if (text.contains(pptxWatermark)) {//removes the watermark for pptx documents. Only works if the watermark stays at the end for the document
                                                     //if the watermark changes, just put the new text in the string vars
                     int startOfWatermark = text.indexOf(pptxWatermark);
@@ -328,6 +333,10 @@ public class PlainTextFileReader implements FileReader {
                     text = text.trim();
                 } else if (text.contains(docxWatermark)) { //removes the watermark for docx documents. Only works if the watermark stays at the beginning for the document
                                                             //if the watermark changes, just put the new text in the string vars
+                    int endOfWatermark = docxWatermark.length();
+                    text = text.substring(endOfWatermark + 1);
+                    text = text.trim();
+                } else if (text.contains(docxWatermarkMac)){
                     int endOfWatermark = docxWatermark.length();
                     text = text.substring(endOfWatermark + 1);
                     text = text.trim();
