@@ -69,16 +69,17 @@ public class NameModel extends DefaultGraphCell
         GraphConstants.setEditable(map, true);
         GraphConstants.setMoveable(map, true);
         GraphConstants.setSizeable(map, false);
-        if(creationMap.getName().length() < 10){
-            //GraphConstants.setAutoSize(map, true);
+        if(creationMap.getName() == null){
+            creationMap.setName(creationMap.getId());
+        }
+       if(creationMap.getName().length() < 10){
             GraphConstants.setSize(map, new Dimension(40, 24));
         }
         else{
             GraphConstants.setSize(map, new Dimension(80, 24));
         }
-        //GraphConstants.setAutoSize(map, true);
-        GraphConstants.setInset(map, 2);
 
+        GraphConstants.setInset(map, 2);
         setAttributes(map);
 
     }
