@@ -42,9 +42,5 @@ def getVersion() {
     pom = readMavenPom file: 'pom.xml'
     version = pom.version
     
-    if (version.toString().contains('SNAPSHOT')) {
-        return version + '-' + "${currentBuild.startTimeInMillis}"
-    } else {
-        return version
-    }
+    return version
 }
