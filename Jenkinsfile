@@ -44,7 +44,11 @@ pipeline {
             setBuildStatus("Build succeeded", "SUCCESS");
         }
         failure {
-            setBuildStatus("Build not Successfull", "FAILURE");    
+            setBuildStatus("Build not Successfull", "FAILURE");
+            
+            emailext body: "Something is wrong with ${env.BUILD_URL}",
+                subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                to: '${DEFAULT_RECIPIENTS}'
         }
     }
 }
