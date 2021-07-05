@@ -39,6 +39,8 @@ pipeline {
     post {
         always {
             cleanWs()
+            
+            sh 'docker image prune -af'
         }
         success {
             setBuildStatus("Build succeeded", "SUCCESS");
