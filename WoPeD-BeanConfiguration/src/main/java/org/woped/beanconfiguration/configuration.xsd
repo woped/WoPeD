@@ -17,20 +17,22 @@
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<xs:complexType name="Importing">
 		<xs:sequence>
 			<xs:element name="toolspecific" type="xs:boolean"/>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Exporting">
 		<xs:sequence>
 			<xs:element name="toolspecific" type="xs:boolean"/>
 			<xs:element name="tpnExportElementAsName" type="xs:boolean" default="1"/>
+			<xs:element name="yawlExportExplicitPlaces" type="xs:boolean"/>
+			<xs:element name="yawlExportGroups" type="xs:boolean"/>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="GUI">
 		<xs:sequence>
 			<xs:element name="Window">
@@ -90,18 +92,19 @@
 			<xs:element name="aproManagerPath" type="xs:string" minOccurs="0" />
 			<xs:element name="aproUserName" type="xs:string" minOccurs="0" />
 			<xs:element name="aproPassword" type="xs:string" minOccurs="0" />
-			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />			
+			<xs:element name="aproUseProxy" type="xs:boolean" minOccurs="0" />
 			<xs:element name="aproProxyName" type="xs:string" minOccurs="0" />
 			<xs:element name="aproProxyPort" type="xs:int" minOccurs="0" />
+			<xs:element name="yawlEnabled" type="xs:boolean" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="ApromoreServers">
 		<xs:sequence>
 			<xs:element name="apromoreServer" 	type="ApromoreServer" 	minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="ApromoreServer">
 		<xs:sequence>
 			<xs:element name="apromoreServerID" 	type="xs:int" 		minOccurs="1" 		maxOccurs="1"/>
@@ -111,12 +114,12 @@
 			<xs:element name="apromoreManagerPath" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
 			<xs:element name="apromoreUserName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
 			<xs:element name="apromorePassword" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreUseProxy" 	type="xs:boolean" 	minOccurs="0" 		maxOccurs="1"/>			
+			<xs:element name="apromoreUseProxy" 	type="xs:boolean" 	minOccurs="0" 		maxOccurs="1"/>
 			<xs:element name="apromoreProxyName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
 			<xs:element name="apromoreProxyPort" 	type="xs:int" 		minOccurs="0" 		maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Process2Text">
 		<xs:sequence>
 			<xs:element name="p2tUse" type="xs:boolean" minOccurs="0" />
@@ -139,8 +142,8 @@
 			<xs:element name="serverport" type="xs:int" default="2711" minOccurs="0" />
 			<xs:element name="maxvalues" type="xs:int" default="1000" minOccurs="0" />
 		</xs:sequence>
-	</xs:complexType>	
-	
+	</xs:complexType>
+
 	<xs:complexType name="Woflan">
 		<xs:sequence>
 			<xs:element name="useWoflan" type="xs:boolean" default="false" minOccurs="0"/>
@@ -202,6 +205,6 @@
 			<xs:element name="launchCounter" type="xs:int" 		default="0" 	minOccurs="0" maxOccurs="1"/>
 			<xs:element name="showOnStartup" type="xs:boolean" 	default="true"  minOccurs="0" maxOccurs="1"/>
 			<xs:element name="registered" 	 type="xs:boolean" 	default="false" minOccurs="0" maxOccurs="1"/>
-	</xs:sequence>
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

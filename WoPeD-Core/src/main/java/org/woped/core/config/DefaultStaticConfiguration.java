@@ -12,7 +12,7 @@ import org.woped.config.ApromoreServer;
 /**
  * Class that provides fallback configuration settings for the general WoPeD
  * configuration part
- * 
+ *
  * @author Philip Allgaier
  *
  */
@@ -96,13 +96,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
 	public static int DEFAULT_BUSINESSDASHBOARD_MAXVALUES = 1000;
 	public static boolean DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT = false;
-    // Booleans for alpha-functions (TEST) later integration in configuration &
-    // GUI
-    public static boolean ACTIVATE_NET_ROUTING = false;
-    public static boolean ACTIVATE_ANNEALING_LAYOUT = false;
-    // Language
-    public Locale locale = Locale.getDefault();
-    // File
+	// Booleans for alpha-functions (TEST) later integration in configuration &
+	// GUI
+	public static boolean ACTIVATE_NET_ROUTING = false;
+	public static boolean ACTIVATE_ANNEALING_LAYOUT = false;
+	// Language
+	public Locale locale = Locale.getDefault();
+	// File
 	private String homedir = "";
 	private String logdir = "";
 	private String defaultHomedir = "";
@@ -143,17 +143,17 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	// P2T
 	private String process2text_serverHost = DEFAULT_PROCESS2TEXT_HOST;
 	private int process2text_serverPort = DEFAULT_PROCESS2TEXT_PORT;
-    private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
-    private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
+	private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
+	private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
 
 	// T2P
 	private String text2process_serverHost = DEFAULT_TEXT2PROCESS_HOST;
 	private int text2process_serverPort = DEFAULT_TEXT2PROCESS_PORT;
-    private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
-    private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
+	private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
+	private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
 
 	//Dashboard
-    private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
+	private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
 	private int businessdashboard_maxvalues = DEFAULT_BUSINESSDASHBOARD_MAXVALUES;
 	private boolean businessdashboard_usebydefault = DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT;
 	// Understandability Coloring
@@ -198,6 +198,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	private String registrationEmail;
 	private int launchCounter;
 
+	// YAWL
+	private boolean yawlEnabled = false;
+
+	private boolean yawlExportExplicitPlaces = false;
+
+	private boolean yawlExportGroups = false;
+
 	public DefaultStaticConfiguration() {
 		initConfig();
 	}
@@ -226,17 +233,17 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return headsize;
 	}
 
-    public void setArrowheadSize(int headSize) {
-        this.headsize = headSize;
-    }
+	public void setArrowheadSize(int headSize) {
+		this.headsize = headSize;
+	}
 
 	public int getArrowWidth() {
 		return arrowwidth;
 	}
 
-    public void setArrowWidth(int width) {
-        this.arrowwidth = width;
-    }
+	public void setArrowWidth(int width) {
+		this.arrowwidth = width;
+	}
 
 	public Color getSelectionColor() {
 		return selectionColor;
@@ -250,33 +257,33 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return homedir;
 	}
 
-    public void setHomedir(String homedir) {
-        this.homedir = homedir;
-    }
+	public void setHomedir(String homedir) {
+		this.homedir = homedir;
+	}
 
 	public String getDefaultHomedir() {
 		return defaultHomedir;
 	}
 
-    public void setDefaultHomedir(String homedir) {
-        this.defaultHomedir = homedir;
-    }
+	public void setDefaultHomedir(String homedir) {
+		this.defaultHomedir = homedir;
+	}
 
 	public String getCurrentWorkingdir() {
 		return currentWorkingdir;
 	}
 
-    public void setCurrentWorkingdir(String homedir) {
-        this.defaultHomedir = homedir;
-    }
+	public void setCurrentWorkingdir(String homedir) {
+		this.defaultHomedir = homedir;
+	}
 
 	public String getLogdir() {
 		return logdir;
 	}
 
-    public void setLogdir(String logdir) {
-        this.logdir = logdir;
-    }
+	public void setLogdir(String logdir) {
+		this.logdir = logdir;
+	}
 
 	// Start Understandability Coloring
 	public boolean getColorOn() {
@@ -291,129 +298,129 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return color1;
 	}
 
-    public void setColor1(int rgb) {
-        color1 = rgb;
-    }
+	public void setColor1(int rgb) {
+		color1 = rgb;
+	}
 
 	public int getColor2() {
 		return color2;
 	}
 
-    public void setColor2(int rgb) {
-        color2 = rgb;
-    }
+	public void setColor2(int rgb) {
+		color2 = rgb;
+	}
 
 	public int getColor3() {
 		return color3;
 	}
 
-    public void setColor3(int rgb) {
-        color3 = rgb;
-    }
+	public void setColor3(int rgb) {
+		color3 = rgb;
+	}
 
 	public int getColor4() {
 		return color4;
 	}
 
-    public void setColor4(int rgb) {
-        color4 = rgb;
-    }
+	public void setColor4(int rgb) {
+		color4 = rgb;
+	}
 
 	public int getColor5() {
 		return color5;
 	}
 
-    public void setColor5(int rgb) {
-        color5 = rgb;
-    }
+	public void setColor5(int rgb) {
+		color5 = rgb;
+	}
 
 	public int getColor6() {
 		return color6;
 	}
 
-    public void setColor6(int rgb) {
-        color6 = rgb;
-    }
+	public void setColor6(int rgb) {
+		color6 = rgb;
+	}
 
 	public int getColor7() {
 		return color7;
 	}
 
-    public void setColor7(int rgb) {
-        color7 = rgb;
-    }
+	public void setColor7(int rgb) {
+		color7 = rgb;
+	}
 
 	public int getColor8() {
 		return color8;
 	}
 
-    public void setColor8(int rgb) {
-        color8 = rgb;
-    }
+	public void setColor8(int rgb) {
+		color8 = rgb;
+	}
 
 	public int getColor9() {
 		return color9;
 	}
 
-    public void setColor9(int rgb) {
-        color9 = rgb;
-    }
+	public void setColor9(int rgb) {
+		color9 = rgb;
+	}
 
 	public int getColor10() {
 		return color10;
 	}
 
-    public void setColor10(int rgb) {
-        color10 = rgb;
-    }
+	public void setColor10(int rgb) {
+		color10 = rgb;
+	}
 
 	public int getColor11() {
 		return color11;
 	}
 
-    public void setColor11(int rgb) {
-        color11 = rgb;
-    }
+	public void setColor11(int rgb) {
+		color11 = rgb;
+	}
 
 	public int getColor12() {
 		return color12;
 	}
 
-    public void setColor12(int rgb) {
-        color12 = rgb;
-    }
+	public void setColor12(int rgb) {
+		color12 = rgb;
+	}
 
 	public int getColor13() {
 		return color13;
 	}
 
-    public void setColor13(int rgb) {
-        color13 = rgb;
-    }
+	public void setColor13(int rgb) {
+		color13 = rgb;
+	}
 
 	public int getColor14() {
 		return color14;
 	}
 
-    public void setColor14(int rgb) {
-        color14 = rgb;
-    }
+	public void setColor14(int rgb) {
+		color14 = rgb;
+	}
 
 	public int getColor15() {
 		return color15;
 	}
 
-    public void setColor15(int rgb) {
-        color15 = rgb;
-    }
+	public void setColor15(int rgb) {
+		color15 = rgb;
+	}
 
 	public int getColor16() {
 		return color16;
 	}
 
-    public void setColor16(int rgb) {
-        color16 = rgb;
-    }
+	public void setColor16(int rgb) {
+		color16 = rgb;
+	}
 
 	public Color[] getUnderstandColors() {
 		return UnderstandColorArray;
@@ -471,7 +478,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return defaultcolor13;
 	}
 
-    // End Understandability Coloring
+	// End Understandability Coloring
 
 	public int getDefaultColor14() {
 		return defaultcolor14;
@@ -501,9 +508,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return lnf;
 	}
 
-    public void setLookAndFeel(String className) {
-        lnf = className;
-    }
+	public void setLookAndFeel(String className) {
+		lnf = className;
+	}
 
 	public Vector<?> getRecentFiles() {
 		return new Vector<Object>();
@@ -513,60 +520,60 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return new Dimension(800, 600);
 	}
 
-    public void setWindowSize(Dimension windowSize) {
-    }
+	public void setWindowSize(Dimension windowSize) {
+	}
 
 	public boolean isMaximizeWindow() {
 		return true;
 	}
 
-    public void setMaximizeWindow(boolean maximize) {
-    }
+	public void setMaximizeWindow(boolean maximize) {
+	}
 
 	public int getWindowX() {
 		return 0;
 	}
 
-    public void setWindowX(int windowX) {
-    }
+	public void setWindowX(int windowX) {
+	}
 
 	public int getWindowY() {
 		return 0;
 	}
 
-    public void setWindowY(int windowY) {
-    }
+	public void setWindowY(int windowY) {
+	}
 
 	public String getWoflanPath() {
 		return "";
 	}
 
-    public void setWoflanPath(String woflanPath) {
-    }
+	public void setWoflanPath(String woflanPath) {
+	}
 
 	public boolean isEditingOnCreation() {
 		return editoncreation;
 	}
 
-    public void setEditingOnCreation(boolean editingOnCreation) {
-        this.editoncreation = editingOnCreation;
-    }
+	public void setEditingOnCreation(boolean editingOnCreation) {
+		this.editoncreation = editingOnCreation;
+	}
 
 	public boolean isExportToolspecific() {
 		return exportToolspec;
 	}
 
-    public void setExportToolspecific(boolean exportToolspecific) {
-        this.exportToolspec = exportToolspecific;
-    }
+	public void setExportToolspecific(boolean exportToolspecific) {
+		this.exportToolspec = exportToolspecific;
+	}
 
 	public boolean isFillArrowHead() {
 		return fillArrow;
 	}
 
-    public void setFillArrowHead(boolean fill) {
-        this.fillArrow = fill;
-    }
+	public void setFillArrowHead(boolean fill) {
+		this.fillArrow = fill;
+	}
 
 	public boolean isHomedirSet() {
 		return getHomedir() != null && !getHomedir().equals("");
@@ -585,75 +592,75 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return importToolspec;
 	}
 
-    public void setImportToolspecific(boolean importToolspecific) {
-        this.importToolspec = importToolspecific;
-    }
+	public void setImportToolspecific(boolean importToolspecific) {
+		this.importToolspec = importToolspecific;
+	}
 
 	public boolean isInsertCOPYwhenCopied() {
 		return insertCopy;
 	}
 
-    public void setInsertCOPYwhenCopied(boolean insertCOPYwhenCopied) {
-        insertCopy = insertCOPYwhenCopied;
-    }
+	public void setInsertCOPYwhenCopied(boolean insertCOPYwhenCopied) {
+		insertCopy = insertCOPYwhenCopied;
+	}
 
 	public boolean isRoundRouting() {
 		return roundRouting;
 	}
 
-    public void setRoundRouting(boolean round) {
-        this.roundRouting = round;
-    }
+	public void setRoundRouting(boolean round) {
+		this.roundRouting = round;
+	}
 
 	public boolean isShowGrid() {
 		return showgrid;
 	}
 
-    public void setShowGrid(boolean showGrid) {
-        this.showgrid = showGrid;
-    }
+	public void setShowGrid(boolean showGrid) {
+		this.showgrid = showGrid;
+	}
 
 	public boolean isSmartEditing() {
 		return smartediting;
 	}
 
-    public void setSmartEditing(boolean smartEditing) {
-        this.smartediting = smartEditing;
-    }
+	public void setSmartEditing(boolean smartEditing) {
+		this.smartediting = smartEditing;
+	}
 
 	public boolean isTpnSaveElementAsName() {
 		return false;
 	}
 
-    public void setTpnSaveElementAsName(boolean b) {
-    }
-
-    public boolean isUseWoflan() {
-        return false;
+	public void setTpnSaveElementAsName(boolean b) {
 	}
 
-    public void setUseWoflan(boolean useWoflan) {
-    }
+	public boolean isUseWoflan() {
+		return false;
+	}
 
-    public boolean isUseWoflanDLL() {
-        return false;
-    }
+	public void setUseWoflan(boolean useWoflan) {
+	}
 
-    public void setUseWoflanDLL(boolean useWoflanDLL) {
-    }
+	public boolean isUseWoflanDLL() {
+		return false;
+	}
 
-    public void removeAllRecentFiles() {
-    }
+	public void setUseWoflanDLL(boolean useWoflanDLL) {
+	}
 
-    public void removeRecentFile(String name, String path) {
-    }
+	public void removeAllRecentFiles() {
+	}
+
+	public void removeRecentFile(String name, String path) {
+	}
 
 	public String getUserdir() {
 		return this.userdir;
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#getPortColor()
 	 */
 	public Color getPortColor() {
@@ -661,7 +668,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#setPortColor(java.awt.Color)
 	 */
 	public void setPortColor(Color color) {
@@ -669,7 +676,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#getLocaleLanguage()
 	 */
 	public String getLocaleLanguage() {
@@ -677,7 +684,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#setLocaleLanguage(java.lang.String)
 	 */
 	public void setLocaleLanguage(String language) {
@@ -685,7 +692,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#getLocaleCountry()
 	 */
 	public String getLocaleCountry() {
@@ -693,7 +700,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#setLocaleCountry(java.lang.String)
 	 */
 	public void setLocaleCountry(String country) {
@@ -701,7 +708,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#getLocaleVariant()
 	 */
 	public String getLocaleVariant() {
@@ -709,7 +716,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	/**
-	 * 
+	 *
 	 * @see org.woped.config.IGeneralConfiguration#setLocaleVariant(java.lang.String)
 	 */
 	public void setLocaleVariant(String variant) {
@@ -738,8 +745,8 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return 2;
 	}
 
-    public void setAlgorithmDecimalPlaces(int n) {
-    }
+	public void setAlgorithmDecimalPlaces(int n) {
+	}
 
 	public int getVariableDecimalPlaces() {
 		return 0;
@@ -778,7 +785,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public void setCurrentApromoreIndex(int index) {
 		this.apromore_currentIndex = index;
 	}
-	
+
 	@Override
 	public boolean isSetApromorePassword() {
 		return apromore_isSetPassword;
@@ -797,14 +804,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-    public String getApromoreUsername() {
+	public String getApromoreUsername() {
 
-        return apromore_username;
-    }
+		return apromore_username;
+	}
 
 	@Override
-    public void setApromoreUsername(String user) {
-        this.apromore_username = user;
+	public void setApromoreUsername(String user) {
+		this.apromore_username = user;
 
 	}
 
@@ -839,12 +846,12 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-    public void setApromoreServerPort(int port) {
-        apromore_serverport = port;
-    }
+	public void setApromoreServerPort(int port) {
+		apromore_serverport = port;
+	}
 
-    @Override
-    public boolean getApromoreUseProxy() {
+	@Override
+	public boolean getApromoreUseProxy() {
 
 		return apromore_useproxy;
 	}
@@ -856,14 +863,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-    public boolean getApromoreUse() {
-        return apromore_use;
-    }
+	public boolean getApromoreUse() {
+		return apromore_use;
+	}
 
 	@Override
-    public void setApromoreUse(boolean selected) {
-        apromore_use = selected;
-    }
+	public void setApromoreUse(boolean selected) {
+		apromore_use = selected;
+	}
 
 	@Override
 	public boolean isRegistered() {
@@ -960,15 +967,15 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
 	@Override
 	public void addApromoreServer(int ID, String name, String url, int port,
-			String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort) {
+								  String path, String user, String pwd, boolean useProxy,
+								  String proxyUrl, int proxyPort) {
 
 	}
 
 	@Override
 	public void changeApromoreServerSettings(int ID, String name, String url,
-			int port, String path, String user, String pwd, boolean useProxy,
-			String proxyUrl, int proxyPort) {
+											 int port, String path, String user, String pwd, boolean useProxy,
+											 String proxyUrl, int proxyPort) {
 
 	}
 
@@ -1017,7 +1024,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		this.process2text_use = selected;
 	}
 
-// Text 2 Process
+	// Text 2 Process
 	@Override
 	public String getText2ProcessServerHost() {
 		return text2process_serverHost;
@@ -1059,7 +1066,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 
-	
+
 	@Override
 	public int getBusinessDashboardServerPort() {
 		return this.businessdashboard_serverport;
@@ -1068,7 +1075,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	@Override
 	public void setBusinessDashboardServerPort(int port) {
 		this.businessdashboard_serverport = port;
-		
+
 	}
 
 	@Override
@@ -1078,7 +1085,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
 	@Override
 	public void setBusinessDashboardUseByDefault(boolean bAutoStart) {
-		this.businessdashboard_usebydefault = bAutoStart;	
+		this.businessdashboard_usebydefault = bAutoStart;
 	}
 
 	@Override
@@ -1089,9 +1096,29 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	@Override
 	public void setBusinessDashboardMaxValues(int maxvalues) {
 		this.businessdashboard_maxvalues = maxvalues;
-		
+
 	}
 
+	// YAWL
 
+	public boolean isYAWLEnabled() {
+		return yawlEnabled;
+	}
+
+	public void setYAWLEnabled(boolean yawlEnabled) {
+		this.yawlEnabled = yawlEnabled;
+	}
+
+	public boolean isYAWLExportExplicitPlaces() { return yawlExportExplicitPlaces; }
+
+	public void setYAWLExportExplicitPlaces(boolean yawlExportExplicitPlaces) {
+		this.yawlExportExplicitPlaces = yawlExportExplicitPlaces;
+	}
+
+	public boolean isYAWLExportGroups() { return yawlExportGroups; }
+
+	public void setYAWLExportGroups(boolean exportGroups) {
+		this.yawlExportGroups = exportGroups;
+	}
 
 }

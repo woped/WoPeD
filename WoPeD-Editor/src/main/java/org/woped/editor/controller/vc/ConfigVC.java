@@ -50,15 +50,7 @@ import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.action.EditorViewEvent;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.gui.config.AbstractConfPanel;
-import org.woped.editor.gui.config.ConfApromorePanel;
-import org.woped.editor.gui.config.ConfBusinessDashboardPanel;
-import org.woped.editor.gui.config.ConfEditorPanel;
-import org.woped.editor.gui.config.ConfFilePanel;
-import org.woped.editor.gui.config.ConfLanguagePanel;
-import org.woped.editor.gui.config.ConfMetricsPanel;
-import org.woped.editor.gui.config.ConfNLPToolsPanel;
-import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
+import org.woped.editor.gui.config.*;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -94,6 +86,7 @@ public class ConfigVC extends JDialog implements IViewController {
 	private AbstractConfPanel p2tPanel = null;
 	private AbstractConfPanel aproPanel = null;
 	private AbstractConfPanel businessdashboardPanel = null;
+	private AbstractConfPanel yawlPanel = null;
 	// ButtonPanel
 	private JPanel buttonPanel = null;
 	private WopedButton okButton = null;
@@ -200,7 +193,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.XMLFilter) {
 				savePath = savePath
 						+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-								.getName(), xmlExtensions);
+						.getName(), xmlExtensions);
 			}
 			ConfigurationManager.getConfiguration().saveConfig(
 					new File(savePath));
@@ -228,7 +221,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.XMLFilter) {
 				readPath = readPath
 						+ Utils.getQualifiedFileName(jfc.getSelectedFile()
-								.getName(), xmlExtensions);
+						.getName(), xmlExtensions);
 			}
 			ConfigurationManager.getConfiguration().readConfig(
 					new File(readPath));
@@ -240,7 +233,7 @@ public class ConfigVC extends JDialog implements IViewController {
 	// ##################### Listener Methoden ############################# */
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * javax.swing.event.TreeSelectionListener#valueChanged(javax.swing.event
 	 * .TreeSelectionEvent)
@@ -271,7 +264,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			colorPanel = new ConfUnderstandabilityPanel(
 					Messages.getString("Configuration.ColorLayout.Title"));
 			tabbedPane.addTab(Messages
-					.getString("Configuration.ColorLayout.ColorPanel.Title"),
+							.getString("Configuration.ColorLayout.ColorPanel.Title"),
 					colorPanel);
 			confPanels.put(colorPanel.getPanelName(), colorPanel);
 			metricsPanel = new ConfMetricsPanel(
@@ -292,11 +285,15 @@ public class ConfigVC extends JDialog implements IViewController {
 			tabbedPane.addTab(Messages.getString("Configuration.P2T.Title"),
 					p2tPanel);
 			confPanels.put(p2tPanel.getPanelName(), p2tPanel);
-			
+
 			businessdashboardPanel = new ConfBusinessDashboardPanel("Business Dashboard");
 			tabbedPane.addTab("Business Dashboard", businessdashboardPanel);
 			confPanels.put(businessdashboardPanel.getPanelName(), businessdashboardPanel);
-			
+
+			yawlPanel = new ConfYAWLPanel(Messages.getString("Configuration.YAWL.Title"));
+			tabbedPane.addTab(Messages.getString("Configuration.YAWL.Title"), yawlPanel);
+			confPanels.put(yawlPanel.getPanelName(), yawlPanel);
+
 			readConfiguration();
 			/*
 			 * tabbedPane.addChangeListener(new ChangeListener() { public void
@@ -347,7 +344,7 @@ public class ConfigVC extends JDialog implements IViewController {
 			cancelButton.setIcon(Messages.getImageIcon("Button.Cancel"));
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 
 					int result = JOptionPane.showConfirmDialog(
 							tabbedPane,
@@ -360,8 +357,8 @@ public class ConfigVC extends JDialog implements IViewController {
 						aproPanel.setButtonsToDefault();
 						resetConfiguration();
 						ConfigVC.this.dispose();
-					} 
-					
+					}
+
 				}
 			});
 		}
