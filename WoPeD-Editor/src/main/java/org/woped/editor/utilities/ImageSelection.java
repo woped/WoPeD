@@ -71,7 +71,7 @@ public class ImageSelection implements Transferable
     }
 
     /**
-     * Checks wether the passed Flavor is supported.
+     * Checks whether the passed Flavor is supported.
      */
     public boolean isDataFlavorSupported(DataFlavor parFlavor)
     {
@@ -79,7 +79,7 @@ public class ImageSelection implements Transferable
     }
 
     /**
-     * Returns the Transfered data. Thats the image.
+     * Returns the transferred data. That's the image.
      */
     public synchronized Object getTransferData(DataFlavor parFlavor) throws UnsupportedFlavorException
     {
