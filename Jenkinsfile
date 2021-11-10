@@ -18,7 +18,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn install -X -Dmaven.test.skip=true'
+                configFileProvider([configFile(fileId: 'nexus-credentials', variable: 'MAVEN_SETTINGS')]) {
+                    sh "mvn -s $MAVEN_SETTINGS install -X -Dmaven.test.skip=true"
+                }
             }
         }
         stage('deploy installers') {
