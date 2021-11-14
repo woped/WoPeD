@@ -1,0 +1,54 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <activeProfiles>
+    <activeProfile>github</activeProfile>
+  </activeProfiles>
+  
+  <mirrors>
+	<mirror>
+        <id>maven-default-http-blocker</id>
+        <mirrorOf>dummy</mirrorOf>
+        <name>Dummy mirror to override default blocking mirror that blocks http</name>
+        <url>http://0.0.0.0/</url>
+		<blocked>true</blocked>
+	</mirror>
+  </mirrors>
+ 
+  <profiles>
+    <profile>
+      <id>github</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/woped/woped</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+			   <!--<repository>
+			<id>mvn-repo-com</id>
+			<url>https://mvnrepository.com/</url> 
+ 		</repository> -->
+<repository>
+			<id>mvn-repo-com</id>
+			<url>https://mvnrepository.com/</url> 
+ 		</repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <servers>
+    <server>
+      <id>github</id>
+      <username>woped-tech</username>
+      <password>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</password>
+    </server>
+  </servers>
+</settings>
