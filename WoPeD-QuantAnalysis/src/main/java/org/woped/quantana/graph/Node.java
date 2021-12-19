@@ -34,7 +34,7 @@ public class Node {
 	private boolean joinReached = false;
 	
 	private double time = 0.0;
-	private int timeUnit = 2;
+	private int timeUnit = 1;
 	
 	private String role = "none";
 	private String group = "none";
