@@ -29,8 +29,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        gradle -v
-        gradle build
+        mvn package
         jpackage --verbose "@jpackage.cfg" "@jpackage-linux.cfg"
 # SAVE INSTALLER
     - id: upload-installer
@@ -61,8 +60,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        gradle -v
-        gradle build
+        mvn package
         jpackage --verbose "@jpackage.cfg" "@jpackage-windows.cfg"
 # SAVE INSTALLER
     - id: upload-installer
