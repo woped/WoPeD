@@ -1,0 +1,132 @@
+
+name: Build Installers
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-linux-installer:
+    name: Build Installer on Linux
+    runs-on: ubuntu-latest
+    steps:
+
+# SETUP BUILD ENVIRONMENT
+    - id: checkout-code
+      name: Checkout code
+      uses: actions/checkout@v2
+    - id: setup-jdk
+      name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 15
+
+# BUILD FOR DISTRIBUTION
+    - id: build
+      name: Build distribution
+      run: |
+        gradle -v
+        gradle build
+        jpackage --verbose "@jpackage.cfg" "@jpackage-linux.cfg"
+# SAVE INSTALLER
+    - id: upload-installer
+      name: Upload installer
+      uses: actions/upload-artifact@v2
+      with:
+        path: ./consoleapp/build/distributions/consoleapp_0.0.1-1_amd64.deb
+        name: linux-installer
+        retention-days: 1
+
+
+  build-windows-installer:
+    name: Build Installer on Windows
+    runs-on: windows-latest
+    steps:
+
+# SETUP BUILD ENVIRONMENT
+    - id: checkout-code
+      name: Checkout code
+      uses: actions/checkout@v2
+    - id: setup-jdk
+      name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 15
+
+# BUILD FOR DISTRIBUTION
+    - id: build
+      name: Build distribution
+      run: |
+        gradle -v
+        gradle build
+        jpackage --verbose "@jpackage.cfg" "@jpackage-windows.cfg"
+# SAVE INSTALLER
+    - id: upload-installer
+      name: Upload installer
+      uses: actions/upload-artifact@v2
+      with:
+        path: ./consoleapp/build/distributions/consoleapp-0.0.1.msi
+        name: windows-installer
+        retention-days: 1
+
+
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: [build-linux-installer, build-windows-installer]
+    steps:
+
+# DOWNLOAD INSTALLERS
+    - id: download-linux-installer
+      name: Download Linux installer
+      uses: actions/download-artifact@v2
+      with:
+        name: linux-installer
+
+    - id: download-windows-installer
+      name: Download Windows installer
+      uses: actions/download-artifact@v2
+      with:
+        name: windows-installer
+
+    - id: rename-downloaded-files
+      name: Rename downloaded files
+      run: |
+        ls -alR
+        mv consoleapp_0.0.1-1_amd64.deb consoleapp-0.0.1.deb
+        ls -alR
+# CREATE GITHUB RELEASE AND ADD ASSETS
+    - id: create-release
+      name: Create GitHub release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release-${{ github.sha }}
+        release_name: release-${{ github.sha }}
+        draft: false
+        prerelease: false
+    - id: release-linux-installer
+      name: Release Linux installer
+      uses: actions/upload-release-asset@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: consoleapp-0.0.1.deb
+        asset_name: consoleapp-0.0.1.deb
+        asset_content_type: application/x-binary
+    - id: release-windows-installer
+      name: Release Windows installer
+      uses: actions/upload-release-asset@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: consoleapp-0.0.1.msi
+        asset_name: consoleapp-0.0.1.msi
+        asset_content_type: application/x-binary
