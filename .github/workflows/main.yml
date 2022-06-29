@@ -32,7 +32,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        mvn -U clean install -Dmaven.test.skip=true
+        mvn -U clean install -X -Dmaven.test.skip=true
         mvn package
         jpackage --verbose "@jpackage.cfg" "@jpackage-linux.cfg"
         
