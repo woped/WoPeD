@@ -37,7 +37,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        mvn -U -pl '!WoPeD-Installer' clean install -Dmaven.test.skip=true
+        mvn -U clean install -Dmaven.test.skip=true
         mvn package
         jpackage --verbose "@jpackage.cfg" "@jpackage-linux.cfg"
         
