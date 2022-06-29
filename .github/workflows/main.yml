@@ -38,8 +38,7 @@ jobs:
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-        mvn package
-        jpackage --verbose "@jpackage.cfg" "@jpackage-linux.cfg"
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar
         
     # SET RELEASE VERSION
     - name: Set Release version env variable
