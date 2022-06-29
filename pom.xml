@@ -54,8 +54,38 @@
 		<module>WoPeD-AProMoRe</module>
 		<module>WoPeD-Editor</module>
 		<module>WoPeD-Starter</module>
+		<module>WoPeD-Installer</module>
 		<module>WoPeD-UnitTests</module>
 	</modules>
+	
+	<profiles>
+     		<profile>
+       			<id>ci</id>
+          			<modules>
+					<module>WoPeD-BeanMetric</module>
+					<module>WoPeD-BeanConfiguration</module>
+					<module>WoPeD-BeanPnml</module>
+					<module>WoPeD-BeanBpel</module>
+
+					<module>WoPeD-FileInterface</module>
+					<module>WoPeD-BPELExport</module>
+
+					<module>WoPeD-CommonLibs</module>
+					<module>WoPeD-Core</module>
+					<module>WoPeD-Flamingo</module>
+					<module>WoPeD-GUI</module>
+					<module>WoPeD-Configuration</module>
+					<module>WoPeD-QualAnalysis</module>
+					<module>WoPeD-ProcessMetrics</module>
+					<module>WoPeD-QuantAnalysis</module>
+					<module>WoPeD-AProMoRe</module>
+					<module>WoPeD-Editor</module>
+					<module>WoPeD-Starter</module>
+					<module>WoPeD-Installer</module>
+					<module>WoPeD-UnitTests</module>
+          			</modules> 
+      		</profile>
+  	</profiles>
 
 	<build>
 		<plugins>
