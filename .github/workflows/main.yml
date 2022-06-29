@@ -27,6 +27,11 @@ jobs:
         java-version: 17
         distribution: 'temurin'
         settings-path: ${{ github.workspace }}
+        
+    - uses: s4u/maven-settings-action@v2.5.0
+      with:
+        servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
+
 
     # BUILD FOR DISTRIBUTION
     - id: build
