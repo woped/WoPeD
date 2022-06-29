@@ -38,7 +38,8 @@ jobs:
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD
+        mkdir installer
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest installer --type app-image
         
     # SET RELEASE VERSION
     - name: Set Release version env variable
@@ -49,7 +50,7 @@ jobs:
       name: Upload installer
       uses: ncipollo/release-action@v1
       with:
-          artifacts: ./consoleapp/build/distributions/consoleapp_0.0.1-1_amd64.deb
+          artifacts: installer/WoPeD-Installer.appimage
           token: ${{ secrets.GITHUB_TOKEN }}
           commit: master
           allowUpdates: 'true'
