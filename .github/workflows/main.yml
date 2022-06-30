@@ -79,14 +79,14 @@ jobs:
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true'
-        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions --type msi
+        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions --type msi
 
   # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: ./woped-installer/build/distributions
+        path: ./woped-installer/build/distributions/WoPeD-Installer.msi
         name: windows-installer
         retention-days: 1
 
