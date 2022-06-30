@@ -75,8 +75,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: WoPeD-Linux-${{ env.RELEASE_VERSION }}
-        release_name: WoPeD-Linux-${{ env.RELEASE_VERSION }}
+        tag_name: release-${{ github.sha }}
+        release_name: release-${{ github.sha }}
         draft: false
         prerelease: false
     - id: release-linux-installer
