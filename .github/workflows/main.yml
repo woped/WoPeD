@@ -44,20 +44,52 @@ jobs:
         jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         
      
-    # UPLOAD INSTALLER 
+    # SAVE INSTALLER 
+    - id: upload-installer
+      name: Upload installer
+      uses: actions/upload-artifact@v2
+      with:
+        path: ./woped-installer/build/distributions/woped-client_3.9.1-SNAPSHOT-1_amd64.deb
+        name: linux-installer
+        retention-days: 1
+        
+  build-windows-installer:
+    name: Build Installer on Windows
+    runs-on: windows-latest
+    steps:
+
+  # SETUP BUILD ENVIRONMENT
+    - id: checkout-code
+      name: Checkout
+      uses: actions/checkout@v3
+    - id: setup-jdk
+      name: Setup JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: 17
+        distribution: 'temurin'
+        settings-path: ${{ github.workspace }}
+        
+   # BUILD FOR DISTRIBUTION
+    - id: build
+      name: Build distribution
+      run: |
+        mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
+        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions --type msi
+
+  # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
         path: ./woped-installer/build/distributions
-        name: linux-installer
+        name: windows-installer
         retention-days: 1
-
 
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: [build-linux-installer]
+    needs: [build-linux-installer, build-windows-installer]
     steps:
 
     # DOWNLOAD INSTALLERS
@@ -66,6 +98,13 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: linux-installer
+    
+    - id: download-windows-installer
+      name: Download Windows installer
+      uses: actions/download-artifact@v2
+      with:
+        name: windows-installer
+
 
 
 # CREATE GITHUB RELEASE AND ADD ASSETS
@@ -88,4 +127,14 @@ jobs:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
         asset_path: woped-client_3.9.1-SNAPSHOT-1_amd64.deb
         asset_name: woped-client_3.9.1-SNAPSHOT-1_amd64.deb
+        asset_content_type: application/x-binary
+    - id: release-windows-installer
+      name: Release Windows installer
+      uses: actions/upload-release-asset@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: consoleapp-0.0.1.msi
+        asset_name: consoleapp-0.0.1.msi
         asset_content_type: application/x-binary
