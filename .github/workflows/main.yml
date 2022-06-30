@@ -41,7 +41,7 @@ jobs:
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client-Linux --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
+        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD_Linux --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         
      
     # SAVE INSTALLER 
@@ -49,7 +49,7 @@ jobs:
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: ./woped-installer/build/distributions/woped-client-linux_3.9.1-SNAPSHOT-1_amd64.deb
+        path: ./woped-installer/build/distributions/woped_linux_3.9.1-SNAPSHOT-1_amd64.deb
         name: linux-installer
         retention-days: 1
         
@@ -79,14 +79,14 @@ jobs:
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true'
-        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client-Windows --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\Users\runneradmin --type msi
+        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --app-version ${{ env.RELEASE_VERSION }} --name WoPeD_Windows --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\Users\runneradmin --type msi
 
   # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: C:\Users\runneradmin\WoPeD-Installer-Windows.msi
+        path: C:\Users\runneradmin\WoPeD_Windows.msi
         name: windows-installer
         retention-days: 1
 
@@ -129,8 +129,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: woped-client_3.9.1-SNAPSHOT-1_amd64.deb
-        asset_name: woped-client_3.9.1-SNAPSHOT-1_amd64.deb
+        asset_path: woped_linux_3.9.1-SNAPSHOT-1_amd64.deb
+        asset_name: woped_linux_3.9.1-SNAPSHOT-1_amd64.deb
         asset_content_type: application/x-binary
     - id: release-windows-installer
       name: Release Windows installer
