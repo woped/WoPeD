@@ -1,4 +1,3 @@
-
 name: Build Installers
 
 # Controls when the workflow will run
@@ -32,87 +31,43 @@ jobs:
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
 
+    # SET RELEASE VERSION
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
     # BUILD FOR DISTRIBUTION
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --type app-image
+        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD-Client --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         
-    # SET RELEASE VERSION
-    - name: Set Release version env variable
-      run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-        
-    - id: upload-installer
-      name: Upload installer
-      uses: ncipollo/release-action@v1
-      with:
-          artifacts: WoPeD-Installer.appimage
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit: master
-          allowUpdates: 'true'
-          tag: ${{ env.RELEASE_VERSION }}
-    
-
-
-  build-windows-installer:
-    name: Build Installer on Windows
-    runs-on: windows-latest
-    steps:
-
-# SETUP BUILD ENVIRONMENT
-    - id: checkout-code
-      name: Checkout code
-      uses: actions/checkout@v2
-    - id: setup-jdk
-      name: Setup JDK
-      uses: actions/setup-java@v1
-      with:
-        java-version: 15
-
-# BUILD FOR DISTRIBUTION
-    - id: build
-      name: Build distribution
-      run: |
-        mvn package
-        jpackage --verbose "@jpackage.cfg" "@jpackage-windows.cfg"
-# SAVE INSTALLER
+     
+    # UPLOAD INSTALLER 
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: ./consoleapp/build/distributions/consoleapp-0.0.1.msi
-        name: windows-installer
+        path: ./woped-installer/build/distributions/WoPeD-Client.appimage
+        name: linux-installer
         retention-days: 1
 
 
   create-release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: [build-linux-installer, build-windows-installer]
+    needs: [build-linux-installer]
     steps:
 
-# DOWNLOAD INSTALLERS
+    # DOWNLOAD INSTALLERS
     - id: download-linux-installer
       name: Download Linux installer
       uses: actions/download-artifact@v2
       with:
         name: linux-installer
 
-    - id: download-windows-installer
-      name: Download Windows installer
-      uses: actions/download-artifact@v2
-      with:
-        name: windows-installer
 
-    - id: rename-downloaded-files
-      name: Rename downloaded files
-      run: |
-        ls -alR
-        mv consoleapp_0.0.1-1_amd64.deb consoleapp-0.0.1.deb
-        ls -alR
 # CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
       name: Create GitHub release
@@ -120,8 +75,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: release-${{ github.sha }}
-        release_name: release-${{ github.sha }}
+        tag_name: ${{ env.RELEASE_VERSION }}
+        release_name: ${{ env.RELEASE_VERSION }}
         draft: false
         prerelease: false
     - id: release-linux-installer
@@ -131,16 +86,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: consoleapp-0.0.1.deb
-        asset_name: consoleapp-0.0.1.deb
-        asset_content_type: application/x-binary
-    - id: release-windows-installer
-      name: Release Windows installer
-      uses: actions/upload-release-asset@latest
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: consoleapp-0.0.1.msi
-        asset_name: consoleapp-0.0.1.msi
+        asset_path: WoPeD-Client.appimage
+        asset_name: WoPeD-Client.appimage
         asset_content_type: application/x-binary
