@@ -31,17 +31,12 @@ jobs:
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
 
-    # SET RELEASE VERSION
-    - name: Set Release version env variable
-      run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-
     # BUILD FOR DISTRIBUTION
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-        jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         
      
     # SAVE INSTALLER 
@@ -49,7 +44,7 @@ jobs:
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: ./woped-installer/build/distributions/woped_3.9.1-SNAPSHOT-1_amd64.deb
+        path: ./woped-installer/build/distributions/woped-1_amd64.deb
         name: linux-installer
         retention-days: 1
         
@@ -74,24 +69,20 @@ jobs:
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
     
-   # SET RELEASE VERSION
-    - name: Set Release version env variable
-      run: |
-        echo ("RELEASE_VERSION=" $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)) >> $env:GITHUB_ENV
         
    # BUILD FOR DISTRIBUTION
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true'
-        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --app-version $env:RELEASE_VERSION --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
+        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
   # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: C:\WoPeD-3.9.1-SNAPSHOT.msi
+        path: C:\WoPeD-1.0.msi
         name: windows-installer
         retention-days: 1
 
@@ -116,23 +107,19 @@ jobs:
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
 
-    # SET RELEASE VERSION
-      - name: Set Release version env variable
-        run: |
-          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
      # BUILD FOR DISTRIBUTION
       - id: build
         name: Build distribution
         run: |
           mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-          jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --app-version ${{ env.RELEASE_VERSION }} --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/3.9.1-SNAPSHOT/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
+          jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/3.9.1-SNAPSHOT/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
     # SAVE INSTALLER
       - id: upload-installer
         name: Upload installer
         uses: actions/upload-artifact@v2
         with:
-          path: /Users/runner/.m2/WoPeD-3.9.1-SNAPSHOT.dmg
+          path: /Users/runner/.m2/WoPeD-1.0.dmg
           name: macos-installer
           retention-days: 1
 
@@ -179,8 +166,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: woped_3.9.1-SNAPSHOT-1_amd64.deb
-        asset_name: woped_3.9.1-SNAPSHOT-1_amd64.deb
+        asset_path: woped-1_amd64.deb
+        asset_name: woped-1_amd64.deb
         asset_content_type: application/x-binary
     - id: release-windows-installer
       name: Release Windows installer
@@ -189,8 +176,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: WoPeD-3.9.1-SNAPSHOT.msi
-        asset_name: WoPeD-_3.9.1-SNAPSHOT.msi
+        asset_path: WoPeD-1.0.msi
+        asset_name: WoPeD-1.0.msi
         asset_content_type: application/x-binary
     - id: release-macos-installer
       name: Release macOS installer
@@ -199,6 +186,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: WoPeD-3.9.1-SNAPSHOT.dmg
-        asset_name: WoPeD-_3.9.1-SNAPSHOT.dmg
+        asset_path: WoPeD-1.0.dmg
+        asset_name: WoPeD-1.0.dmg
         asset_content_type: application/x-binary
