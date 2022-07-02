@@ -45,7 +45,7 @@ jobs:
       name: Upload installer
       uses: actions/upload-artifact@v2
       with:
-        path: ./woped-installer/build/distributions/woped-1_amd64.deb
+        path: ./woped-installer/build/distributions/woped_1.0-1_amd64.deb
         name: linux-installer
         retention-days: 1
         
@@ -167,8 +167,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: woped-1_amd64.deb
-        asset_name: woped-1_amd64.deb
+        asset_path: woped_1.0-1_amd64.deb
+        asset_name: woped_1.0-1_amd64.deb
         asset_content_type: application/x-binary
     - id: release-windows-installer
       name: Release Windows installer
