@@ -77,7 +77,7 @@ jobs:
    # SET RELEASE VERSION
     - name: Set Release version env variable
       run: |
-        echo ("RELEASE_VERSION=" + $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)) >> $env:GITHUB_ENV
+        echo ("RELEASE_VERSION=" $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)) >> $env:GITHUB_ENV
         
    # BUILD FOR DISTRIBUTION
     - id: build
@@ -126,13 +126,13 @@ jobs:
         name: Build distribution
         run: |
           mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
-          jpackage --input /home/runner/work/WoPeD/WoPeD --app-version ${{ env.RELEASE_VERSION }} --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions --type dmg
+          jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --app-version ${{ env.RELEASE_VERSION }} --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/3.9.1-SNAPSHOT/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
     # SAVE INSTALLER
       - id: upload-installer
         name: Upload installer
         uses: actions/upload-artifact@v2
         with:
-          path: C:\WoPeD-3.9.1-SNAPSHOT.dmg
+          path: /Users/runner/.m2/WoPeD-3.9.1-SNAPSHOT.dmg
           name: macos-installer
           retention-days: 1
 
