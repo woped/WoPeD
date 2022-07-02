@@ -73,6 +73,11 @@ jobs:
     - uses: s4u/maven-settings-action@v2.5.0
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
+    
+   # SET RELEASE VERSION
+    - name: Set Release version env variable
+      run: |
+        echo ("RELEASE_VERSION=" + $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)) >> $env:GITHUB_ENV
         
    # BUILD FOR DISTRIBUTION
     - id: build
@@ -110,6 +115,11 @@ jobs:
       - uses: s4u/maven-settings-action@v2.5.0
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
+
+    # SET RELEASE VERSION
+      - name: Set Release version env variable
+        run: |
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
 
      # BUILD FOR DISTRIBUTION
       - id: build
