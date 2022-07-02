@@ -157,7 +157,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: release-${{ github.sha }}
-        release_name: release-${{ github.sha }}
+        release_name: WoPeD-${{ github.sha }}
         draft: false
         prerelease: false
     - id: release-linux-installer
