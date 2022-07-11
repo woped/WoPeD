@@ -69,6 +69,69 @@
 				</configuration>
 				<inherited>false</inherited>
 			</plugin>
+			<plugin>
+				<groupId>com.diffplug.spotless</groupId>
+				<artifactId>spotless-maven-plugin</artifactId>
+				<version>2.22.8</version>
+				<configuration>
+					<!-- optional: limit format enforcement to just the files changed by this feature branch -->
+					<!-- <ratchetFrom>master</ratchetFrom> --><!-- Kommentar ausschalten falls das Formatting nur auf einem bestimmten Branch angewandt werden soll-->
+					<formats>
+						<!-- you can define as many formats as you want, each is independent -->
+						<format>
+							<!-- define the files to apply to -->
+							<includes>
+								<include>*.md</include>
+								<include>.gitignore</include>
+							</includes>
+							<!-- define the steps to apply to those files -->
+							<trimTrailingWhitespace />
+							<endWithNewline />
+							<indent>
+								<tabs>true</tabs>
+								<spacesPerTab>4</spacesPerTab>
+							</indent>
+						</format>
+					</formats>
+					<!-- define a language-specific format -->
+					<java>
+						<!-- no need to specify files, inferred automatically, but you can if you want -->
+						<!-- <includes>
+							<include>src/main/java/**/*.java</include>
+							<include>src/test/java/**/*.java</include>
+						</includes> -->
+
+						<importOrder /> <!-- standard import order -->
+
+						<removeUnusedImports /> <!-- self-explanatory -->
+						<!-- apply a specific flavor of google-java-format and reflow long strings -->
+						<googleJavaFormat>
+							<version>1.8</version> <!-- optional -->
+							<style>GOOGLE</style> <!-- or AOSP (optional) -->
+							<reflowLongStrings>true</reflowLongStrings> <!-- optional (requires at least 1.8) -->
+							<!-- optional: custom group artifact (you probably don't need this) -->
+							<groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact>
+						</googleJavaFormat>
+
+						<!-- make sure every file has the following copyright header.
+					  optionally, Spotless can set copyright years by digging
+					  through git history (see "license" section below) -->
+						<licenseHeader>
+							<content>/* (C)$YEAR */</content> <!-- or <file>${project.basedir}/license-header</file> -->
+						</licenseHeader>
+					</java>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- Runs in compile phase to fail fast in case of formatting issues.-->
+						<id>spotless-check</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
