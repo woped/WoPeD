@@ -176,15 +176,31 @@ jobs:
       with:
         name: macos-installer
 
-# CREATE GITHUB RELEASE AND ADD ASSETS
+    # PREPARE VERSION
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
+    - name: Add SHORT_SHA env property with commit short sha
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+
+    - name: If Version does contain SNAPSHOT add SHORT_SHA
+      if: contains(env.RELEASE_VERSION, 'SNAPSHOT')
+      run: echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)-${{ env.SHORT_SHA }}" >> $GITHUB_ENV
+
+    - name: If Version does not contain SNAPSHOT add nothing
+      if: false == contains(env.RELEASE_VERSION, 'SNAPSHOT')
+      run: echo "VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
+    # CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
       name: Create GitHub release
       uses: actions/create-release@latest
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: WoPeD-${{ github.sha }}
-        release_name: WoPeD-${{ github.sha }}
+        tag_name: WoPeD-${{ env.VERSION }}
+        release_name: WoPeD-${{ env.VERSION }}
         draft: false
         prerelease: false
     - id: release-linux-installer
