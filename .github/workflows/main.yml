@@ -156,6 +156,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-linux-installer, build-windows-installer, build-macos-installer]
     steps:
+    - uses: actions/checkout@v3
 
     # DOWNLOAD INSTALLERS
     - id: download-linux-installer
@@ -186,11 +187,11 @@ jobs:
 
     - name: If Version does contain SNAPSHOT add SHORT_SHA
       if: contains(env.RELEASE_VERSION, 'SNAPSHOT')
-      run: echo "RELEASE_NAME=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)-${{ env.SHORT_SHA }}" >> $GITHUB_ENV
+      run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}-${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
     - name: If Version does not contain SNAPSHOT add nothing
       if: false == contains(env.RELEASE_VERSION, 'SNAPSHOT')
-      run: echo "RELEASE_NAME=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
 
     # CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
@@ -199,8 +200,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: WoPeD-${{ env.RELEASE_NAME }}
-        release_name: WoPeD-${{ env.RELEASE_NAME }}
+        tag_name: ${{ env.RELEASE_NAME }}
+        release_name: ${{ env.RELEASE_NAME }}
         draft: false
         prerelease: false
     - id: release-linux-installer
