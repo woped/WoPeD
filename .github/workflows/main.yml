@@ -18,7 +18,7 @@ jobs:
         name: Setup JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: 17
           distribution: 'temurin'
           settings-path: ${{ github.workspace }}
       - uses: s4u/maven-settings-action@v2.5.0
@@ -50,7 +50,7 @@ jobs:
       name: Setup JDK
       uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: 17
         distribution: 'temurin'
         settings-path: ${{ github.workspace }}
         
@@ -89,7 +89,7 @@ jobs:
       name: Setup JDK
       uses: actions/setup-java@v3
       with:
-        java-version: 11
+        java-version: 17
         distribution: 'temurin'
         settings-path: ${{ github.workspace }}
         
@@ -102,7 +102,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true --no-transfer-progress'
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
         jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
   # SAVE INSTALLER
@@ -127,7 +127,7 @@ jobs:
         name: Setup JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: 17
           distribution: 'temurin'
           settings-path: ${{ github.workspace }}
 
