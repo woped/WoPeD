@@ -9,6 +9,23 @@ on:
     branches: [ "master" ]
 
 jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=woped_WoPeD
+
   build-linux-installer:
     name: Build Installer on Linux
     runs-on: ubuntu-latest
@@ -35,7 +52,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
         jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         ls ./woped-installer/build/distributions
         
@@ -75,7 +92,7 @@ jobs:
     - id: build
       name: Build distribution
       run: |
-        mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true'
+        mvn -U -pl !WoPeD-Installer  clean install '-Dmaven.test.skip=true --no-transfer-progress'
         jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\3.9.1-SNAPSHOT\WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
   # SAVE INSTALLER
@@ -113,7 +130,7 @@ jobs:
       - id: build
         name: Build distribution
         run: |
-          mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true
+          mvn -U -pl !WoPeD-Installer  clean install -Dmaven.test.skip=true --no-transfer-progress
           jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/3.9.1-SNAPSHOT/WoPeD-Starter-3.9.1-SNAPSHOT.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
     # SAVE INSTALLER
       - id: upload-installer
