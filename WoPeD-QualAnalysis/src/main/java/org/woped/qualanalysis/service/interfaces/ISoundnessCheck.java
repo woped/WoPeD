@@ -11,12 +11,18 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
  */
 public interface ISoundnessCheck {
 
-  /** @return a set with all dead transitions */
+  /**
+   * @return a set with all dead transitions
+   */
   public Set<AbstractPetriNetElementModel> getDeadTransitions();
 
-  /** @return a set with all nonLive transitions */
+  /**
+   * @return a set with all nonLive transitions
+   */
   public Set<AbstractPetriNetElementModel> getNonLiveTransitions();
 
-  /** @return a set with for all unbounded places */
+  /**
+   * @return a set with for all unbounded places
+   */
   public Set<AbstractPetriNetElementModel> getUnboundedPlaces();
 }

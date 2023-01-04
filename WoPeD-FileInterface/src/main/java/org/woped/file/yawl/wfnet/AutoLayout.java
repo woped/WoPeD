@@ -7,7 +7,9 @@ package org.woped.file.yawl.wfnet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class AutoLayout {
 
   private WfNet wfNet;

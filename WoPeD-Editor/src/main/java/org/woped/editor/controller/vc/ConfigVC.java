@@ -218,7 +218,9 @@ public class ConfigVC extends JDialog implements IViewController {
    * .TreeSelectionEvent)
    */
   // ######################## GUI COMPONENTS ############################ */
-  /** @return Returns the splitPane. */
+  /**
+   * @return Returns the splitPane.
+   */
   private JTabbedPane getTabbedPane() {
     if (tabbedPane == null) {
       tabbedPane = new JTabbedPane();

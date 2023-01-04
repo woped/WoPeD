@@ -359,7 +359,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
     }
   }
 
-  /** @param l */
+  /**
+   * @param l
+   */
   public void removePoint(Point2D l) {
     int pos = getPointPosition(l, 10);
     AttributeMap map = getAttributes();

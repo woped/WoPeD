@@ -47,7 +47,9 @@ public class MetricsCalculator {
   private MetricsHighlighter highlight = new MetricsHighlighter();
   private boolean algorithmHighlighting =
       ConfigurationManager.getConfiguration().isUseAlgorithmHighlighting();
-  /** @author Tobias Lorentz Key = Variable-Name Value = Variable-Value */
+  /**
+   * @author Tobias Lorentz Key = Variable-Name Value = Variable-Value
+   */
   private HashMap<String, Double> variableValueBuffer;
 
   /**
@@ -481,7 +483,9 @@ public class MetricsCalculator {
         } catch (EnhancementException ee) {
           // The formula was enhanced. The value for this enhanced Formula
           // is stored inside the exception object.
-          /** @author Tobias Lorentz */
+          /**
+           * @author Tobias Lorentz
+           */
           result = ee.getValue();
           // Add this formula to the EnhancementList
           FormulaEnhancementList.getInstance().AddFormula(token, ee.getEnhancedFormula());
@@ -506,7 +510,9 @@ public class MetricsCalculator {
         } catch (EnhancementException ee) {
           // The formula was enhanced. The value for this enhanced Formula
           // is stored inside the exception object.
-          /** @author Tobias Lorentz */
+          /**
+           * @author Tobias Lorentz
+           */
           result = ee.getValue();
           // Add this formula to the EnhancementList
           FormulaEnhancementList.getInstance().AddFormula(token, ee.getEnhancedFormula());

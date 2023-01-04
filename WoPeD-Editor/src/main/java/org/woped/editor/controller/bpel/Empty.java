@@ -2,7 +2,9 @@ package org.woped.editor.controller.bpel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 
-/** @author Alexander Roßwog, Frank Schüler */
+/**
+ * @author Alexander Roßwog, Frank Schüler
+ */
 public class Empty extends BaseActivity<TEmpty> {
 
   public Empty(String Name) {

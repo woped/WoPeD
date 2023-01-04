@@ -10,7 +10,9 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TInvoke;
 
 public class Invoke extends BaseActivity<TInvoke> {
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public Invoke(String Name) {
     super(Name);
   }
@@ -34,7 +36,9 @@ public class Invoke extends BaseActivity<TInvoke> {
     this.fillInvoke(PartnerLink, Operation, PortType, InVariable, OutVariable);
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   protected final void genTActivity(String Name) {
     this.setActivity(TInvoke.Factory.newInstance());
     this.getActivity().setName(Name);
@@ -60,7 +64,9 @@ public class Invoke extends BaseActivity<TInvoke> {
     this.getActivity().setOutputVariable("" + OutVariable);
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
     if (!BPELinvokePanel.class.isInstance(bip)) return this;
     BPELinvokePanel panel = (BPELinvokePanel) bip;
@@ -73,7 +79,9 @@ public class Invoke extends BaseActivity<TInvoke> {
     return this;
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public void setInformationToPanel(BPELadditionalPanel bip) {
     if (!BPELinvokePanel.class.isInstance(bip)) return;
     BPELinvokePanel panel = (BPELinvokePanel) bip;
@@ -85,27 +93,37 @@ public class Invoke extends BaseActivity<TInvoke> {
     panel.setOutVariable("" + this.getActivity().getOutputVariable());
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getPartnerLink() {
     return this.getActivity().getPartnerLink();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getOperation() {
     return this.getActivity().getOperation();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getPortType() {
     return this.getActivity().getPortType().getLocalPart();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getInputVariable() {
     return this.getActivity().getInputVariable();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getOutputVariable() {
     return this.getActivity().getOutputVariable();
   }

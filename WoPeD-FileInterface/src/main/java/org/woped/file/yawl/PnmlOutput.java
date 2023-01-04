@@ -9,7 +9,9 @@ import org.woped.file.yawl.wfnet.Transition;
 import org.woped.file.yawl.wfnet.WfNet;
 import org.woped.file.yawl.wfnet.WfNetNode;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class PnmlOutput {
 
   private WfNet wfNet;

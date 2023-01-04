@@ -47,7 +47,9 @@ public abstract class AbstractElementView extends VertexView {
     setAttributes(new AttributeMap());
   }
 
-  /** @see com.jgraph.graph.CellView#getEditor() */
+  /**
+   * @see com.jgraph.graph.CellView#getEditor()
+   */
   public GraphCellEditor getEditor() {
     return cellEditor;
   }

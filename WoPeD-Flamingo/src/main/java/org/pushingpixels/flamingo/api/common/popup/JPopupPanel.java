@@ -42,7 +42,9 @@ import org.pushingpixels.flamingo.internal.ui.common.popup.PopupPanelUI;
  * @see PopupPanelManager#addPopup(javax.swing.JComponent, javax.swing.Popup, JPopupPanel)
  */
 public abstract class JPopupPanel extends JPanel {
-  /** @see #getUIClassID */
+  /**
+   * @see #getUIClassID
+   */
   public static final String uiClassID = "PopupPanelUI";
 
   /**

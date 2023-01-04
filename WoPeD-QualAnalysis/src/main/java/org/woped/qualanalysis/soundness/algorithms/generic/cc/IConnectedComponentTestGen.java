@@ -10,6 +10,8 @@ import org.woped.qualanalysis.soundness.algorithms.generic.INode;
  */
 public interface IConnectedComponentTestGen<K extends INode<K>> {
 
-  /** @return set of connected components. the connected component is a set of the generic type. */
+  /**
+   * @return set of connected components. the connected component is a set of the generic type.
+   */
   Set<Set<K>> getConnectedComponents();
 }

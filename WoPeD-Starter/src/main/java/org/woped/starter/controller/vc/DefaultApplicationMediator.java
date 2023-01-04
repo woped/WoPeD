@@ -37,7 +37,9 @@ import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.starter.DefaultUserInterface;
 import org.woped.starter.controller.vep.GUIViewEventProcessor;
 
-/** @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br> */
+/**
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ */
 public class DefaultApplicationMediator extends ApplicationMediator {
   public static final int VIEWCONTROLLER_MENUBAR = 11;
   public static final int VIEWCONTROLLER_STATUSBAR = 12;

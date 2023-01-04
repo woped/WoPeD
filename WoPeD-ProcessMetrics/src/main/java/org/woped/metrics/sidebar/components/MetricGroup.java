@@ -16,7 +16,9 @@ import org.woped.metrics.metricsCalculation.StringPair;
 import org.woped.metrics.metricsCalculation.UITypes.UIMetricsGroup;
 import org.woped.metrics.sidebar.SideBar;
 
-/** @author Mathias Gruschinske A metric group contains metric items and combine them to a group */
+/**
+ * @author Mathias Gruschinske A metric group contains metric items and combine them to a group
+ */
 public class MetricGroup extends JPanel {
 
   private static final long serialVersionUID = 1L;

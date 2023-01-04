@@ -24,7 +24,9 @@ package org.woped.editor.action;
 
 import org.woped.core.controller.AbstractViewEvent;
 
-/** @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br> */
+/**
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ */
 @SuppressWarnings("serial")
 public class EditorViewEvent extends AbstractViewEvent {
 

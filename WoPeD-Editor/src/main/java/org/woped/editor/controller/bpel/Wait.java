@@ -3,7 +3,9 @@ package org.woped.editor.controller.bpel;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.woped.gui.translations.Messages;
 
-/** @author Frank Sch�ler, Alexander Ro�wog, Johannes H�ndel */
+/**
+ * @author Frank Sch�ler, Alexander Ro�wog, Johannes H�ndel
+ */
 public class Wait extends BaseActivity<TWait> {
 
   public static final int _NOWAITCONDITIONTYPE = -1;
@@ -19,7 +21,9 @@ public class Wait extends BaseActivity<TWait> {
 
   private int _waitconditiontype = -1;
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public Wait(String Name) {
     super(Name);
   }
@@ -92,13 +96,17 @@ public class Wait extends BaseActivity<TWait> {
     }
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   protected void genTActivity(String Name) {
     this.setActivity(TWait.Factory.newInstance());
     this.getActivity().setName(Name);
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
     if (!BPELwaitPanel.class.isInstance(bip)) return this;
     BPELwaitPanel panel = (BPELwaitPanel) bip;
@@ -115,7 +123,9 @@ public class Wait extends BaseActivity<TWait> {
     return this;
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public void setInformationToPanel(BPELadditionalPanel bip) {
     if (!BPELwaitPanel.class.isInstance(bip)) return;
     // BPELwaitPanel panel = (BPELwaitPanel) bip;
@@ -125,32 +135,44 @@ public class Wait extends BaseActivity<TWait> {
     }
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final boolean hasDeadLine() {
     return this._waitconditiontype == Wait._DEADLINE;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final boolean hasDuration() {
     return this._waitconditiontype == Wait._DURATION;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final boolean hasNoWaitConditionType() {
     return this._waitconditiontype == Wait._NOWAITCONDITIONTYPE;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final boolean hasCondition() {
     return this.hasDeadLine() | this.hasDuration();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final int getWaitConditionType() {
     return this._waitconditiontype;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getDeadLineCondition() {
     if (this.getActivity().isSetUntil()) {
       return this.getActivity().getUntil().getValue();
@@ -158,7 +180,9 @@ public class Wait extends BaseActivity<TWait> {
     return "";
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getDurationCondition() {
     if (this.getActivity().isSetFor()) {
       return this.getActivity().getFor().getValue();

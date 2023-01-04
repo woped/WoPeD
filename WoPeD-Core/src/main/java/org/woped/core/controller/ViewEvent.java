@@ -22,7 +22,9 @@
  */
 package org.woped.core.controller;
 
-/** @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br> */
+/**
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ */
 @SuppressWarnings("serial")
 public class ViewEvent extends AbstractViewEvent {
   public static final int VIEWEVENTTYPE_GUI = 3;

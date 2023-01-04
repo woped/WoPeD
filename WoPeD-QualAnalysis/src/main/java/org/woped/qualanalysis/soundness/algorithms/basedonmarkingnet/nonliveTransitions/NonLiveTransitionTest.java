@@ -14,12 +14,16 @@ import org.woped.qualanalysis.soundness.marking.IMarkingNet;
  */
 public class NonLiveTransitionTest extends AbstractMarkingNetTest implements INonLiveTranstionTest {
 
-  /** @param markingNet MarkingNet the algorithm is based on */
+  /**
+   * @param markingNet MarkingNet the algorithm is based on
+   */
   public NonLiveTransitionTest(IMarkingNet markingNet) {
     super(markingNet);
   }
 
-  /** @see INonLiveTranstionTest#getNonLiveTransitions() */
+  /**
+   * @see INonLiveTranstionTest#getNonLiveTransitions()
+   */
   @Override
   public Set<TransitionNode> getNonLiveTransitions() {
     Set<TransitionNode> nonLiveTransitions = new HashSet<TransitionNode>();

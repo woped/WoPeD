@@ -20,7 +20,9 @@ public class ConnectedComponentTestGen<K extends INode<K>>
     this.nodeNet = nodeNet;
   }
 
-  /** @see IConnectedComponentTestGen#getConnectedComponents() */
+  /**
+   * @see IConnectedComponentTestGen#getConnectedComponents()
+   */
   @Override
   public Set<Set<K>> getConnectedComponents() {
     Set<Set<K>> ccs; // all connected components.

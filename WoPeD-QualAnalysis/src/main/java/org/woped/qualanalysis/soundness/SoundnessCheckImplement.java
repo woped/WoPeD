@@ -12,7 +12,9 @@ import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
-/** @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss */
+/**
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ */
 public class SoundnessCheckImplement implements ISoundnessCheck {
 
   private IEditor editor = null;

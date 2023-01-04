@@ -7,7 +7,9 @@ package org.woped.file.yawl.wfnet;
 import java.util.Collection;
 import java.util.HashMap;
 
-/** @author Christian Klassen */
+/**
+ * @author Christian Klassen
+ */
 public class WfNet {
 
   /** A hash map with the id value of the WfNetNode as key */

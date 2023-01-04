@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/** @author waschtl */
+/**
+ * @author waschtl
+ */
 @SuppressWarnings("serial")
 public class ResourceClassModel implements Serializable {
   private String name = null;
@@ -19,7 +21,9 @@ public class ResourceClassModel implements Serializable {
     this.type = type;
   }
 
-  /** @return Returns the name. */
+  /**
+   * @return Returns the name.
+   */
   public String getName() {
     return name;
   }
@@ -51,17 +55,23 @@ public class ResourceClassModel implements Serializable {
     }
   }
 
-  /** @param name The name to set. */
+  /**
+   * @param name The name to set.
+   */
   public void setName(String name) {
     this.name = name;
   }
 
-  /** @return Returns the type. */
+  /**
+   * @return Returns the type.
+   */
   public int getType() {
     return type;
   }
 
-  /** @param type The type to set. */
+  /**
+   * @param type The type to set.
+   */
   public void setType(int type) {
     this.type = type;
   }

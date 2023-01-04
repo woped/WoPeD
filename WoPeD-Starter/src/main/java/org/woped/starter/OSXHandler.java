@@ -43,7 +43,9 @@ import java.lang.reflect.Proxy;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/** @author ctipper */
+/**
+ * @author ctipper
+ */
 public class OSXHandler implements InvocationHandler {
 
   protected Object targetObject;

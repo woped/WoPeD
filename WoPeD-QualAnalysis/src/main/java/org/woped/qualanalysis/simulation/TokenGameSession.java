@@ -429,7 +429,9 @@ public class TokenGameSession implements Runnable {
     delaytime = dt;
   }
 
-  /** @return Reference to TokenGameController */
+  /**
+   * @return Reference to TokenGameController
+   */
   public TokenGameController getTokenGameController() {
     return tgController;
   }
@@ -438,7 +440,9 @@ public class TokenGameSession implements Runnable {
    * Special Getters: Reference Providers IndexNumbers and so on
    */
 
-  /** @return Reference to the PetriNet */
+  /**
+   * @return Reference to the PetriNet
+   */
   public PetriNetModelProcessor getPetriNet() {
     return PetriNet;
   }

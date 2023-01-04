@@ -98,7 +98,9 @@ public class WoPeDPortView extends PortView {
     }
   }
 
-  /** @see com.jgraph.graph.AbstractCellView#getRenderer() */
+  /**
+   * @see com.jgraph.graph.AbstractCellView#getRenderer()
+   */
   public CellViewRenderer getRenderer() {
     return renderer;
   }

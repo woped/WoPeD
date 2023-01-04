@@ -39,7 +39,9 @@ import org.pushingpixels.flamingo.internal.ui.common.ScrollablePanelUI;
 
 /** ScrollablePanel allows to have scrolling buttons on each side. */
 public class JScrollablePanel<T extends JComponent> extends JPanel {
-  /** @see #getUIClassID */
+  /**
+   * @see #getUIClassID
+   */
   public static final String uiClassID = "ScrollablePanelUI";
 
   private T view;

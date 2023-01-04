@@ -13,12 +13,16 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TSequence;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
 
-/** @author Frank Schüler */
+/**
+ * @author Frank Schüler
+ */
 public class WhileTransition extends TerminalElement<TWhile> {
 
   private AbstractElement<?> begin;
 
-  /** @param */
+  /**
+   * @param
+   */
   public WhileTransition(AbstractElement<?> Begin) {
     super(null);
     this.begin = Begin;

@@ -109,7 +109,9 @@ import org.woped.editor.Constants;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 
-/** @author Tobias Rehnig, Stephanie Obergfell, Jenny Braun, Linda Linsenbolz */
+/**
+ * @author Tobias Rehnig, Stephanie Obergfell, Jenny Braun, Linda Linsenbolz
+ */
 @SuppressWarnings("serial")
 public class PetriNetResourceEditor extends JPanel {
 

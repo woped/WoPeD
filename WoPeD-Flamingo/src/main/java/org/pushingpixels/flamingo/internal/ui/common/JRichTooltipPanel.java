@@ -36,7 +36,9 @@ import org.pushingpixels.flamingo.api.common.RichTooltip;
 public class JRichTooltipPanel extends JPanel {
   protected RichTooltip tooltipInfo;
 
-  /** @see #getUIClassID */
+  /**
+   * @see #getUIClassID
+   */
   public static final String uiClassID = "RichTooltipPanelUI";
 
   public JRichTooltipPanel(RichTooltip tooltipInfo) {

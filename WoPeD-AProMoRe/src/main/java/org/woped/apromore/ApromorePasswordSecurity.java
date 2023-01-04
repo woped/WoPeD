@@ -13,7 +13,9 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
-/** @author Sascha Schneider, Philip Allgaier */
+/**
+ * @author Sascha Schneider, Philip Allgaier
+ */
 public class ApromorePasswordSecurity {
 
   // Encoding

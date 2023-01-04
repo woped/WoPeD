@@ -43,7 +43,9 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 
-/** @author Thomas Pohl */
+/**
+ * @author Thomas Pohl
+ */
 public abstract class Messages {
 
   private static final String BUNDLE_NAME = "Messages"; // $NON-NLS-1$

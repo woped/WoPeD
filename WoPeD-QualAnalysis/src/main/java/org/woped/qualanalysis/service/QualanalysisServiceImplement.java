@@ -11,7 +11,9 @@ import org.woped.qualanalysis.soundness.SoundnessCheckImplement;
  */
 public class QualanalysisServiceImplement extends AbstractQualanalysisService {
 
-  /** @param editor the editor the service is referring to */
+  /**
+   * @param editor the editor the service is referring to
+   */
   public QualanalysisServiceImplement(IEditor editor) {
     super(editor);
     sComponent = new SComponentImplement(editor);

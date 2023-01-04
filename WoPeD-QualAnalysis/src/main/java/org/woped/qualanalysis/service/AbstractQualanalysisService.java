@@ -244,13 +244,17 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     return nonLiveTransitions;
   }
 
-  /** @see IQualanalysisService#isWorkflowNet() */
+  /**
+   * @see IQualanalysisService#isWorkflowNet()
+   */
   @Override
   public boolean isWorkflowNet() {
     return workflowCheck.isWorkflowNet();
   }
 
-  /** @see IQualanalysisService#isSound() */
+  /**
+   * @see IQualanalysisService#isSound()
+   */
   @Override
   public boolean isSound() {
     if (!isWorkflowNet()) {

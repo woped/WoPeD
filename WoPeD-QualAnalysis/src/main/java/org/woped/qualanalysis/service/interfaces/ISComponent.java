@@ -12,9 +12,13 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
  */
 public interface ISComponent {
 
-  /** @return a set with all sComponents */
+  /**
+   * @return a set with all sComponents
+   */
   public Set<List<AbstractPetriNetElementModel>> getSComponents();
 
-  /** @return a set with all not-SCovered */
+  /**
+   * @return a set with all not-SCovered
+   */
   public Set<AbstractPetriNetElementModel> getNotSCovered();
 }

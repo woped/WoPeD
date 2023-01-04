@@ -2,7 +2,9 @@ package org.woped.core.model.petrinet;
 
 import java.io.Serializable;
 
-/** @author waschtl */
+/**
+ * @author waschtl
+ */
 @SuppressWarnings("serial")
 public class ResourceModel implements Serializable {
   private String name = null;
@@ -11,12 +13,16 @@ public class ResourceModel implements Serializable {
     this.name = name;
   }
 
-  /** @return Returns the name. */
+  /**
+   * @return Returns the name.
+   */
   public String getName() {
     return name;
   }
 
-  /** @param name The name to set. */
+  /**
+   * @param name The name to set.
+   */
   public void setName(String name) {
     this.name = name;
   }

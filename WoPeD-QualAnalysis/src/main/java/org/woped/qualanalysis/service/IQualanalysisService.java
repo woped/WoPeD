@@ -14,34 +14,54 @@ import org.woped.qualanalysis.structure.components.ClusterElement;
  */
 public interface IQualanalysisService {
 
-  /** @return a set of all places */
+  /**
+   * @return a set of all places
+   */
   public Set<AbstractPetriNetElementModel> getPlaces();
 
-  /** @return a set of all transitions */
+  /**
+   * @return a set of all transitions
+   */
   public Set<AbstractPetriNetElementModel> getTransitions();
 
-  /** @return a set of all operators */
+  /**
+   * @return a set of all operators
+   */
   public Set<AbstractPetriNetElementModel> getOperators();
 
-  /** @return a set of all subprocesses */
+  /**
+   * @return a set of all subprocesses
+   */
   public Set<AbstractPetriNetElementModel> getSubprocesses();
 
-  /** @return the number of arcs */
+  /**
+   * @return the number of arcs
+   */
   public int getNumArcs();
 
-  /** @return a set of all freeChoiceViolations (each violation is a set of elements) */
+  /**
+   * @return a set of all freeChoiceViolations (each violation is a set of elements)
+   */
   public Set<Set<AbstractPetriNetElementModel>> getFreeChoiceViolations();
 
-  /** @return a set of all wrongly used operators */
+  /**
+   * @return a set of all wrongly used operators
+   */
   public Set<AbstractPetriNetElementModel> getWronglyUsedOperators();
 
-  /** @return a set of all not-connected nodes */
+  /**
+   * @return a set of all not-connected nodes
+   */
   public Set<AbstractPetriNetElementModel> getNotConnectedNodes();
 
-  /** @return a set of all connected components (each component is a set of elements) */
+  /**
+   * @return a set of all connected components (each component is a set of elements)
+   */
   public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents();
 
-  /** @return a set of all not-strongly-connected nodes */
+  /**
+   * @return a set of all not-strongly-connected nodes
+   */
   public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
 
   /**
@@ -51,25 +71,39 @@ public interface IQualanalysisService {
    */
   Set<ArcModel> getArcWeightViolations();
 
-  /** @return a set of strongly connected components (each component is a set of elements) */
+  /**
+   * @return a set of strongly connected components (each component is a set of elements)
+   */
   public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents();
 
-  /** @return a set of all sourcePlaces */
+  /**
+   * @return a set of all sourcePlaces
+   */
   public Set<AbstractPetriNetElementModel> getSourcePlaces();
 
-  /** @return a set of all sinkPlaces */
+  /**
+   * @return a set of all sinkPlaces
+   */
   public Set<AbstractPetriNetElementModel> getSinkPlaces();
 
-  /** @return a set of all sourceTransitions */
+  /**
+   * @return a set of all sourceTransitions
+   */
   public Set<AbstractPetriNetElementModel> getSourceTransitions();
 
-  /** @return a set of all sinkTransitions */
+  /**
+   * @return a set of all sinkTransitions
+   */
   public Set<AbstractPetriNetElementModel> getSinkTransitions();
 
-  /** @return a set of all PTHandles (each handle is a set of elements) */
+  /**
+   * @return a set of all PTHandles (each handle is a set of elements)
+   */
   public Set<Set<AbstractPetriNetElementModel>> getPTHandles();
 
-  /** @return a set of all TPHandles (each handle is a set of elements) */
+  /**
+   * @return a set of all TPHandles (each handle is a set of elements)
+   */
   public Set<Set<AbstractPetriNetElementModel>> getTPHandles();
 
   /**
@@ -79,22 +113,34 @@ public interface IQualanalysisService {
    */
   public HashSet<Set<ClusterElement>> getM_handleClusters();
 
-  /** @return a set of all SComponents (each SComponent is a list of elements) */
+  /**
+   * @return a set of all SComponents (each SComponent is a list of elements)
+   */
   public Set<List<AbstractPetriNetElementModel>> getSComponents();
 
-  /** @return a set of all not-SCovered */
+  /**
+   * @return a set of all not-SCovered
+   */
   public Set<AbstractPetriNetElementModel> getNotSCovered();
 
-  /** @return an set of places with wrong token count in initial marking */
+  /**
+   * @return an set of places with wrong token count in initial marking
+   */
   public Set<AbstractPetriNetElementModel> getWronglyMarkedPlaces();
 
-  /** @return a set of all unbounded places */
+  /**
+   * @return a set of all unbounded places
+   */
   public Set<AbstractPetriNetElementModel> getUnboundedPlaces();
 
-  /** @return a set of all dead transitions */
+  /**
+   * @return a set of all dead transitions
+   */
   public Set<AbstractPetriNetElementModel> getDeadTransitions();
 
-  /** @return a set of all non-live transitions */
+  /**
+   * @return a set of all non-live transitions
+   */
   public Set<AbstractPetriNetElementModel> getNonLiveTransitions();
 
   /**

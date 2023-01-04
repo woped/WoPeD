@@ -103,7 +103,9 @@ import org.pushingpixels.flamingo.internal.ui.common.CommandButtonPanelUI;
  * @author Kirill Grouchnikov
  */
 public class JCommandButtonPanel extends JPanel implements Scrollable {
-  /** @see #getUIClassID */
+  /**
+   * @see #getUIClassID
+   */
   public static final String uiClassID = "CommandButtonPanelUI";
 
   /**

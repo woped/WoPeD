@@ -21,12 +21,16 @@ public class Arc {
     this.trigger = trigger;
   }
 
-  /** @return the Trigger of an succeeding mark */
+  /**
+   * @return the Trigger of an succeeding mark
+   */
   public TransitionNode getTrigger() {
     return this.trigger;
   }
 
-  /** @return the succeeding mark */
+  /**
+   * @return the succeeding mark
+   */
   public IMarking getTarget() {
     return this.target;
   }

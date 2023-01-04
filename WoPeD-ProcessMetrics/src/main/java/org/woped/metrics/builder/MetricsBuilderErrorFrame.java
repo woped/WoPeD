@@ -12,7 +12,9 @@ import org.woped.gui.translations.Messages;
 import org.woped.metrics.exceptions.CalculateFormulaException;
 import org.woped.metrics.exceptions.NestedCalculateFormulaException;
 
-/** @author Tobias Lorentz This UI displays all error which were found by the consistency check */
+/**
+ * @author Tobias Lorentz This UI displays all error which were found by the consistency check
+ */
 public class MetricsBuilderErrorFrame extends JFrame {
   /** */
   private static final long serialVersionUID = -3222238220054903505L;

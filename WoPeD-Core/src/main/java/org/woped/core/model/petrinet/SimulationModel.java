@@ -32,17 +32,23 @@ public class SimulationModel {
     occuredTransitions = HistoryVector;
   }
 
-  /** @return Returns the name. */
+  /**
+   * @return Returns the name.
+   */
   public String getName() {
     return name;
   }
 
-  /** @param name The name to set. */
+  /**
+   * @param name The name to set.
+   */
   public void setName(String name) {
     this.name = name;
   }
 
-  /** @return Returns the vector with the fired transitions */
+  /**
+   * @return Returns the vector with the fired transitions
+   */
   public Vector<TransitionModel> getOccuredTransitions() {
     return occuredTransitions;
   }
@@ -66,12 +72,16 @@ public class SimulationModel {
     return getName();
   }
 
-  /** @return Returns the fingerprint of the petrinet the simulation was created with. */
+  /**
+   * @return Returns the fingerprint of the petrinet the simulation was created with.
+   */
   public String getFingerprint() {
     return fingerprint;
   }
 
-  /** @param fingerprint The fingerprint to set. */
+  /**
+   * @param fingerprint The fingerprint to set.
+   */
   public void setFingerprint(String fingerprint) {
     this.fingerprint = fingerprint;
   }
@@ -80,12 +90,16 @@ public class SimulationModel {
     return id;
   }
 
-  /** @return Returns the date of creation. */
+  /**
+   * @return Returns the date of creation.
+   */
   public Date getSavedDate() {
     return savedDate;
   }
 
-  /** @param creationDate The date of creation to set. */
+  /**
+   * @param creationDate The date of creation to set.
+   */
   public void setSavedDate(Date savedDate) {
     this.savedDate = savedDate;
   }

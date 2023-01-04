@@ -13,7 +13,9 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public class SourceSinkTest extends AbstractLowLevelPetriNetTest implements ISourceSinkTest {
 
-  /** @param lolNetWithoutTStar LowLevelPetriNet (without t*) the algorithm is based on */
+  /**
+   * @param lolNetWithoutTStar LowLevelPetriNet (without t*) the algorithm is based on
+   */
   public SourceSinkTest(ILowLevelPetriNet lolNetWithoutTStar) {
     super(lolNetWithoutTStar);
   }

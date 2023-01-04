@@ -14,31 +14,45 @@ public abstract class BaseActivity<E extends TActivity> {
     this.genTActivity(Name);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final E getActivity() {
     return this._data;
   }
 
-  /** @param ta */
+  /**
+   * @param ta
+   */
   public final void setActivity(E ta) {
     this._data = ta;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getName() {
     return this._data.getName();
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   protected abstract void genTActivity(String Name);
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public abstract BaseActivity<?> saveInformation(BPELadditionalPanel bip);
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public abstract void setInformationToPanel(BPELadditionalPanel bip);
 
-  /** @return String */
+  /**
+   * @return String
+   */
   public String toString() {
     return this.getName();
   }

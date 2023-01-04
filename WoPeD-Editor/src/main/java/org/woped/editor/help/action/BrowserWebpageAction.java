@@ -30,7 +30,9 @@ import java.awt.event.ActionEvent;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.help.HelpBrowser;
 
-/** @author Thomas Freytag */
+/**
+ * @author Thomas Freytag
+ */
 @SuppressWarnings("serial")
 public class BrowserWebpageAction extends WoPeDAction {
   private static final String PROPERTIES_PREFIX = "Action.Browser.WWW";

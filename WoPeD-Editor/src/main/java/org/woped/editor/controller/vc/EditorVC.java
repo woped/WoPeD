@@ -1518,7 +1518,9 @@ public class EditorVC
     }
   }
 
-  /** @see KeyListener#keyReleased(java.awt.event.KeyEvent) */
+  /**
+   * @see KeyListener#keyReleased(java.awt.event.KeyEvent)
+   */
   public void keyReleased(KeyEvent e) {
     // setKeyPressed(false);
     getGraph().setCursor(Cursor.getDefaultCursor());
@@ -1527,7 +1529,9 @@ public class EditorVC
     smartEditActive = true;
   }
 
-  /** @see KeyListener#keyTyped(java.awt.event.KeyEvent) */
+  /**
+   * @see KeyListener#keyTyped(java.awt.event.KeyEvent)
+   */
   public void keyTyped(KeyEvent e) {}
 
   /**
@@ -1902,7 +1906,9 @@ public class EditorVC
     return modelProcessor;
   }
 
-  /** @param modelProcessor The modelProcessor to set. */
+  /**
+   * @param modelProcessor The modelProcessor to set.
+   */
   public void setModelProcessor(PetriNetModelProcessor modelProcessor) {
     this.modelProcessor = modelProcessor;
     getGraph().drawNet(modelProcessor);

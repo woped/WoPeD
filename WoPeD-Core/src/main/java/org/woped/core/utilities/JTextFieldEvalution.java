@@ -30,7 +30,9 @@ public class JTextFieldEvalution implements KeyListener {
     this.setEvaluateByKeyTyped(EvaluateByKeyTyped);
   }
 
-  /** @param EvaluateByKeyPressed */
+  /**
+   * @param EvaluateByKeyPressed
+   */
   public void setEvaluateByKeyPressed(IEvaluationFilter EvaluateByKeyPressed) {
     if (EvaluateByKeyPressed != null) {
       this._evaluateByKeyPressed = EvaluateByKeyPressed;
@@ -38,7 +40,9 @@ public class JTextFieldEvalution implements KeyListener {
     }
   }
 
-  /** @param EvaluateByKeyReleased */
+  /**
+   * @param EvaluateByKeyReleased
+   */
   public void setEvaluateByKeyReleased(IEvaluationFilter EvaluateByKeyReleased) {
     if (EvaluateByKeyReleased != null) {
       this._evaluateByKeyReleased = EvaluateByKeyReleased;
@@ -46,7 +50,9 @@ public class JTextFieldEvalution implements KeyListener {
     }
   }
 
-  /** @param EvaluateByKeyTyped */
+  /**
+   * @param EvaluateByKeyTyped
+   */
   public void setEvaluateByKeyTyped(IEvaluationFilter EvaluateByKeyTyped) {
     if (EvaluateByKeyTyped != null) {
       this._evaluateByKeyTyped = EvaluateByKeyTyped;
@@ -87,13 +93,17 @@ public class JTextFieldEvalution implements KeyListener {
     this.doing(this._evaluateByKeyTyped, e);
   }
 
-  /** @param filter */
+  /**
+   * @param filter
+   */
   private final void doing(IEvaluationFilter filter, KeyEvent e) {
     if (this._acceptedInput) filter.doingByAccept(e);
     else filter.doingByFault(e);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final boolean isInputAccepted() {
     return this._acceptedInput;
   }

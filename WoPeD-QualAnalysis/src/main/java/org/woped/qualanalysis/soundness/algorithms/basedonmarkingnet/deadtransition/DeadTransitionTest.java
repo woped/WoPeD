@@ -14,12 +14,16 @@ import org.woped.qualanalysis.soundness.marking.IMarkingNet;
  */
 public class DeadTransitionTest extends AbstractMarkingNetTest implements IDeadTransitionTest {
 
-  /** @param markingNet MarkingNet the algorithm is based on */
+  /**
+   * @param markingNet MarkingNet the algorithm is based on
+   */
   public DeadTransitionTest(IMarkingNet markingNet) {
     super(markingNet);
   }
 
-  /** @see IDeadTransitionTest#getDeadTransitions() */
+  /**
+   * @see IDeadTransitionTest#getDeadTransitions()
+   */
   @Override
   public Set<TransitionNode> getDeadTransitions() {
     Set<TransitionNode> switchableTransitions = new HashSet<TransitionNode>();

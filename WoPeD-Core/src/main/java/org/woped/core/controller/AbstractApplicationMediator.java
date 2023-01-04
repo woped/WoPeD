@@ -39,7 +39,9 @@ import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 
-/** @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br> */
+/**
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ */
 public abstract class AbstractApplicationMediator implements IViewListener {
   private HashMap<String, IViewController> viewControllerMap = null;
   private VEPController vepController = null;

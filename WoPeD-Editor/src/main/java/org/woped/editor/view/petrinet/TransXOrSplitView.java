@@ -94,16 +94,22 @@ public class TransXOrSplitView extends TransSimpleView {
       drawTime(g2, d);
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return TransXOrSplitView.this.isActivated();
     }
   }
 
-  /** @see org.woped.editor.core.view.AbstractElementView#paint() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#paint()
+   */
   public void paint() {}
 
-  /** @see org.woped.editor.core.view.AbstractElementView#refresh() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#refresh()
+   */
   public void refresh() {}
 
   public boolean isActivated() {

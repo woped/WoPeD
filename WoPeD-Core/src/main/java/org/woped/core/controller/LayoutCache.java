@@ -29,7 +29,9 @@ import org.jgraph.graph.GraphModel;
 import org.woped.core.Constants;
 import org.woped.core.utilities.LoggerManager;
 
-/** @author Thomas Pohl TODO: DOCUMENTATION (xraven) */
+/**
+ * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
+ */
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *     <br>

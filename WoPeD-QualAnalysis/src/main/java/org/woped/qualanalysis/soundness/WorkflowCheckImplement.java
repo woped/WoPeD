@@ -13,7 +13,9 @@ import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
 
-/** @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss */
+/**
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ */
 public class WorkflowCheckImplement implements IWorkflowCheck {
 
   private IEditor editor = null;
@@ -32,7 +34,9 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     this.editor = editor;
   }
 
-  /** @return the LowLevelPetriNet without t* (if not existing it will be instantiated) */
+  /**
+   * @return the LowLevelPetriNet without t* (if not existing it will be instantiated)
+   */
   public LowLevelPetriNet getLolNetWithoutTStar() {
     if (lolNetWithoutTStar == null) {
       lolNetWithoutTStar =
@@ -41,7 +45,9 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     return lolNetWithoutTStar;
   }
 
-  /** @return the LowLevelPetriNet without t* (if not existing it will be instantiated) */
+  /**
+   * @return the LowLevelPetriNet without t* (if not existing it will be instantiated)
+   */
   public LowLevelPetriNet getLolNetWithTStar() {
     if (lolNetWithTStar == null) {
       lolNetWithTStar =
@@ -50,7 +56,9 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     return lolNetWithTStar;
   }
 
-  /** @return the SourceSinkTest (if not existing it will be instantiated) */
+  /**
+   * @return the SourceSinkTest (if not existing it will be instantiated)
+   */
   public ISourceSinkTest getSourceSinkTest() {
     if (sourceSinkTest == null) {
       sourceSinkTest = AlgorithmFactory.createSourceSinkTest(getLolNetWithoutTStar());

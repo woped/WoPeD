@@ -10,7 +10,9 @@ import org.woped.core.controller.IEditor;
  */
 public class LowLevelPetriNetWithoutTStarBuilder extends AbstractLowLevelPetriNetBuilderUsingSA {
 
-  /** @param editor source object. */
+  /**
+   * @param editor source object.
+   */
   public LowLevelPetriNetWithoutTStarBuilder(IEditor editor) {
     super(editor);
     createLowLevelPetriNet();

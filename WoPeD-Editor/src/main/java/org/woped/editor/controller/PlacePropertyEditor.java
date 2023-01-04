@@ -44,7 +44,9 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-/** @author tfreytag */
+/**
+ * @author tfreytag
+ */
 @SuppressWarnings("serial")
 public class PlacePropertyEditor extends JDialog {
   // General
@@ -341,7 +343,9 @@ public class PlacePropertyEditor extends JDialog {
    *
    * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
    */
-  /** @return Returns the editor. */
+  /**
+   * @return Returns the editor.
+   */
   public EditorVC getEditor() {
     return editor;
   }

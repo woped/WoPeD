@@ -80,7 +80,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     boolean newsetting = useBox.isSelected();
     boolean oldsetting = ConfigurationManager.getConfiguration().getProcess2TextUse();
@@ -118,7 +120,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
 
     getServerURLText().setText(ConfigurationManager.getConfiguration().getProcess2TextServerHost());

@@ -1494,7 +1494,9 @@ public class PNMLImport {
             == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE;
   }
 
-  /** @return Returns the mediator. */
+  /**
+   * @return Returns the mediator.
+   */
   protected AbstractApplicationMediator getMediator() {
     return mediator;
   }

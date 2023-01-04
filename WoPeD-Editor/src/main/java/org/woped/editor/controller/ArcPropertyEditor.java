@@ -331,7 +331,9 @@ public class ArcPropertyEditor extends JDialog {
     getEditor().updateNet();
   }
 
-  /** @return Returns the editor. */
+  /**
+   * @return Returns the editor.
+   */
   public EditorVC getEditor() {
     return editor;
   }

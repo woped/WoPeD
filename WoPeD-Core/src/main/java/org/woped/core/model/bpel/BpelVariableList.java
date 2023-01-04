@@ -51,12 +51,16 @@ public class BpelVariableList {
     return list;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public HashSet<BpelVariable> getBpelVariableList() {
     return this._list;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public HashMap<String, String> getListOfVariablesWithType() {
     HashMap<String, String> list = new HashMap<String, String>();
     Iterator<BpelVariable> iter = this._list.iterator();
@@ -67,7 +71,9 @@ public class BpelVariableList {
     return list;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public TVariables getBpelCode() {
     TVariables list = this.genVariableList();
     Iterator<BpelVariable> iter = this._list.iterator();
@@ -77,7 +83,9 @@ public class BpelVariableList {
     return list;
   }
 
-  /** @param arg */
+  /**
+   * @param arg
+   */
   public void removeVariable(TVariable arg) {
     // TODO noch schreiben
   }

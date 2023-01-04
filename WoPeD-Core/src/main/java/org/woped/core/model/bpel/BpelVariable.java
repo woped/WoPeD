@@ -34,13 +34,17 @@ public class BpelVariable {
     this._data.setMessageType(new QName(namespace, type));
   }
 
-  /** @param arg */
+  /**
+   * @param arg
+   */
   public BpelVariable(TVariable arg) {
     this();
     this._data.set(arg);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private TVariable genTVariable() {
     return TVariable.Factory.newInstance();
   }
@@ -93,22 +97,30 @@ public class BpelVariable {
     return list;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getName() {
     return this._data.getName();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getType() {
     return this._data.getMessageType().getLocalPart();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String toString() {
     return this.getName();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public boolean equals(Object obj) {
     if (!BpelVariable.class.isInstance(obj)) return false;
     if (this.getName().compareToIgnoreCase(((BpelVariable) obj).getName()) != 0) return false;
@@ -124,7 +136,9 @@ public class BpelVariable {
     return false;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public TVariable getBpelCode() {
     return this._data;
   }

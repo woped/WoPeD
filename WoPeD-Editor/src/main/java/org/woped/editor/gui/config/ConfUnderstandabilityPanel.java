@@ -56,7 +56,9 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     setUnderstandColors();
     ConfigurationManager.getConfiguration()
@@ -66,7 +68,9 @@ public class ConfUnderstandabilityPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfigruation() */
+  /**
+   * @see AbstractConfPanel#readConfigruation()
+   */
   public void readConfiguration() {
     ConfigurationManager.getConfiguration().setColorOn(false);
     for (int i = 0; i < 16; i++) {

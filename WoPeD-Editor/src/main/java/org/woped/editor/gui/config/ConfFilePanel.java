@@ -105,7 +105,9 @@ public class ConfFilePanel extends AbstractConfPanel {
     setMainPanel(contentPanel);
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     String fn = getHomeDirTextField().getText();
 
@@ -135,7 +137,9 @@ public class ConfFilePanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     String hd = ConfigurationManager.getConfiguration().getHomedir();
     String dhd = ConfigurationManager.getConfiguration().getDefaultHomedir();

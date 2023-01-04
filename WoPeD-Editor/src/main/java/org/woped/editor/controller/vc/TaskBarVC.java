@@ -21,7 +21,9 @@ import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;
 
-/** @author ABBASA */
+/**
+ * @author ABBASA
+ */
 @SuppressWarnings("serial")
 public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 
@@ -177,7 +179,9 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
     }
   }
 
-  /** @return Return selected editor */
+  /**
+   * @return Return selected editor
+   */
   public IEditor getSelectedEditor() {
     return selectedEditor;
   }

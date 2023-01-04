@@ -4,7 +4,9 @@
  */
 package org.woped.file.yawl;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class YawlArc {
 
   private String flowFrom = "";

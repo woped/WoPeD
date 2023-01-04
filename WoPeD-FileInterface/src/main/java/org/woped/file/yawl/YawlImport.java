@@ -41,7 +41,9 @@ import org.woped.file.yawl.wfnet.Transition.JoinSplitType;
 import org.woped.file.yawl.wfnet.WfNet;
 import org.woped.file.yawl.wfnet.WfNetNode;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class YawlImport {
 
   private WfNet wfNet = new WfNet();

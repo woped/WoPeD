@@ -14,7 +14,9 @@ import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.sidebar.assistant.components.ClickLabel;
 
-/** @author Mathias Gruschinske own class for Net Statistics from QualAnalysis */
+/**
+ * @author Mathias Gruschinske own class for Net Statistics from QualAnalysis
+ */
 public class NetStatistic extends JPanel {
 
   private static final long serialVersionUID = 1L;
@@ -26,7 +28,9 @@ public class NetStatistic extends JPanel {
   protected static final Font ITEMS_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_FONT;
   protected static final String SUB_POINT = " - ";
 
-  /** @param editor sets the instance variable for the statistics */
+  /**
+   * @param editor sets the instance variable for the statistics
+   */
   public NetStatistic(IEditor editor) {
 
     super(new BorderLayout());

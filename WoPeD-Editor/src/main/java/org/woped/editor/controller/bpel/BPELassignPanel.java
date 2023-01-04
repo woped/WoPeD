@@ -114,7 +114,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
     add(getNewToVariableButton(), c);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private JLabel getFromVariableLabel() {
     if (fromVariableLabel == null) {
       fromVariableLabel = new JLabel("Variable:");
@@ -123,7 +125,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
     return fromVariableLabel;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private JComboBox getFromVariableComboBox() {
     if (fromVariableComboBox == null) {
       fromVariableComboBox = new JComboBox();
@@ -133,7 +137,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
     return fromVariableComboBox;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private JButton getNewFromVariableButton() {
     if (newFromVariableButton == null) {
       newFromVariableButton = new JButton(NEW);
@@ -162,7 +168,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
     return newFromVariableButton;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private JLabel getToVariableLabel() {
     if (toVariableLabel == null) {
       toVariableLabel = new JLabel("Variable:");
@@ -180,7 +188,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
     return toVariableComboBox;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private JButton getNewToVariableButton() {
     if (newToVariableButton == null) {
       newToVariableButton = new JButton(NEW);
@@ -220,13 +230,17 @@ public class BPELassignPanel extends BPELadditionalPanel {
     return ((BpelVariable) fromVariableComboBox.getSelectedItem()).getName();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getToVariable() {
     if (toVariableComboBox.getSelectedItem() == null) return "";
     return toVariableComboBox.getSelectedItem().toString();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public boolean allFieldsFilled() {
     if (fromVariableComboBox.getSelectedIndex() == 0
         || toVariableComboBox.getSelectedIndex() == 0) {
@@ -246,7 +260,9 @@ public class BPELassignPanel extends BPELadditionalPanel {
             .findBpelVariableByName(variable));
   }
 
-  /** @param variable */
+  /**
+   * @param variable
+   */
   public void setToVariable(String variable) {
     toVariableComboBox.addItem(
         this.t_editor

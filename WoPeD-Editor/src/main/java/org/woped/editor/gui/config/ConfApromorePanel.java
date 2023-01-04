@@ -141,7 +141,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() saves actual configuration in xml-file */
+  /**
+   * @see AbstractConfPanel#applyConfiguration() saves actual configuration in xml-file
+   */
   public boolean applyConfiguration() {
 
     boolean newsetting = useBox.isSelected();
@@ -233,7 +235,9 @@ public class ConfApromorePanel extends AbstractConfPanel {
     }
   }
 
-  /** @see AbstractConfPanel#readConfiguration() reads actual configuration from xml-file */
+  /**
+   * @see AbstractConfPanel#readConfiguration() reads actual configuration from xml-file
+   */
   public void readConfiguration() {
     getUseBox().setSelected(ConfigurationManager.getConfiguration().getApromoreUse());
     if (ConfigurationManager.getConfiguration().isSetApromoreServers())

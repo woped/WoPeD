@@ -12,7 +12,9 @@ public abstract class AbstractEventProcessor {
     this.mediator = mediator;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public AbstractApplicationMediator getMediator() {
     return mediator;
   }

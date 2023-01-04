@@ -26,7 +26,9 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA
   protected StructuralAnalysis sa;
   protected Boolean isSubprocess;
 
-  /** @param editor source object */
+  /**
+   * @param editor source object
+   */
   public AbstractLowLevelPetriNetBuilderUsingSA(IEditor editor) {
     super(editor);
     isSubprocess = editor.isSubprocessEditor();

@@ -9,7 +9,9 @@ import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
-/** @author Sebastian Fu� */
+/**
+ * @author Sebastian Fu�
+ */
 public class LowLevelNetTest {
 
   public LowLevelNetTest() {
@@ -23,7 +25,9 @@ public class LowLevelNetTest {
     putOut(markingNet);
   }
 
-  /** @param args */
+  /**
+   * @param args
+   */
   public static void main(String[] args) {
     new LowLevelNetTest();
   }

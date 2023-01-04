@@ -12,7 +12,9 @@ public class NestedCalculateFormulaException extends CalculateFormulaException {
 
   private ArrayList<CalculateFormulaException> errorList;
 
-  /** @param errorList */
+  /**
+   * @param errorList
+   */
   public NestedCalculateFormulaException(ArrayList<CalculateFormulaException> errorList) {
     super();
     this.errorList = errorList;

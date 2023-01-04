@@ -54,7 +54,9 @@ import org.pushingpixels.flamingo.internal.ui.common.popup.PopupPanelUI;
  * @author Kirill Grouchnikov
  */
 public class JCommandPopupMenu extends JPopupPanel {
-  /** @see #getUIClassID */
+  /**
+   * @see #getUIClassID
+   */
   public static final String uiClassID = "CommandPopupMenuUI";
 
   /**

@@ -21,7 +21,9 @@ public class AntlrException extends CalculateFormulaException {
     this.shortText = shortText;
     AntlrException.tokens = tokens;
   }
-  /** @param exception */
+  /**
+   * @param exception
+   */
   public AntlrException(RecognitionException exception) {
     super();
     this.exception = exception;
@@ -33,11 +35,15 @@ public class AntlrException extends CalculateFormulaException {
   public String getLocalizedMessage() {
     return shortText;
   }
-  /** @return the exception */
+  /**
+   * @return the exception
+   */
   public RecognitionException getException() {
     return exception;
   }
-  /** @return the shortText */
+  /**
+   * @return the shortText
+   */
   public String getShortText() {
     return shortText;
   }

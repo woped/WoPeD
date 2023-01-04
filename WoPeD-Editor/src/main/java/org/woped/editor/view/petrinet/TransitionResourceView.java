@@ -18,12 +18,16 @@ import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.TransitionResourceModel;
 import org.woped.core.view.AbstractElementView;
 
-/** @author waschtl */
+/**
+ * @author waschtl
+ */
 @SuppressWarnings("serial")
 public class TransitionResourceView extends AbstractElementView {
   private TransitionResourceRenderer renderer = new TransitionResourceRenderer();
 
-  /** @param cell */
+  /**
+   * @param cell
+   */
   public TransitionResourceView(Object cell) {
     super(cell);
   }

@@ -111,27 +111,37 @@ public class Partnerlink {
     return this.partnerLink.getMyRole();
   }
 
-  /** @param URL */
+  /**
+   * @param URL
+   */
   public void setWsdlUrl(String URL) {
     this.wsdlurl = URL;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getWsdlUrl() {
     return this.wsdlurl;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public TPartnerLink getTPartnerlink() {
     return this.partnerLink;
   }
 
-  /** @return String */
+  /**
+   * @return String
+   */
   public String toString() {
     return this.partnerLink.getName();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public boolean equals(Object obj) {
     if (!Partnerlink.class.isInstance(obj)) return false;
     if (this.toString().compareToIgnoreCase(((Partnerlink) obj).toString()) != 0) return false;

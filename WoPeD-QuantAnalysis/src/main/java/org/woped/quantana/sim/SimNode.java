@@ -93,37 +93,51 @@ public class SimNode {
     return has_resource;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setgroup(String newVal) {
     group = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setid(String newVal) {
     id = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setname(String newVal) {
     name = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setrole(String newVal) {
     role = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void settime(double newVal) {
     time = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void settimeunit(int newVal) {
     timeunit = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void settype(byte newVal) {
     type = newVal;
   }
@@ -132,17 +146,23 @@ public class SimNode {
     return type;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setandsplit(boolean newVal) {
     is_and_split = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setandjoin(boolean newVal) {
     is_and_join = newVal;
   }
 
-  /** @param newVal */
+  /**
+   * @param newVal
+   */
   public void setHasResource(boolean newVal) {
     has_resource = newVal;
   }

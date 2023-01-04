@@ -123,7 +123,9 @@ public class Marking implements IMarking {
     return marking;
   }
 
-  /** @param position position of the place being unlimited */
+  /**
+   * @param position position of the place being unlimited
+   */
   public void setPlaceUnlimited(Integer position) {
     this.placeUnlimited[position] = true;
     // Reset token count for the new unlimited place to ensure we generate
@@ -150,30 +152,40 @@ public class Marking implements IMarking {
     return -1;
   }
 
-  /** @return the predecessor (marking) */
+  /**
+   * @return the predecessor (marking)
+   */
   @Override
   public IMarking getPredecessor() {
     return predecessor;
   }
 
-  /** @param predecessor the predecessor to set */
+  /**
+   * @param predecessor the predecessor to set
+   */
   @Override
   public void setPredecessor(IMarking predecessor) {
     this.predecessor = predecessor;
   }
 
-  /** @return the arcs that point to the successors (Set<Arc>) */
+  /**
+   * @return the arcs that point to the successors (Set<Arc>)
+   */
   @Override
   public Set<Arc> getSuccessors() {
     return this.successors;
   }
 
-  /** @return the tokens Do not manipulate the returned array! */
+  /**
+   * @return the tokens Do not manipulate the returned array!
+   */
   public int[] getTokens() {
     return this.tokens;
   }
 
-  /** @see IMarking#getActivatedTransitions() */
+  /**
+   * @see IMarking#getActivatedTransitions()
+   */
   @Override
   public HashSet<String> getActivatedTransitions() {
     HashSet<String> transitions = new HashSet<>();
@@ -322,12 +334,16 @@ public class Marking implements IMarking {
     }
   }
 
-  /** @return the isInitial */
+  /**
+   * @return the isInitial
+   */
   public boolean isInitial() {
     return isInitial;
   }
 
-  /** @param isInitial the isInitial to set */
+  /**
+   * @param isInitial the isInitial to set
+   */
   @Override
   public void setInitial(boolean isInitial) {
     this.isInitial = isInitial;
@@ -356,13 +372,17 @@ public class Marking implements IMarking {
     return false;
   }
 
-  /** @return the token-array as string */
+  /**
+   * @return the token-array as string
+   */
   @Override
   public String toString() {
     return asTokenVectorString();
   }
 
-  /** @see INode#getSuccessorNodes() */
+  /**
+   * @see INode#getSuccessorNodes()
+   */
   public Set<IMarking> getSuccessorNodes() {
     Set<IMarking> set = new HashSet<>();
     for (Arc arc : getSuccessors()) {
@@ -371,7 +391,9 @@ public class Marking implements IMarking {
     return set;
   }
 
-  /** @see INode#getPredecessorNodes() */
+  /**
+   * @see INode#getPredecessorNodes()
+   */
   public Set<IMarking> getPredecessorNodes() {
     Set<IMarking> set = new HashSet<>();
     set.add(predecessor);

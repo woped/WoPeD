@@ -82,7 +82,9 @@ public class SideBar extends PermanentTabbedPane {
     return startPage;
   }
 
-  /** @return new Instance of the ExpertPage */
+  /**
+   * @return new Instance of the ExpertPage
+   */
   private JPanel createExpertPanel() {
     return new ExpertPage(editor, mediator, qualanService);
   }

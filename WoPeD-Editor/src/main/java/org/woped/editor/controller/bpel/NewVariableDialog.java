@@ -19,7 +19,9 @@ import org.woped.editor.controller.TransitionPropertyEditor;
 import org.woped.editor.gui.PopUpDialog;
 import org.woped.gui.translations.Messages;
 
-/** @author Frank Sch���ler, Ester Landes */
+/**
+ * @author Frank Sch���ler, Ester Landes
+ */
 @SuppressWarnings("serial")
 public class NewVariableDialog extends JDialog {
 

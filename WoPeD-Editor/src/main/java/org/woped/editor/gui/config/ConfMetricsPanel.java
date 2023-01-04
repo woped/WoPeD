@@ -35,7 +35,9 @@ public class ConfMetricsPanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     if (useMetricsCheckBox.isSelected() != ConfigurationManager.getConfiguration().isUseMetrics()) {
       JOptionPane.showMessageDialog(
@@ -71,7 +73,9 @@ public class ConfMetricsPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     if (ConfigurationManager.getConfiguration().isUseMetrics())
       useMetricsCheckBox.setSelected(true);

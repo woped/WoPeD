@@ -577,17 +577,23 @@ public class ModelElementContainer implements Serializable {
 
   /* Bpel extension */
 
-  /** @return */
+  /**
+   * @return
+   */
   public BpelVariableList getVariableList() {
     return this.variablesList;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public PartnerlinkList getPartnerlinkList() {
     return this.partnerLinkList;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public TPartnerLinks getTPartnerLinkList() {
     return this.partnerLinkList.getBpelCode();
   }
@@ -699,7 +705,9 @@ public class ModelElementContainer implements Serializable {
     return false;
   }
 
-  /** @param arg */
+  /**
+   * @param arg
+   */
   public void addVariable(TVariable arg) {
     this.variablesList.addVariable(arg);
   }
@@ -729,22 +737,30 @@ public class ModelElementContainer implements Serializable {
     return this.variablesList.findBpelVaraibleByName(Name);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String[] getBpelVariableNameList() {
     return this.variablesList.getVariableNameArray();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public HashSet<BpelVariable> getBpelVariableList() {
     return this.variablesList.getBpelVariableList();
   }
 
-  /** @Param: Name, URL */
+  /**
+   * @Param: Name, URL
+   */
   public void addUddiVariable(String name, String url) {
     this.uddiVariableList.addVariable(name, url);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String[] getUddiVariableNameList() {
     return this.uddiVariableList.getVariableNameArray();
   }

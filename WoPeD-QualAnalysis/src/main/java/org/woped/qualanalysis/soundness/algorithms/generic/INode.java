@@ -8,9 +8,13 @@ import java.util.Set;
  * @param <K> generic node type
  */
 public interface INode<K> {
-  /** @return all successors. */
+  /**
+   * @return all successors.
+   */
   Set<K> getSuccessorNodes();
 
-  /** @return all predecessors. */
+  /**
+   * @return all predecessors.
+   */
   Set<K> getPredecessorNodes();
 }

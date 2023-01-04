@@ -12,22 +12,34 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
  */
 public interface IWorkflowCheck {
 
-  /** @return a set with all source places */
+  /**
+   * @return a set with all source places
+   */
   public Set<AbstractPetriNetElementModel> getSourcePlaces();
 
-  /** @return a set with all sink places */
+  /**
+   * @return a set with all sink places
+   */
   public Set<AbstractPetriNetElementModel> getSinkPlaces();
 
-  /** @return a set with all transitions with empty preset */
+  /**
+   * @return a set with all transitions with empty preset
+   */
   public Set<AbstractPetriNetElementModel> getSourceTransitions();
 
-  /** @return a set with all transitions with empty postset */
+  /**
+   * @return a set with all transitions with empty postset
+   */
   public Set<AbstractPetriNetElementModel> getSinkTransitions();
 
-  /** @return a set with all nodes with empty preset and empty postset */
+  /**
+   * @return a set with all nodes with empty preset and empty postset
+   */
   public Set<AbstractPetriNetElementModel> getNotConnectedNodes();
 
-  /** @return a set with all nodes not being strongly connected */
+  /**
+   * @return a set with all nodes not being strongly connected
+   */
   public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
 
   /**
@@ -37,12 +49,18 @@ public interface IWorkflowCheck {
    */
   Set<ArcModel> getArcWeightViolations();
 
-  /** @return a set with strongly connected components. */
+  /**
+   * @return a set with strongly connected components.
+   */
   public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents();
 
-  /** @return a set with strongly connected components. */
+  /**
+   * @return a set with strongly connected components.
+   */
   public Set<Set<AbstractPetriNetElementModel>> getConnectedComponents();
 
-  /** @return true if workflow-property is given */
+  /**
+   * @return true if workflow-property is given
+   */
   public boolean isWorkflowNet();
 }

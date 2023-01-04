@@ -10,7 +10,9 @@ import org.woped.qualanalysis.soundness.algorithms.generic.INode;
  */
 public interface IStronglyConnectedComponentTestGen<K extends INode<K>> {
 
-  /** @return true, if only one strongly connected component exist. */
+  /**
+   * @return true, if only one strongly connected component exist.
+   */
   boolean isStronglyConnected();
 
   /**

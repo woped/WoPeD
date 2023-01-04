@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 
-/** @author Frank Schüler */
+/**
+ * @author Frank Schüler
+ */
 public class IntegerFilter implements IEvaluationFilter {
 
   private JTextField _source = null;

@@ -83,7 +83,9 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-/** @author waschtl */
+/**
+ * @author waschtl
+ */
 @SuppressWarnings("serial")
 public class TransitionPropertyEditor extends JDialog implements ActionListener, IDialog {
 
@@ -1968,7 +1970,9 @@ public class TransitionPropertyEditor extends JDialog implements ActionListener,
     }
   }
 
-  /** @return Returns the editor. */
+  /**
+   * @return Returns the editor.
+   */
   public EditorVC getEditor() {
     return editor;
   }

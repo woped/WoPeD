@@ -14,10 +14,14 @@ import javax.xml.bind.JAXBException;
 import org.woped.file.yawl.wfnet.AutoLayout;
 import org.woped.file.yawl.wfnet.WfNet;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class YawlInterface {
 
-  /** @param args the command line arguments */
+  /**
+   * @param args the command line arguments
+   */
   public static String importYawlFile(File file) {
     // TODO code application logic here
 

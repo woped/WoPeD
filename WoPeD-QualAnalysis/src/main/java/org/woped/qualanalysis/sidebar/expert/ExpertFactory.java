@@ -21,29 +21,39 @@ public class ExpertFactory extends DefaultMutableTreeNode {
 
   private static final String prefix = "AnalysisSideBar.";
 
-  /** @return node containing tree title */
+  /**
+   * @return node containing tree title
+   */
   protected static DefaultMutableTreeNode getAnalysisInfo() {
     return new NetInfo(Messages.getString(prefix + "Title"));
   }
 
-  /** @return node containing all information from structural analysis of the petri net */
+  /**
+   * @return node containing all information from structural analysis of the petri net
+   */
   protected static DefaultMutableTreeNode getStructuralInfo() {
     return new NetInfo(Messages.getString(prefix + "StructuralAnalysis"));
   }
 
-  /** @return node containing all basic information about the petri net */
+  /**
+   * @return node containing all basic information about the petri net
+   */
   protected static DefaultMutableTreeNode getNetStatisticsInfo() {
     return new NetInfo(Messages.getString(prefix + "NetStatistics"));
   }
 
-  /** @return node containing information about places */
+  /**
+   * @return node containing information about places
+   */
   protected static DefaultMutableTreeNode getPlacesInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumPlaces") + ": " + qualanService.getPlaces().size(),
         qualanService.getPlaces().iterator());
   }
 
-  /** @return node containing information about transitions */
+  /**
+   * @return node containing information about transitions
+   */
   protected static DefaultMutableTreeNode getTransitionsInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumTransitions")
@@ -52,14 +62,18 @@ public class ExpertFactory extends DefaultMutableTreeNode {
         qualanService.getTransitions().iterator());
   }
 
-  /** @return node containing information about operators */
+  /**
+   * @return node containing information about operators
+   */
   protected static DefaultMutableTreeNode getOperatorsInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumOperators") + ": " + qualanService.getOperators().size(),
         qualanService.getOperators().iterator());
   }
 
-  /** @return node containing information about subprocesses */
+  /**
+   * @return node containing information about subprocesses
+   */
   protected static DefaultMutableTreeNode getSubprocessesInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumSubprocesses")
@@ -68,12 +82,16 @@ public class ExpertFactory extends DefaultMutableTreeNode {
         qualanService.getSubprocesses().iterator());
   }
 
-  /** @return node containing information about arcs */
+  /**
+   * @return node containing information about arcs
+   */
   protected static DefaultMutableTreeNode getArcsInfo(IQualanalysisService qualanService) {
     return new NetInfo(Messages.getString(prefix + "NumArcs") + ": " + qualanService.getNumArcs());
   }
 
-  /** @return node containing information about wrongly used operators */
+  /**
+   * @return node containing information about wrongly used operators
+   */
   protected static DefaultMutableTreeNode getWronglyUsedOperatorsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -93,7 +111,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about free-choice violations in the petri net */
+  /**
+   * @return node containing information about free-choice violations in the petri net
+   */
   protected static DefaultMutableTreeNode getFreeChoiceViolationsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupListNetInfo(
@@ -118,7 +138,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about sComponents in the petri net */
+  /**
+   * @return node containing information about sComponents in the petri net
+   */
   protected static DefaultMutableTreeNode getSComponentInfo() {
     return new NetInfo(Messages.getString(prefix + "SComponentAnalysis"));
   }
@@ -220,12 +242,16 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about the wellStructuredness of the net */
+  /**
+   * @return node containing information about the wellStructuredness of the net
+   */
   protected static DefaultMutableTreeNode getWellStructurednessInfo() {
     return new NetInfo(Messages.getString(prefix + "WellStructurednessAnalysis"));
   }
 
-  /** @return node containing information about place-transitions-handles */
+  /**
+   * @return node containing information about place-transitions-handles
+   */
   protected static DefaultMutableTreeNode getPTHandlesInfo(IQualanalysisService qualanService) {
     return new NodeGroupListNetInfo(
         Messages.getString(prefix + "NumPTHandles") + ": " + qualanService.getPTHandles().size(),
@@ -246,7 +272,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about transition-places-handles */
+  /**
+   * @return node containing information about transition-places-handles
+   */
   protected static DefaultMutableTreeNode getTPHandlesInfo(IQualanalysisService qualanService) {
     return new NodeGroupListNetInfo(
         Messages.getString(prefix + "NumTPHandles") + ": " + qualanService.getTPHandles().size(),
@@ -267,12 +295,16 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about soundness */
+  /**
+   * @return node containing information about soundness
+   */
   protected static DefaultMutableTreeNode getSoundnessInfo() {
     return new NetInfo(Messages.getString(prefix + "SoundnessAnalysis"));
   }
 
-  /** @return node containing information about the workflow-property of the petri net */
+  /**
+   * @return node containing information about the workflow-property of the petri net
+   */
   protected static DefaultMutableTreeNode getWorkflowInfo(IQualanalysisService qualanService) {
     return new NetInfo(Messages.getString(prefix + "WorkflowAnalysis"));
   }
@@ -300,7 +332,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about source-places */
+  /**
+   * @return node containing information about source-places
+   */
   protected static DefaultMutableTreeNode getSourcePlacesInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumSourcePlaces")
@@ -319,7 +353,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about sink-places */
+  /**
+   * @return node containing information about sink-places
+   */
   protected static DefaultMutableTreeNode getSinkPlacesInfo(IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
         Messages.getString(prefix + "NumSinkPlaces") + ": " + qualanService.getSinkPlaces().size(),
@@ -336,7 +372,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about source-transitions */
+  /**
+   * @return node containing information about source-transitions
+   */
   protected static DefaultMutableTreeNode getSourceTransitionsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -356,7 +394,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about sink-transitions */
+  /**
+   * @return node containing information about sink-transitions
+   */
   protected static DefaultMutableTreeNode getSinkTransitionsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -376,7 +416,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about unconnected nodes in the petri net */
+  /**
+   * @return node containing information about unconnected nodes in the petri net
+   */
   protected static DefaultMutableTreeNode getUnconnectedNodesInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -396,7 +438,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about not strongly connected nodes in the petri net */
+  /**
+   * @return node containing information about not strongly connected nodes in the petri net
+   */
   protected static DefaultMutableTreeNode getNotStronglyConnectedInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -416,7 +460,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about the initial marking */
+  /**
+   * @return node containing information about the initial marking
+   */
   protected static DefaultMutableTreeNode getInitialMarkingInfo() {
     return new NetInfo(Messages.getString(prefix + "InitialMarkingAnalysis"));
   }
@@ -444,12 +490,16 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about boundedness of the petri net */
+  /**
+   * @return node containing information about boundedness of the petri net
+   */
   protected static DefaultMutableTreeNode getBoundednessInfo() {
     return new NetInfo(Messages.getString(prefix + "BoundednessAnalysis"));
   }
 
-  /** @return node containing information about boundedness of places */
+  /**
+   * @return node containing information about boundedness of places
+   */
   protected static DefaultMutableTreeNode getUnboundedPlacesInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -469,12 +519,16 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about liveness of the petri net */
+  /**
+   * @return node containing information about liveness of the petri net
+   */
   protected static DefaultMutableTreeNode getLivenessInfo() {
     return new NetInfo(Messages.getString(prefix + "LivenessAnalysis"));
   }
 
-  /** @return node containing information about dead transitions */
+  /**
+   * @return node containing information about dead transitions
+   */
   protected static DefaultMutableTreeNode getDeadTransitionsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(
@@ -494,7 +548,9 @@ public class ExpertFactory extends DefaultMutableTreeNode {
     };
   }
 
-  /** @return node containing information about non-live transitions */
+  /**
+   * @return node containing information about non-live transitions
+   */
   protected static DefaultMutableTreeNode getNonLiveTransitionsInfo(
       IQualanalysisService qualanService) {
     return new NodeGroupNetInfo(

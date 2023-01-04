@@ -17,7 +17,9 @@ import org.woped.qualanalysis.soundness.marking.IMarking;
  */
 public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
 
-  /** @param lolNet source low level petri net. */
+  /**
+   * @param lolNet source low level petri net.
+   */
   public MarkingNetBuilderBook(ILowLevelPetriNet lolNet) {
     super(lolNet);
   }

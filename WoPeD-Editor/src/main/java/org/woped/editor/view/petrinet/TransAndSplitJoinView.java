@@ -101,7 +101,9 @@ public class TransAndSplitJoinView extends CombiOperatorView {
       drawTime(g2, d);
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return TransAndSplitJoinView.this.isActivated();
     }

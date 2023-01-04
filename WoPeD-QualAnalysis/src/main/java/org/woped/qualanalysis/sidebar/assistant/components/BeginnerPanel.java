@@ -252,7 +252,9 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 
   // end of adaption
 
-  /** @return navigation for assistant analysis sidebar */
+  /**
+   * @return navigation for assistant analysis sidebar
+   */
 
   /**
    * add components to the contentpane of the beginnerpanel

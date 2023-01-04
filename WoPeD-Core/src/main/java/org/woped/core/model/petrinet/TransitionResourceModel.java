@@ -17,7 +17,9 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.model.CreationMap;
 
-/** @author waschtl */
+/**
+ * @author waschtl
+ */
 @SuppressWarnings("serial")
 public class TransitionResourceModel extends DefaultGraphCell {
   public static final int DEFAULT_WIDTH = 60;
@@ -82,22 +84,30 @@ public class TransitionResourceModel extends DefaultGraphCell {
     return transResourceId;
   }
 
-  /** @return Returns the transOrgUnitName. */
+  /**
+   * @return Returns the transOrgUnitName.
+   */
   public String getTransOrgUnitName() {
     return transOrgUnitName;
   }
 
-  /** @param transOrgUnitName The transOrgUnitName to set. */
+  /**
+   * @param transOrgUnitName The transOrgUnitName to set.
+   */
   public void setTransOrgUnitName(String transOrgUnitName) {
     this.transOrgUnitName = transOrgUnitName;
   }
 
-  /** @return Returns the transRoleName. */
+  /**
+   * @return Returns the transRoleName.
+   */
   public String getTransRoleName() {
     return transRoleName;
   }
 
-  /** @param transRoleName The transRoleName to set. */
+  /**
+   * @param transRoleName The transRoleName to set.
+   */
   public void setTransRoleName(String transRoleName) {
     this.transRoleName = transRoleName;
   }

@@ -11,13 +11,19 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
  */
 public interface INetStatistics {
 
-  /** @return a set with all places */
+  /**
+   * @return a set with all places
+   */
   public Set<AbstractPetriNetElementModel> getPlaces();
 
-  /** @return a set with all transitions */
+  /**
+   * @return a set with all transitions
+   */
   public Set<AbstractPetriNetElementModel> getTransitions();
 
-  /** @return a set with all operator-transitions */
+  /**
+   * @return a set with all operator-transitions
+   */
   public Set<AbstractPetriNetElementModel> getOperators();
 
   /**
@@ -44,9 +50,13 @@ public interface INetStatistics {
    */
   public Set<AbstractPetriNetElementModel> getXorSplits();
 
-  /** @return a set with all subprocesses */
+  /**
+   * @return a set with all subprocesses
+   */
   public Set<AbstractPetriNetElementModel> getSubprocesses();
 
-  /** @return the number of arcs */
+  /**
+   * @return the number of arcs
+   */
   public int getNumArcs();
 }

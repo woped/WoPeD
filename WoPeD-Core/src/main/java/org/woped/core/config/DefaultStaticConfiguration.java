@@ -630,42 +630,58 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     return this.userdir;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#getPortColor() */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#getPortColor()
+   */
   public Color getPortColor() {
     return portColor;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#setPortColor(java.awt.Color) */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#setPortColor(java.awt.Color)
+   */
   public void setPortColor(Color color) {
     portColor = color;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#getLocaleLanguage() */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#getLocaleLanguage()
+   */
   public String getLocaleLanguage() {
     return language;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#setLocaleLanguage(java.lang.String) */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#setLocaleLanguage(java.lang.String)
+   */
   public void setLocaleLanguage(String language) {
     this.language = language;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#getLocaleCountry() */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#getLocaleCountry()
+   */
   public String getLocaleCountry() {
     return country;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#setLocaleCountry(java.lang.String) */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#setLocaleCountry(java.lang.String)
+   */
   public void setLocaleCountry(String country) {
     this.country = country;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#getLocaleVariant() */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#getLocaleVariant()
+   */
   public String getLocaleVariant() {
     return variant;
   }
 
-  /** @see org.woped.config.IGeneralConfiguration#setLocaleVariant(java.lang.String) */
+  /**
+   * @see org.woped.config.IGeneralConfiguration#setLocaleVariant(java.lang.String)
+   */
   public void setLocaleVariant(String variant) {
     this.variant = variant;
   }

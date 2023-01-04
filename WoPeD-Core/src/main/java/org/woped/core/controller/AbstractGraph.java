@@ -314,14 +314,18 @@ public abstract class AbstractGraph extends JGraph implements Printable {
     return allCells;
   }
 
-  /** @see org.jgraph.jgraph.startEditingAtCell */
+  /**
+   * @see org.jgraph.jgraph.startEditingAtCell
+   */
   @Override
   public void startEditingAtCell(Object cell) {
     super.startEditingAtCell(cell);
     lastEdited = cell;
   }
 
-  /** @return the last edited cell of the graph */
+  /**
+   * @return the last edited cell of the graph
+   */
   public NameModel getLastEdited() {
     if (lastEdited != null) {
       if (lastEdited.getClass() == NameModel.class) {

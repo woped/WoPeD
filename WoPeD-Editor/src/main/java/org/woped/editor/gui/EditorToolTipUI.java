@@ -34,7 +34,9 @@ import javax.swing.JTextArea;
 import javax.swing.plaf.basic.BasicToolTipUI;
 import org.woped.core.config.DefaultStaticConfiguration;
 
-/** @author Thomas Pohl TODO: DOCUMENTATION (xraven) */
+/**
+ * @author Thomas Pohl TODO: DOCUMENTATION (xraven)
+ */
 public class EditorToolTipUI extends BasicToolTipUI {
 
   CellRendererPane m_renderPane = new CellRendererPane();

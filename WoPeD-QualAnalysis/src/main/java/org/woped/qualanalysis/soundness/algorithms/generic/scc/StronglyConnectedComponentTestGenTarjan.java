@@ -26,7 +26,9 @@ public class StronglyConnectedComponentTestGenTarjan<K extends INode<K>>
   private Map<K, Integer> dfs;
   private Map<K, Integer> lowLink;
 
-  /** @param nodeNet MarkingNet the algorithm is based on */
+  /**
+   * @param nodeNet MarkingNet the algorithm is based on
+   */
   public StronglyConnectedComponentTestGenTarjan(INodeNet<K> nodeNet) {
     this.nodeNet = nodeNet;
   }

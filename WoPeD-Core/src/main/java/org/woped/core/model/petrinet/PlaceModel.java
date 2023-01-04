@@ -39,7 +39,9 @@ public class PlaceModel extends AbstractPetriNetElementModel {
   private int m_token = 0;
   private int m_virtualToken = 0;
 
-  /** @param map the map containing the information to create the place */
+  /**
+   * @param map the map containing the information to create the place
+   */
   public PlaceModel(CreationMap map) {
     super(map);
     AttributeMap attributes = getAttributes();

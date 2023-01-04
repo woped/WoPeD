@@ -13,7 +13,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.woped.gui.translations.Messages;
 
-/** @author Tobias Lorentz */
+/**
+ * @author Tobias Lorentz
+ */
 public class FormulaEnhancementUI extends JFrame
     implements FormulaEnhancementListChangedEventListener {
 

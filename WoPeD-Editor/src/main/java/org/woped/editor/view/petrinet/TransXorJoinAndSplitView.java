@@ -95,7 +95,9 @@ public class TransXorJoinAndSplitView extends CombiOperatorView {
 
       drawTime(g2, d);
     }
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return TransXorJoinAndSplitView.this.isActivated();
     }

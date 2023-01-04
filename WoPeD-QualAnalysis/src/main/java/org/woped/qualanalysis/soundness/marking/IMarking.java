@@ -14,7 +14,9 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public interface IMarking extends INode<IMarking> {
 
-  /** @return true, if the marking is the initial marking. */
+  /**
+   * @return true, if the marking is the initial marking.
+   */
   boolean isInitial();
 
   /**
@@ -37,16 +39,24 @@ public interface IMarking extends INode<IMarking> {
    */
   boolean isPlaceUnbound(String placeId);
 
-  /** @return the predecessor (marking) */
+  /**
+   * @return the predecessor (marking)
+   */
   IMarking getPredecessor();
 
-  /** @param predecessor the predecessor to set */
+  /**
+   * @param predecessor the predecessor to set
+   */
   void setPredecessor(IMarking predecessor);
 
-  /** @return the arcs that point to the successors (Set<Arc>) */
+  /**
+   * @return the arcs that point to the successors (Set<Arc>)
+   */
   Set<Arc> getSuccessors();
 
-  /** @return all activated transitions. */
+  /**
+   * @return all activated transitions.
+   */
   Set<String> getActivatedTransitions();
 
   /**
@@ -116,7 +126,9 @@ public interface IMarking extends INode<IMarking> {
    */
   boolean less(IMarking other);
 
-  /** @param isInitial the isInitial to set */
+  /**
+   * @param isInitial the isInitial to set
+   */
   void setInitial(boolean isInitial);
 
   /**

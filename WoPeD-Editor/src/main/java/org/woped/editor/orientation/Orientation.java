@@ -161,13 +161,17 @@ public class Orientation {
     }
   }
 
-  /** @param transition the TransitionModel to rotate right way */
+  /**
+   * @param transition the TransitionModel to rotate right way
+   */
   public void rotateTransRight(TransitionModel transition) {
     flipTransitionAccessories(transition);
     rotateTransitionIcon(transition, TURN_RIGHT);
   }
 
-  /** @param transition the TransitionModel to rotate left way */
+  /**
+   * @param transition the TransitionModel to rotate left way
+   */
   public void rotateTransLeft(TransitionModel transition) {
     flipTransitionAccessories(transition);
     rotateTransitionIcon(transition, TURN_LEFT);
@@ -190,7 +194,9 @@ public class Orientation {
     transition.getToolSpecific().setOperatorPosition(OperatorPosition.values()[newPosition]);
   }
 
-  /** @param transition the TransitionModel to flip accessories of */
+  /**
+   * @param transition the TransitionModel to flip accessories of
+   */
   private void flipTransitionAccessories(TransitionModel transition) {
     int currentPosition = transition.getToolSpecific().getOperatorPosition().ordinal();
     // flip name
@@ -246,12 +252,16 @@ public class Orientation {
     }
   }
 
-  /** @return the rotateSelected */
+  /**
+   * @return the rotateSelected
+   */
   public boolean isRotateSelected() {
     return rotateSelected;
   }
 
-  /** @param rotateSelected the rotateSelected to set */
+  /**
+   * @param rotateSelected the rotateSelected to set
+   */
   public void setRotateSelected(boolean rotateSelected) {
     this.rotateSelected = rotateSelected;
   }

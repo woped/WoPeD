@@ -367,7 +367,9 @@ public class MetricItem extends JPanel {
     }
   }
 
-  /** @param isVisible sets the visibility of the detail panel and change the icon of the button */
+  /**
+   * @param isVisible sets the visibility of the detail panel and change the icon of the button
+   */
   public void setDetailsVisiblity(boolean isVisible) {
 
     detailPanel.setVisible(isVisible);

@@ -954,7 +954,9 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     }
   }
 
-  /** @see IWorkflowCheck#getStronglyConnectedComponents() */
+  /**
+   * @see IWorkflowCheck#getStronglyConnectedComponents()
+   */
   @Override
   public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
     // not implemented

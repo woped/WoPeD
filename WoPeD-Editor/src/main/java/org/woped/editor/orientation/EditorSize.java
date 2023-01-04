@@ -24,7 +24,9 @@ public class EditorSize {
   public final int SIDEBAR_WIDTH = 320;
   public final int SIDEBAR_MINHEIGHT = 400;
 
-  /** @param editor the editor to size and check */
+  /**
+   * @param editor the editor to size and check
+   */
   public EditorSize(IEditor editor) {
     this.editor = editor;
   }
@@ -126,7 +128,9 @@ public class EditorSize {
     if (newEditorSize.height > maxEditorSize.height) newEditorSize.height = maxEditorSize.height;
   }
 
-  /** @return the container which represents the whole editor-window */
+  /**
+   * @return the container which represents the whole editor-window
+   */
   private Container getEditorParentContainer() {
     if (editor instanceof SubprocessEditorVC)
       return ((EditorVC) editor).getEditorPanel().getParent().getParent().getParent().getParent();

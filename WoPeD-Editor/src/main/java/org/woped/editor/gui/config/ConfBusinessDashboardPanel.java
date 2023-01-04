@@ -58,7 +58,9 @@ public class ConfBusinessDashboardPanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     boolean newsetting = useByDefaultBox.isSelected();
     boolean oldsetting = ConfigurationManager.getConfiguration().getBusinessDashboardUseByDefault();
@@ -78,7 +80,9 @@ public class ConfBusinessDashboardPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     getServerPortText()
         .setText("" + ConfigurationManager.getConfiguration().getBusinessDashboardServerPort());

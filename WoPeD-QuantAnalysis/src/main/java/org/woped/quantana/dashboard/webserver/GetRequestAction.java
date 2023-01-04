@@ -10,7 +10,9 @@ import org.woped.quantana.dashboard.storage.SimulationStorageEntry;
 import org.woped.quantana.dashboard.storage.TableInfo;
 import org.woped.quantana.sim.SimParameters;
 
-/** @author chrisn */
+/**
+ * @author chrisn
+ */
 public class GetRequestAction extends ThinServerAction {
 
   TemplateEngine te = new TemplateEngine();

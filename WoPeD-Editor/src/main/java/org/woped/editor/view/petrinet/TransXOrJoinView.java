@@ -94,7 +94,9 @@ public class TransXOrJoinView extends TransSimpleView {
       drawTime(g2, d);
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return TransXOrJoinView.this.isActivated();
     }

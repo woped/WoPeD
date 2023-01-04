@@ -9,6 +9,8 @@ import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 public interface IUnboundedPlacesTest {
-  /** @return set of unbounded places */
+  /**
+   * @return set of unbounded places
+   */
   Set<PlaceNode> getUnboundedPlaces();
 }

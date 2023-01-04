@@ -27,7 +27,9 @@ import org.woped.metrics.metricsCalculation.MetricsUIRequestHandler;
 import org.woped.metrics.metricsCalculation.UITypes.UIMetricsGroup;
 import org.woped.metrics.sidebar.components.MetricGroup;
 
-/** @author Mathias Gruschinske The sidebar class, which contains the metrics */
+/**
+ * @author Mathias Gruschinske The sidebar class, which contains the metrics
+ */
 public class SideBar extends JPanel {
 
   private static final long serialVersionUID = 1L;
@@ -38,7 +40,9 @@ public class SideBar extends JPanel {
   protected static final String PREFIX_QUALANALYSIS = "AnalysisSideBar.";
   protected static final String PREFIX_BUTTON = PREFIX_QUALANALYSIS + "Beginner.Button.";
 
-  /** @param editor sets the instance variable and adds the components */
+  /**
+   * @param editor sets the instance variable and adds the components
+   */
   public SideBar(IEditor editor) {
     super(new BorderLayout());
     SideBar.editor = editor;
@@ -272,17 +276,23 @@ public class SideBar extends JPanel {
     }
   }
 
-  /** @param uiHandler sets the UI Request handler */
+  /**
+   * @param uiHandler sets the UI Request handler
+   */
   public void setUiHandler(MetricsUIRequestHandler uiHandler) {
     SideBar.uiHandler = uiHandler;
   }
 
-  /** @return gets the UI Request Handler */
+  /**
+   * @return gets the UI Request Handler
+   */
   public static MetricsUIRequestHandler getUiHandler() {
     return uiHandler;
   }
 
-  /** @author Mathias Gruschinske label with mouse listener and icon to hide the sidebar */
+  /**
+   * @author Mathias Gruschinske label with mouse listener and icon to hide the sidebar
+   */
   class HideLabel extends JLabel {
 
     private static final long serialVersionUID = 1L;
@@ -387,7 +397,9 @@ public class SideBar extends JPanel {
     }
   }
 
-  /** @author Mathias Gruschinske label with mouse listener and icon to call the metrics builder */
+  /**
+   * @author Mathias Gruschinske label with mouse listener and icon to call the metrics builder
+   */
   class ConfigLabel extends JLabel {
 
     private static final long serialVersionUID = 1L;

@@ -812,7 +812,9 @@ public abstract class BPELadditionalPanel extends JPanel {
     errorPopup.setVisible(true);
   }
 
-  /** @param box */
+  /**
+   * @param box
+   */
   protected void fillVariableToComboBox(JComboBox box) {
     HashSet<BpelVariable> list = modelElementContainer.getVariableList().getBpelVariableList();
     box.removeAllItems();

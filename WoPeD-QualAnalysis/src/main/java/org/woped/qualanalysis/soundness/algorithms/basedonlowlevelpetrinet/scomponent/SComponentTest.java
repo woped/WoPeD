@@ -17,7 +17,9 @@ public class SComponentTest extends AbstractLowLevelPetriNetTest implements ISCo
   private Set<Set<AbstractNode>> sComponents;
   private HashSet<PlaceNode> uncoveredPlaces;
 
-  /** @param lolNetWithTStar LowLevelPetriNet (with t*) the algorithm is based on */
+  /**
+   * @param lolNetWithTStar LowLevelPetriNet (with t*) the algorithm is based on
+   */
   public SComponentTest(LowLevelPetriNet lolNetWithTStar) {
     super(lolNetWithTStar);
     reCalculate();

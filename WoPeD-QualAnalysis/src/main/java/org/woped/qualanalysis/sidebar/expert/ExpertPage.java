@@ -136,7 +136,9 @@ public class ExpertPage extends JPanel {
     return analysisInfo;
   }
 
-  /** @return the treeObejct */
+  /**
+   * @return the treeObejct
+   */
   public JTree getTreeObject() {
     return treeObject;
   }

@@ -429,17 +429,23 @@ public class PetriNetModelProcessor implements Serializable {
     return assignedVector;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public Dimension getNetWindowSize() {
     return netWindowSize;
   }
 
-  /** @param dimension */
+  /**
+   * @param dimension
+   */
   public void setNetWindowSize(Dimension dimension) {
     netWindowSize = dimension;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getType() {
     return type;
   }
@@ -565,7 +571,9 @@ public class PetriNetModelProcessor implements Serializable {
     getUnknownToolSpecs().add(unknownToolSpecs);
   }
 
-  /** @return Returns the organizationUnits. */
+  /**
+   * @return Returns the organizationUnits.
+   */
   public Vector<ResourceClassModel> getOrganizationUnits() {
     if (organizationUnits == null) {
       organizationUnits = new Vector<ResourceClassModel>();
@@ -573,12 +581,16 @@ public class PetriNetModelProcessor implements Serializable {
     return organizationUnits;
   }
 
-  /** @param organizationUnits The organizationUnits to set. */
+  /**
+   * @param organizationUnits The organizationUnits to set.
+   */
   public void setOrganizationUnits(Vector<ResourceClassModel> organizationUnits) {
     this.organizationUnits = organizationUnits;
   }
 
-  /** @return Returns the resourceMap. */
+  /**
+   * @return Returns the resourceMap.
+   */
   public HashMap<String, Vector<String>> getResourceMapping() {
     if (resourceMapping == null) {
       resourceMapping = new HashMap<String, Vector<String>>();
@@ -590,7 +602,9 @@ public class PetriNetModelProcessor implements Serializable {
     this.resourceMapping = resourceMapping;
   }
 
-  /** @return Returns the roles. */
+  /**
+   * @return Returns the roles.
+   */
   public Vector<ResourceClassModel> getRoles() {
     if (roles == null) {
       roles = new Vector<ResourceClassModel>();
@@ -598,12 +612,16 @@ public class PetriNetModelProcessor implements Serializable {
     return roles;
   }
 
-  /** @param roles The roles to set. */
+  /**
+   * @param roles The roles to set.
+   */
   public void setRoles(Vector<ResourceClassModel> roles) {
     this.roles = roles;
   }
 
-  /** @return Returns the resources. */
+  /**
+   * @return Returns the resources.
+   */
   public Vector<ResourceModel> getResources() {
     if (resources == null) {
       resources = new Vector<ResourceModel>();
@@ -615,7 +633,9 @@ public class PetriNetModelProcessor implements Serializable {
     this.resources = resources;
   }
 
-  /** @return Returns the simulations. */
+  /**
+   * @return Returns the simulations.
+   */
   public Vector<SimulationModel> getSimulations() {
     if (simulations == null) {
       simulations = new Vector<SimulationModel>();

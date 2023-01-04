@@ -189,7 +189,9 @@ public class Toolspecific implements Serializable {
     // setOperatorType(PetriNetModelElement.SUBP_TYPE);
   }
 
-  /** @return Returns the transResource. */
+  /**
+   * @return Returns the transResource.
+   */
   public TransitionResourceModel getTransResource() {
     return transResource;
   }
@@ -200,7 +202,9 @@ public class Toolspecific implements Serializable {
     LoggerManager.debug(Constants.CORE_LOGGER, "ResourceModel deleted.");
   }
 
-  /** @param transResource The transResource to set. */
+  /**
+   * @param transResource The transResource to set.
+   */
   public TransitionResourceModel setTransResource(TransitionResourceModel transResource) {
     this.transResource = transResource;
     return transResource;

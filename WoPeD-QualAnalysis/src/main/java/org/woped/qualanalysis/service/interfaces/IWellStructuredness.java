@@ -13,12 +13,18 @@ import org.woped.qualanalysis.structure.components.ClusterElement;
  */
 public interface IWellStructuredness {
 
-  /** @return a set with all pt-handles */
+  /**
+   * @return a set with all pt-handles
+   */
   public Set<Set<AbstractPetriNetElementModel>> getPTHandles();
 
-  /** @return a set with all tp-handles */
+  /**
+   * @return a set with all tp-handles
+   */
   public Set<Set<AbstractPetriNetElementModel>> getTPHandles();
 
-  /** @return a set with ?? (what is this for?) */
+  /**
+   * @return a set with ?? (what is this for?)
+   */
   public HashSet<Set<ClusterElement>> getM_handleClusters();
 }

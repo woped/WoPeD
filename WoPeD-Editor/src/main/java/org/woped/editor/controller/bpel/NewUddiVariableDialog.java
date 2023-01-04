@@ -120,12 +120,16 @@ public class NewUddiVariableDialog extends JDialog {
     return dialogButtons;
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public void setVariableName(String Name) {
     this.VariableName.setText(Name);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getVariableName() {
     return this.VariableName.getText();
   }
@@ -139,7 +143,9 @@ public class NewUddiVariableDialog extends JDialog {
     this.VariableURL.setText(URL);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getVariableURL() {
     return this.VariableURL.getText();
   }

@@ -589,7 +589,9 @@ public class EditorPanel extends JPanel {
     }
   }
 
-  /** @author Mathias Gruschinske, Stefan Hackenberg */
+  /**
+   * @author Mathias Gruschinske, Stefan Hackenberg
+   */
   public void hideMetricsBar() {
     if (metricsBarVisible) {
       remove(mainsplitPaneWithAnalysisBar);
@@ -857,7 +859,9 @@ public class EditorPanel extends JPanel {
     m_understandColoring = newScheme;
   }
 
-  /** @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog */
+  /**
+   * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+   */
   public void autoRefreshAnalysisBar() {
     if (analysisBarVisible && autoRefresh != null && autoRefresh.isSelected()) {
       qualitativeAnalysisSideBar.refresh();

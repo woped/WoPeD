@@ -26,7 +26,9 @@ public class FormulaEnhancementList {
     enhancementList = new HashMap<String, String>();
   }
 
-  /** @return an Instance of the class Singleton-Pattern */
+  /**
+   * @return an Instance of the class Singleton-Pattern
+   */
   public static FormulaEnhancementList getInstance() {
     if (instance == null) instance = new FormulaEnhancementList();
 
@@ -43,7 +45,9 @@ public class FormulaEnhancementList {
     this.notifyFormulaEnhancementListChangedEvent(new FormulaEnhancementListChangedEvent(this));
   }
 
-  /** @return all FormulaIDs */
+  /**
+   * @return all FormulaIDs
+   */
   public Set<String> getAllFormulaIDs() {
     return enhancementList.keySet();
   }
@@ -96,7 +100,9 @@ public class FormulaEnhancementList {
     return !this.enhancementList.isEmpty();
   }
 
-  /** @param formulaID */
+  /**
+   * @param formulaID
+   */
   public void acceptEnhancement(String formulaID) {
     // Put the new formula into the xml-writing-queue
     ConfigurationManager.getMetricsConfiguration()
@@ -107,7 +113,9 @@ public class FormulaEnhancementList {
     this.enhancementList.remove(formulaID);
     this.notifyFormulaEnhancementListChangedEvent(new FormulaEnhancementListChangedEvent(this));
   }
-  /** @param selectedRow The Row-Number of the FormulaEnhancementUI */
+  /**
+   * @param selectedRow The Row-Number of the FormulaEnhancementUI
+   */
   public void acceptEnhancement(int selectedRow) {
     this.acceptEnhancement(this.getEnhancementListAsArray()[selectedRow][0]);
   }

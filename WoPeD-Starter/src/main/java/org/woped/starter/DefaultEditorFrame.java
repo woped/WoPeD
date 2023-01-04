@@ -151,12 +151,16 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame {
     return m_statusBar;
   }
 
-  /** @return returns the containing Editor. */
+  /**
+   * @return returns the containing Editor.
+   */
   public IEditor getEditor() {
     return m_editor;
   }
 
-  /** @return Returns the m_petriNetResourceEditor. */
+  /**
+   * @return Returns the m_petriNetResourceEditor.
+   */
   public PetriNetResourceEditor getPetriNetResourceEditor() {
     return m_resourceEditor;
   }

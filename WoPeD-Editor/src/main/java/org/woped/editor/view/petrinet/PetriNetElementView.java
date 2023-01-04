@@ -88,7 +88,9 @@ public class PetriNetElementView extends AbstractElementView {
       }
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return PetriNetElementView.this.isActivated();
     }

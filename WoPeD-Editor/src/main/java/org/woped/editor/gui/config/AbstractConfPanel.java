@@ -68,14 +68,18 @@ public abstract class AbstractConfPanel extends JPanel {
     this.setLayout(new BorderLayout());
   }
 
-  /** @param mainPanel */
+  /**
+   * @param mainPanel
+   */
   protected void setMainPanel(JPanel mainPanel) {
     JScrollPane scrollPanel = new JScrollPane(mainPanel);
     scrollPanel.setPreferredSize(ConfigVC.SCROLL_DIM);
     this.add(scrollPanel, BorderLayout.CENTER);
   }
 
-  /** @return Returns the namePanel. */
+  /**
+   * @return Returns the namePanel.
+   */
   public JPanel getNamePanel() {
     if (namePanel == null) {
       namePanel = new JPanel();

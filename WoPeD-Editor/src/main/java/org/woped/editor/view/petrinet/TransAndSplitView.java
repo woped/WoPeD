@@ -99,15 +99,21 @@ public class TransAndSplitView extends TransSimpleView {
       drawTime(g2, d);
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public boolean isActive() {
       return TransAndSplitView.this.isActivated();
     }
   }
 
-  /** @see org.woped.editor.core.view.AbstractElementView#paint() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#paint()
+   */
   public void paint() {}
 
-  /** @see org.woped.editor.core.view.AbstractElementView#refresh() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#refresh()
+   */
   public void refresh() {}
 }

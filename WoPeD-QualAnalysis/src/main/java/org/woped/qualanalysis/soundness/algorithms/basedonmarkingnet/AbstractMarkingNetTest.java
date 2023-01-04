@@ -10,7 +10,9 @@ import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 public abstract class AbstractMarkingNetTest {
   protected IMarkingNet mNet;
 
-  /** @param iMarkingNet MarkingNet the algorithm is based on */
+  /**
+   * @param iMarkingNet MarkingNet the algorithm is based on
+   */
   public AbstractMarkingNetTest(IMarkingNet markingNet) {
     this.mNet = markingNet;
   }

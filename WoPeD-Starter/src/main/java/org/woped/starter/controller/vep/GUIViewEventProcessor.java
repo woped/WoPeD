@@ -56,7 +56,9 @@ import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 
-/** @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br> */
+/**
+ * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
+ */
 public class GUIViewEventProcessor extends AbstractEventProcessor {
   public GUIViewEventProcessor(DefaultApplicationMediator mediator) {
     super(mediator);

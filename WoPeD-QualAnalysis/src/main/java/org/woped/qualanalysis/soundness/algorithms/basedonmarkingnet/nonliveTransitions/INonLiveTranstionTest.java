@@ -9,6 +9,8 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 public interface INonLiveTranstionTest {
-  /** @return set of all non live transtions. */
+  /**
+   * @return set of all non live transtions.
+   */
   Set<TransitionNode> getNonLiveTransitions();
 }

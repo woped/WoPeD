@@ -18,7 +18,9 @@ import java.util.ResourceBundle;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.quantana.dashboard.storage.StorageEngine;
 
-/** @author chrisn */
+/**
+ * @author chrisn
+ */
 public class ThinServer {
 
   // Archive

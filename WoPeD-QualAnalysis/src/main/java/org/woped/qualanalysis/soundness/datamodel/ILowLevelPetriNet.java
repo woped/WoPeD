@@ -56,6 +56,8 @@ public interface ILowLevelPetriNet extends INodeNet<AbstractNode> {
    */
   TransitionNode getTransitionNode(TransitionNode node);
 
-  /** @return the transitionNodes */
+  /**
+   * @return the transitionNodes
+   */
   Set<TransitionNode> getTransitions();
 }

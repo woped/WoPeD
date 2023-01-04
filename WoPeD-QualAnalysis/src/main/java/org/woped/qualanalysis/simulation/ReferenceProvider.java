@@ -38,7 +38,9 @@ public class ReferenceProvider {
     MediatorReference = Mediator;
   }
 
-  /** @return Reference to the AbstractApplicationMediator (default: null) */
+  /**
+   * @return Reference to the AbstractApplicationMediator (default: null)
+   */
   public AbstractApplicationMediator getMediatorReference() {
     return MediatorReference;
   }
@@ -52,7 +54,9 @@ public class ReferenceProvider {
     UIReference = UI;
   }
 
-  /** @return reference to the IUserInterface */
+  /**
+   * @return reference to the IUserInterface
+   */
   public IUserInterface getUIReference() {
     return UIReference;
   }
@@ -66,7 +70,9 @@ public class ReferenceProvider {
     DesktopReference = Desktop;
   }
 
-  /** @return the reference to the JDesktopPane */
+  /**
+   * @return the reference to the JDesktopPane
+   */
   public JDesktopPane getDesktopReference() {
     return DesktopReference;
   }

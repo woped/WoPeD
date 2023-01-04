@@ -6,7 +6,9 @@ package org.woped.file.yawl;
 
 import java.util.ArrayList;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class XmlElement {
   private String name;
   private String contents;

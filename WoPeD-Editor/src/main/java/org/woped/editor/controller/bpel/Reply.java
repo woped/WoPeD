@@ -2,10 +2,14 @@ package org.woped.editor.controller.bpel;
 
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TReply;
 
-/** @author Frank Schüler, Alexander Roßwog */
+/**
+ * @author Frank Schüler, Alexander Roßwog
+ */
 public class Reply extends BaseActivity<TReply> {
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public Reply(String Name) {
     super(Name);
   }
@@ -32,13 +36,17 @@ public class Reply extends BaseActivity<TReply> {
     this.getActivity().setVariable(Variable);
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   protected final void genTActivity(String Name) {
     this.setActivity(TReply.Factory.newInstance());
     this.getActivity().setName(Name);
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
     if (!BPELreplyPanel.class.isInstance(bip)) return this;
     BPELreplyPanel panel = (BPELreplyPanel) bip;
@@ -46,7 +54,9 @@ public class Reply extends BaseActivity<TReply> {
     return this;
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public void setInformationToPanel(BPELadditionalPanel bip) {
     if (!BPELreplyPanel.class.isInstance(bip)) return;
     BPELreplyPanel panel = (BPELreplyPanel) bip;
@@ -55,17 +65,23 @@ public class Reply extends BaseActivity<TReply> {
     panel.setVariable(this.getVariable());
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getPartnerLink() {
     return this.getActivity().getPartnerLink();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getOperation() {
     return this.getActivity().getOperation();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public final String getVariable() {
     return this.getActivity().getVariable();
   }

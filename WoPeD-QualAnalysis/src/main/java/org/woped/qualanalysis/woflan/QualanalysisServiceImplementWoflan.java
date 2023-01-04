@@ -12,7 +12,9 @@ public class QualanalysisServiceImplementWoflan extends AbstractQualanalysisServ
 
   private WoflanAnalysis wA;
 
-  /** @param editor the editor the service is referring to */
+  /**
+   * @param editor the editor the service is referring to
+   */
   public QualanalysisServiceImplementWoflan(IEditor editor) {
     super(editor);
 

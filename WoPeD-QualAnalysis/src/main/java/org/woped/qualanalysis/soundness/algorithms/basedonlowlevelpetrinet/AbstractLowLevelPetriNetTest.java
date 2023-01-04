@@ -10,7 +10,9 @@ import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 public abstract class AbstractLowLevelPetriNetTest {
   protected ILowLevelPetriNet lolNet;
 
-  /** @param lolNet LowLevelPetriNet the algorithm is based on */
+  /**
+   * @param lolNet LowLevelPetriNet the algorithm is based on
+   */
   public AbstractLowLevelPetriNetTest(ILowLevelPetriNet lolNet) {
     this.lolNet = lolNet;
   }

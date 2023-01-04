@@ -136,7 +136,9 @@ public class ConfEditorPanel extends AbstractConfPanel {
     setMainPanel(contentPanel);
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     ConfigurationManager.getConfiguration()
         .setEditingOnCreation(getEditOnCreationCheckBox().isSelected());
@@ -169,7 +171,9 @@ public class ConfEditorPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     getEditOnCreationCheckBox()
         .setSelected(ConfigurationManager.getConfiguration().isEditingOnCreation());

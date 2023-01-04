@@ -2,7 +2,9 @@ package org.woped.metrics.exceptions;
 
 import org.woped.gui.translations.Messages;
 
-/** @author Tobias Lorentz */
+/**
+ * @author Tobias Lorentz
+ */
 public class InfiniteRecursiveFormulaCallException extends CalculateFormulaException {
 
   /** */

@@ -15,7 +15,9 @@ import org.woped.qualanalysis.soundness.marking.IMarkingNet;
  */
 public class UnboundPlacesTest extends AbstractMarkingNetTest implements IUnboundedPlacesTest {
 
-  /** @param markingNet MarkingNet the algorithm is based on */
+  /**
+   * @param markingNet MarkingNet the algorithm is based on
+   */
   public UnboundPlacesTest(IMarkingNet markingNet) {
     super(markingNet);
   }

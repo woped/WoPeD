@@ -7,7 +7,9 @@ package org.woped.file.yawl.wfnet;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public abstract class WfNetNode {
 
   protected String id = "";

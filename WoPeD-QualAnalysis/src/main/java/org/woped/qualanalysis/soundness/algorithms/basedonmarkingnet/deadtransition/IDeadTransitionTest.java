@@ -9,6 +9,8 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 public interface IDeadTransitionTest {
-  /** @return a set of all dead transitions */
+  /**
+   * @return a set of all dead transitions
+   */
   Set<TransitionNode> getDeadTransitions();
 }

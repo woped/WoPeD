@@ -39,7 +39,9 @@ public class P2TSideBar extends JPanel implements ActionListener {
   private boolean threadInProgress = false;
   private boolean firstTimeDisplayed = false;
 
-  /** @param currentEditor Editor in which the instance of the sidebar is used */
+  /**
+   * @param currentEditor Editor in which the instance of the sidebar is used
+   */
   public P2TSideBar(IEditor currentEditor) {
     super();
     editor = currentEditor;

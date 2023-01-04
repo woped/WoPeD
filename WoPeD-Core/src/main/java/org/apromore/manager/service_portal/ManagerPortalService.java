@@ -65,7 +65,9 @@ public class ManagerPortalService extends Service {
     super(wsdlLocation, serviceName);
   }
 
-  /** @return returns ManagerPortalPortType */
+  /**
+   * @return returns ManagerPortalPortType
+   */
   @WebEndpoint(name = "ManagerPortal")
   public ManagerPortalPortType getManagerPortal() {
     return super.getPort(

@@ -11,15 +11,23 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public interface ISourceSinkTest {
 
-  /** @return a set of all source places */
+  /**
+   * @return a set of all source places
+   */
   public Set<PlaceNode> getSourcePlaces();
 
-  /** @return a set of all sink places */
+  /**
+   * @return a set of all sink places
+   */
   public Set<PlaceNode> getSinkPlaces();
 
-  /** @return a set of all transitions with empty preset */
+  /**
+   * @return a set of all transitions with empty preset
+   */
   public Set<TransitionNode> getSourceTransitions();
 
-  /** @return a set of all transitions with empty postset */
+  /**
+   * @return a set of all transitions with empty postset
+   */
   public Set<TransitionNode> getSinkTransitions();
 }

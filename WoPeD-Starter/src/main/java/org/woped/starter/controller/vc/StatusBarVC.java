@@ -64,7 +64,9 @@ public class StatusBarVC extends JPanel implements IViewController, IStatusBar {
     this.setPreferredSize(new Dimension(200, 20));
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public SynchonizeTask getSyncTask() {
     return task;
   }

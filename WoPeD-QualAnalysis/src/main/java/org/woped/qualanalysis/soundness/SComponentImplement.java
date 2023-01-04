@@ -13,7 +13,9 @@ import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 
-/** @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss */
+/**
+ * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ */
 public class SComponentImplement implements ISComponent {
 
   private IEditor editor = null;
@@ -22,7 +24,9 @@ public class SComponentImplement implements ISComponent {
   private Set<AbstractPetriNetElementModel> notSCovered = null;
   private Set<List<AbstractPetriNetElementModel>> sComponentsSet = null;
 
-  /** @param editor source object */
+  /**
+   * @param editor source object
+   */
   public SComponentImplement(IEditor editor) {
     this.editor = editor;
   }
@@ -74,7 +78,9 @@ public class SComponentImplement implements ISComponent {
     return editor.getModelProcessor().getElementContainer().getElementById(node.getOriginId());
   }
 
-  /** @return the SComponentTest (if not existing it will be instantiated) */
+  /**
+   * @return the SComponentTest (if not existing it will be instantiated)
+   */
   private ISComponentTest getSComponentTest() {
     if (sComponentTest == null) {
       sComponentTest =

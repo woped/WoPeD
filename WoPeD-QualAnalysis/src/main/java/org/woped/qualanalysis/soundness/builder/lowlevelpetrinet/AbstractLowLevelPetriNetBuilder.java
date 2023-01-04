@@ -12,12 +12,16 @@ public abstract class AbstractLowLevelPetriNetBuilder {
   protected IEditor editor;
   protected LowLevelPetriNet lowLevelPetriNet;
 
-  /** @param editor source object. */
+  /**
+   * @param editor source object.
+   */
   public AbstractLowLevelPetriNetBuilder(IEditor editor) {
     this.editor = editor;
   }
 
-  /** @return created lowLevelPetriNet, can be null! */
+  /**
+   * @return created lowLevelPetriNet, can be null!
+   */
   public LowLevelPetriNet getLowLevelPetriNet() {
     return lowLevelPetriNet;
   }

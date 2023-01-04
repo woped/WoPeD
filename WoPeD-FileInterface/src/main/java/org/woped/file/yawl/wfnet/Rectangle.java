@@ -4,7 +4,9 @@
  */
 package org.woped.file.yawl.wfnet;
 
-/** @author Chris */
+/**
+ * @author Chris
+ */
 public class Rectangle {
 
   public int x, y, width, height;

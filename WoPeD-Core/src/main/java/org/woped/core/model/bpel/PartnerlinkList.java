@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 
-/** @author Frank Schüler */
+/**
+ * @author Frank Schüler
+ */
 public class PartnerlinkList {
 
   private HashSet<Partnerlink> _list;
@@ -76,7 +78,9 @@ public class PartnerlinkList {
     this._list.add(p);
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String[] getPartnerlinkNameArray() {
     String[] list = new String[this._list.size()];
     Iterator<Partnerlink> iter = this._list.iterator();
@@ -88,12 +92,16 @@ public class PartnerlinkList {
     return list;
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   private TPartnerLinks genPartnerLinks() {
     return TPartnerLinks.Factory.newInstance();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public TPartnerLinks getBpelCode() {
     TPartnerLinks list = this.genPartnerLinks();
     Iterator<Partnerlink> iter = this._list.iterator();
@@ -112,7 +120,9 @@ public class PartnerlinkList {
     return urls;
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public void removePartnerlinkByName(String Name) {
     // TODO fertigschreiben
   }

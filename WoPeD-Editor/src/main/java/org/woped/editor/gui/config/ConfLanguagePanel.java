@@ -57,7 +57,9 @@ public class ConfLanguagePanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     int selected = getLanguageComboBox().getSelectedIndex();
     Locale locale = language[selected];
@@ -81,7 +83,9 @@ public class ConfLanguagePanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     int selected = 0;
     Locale loc = ConfigurationManager.getConfiguration().getLocale();

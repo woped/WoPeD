@@ -3,9 +3,13 @@ package org.woped.editor.controller.bpel;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TAssign;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
 
-/** @author Alexander Roßwog, Frank Schüler (redesign) */
+/**
+ * @author Alexander Roßwog, Frank Schüler (redesign)
+ */
 public class Assign extends BaseActivity<TAssign> {
-  /** @param Name */
+  /**
+   * @param Name
+   */
   public Assign(String Name) {
     super(Name);
   }
@@ -20,7 +24,9 @@ public class Assign extends BaseActivity<TAssign> {
     this.fillAssign(FromVariable, ToVariable);
   }
 
-  /** @param Name */
+  /**
+   * @param Name
+   */
   protected final void genTActivity(String Name) {
     this.setActivity(TAssign.Factory.newInstance());
     this.getActivity().setName(Name);
@@ -43,7 +49,9 @@ public class Assign extends BaseActivity<TAssign> {
     }
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public BaseActivity<?> saveInformation(BPELadditionalPanel bip) {
     if (!BPELassignPanel.class.isInstance(bip)) return this;
     BPELassignPanel panel = (BPELassignPanel) bip;
@@ -51,7 +59,9 @@ public class Assign extends BaseActivity<TAssign> {
     return this;
   }
 
-  /** @param bip */
+  /**
+   * @param bip
+   */
   public void setInformationToPanel(BPELadditionalPanel bip) {
     if (!BPELassignPanel.class.isInstance(bip)) return;
     BPELassignPanel panel = (BPELassignPanel) bip;
@@ -59,12 +69,16 @@ public class Assign extends BaseActivity<TAssign> {
     panel.setToVariable(this.getToVariable());
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getFromVariable() {
     return this.getActivity().getCopyArray(0).getFrom().getVariable();
   }
 
-  /** @return */
+  /**
+   * @return
+   */
   public String getToVariable() {
     return this.getActivity().getCopyArray(0).getTo().getVariable();
   }

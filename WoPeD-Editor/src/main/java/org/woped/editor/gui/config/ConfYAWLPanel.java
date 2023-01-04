@@ -46,7 +46,9 @@ public class ConfYAWLPanel extends AbstractConfPanel {
     initialize();
   }
 
-  /** @see AbstractConfPanel#applyConfiguration() */
+  /**
+   * @see AbstractConfPanel#applyConfiguration()
+   */
   public boolean applyConfiguration() {
     ConfigurationManager.getConfiguration().setYAWLEnabled(getYAWLEnabledBox().isSelected());
     ConfigurationManager.getConfiguration()
@@ -57,7 +59,9 @@ public class ConfYAWLPanel extends AbstractConfPanel {
     return true;
   }
 
-  /** @see AbstractConfPanel#readConfiguration() */
+  /**
+   * @see AbstractConfPanel#readConfiguration()
+   */
   public void readConfiguration() {
     getYAWLEnabledBox().setSelected(ConfigurationManager.getConfiguration().isYAWLEnabled());
     getYAWLExportExplicitPlacesCheckBox()

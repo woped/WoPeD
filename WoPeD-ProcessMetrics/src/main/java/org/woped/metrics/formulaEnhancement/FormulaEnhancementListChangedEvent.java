@@ -2,7 +2,9 @@ package org.woped.metrics.formulaEnhancement;
 
 import java.util.EventObject;
 
-/** @author Tobias Lorentz */
+/**
+ * @author Tobias Lorentz
+ */
 public class FormulaEnhancementListChangedEvent extends EventObject {
 
   /** */

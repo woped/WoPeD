@@ -11,7 +11,9 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.gui.translations.Messages;
 
-/** @author lai */
+/**
+ * @author lai
+ */
 public class Cursors {
   private static ImageIcon placeIcon = Messages.getCursorImageIcon("ToolBar.DrawPlace");
   public static Cursor placeCursor =

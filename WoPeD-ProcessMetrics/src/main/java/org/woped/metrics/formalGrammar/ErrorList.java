@@ -3,7 +3,9 @@ package org.woped.metrics.formalGrammar;
 import java.util.ArrayList;
 import org.woped.metrics.exceptions.CalculateFormulaException;
 
-/** @author Tobias Lorentz */
+/**
+ * @author Tobias Lorentz
+ */
 public class ErrorList {
   private ArrayList<CalculateFormulaException> errorList;
   private static ErrorList instance;

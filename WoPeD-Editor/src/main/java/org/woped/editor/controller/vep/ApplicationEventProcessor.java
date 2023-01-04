@@ -229,7 +229,9 @@ public class ApplicationEventProcessor extends AbstractEventProcessor {
       }
   }*/
 
-  /** @return Returns the mediator. */
+  /**
+   * @return Returns the mediator.
+   */
   private ApplicationMediator getWopedMediator() {
     return mediator;
   }

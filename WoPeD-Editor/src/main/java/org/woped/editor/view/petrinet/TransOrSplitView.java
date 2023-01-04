@@ -92,9 +92,13 @@ public class TransOrSplitView extends TransSimpleView {
     }
   }
 
-  /** @see org.woped.editor.core.view.AbstractElementView#paint() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#paint()
+   */
   public void paint() {}
 
-  /** @see org.woped.editor.core.view.AbstractElementView#refresh() */
+  /**
+   * @see org.woped.editor.core.view.AbstractElementView#refresh()
+   */
   public void refresh() {}
 }

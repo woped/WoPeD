@@ -9,6 +9,8 @@ import java.util.Set;
  */
 public interface INodeNet<K extends INode<K>> {
 
-  /** @return all contained nodes. */
+  /**
+   * @return all contained nodes.
+   */
   public Set<K> getAllContainedNodes();
 }

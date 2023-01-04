@@ -29,7 +29,9 @@ public class MarkingNet implements IMarkingNet {
   /** initial marking. */
   private Marking initialMarking;
 
-  /** @param lolNet the LowLevelPetriNet on that this marking net is built */
+  /**
+   * @param lolNet the LowLevelPetriNet on that this marking net is built
+   */
   public MarkingNet(ILowLevelPetriNet lolNet) {
 
     this.places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
@@ -80,27 +82,37 @@ public class MarkingNet implements IMarkingNet {
     return activated;
   }
 
-  /** @return the initialMarking */
+  /**
+   * @return the initialMarking
+   */
   public IMarking getInitialMarking() {
     return initialMarking;
   }
 
-  /** @return the set of markings */
+  /**
+   * @return the set of markings
+   */
   public Set<IMarking> getMarkings() {
     return this.markings;
   }
 
-  /** @return the places as an array */
+  /**
+   * @return the places as an array
+   */
   public PlaceNode[] getPlaces() {
     return this.places;
   }
 
-  /** @return the transitions as an array */
+  /**
+   * @return the transitions as an array
+   */
   public TransitionNode[] getTransitions() {
     return transitions;
   }
 
-  /** @return the places name and id as string */
+  /**
+   * @return the places name and id as string
+   */
   public String placesToString() {
     String line = "";
     for (PlaceNode place : this.places) {
@@ -109,7 +121,9 @@ public class MarkingNet implements IMarkingNet {
     return line.substring(0, line.length() - 1);
   }
 
-  /** @return the places id as string */
+  /**
+   * @return the places id as string
+   */
   public String placesToStringId() {
     String line = "";
     for (PlaceNode place : this.places) {
@@ -118,7 +132,9 @@ public class MarkingNet implements IMarkingNet {
     return line.substring(0, Math.max(line.length() - 1, 0));
   }
 
-  /** @return the places name as string */
+  /**
+   * @return the places name as string
+   */
   public String placesToStringName() {
     String line = "";
     for (PlaceNode place : this.places) {
