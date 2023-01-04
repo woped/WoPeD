@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for ReadProcessSummariesOutputMsgType complex type.
- * 
+ * Java class for ReadProcessSummariesOutputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ReadProcessSummariesOutputMsgType">
  *   &lt;complexContent>
@@ -24,67 +22,52 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReadProcessSummariesOutputMsgType", propOrder = {
-    "result",
-    "processSummaries"
-})
+@XmlType(
+    name = "ReadProcessSummariesOutputMsgType",
+    propOrder = {"result", "processSummaries"})
 public class ReadProcessSummariesOutputMsgType {
 
-    @XmlElement(name = "Result", required = true)
-    protected ResultType result;
-    @XmlElement(name = "ProcessSummaries", required = true)
-    protected ProcessSummariesType processSummaries;
+  @XmlElement(name = "Result", required = true)
+  protected ResultType result;
 
-    /**
-     * Gets the value of the result property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultType }
-     *     
-     */
-    public ResultType getResult() {
-        return result;
-    }
+  @XmlElement(name = "ProcessSummaries", required = true)
+  protected ProcessSummariesType processSummaries;
 
-    /**
-     * Sets the value of the result property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultType }
-     *     
-     */
-    public void setResult(ResultType value) {
-        this.result = value;
-    }
+  /**
+   * Gets the value of the result property.
+   *
+   * @return possible object is {@link ResultType }
+   */
+  public ResultType getResult() {
+    return result;
+  }
 
-    /**
-     * Gets the value of the processSummaries property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ProcessSummariesType }
-     *     
-     */
-    public ProcessSummariesType getProcessSummaries() {
-        return processSummaries;
-    }
+  /**
+   * Sets the value of the result property.
+   *
+   * @param value allowed object is {@link ResultType }
+   */
+  public void setResult(ResultType value) {
+    this.result = value;
+  }
 
-    /**
-     * Sets the value of the processSummaries property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ProcessSummariesType }
-     *     
-     */
-    public void setProcessSummaries(ProcessSummariesType value) {
-        this.processSummaries = value;
-    }
+  /**
+   * Gets the value of the processSummaries property.
+   *
+   * @return possible object is {@link ProcessSummariesType }
+   */
+  public ProcessSummariesType getProcessSummaries() {
+    return processSummaries;
+  }
 
+  /**
+   * Sets the value of the processSummaries property.
+   *
+   * @param value allowed object is {@link ProcessSummariesType }
+   */
+  public void setProcessSummaries(ProcessSummariesType value) {
+    this.processSummaries = value;
+  }
 }

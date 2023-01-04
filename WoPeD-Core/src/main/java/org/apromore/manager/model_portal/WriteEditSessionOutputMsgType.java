@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,12 +6,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for WriteEditSessionOutputMsgType complex type.
- * 
+ * Java class for WriteEditSessionOutputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="WriteEditSessionOutputMsgType">
  *   &lt;complexContent>
@@ -25,66 +23,52 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "WriteEditSessionOutputMsgType", propOrder = {
-    "result"
-})
+@XmlType(
+    name = "WriteEditSessionOutputMsgType",
+    propOrder = {"result"})
 public class WriteEditSessionOutputMsgType {
 
-    @XmlElement(name = "Result", required = true)
-    protected ResultType result;
-    @XmlAttribute(name = "EditSessionCode")
-    protected Integer editSessionCode;
+  @XmlElement(name = "Result", required = true)
+  protected ResultType result;
 
-    /**
-     * Gets the value of the result property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultType }
-     *     
-     */
-    public ResultType getResult() {
-        return result;
-    }
+  @XmlAttribute(name = "EditSessionCode")
+  protected Integer editSessionCode;
 
-    /**
-     * Sets the value of the result property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultType }
-     *     
-     */
-    public void setResult(ResultType value) {
-        this.result = value;
-    }
+  /**
+   * Gets the value of the result property.
+   *
+   * @return possible object is {@link ResultType }
+   */
+  public ResultType getResult() {
+    return result;
+  }
 
-    /**
-     * Gets the value of the editSessionCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getEditSessionCode() {
-        return editSessionCode;
-    }
+  /**
+   * Sets the value of the result property.
+   *
+   * @param value allowed object is {@link ResultType }
+   */
+  public void setResult(ResultType value) {
+    this.result = value;
+  }
 
-    /**
-     * Sets the value of the editSessionCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setEditSessionCode(Integer value) {
-        this.editSessionCode = value;
-    }
+  /**
+   * Gets the value of the editSessionCode property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getEditSessionCode() {
+    return editSessionCode;
+  }
 
+  /**
+   * Sets the value of the editSessionCode property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setEditSessionCode(Integer value) {
+    this.editSessionCode = value;
+  }
 }

@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for FormatType complex type.
- * 
+ * Java class for FormatType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="FormatType">
  *   &lt;complexContent>
@@ -22,64 +20,50 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FormatType")
 public class FormatType {
 
-    @XmlAttribute(name = "format")
-    protected String format;
-    @XmlAttribute(name = "extension")
-    protected String extension;
+  @XmlAttribute(name = "format")
+  protected String format;
 
-    /**
-     * Gets the value of the format property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFormat() {
-        return format;
-    }
+  @XmlAttribute(name = "extension")
+  protected String extension;
 
-    /**
-     * Sets the value of the format property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFormat(String value) {
-        this.format = value;
-    }
+  /**
+   * Gets the value of the format property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getFormat() {
+    return format;
+  }
 
-    /**
-     * Gets the value of the extension property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExtension() {
-        return extension;
-    }
+  /**
+   * Sets the value of the format property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setFormat(String value) {
+    this.format = value;
+  }
 
-    /**
-     * Sets the value of the extension property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExtension(String value) {
-        this.extension = value;
-    }
+  /**
+   * Gets the value of the extension property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getExtension() {
+    return extension;
+  }
 
+  /**
+   * Sets the value of the extension property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setExtension(String value) {
+    this.extension = value;
+  }
 }

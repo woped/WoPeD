@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.activation.DataHandler;
@@ -9,12 +8,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for UpdateProcessInputMsgType complex type.
- * 
+ * Java class for UpdateProcessInputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="UpdateProcessInputMsgType">
  *   &lt;complexContent>
@@ -29,120 +27,95 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "UpdateProcessInputMsgType", propOrder = {
-    "_native",
-    "editSession"
-})
+@XmlType(
+    name = "UpdateProcessInputMsgType",
+    propOrder = {"_native", "editSession"})
 public class UpdateProcessInputMsgType {
 
-    @XmlElement(name = "Native", required = true)
-    @XmlMimeType("application/octet-stream")
-    protected DataHandler _native;
-    @XmlElement(name = "EditSession", required = true)
-    protected EditSessionType editSession;
-    @XmlAttribute(name = "EditSessionCode")
-    protected Integer editSessionCode;
-    @XmlAttribute(name = "PreVersion")
-    protected String preVersion;
+  @XmlElement(name = "Native", required = true)
+  @XmlMimeType("application/octet-stream")
+  protected DataHandler _native;
 
-    /**
-     * Gets the value of the native property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataHandler }
-     *     
-     */
-    public DataHandler getNative() {
-        return _native;
-    }
+  @XmlElement(name = "EditSession", required = true)
+  protected EditSessionType editSession;
 
-    /**
-     * Sets the value of the native property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataHandler }
-     *     
-     */
-    public void setNative(DataHandler value) {
-        this._native = value;
-    }
+  @XmlAttribute(name = "EditSessionCode")
+  protected Integer editSessionCode;
 
-    /**
-     * Gets the value of the editSession property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EditSessionType }
-     *     
-     */
-    public EditSessionType getEditSession() {
-        return editSession;
-    }
+  @XmlAttribute(name = "PreVersion")
+  protected String preVersion;
 
-    /**
-     * Sets the value of the editSession property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EditSessionType }
-     *     
-     */
-    public void setEditSession(EditSessionType value) {
-        this.editSession = value;
-    }
+  /**
+   * Gets the value of the native property.
+   *
+   * @return possible object is {@link DataHandler }
+   */
+  public DataHandler getNative() {
+    return _native;
+  }
 
-    /**
-     * Gets the value of the editSessionCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getEditSessionCode() {
-        return editSessionCode;
-    }
+  /**
+   * Sets the value of the native property.
+   *
+   * @param value allowed object is {@link DataHandler }
+   */
+  public void setNative(DataHandler value) {
+    this._native = value;
+  }
 
-    /**
-     * Sets the value of the editSessionCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setEditSessionCode(Integer value) {
-        this.editSessionCode = value;
-    }
+  /**
+   * Gets the value of the editSession property.
+   *
+   * @return possible object is {@link EditSessionType }
+   */
+  public EditSessionType getEditSession() {
+    return editSession;
+  }
 
-    /**
-     * Gets the value of the preVersion property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPreVersion() {
-        return preVersion;
-    }
+  /**
+   * Sets the value of the editSession property.
+   *
+   * @param value allowed object is {@link EditSessionType }
+   */
+  public void setEditSession(EditSessionType value) {
+    this.editSession = value;
+  }
 
-    /**
-     * Sets the value of the preVersion property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPreVersion(String value) {
-        this.preVersion = value;
-    }
+  /**
+   * Gets the value of the editSessionCode property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getEditSessionCode() {
+    return editSessionCode;
+  }
 
+  /**
+   * Sets the value of the editSessionCode property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setEditSessionCode(Integer value) {
+    this.editSessionCode = value;
+  }
+
+  /**
+   * Gets the value of the preVersion property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPreVersion() {
+    return preVersion;
+  }
+
+  /**
+   * Sets the value of the preVersion property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPreVersion(String value) {
+    this.preVersion = value;
+  }
 }

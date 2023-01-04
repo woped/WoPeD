@@ -5,7 +5,7 @@ import org.woped.core.model.CreationMap;
 @SuppressWarnings("serial")
 public class ANDSplitOperatorTransitionModel extends OperatorTransitionModel {
 
-	public ANDSplitOperatorTransitionModel(CreationMap map) {
-		super(map);
-	}
+  public ANDSplitOperatorTransitionModel(CreationMap map) {
+    super(map);
+  }
 }

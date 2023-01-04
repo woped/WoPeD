@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TokenGameControllerTest.class, TokenGameSessionTest.class})
-public class AllTestsQualAnalysisSimulation {
-}
+public class AllTestsQualAnalysisSimulation {}

@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for ReadUserOutputMsgType complex type.
- * 
+ * Java class for ReadUserOutputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ReadUserOutputMsgType">
  *   &lt;complexContent>
@@ -24,67 +22,52 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ReadUserOutputMsgType", propOrder = {
-    "result",
-    "user"
-})
+@XmlType(
+    name = "ReadUserOutputMsgType",
+    propOrder = {"result", "user"})
 public class ReadUserOutputMsgType {
 
-    @XmlElement(name = "Result", required = true)
-    protected ResultType result;
-    @XmlElement(name = "User", required = true)
-    protected UserType user;
+  @XmlElement(name = "Result", required = true)
+  protected ResultType result;
 
-    /**
-     * Gets the value of the result property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultType }
-     *     
-     */
-    public ResultType getResult() {
-        return result;
-    }
+  @XmlElement(name = "User", required = true)
+  protected UserType user;
 
-    /**
-     * Sets the value of the result property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultType }
-     *     
-     */
-    public void setResult(ResultType value) {
-        this.result = value;
-    }
+  /**
+   * Gets the value of the result property.
+   *
+   * @return possible object is {@link ResultType }
+   */
+  public ResultType getResult() {
+    return result;
+  }
 
-    /**
-     * Gets the value of the user property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserType }
-     *     
-     */
-    public UserType getUser() {
-        return user;
-    }
+  /**
+   * Sets the value of the result property.
+   *
+   * @param value allowed object is {@link ResultType }
+   */
+  public void setResult(ResultType value) {
+    this.result = value;
+  }
 
-    /**
-     * Sets the value of the user property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserType }
-     *     
-     */
-    public void setUser(UserType value) {
-        this.user = value;
-    }
+  /**
+   * Gets the value of the user property.
+   *
+   * @return possible object is {@link UserType }
+   */
+  public UserType getUser() {
+    return user;
+  }
 
+  /**
+   * Sets the value of the user property.
+   *
+   * @param value allowed object is {@link UserType }
+   */
+  public void setUser(UserType value) {
+    this.user = value;
+  }
 }

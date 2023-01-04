@@ -4,6 +4,5 @@ import org.woped.core.controller.IEditor;
 
 public interface IEditorFrame {
 
-	public abstract IEditor getEditor();
-
+  public abstract IEditor getEditor();
 }

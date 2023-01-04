@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(EditorVCTest.class)
-public class AllTestsEditorControllerVc {
-}
+public class AllTestsEditorControllerVc {}

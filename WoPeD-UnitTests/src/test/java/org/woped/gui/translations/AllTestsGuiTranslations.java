@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(MessagesTest.class)
-public class AllTestsGuiTranslations {
-}
+public class AllTestsGuiTranslations {}

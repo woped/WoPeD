@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(OrientationTest.class)
-public class AllTestsEditorOrientation {
-}
+public class AllTestsEditorOrientation {}

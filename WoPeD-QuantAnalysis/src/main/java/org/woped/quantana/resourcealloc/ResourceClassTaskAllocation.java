@@ -3,26 +3,26 @@ package org.woped.quantana.resourcealloc;
 import java.util.ArrayList;
 
 public class ResourceClassTaskAllocation {
-	String resClass = "";
-	ArrayList<String> tasks = new ArrayList<String>();
-	
-	public ResourceClassTaskAllocation(String name){
-		resClass = name;
-	}
+  String resClass = "";
+  ArrayList<String> tasks = new ArrayList<String>();
 
-	public String getResClass() {
-		return resClass;
-	}
+  public ResourceClassTaskAllocation(String name) {
+    resClass = name;
+  }
 
-	public void setResClass(String resClass) {
-		this.resClass = resClass;
-	}
+  public String getResClass() {
+    return resClass;
+  }
 
-	public ArrayList<String> getTasks() {
-		return tasks;
-	}
+  public void setResClass(String resClass) {
+    this.resClass = resClass;
+  }
 
-	public void setTasks(ArrayList<String> tasks) {
-		this.tasks = tasks;
-	}
+  public ArrayList<String> getTasks() {
+    return tasks;
+  }
+
+  public void setTasks(ArrayList<String> tasks) {
+    this.tasks = tasks;
+  }
 }

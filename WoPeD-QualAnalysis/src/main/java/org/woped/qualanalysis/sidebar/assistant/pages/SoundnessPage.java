@@ -7,91 +7,92 @@ import org.woped.qualanalysis.sidebar.assistant.components.DetailsMouseListener;
 
 /**
  * shows soundness overview
- * 
+ *
  * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
- * 
  */
 @SuppressWarnings("serial")
 public class SoundnessPage extends BeginnerPanel {
 
-	private boolean errorStatus = true;
+  private boolean errorStatus = true;
 
-	private boolean warningStatus = true;
+  private boolean warningStatus = true;
 
-	private DetailsMouseListener tokenDetailsListener, boundDetailsListener, liveDetailsListener,
-			wellstructuredDetailsListener, freechoiceDetailsListener;
+  private DetailsMouseListener tokenDetailsListener,
+      boundDetailsListener,
+      liveDetailsListener,
+      wellstructuredDetailsListener,
+      freechoiceDetailsListener;
+  private BeginnerPanel tokenPage,
+      boundednessPage,
+      livenessPage,
+      wellstructurednessPage,
+      freechoicePage;
 
-	private BeginnerPanel tokenPage, boundednessPage, livenessPage,
-			wellstructurednessPage, freechoicePage;
+  public SoundnessPage(BeginnerPanel previous, SideBar sideBar) {
+    super(previous, sideBar, Messages.getString(PREFIX + "SoundnessAnalysis"));
 
-	public SoundnessPage(BeginnerPanel previous, SideBar sideBar) {
-		super(previous, sideBar, Messages
-				.getString(PREFIX + "SoundnessAnalysis"));
+    tokenPage = new TokenPage(this, sideBar);
+    tokenDetailsListener = new DetailsMouseListener(sideBar, tokenPage);
 
-		tokenPage = new TokenPage(this, sideBar);
-		tokenDetailsListener = new DetailsMouseListener(sideBar,
-				tokenPage);
-		
-		boundednessPage = new BoundednessPage(this, sideBar);
-		boundDetailsListener = new DetailsMouseListener(sideBar,
-				boundednessPage);
-		
-		livenessPage = new LivenessPage(this, sideBar);
-		liveDetailsListener = new DetailsMouseListener(sideBar, livenessPage);
-		
-		wellstructurednessPage = new WellstructurednessPage(this, sideBar);
-		wellstructuredDetailsListener = new DetailsMouseListener(sideBar,
-				wellstructurednessPage);
-		
-		freechoicePage = new FreechoicePage(this, sideBar);
-		freechoiceDetailsListener = new DetailsMouseListener(sideBar,
-				freechoicePage);
+    boundednessPage = new BoundednessPage(this, sideBar);
+    boundDetailsListener = new DetailsMouseListener(sideBar, boundednessPage);
 
-		if (!qualanalysisService.isSound() || !wellstructurednessPage.getStatus() || !freechoicePage.getStatus()) {
-			// set status values
-			warningStatus = false;
-			if (!qualanalysisService.isSound())
-				errorStatus = false;
-		}
+    livenessPage = new LivenessPage(this, sideBar);
+    liveDetailsListener = new DetailsMouseListener(sideBar, livenessPage);
 
-	}
+    wellstructurednessPage = new WellstructurednessPage(this, sideBar);
+    wellstructuredDetailsListener = new DetailsMouseListener(sideBar, wellstructurednessPage);
 
-	public boolean getErrorStatus() {
-		return errorStatus;
-	}
+    freechoicePage = new FreechoicePage(this, sideBar);
+    freechoiceDetailsListener = new DetailsMouseListener(sideBar, freechoicePage);
 
-	public boolean getWarningStatus() {
-		return warningStatus;
-	}
+    if (!qualanalysisService.isSound()
+        || !wellstructurednessPage.getStatus()
+        || !freechoicePage.getStatus()) {
+      // set status values
+      warningStatus = false;
+      if (!qualanalysisService.isSound()) errorStatus = false;
+    }
+  }
 
-	@Override
-	public void addComponents() {
-		// inner-tokens
+  public boolean getErrorStatus() {
+    return errorStatus;
+  }
 
-		createAnalysisEntry(PREFIX + "InitialMarkingAnalysis",
-				tokenDetailsListener, tokenPage.getStatus());
-		
-		// boundedness
+  public boolean getWarningStatus() {
+    return warningStatus;
+  }
 
-		createAnalysisEntry(PREFIX + "BoundednessAnalysis",
-				boundDetailsListener, boundednessPage.getStatus());
+  @Override
+  public void addComponents() {
+    // inner-tokens
 
-		// liveness
+    createAnalysisEntry(
+        PREFIX + "InitialMarkingAnalysis", tokenDetailsListener, tokenPage.getStatus());
 
-		createAnalysisEntry(PREFIX + "LivenessAnalysis",
-				liveDetailsListener, livenessPage.getStatus());
+    // boundedness
 
-		// wellstructuredness
+    createAnalysisEntry(
+        PREFIX + "BoundednessAnalysis", boundDetailsListener, boundednessPage.getStatus());
 
-		createAnalysisEntry(PREFIX + "WellStructurednessAnalysis",
-				wellstructuredDetailsListener, wellstructurednessPage
-						.getStatus());
+    // liveness
 
-		// freechoice
+    createAnalysisEntry(PREFIX + "LivenessAnalysis", liveDetailsListener, livenessPage.getStatus());
 
-		createAnalysisEntry(PREFIX_BEGINNER + "FreeChoiceAnalysis",
-				freechoiceDetailsListener, freechoicePage.getStatus());
+    // wellstructuredness
 
-		createEmptyEntry();
-	}
+    createAnalysisEntry(
+        PREFIX + "WellStructurednessAnalysis",
+        wellstructuredDetailsListener,
+        wellstructurednessPage.getStatus());
+
+    // freechoice
+
+    createAnalysisEntry(
+        PREFIX_BEGINNER + "FreeChoiceAnalysis",
+        freechoiceDetailsListener,
+        freechoicePage.getStatus());
+
+    createEmptyEntry();
+  }
 }

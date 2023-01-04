@@ -10,10 +10,10 @@ import org.woped.qualanalysis.coverabilitygraph.model.AllTestsQualAnalysisCovera
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AllTestsQualAnalysisCoverabilityGraphGui.class,
-        AllTestsQualAnalysisCoverabilityGraphModel.class,
-        MpNodeTextFormatterTest.class,
-        MpNodeTest.class,
-        EditorValidatorTest.class})
-public class AllTestsQualAnalysisCoverabilityGraph {
-}
+  AllTestsQualAnalysisCoverabilityGraphGui.class,
+  AllTestsQualAnalysisCoverabilityGraphModel.class,
+  MpNodeTextFormatterTest.class,
+  MpNodeTest.class,
+  EditorValidatorTest.class
+})
+public class AllTestsQualAnalysisCoverabilityGraph {}

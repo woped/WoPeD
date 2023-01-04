@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({VEPControllerTest.class})
-public class AllTestsCoreController {
-}
+public class AllTestsCoreController {}

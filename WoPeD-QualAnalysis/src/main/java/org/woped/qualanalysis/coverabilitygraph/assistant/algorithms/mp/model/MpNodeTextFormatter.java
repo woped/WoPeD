@@ -4,24 +4,26 @@ import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.DefaultNode
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 
 /**
- * Decorates the textual representation of a {@link MpNode} with additional information about its analysis.
+ * Decorates the textual representation of a {@link MpNode} with additional information about its
+ * analysis.
  */
-public class MpNodeTextFormatter extends DefaultNodeTextFormatter{
+public class MpNodeTextFormatter extends DefaultNodeTextFormatter {
 
-    @Override
-    public String getText(CoverabilityGraphNode node) {
+  @Override
+  public String getText(CoverabilityGraphNode node) {
 
-        if(!(node instanceof MpNode)) return super.getText(node);
-        MpNode n = (MpNode) node;
+    if (!(node instanceof MpNode)) return super.getText(node);
+    MpNode n = (MpNode) node;
 
-        if(n.getState() == MpNodeState.UNPROCESSED) return "?";
+    if (n.getState() == MpNodeState.UNPROCESSED) return "?";
 
-        String text = String.format("%d : %s", n.getProcessedInStep(), markingFormatter.getText(n.getMarking()));
+    String text =
+        String.format("%d : %s", n.getProcessedInStep(), markingFormatter.getText(n.getMarking()));
 
-        if(n.getState()== MpNodeState.INACTIVE){
-            text = String.format("%s : %d", text, n.getDeactivatedInStep());
-        }
-
-        return text;
+    if (n.getState() == MpNodeState.INACTIVE) {
+      text = String.format("%s : %d", text, n.getDeactivatedInStep());
     }
+
+    return text;
+  }
 }

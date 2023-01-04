@@ -6,6 +6,8 @@ import org.woped.qualanalysis.soundness.datamodel.AllTestsQualAnalysisSoundnessD
 import org.woped.qualanalysis.soundness.marking.AllTestsQualAnalysisSoundnessMarking;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({AllTestsQualAnalysisSoundnessDatamodel.class, AllTestsQualAnalysisSoundnessMarking.class})
-public class AllTestsQualAnalysisSoundness {
-}
+@Suite.SuiteClasses({
+  AllTestsQualAnalysisSoundnessDatamodel.class,
+  AllTestsQualAnalysisSoundnessMarking.class
+})
+public class AllTestsQualAnalysisSoundness {}

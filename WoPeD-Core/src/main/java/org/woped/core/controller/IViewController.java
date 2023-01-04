@@ -1,16 +1,14 @@
 package org.woped.core.controller;
 
-public interface IViewController
-{
+public interface IViewController {
 
-    public String getId();
+  public String getId();
 
-    public void addViewListener(IViewListener listener);
+  public void addViewListener(IViewListener listener);
 
-    public void removeViewListener(IViewListener listenner);
+  public void removeViewListener(IViewListener listenner);
 
-    public int getViewControllerType();
+  public int getViewControllerType();
 
-    public void fireViewEvent(AbstractViewEvent viewevent);
-
+  public void fireViewEvent(AbstractViewEvent viewevent);
 }

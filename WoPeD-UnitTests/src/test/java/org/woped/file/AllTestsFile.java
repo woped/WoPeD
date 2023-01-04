@@ -6,5 +6,4 @@ import org.woped.file.controller.vep.AllTestsFileControllerVep;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({AllTestsFileControllerVep.class, PNMLExportTest.class, PNMLImportTest.class})
-public class AllTestsFile {
-}
+public class AllTestsFile {}

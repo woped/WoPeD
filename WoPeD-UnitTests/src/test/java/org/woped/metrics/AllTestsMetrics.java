@@ -6,5 +6,4 @@ import org.woped.metrics.metricsCalculation.LinearPathDescriptorTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(LinearPathDescriptorTest.class)
-public class AllTestsMetrics {
-}
+public class AllTestsMetrics {}

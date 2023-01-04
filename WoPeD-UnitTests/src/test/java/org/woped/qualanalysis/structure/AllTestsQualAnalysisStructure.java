@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({StructuralAnalysisTest.class})
-public class AllTestsQualAnalysisStructure {
-}
+public class AllTestsQualAnalysisStructure {}

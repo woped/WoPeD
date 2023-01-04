@@ -5,49 +5,45 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.List;
-
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 
+public interface IUserInterface extends IEditorAware {
+  public void hideEditor(IEditor editor);
 
-public interface IUserInterface extends IEditorAware
-{
-    public void hideEditor(IEditor editor);
+  public IEditor getEditorFocus();
 
-    public IEditor getEditorFocus();
+  public List<IEditor> getAllEditors();
 
-    public List<IEditor> getAllEditors();
+  public void quit();
 
-    public void quit();
+  public Rectangle getBounds();
 
-    public Rectangle getBounds();
+  public Component getComponent();
 
-    public Component getComponent();
+  public Component getPropertyChangeSupportBean();
 
-    public Component getPropertyChangeSupportBean();
+  public void cascadeFrames();
 
-    public void cascadeFrames();
+  public void arrangeFrames();
 
-    public void arrangeFrames();
-    
-    public void refreshFocusOnFrames();
+  public void refreshFocusOnFrames();
 
-    /* * some component methods * */
+  /* * some component methods * */
 
-    public int getX();
+  public int getX();
 
-    public int getY();
+  public int getY();
 
-    public Dimension getSize();
-    
-    public boolean isMaximized();
+  public Dimension getSize();
 
-    public void setVisible(boolean visible);
-    
-    public void updateRecentMenu();
+  public boolean isMaximized();
 
-    public Container getContentPane();
+  public void setVisible(boolean visible);
 
-	public void initialize(AbstractApplicationMediator mediator);
-	
+  public void updateRecentMenu();
+
+  public Container getContentPane();
+
+  public void initialize(AbstractApplicationMediator mediator);
 }

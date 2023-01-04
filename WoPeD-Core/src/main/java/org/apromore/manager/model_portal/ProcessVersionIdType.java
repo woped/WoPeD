@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for ProcessVersion_idType complex type.
- * 
+ * Java class for ProcessVersion_idType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="ProcessVersion_idType">
  *   &lt;complexContent>
@@ -22,64 +20,50 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessVersion_idType")
 public class ProcessVersionIdType {
 
-    @XmlAttribute(name = "ProcessId")
-    protected Integer processId;
-    @XmlAttribute(name = "VersionName")
-    protected String versionName;
+  @XmlAttribute(name = "ProcessId")
+  protected Integer processId;
 
-    /**
-     * Gets the value of the processId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getProcessId() {
-        return processId;
-    }
+  @XmlAttribute(name = "VersionName")
+  protected String versionName;
 
-    /**
-     * Sets the value of the processId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setProcessId(Integer value) {
-        this.processId = value;
-    }
+  /**
+   * Gets the value of the processId property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getProcessId() {
+    return processId;
+  }
 
-    /**
-     * Gets the value of the versionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersionName() {
-        return versionName;
-    }
+  /**
+   * Sets the value of the processId property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setProcessId(Integer value) {
+    this.processId = value;
+  }
 
-    /**
-     * Sets the value of the versionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersionName(String value) {
-        this.versionName = value;
-    }
+  /**
+   * Gets the value of the versionName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getVersionName() {
+    return versionName;
+  }
 
+  /**
+   * Sets the value of the versionName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setVersionName(String value) {
+    this.versionName = value;
+  }
 }

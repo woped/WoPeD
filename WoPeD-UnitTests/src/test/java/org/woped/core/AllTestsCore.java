@@ -7,6 +7,9 @@ import org.woped.core.model.AllTestsCoreModel;
 import org.woped.core.utilities.AllTestsCoreUtilities;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({AllTestsCoreController.class, AllTestsCoreModel.class, AllTestsCoreUtilities.class})
-public class AllTestsCore {
-}
+@Suite.SuiteClasses({
+  AllTestsCoreController.class,
+  AllTestsCoreModel.class,
+  AllTestsCoreUtilities.class
+})
+public class AllTestsCore {}

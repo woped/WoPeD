@@ -3,19 +3,17 @@ package org.woped.core.controller;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
-public interface IStatusBar
-{
+public interface IStatusBar {
 
-    public static int TYPE = 2;
+  public static int TYPE = 2;
 
-    public JProgressBar getProgressBar();
+  public JProgressBar getProgressBar();
 
-    public boolean startProgress(String description, int endValue);
+  public boolean startProgress(String description, int endValue);
 
-    public boolean nextStep();
+  public boolean nextStep();
 
-    public boolean isRunning();
+  public boolean isRunning();
 
-    public JLabel getStatusLabel();
-
+  public JLabel getStatusLabel();
 }

@@ -1,6 +1,5 @@
 package org.woped.gui.translations;
 
-public class Constants
-{
-    public final static String TRANSLATIONS_LOGGER = "TRANSLATIONS_LOGGER";
+public class Constants {
+  public static final String TRANSLATIONS_LOGGER = "TRANSLATIONS_LOGGER";
 }

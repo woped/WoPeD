@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for EditSessionType complex type.
- * 
+ * Java class for EditSessionType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="EditSessionType">
  *   &lt;complexContent>
@@ -30,272 +28,218 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EditSessionType")
 public class EditSessionType {
 
-    @XmlAttribute(name = "username")
-    protected String username;
-    @XmlAttribute(name = "nativeType")
-    protected String nativeType;
-    @XmlAttribute(name = "processId")
-    protected Integer processId;
-    @XmlAttribute(name = "processName")
-    protected String processName;
-    @XmlAttribute(name = "versionName")
-    protected String versionName;
-    @XmlAttribute(name = "domain")
-    protected String domain;
-    @XmlAttribute(name = "creationDate")
-    protected String creationDate;
-    @XmlAttribute(name = "lastUpdate")
-    protected String lastUpdate;
-    @XmlAttribute(name = "withAnnotation")
-    protected Boolean withAnnotation;
-    @XmlAttribute(name = "annotation")
-    protected String annotation;
+  @XmlAttribute(name = "username")
+  protected String username;
 
-    /**
-     * Gets the value of the username property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUsername() {
-        return username;
-    }
+  @XmlAttribute(name = "nativeType")
+  protected String nativeType;
 
-    /**
-     * Sets the value of the username property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUsername(String value) {
-        this.username = value;
-    }
+  @XmlAttribute(name = "processId")
+  protected Integer processId;
 
-    /**
-     * Gets the value of the nativeType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNativeType() {
-        return nativeType;
-    }
+  @XmlAttribute(name = "processName")
+  protected String processName;
 
-    /**
-     * Sets the value of the nativeType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNativeType(String value) {
-        this.nativeType = value;
-    }
+  @XmlAttribute(name = "versionName")
+  protected String versionName;
 
-    /**
-     * Gets the value of the processId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getProcessId() {
-        return processId;
-    }
+  @XmlAttribute(name = "domain")
+  protected String domain;
 
-    /**
-     * Sets the value of the processId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setProcessId(Integer value) {
-        this.processId = value;
-    }
+  @XmlAttribute(name = "creationDate")
+  protected String creationDate;
 
-    /**
-     * Gets the value of the processName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProcessName() {
-        return processName;
-    }
+  @XmlAttribute(name = "lastUpdate")
+  protected String lastUpdate;
 
-    /**
-     * Sets the value of the processName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProcessName(String value) {
-        this.processName = value;
-    }
+  @XmlAttribute(name = "withAnnotation")
+  protected Boolean withAnnotation;
 
-    /**
-     * Gets the value of the versionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersionName() {
-        return versionName;
-    }
+  @XmlAttribute(name = "annotation")
+  protected String annotation;
 
-    /**
-     * Sets the value of the versionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersionName(String value) {
-        this.versionName = value;
-    }
+  /**
+   * Gets the value of the username property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
 
-    /**
-     * Gets the value of the domain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDomain() {
-        return domain;
-    }
+  /**
+   * Sets the value of the username property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
 
-    /**
-     * Sets the value of the domain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDomain(String value) {
-        this.domain = value;
-    }
+  /**
+   * Gets the value of the nativeType property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getNativeType() {
+    return nativeType;
+  }
 
-    /**
-     * Gets the value of the creationDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCreationDate() {
-        return creationDate;
-    }
+  /**
+   * Sets the value of the nativeType property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setNativeType(String value) {
+    this.nativeType = value;
+  }
 
-    /**
-     * Sets the value of the creationDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCreationDate(String value) {
-        this.creationDate = value;
-    }
+  /**
+   * Gets the value of the processId property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getProcessId() {
+    return processId;
+  }
 
-    /**
-     * Gets the value of the lastUpdate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLastUpdate() {
-        return lastUpdate;
-    }
+  /**
+   * Sets the value of the processId property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setProcessId(Integer value) {
+    this.processId = value;
+  }
 
-    /**
-     * Sets the value of the lastUpdate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLastUpdate(String value) {
-        this.lastUpdate = value;
-    }
+  /**
+   * Gets the value of the processName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getProcessName() {
+    return processName;
+  }
 
-    /**
-     * Gets the value of the withAnnotation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isWithAnnotation() {
-        return withAnnotation;
-    }
+  /**
+   * Sets the value of the processName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setProcessName(String value) {
+    this.processName = value;
+  }
 
-    /**
-     * Sets the value of the withAnnotation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setWithAnnotation(Boolean value) {
-        this.withAnnotation = value;
-    }
+  /**
+   * Gets the value of the versionName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getVersionName() {
+    return versionName;
+  }
 
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAnnotation() {
-        return annotation;
-    }
+  /**
+   * Sets the value of the versionName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setVersionName(String value) {
+    this.versionName = value;
+  }
 
-    /**
-     * Sets the value of the annotation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAnnotation(String value) {
-        this.annotation = value;
-    }
+  /**
+   * Gets the value of the domain property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getDomain() {
+    return domain;
+  }
 
+  /**
+   * Sets the value of the domain property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setDomain(String value) {
+    this.domain = value;
+  }
+
+  /**
+   * Gets the value of the creationDate property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getCreationDate() {
+    return creationDate;
+  }
+
+  /**
+   * Sets the value of the creationDate property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setCreationDate(String value) {
+    this.creationDate = value;
+  }
+
+  /**
+   * Gets the value of the lastUpdate property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getLastUpdate() {
+    return lastUpdate;
+  }
+
+  /**
+   * Sets the value of the lastUpdate property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setLastUpdate(String value) {
+    this.lastUpdate = value;
+  }
+
+  /**
+   * Gets the value of the withAnnotation property.
+   *
+   * @return possible object is {@link Boolean }
+   */
+  public Boolean isWithAnnotation() {
+    return withAnnotation;
+  }
+
+  /**
+   * Sets the value of the withAnnotation property.
+   *
+   * @param value allowed object is {@link Boolean }
+   */
+  public void setWithAnnotation(Boolean value) {
+    this.withAnnotation = value;
+  }
+
+  /**
+   * Gets the value of the annotation property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getAnnotation() {
+    return annotation;
+  }
+
+  /**
+   * Sets the value of the annotation property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setAnnotation(String value) {
+    this.annotation = value;
+  }
 }

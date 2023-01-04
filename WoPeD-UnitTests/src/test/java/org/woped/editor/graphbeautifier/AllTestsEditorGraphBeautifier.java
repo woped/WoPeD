@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(SGYGraphTest.class)
-public class AllTestsEditorGraphBeautifier {
-}
+public class AllTestsEditorGraphBeautifier {}

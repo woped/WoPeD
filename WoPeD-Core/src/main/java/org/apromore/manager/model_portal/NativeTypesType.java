@@ -1,20 +1,17 @@
-
 package org.apromore.manager.model_portal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for NativeTypesType complex type.
- * 
+ * Java class for NativeTypesType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="NativeTypesType">
  *   &lt;complexContent>
@@ -26,45 +23,35 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NativeTypesType", propOrder = {
-    "nativeType"
-})
+@XmlType(
+    name = "NativeTypesType",
+    propOrder = {"nativeType"})
 public class NativeTypesType {
 
-    @XmlElement(name = "NativeType")
-    protected List<FormatType> nativeType;
+  @XmlElement(name = "NativeType")
+  protected List<FormatType> nativeType;
 
-    /**
-     * Gets the value of the nativeType property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nativeType property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNativeType().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FormatType }
-     * 
-     * 
-     */
-    public List<FormatType> getNativeType() {
-        if (nativeType == null) {
-            nativeType = new ArrayList<FormatType>();
-        }
-        return this.nativeType;
+  /**
+   * Gets the value of the nativeType property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the nativeType property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   *
+   * <pre>
+   *    getNativeType().add(newItem);
+   * </pre>
+   *
+   * <p>Objects of the following type(s) are allowed in the list {@link FormatType }
+   */
+  public List<FormatType> getNativeType() {
+    if (nativeType == null) {
+      nativeType = new ArrayList<FormatType>();
     }
-
+    return this.nativeType;
+  }
 }

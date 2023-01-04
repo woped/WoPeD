@@ -4,10 +4,5 @@
  */
 package org.woped.file.yawl.wfnet;
 
-/**
- *
- * @author Chris
- */
-public class WfNetException extends Exception {
-    
-}
+/** @author Chris */
+public class WfNetException extends Exception {}

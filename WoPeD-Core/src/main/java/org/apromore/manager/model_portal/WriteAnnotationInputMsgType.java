@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.activation.DataHandler;
@@ -9,12 +8,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for WriteAnnotationInputMsgType complex type.
- * 
+ * Java class for WriteAnnotationInputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="WriteAnnotationInputMsgType">
  *   &lt;complexContent>
@@ -32,197 +30,158 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "WriteAnnotationInputMsgType", propOrder = {
-    "_native"
-})
+@XmlType(
+    name = "WriteAnnotationInputMsgType",
+    propOrder = {"_native"})
 public class WriteAnnotationInputMsgType {
 
-    @XmlElement(name = "Native", required = true)
-    @XmlMimeType("application/octet-stream")
-    protected DataHandler _native;
-    @XmlAttribute(name = "EditSessionCode")
-    protected Integer editSessionCode;
-    @XmlAttribute(name = "AnnotationName")
-    protected String annotationName;
-    @XmlAttribute(name = "IsNew")
-    protected Boolean isNew;
-    @XmlAttribute(name = "ProcessId")
-    protected Integer processId;
-    @XmlAttribute(name = "Version")
-    protected String version;
-    @XmlAttribute(name = "NativeType")
-    protected String nativeType;
+  @XmlElement(name = "Native", required = true)
+  @XmlMimeType("application/octet-stream")
+  protected DataHandler _native;
 
-    /**
-     * Gets the value of the native property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DataHandler }
-     *     
-     */
-    public DataHandler getNative() {
-        return _native;
-    }
+  @XmlAttribute(name = "EditSessionCode")
+  protected Integer editSessionCode;
 
-    /**
-     * Sets the value of the native property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DataHandler }
-     *     
-     */
-    public void setNative(DataHandler value) {
-        this._native = value;
-    }
+  @XmlAttribute(name = "AnnotationName")
+  protected String annotationName;
 
-    /**
-     * Gets the value of the editSessionCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getEditSessionCode() {
-        return editSessionCode;
-    }
+  @XmlAttribute(name = "IsNew")
+  protected Boolean isNew;
 
-    /**
-     * Sets the value of the editSessionCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setEditSessionCode(Integer value) {
-        this.editSessionCode = value;
-    }
+  @XmlAttribute(name = "ProcessId")
+  protected Integer processId;
 
-    /**
-     * Gets the value of the annotationName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAnnotationName() {
-        return annotationName;
-    }
+  @XmlAttribute(name = "Version")
+  protected String version;
 
-    /**
-     * Sets the value of the annotationName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAnnotationName(String value) {
-        this.annotationName = value;
-    }
+  @XmlAttribute(name = "NativeType")
+  protected String nativeType;
 
-    /**
-     * Gets the value of the isNew property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isIsNew() {
-        return isNew;
-    }
+  /**
+   * Gets the value of the native property.
+   *
+   * @return possible object is {@link DataHandler }
+   */
+  public DataHandler getNative() {
+    return _native;
+  }
 
-    /**
-     * Sets the value of the isNew property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setIsNew(Boolean value) {
-        this.isNew = value;
-    }
+  /**
+   * Sets the value of the native property.
+   *
+   * @param value allowed object is {@link DataHandler }
+   */
+  public void setNative(DataHandler value) {
+    this._native = value;
+  }
 
-    /**
-     * Gets the value of the processId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getProcessId() {
-        return processId;
-    }
+  /**
+   * Gets the value of the editSessionCode property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getEditSessionCode() {
+    return editSessionCode;
+  }
 
-    /**
-     * Sets the value of the processId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setProcessId(Integer value) {
-        this.processId = value;
-    }
+  /**
+   * Sets the value of the editSessionCode property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setEditSessionCode(Integer value) {
+    this.editSessionCode = value;
+  }
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        return version;
-    }
+  /**
+   * Gets the value of the annotationName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getAnnotationName() {
+    return annotationName;
+  }
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+  /**
+   * Sets the value of the annotationName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setAnnotationName(String value) {
+    this.annotationName = value;
+  }
 
-    /**
-     * Gets the value of the nativeType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNativeType() {
-        return nativeType;
-    }
+  /**
+   * Gets the value of the isNew property.
+   *
+   * @return possible object is {@link Boolean }
+   */
+  public Boolean isIsNew() {
+    return isNew;
+  }
 
-    /**
-     * Sets the value of the nativeType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNativeType(String value) {
-        this.nativeType = value;
-    }
+  /**
+   * Sets the value of the isNew property.
+   *
+   * @param value allowed object is {@link Boolean }
+   */
+  public void setIsNew(Boolean value) {
+    this.isNew = value;
+  }
 
+  /**
+   * Gets the value of the processId property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getProcessId() {
+    return processId;
+  }
+
+  /**
+   * Sets the value of the processId property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setProcessId(Integer value) {
+    this.processId = value;
+  }
+
+  /**
+   * Gets the value of the version property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getVersion() {
+    return version;
+  }
+
+  /**
+   * Sets the value of the version property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setVersion(String value) {
+    this.version = value;
+  }
+
+  /**
+   * Gets the value of the nativeType property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getNativeType() {
+    return nativeType;
+  }
+
+  /**
+   * Sets the value of the nativeType property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setNativeType(String value) {
+    this.nativeType = value;
+  }
 }

@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,12 +6,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for MergeProcessesInputMsgType complex type.
- * 
+ * Java class for MergeProcessesInputMsgType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="MergeProcessesInputMsgType">
  *   &lt;complexContent>
@@ -31,223 +29,178 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MergeProcessesInputMsgType", propOrder = {
-    "processVersionIds",
-    "parameters"
-})
+@XmlType(
+    name = "MergeProcessesInputMsgType",
+    propOrder = {"processVersionIds", "parameters"})
 public class MergeProcessesInputMsgType {
 
-    @XmlElement(name = "ProcessVersion_ids", required = true)
-    protected ProcessVersionIdsType processVersionIds;
-    @XmlElement(name = "Parameters", required = true)
-    protected ParametersType parameters;
-    @XmlAttribute(name = "ProcessName")
-    protected String processName;
-    @XmlAttribute(name = "VersionName")
-    protected String versionName;
-    @XmlAttribute(name = "Domain")
-    protected String domain;
-    @XmlAttribute(name = "Username")
-    protected String username;
-    @XmlAttribute(name = "ProcessId")
-    protected Integer processId;
-    @XmlAttribute(name = "Algorithm")
-    protected String algorithm;
+  @XmlElement(name = "ProcessVersion_ids", required = true)
+  protected ProcessVersionIdsType processVersionIds;
 
-    /**
-     * Gets the value of the processVersionIds property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ProcessVersionIdsType }
-     *     
-     */
-    public ProcessVersionIdsType getProcessVersionIds() {
-        return processVersionIds;
-    }
+  @XmlElement(name = "Parameters", required = true)
+  protected ParametersType parameters;
 
-    /**
-     * Sets the value of the processVersionIds property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ProcessVersionIdsType }
-     *     
-     */
-    public void setProcessVersionIds(ProcessVersionIdsType value) {
-        this.processVersionIds = value;
-    }
+  @XmlAttribute(name = "ProcessName")
+  protected String processName;
 
-    /**
-     * Gets the value of the parameters property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParametersType }
-     *     
-     */
-    public ParametersType getParameters() {
-        return parameters;
-    }
+  @XmlAttribute(name = "VersionName")
+  protected String versionName;
 
-    /**
-     * Sets the value of the parameters property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParametersType }
-     *     
-     */
-    public void setParameters(ParametersType value) {
-        this.parameters = value;
-    }
+  @XmlAttribute(name = "Domain")
+  protected String domain;
 
-    /**
-     * Gets the value of the processName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getProcessName() {
-        return processName;
-    }
+  @XmlAttribute(name = "Username")
+  protected String username;
 
-    /**
-     * Sets the value of the processName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setProcessName(String value) {
-        this.processName = value;
-    }
+  @XmlAttribute(name = "ProcessId")
+  protected Integer processId;
 
-    /**
-     * Gets the value of the versionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersionName() {
-        return versionName;
-    }
+  @XmlAttribute(name = "Algorithm")
+  protected String algorithm;
 
-    /**
-     * Sets the value of the versionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersionName(String value) {
-        this.versionName = value;
-    }
+  /**
+   * Gets the value of the processVersionIds property.
+   *
+   * @return possible object is {@link ProcessVersionIdsType }
+   */
+  public ProcessVersionIdsType getProcessVersionIds() {
+    return processVersionIds;
+  }
 
-    /**
-     * Gets the value of the domain property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDomain() {
-        return domain;
-    }
+  /**
+   * Sets the value of the processVersionIds property.
+   *
+   * @param value allowed object is {@link ProcessVersionIdsType }
+   */
+  public void setProcessVersionIds(ProcessVersionIdsType value) {
+    this.processVersionIds = value;
+  }
 
-    /**
-     * Sets the value of the domain property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDomain(String value) {
-        this.domain = value;
-    }
+  /**
+   * Gets the value of the parameters property.
+   *
+   * @return possible object is {@link ParametersType }
+   */
+  public ParametersType getParameters() {
+    return parameters;
+  }
 
-    /**
-     * Gets the value of the username property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUsername() {
-        return username;
-    }
+  /**
+   * Sets the value of the parameters property.
+   *
+   * @param value allowed object is {@link ParametersType }
+   */
+  public void setParameters(ParametersType value) {
+    this.parameters = value;
+  }
 
-    /**
-     * Sets the value of the username property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUsername(String value) {
-        this.username = value;
-    }
+  /**
+   * Gets the value of the processName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getProcessName() {
+    return processName;
+  }
 
-    /**
-     * Gets the value of the processId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getProcessId() {
-        return processId;
-    }
+  /**
+   * Sets the value of the processName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setProcessName(String value) {
+    this.processName = value;
+  }
 
-    /**
-     * Sets the value of the processId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setProcessId(Integer value) {
-        this.processId = value;
-    }
+  /**
+   * Gets the value of the versionName property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getVersionName() {
+    return versionName;
+  }
 
-    /**
-     * Gets the value of the algorithm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAlgorithm() {
-        return algorithm;
-    }
+  /**
+   * Sets the value of the versionName property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setVersionName(String value) {
+    this.versionName = value;
+  }
 
-    /**
-     * Sets the value of the algorithm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAlgorithm(String value) {
-        this.algorithm = value;
-    }
+  /**
+   * Gets the value of the domain property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getDomain() {
+    return domain;
+  }
 
+  /**
+   * Sets the value of the domain property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setDomain(String value) {
+    this.domain = value;
+  }
+
+  /**
+   * Gets the value of the username property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
+
+  /**
+   * Sets the value of the username property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
+
+  /**
+   * Gets the value of the processId property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getProcessId() {
+    return processId;
+  }
+
+  /**
+   * Sets the value of the processId property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setProcessId(Integer value) {
+    this.processId = value;
+  }
+
+  /**
+   * Gets the value of the algorithm property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getAlgorithm() {
+    return algorithm;
+  }
+
+  /**
+   * Sets the value of the algorithm property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setAlgorithm(String value) {
+    this.algorithm = value;
+  }
 }

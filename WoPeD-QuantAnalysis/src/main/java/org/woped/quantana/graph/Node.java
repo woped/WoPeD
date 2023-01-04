@@ -3,230 +3,229 @@ package org.woped.quantana.graph;
 import java.util.ArrayList;
 
 public class Node {
-	public final static int NOT_STARTED	=	1;
-	public final static int BUSY		=	2;
-	public final static int FINISHED	=	3;
-	
-	public final static int TYPE_PLACE			=	1;
-	public final static int TYPE_TRANS_SIMPLE	=	2;
-	public final static int TYPE_AND_JOIN		=	3;
-	public final static int TYPE_AND_SPLIT		=	4;
-	public final static int TYPE_XOR_JOIN		=	5;
-	public final static int TYPE_XOR_SPLIT		=	6;
-	public final static int TYPE_SUBP			=	9;
-	
-	private String id;
-	private String name;
-	private int markiert;
-	private int type;
-	
-	private boolean isFork = false;
-	private boolean foundCycle = false;
-	
-	private ArrayList<Arc> successor;
-	private ArrayList<Arc> predecessor;
-	
-	private double numOfRuns = 0.0;
-	private int iteration = 0;
-	private double tempRuns = 0.0;
-	private boolean andJoin = false;
-	private boolean andSplit = false;
-	private boolean joinReached = false;
-	
-	private double time = 0.0;
-	private int timeUnit = 1;
-	
-	private String role = "none";
-	private String group = "none";
-	
-	ArrayList<Arc> tempArcs = new ArrayList<Arc>();
-	
-	public Node(String id, String s)
-	{
-		this.id = id;
-		name = s;
-		successor = new ArrayList<Arc>();
-		predecessor = new ArrayList<Arc>();
-	}
+  public static final int NOT_STARTED = 1;
+  public static final int BUSY = 2;
+  public static final int FINISHED = 3;
 
-	public String toString()
-	{
-		return " " + id + ",";
-	}
+  public static final int TYPE_PLACE = 1;
+  public static final int TYPE_TRANS_SIMPLE = 2;
+  public static final int TYPE_AND_JOIN = 3;
+  public static final int TYPE_AND_SPLIT = 4;
+  public static final int TYPE_XOR_JOIN = 5;
+  public static final int TYPE_XOR_SPLIT = 6;
+  public static final int TYPE_SUBP = 9;
 
-	public String getId() {
-		return id;
-	}
+  private String id;
+  private String name;
+  private int markiert;
+  private int type;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  private boolean isFork = false;
+  private boolean foundCycle = false;
 
-	public String getName() {
-		return name;
-	}
+  private ArrayList<Arc> successor;
+  private ArrayList<Arc> predecessor;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  private double numOfRuns = 0.0;
+  private int iteration = 0;
+  private double tempRuns = 0.0;
+  private boolean andJoin = false;
+  private boolean andSplit = false;
+  private boolean joinReached = false;
 
-	public ArrayList<Arc> getSuccessor() {
-		return successor;
-	}
+  private double time = 0.0;
+  private int timeUnit = 1;
 
-	public void setSuccessor(ArrayList<Arc> successor) {
-		this.successor = successor;
-	}
+  private String role = "none";
+  private String group = "none";
 
-	public ArrayList<Arc> getPredecessor() {
-		return predecessor;
-	}
+  ArrayList<Arc> tempArcs = new ArrayList<Arc>();
 
-	public void setPredecessor(ArrayList<Arc> predecessor) {
-		this.predecessor = predecessor;
-	}
+  public Node(String id, String s) {
+    this.id = id;
+    name = s;
+    successor = new ArrayList<Arc>();
+    predecessor = new ArrayList<Arc>();
+  }
 
-	public int getMarkiert() {
-		return markiert;
-	}
+  public String toString() {
+    return " " + id + ",";
+  }
 
-	public void setMarkiert(int markiert) {
-		this.markiert = markiert;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public double getNumOfRuns() {
-		return numOfRuns;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public void setNumOfRuns(double numOfRuns) {
-		this.numOfRuns = numOfRuns;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public boolean isFork() {
-		return isFork;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public void setFork(boolean stacked) {
-		this.isFork = stacked;
-	}
+  public ArrayList<Arc> getSuccessor() {
+    return successor;
+  }
 
-	public int getType() {
-		return type;
-	}
+  public void setSuccessor(ArrayList<Arc> successor) {
+    this.successor = successor;
+  }
 
-	public void setType(int type) {
-		this.type = type;
-	}
+  public ArrayList<Arc> getPredecessor() {
+    return predecessor;
+  }
 
-	public double getTime() {
-		return time;
-	}
+  public void setPredecessor(ArrayList<Arc> predecessor) {
+    this.predecessor = predecessor;
+  }
 
-	public void setTime(double time) {
-		this.time = time;
-	}
+  public int getMarkiert() {
+    return markiert;
+  }
 
-	public boolean isFoundCycle() {
-		return foundCycle;
-	}
+  public void setMarkiert(int markiert) {
+    this.markiert = markiert;
+  }
 
-	public void setFoundCycle(boolean foundCycle) {
-		this.foundCycle = foundCycle;
-	}
+  public double getNumOfRuns() {
+    return numOfRuns;
+  }
 
-	public ArrayList<Arc> getTempArcs() {
-		return tempArcs;
-	}
+  public void setNumOfRuns(double numOfRuns) {
+    this.numOfRuns = numOfRuns;
+  }
 
-	public void setTempArcs(ArrayList<Arc> tempArcs) {
-		this.tempArcs = tempArcs;
-	}
+  public boolean isFork() {
+    return isFork;
+  }
 
-	public int getIteration() {
-		return iteration;
-	}
+  public void setFork(boolean stacked) {
+    this.isFork = stacked;
+  }
 
-	public void setIteration(int iteration) {
-		this.iteration = iteration;
-	}
-	
-	public void incIteration(){
-		this.iteration++;
-	}
+  public int getType() {
+    return type;
+  }
 
-	public double getTempRuns() {
-		return tempRuns;
-	}
+  public void setType(int type) {
+    this.type = type;
+  }
 
-	public void setTempRuns(double tempRuns) {
-		this.tempRuns = tempRuns;
-	}
+  public double getTime() {
+    return time;
+  }
 
-	public boolean isAndJoin() {
-		return andJoin;
-	}
+  public void setTime(double time) {
+    this.time = time;
+  }
 
-	public void setAndJoin(boolean andJoin) {
-		this.andJoin = andJoin;
-	}
+  public boolean isFoundCycle() {
+    return foundCycle;
+  }
 
-	public boolean isJoinReached() {
-		return joinReached;
-	}
+  public void setFoundCycle(boolean foundCycle) {
+    this.foundCycle = foundCycle;
+  }
 
-	public void setJoinReached(boolean joinReached) {
-		this.joinReached = joinReached;
-	}
+  public ArrayList<Arc> getTempArcs() {
+    return tempArcs;
+  }
 
-	public int getTimeUnit() {
-		return timeUnit;
-	}
+  public void setTempArcs(ArrayList<Arc> tempArcs) {
+    this.tempArcs = tempArcs;
+  }
 
-	public void setTimeUnit(int timeUnit) {
-		this.timeUnit = timeUnit;
-	}
+  public int getIteration() {
+    return iteration;
+  }
 
-	public String getGroup() {
-		return group;
-	}
+  public void setIteration(int iteration) {
+    this.iteration = iteration;
+  }
 
-	public void setGroup(String group) {
-		this.group = group;
-	}
+  public void incIteration() {
+    this.iteration++;
+  }
 
-	public String getRole() {
-		return role;
-	}
+  public double getTempRuns() {
+    return tempRuns;
+  }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	public String getGroupRole(){
-		return getGroup() + " / " + getRole();
-	}
+  public void setTempRuns(double tempRuns) {
+    this.tempRuns = tempRuns;
+  }
 
-	public boolean isAndSplit() {
-		return andSplit;
-	}
+  public boolean isAndJoin() {
+    return andJoin;
+  }
 
-	public boolean isPlace() {
-		return type == TYPE_PLACE;
-	}
+  public void setAndJoin(boolean andJoin) {
+    this.andJoin = andJoin;
+  }
 
-	public boolean isXorSplit() {
-		return type == TYPE_XOR_SPLIT;
-	}
-	public void setAndSplit(boolean andSplit) {
-		this.andSplit = andSplit;
-	}
-	
-	public boolean isTransition(){
-		return (type == TYPE_TRANS_SIMPLE 
-				|| type == TYPE_AND_JOIN 
-				|| type == TYPE_AND_SPLIT 
-				|| type == TYPE_XOR_JOIN
-				|| type == TYPE_XOR_SPLIT
-				|| type == TYPE_SUBP);
-	}
+  public boolean isJoinReached() {
+    return joinReached;
+  }
+
+  public void setJoinReached(boolean joinReached) {
+    this.joinReached = joinReached;
+  }
+
+  public int getTimeUnit() {
+    return timeUnit;
+  }
+
+  public void setTimeUnit(int timeUnit) {
+    this.timeUnit = timeUnit;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
+  public void setGroup(String group) {
+    this.group = group;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
+  }
+
+  public String getGroupRole() {
+    return getGroup() + " / " + getRole();
+  }
+
+  public boolean isAndSplit() {
+    return andSplit;
+  }
+
+  public boolean isPlace() {
+    return type == TYPE_PLACE;
+  }
+
+  public boolean isXorSplit() {
+    return type == TYPE_XOR_SPLIT;
+  }
+
+  public void setAndSplit(boolean andSplit) {
+    this.andSplit = andSplit;
+  }
+
+  public boolean isTransition() {
+    return (type == TYPE_TRANS_SIMPLE
+        || type == TYPE_AND_JOIN
+        || type == TYPE_AND_SPLIT
+        || type == TYPE_XOR_JOIN
+        || type == TYPE_XOR_SPLIT
+        || type == TYPE_SUBP);
+  }
 }

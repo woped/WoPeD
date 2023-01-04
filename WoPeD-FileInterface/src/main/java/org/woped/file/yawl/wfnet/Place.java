@@ -4,20 +4,15 @@
  */
 package org.woped.file.yawl.wfnet;
 
-/**
- *
- * @author Chris
- */
+/** @author Chris */
 public class Place extends WfNetNode {
 
-    /**
-     * Constructor with package-level access
-     * @param id 
-     */
-    Place(String id, WfNet parent) {
-        super(id, parent);
-    }
-
-    
-    
+  /**
+   * Constructor with package-level access
+   *
+   * @param id
+   */
+  Place(String id, WfNet parent) {
+    super(id, parent);
+  }
 }

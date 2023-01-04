@@ -3,39 +3,39 @@ package org.woped.quantana.model;
 import javax.swing.table.AbstractTableModel;
 
 public class ResUtilTableModel extends AbstractTableModel {
-	
-private static final long serialVersionUID	= 21L;
-	
-	private String[] columnNames;
-	private Object[][] data;
-	
-	public ResUtilTableModel(String[] cols, Object[][] obj){
-		columnNames = cols;
-		data = obj;
-	}
 
-	public int getColumnCount() {
-		return columnNames.length;
-	}
+  private static final long serialVersionUID = 21L;
 
-	public int getRowCount() {
-		return data.length;
-	}
+  private String[] columnNames;
+  private Object[][] data;
 
-	public String getColumnName(int col) {
-		return columnNames[col];
-	}
+  public ResUtilTableModel(String[] cols, Object[][] obj) {
+    columnNames = cols;
+    data = obj;
+  }
 
-	public Object getValueAt(int row, int col) {
-		return data[row][col];
-	}
+  public int getColumnCount() {
+    return columnNames.length;
+  }
 
-	public boolean isCellEditable(int row, int col) {
-		return false;
-	}
+  public int getRowCount() {
+    return data.length;
+  }
 
-	public void setValueAt(Object value, int row, int col) {
-		data[row][col] = value;
-		fireTableCellUpdated(row, col);
-	}
+  public String getColumnName(int col) {
+    return columnNames[col];
+  }
+
+  public Object getValueAt(int row, int col) {
+    return data[row][col];
+  }
+
+  public boolean isCellEditable(int row, int col) {
+    return false;
+  }
+
+  public void setValueAt(Object value, int row, int col) {
+    data[row][col] = value;
+    fireTableCellUpdated(row, col);
+  }
 }

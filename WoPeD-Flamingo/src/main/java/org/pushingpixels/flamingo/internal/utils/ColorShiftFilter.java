@@ -34,89 +34,75 @@ import java.awt.image.BufferedImage;
 
 /**
  * Image filter that shifts the colors of the original image.
- * 
+ *
  * @author Kirill Grouchnikov
  */
 public class ColorShiftFilter extends AbstractFilter {
-	/**
-	 * Red component of the shift color.
-	 */
-	int rShift;
+  /** Red component of the shift color. */
+  int rShift;
 
-	/**
-	 * Green component of the shift color.
-	 */
-	int gShift;
+  /** Green component of the shift color. */
+  int gShift;
 
-	/**
-	 * Blue component of the shift color.
-	 */
-	int bShift;
+  /** Blue component of the shift color. */
+  int bShift;
 
-	/**
-	 * Shift amount in 0.0-1.0 range.
-	 */
-	double hueShiftAmount;
+  /** Shift amount in 0.0-1.0 range. */
+  double hueShiftAmount;
 
-	/**
-	 * Creates a new color shift filter.
-	 * 
-	 * @param shiftColor
-	 *            Shift color.
-	 * @param shiftAmount
-	 *            Shift amount in 0.0-1.0 range.
-	 */
-	public ColorShiftFilter(Color shiftColor, double shiftAmount) {
-		this.rShift = shiftColor.getRed();
-		this.gShift = shiftColor.getGreen();
-		this.bShift = shiftColor.getBlue();
-		this.hueShiftAmount = shiftAmount;
-	}
+  /**
+   * Creates a new color shift filter.
+   *
+   * @param shiftColor Shift color.
+   * @param shiftAmount Shift amount in 0.0-1.0 range.
+   */
+  public ColorShiftFilter(Color shiftColor, double shiftAmount) {
+    this.rShift = shiftColor.getRed();
+    this.gShift = shiftColor.getGreen();
+    this.bShift = shiftColor.getBlue();
+    this.hueShiftAmount = shiftAmount;
+  }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.awt.image.BufferedImageOp#filter(java.awt.image.BufferedImage,
-	 * java.awt.image.BufferedImage)
-	 */
-	@Override
-	public BufferedImage filter(BufferedImage src, BufferedImage dst) {
-		if (dst == null) {
-			dst = createCompatibleDestImage(src, null);
-		}
+  /*
+   * (non-Javadoc)
+   *
+   * @see java.awt.image.BufferedImageOp#filter(java.awt.image.BufferedImage,
+   * java.awt.image.BufferedImage)
+   */
+  @Override
+  public BufferedImage filter(BufferedImage src, BufferedImage dst) {
+    if (dst == null) {
+      dst = createCompatibleDestImage(src, null);
+    }
 
-		int width = src.getWidth();
-		int height = src.getHeight();
+    int width = src.getWidth();
+    int height = src.getHeight();
 
-		int[] pixels = new int[width * height];
-		getPixels(src, 0, 0, width, height, pixels);
-		shiftColor(pixels);
-		setPixels(dst, 0, 0, width, height, pixels);
+    int[] pixels = new int[width * height];
+    getPixels(src, 0, 0, width, height, pixels);
+    shiftColor(pixels);
+    setPixels(dst, 0, 0, width, height, pixels);
 
-		return dst;
-	}
+    return dst;
+  }
 
-	/**
-	 * Color-shifts all the pixels in the specified pixel array.
-	 * 
-	 * @param pixels
-	 *            Pixel array for color-shifting.
-	 */
-	private void shiftColor(int[] pixels) {
-		for (int i = 0; i < pixels.length; i++) {
-			int argb = pixels[i];
-			int r = (argb >>> 16) & 0xFF;
-			int g = (argb >>> 8) & 0xFF;
-			int b = (argb >>> 0) & 0xFF;
+  /**
+   * Color-shifts all the pixels in the specified pixel array.
+   *
+   * @param pixels Pixel array for color-shifting.
+   */
+  private void shiftColor(int[] pixels) {
+    for (int i = 0; i < pixels.length; i++) {
+      int argb = pixels[i];
+      int r = (argb >>> 16) & 0xFF;
+      int g = (argb >>> 8) & 0xFF;
+      int b = (argb >>> 0) & 0xFF;
 
-			int nr = (int) (this.hueShiftAmount * this.rShift + (1.0 - this.hueShiftAmount)
-					* r);
-			int ng = (int) (this.hueShiftAmount * this.gShift + (1.0 - this.hueShiftAmount)
-					* g);
-			int nb = (int) (this.hueShiftAmount * this.bShift + (1.0 - this.hueShiftAmount)
-					* b);
+      int nr = (int) (this.hueShiftAmount * this.rShift + (1.0 - this.hueShiftAmount) * r);
+      int ng = (int) (this.hueShiftAmount * this.gShift + (1.0 - this.hueShiftAmount) * g);
+      int nb = (int) (this.hueShiftAmount * this.bShift + (1.0 - this.hueShiftAmount) * b);
 
-			pixels[i] = (argb & 0xFF000000) | nr << 16 | ng << 8 | nb;
-		}
-	}
+      pixels[i] = (argb & 0xFF000000) | nr << 16 | ng << 8 | nb;
+    }
+  }
 }

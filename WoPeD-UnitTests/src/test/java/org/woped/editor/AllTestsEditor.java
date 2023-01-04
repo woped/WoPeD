@@ -7,6 +7,9 @@ import org.woped.editor.graphbeautifier.AllTestsEditorGraphBeautifier;
 import org.woped.editor.orientation.AllTestsEditorOrientation;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({AllTestsEditorController.class, AllTestsEditorGraphBeautifier.class, AllTestsEditorOrientation.class})
-public class AllTestsEditor {
-}
+@Suite.SuiteClasses({
+  AllTestsEditorController.class,
+  AllTestsEditorGraphBeautifier.class,
+  AllTestsEditorOrientation.class
+})
+public class AllTestsEditor {}

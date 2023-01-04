@@ -5,5 +5,4 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({FileEventProcessorTest.class})
-public class AllTestsFileControllerVep {
-}
+public class AllTestsFileControllerVep {}

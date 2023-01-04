@@ -10,10 +10,12 @@ import org.woped.tests.qualanalysis.soundness.algorithms.generic.cc.ConnectedCom
 import org.woped.tests.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjanTest;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ SourceSinkTestTest.class, DeadTransitionTestTest.class,
-		NonLiveTransitionTestTest.class, UnboundPlacesTestTest.class,
-		ConnectedComponentTestGenTest.class,
-		StronglyConnectedComponentTestGenTarjanTest.class })
-
-public class SoundnessTests {
-}
+@Suite.SuiteClasses({
+  SourceSinkTestTest.class,
+  DeadTransitionTestTest.class,
+  NonLiveTransitionTestTest.class,
+  UnboundPlacesTestTest.class,
+  ConnectedComponentTestGenTest.class,
+  StronglyConnectedComponentTestGenTarjanTest.class
+})
+public class SoundnessTests {}

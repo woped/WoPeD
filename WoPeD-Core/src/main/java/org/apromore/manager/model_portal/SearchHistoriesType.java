@@ -1,4 +1,3 @@
-
 package org.apromore.manager.model_portal;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,12 +5,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for SearchHistoriesType complex type.
- * 
+ * Java class for SearchHistoriesType complex type.
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="SearchHistoriesType">
  *   &lt;complexContent>
@@ -22,64 +20,50 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SearchHistoriesType")
 public class SearchHistoriesType {
 
-    @XmlAttribute(name = "search")
-    protected String search;
-    @XmlAttribute(name = "num")
-    protected Integer num;
+  @XmlAttribute(name = "search")
+  protected String search;
 
-    /**
-     * Gets the value of the search property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSearch() {
-        return search;
-    }
+  @XmlAttribute(name = "num")
+  protected Integer num;
 
-    /**
-     * Sets the value of the search property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSearch(String value) {
-        this.search = value;
-    }
+  /**
+   * Gets the value of the search property.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSearch() {
+    return search;
+  }
 
-    /**
-     * Gets the value of the num property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getNum() {
-        return num;
-    }
+  /**
+   * Sets the value of the search property.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSearch(String value) {
+    this.search = value;
+  }
 
-    /**
-     * Sets the value of the num property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setNum(Integer value) {
-        this.num = value;
-    }
+  /**
+   * Gets the value of the num property.
+   *
+   * @return possible object is {@link Integer }
+   */
+  public Integer getNum() {
+    return num;
+  }
 
+  /**
+   * Sets the value of the num property.
+   *
+   * @param value allowed object is {@link Integer }
+   */
+  public void setNum(Integer value) {
+    this.num = value;
+  }
 }

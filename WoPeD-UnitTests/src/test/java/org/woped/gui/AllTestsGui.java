@@ -6,5 +6,4 @@ import org.woped.gui.translations.AllTestsGuiTranslations;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({AllTestsGuiTranslations.class})
-public class AllTestsGui {
-}
+public class AllTestsGui {}
