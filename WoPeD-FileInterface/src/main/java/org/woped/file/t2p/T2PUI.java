@@ -355,7 +355,7 @@ public class T2PUI extends JDialog {
 							showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
 							break;
 						case 500:
-							showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
+							showErrorPopUp("T2PUI.500Error.Title", "T2PUI.500Error.Text");
 							break;
 						case 503:
 							showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
