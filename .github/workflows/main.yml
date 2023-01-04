@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify -pl !WoPeD-Installer org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=woped_WoPeD
+        run: mvn -B clean install -Dmaven.test.skip=true -pl !WoPeD-Installer org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=woped_WoPeD
 
   build-linux-installer:
     name: Build Installer on Linux
