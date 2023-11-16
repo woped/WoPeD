@@ -166,7 +166,10 @@ public class PlainTextFileReader implements FileReader {
   }
 
   /**
-   * Method to read text from doc and docx files
+   * Method to read text from doc and docx files.
+   *
+   * <p>Known bug: DOCX files incompatible with current xmlbeans API: java.lang.NoSuchMethodError:
+   * 'org.apache.xmlbeans.XmlOptions org.apache.xmlbeans.XmlOptions.setEntityExpansionLimit(int)'
    *
    * @latestEditors <a href="mailto:bielefeld.moritz@student.dhbw-karlsruhe.de">Moritz
    *     Bielefeld</a>, <a href="mailto:geist.semjon@student.dhbw-karlsruhe.de">Semjon Geist</a>, <a
