@@ -44,8 +44,9 @@ public class CoverabilityGraphEdgeTest {
     CoverabilityGraphEdge cut = new CoverabilityGraphEdge(t1);
     cut.addTrigger(t2);
 
+    // id order, not lex order of names
     String expected =
-        "create Something " + CoverabilityGraphEdge.TRANSITION_DELIMITER + " create Something else";
+        "create Something else " + CoverabilityGraphEdge.TRANSITION_DELIMITER + " create Something";
     String actual = cut.toString();
 
     assertEquals(expected, actual);

@@ -67,7 +67,7 @@ public class MarkingTest {
         new Marking(
             new int[] {2, 3}, new PlaceNode[] {place1, place2}, new boolean[] {false, false});
 
-    String expected = "( 3p2 2p1 )";
+    String expected = "( 2p1 3p2 )";
     String actual = cut.asMultiSetString();
 
     assertEquals(expected, actual);
@@ -98,7 +98,7 @@ public class MarkingTest {
         new Marking(
             new int[] {2, 2}, new PlaceNode[] {place1, place2}, new boolean[] {false, true});
 
-    String expected = "( \u03C9p2 2p1 )";
+    String expected = "( 2p1 \u03C9p2 )";
     String actual = cut.asMultiSetString();
 
     assertEquals(expected, actual);
@@ -176,7 +176,7 @@ public class MarkingTest {
         new Marking(
             new int[] {1, 2}, new PlaceNode[] {place1, place2}, new boolean[] {false, false});
 
-    String expected = "( 1 2 )";
+    String expected = "( 2 1 )";
     String actual = cut.asTokenVectorString();
 
     assertEquals(expected, actual);

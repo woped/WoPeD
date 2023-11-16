@@ -68,4 +68,13 @@ public class ShortLexStringComparatorTest {
 
     assertEquals(expected, actual);
   }
+
+  @Test
+  public void compare_withSpaces() throws Exception {
+    String id1 = "compare space";
+    String id2 = "compare space 2";
+
+    assertEquals(-1, cut.compare(id1, id2));
+    assertEquals(-1, cut.compare("create Something", "create Something else"));
+  }
 }
