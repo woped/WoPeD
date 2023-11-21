@@ -187,8 +187,6 @@ public class ActionFactory {
             AbstractViewEvent.SAVEAS,
             null,
             ACTIONID_SAVEAS));
-    // VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_SAVEAS),
-    // VisualController.SUBPROCESS_EDITOR, VisualController.IGNORE, VisualController.IGNORE);
     VisualController.getInstance()
         .addElement(
             STATIC_ACTION_MAP.get(ACTIONID_SAVEAS),

@@ -23,7 +23,7 @@
 package org.woped.core.model;
 
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDJoinXORSplitOperatorTransitionModel;
 import org.woped.core.model.petrinet.ANDSplitJoinOperatorTransitionModel;
@@ -102,7 +102,8 @@ public class ModelElementFactory {
               break;
             default:
               LoggerManager.error(
-                  Constants.CORE_LOGGER, "Unknown Operator Type (" + map.getOperatorType() + ")");
+                  WoPeDConstants.CORE_LOGGER,
+                  "Unknown Operator Type (" + map.getOperatorType() + ")");
           }
           // modElement.setId(id);
           // create inital simple trans
@@ -119,13 +120,13 @@ public class ModelElementFactory {
 
       } catch (Exception ee) {
         LoggerManager.error(
-            Constants.CORE_LOGGER,
+            WoPeDConstants.CORE_LOGGER,
             "Could not create model! Type not supported (" + map.getType() + ")");
         ee.printStackTrace();
         return null;
       }
     } else {
-      LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
+      LoggerManager.error(WoPeDConstants.CORE_LOGGER, "ID must be set");
       return null;
     }
   }
@@ -139,7 +140,7 @@ public class ModelElementFactory {
       arc.setTarget(target);
       return arc;
     } else {
-      LoggerManager.error(Constants.CORE_LOGGER, "ID must be set");
+      LoggerManager.error(WoPeDConstants.CORE_LOGGER, "ID must be set");
       return null;
     }
   }

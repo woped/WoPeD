@@ -179,8 +179,9 @@ public class RunWoPeD extends JFrame {
             org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)),
         org.woped.config.Constants.CONFIG_LOGGER);
     LoggerManager.register(
-        new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.core.Constants.CORE_LOGGER)),
-        org.woped.core.Constants.CORE_LOGGER);
+        new WopedLogger(
+            org.apache.log4j.Logger.getLogger(org.woped.core.WoPeDConstants.CORE_LOGGER)),
+        org.woped.core.WoPeDConstants.CORE_LOGGER);
     LoggerManager.register(
         new WopedLogger(
             org.apache.log4j.Logger.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)),
@@ -250,7 +251,7 @@ public class RunWoPeD extends JFrame {
       Process p;
 
       if (Platform.isMac()) {
-        p = Runtime.getRuntime().exec("ps -e");
+        p = Runtime.getRuntime().exec(new String[] {"ps", "-e"});
         pattern = "Installer";
         BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
         while ((line = input.readLine()) != null) {

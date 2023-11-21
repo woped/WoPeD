@@ -40,7 +40,7 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.GraphUndoManager;
 import org.jgraph.graph.Port;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
@@ -204,7 +204,7 @@ public abstract class AbstractGraph extends JGraph implements Printable {
       }
       //
     } else {
-      LoggerManager.warn(Constants.CORE_LOGGER, "Not a valid connection, did nothing!");
+      LoggerManager.warn(WoPeDConstants.CORE_LOGGER, "Not a valid connection, did nothing!");
     }
   }
 
@@ -241,7 +241,7 @@ public abstract class AbstractGraph extends JGraph implements Printable {
     if (mainElement != null && name != null) {
       // Create Group Cell
       GroupModel group = new GroupModel(mainElement, name, additional, ungroupable);
-      LoggerManager.debug(Constants.CORE_LOGGER, "Grouping of Elements created.");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Grouping of Elements created.");
       return group;
     } else {
       GroupModel group = new GroupModel(mainElement, name, additional, ungroupable);
@@ -283,7 +283,7 @@ public abstract class AbstractGraph extends JGraph implements Printable {
         graphModel.remove(groups.toArray());
         // Select Children
         setSelectionCells(children.toArray());
-        LoggerManager.debug(Constants.CORE_LOGGER, "Grouping of Elements deleted. ");
+        LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Grouping of Elements deleted. ");
       }
     }
   }

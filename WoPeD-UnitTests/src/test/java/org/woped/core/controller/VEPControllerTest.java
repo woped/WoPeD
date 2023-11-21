@@ -9,7 +9,7 @@ import java.util.Collection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.utilities.ILogger;
 import org.woped.core.utilities.LoggerManager;
 
@@ -96,7 +96,7 @@ public class VEPControllerTest {
   @Test
   public void unregister_processorNotRegistered_logsWarning() throws Exception {
     ILogger fakeLogger = mock(ILogger.class);
-    LoggerManager.register(fakeLogger, Constants.CORE_LOGGER);
+    LoggerManager.register(fakeLogger, WoPeDConstants.CORE_LOGGER);
 
     AbstractEventProcessor fakeProcessor = mock(AbstractEventProcessor.class);
     cut.unregister(TEST_VIEW_EVENT_TYPE, fakeProcessor);
@@ -110,7 +110,7 @@ public class VEPControllerTest {
   @Test
   public void unregister_unregisterRegisteredProcessorTwice_logsWarning() throws Exception {
     ILogger fakeLogger = mock(ILogger.class);
-    LoggerManager.register(fakeLogger, Constants.CORE_LOGGER);
+    LoggerManager.register(fakeLogger, WoPeDConstants.CORE_LOGGER);
 
     AbstractEventProcessor fakeProcessor = mock(AbstractEventProcessor.class);
     cut.register(TEST_VIEW_EVENT_TYPE, fakeProcessor);

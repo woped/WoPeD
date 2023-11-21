@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ImageIcon;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.utilities.LoggerManager;
@@ -387,7 +387,8 @@ public class CreationMap extends HashMap<String, Object> {
         newPoints.add(new Point2D.Double(p.getX1(), p.getX2()));
       } else {
         LoggerManager.error(
-            Constants.CORE_LOGGER, "Could not convert " + o.toString() + "to Point2D. Skipped");
+            WoPeDConstants.CORE_LOGGER,
+            "Could not convert " + o.toString() + "to Point2D. Skipped");
       }
     }
 

@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -52,7 +52,7 @@ public class VEPController {
 
     if (processors == null || !processors.contains(vep)) {
       LoggerManager.warn(
-          Constants.CORE_LOGGER,
+          WoPeDConstants.CORE_LOGGER,
           "Tried to unregister a AbstractViewEventProcessor which has not"
               + " registered for this type.");
       return;

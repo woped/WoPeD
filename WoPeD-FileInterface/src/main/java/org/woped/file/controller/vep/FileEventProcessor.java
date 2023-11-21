@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.InputStream;
-import java.security.AccessControlException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
@@ -204,7 +203,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
+   * Reports model soundness.
    *
    * @param editor
    */
@@ -337,7 +336,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
                     0,
                     jfc.getSelectedFile().getAbsolutePath().length()
                         - jfc.getSelectedFile().getName().length());
-        if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter) {
+        int filterType = ((FileFilterImpl) jfc.getFileFilter()).getFilterType();
+        if (filterType == FileFilterImpl.TPNFilter) {
 
           if (containsArcWeights(editor)) { // arc weights not supported in tpn
             showWarning("QuantAna.Message.TPN.ArcWeightViolation");
@@ -346,16 +346,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
           }
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), tpnExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.JPGFilter) {
+        } else if (filterType == FileFilterImpl.JPGFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), jpgExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.PNGFilter) {
+        } else if (filterType == FileFilterImpl.PNGFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.BMPFilter) {
+        } else if (filterType == FileFilterImpl.BMPFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
         } else if (BPEL.getBPELMainClass().checkFileExtension(jfc)) {
@@ -365,7 +362,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         }
         // ... and saving
 
-        editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+        editor.setDefaultFileType(filterType);
         editor.setFilePath(savePath);
         ConfigurationManager.getConfiguration()
             .setCurrentWorkingdir(savePath.substring(0, savePath.lastIndexOf(File.separator)));
@@ -395,7 +392,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
+   * Save the model.
    *
    * @param editor
    * @return
@@ -412,7 +409,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
               Constants.FILE_LOGGER, "File was not saved before. Call \"Save as\" instead.");
           saveAs(editor);
         } else {
-
           if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
             succeed =
                 ImageExport.saveJPG(
@@ -433,7 +429,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
             pe.saveToFile(editor, editor.getFilePath());
             LoggerManager.info(
                 Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
-
             ConfigurationManager.getConfiguration()
                 .addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
             getMediator().getUi().updateRecentMenu();
@@ -506,11 +501,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
           }
         }
       }
-    } catch (AccessControlException ace) {
+    } catch (Exception ace) {
       ace.printStackTrace();
       LoggerManager.warn(
           Constants.FILE_LOGGER,
-          "Could not save Editor. No rights to write the file to "
+          "Could not save Editor. Unable to write the file to "
               + editor.getFilePath()
               + ". "
               + ace.getMessage());
@@ -526,13 +521,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
   }
 
   /**
-   * TODO: Documentation
-   *
-   * @param editor
-   * @return
-   */
-  /**
-   * TODO: Documentation
+   * Save As operation.
    *
    * @param editor
    * @return
@@ -629,7 +618,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
     return succeed;
   }
 
-  /** TODO: DOCUMENTATION (silenco) */
   private IEditor openEditor() {
     JFileChooser fileChooser;
     FileDialog fileDialog;
@@ -756,13 +744,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             inputStream = this.getClass().getResourceAsStream(jarPath);
             loadSuccess = pnmlImport.run(inputStream, null);
-
-            /*
-             * if (!loadSuccess)
-             * LoggerManager.error(Constants.FILE_LOGGER,
-             * "Could not open InputStream. " + file.getAbsolutePath());
-             */
-            // }
           }
           break;
         default:
@@ -784,9 +765,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 .addRecentFile(file.getName(), file.getAbsolutePath());
             ConfigurationManager.getConfiguration()
                 .setCurrentWorkingdir(abspath.substring(0, abspath.lastIndexOf(File.separator)));
-          }
-          if (filter != FileFilterImpl.SAMPLEFilter) {
-            // ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
           }
           // add Editor
           LoggerManager.info(

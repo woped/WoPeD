@@ -59,11 +59,6 @@ public class DefaultUserInterface extends MainFrame
 
   public DefaultUserInterface(TaskBarVC taskBar, StatusBarVC statusBar) {
     super();
-    /*       Programmable fullscreen support no more supported in Java 9+
-    if ( Platform.isMac() ) {
-         final Window currentWindow = (Window) SwingUtilities.getRoot(this);
-         OSXFullscreen.enableOSXFullscreen(currentWindow);
-     }*/
 
     // Adaption of constructor signature
     this.statusBar = statusBar;

@@ -26,7 +26,7 @@ import java.util.Iterator;
 import java.util.Map;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.ModelElementFactory;
@@ -73,7 +73,7 @@ public class SubProcessModel extends TransitionModel implements InnerElementCont
 
   private ModelElementContainer copySubElementContainer(ModelElementContainer container) {
 
-    LoggerManager.info(Constants.CORE_LOGGER, "copySubElementContainer");
+    LoggerManager.info(WoPeDConstants.CORE_LOGGER, "copySubElementContainer");
     ModelElementContainer newContainer = new ModelElementContainer();
 
     newContainer.setOwningElement(container.getOwningElement());

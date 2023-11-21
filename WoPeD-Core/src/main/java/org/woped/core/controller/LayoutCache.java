@@ -26,7 +26,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.utilities.LoggerManager;
 
 /**
@@ -89,14 +89,14 @@ public class LayoutCache extends GraphLayoutCache {
     if (cell instanceof DefaultMutableTreeNode) {
       if (((DefaultMutableTreeNode) cell).getUserObject() == null) {
         if (newValue == null) {
-          LoggerManager.debug(Constants.CORE_LOGGER, "Edit not added: No change.");
+          LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Edit not added: No change.");
         } else {
           super.valueForCellChanged(cell, newValue);
         }
       } else if (!((DefaultMutableTreeNode) cell).getUserObject().equals(newValue)) {
         super.valueForCellChanged(cell, newValue);
       } else {
-        LoggerManager.debug(Constants.CORE_LOGGER, "Edit not added: No change.");
+        LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Edit not added: No change.");
       }
     } else {
       super.valueForCellChanged(cell, newValue);

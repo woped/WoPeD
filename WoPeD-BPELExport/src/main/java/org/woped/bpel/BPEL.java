@@ -21,7 +21,7 @@ import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
 import org.woped.gui.translations.Messages;
 
-// TODO class description
+/** Operations with BPEL files. */
 public class BPEL {
 
   private static BPEL bpelMainClass;
@@ -34,21 +34,18 @@ public class BPEL {
   private FileFilter _filter;
   private String _fileextension = "bpel";
 
-  // TODO method description
   public BPEL() {
     if (BPEL.bpelMainClass != null) return;
     this.initFilefilter();
     bpelMainClass = this;
   }
 
-  // TODO method description
   private final void initFilefilter() {
     this._extensions = new Vector<String>();
     this._extensions.add(this._fileextension);
     this._filter = new FileFilterImpl(FileFilterImpl.BPELFilter, "BPEL (*.bpel)", this._extensions);
   }
 
-  // TODO method description
   public static final BPEL getBPELMainClass() {
     if (bpelMainClass == null) {
       new BPEL();
@@ -56,17 +53,14 @@ public class BPEL {
     return bpelMainClass;
   }
 
-  // TODO method description
   public FileFilter getFilefilter() {
     return this._filter;
   }
 
-  // TODO method description
   public boolean checkFileExtension(JFileChooser jfc) {
     return ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BPELFilter;
   }
 
-  // TODO method description
   public String getSavePath(String basicPath, JFileChooser jfc) {
     return basicPath
         + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), this._extensions);
@@ -81,16 +75,11 @@ public class BPEL {
     m.createModel(pnp.getElementContainer());
     ProcessDocument doc = ProcessDocument.Factory.newInstance();
     TProcess process = doc.addNewProcess();
-    //		BPEL.genBpelProcess();
-    //		BPEL.Process.set(m.generate_bpel());
-    //		setGlobals(BPEL.Process, pnp);
     process.set(m.generate_bpel());
     setGlobals(process, pnp);
     // File Output
     XmlOptions opt = new XmlOptions();
 
-    // opt.setSavePrettyPrintIndent(2);
-    // opt.setUseDefaultNamespace();
     Map<String, String> map = new HashMap<String, String>();
     map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable", "bpel");
     map.put("http://www.w3.org/2001/XMLSchema", "xs");
@@ -98,7 +87,6 @@ public class BPEL {
     opt.setSavePrettyPrint();
     try {
       doc.save(new File(Path), opt);
-      // bpelDoc.save(new File(Path), opt);
       return true;
     } catch (IOException e) {
       return false;
@@ -128,8 +116,6 @@ public class BPEL {
       return "" + Messages.getString("BPEL.genPreview.Error");
     }
     XmlOptions opt = new XmlOptions();
-    // opt.setSavePrettyPrintIndent(2);
-    // opt.setUseDefaultNamespace();
     Map<String, String> map = new HashMap<String, String>();
     map.put("http://docs.oasis-open.org/wsbpel/2.0/process/executable", "bpel");
     map.put("http://www.w3.org/2001/XMLSchema", "xs");
@@ -139,7 +125,6 @@ public class BPEL {
   }
 
   public static TProcess genBpelProcess() {
-    // if(BPEL.Process != null)return BPEL.Process;
     XmlOptions opt = new XmlOptions();
     opt.setUseDefaultNamespace();
     opt.setSavePrettyPrint();

@@ -24,7 +24,7 @@ package org.woped.core.model.petrinet;
 
 import java.awt.Color;
 import java.io.Serializable;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.CreationMap;
 import org.woped.core.utilities.LoggerManager;
 
@@ -128,7 +128,7 @@ public class Toolspecific implements Serializable {
    */
   public TriggerModel setTrigger(CreationMap map) {
     this.trigger = new TriggerModel(map);
-    LoggerManager.debug(Constants.CORE_LOGGER, "Trigger added to " + getOwnerId() + ".");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Trigger added to " + getOwnerId() + ".");
     return trigger;
   }
 
@@ -140,7 +140,7 @@ public class Toolspecific implements Serializable {
   /** TODO: Documentation */
   public void removeTrigger() {
     this.trigger = null;
-    LoggerManager.debug(Constants.CORE_LOGGER, "Trigger deleted.");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Trigger deleted.");
   }
 
   /**
@@ -199,7 +199,7 @@ public class Toolspecific implements Serializable {
   /** TODO: Documentation (waschtl) */
   public void removeTransResource() {
     this.transResource = null;
-    LoggerManager.debug(Constants.CORE_LOGGER, "ResourceModel deleted.");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "ResourceModel deleted.");
   }
 
   /**
@@ -212,7 +212,7 @@ public class Toolspecific implements Serializable {
 
   public TransitionResourceModel setTransResource(CreationMap map) {
     this.transResource = new TransitionResourceModel(map);
-    LoggerManager.debug(Constants.CORE_LOGGER, "TransResource added to " + getOwnerId() + ".");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "TransResource added to " + getOwnerId() + ".");
     return transResource;
   }
 
