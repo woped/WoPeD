@@ -122,8 +122,6 @@ public abstract class WoPeDConfiguration implements IConfiguration {
   public abstract boolean readConfig(InputStream is);
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @param file
    * @param configType type indicator for type of currently handled configuration
    * @return
@@ -131,8 +129,6 @@ public abstract class WoPeDConfiguration implements IConfiguration {
   public abstract boolean readConfig(File file);
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @param confDoc
    * @return
    */
