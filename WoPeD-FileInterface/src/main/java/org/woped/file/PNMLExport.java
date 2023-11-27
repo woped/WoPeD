@@ -28,27 +28,81 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.util.*;
-import javax.swing.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlOptions;
 import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IStatusBar;
-import org.woped.core.controller.IViewController;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.bpel.Partnerlink;
-import org.woped.core.model.petrinet.*;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.EditorLayoutInfo;
+import org.woped.core.model.petrinet.NameModel;
+import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.core.model.petrinet.ResourceClassModel;
+import org.woped.core.model.petrinet.ResourceModel;
+import org.woped.core.model.petrinet.SimulationModel;
+import org.woped.core.model.petrinet.SubProcessModel;
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.TransitionResourceModel;
+import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.bpel.*;
+import org.woped.editor.controller.bpel.Assign;
+import org.woped.editor.controller.bpel.Invoke;
+import org.woped.editor.controller.bpel.Receive;
+import org.woped.editor.controller.bpel.Reply;
+import org.woped.editor.controller.bpel.Wait;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
-import org.woped.pnml.*;
+import org.woped.pnml.AnnotationGraphisType;
+import org.woped.pnml.ArcNameType;
+import org.woped.pnml.ArcToolspecificType;
+import org.woped.pnml.ArcType;
+import org.woped.pnml.DimensionType;
+import org.woped.pnml.GraphicsArcType;
+import org.woped.pnml.GraphicsNodeType;
+import org.woped.pnml.GraphicsSimpleType;
+import org.woped.pnml.NetToolspecificType;
+import org.woped.pnml.NetType;
 import org.woped.pnml.NetType.Page;
+import org.woped.pnml.NodeNameType;
+import org.woped.pnml.OccuredtransitionType;
+import org.woped.pnml.OperatorType;
+import org.woped.pnml.OrganizationUnitType;
+import org.woped.pnml.PlaceToolspecificType;
+import org.woped.pnml.PlaceType;
+import org.woped.pnml.PnmlDocument;
+import org.woped.pnml.PnmlType;
+import org.woped.pnml.PositionType;
+import org.woped.pnml.ResourceMappingType;
+import org.woped.pnml.ResourceType;
+import org.woped.pnml.ResourcesType;
+import org.woped.pnml.RoleType;
+import org.woped.pnml.SimulationType;
+import org.woped.pnml.SimulationsType;
+import org.woped.pnml.SuperModelType;
+import org.woped.pnml.TPartnerLinks;
+import org.woped.pnml.TVariables;
+import org.woped.pnml.TextType;
 import org.woped.pnml.TextType.Phrase;
+import org.woped.pnml.ToolspecificType;
+import org.woped.pnml.TransitionResourceType;
+import org.woped.pnml.TransitionToolspecificType;
+import org.woped.pnml.TransitionType;
+import org.woped.pnml.TransitionsequenceType;
+import org.woped.pnml.TriggerType;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -65,23 +119,15 @@ public class PNMLExport {
 
   private PnmlDocument pnmlDoc = null;
   private IStatusBar[] statusBars = null;
+  private IPNMLExportDisplayer exportDisplayer = null;
 
-  /**
-   * Creates a new instance of an exporter.
-   *
-   * @param mediator
-   */
-  public PNMLExport(AbstractApplicationMediator mediator) {
-    IViewController[] iVC = mediator.findViewController(IStatusBar.TYPE);
-    statusBars = new IStatusBar[iVC.length];
-    for (int i = 0; i < iVC.length; i++) {
-
-      statusBars[i] = (IStatusBar) iVC[i];
-    }
+  public PNMLExport(PNMLExportDisplayer exportDisplayer) {
+    this.exportDisplayer = exportDisplayer;
+    statusBars = exportDisplayer.getStatusBars();
   }
 
   /**
-   * Method saveToFile. Saves a PetriNet Object to *.pnml File.
+   * Saves a PetriNet Object to *.pnml File.
    *
    * @param editor the editor
    * @param fileName the filename
@@ -101,18 +147,21 @@ public class PNMLExport {
 
       pnmlDoc.save(new File(fileName), opt);
       return true;
-    } catch (IOException e) {
-      LoggerManager.error(Constants.FILE_LOGGER, "Could not save file. " + e.getMessage());
+    } catch (Exception e) {
+      LoggerManager.error(
+          Constants.FILE_LOGGER,
+          "Could not save file. File name: " + fileName + "." + e.getMessage());
       return false;
     } finally {
       LoggerManager.debug(
           Constants.FILE_LOGGER,
           "##### END PNML EXPORT ##### (" + (System.currentTimeMillis() - begin) + " ms)");
+      LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + fileName);
     }
   }
 
   /**
-   * Method saveToWebFile. Saves a PetriNet Object to a Bytestream.
+   * Saves a PetriNet Object to a Bytestream.
    *
    * @param editor the editor
    * @param os the output stream to write
@@ -182,7 +231,7 @@ public class PNMLExport {
       NetToolspecificType iNetToolSpec = iNet.addNewToolspecific();
 
       iNetToolSpec.setTool("WoPeD");
-      iNetToolSpec.setVersion("1.0"); // TODO Version aus properties �bernehmen!?
+      iNetToolSpec.setVersion(WoPeDConstants.WOPED_VERSION);
 
       // get PartnerLinks
       TPartnerLinks iPLs = iNetToolSpec.addNewPartnerLinks();
@@ -261,7 +310,7 @@ public class PNMLExport {
         rModelTemp = iter.next();
         iResourceType = iNetResources.addNewResource();
         iResourceType.setName(rModelTemp.getName());
-        for (int i = 0; i < statusBars.length; i++) statusBars[i].nextStep();
+        advanceStatusBars();
       }
       // Roles
 
@@ -279,7 +328,7 @@ public class PNMLExport {
             newSuper.setName(superMe.getName());
           }
         }
-        for (int i = 0; i < statusBars.length; i++) statusBars[i].nextStep();
+        advanceStatusBars();
       }
       // Orga Units
       OrganizationUnitType iOrganizationUnitType;
@@ -296,95 +345,25 @@ public class PNMLExport {
             newSuper.setName(superMe.getName());
           }
         }
-        for (int i = 0; i < statusBars.length; i++) statusBars[i].nextStep();
+        advanceStatusBars();
       }
       // ResourceMap
       ResourceMappingType iNetResourceMap;
       for (Iterator<String> iter = petrinetModel.getResourceMapping().keySet().iterator();
           iter.hasNext(); ) {
         String tempResourceClass = iter.next();
-        Vector<String> values = petrinetModel.getResourceMapping().get(tempResourceClass);
-        // TODO check if mapping exists NullPointerExeption bei
-        // speicherung ge�nderter orgUnit die keine zugeordnete Resource
-        // hat!
+        HashMap<String, Vector<String>> rm = petrinetModel.getResourceMapping();
+        Vector<String> values = rm.get(tempResourceClass);
         for (Iterator<String> iterator = values.iterator(); iterator.hasNext(); ) {
           iNetResourceMap = iNetResources.addNewResourceMapping();
           iNetResourceMap.setResourceClass(tempResourceClass);
           iNetResourceMap.setResourceID(iterator.next().toString());
         }
-        for (int i = 0; i < statusBars.length; i++) statusBars[i].nextStep();
+        advanceStatusBars();
       }
 
-      // Simulations
-      SimulationsType iNetSimulations = iNetToolSpec.addNewSimulations();
-      SimulationType iSimulation;
-      TransitionsequenceType iTransitionsequence;
-      OccuredtransitionType iOccuredTransition;
-      for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();
-          iter.hasNext(); ) {
-        SimulationModel currSimulation = iter.next();
-
-        // check if current fingerprint of the net equals the imported one
-        // if not ask the user if he want's to keep the simulation
-        //
-        // this check is performed as well on:
-        // - fileixport
-        // - loading a simulation
-        // when you change it here please do at those locations as well
-        int answer = 0;
-        Date simulationCreationDate = currSimulation.getSavedDate();
-        if (!petrinetModel.isLogicalFingerprintEqual(currSimulation.getFingerprint())) {
-          Object[] options = {
-            Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),
-            Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")
-          };
-          // get the localized message text
-          String message = Messages.getString("Tokengame.ChangedNetDialog.Export.Message");
-          // fill the message text dynamically with the simulationname and simulationdate
-          message = message.replaceAll("##SIMULATIONNAME##", currSimulation.getName());
-          message =
-              message.replaceAll(
-                  "##SIMULATIONDATE##",
-                  DateFormat.getDateInstance().format(currSimulation.getSavedDate()));
-          answer =
-              JOptionPane.showOptionDialog(
-                  null,
-                  message,
-                  Messages.getString("Tokengame.ChangedNetDialog.Title"),
-                  JOptionPane.YES_NO_OPTION,
-                  JOptionPane.WARNING_MESSAGE,
-                  null,
-                  options,
-                  options[0]);
-          // if the user didn't choose one of the buttons but closed the OptionDialog don't drop the
-          // simulation
-          if (answer == -1) {
-            answer = 0;
-          }
-        }
-        if (answer == 0) {
-          iSimulation = iNetSimulations.addNewSimulation();
-          iSimulation.setId(currSimulation.getId());
-          iSimulation.setSimulationname(currSimulation.getName());
-          Calendar cal = Calendar.getInstance();
-          cal.setTime(simulationCreationDate);
-          iSimulation.setSimulationdate(cal);
-          iTransitionsequence = iSimulation.addNewTransitionsequence();
-          for (Iterator<TransitionModel> iterator =
-                  currSimulation.getOccuredTransitions().iterator();
-              iterator.hasNext(); ) {
-            iOccuredTransition = iTransitionsequence.addNewOccuredtransition();
-            iOccuredTransition.setTransitionID((iterator.next()).getId());
-          }
-          iSimulation.setNetFingerprint(currSimulation.getFingerprint());
-          LoggerManager.debug(
-              Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
-        } else {
-          LoggerManager.debug(
-              Constants.FILE_LOGGER,
-              "   ... Simulation (ID:" + currSimulation.getId() + ") dropped by user");
-        }
-      }
+      if (exportDisplayer.isSimulationExport())
+        createSimulationInstances(petrinetModel, iNetToolSpec);
 
       // toolspecific
       for (short i = 0; i < petrinetModel.getUnknownToolSpecs().size(); i++) {
@@ -399,6 +378,78 @@ public class PNMLExport {
     // Now save the root model element container into the
     // NetType XMLBean holding our net
     saveModelElementContainer(iNet, elementContainer);
+  }
+
+  private void advanceStatusBars() {
+    for (int i = 0; i < statusBars.length; i++) statusBars[i].nextStep();
+  }
+
+  private void createSimulationInstances(
+      PetriNetModelProcessor petrinetModel, NetToolspecificType iNetToolSpec) {
+    LoggerManager.debug(Constants.FILE_LOGGER, "createSimulationInstances()");
+    // Simulations
+    SimulationsType iNetSimulations = iNetToolSpec.addNewSimulations();
+    SimulationType iSimulation;
+    TransitionsequenceType iTransitionsequence;
+    OccuredtransitionType iOccuredTransition;
+    // petrinetModel.simulations appears to never be populated
+    // as of version 3.9.1-SNAPSHOT
+    // as petrinetModel.addSimulation() is only called on import
+    for (Iterator<SimulationModel> iter = petrinetModel.getSimulations().iterator();
+        iter.hasNext(); ) {
+      SimulationModel currSimulation = iter.next();
+
+      // check if current fingerprint of the net equals the imported one
+      // if not ask the user if he want's to keep the simulation
+      //
+      // this check is performed as well on:
+      // - fileixport
+      // - loading a simulation
+      // when you change it here please do at those locations as well
+      int answer = 0;
+      Date simulationCreationDate = currSimulation.getSavedDate();
+      if (!petrinetModel.isLogicalFingerprintEqual(currSimulation.getFingerprint())) {
+        Object[] options = {
+          Messages.getString("Tokengame.ChangedNetDialog.ButtonKeep"),
+          Messages.getString("Tokengame.ChangedNetDialog.ButtonDelete")
+        };
+        // get the localized message text
+        String message = Messages.getString("Tokengame.ChangedNetDialog.Export.Message");
+        // fill the message text dynamically with the simulationname and simulationdate
+        message = message.replaceAll("##SIMULATIONNAME##", currSimulation.getName());
+        message =
+            message.replaceAll(
+                "##SIMULATIONDATE##",
+                DateFormat.getDateInstance().format(currSimulation.getSavedDate()));
+        answer = exportDisplayer.chooseNetChangedBehaviour(options, message);
+        // if the user didn't choose one of the buttons but closed the OptionDialog don't drop the
+        // simulation
+        if (answer == -1) {
+          answer = 0;
+        }
+      }
+      if (answer == 0) {
+        iSimulation = iNetSimulations.addNewSimulation();
+        iSimulation.setId(currSimulation.getId());
+        iSimulation.setSimulationname(currSimulation.getName());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(simulationCreationDate);
+        iSimulation.setSimulationdate(cal);
+        iTransitionsequence = iSimulation.addNewTransitionsequence();
+        for (Iterator<TransitionModel> iterator = currSimulation.getOccuredTransitions().iterator();
+            iterator.hasNext(); ) {
+          iOccuredTransition = iTransitionsequence.addNewOccuredtransition();
+          iOccuredTransition.setTransitionID((iterator.next()).getId());
+        }
+        iSimulation.setNetFingerprint(currSimulation.getFingerprint());
+        LoggerManager.debug(
+            Constants.FILE_LOGGER, "   ... Simulation (ID:" + currSimulation.getId() + ") set");
+      } else {
+        LoggerManager.debug(
+            Constants.FILE_LOGGER,
+            "   ... Simulation (ID:" + currSimulation.getId() + ") dropped by user");
+      }
+    }
   }
 
   /**

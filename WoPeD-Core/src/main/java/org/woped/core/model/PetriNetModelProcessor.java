@@ -73,7 +73,6 @@ public class PetriNetModelProcessor implements Serializable {
   private HashMap<String, Vector<String>> resourceMapping = new HashMap<String, Vector<String>>();
   private String id = null;
   private String name = null;
-  private ModelProcessorContext modelProcessorContext = null;
   private ModelElementContainer elementContainer = null;
 
   /**
@@ -92,7 +91,6 @@ public class PetriNetModelProcessor implements Serializable {
    */
   public PetriNetModelProcessor(String id) {
     elementContainer = new ModelElementContainer();
-    modelProcessorContext = new ModelProcessorContext();
 
     /* First thing for all: creating a ModelElementContainer */
     setId(id);
@@ -334,7 +332,6 @@ public class PetriNetModelProcessor implements Serializable {
     return transition.getToolSpecific().setTrigger(map);
   }
 
-  // TODO: DOCUMentation
   public TransitionResourceModel newTransResource(CreationMap map) {
     TransitionModel transition =
         (TransitionModel) getElementContainer().getElementById(map.getId());

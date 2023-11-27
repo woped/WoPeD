@@ -7,9 +7,11 @@ import java.awt.Insets;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.text.DecimalFormat;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -21,6 +23,9 @@ import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
 public class EditorStatusBarVC extends JPanel implements Observer {
+
+  private static final DateTimeFormatter FORMATTER =
+      DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM).withZone(ZoneId.systemDefault());
 
   private JLabel m_counterLabel = null;
 
@@ -34,8 +39,11 @@ public class EditorStatusBarVC extends JPanel implements Observer {
 
   private JLabel m_modelingDirection = null;
 
+  private final boolean subprocessEditor;
+
   public EditorStatusBarVC(IEditor editor) {
     m_editor = (EditorVC) editor;
+    subprocessEditor = m_editor instanceof SubprocessEditorVC;
     JPanel bar = new JPanel();
     bar.setLayout(new BorderLayout());
     bar.add(getModelingDirection(), BorderLayout.WEST);
@@ -144,13 +152,11 @@ public class EditorStatusBarVC extends JPanel implements Observer {
         .setText(
             "Zoom: " + DecimalFormat.getPercentInstance().format(m_editor.getGraph().getScale()));
 
-    if (!(m_editor instanceof SubprocessEditorVC)) {
+    if (!subprocessEditor) {
       if (m_editor.isSaved()) {
-        getSaveIcon().setText(Messages.getString("Button.Saved.Title"));
-        getSaveIcon().setIcon(Messages.getImageIcon("Button.Saved"));
+        displaySavedStatus();
       } else {
-        getSaveIcon().setText(Messages.getString("Button.NotSaved.Title"));
-        getSaveIcon().setIcon(Messages.getImageIcon("Button.NotSaved"));
+        displayAutosaveStatus();
       }
     }
 
@@ -181,6 +187,27 @@ public class EditorStatusBarVC extends JPanel implements Observer {
     }
   }
 
+  private void displayAutosaveStatus() {
+    String savedTime = " " + FORMATTER.format(m_editor.getSavedTime());
+    if (m_editor.isAutosaved()) {
+      getSaveIcon()
+          .setText(
+              Messages.getString("Button.Autosave.Title")
+                  + savedTime
+                  + " "
+                  + m_editor.getAutosavePath());
+      getSaveIcon().setIcon(Messages.getImageIcon("Button.Saved"));
+    } else {
+      getSaveIcon().setText(Messages.getString("Button.NotSaved.Title"));
+      getSaveIcon().setIcon(Messages.getImageIcon("Button.NotSaved"));
+    }
+  }
+
+  private void displaySavedStatus() {
+    getSaveIcon().setText(Messages.getString("Button.Saved.Title"));
+    getSaveIcon().setIcon(Messages.getImageIcon("Button.Saved"));
+  }
+
   public void update(Observable arg0, Object arg1) {
     updateStatus();
   }
@@ -189,7 +216,6 @@ public class EditorStatusBarVC extends JPanel implements Observer {
   class SliderComboListener implements ChangeListener {
 
     JSlider slide;
-    JComboBox combo;
 
     // JSlider event
     public void stateChanged(ChangeEvent ce) {

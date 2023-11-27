@@ -27,7 +27,7 @@ public class PNMLExportTest {
     AbstractApplicationMediator mediator = mock(AbstractApplicationMediator.class);
     when(mediator.findViewController(IStatusBar.TYPE)).thenReturn(new IViewController[0]);
 
-    sut = new PNMLExport(mediator);
+    sut = new PNMLExport(new PNMLExportDisplayer(mediator));
   }
 
   @After

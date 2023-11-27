@@ -221,6 +221,7 @@ public abstract class AbstractApplicationMediator implements IViewListener {
     return iwC;
   }
 
+  @SuppressWarnings("unchecked")
   public List<IEditor> getEditorAwareVCs() {
     return (List<IEditor>) editorLists.clone();
   }

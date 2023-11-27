@@ -28,6 +28,8 @@ import java.awt.Rectangle;
 import java.awt.print.PageFormat;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.time.Clock;
+import java.time.Instant;
 import java.util.Vector;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
@@ -39,6 +41,12 @@ import org.woped.core.model.ArcModel;
  *     Some static Stuff.
  */
 public class Utils {
+
+  /**
+   * A common application clock which abstracts from the system clock. Introduced in 3.9.1, and much
+   * code predating that version does not use it.
+   */
+  private static Clock CLOCK = Clock.systemDefaultZone();
 
   /**
    * This method returns the location that should place a component with <code>componentDimension
@@ -140,8 +148,6 @@ public class Utils {
   }
 
   /**
-   * TODO: DOCUMENTATION (alexnagy)
-   *
    * @param editor
    */
   public static void print(IEditor editor) {
@@ -156,11 +162,18 @@ public class Utils {
           try {
             printJob.print();
           } catch (PrinterException e) {
-            //                        logger.warn("Could not Print");
-            //                        logger.debug("Exception", e);
+            // Swallow exception
           }
         }
       }
     }
+  }
+
+  public static Instant currentInstant() {
+    return CLOCK.instant();
+  }
+
+  public static void setClock(Clock clock) {
+    CLOCK = clock;
   }
 }

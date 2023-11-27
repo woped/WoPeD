@@ -6,7 +6,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -24,6 +23,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLExport;
+import org.woped.file.PNMLExportDisplayer;
 import org.woped.file.PNMLImport;
 import org.woped.file.apromore.tree.ApromoreFolderTree;
 import org.woped.gui.translations.Messages;
@@ -41,7 +41,6 @@ public class ApromoreProcessList {
   };
 
   private JDialog frame = null;
-  private JCheckBox beautifyCheckBox = null;
 
   private AbstractApplicationMediator mediator = null;
   ;
@@ -239,7 +238,7 @@ public class ApromoreProcessList {
     try {
 
       ByteArrayOutputStream os = new ByteArrayOutputStream();
-      PNMLExport pExport = new PNMLExport(mediator);
+      PNMLExport pExport = new PNMLExport(new PNMLExportDisplayer(mediator));
       pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(), os);
       aproAccess.exportProcess(owner, folder, name, os, "", version, true);
 
@@ -257,7 +256,7 @@ public class ApromoreProcessList {
       throws Exception {
 
     ByteArrayOutputStream os = new ByteArrayOutputStream();
-    PNMLExport pExport = new PNMLExport(mediator);
+    PNMLExport pExport = new PNMLExport(new PNMLExportDisplayer(mediator));
     pExport.saveToStream((EditorVC) mediator.getUi().getEditorFocus(), os);
     aproAccess.updateProcess(id, username, nativeType, processName, newVersionNumber, os);
   }
