@@ -213,7 +213,7 @@ public class QuantitativeSimulationDialog extends JDialog
     Messages.getString("QuantAna.Simulation.ToolTip.W"),
     Messages.getString("QuantAna.Simulation.ToolTip.Ws"),
     Messages.getString("QuantAna.Simulation.ToolTip.Wq"),
-    Messages.getString("QuantAna.Simulation.TooTip.Details")
+    Messages.getString("QuantAna.Simulation.ToolTip.Details")
   };
 
   private String[] colResUtil = {

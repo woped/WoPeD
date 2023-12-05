@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.utilities.ILogger;
 import org.woped.core.utilities.LoggerManager;
 
@@ -32,7 +32,7 @@ public class ModelElementFactoryTest {
   public void createArcModel_noId_logsError() {
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     ModelElementFactory.createArcModel(null, null, null);
 

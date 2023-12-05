@@ -6,8 +6,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.InputStream;
-import java.security.AccessControlException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
@@ -37,6 +39,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.Constants;
 import org.woped.file.ImageExport;
 import org.woped.file.PNMLExport;
+import org.woped.file.PNMLExportDisplayer;
 import org.woped.file.PNMLImport;
 import org.woped.file.WoPeDToYAWL.YAWLExport;
 import org.woped.file.apromore.ApromoreExportFrame;
@@ -51,6 +54,9 @@ import org.woped.quantana.gui.CapacityAnalysisDialog;
 import org.woped.quantana.gui.QuantitativeSimulationDialog;
 
 public class FileEventProcessor extends AbstractEventProcessor {
+  private static final String PNML_EXTENSION = "pnml";
+  private static final String TEMP_DIRECTORY_PREFIX = "woped";
+
   public static boolean isFileOverride(JFrame owner, String fileName) {
     String textMessages[] = {Messages.getString("Dialog.Yes"), Messages.getString("Dialog.No")};
     String[] args = {fileName};
@@ -88,6 +94,10 @@ public class FileEventProcessor extends AbstractEventProcessor {
         break;
       case AbstractViewEvent.SAVE:
         save((EditorVC) getMediator().getUi().getEditorFocus());
+        break;
+      case AbstractViewEvent.AUTOSAVE:
+        // Possible extension: export all frames, not just the focus frame
+        autosave((EditorVC) getMediator().getUi().getEditorFocus());
         break;
       case AbstractViewEvent.SAVEAS:
         saveAs((EditorVC) getMediator().getUi().getEditorFocus());
@@ -203,8 +213,43 @@ public class FileEventProcessor extends AbstractEventProcessor {
     }
   }
 
+  protected boolean autosave(EditorVC editor) {
+    PNMLExport pe = new PNMLExport(new PNMLExportDisplayer(getMediator()));
+    String filePath = editor.getFilePath();
+    if (filePath == null || "".equals(filePath)) {
+      String autosavePath = editor.getAutosavePath();
+      if (autosavePath == null || "".equals(autosavePath)) {
+        try {
+          Path autosaveDir = null;
+          if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
+            autosaveDir = Path.of(ConfigurationManager.getConfiguration().getCurrentWorkingdir());
+          } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
+            autosaveDir = Path.of(ConfigurationManager.getConfiguration().getHomedir());
+          } else {
+            autosaveDir = Files.createTempDirectory(TEMP_DIRECTORY_PREFIX);
+          }
+          autosavePath =
+              Files.createTempFile(autosaveDir, "autosave", "." + getAutosaveExtension())
+                  .toFile()
+                  .getAbsolutePath();
+        } catch (IOException e) {
+          LoggerManager.warn(
+              Constants.FILE_LOGGER, "Could not autosave to home, working or temp directory.");
+          LoggerManager.warn(Constants.FILE_LOGGER, "Exception: " + e.getMessage());
+          editor.setAutosaved(false);
+          return false;
+        }
+      }
+      editor.setAutosavePath(autosavePath);
+      filePath = autosavePath;
+    }
+    boolean success = pe.saveToFile(editor, filePath);
+    if (success) editor.setAutosaved(true);
+    return success;
+  }
+
   /**
-   * TODO: DOCUMENTATION (silenco)
+   * Reports model soundness.
    *
    * @param editor
    */
@@ -337,7 +382,8 @@ public class FileEventProcessor extends AbstractEventProcessor {
                     0,
                     jfc.getSelectedFile().getAbsolutePath().length()
                         - jfc.getSelectedFile().getName().length());
-        if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter) {
+        int filterType = ((FileFilterImpl) jfc.getFileFilter()).getFilterType();
+        if (filterType == FileFilterImpl.TPNFilter) {
 
           if (containsArcWeights(editor)) { // arc weights not supported in tpn
             showWarning("QuantAna.Message.TPN.ArcWeightViolation");
@@ -346,16 +392,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
           }
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), tpnExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.JPGFilter) {
+        } else if (filterType == FileFilterImpl.JPGFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), jpgExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.PNGFilter) {
+        } else if (filterType == FileFilterImpl.PNGFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
-        } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType()
-            == FileFilterImpl.BMPFilter) {
+        } else if (filterType == FileFilterImpl.BMPFilter) {
           savePath =
               savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
         } else if (BPEL.getBPELMainClass().checkFileExtension(jfc)) {
@@ -365,7 +408,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
         }
         // ... and saving
 
-        editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
+        editor.setDefaultFileType(filterType);
         editor.setFilePath(savePath);
         ConfigurationManager.getConfiguration()
             .setCurrentWorkingdir(savePath.substring(0, savePath.lastIndexOf(File.separator)));
@@ -395,7 +438,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
+   * Save the model.
    *
    * @param editor
    * @return
@@ -412,7 +455,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
               Constants.FILE_LOGGER, "File was not saved before. Call \"Save as\" instead.");
           saveAs(editor);
         } else {
-
           if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
             succeed =
                 ImageExport.saveJPG(
@@ -429,16 +471,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
           }
           /* Tool for PNML Export */
           else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
-            PNMLExport pe = new PNMLExport(getMediator());
+            PNMLExport pe = new PNMLExport(new PNMLExportDisplayer(getMediator()));
             pe.saveToFile(editor, editor.getFilePath());
-            LoggerManager.info(
-                Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
-
             ConfigurationManager.getConfiguration()
                 .addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
             getMediator().getUi().updateRecentMenu();
             editor.setSaved(true);
-            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
+            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathname());
             succeed = true;
           }
           // YAWL-Export
@@ -459,7 +498,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 .addRecentFile(new File(editor.getFilePath()).getName(), editor.getFilePath());
             getMediator().getUi().updateRecentMenu();
             editor.setSaved(true);
-            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
+            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathname());
             succeed = true;
           }
           // BPEL-Export
@@ -473,7 +512,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             int sound = wellStruct + freeChoice;
             if (sound == 0) {
               succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
-              ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
+              ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathname());
             } else {
               JOptionPane.showMessageDialog(
                   null, Messages.getString("QuantAna.Message.SoundnessViolation"));
@@ -483,7 +522,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
           /* Tool for TPN Export */
           else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
             succeed = TPNExport.save(editor.getFilePath(), editor.getModelProcessor());
-            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
+            ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathname());
 
           } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
             String arg[] = {editor.getName()};
@@ -506,11 +545,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
           }
         }
       }
-    } catch (AccessControlException ace) {
+    } catch (Exception ace) {
       ace.printStackTrace();
       LoggerManager.warn(
           Constants.FILE_LOGGER,
-          "Could not save Editor. No rights to write the file to "
+          "Could not save Editor. Unable to write the file to "
               + editor.getFilePath()
               + ". "
               + ace.getMessage());
@@ -526,13 +565,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
   }
 
   /**
-   * TODO: Documentation
-   *
-   * @param editor
-   * @return
-   */
-  /**
-   * TODO: Documentation
+   * Save As operation.
    *
    * @param editor
    * @return
@@ -551,14 +584,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 new File(ConfigurationManager.getConfiguration().getCurrentWorkingdir()));
       } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
         jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getHomedir()));
-
       } else {
         jfc = new JFileChooser();
       }
 
       // FileFilters
       Vector<String> extensions = new Vector<String>();
-      extensions.add("pnml");
+      extensions.add(PNML_EXTENSION);
       extensions.add("xml");
       extensions.add("yawl");
       FileFilterImpl PNMLFilter =
@@ -606,7 +638,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             // setting the new filename to editor, and Title to
             // Frame
             editor.setName(fileName);
-            editor.setPathName(savePath);
+            editor.setPathname(savePath);
             editor.setFilePath(savePath.concat(fileName));
 
             ConfigurationManager.getConfiguration().setCurrentWorkingdir(savePath);
@@ -616,6 +648,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                     + ConfigurationManager.getConfiguration().getCurrentWorkingdir());
             editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
             succeed = save(editor);
+            updateAutosavePath(editor, fileName);
           } else {
             LoggerManager.debug(
                 Constants.FILE_LOGGER, "\"Save as\" canceled or nothing to save at all.");
@@ -629,7 +662,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
     return succeed;
   }
 
-  /** TODO: DOCUMENTATION (silenco) */
+  private void updateAutosavePath(EditorVC editor, String fileName) {
+    if (editor.getFilePath().endsWith(getAutosaveExtension())) {
+      editor.setAutosavePath(fileName);
+    }
+  }
+
   private IEditor openEditor() {
     JFileChooser fileChooser;
     FileDialog fileDialog;
@@ -662,7 +700,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
       fileChooser.setFileFilter(
           new FileFilterImpl(
-              FileFilterImpl.PNMLFilter, "Petri Net Markup Language (1.3.2) (*.pnml)", "pnml"));
+              FileFilterImpl.PNMLFilter,
+              "Petri Net Markup Language (1.3.2) (*.pnml)",
+              PNML_EXTENSION));
       fileChooser.showOpenDialog(null);
 
       if (fileChooser.getSelectedFile() != null) {
@@ -756,13 +796,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             inputStream = this.getClass().getResourceAsStream(jarPath);
             loadSuccess = pnmlImport.run(inputStream, null);
-
-            /*
-             * if (!loadSuccess)
-             * LoggerManager.error(Constants.FILE_LOGGER,
-             * "Could not open InputStream. " + file.getAbsolutePath());
-             */
-            // }
           }
           break;
         default:
@@ -784,9 +817,6 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 .addRecentFile(file.getName(), file.getAbsolutePath());
             ConfigurationManager.getConfiguration()
                 .setCurrentWorkingdir(abspath.substring(0, abspath.lastIndexOf(File.separator)));
-          }
-          if (filter != FileFilterImpl.SAMPLEFilter) {
-            // ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
           }
           // add Editor
           LoggerManager.info(
@@ -816,5 +846,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
   public void exportApromore(EditorVC editor) {
     new ApromoreExportFrame(getMediator());
+  }
+
+  public String getAutosaveExtension() {
+    return PNML_EXTENSION;
   }
 }

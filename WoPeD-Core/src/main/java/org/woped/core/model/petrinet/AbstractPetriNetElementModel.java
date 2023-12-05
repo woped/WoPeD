@@ -16,7 +16,7 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ElementContext;
 import org.woped.core.model.IntPair;
@@ -121,7 +121,7 @@ public abstract class AbstractPetriNetElementModel extends DefaultGraphCell
       if (creationMap.getBpeldata() != null) this.BpelData = creationMap.getBpeldata();
     } else {
       LoggerManager.error(
-          Constants.CORE_LOGGER,
+          WoPeDConstants.CORE_LOGGER,
           "It's not allowed to create a Element without id. Please use ModelElementFactory"
               + " instead.");
     }

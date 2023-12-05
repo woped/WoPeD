@@ -8,7 +8,7 @@ import org.jgraph.graph.DefaultPort;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
@@ -33,7 +33,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -55,7 +55,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -79,7 +79,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -106,7 +106,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -140,7 +140,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -167,7 +167,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -192,7 +192,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -216,7 +216,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -244,7 +244,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -270,7 +270,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     ArcModel arc = mock(ArcModel.class);
     when(arc.getId()).thenReturn("arc1");
@@ -286,7 +286,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -313,7 +313,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -341,7 +341,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -377,7 +377,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -433,7 +433,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     Map<String, Object> outgoingArcs = sut.getOutgoingArcs("notExistingId");
 
@@ -445,7 +445,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -475,7 +475,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -502,7 +502,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     Map<String, ArcModel> incomingArcs = sut.getIncomingArcs("notExistingId");
 
@@ -514,7 +514,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -558,7 +558,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     Map<String, AbstractPetriNetElementModel> sourceElements =
         sut.findSourceElements("notExistingId");
@@ -571,7 +571,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");
@@ -616,7 +616,7 @@ public class ModelElementContainerTest {
     ModelElementContainer sut = new ModelElementContainer();
 
     ILogger logger = mock(ILogger.class);
-    LoggerManager.register(logger, Constants.CORE_LOGGER);
+    LoggerManager.register(logger, WoPeDConstants.CORE_LOGGER);
 
     PlaceModel source = new PlaceModel(new CreationMap());
     source.setId("fakeSource");

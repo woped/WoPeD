@@ -89,7 +89,7 @@ public class WoPeDAction extends AbstractAction {
     if (propertiesPrefix != null) {
       putValue(NAME, Messages.getTitle(propertiesPrefix, args));
       putValue(SMALL_ICON, Messages.getImageIcon(propertiesPrefix));
-      putValue(MNEMONIC_KEY, new Integer(Messages.getMnemonic(propertiesPrefix)));
+      putValue(MNEMONIC_KEY, Messages.getMnemonic(propertiesPrefix));
       putValue(ACCELERATOR_KEY, Messages.getShortcut(propertiesPrefix));
       putValue(SHORT_DESCRIPTION, Messages.getTitle(propertiesPrefix, args));
     }

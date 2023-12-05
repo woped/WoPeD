@@ -33,6 +33,12 @@ public abstract class AbstractViewEvent extends ActionEvent {
   public static final int FILE = 6;
   public static final int SAVE = 7;
   public static final int SAVEAS = 8;
+  /**
+   * AUTOSAVE is GUI generated in the sense that the GUI detects the autosave condition after user
+   * edits.
+   */
+  public static final int AUTOSAVE = 9;
+
   public static final int IMPORTAPRO = 703;
   public static final int EXPORTAPRO = 704;
   public static final int ERROR = 9;

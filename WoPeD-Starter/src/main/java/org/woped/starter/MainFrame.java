@@ -751,14 +751,12 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         } else {
           shortcut += KeyEvent.getKeyText(shortcutKS.getKeyCode());
           RichTooltip rt = getTooltip(prefix);
-          // rt.addFooterSection(shortcut); //Alternative display of Shortcut
           rt.setTitle(rt.getTitle() + " (" + shortcut + ")");
           button.setActionRichTooltip(rt);
         }
 
       } catch (NullPointerException nex) {
         RichTooltip rt = getTooltip(prefix);
-        // rt.addFooterSection(shortcut); //Alternative display of Shortcut
         button.setActionRichTooltip(rt);
       } catch (Exception ex) {
       }
@@ -2009,9 +2007,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
       p2tButton.addActionListener(
           new ActionButtonListener(
               m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T, p2tButton));
-      //			TODO(optional):
-      //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton,
-      // ActionFactory.ACTIONID_METRIC);
       setTooltip(p2tButton, "P2T");
     }
 
@@ -2024,9 +2019,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
       t2pButton.addActionListener(
           new ActionButtonListener(
               m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P, t2pButton));
-      //			TODO(optional):
-      //			addShortcutToJCommandButton("Metrics.processmetrics", processMetricsButton,
-      // ActionFactory.ACTIONID_METRIC);
       setTooltip(t2pButton, "T2P");
     }
 
@@ -2738,51 +2730,51 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
   @Override
   public void arrangeFrames() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
   public void cascadeFrames() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
   public List<IEditor> getAllEditors() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
     return null;
   }
 
   @Override
   public Component getComponent() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
     return null;
   }
 
   @Override
   public IEditor getEditorFocus() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
     return null;
   }
 
   @Override
   public Component getPropertyChangeSupportBean() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
     return null;
   }
 
   @Override
   public void hideEditor(IEditor editor) {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
   public void quit() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
   public void refreshFocusOnFrames() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
@@ -2804,7 +2796,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
   @Override
   public void renameEditor(IEditor editor) {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   @Override
@@ -2812,13 +2804,13 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
   @Override
   public boolean isMaximized() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
     return false;
   }
 
   @Override
   public void updateRecentMenu() {
-    // TODO Auto-generated method stub
+    // Deliberately empty
   }
 
   class recentFileListener implements ActionListener {

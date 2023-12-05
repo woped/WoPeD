@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Vector;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.ModelElementContainer;
@@ -85,7 +85,7 @@ public class YAWLExportUtils {
       encodedString = Base64.getEncoder().encodeToString(raw);
 
     } catch (Exception e) {
-      LoggerManager.error(Constants.CORE_LOGGER, "Default Password could not be generated!");
+      LoggerManager.error(WoPeDConstants.CORE_LOGGER, "Default Password could not be generated!");
     }
     return encodedString;
   }

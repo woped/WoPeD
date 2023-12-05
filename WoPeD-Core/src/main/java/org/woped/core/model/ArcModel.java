@@ -34,7 +34,7 @@ import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.PortView;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
@@ -287,7 +287,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     HashMap<Object, Object> map = new HashMap<Object, Object>();
     GraphConstants.setPoints(map, points);
     getAttributes().applyMap(map);
-    LoggerManager.debug(Constants.CORE_LOGGER, "Point added " + c.toString());
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Point added " + c.toString());
   }
 
   /**
@@ -369,7 +369,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     points.remove(pos);
     GraphConstants.setPoints(map, points);
     getAttributes().applyMap(map);
-    LoggerManager.debug(Constants.CORE_LOGGER, "Point removed");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Point removed");
   }
 
   public boolean hasPoint(Point2D p, int tolerance) {

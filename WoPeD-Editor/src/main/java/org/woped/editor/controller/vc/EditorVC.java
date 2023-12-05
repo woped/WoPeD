@@ -14,6 +14,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
+import java.time.Instant;
+import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +45,7 @@ import org.jgraph.graph.ParentMap;
 import org.jgraph.graph.Port;
 import org.jgraph.graph.PortView;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.AbstractMarqueeHandler;
@@ -147,14 +150,17 @@ public class EditorVC
   private boolean undoSupport;
   // Petri net model
   private PetriNetModelProcessor modelProcessor = null;
+  // What is the difference between m_filepath and m_pathname?
   private String m_filepath = null;
   private String m_pathname = null;
   private int m_defaultFileType = -1;
   private boolean copyFlag = true;
-  // not needed private boolean m_keyPressed = false;
   private int m_createElementType = -1;
   private boolean m_saved = true;
-  // not needed private double m_zoomScale = 1;
+  private Instant savedTime = Utils.currentInstant();
+  private boolean autosaved = false;
+  private String autosavePath = null;
+  private TemporalAmount autosavePeriod = DefaultStaticConfiguration.DEFAULT_AUTOSAVE_PERIOD;
   private boolean m_drawingMode = false;
   private boolean m_reachGraphEnabled = false;
   private boolean tokenGameEnabled = false;
@@ -185,11 +191,6 @@ public class EditorVC
     this(id, clipboard, undoSupport, mediator, true);
   }
 
-  /**
-   * TODO: DOCUMENTATION (silenco)
-   *
-   * @param clipboard
-   */
   public EditorVC(
       String id,
       EditorClipboard clipboard,
@@ -331,12 +332,6 @@ public class EditorVC
     return null;
   }
 
-  /**
-   * /TODO: documentation
-   *
-   * @param map
-   * @return
-   */
   public TransitionResourceModel createTransitionResource(CreationMap map) {
     AbstractPetriNetElementModel transition =
         getModelProcessor().getElementContainer().getElementById(map.getId());
@@ -382,12 +377,6 @@ public class EditorVC
     return createElement(map, true, doNotEdit);
   }
 
-  /**
-   * TODO: DOCUMENTATION (silenco)
-   *
-   * @param map
-   * @return
-   */
   protected GraphCell createElement(CreationMap map, boolean insertIntoCache, boolean editNameTag) {
     if (map.isValid()) {
       // Create Element, this will assign a new id if none has been
@@ -498,12 +487,6 @@ public class EditorVC
     return createArc(map, true);
   }
 
-  /**
-   * TODO: DOCUMENTATION (silenco, xraven)
-   *
-   * @param map
-   * @return
-   */
   public ArcModel createArc(CreationMap map, boolean insertIntoCache) {
     ArcModel arc;
     Point2D[] pointArray = map.getArcPoints().toArray(new Point2D[0]);
@@ -581,12 +564,6 @@ public class EditorVC
     deleteCells(toDelete, true);
   }
 
-  /**
-   * TODO: DOCUMENTATION (xraven)
-   *
-   * @param toDelete
-   * @param withGraph
-   */
   public void deleteCells(Object[] toDelete, boolean withGraph) {
     // A single NameModel can't be deleted
     if (toDelete.length == 1) {
@@ -647,13 +624,7 @@ public class EditorVC
     getEditorPanel().autoRefreshAnalysisBar();
   }
 
-  /**
-   * TODO: DOCUMENTATION (xraven)
-   *
-   * @param toDelete
-   */
   public void deleteOnlyCells(Object[] toDelete, boolean withGraph) {
-
     toDelete = Utils.sortArcsFirst(toDelete);
     Vector<Object> allPorts = new Vector<Object>();
     Vector<Object> allCells = new Vector<Object>();
@@ -753,11 +724,6 @@ public class EditorVC
 
   /*########## ELEMENT MODIFICATION METHODS ########### */
 
-  /**
-   * TODO: DOCUMENTATION (xraven)
-   *
-   * @param cell
-   */
   public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
     if (cell != null) {
       deleteCells(new Object[] {cell}, withGraph);
@@ -851,7 +817,6 @@ public class EditorVC
     return selectedArc;
   }
 
-  /** TODO: DOCUMENTATION (xraven) */
   public void undo() {
     doConfirmation = false; // Confirmation is done in Undo Handling
     copyFlag = false;
@@ -859,7 +824,6 @@ public class EditorVC
     doConfirmation = true; // Enable Confirmation again
   }
 
-  /** TODO: DOCUMENTATION (xraven) */
   public void redo() {
     doConfirmation = false; // Confirmation is done in Redo Handling
     copyFlag = false;
@@ -867,7 +831,6 @@ public class EditorVC
     doConfirmation = true; // Enable Confirmation again
   }
 
-  /** TODO: DOCUMENTATION (silenco) */
   public void copySelection() {
     getGraph().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     long begin = System.currentTimeMillis();
@@ -1148,7 +1111,6 @@ public class EditorVC
     CreationMap currentArcMap; /* insert arcs */
     Iterator<String> arcIter = pasteArcs.keySet().iterator();
     ArcModel tempArc = null;
-    Point2D point;
 
     while (arcIter.hasNext()) {
       currentArcMap = pasteArcs.get(arcIter.next());
@@ -1452,10 +1414,7 @@ public class EditorVC
 
     fireViewEvent(
         new EditorViewEvent(
-            this,
-            AbstractViewEvent.VIEWEVENTTYPE_GUI,
-            AbstractViewEvent.ZOOMED,
-            new Double(scale * 100)));
+            this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED, scale * 100));
   }
 
   public void valueChanged(GraphSelectionEvent arg0) {
@@ -1493,7 +1452,6 @@ public class EditorVC
     valueChangedActive = false;
   }
 
-  /** TODO: DOCUMENTATION (xraven) */
   public void lostOwnership(Clipboard arg0, Transferable arg1) {
     LoggerManager.debug(Constants.EDITOR_LOGGER, "Lost Ownership");
   }
@@ -1553,7 +1511,7 @@ public class EditorVC
     } else if (getGraph().getSelectionCells() != null) {
       // setKeyPressed(true);
       m_createElementType = 0;
-      /* TODO: Arrow Key Move */
+      /* Not handled: Arrow Key Move */
       if (e.getKeyCode() == KeyEvent.VK_UP) {
         move(getGraph().getSelectionCells(), 0, (int) -getGraph().getGridSize());
       } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -1794,24 +1752,6 @@ public class EditorVC
   }
 
   /**
-   * Returns the pathname if the net was saved before or was opened from a file.
-   *
-   * @return String
-   */
-  public String getPathName() {
-    return m_pathname;
-  }
-
-  /**
-   * Sets the pathname. Should be called when the net was saved in a file.
-   *
-   * @param pathname The filePath to set
-   */
-  public void setPathName(String pathname) {
-    this.m_pathname = pathname;
-  }
-
-  /**
    * Returns the filepath if the net was saved before or was opened from a file.
    *
    * @return String
@@ -1829,6 +1769,14 @@ public class EditorVC
     this.m_filepath = filepath;
   }
 
+  public String getAutosavePath() {
+    return autosavePath;
+  }
+
+  public void setAutosavePath(String path) {
+    this.autosavePath = path;
+  }
+
   /**
    * Returns the saved flag for the editor.
    *
@@ -1839,15 +1787,42 @@ public class EditorVC
   }
 
   /**
-   * Sets the saved flag for the editor. true when net was saved, or just loaded.
+   * Time model was last saved, or the time the class was constructed.
+   *
+   * @return
+   */
+  public Instant getSavedTime() {
+    return savedTime;
+  }
+
+  /**
+   * Sets the saved flag for the editor. True when net was saved, or just loaded.
    *
    * @param savedFlag The savedFlag to set
    */
   public void setSaved(boolean savedFlag) {
     this.m_saved = savedFlag;
+    if (m_saved) {
+      this.savedTime = Utils.currentInstant();
+    } else {
+      potentialAutosave();
+    }
     if (getEditorPanel().m_statusbar != null) {
       getEditorPanel().m_statusbar.updateStatus();
     }
+  }
+
+  private void potentialAutosave() {
+    if (!isSaved() && Utils.currentInstant().isAfter(savedTime.plus(autosavePeriod))) {
+      autosaveEvent();
+    }
+  }
+
+  private void autosaveEvent() {
+    // May be able to pass another paramter for useful context
+    fireViewEvent(
+        new EditorViewEvent(
+            this, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.AUTOSAVE));
   }
 
   /**
@@ -2151,7 +2126,7 @@ public class EditorVC
           }
         }
       } catch (Exception e) {
-        // TODO Auto-generated catch block
+        LoggerManager.warn(Constants.EDITOR_LOGGER, e.getMessage());
       }
     }
   }
@@ -2221,5 +2196,17 @@ public class EditorVC
   @Override
   public void hideP2TBar() {
     editorPanel.hideP2TBar();
+  }
+
+  public boolean isAutosaved() {
+    return autosaved;
+  }
+
+  public void setAutosaved(boolean autosaved) {
+    this.autosaved = autosaved;
+    if (autosaved) {
+      this.savedTime = Utils.currentInstant();
+      getEditorPanel().m_statusbar.updateStatus();
+    }
   }
 }

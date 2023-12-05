@@ -2,7 +2,7 @@ package org.woped.core.model.petrinet;
 
 import java.util.Iterator;
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.PetriNetModelProcessor;
@@ -87,7 +87,7 @@ public class XORJoinOperatorTransitionModel extends OperatorTransitionModel {
             .size()
         != 1) {
       getSimpleTransContainer().removeAllTargetElements(otherModel.getId());
-      LoggerManager.debug(Constants.CORE_LOGGER, "INNER Target Elements deleted");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "INNER Target Elements deleted");
     }
   }
 }

@@ -36,7 +36,7 @@ import org.jgraph.graph.DefaultPort;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariable;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TVariables;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.bpel.BpelVariable;
 import org.woped.core.model.bpel.BpelVariableList;
 import org.woped.core.model.bpel.PartnerlinkList;
@@ -140,11 +140,11 @@ public class ModelElementContainer implements Serializable {
       element.addOwningContainer(this);
 
       LoggerManager.debug(
-          Constants.CORE_LOGGER, String.format("Element: %s added", element.getId()));
+          WoPeDConstants.CORE_LOGGER, String.format("Element: %s added", element.getId()));
     } else {
 
       // an element with the id of the new element already exists
-      LoggerManager.debug(Constants.CORE_LOGGER, "The Element already exists, did nothing!");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "The Element already exists, did nothing!");
     }
 
     return element;
@@ -163,20 +163,21 @@ public class ModelElementContainer implements Serializable {
     // validate source
     if (getElementById(arc.getSourceId()) == null) {
       LoggerManager.warn(
-          Constants.CORE_LOGGER, String.format("Source (ID: %s) doesn't exist", arc.getSourceId()));
+          WoPeDConstants.CORE_LOGGER,
+          String.format("Source (ID: %s) doesn't exist", arc.getSourceId()));
       return;
     }
 
     // validate target
     if (getElementById(arc.getTargetId()) == null) {
       LoggerManager.warn(
-          Constants.CORE_LOGGER, "Target (ID:" + arc.getTargetId() + ") does not exist");
+          WoPeDConstants.CORE_LOGGER, "Target (ID:" + arc.getTargetId() + ") does not exist");
       return;
     }
 
     // Check if reference already exists
     if (hasReference(arc.getSourceId(), arc.getTargetId())) {
-      LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Arc already exists!");
       return;
     }
 
@@ -184,7 +185,7 @@ public class ModelElementContainer implements Serializable {
     getIdMap().get(arc.getSourceId()).put(arc.getId(), arc);
     arcs.put(arc.getId(), arc);
     LoggerManager.debug(
-        Constants.CORE_LOGGER,
+        WoPeDConstants.CORE_LOGGER,
         "Reference: "
             + arc.getId()
             + " ("
@@ -233,7 +234,7 @@ public class ModelElementContainer implements Serializable {
     // The element is no longer owned by anybody
     if (element != null) element.removeOwningContainer(this);
     getIdMap().remove(id);
-    LoggerManager.debug(Constants.CORE_LOGGER, "Element (ID:" + id + ") removed.");
+    LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Element (ID:" + id + ") removed.");
   }
 
   /**
@@ -246,7 +247,8 @@ public class ModelElementContainer implements Serializable {
     removeIncomingArcsFromElement(id);
     removeOutgoingArcsFromElement(id);
 
-    LoggerManager.debug(Constants.CORE_LOGGER, "All References from/to (ID:" + id + ") deleted");
+    LoggerManager.debug(
+        WoPeDConstants.CORE_LOGGER, "All References from/to (ID:" + id + ") deleted");
   }
 
   /**
@@ -283,7 +285,7 @@ public class ModelElementContainer implements Serializable {
     ArcModel arc = getArcById(id);
 
     if (arc == null) {
-      LoggerManager.warn(Constants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
+      LoggerManager.warn(WoPeDConstants.CORE_LOGGER, "Arc with ID: " + id + " does not exists");
     }
 
     removeArc(arc);
@@ -296,7 +298,7 @@ public class ModelElementContainer implements Serializable {
    */
   public void removeArc(ArcModel arc) {
     if (arc != null) {
-      LoggerManager.debug(Constants.CORE_LOGGER, "Reference (ID:" + arc.getId() + ") deleted");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Reference (ID:" + arc.getId() + ") deleted");
       // remove in arc Map
       arcs.remove(arc.getId());
       // remove Target Entry, (in Source Element's reference Map)
@@ -450,7 +452,7 @@ public class ModelElementContainer implements Serializable {
 
     } else {
       LoggerManager.debug(
-          Constants.CORE_LOGGER, "Requested Element (ID:" + id + ") does not exists");
+          WoPeDConstants.CORE_LOGGER, "Requested Element (ID:" + id + ") does not exists");
       return null;
     }
   }
@@ -477,7 +479,8 @@ public class ModelElementContainer implements Serializable {
     if (arcs.get(id) != null) {
       return arcs.get(id);
     } else {
-      LoggerManager.debug(Constants.CORE_LOGGER, " Requested Arc (ID:" + id + ") does not exists");
+      LoggerManager.debug(
+          WoPeDConstants.CORE_LOGGER, " Requested Arc (ID:" + id + ") does not exists");
       return null;
     }
   }

@@ -91,8 +91,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @return indicates whether loading was successful
    */
   public boolean readConfig() {
@@ -160,8 +158,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @param file
    * @return
    */
@@ -188,8 +184,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @param configDoc
    * @return
    */
@@ -285,8 +279,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   /**
-   * TODO: DOCUMENTATION (silenco)
-   *
    * @param file
    * @return
    */

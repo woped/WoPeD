@@ -30,7 +30,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.UIManager;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.gui.IEditorAware;
@@ -55,7 +55,7 @@ public abstract class AbstractApplicationMediator implements IViewListener {
     viewControllerMap = new HashMap<String, IViewController>();
     boolean confOK = true;
 
-    LoggerManager.info(Constants.CORE_LOGGER, "START INIT Application");
+    LoggerManager.info(WoPeDConstants.CORE_LOGGER, "START INIT Application");
     setUi(ui);
     setConf(conf);
 
@@ -64,8 +64,8 @@ public abstract class AbstractApplicationMediator implements IViewListener {
       confOK = conf.initConfig();
       if (!confOK) {
         // This should NEVER happen!
-        LoggerManager.fatal(Constants.CORE_LOGGER, "Could really not load any configuration.");
-        LoggerManager.info(Constants.CORE_LOGGER, "EXIT WoPeD - LOGGING DEACTIVATED");
+        LoggerManager.fatal(WoPeDConstants.CORE_LOGGER, "Could really not load any configuration.");
+        LoggerManager.info(WoPeDConstants.CORE_LOGGER, "EXIT WoPeD - LOGGING DEACTIVATED");
         System.exit(0);
       }
     }
@@ -79,9 +79,9 @@ public abstract class AbstractApplicationMediator implements IViewListener {
 
       UIManager.setLookAndFeel(ConfigurationManager.getConfiguration().getLookAndFeel());
       LoggerManager.info(
-          Constants.CORE_LOGGER, "Look-And-Feel set to " + Platform.getSystemLookAndFeel());
+          WoPeDConstants.CORE_LOGGER, "Look-And-Feel set to " + Platform.getSystemLookAndFeel());
     } catch (Exception e) {
-      LoggerManager.debug(Constants.CORE_LOGGER, "Look-And-Feel could not be set");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "Look-And-Feel could not be set");
     }
   }
 
@@ -118,7 +118,7 @@ public abstract class AbstractApplicationMediator implements IViewListener {
       return vc;
     } catch (Exception e1) {
       LoggerManager.error(
-          Constants.CORE_LOGGER,
+          WoPeDConstants.CORE_LOGGER,
           "Could not create the ViewController (ID:" + id + ")" + e1.getMessage());
       return null;
     }
@@ -221,6 +221,7 @@ public abstract class AbstractApplicationMediator implements IViewListener {
     return iwC;
   }
 
+  @SuppressWarnings("unchecked")
   public List<IEditor> getEditorAwareVCs() {
     return (List<IEditor>) editorLists.clone();
   }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.io.File;
+import java.time.Duration;
 import java.util.Locale;
 import java.util.Vector;
 import org.woped.config.ApromoreServer;
@@ -78,6 +79,8 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
   public static int DEFAULT_BUSINESSDASHBOARD_MAXVALUES = 1000;
   public static boolean DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT = false;
+  public static final Duration DEFAULT_AUTOSAVE_PERIOD = Duration.ofSeconds(30);
+
   // Booleans for alpha-functions (TEST) later integration in configuration &
   // GUI
   public static boolean ACTIVATE_NET_ROUTING = false;

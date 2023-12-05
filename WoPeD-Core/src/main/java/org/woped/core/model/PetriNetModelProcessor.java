@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 import org.jgraph.graph.DefaultPort;
-import org.woped.core.Constants;
+import org.woped.core.WoPeDConstants;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
@@ -73,7 +73,6 @@ public class PetriNetModelProcessor implements Serializable {
   private HashMap<String, Vector<String>> resourceMapping = new HashMap<String, Vector<String>>();
   private String id = null;
   private String name = null;
-  private ModelProcessorContext modelProcessorContext = null;
   private ModelElementContainer elementContainer = null;
 
   /**
@@ -92,7 +91,6 @@ public class PetriNetModelProcessor implements Serializable {
    */
   public PetriNetModelProcessor(String id) {
     elementContainer = new ModelElementContainer();
-    modelProcessorContext = new ModelProcessorContext();
 
     /* First thing for all: creating a ModelElementContainer */
     setId(id);
@@ -228,20 +226,20 @@ public class PetriNetModelProcessor implements Serializable {
       operatorModel.addElement(getElementContainer().getElementById(targetModel.getId()));
 
       LoggerManager.debug(
-          Constants.CORE_LOGGER,
+          WoPeDConstants.CORE_LOGGER,
           "Connection from Aalst Model detected... resolve Inner-Transitions ...");
 
       // Register new outgoing connection with the operator.
       // This will generate all the necessary inner arcs
       operatorModel.registerOutgoingConnection(this, targetModel);
 
-      LoggerManager.debug(Constants.CORE_LOGGER, "... Inner-Transition resolving completed");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "... Inner-Transition resolving completed");
     }
     /* IF OPERATOR IS TARGET */
     else if (targetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
 
       LoggerManager.debug(
-          Constants.CORE_LOGGER,
+          WoPeDConstants.CORE_LOGGER,
           "Connection to Aalst Model detected... resolve Inner-Transitions ...");
       // store the target as operatorModel
       operatorModel =
@@ -254,7 +252,7 @@ public class PetriNetModelProcessor implements Serializable {
       // This will generate all the necessary inner arcs
       operatorModel.registerIncomingConnection(this, sourceModel);
 
-      LoggerManager.debug(Constants.CORE_LOGGER, "... Inner-Transition resolving completed");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "... Inner-Transition resolving completed");
     }
   }
 
@@ -305,7 +303,7 @@ public class PetriNetModelProcessor implements Serializable {
       // We have to remove this local copy
       currentOperator.getSimpleTransContainer().removeElement(sourceElement.getId());
 
-      LoggerManager.debug(Constants.CORE_LOGGER, "INNER ARC TO SOURCE deleted");
+      LoggerManager.debug(WoPeDConstants.CORE_LOGGER, "INNER ARC TO SOURCE deleted");
     }
 
     // remove element from the subprocess model
@@ -334,7 +332,6 @@ public class PetriNetModelProcessor implements Serializable {
     return transition.getToolSpecific().setTrigger(map);
   }
 
-  // TODO: DOCUMentation
   public TransitionResourceModel newTransResource(CreationMap map) {
     TransitionModel transition =
         (TransitionModel) getElementContainer().getElementById(map.getId());
@@ -398,11 +395,11 @@ public class PetriNetModelProcessor implements Serializable {
           getResourceMapping().get(resourceClass).add(resourceId);
         }
       } else {
-        LoggerManager.warn(Constants.CORE_LOGGER, "resource doesn't exist");
+        LoggerManager.warn(WoPeDConstants.CORE_LOGGER, "resource doesn't exist");
       }
 
     } else {
-      LoggerManager.warn(Constants.CORE_LOGGER, "role or orgUnit doesn't exist");
+      LoggerManager.warn(WoPeDConstants.CORE_LOGGER, "role or orgUnit doesn't exist");
     }
   }
 

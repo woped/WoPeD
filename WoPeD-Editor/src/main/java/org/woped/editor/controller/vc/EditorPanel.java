@@ -103,7 +103,6 @@ public class EditorPanel extends JPanel {
   private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
   private NetColorScheme m_understandColoring = null;
 
-  private JSplitPane mainPaneWithT2PBar;
   private JPanel t2pBar;
   private String t2pText;
 
