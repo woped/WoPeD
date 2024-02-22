@@ -220,7 +220,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     getRibbon().addTask(getAnalyzeTask());
     getRibbon().addTask(getViewTask());
     getRibbon().addTask(getOptionsHelpTask());
-    getRibbon().addTask(getCommunityTask());
+    //getRibbon().addTask(getCommunityTask());
     getRibbon().addContextualTaskGroup(getTokengameGroup());
 
     // ribbon controls for coverability graph are outsourced in module CoverabilityGraph

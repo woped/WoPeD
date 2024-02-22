@@ -252,10 +252,11 @@ public class RunWoPeD extends JFrame {
 
       if (Platform.isMac()) {
         p = Runtime.getRuntime().exec(new String[] {"ps", "-e"});
-        pattern = "Installer";
+        pattern = "Installer.app";
         BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
         while ((line = input.readLine()) != null) {
-          if (line.contains(pattern)) return false;
+          if (line.contains(pattern))
+            return false;
         }
 
         input.close();

@@ -7,5 +7,5 @@ public class WoPeDConstants {
   // Keep in synch with mvn pom file.
   // Could read directly from pom like this:
   // https://stackoverflow.com/questions/3697449/retrieve-version-from-maven-pom-xml-in-code
-  public static final String WOPED_VERSION = "3.9.1";
+  public static final String WOPED_VERSION = "3.9.2";
 }

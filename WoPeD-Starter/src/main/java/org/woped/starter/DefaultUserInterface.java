@@ -115,14 +115,15 @@ public class DefaultUserInterface extends MainFrame
     VisualController.getInstance()
         .propertyChange(new PropertyChangeEvent(this, "Registration", null, null));
 
-    if (!ConfigurationManager.getConfiguration().isRegistered()
+    /*if (!ConfigurationManager.getConfiguration().isRegistered()
         && ConfigurationManager.getConfiguration().isShowOnStartup()
         && (ConfigurationManager.getConfiguration().getLaunchCounter() < 10
             | (ConfigurationManager.getConfiguration().getLaunchCounter() % 5) == 3)) {
       new RegistrationUI(this, true);
     } else {
       new SplashWindow(this);
-    }
+    }*/
+    new SplashWindow(this);
 
     // Helper for adding Tokengame
     // see Java-Doc for explanation
