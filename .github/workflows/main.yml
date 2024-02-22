@@ -9,28 +9,9 @@ on:
     branches: [ "master" ]
 
 jobs:
-  # Determine Version
-  set-version:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        # PREPARE VERSION
-      - name: Set Release version env variable
-        run: |
-          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
-      - name: Add SHORT_SHA env property with commit short sha
-        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-      - name: If Version does contain SNAPSHOT add SHORT_SHA
-        if: contains(env.RELEASE_VERSION, 'SNAPSHOT')
-        run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}-${{ env.SHORT_SHA }}" >> $GITHUB_ENV
-      - name: If Version does not contain SNAPSHOT add nothing
-        if: false == contains(env.RELEASE_VERSION, 'SNAPSHOT')
-        run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
-
   # SonarCloud Analysis
   analyze:
     runs-on: ubuntu-latest
-    needs: [set-version]
     permissions: write-all
     steps:
       - uses: actions/checkout@v3
@@ -77,14 +58,15 @@ jobs:
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
     # BUILD FOR DISTRIBUTION
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
         jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         ls ./woped-installer/build/distributions
-      env:
-        RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
     # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
@@ -114,14 +96,15 @@ jobs:
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
     # BUILD FOR DISTRIBUTION
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=true' '--no-transfer-progress'
         jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\$RELEASE_VERSION\WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
-      env:
-        RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
     # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
@@ -151,13 +134,14 @@ jobs:
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
       # BUILD FOR DISTRIBUTION
+      - name: Set Release version env variable
+        run: |
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
       - id: build
         name: Build distribution
         run: |
           mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
           jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/$RELEASE_VERSION/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
-        env:
-          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
       # SAVE INSTALLER
       - id: upload-installer
         name: Upload installer
@@ -190,6 +174,18 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: macos-installer
+    # PREPARE VERSION
+    - name: Set Release version env variable
+      run: |
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+    - name: Add SHORT_SHA env property with commit short sha
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+    - name: If Version does contain SNAPSHOT add SHORT_SHA
+      if: contains(env.RELEASE_VERSION, 'SNAPSHOT')
+      run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}-${{ env.SHORT_SHA }}" >> $GITHUB_ENV
+    - name: If Version does not contain SNAPSHOT add nothing
+      if: false == contains(env.RELEASE_VERSION, 'SNAPSHOT')
+      run: echo "RELEASE_NAME=${{ env.RELEASE_VERSION }}" >> $GITHUB_ENV
     # CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
       name: Create GitHub release
