@@ -100,9 +100,9 @@ jobs:
       # Build for Windows
     - name: Set Release version env variable
       run: |
-        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)" >> $GITHUB_ENV
+        echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression="project.version" -q -DforceStdout)" >> $env:GITHUB_ENV
     - id: build
-      name: Build distribution
+      name: Build for Windows
       run: |
         mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=true' '--no-transfer-progress'
         jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\%RELEASE_VERSION%\WoPeD-Starter-%RELEASE_VERSION%.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
@@ -141,7 +141,7 @@ jobs:
         run: |
           echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
       - id: build
-        name: Build distribution
+        name: Build for MacOS
         run: |
           mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
           jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/$RELEASE_VERSION/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
