@@ -59,9 +59,9 @@ jobs:
   build-linux-installer:
     name: Build Installer on Linux
     runs-on: ubuntu-latest
+    needs: [analyze]
     permissions: write-all
     steps:
-
     # SETUP BUILD ENVIRONMENT
     - id: checkout-code
       name: Checkout
@@ -73,21 +73,17 @@ jobs:
         java-version: 17
         distribution: 'temurin'
         settings-path: ${{ github.workspace }}
-        
     - uses: s4u/maven-settings-action@v2.5.0
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
-
     # BUILD FOR DISTRIBUTION
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
-        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-${{ env.RELEASE_VERSION }}.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         ls ./woped-installer/build/distributions
-        
-     
-    # SAVE INSTALLER 
+    # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
@@ -99,9 +95,9 @@ jobs:
   build-windows-installer:
     name: Build Installer on Windows
     runs-on: windows-latest
+    needs: [analyze]
     steps:
-
-  # SETUP BUILD ENVIRONMENT
+    # SETUP BUILD ENVIRONMENT
     - id: checkout-code
       name: Checkout
       uses: actions/checkout@v3
@@ -112,20 +108,17 @@ jobs:
         java-version: 17
         distribution: 'temurin'
         settings-path: ${{ github.workspace }}
-        
     - uses: s4u/maven-settings-action@v2.5.0
       with:
         servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
-    
-        
-   # BUILD FOR DISTRIBUTION
+    # BUILD FOR DISTRIBUTION
     - id: build
       name: Build distribution
       run: |
         mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=true' '--no-transfer-progress'
-        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\$RELEASE_VERSION\WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
+        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\${{ env.RELEASE_VERSION }}\WoPeD-Starter-${{ env.RELEASE_VERSION }}.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
-  # SAVE INSTALLER
+    # SAVE INSTALLER
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v2
@@ -137,9 +130,9 @@ jobs:
   build-macos-installer:
       name: Build Installer on macOS
       runs-on: macos-latest
+      needs: [analyze]
       steps:
-
-    # SETUP BUILD ENVIRONMENT
+      # SETUP BUILD ENVIRONMENT
       - id: checkout-code
         name: Checkout
         uses: actions/checkout@v3
@@ -150,19 +143,16 @@ jobs:
           java-version: 17
           distribution: 'temurin'
           settings-path: ${{ github.workspace }}
-
       - uses: s4u/maven-settings-action@v2.5.0
         with:
           servers: '[{"id": "github","configuration": {"httpHeaders": {"property": {"name": "Authorization","value": "Bearer ${{ secrets.GITHUB_TOKEN }}"}}}}]'
-
-
-     # BUILD FOR DISTRIBUTION
+      # BUILD FOR DISTRIBUTION
       - id: build
         name: Build distribution
         run: |
           mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
-          jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/$RELEASE_VERSION/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
-    # SAVE INSTALLER
+          jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/${{ env.RELEASE_VERSION }}/WoPeD-Starter-${{ env.RELEASE_VERSION }}.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
+      # SAVE INSTALLER
       - id: upload-installer
         name: Upload installer
         uses: actions/upload-artifact@v2
@@ -178,26 +168,22 @@ jobs:
     needs: [build-linux-installer, build-windows-installer, build-macos-installer]
     steps:
     - uses: actions/checkout@v3
-
     # DOWNLOAD INSTALLERS
     - id: download-linux-installer
       name: Download Linux installer
       uses: actions/download-artifact@v2
       with:
         name: linux-installer
-    
     - id: download-windows-installer
       name: Download Windows installer
       uses: actions/download-artifact@v2
       with:
         name: windows-installer
-
     - id: download-macos-installer
       name: Download macOS installer
       uses: actions/download-artifact@v2
       with:
         name: macos-installer
-
     # CREATE GITHUB RELEASE AND ADD ASSETS
     - id: create-release
       name: Create GitHub release
