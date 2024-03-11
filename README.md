@@ -3,6 +3,8 @@
 Website: https://woped.dhbw-karlsruhe.de/ <br>
 Responsible: Thomas Freytag, thomas.freytag@dhbw-karlsruhe.de
 
+WoPeD provides easy-to-use software for editing, modelling, simulating and analyzing processes described by workflow nets. Workflow nets are a class of [Petri nets](https://en.wikipedia.org/wiki/Petri_net) especially useful in process modelling, process mining, and workflow systems.
+
 ## Configuration for development
 In order to develop on your local machine, `mvn install` is required in a first step. 
 Since some of our dependencies are available via `GitHub Packages`, the following steps are required before you can run `mvn install`. 
