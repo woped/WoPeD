@@ -59,7 +59,7 @@
 								<goal>run</goal>
 							</goals>
 							<configuration>
-								<tasks>
+								<target>
 									<filter token="wopedversion" value="${project.version}"/>
 									<mkdir dir="target/staging" />
 									<mkdir dir="target/stagingOutput" />
@@ -100,7 +100,7 @@
 									<copy tofile="target/staging/WoPeD-Starter.jar">
 										<fileset file="${basedir}/../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />
 									</copy>
-								</tasks>
+								</target>
 							</configuration>
 
 						</execution>
@@ -211,12 +211,12 @@
 								<goal>run</goal>
 							</goals>
 							<configuration>
-								<tasks>
+								<target>
 									<copy tofile="target/Linux/WoPeD-install-linux-${project.version}.jar">
 										<fileset
 												file="./target/stagingOutput/WoPeD-Installer-${project.version}.jar" />
 									</copy>
-								</tasks>
+								</target>
 							</configuration>
 						</execution>
 					</executions>
@@ -233,7 +233,7 @@
 								<goal>run</goal>
 							</goals>
 							<configuration>
-								<tasks>
+								<target>
 									<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="mac/lib/appbundler-1.0ea.jar"/>
 									<filter token="wopedversion" value="${project.version}"/>
 									<delete dir="dist" />
@@ -334,7 +334,7 @@
 									<move todir="target/MacOS">
 										<fileset file="dist/*.pkg"/>
 									</move>
-								</tasks>
+								</target>
 							</configuration>
 						</execution>
 					</executions>
