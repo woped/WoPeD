@@ -643,7 +643,7 @@ public class ActionFactory {
     STATIC_ACTION_MAP.put(
         ACTIONID_P2T,
         new WoPeDAction(
-            am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
+            am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null, ACTIONID_P2T));
     VisualController.getInstance()
         .addElement(
             STATIC_ACTION_MAP.get(ACTIONID_P2T),

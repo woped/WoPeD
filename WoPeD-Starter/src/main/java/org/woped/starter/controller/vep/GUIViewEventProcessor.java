@@ -46,6 +46,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.file.p2t.P2TUI;
 import org.woped.file.t2p.T2PUI;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.service.IQualanalysisService;
@@ -82,6 +83,16 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
         }
         t2p.setVisible(true);
         break;
+        case AbstractViewEvent.P2T:
+          P2TUI p2t;
+          if (getMediator().getUi() != null
+                  && getMediator().getUi().getComponent() instanceof JFrame) {
+            p2t = new P2TUI((JFrame) getMediator().getUi(), getMediator());
+          } else {
+            p2t = new P2TUI(getMediator());
+          }
+          p2t.setVisible(true);
+          break;
       case AbstractViewEvent.NEW:
         getMediator().createEditor(true);
         break;

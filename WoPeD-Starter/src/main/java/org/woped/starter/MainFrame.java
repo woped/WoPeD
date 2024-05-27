@@ -1196,6 +1196,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     return p2tBand;
   }
 
+
   private JRibbonBand getWindowsBand() {
 
     if (windowsBand == null) {
