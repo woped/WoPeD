@@ -83,6 +83,7 @@ public class P2TUI extends JDialog {
         newRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(true);
             apiKeyField.setVisible(true);
+            apiKeyField.requestFocusInWindow();
         });
 
         oldRadioButton.addActionListener(e -> {
