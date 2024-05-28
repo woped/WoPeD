@@ -15,27 +15,23 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.t2p.JTextAreaWithHint;
-import org.woped.file.t2p.PlainTextFileReader;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class P2TUI extends JDialog {
-    private JTextAreaWithHint textArea;
     private JDialog loadDialog;
     private AbstractApplicationMediator mediator;
     private boolean requested = false;
-    private String inputText;
 
     public P2TUI(AbstractApplicationMediator mediator) {
         this(null, mediator);
@@ -52,73 +48,35 @@ public class P2TUI extends JDialog {
         this.getContentPane().setLayout(new BorderLayout());
         this.setUndecorated(false);
         this.setResizable(true);
+        this.setTitle(Messages.getString("P2T.openP2T.text"));
 
-        textArea = new JTextAreaWithHint();
-        this.setTitle(Messages.getString("P2T.tooltip"));
-        this.getContentPane().add(wrapTextArea(initializeTextArea(textArea)), BorderLayout.CENTER);
-        this.getContentPane().add(initializeButtonsPanel(), BorderLayout.SOUTH);
+        // Add switch button panel to the top left
+        this.getContentPane().add(initializeSwitchButtonPanel(), BorderLayout.NORTH);
+
+        // Add a single button to the bottom center
+        this.getContentPane().add(initializeSingleButtonPanel(), BorderLayout.SOUTH);
 
         this.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-        Dimension size = new Dimension(600, 440);
+        Dimension size = new Dimension(600, 140);
         this.setSize(size);
-
-        // Set previous text if available
-        int index = 0;
-        boolean doesContain = false;
-        if (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
-            doesContain = true;
-            while (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
-                index++;
-            }
-            index--;
-        }
-
-        if (doesContain) {
-            String lastTextInput = ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index)).getEditorPanel().getT2PText();
-            textArea.setText(lastTextInput);
-        }
     }
 
-    private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
-        Font f = new Font("Lucia Grande", Font.PLAIN, 13);
-        String hint = Messages.getString("P2TUI.HowTo");
-        ta.setFont(f);
-        ta.changeHintText(hint);
-        ta.setLineWrap(true);
-        ta.setWrapStyleWord(true);
-        ta.requestFocus();
-        ta.requestFocusInWindow();
-        ta.setMargin(new Insets(10, 10, 10, 10));
-        return ta;
-    }
+    private JPanel initializeSwitchButtonPanel() {
+        JPanel switchButtonPanel = new JPanel();
+        switchButtonPanel.setLayout(new BoxLayout(switchButtonPanel, BoxLayout.LINE_AXIS));
+        switchButtonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    private JScrollPane wrapTextArea(JTextAreaWithHint ta) {
-        JScrollPane scrollPane = new JScrollPane(ta);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        return scrollPane;
-    }
-
-    private JPanel initializeButtonsPanel() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
-
-        String[] lang = {Messages.getString("P2TUI.Lang"), Messages.getString("P2TUI.Lang.English")};
-        JComboBox<String> langBox = new JComboBox<>(lang);
-        langBox.setSelectedIndex(1);
-
-        // Radio buttons for "alt" and "neu"
-        JRadioButton oldRadioButton = new JRadioButton("Alt");
-        JRadioButton newRadioButton = new JRadioButton("Neu");
+        JRadioButton oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
+        JRadioButton newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
         ButtonGroup group = new ButtonGroup();
         group.add(oldRadioButton);
         group.add(newRadioButton);
 
-        // API Key input field
-        JLabel apiKeyLabel = new JLabel("API Key:");
+        JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title"));
         JTextField apiKeyField = new JTextField();
+        apiKeyField.setPreferredSize(new Dimension(200, 25)); // Set the preferred size to make it wider
         apiKeyLabel.setVisible(false);
         apiKeyField.setVisible(false);
 
@@ -135,45 +93,33 @@ public class P2TUI extends JDialog {
         // Set "alt" as default selection
         oldRadioButton.setSelected(true);
 
-        WopedButton btnGenerate = new WopedButton(new AbstractAction() {
+        switchButtonPanel.add(oldRadioButton);
+        switchButtonPanel.add(newRadioButton);
+        switchButtonPanel.add(apiKeyLabel);
+        switchButtonPanel.add(apiKeyField);
+
+        return switchButtonPanel;
+    }
+
+    private JPanel initializeSingleButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JButton singleButton = new JButton(new AbstractAction() {
             public void actionPerformed(ActionEvent arg0) {
+                // Implement your action here
                 request();
             }
         });
 
-        btnGenerate.setMnemonic(KeyEvent.VK_A);
-        btnGenerate.setText(Messages.getString("P2TUI.Button.Generate.Text"));
-        btnGenerate.setIcon(loadIcon(Messages.getString("P2TUI.Button.Generate.Icon")));
+        singleButton.setMnemonic(KeyEvent.VK_A);
+        singleButton.setText(Messages.getString("P2T.tooltip"));
+        singleButton.setIcon(loadIcon(Messages.getString("P2TUI.Button.Generate.Icon")));
 
-        WopedButton btnErase = new WopedButton(new AbstractAction() {
-            public void actionPerformed(ActionEvent arg0) {
-                clearTextArea();
-            }
-        });
-
-        btnErase.setMnemonic(KeyEvent.VK_L);
-        btnErase.setText(Messages.getString("P2TUI.Button.Clear.Text"));
-        btnErase.setIcon(loadIcon(Messages.getString("P2TUI.Button.Clear.Icon")));
-
-        WopedButton btnUpload = new WopedButton(new AbstractAction() {
-            public void actionPerformed(ActionEvent arg0) {
-                readFile();
-            }
-        });
-
-        btnUpload.setMnemonic(KeyEvent.VK_C);
-        btnUpload.setText(Messages.getString("P2TUI.Button.Read.Text"));
-        btnUpload.setIcon(loadIcon(Messages.getString("P2TUI.Button.Read.Icon")));
-
-        buttonPanel.add(btnUpload);
-        buttonPanel.add(btnErase);
-        buttonPanel.add(langBox);
         buttonPanel.add(Box.createHorizontalGlue());
-        buttonPanel.add(oldRadioButton);
-        buttonPanel.add(newRadioButton);
-        buttonPanel.add(apiKeyLabel);
-        buttonPanel.add(apiKeyField);
-        buttonPanel.add(btnGenerate);
+        buttonPanel.add(singleButton);
+        buttonPanel.add(Box.createHorizontalGlue());
 
         return buttonPanel;
     }
@@ -192,14 +138,8 @@ public class P2TUI extends JDialog {
         if (requested) return;
         requested = true;
 
-        inputText = textArea.getText();
-
-        if (!inputText.isEmpty()) {
-            // Implement your request handling here
-            showLoadingBox();
-        } else {
-            showErrorPopUp("P2TUI.NoText.Title", "P2TUI.NoText.Text");
-        }
+        // Implement your request handling here
+        showLoadingBox();
 
         requested = false;
     }
@@ -229,17 +169,5 @@ public class P2TUI extends JDialog {
 
     private void close() {
         this.dispose();
-    }
-
-    public void clearTextArea() {
-        if (textArea.getText() != null) {
-            textArea.setText(null);
-        }
-    }
-
-    public void readFile() {
-        PlainTextFileReader r = new PlainTextFileReader();
-        String txt = r.read();
-        if (txt != null) textArea.setText(txt);
     }
 }
