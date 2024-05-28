@@ -2,13 +2,15 @@ package org.woped.file.p2t;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Frame;
 import java.awt.HeadlessException;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -23,15 +25,13 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.editor.controller.vc.EditorVC;
-import org.woped.file.t2p.JTextAreaWithHint;
-import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class P2TUI extends JDialog {
     private JDialog loadDialog;
     private AbstractApplicationMediator mediator;
     private boolean requested = false;
+    private JTextField apiKeyField;
 
     public P2TUI(AbstractApplicationMediator mediator) {
         this(null, mediator);
@@ -75,7 +75,7 @@ public class P2TUI extends JDialog {
         group.add(newRadioButton);
 
         JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title"));
-        JTextField apiKeyField = new JTextField();
+        apiKeyField = new JTextField();
         apiKeyField.setPreferredSize(new Dimension(200, 25)); // Set the preferred size to make it wider
         apiKeyLabel.setVisible(false);
         apiKeyField.setVisible(false);
@@ -108,14 +108,13 @@ public class P2TUI extends JDialog {
 
         JButton singleButton = new JButton(new AbstractAction() {
             public void actionPerformed(ActionEvent arg0) {
-                // Implement your action here
-                request();
+                validateAPIKey();
             }
         });
 
         singleButton.setMnemonic(KeyEvent.VK_A);
-        singleButton.setText(Messages.getString("P2T.tooltip"));
-        singleButton.setIcon(loadIcon(Messages.getString("P2TUI.Button.Generate.Icon")));
+        singleButton.setText(Messages.getString("P2T.text"));
+        //singleButton.setIcon(loadIcon(Messages.getString("P2TUI.Button.Validate.Icon")));
 
         buttonPanel.add(Box.createHorizontalGlue());
         buttonPanel.add(singleButton);
@@ -134,14 +133,28 @@ public class P2TUI extends JDialog {
         }
     }
 
-    private void request() {
-        if (requested) return;
-        requested = true;
+    private void validateAPIKey() {
+        String apiKey = apiKeyField.getText();
+        if (!isAPIKeyValid(apiKey)) {
+            JOptionPane.showMessageDialog(this, Messages.getString("P2T.apikey.invalid"), Messages.getString("P2T.apikey.invalid.title"), JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-        // Implement your request handling here
-        showLoadingBox();
+    public static boolean isAPIKeyValid(String apiKey) {
+        final String TEST_URL = "https://api.openai.com/v1/engines";
+        try {
+            URL url = new URL(TEST_URL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
 
-        requested = false;
+            int responseCode = connection.getResponseCode();
+
+            return responseCode == 200;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void showLoadingBox() {
