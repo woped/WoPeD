@@ -3,7 +3,10 @@ package org.woped.file.p2t;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -13,16 +16,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.gui.translations.Messages;
@@ -32,6 +36,9 @@ public class P2TUI extends JDialog {
     private AbstractApplicationMediator mediator;
     private boolean requested = false;
     private JTextField apiKeyField;
+    private JTextArea promptField;  // Changed to JTextArea for multiline
+    private JCheckBox enablePromptCheckBox; // New Checkbox
+    private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
     public P2TUI(AbstractApplicationMediator mediator) {
         this(null, mediator);
@@ -50,7 +57,7 @@ public class P2TUI extends JDialog {
         this.setResizable(true);
         this.setTitle(Messages.getString("P2T.openP2T.text"));
 
-        // Add switch button panel to the top left
+        // Add switch button panel to the top
         this.getContentPane().add(initializeSwitchButtonPanel(), BorderLayout.NORTH);
 
         // Add a single button to the bottom center
@@ -59,14 +66,16 @@ public class P2TUI extends JDialog {
         this.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-        Dimension size = new Dimension(600, 140);
+        Dimension size = new Dimension(600, 300); // Adjusted size to accommodate new text field and checkbox
         this.setSize(size);
     }
 
     private JPanel initializeSwitchButtonPanel() {
-        JPanel switchButtonPanel = new JPanel();
-        switchButtonPanel.setLayout(new BoxLayout(switchButtonPanel, BoxLayout.LINE_AXIS));
-        switchButtonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel switchButtonPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        JPanel radioPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbcRadio = new GridBagConstraints();
 
         JRadioButton oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
         JRadioButton newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
@@ -74,37 +83,115 @@ public class P2TUI extends JDialog {
         group.add(oldRadioButton);
         group.add(newRadioButton);
 
-        JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title"));
+        gbcRadio.gridx = 0;
+        gbcRadio.gridy = 0;
+        gbcRadio.insets = new Insets(5, 5, 5, 5);
+        radioPanel.add(oldRadioButton, gbcRadio);
+
+        gbcRadio.gridx = 1;
+        gbcRadio.insets = new Insets(5, 0, 5, 5);
+        radioPanel.add(newRadioButton, gbcRadio);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.anchor = GridBagConstraints.CENTER;
+        switchButtonPanel.add(radioPanel, gbc);
+
+        JPanel fieldsPanel = new JPanel(new GridBagLayout());
+
+        JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title") + ":");
         apiKeyField = new JTextField();
-        apiKeyField.setPreferredSize(new Dimension(200, 25)); // Set the preferred size to make it wider
+        apiKeyField.setPreferredSize(new Dimension(200, 25));
+
+        JLabel promptLabel = new JLabel("Prompt:");
+        promptField = new JTextArea(DEFAULT_PROMPT);  // Changed to JTextArea
+        promptField.setLineWrap(true);
+        promptField.setWrapStyleWord(true);
+        promptField.setRows(5); // Set initial number of rows
+        promptField.setEnabled(false); // Initially disabled
+
+        JScrollPane promptScrollPane = new JScrollPane(promptField);
+        promptScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        promptScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        promptScrollPane.setPreferredSize(new Dimension(200, 100));
+
+        enablePromptCheckBox = new JCheckBox("Enable editing prompt");
+        enablePromptCheckBox.setSelected(false);
+        enablePromptCheckBox.addActionListener(e -> {
+            promptField.setEnabled(enablePromptCheckBox.isSelected());
+            if (!enablePromptCheckBox.isSelected()) {
+                promptField.setText(DEFAULT_PROMPT); // Reset text when disabled
+                promptField.revalidate();
+            }
+        });
+
         apiKeyLabel.setVisible(false);
         apiKeyField.setVisible(false);
+        promptLabel.setVisible(false);
+        promptScrollPane.setVisible(false);
+        enablePromptCheckBox.setVisible(false);
 
         newRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(true);
             apiKeyField.setVisible(true);
+            promptLabel.setVisible(true);
+            promptScrollPane.setVisible(true);
+            enablePromptCheckBox.setVisible(true);
             apiKeyField.requestFocusInWindow();
         });
 
         oldRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(false);
             apiKeyField.setVisible(false);
+            promptLabel.setVisible(false);
+            promptScrollPane.setVisible(false);
+            enablePromptCheckBox.setVisible(false);
         });
 
         // Set "alt" as default selection
         oldRadioButton.setSelected(true);
 
-        switchButtonPanel.add(oldRadioButton);
-        switchButtonPanel.add(newRadioButton);
-        switchButtonPanel.add(apiKeyLabel);
-        switchButtonPanel.add(apiKeyField);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        fieldsPanel.add(apiKeyLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(apiKeyField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0;
+        fieldsPanel.add(promptLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(promptScrollPane, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        fieldsPanel.add(enablePromptCheckBox, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 0, 0, 0);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        switchButtonPanel.add(fieldsPanel, gbc);
 
         return switchButtonPanel;
     }
 
     private JPanel initializeSingleButtonPanel() {
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JButton singleButton = new JButton(new AbstractAction() {
@@ -115,23 +202,10 @@ public class P2TUI extends JDialog {
 
         singleButton.setMnemonic(KeyEvent.VK_A);
         singleButton.setText(Messages.getString("P2T.text"));
-        //singleButton.setIcon(loadIcon(Messages.getString("P2TUI.Button.Validate.Icon")));
 
-        buttonPanel.add(Box.createHorizontalGlue());
-        buttonPanel.add(singleButton);
-        buttonPanel.add(Box.createHorizontalGlue());
+        buttonPanel.add(singleButton, BorderLayout.CENTER);
 
         return buttonPanel;
-    }
-
-    private ImageIcon loadIcon(String path) {
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null; // or a default icon if you prefer
-        }
     }
 
     private void validateAPIKey() {
