@@ -35,6 +35,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
 			</plugin>
 			<plugin>
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
@@ -327,7 +328,7 @@
 										<fileset file="dist/Info.plist"/>
 									</copy>
 
-									<exec dir="dist" executable="/bin/sh">
+									<exec dir="dist" executable="cmd.exe">
 										<arg line="makepackage"/>
 									</exec>
 
