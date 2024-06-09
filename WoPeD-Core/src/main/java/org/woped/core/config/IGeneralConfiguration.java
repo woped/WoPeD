@@ -478,28 +478,28 @@ public interface IGeneralConfiguration extends IConfiguration {
   public ApromoreServer[] getApromoreServers();
 
   public void addApromoreServer(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort);
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort);
 
   public void changeApromoreServerSettings(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort);
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort);
 
   public void removeApromoreServer(int index);
 
@@ -560,4 +560,17 @@ public interface IGeneralConfiguration extends IConfiguration {
   public boolean isYAWLExportGroups();
 
   public void setYAWLExportGroups(boolean exportGroups);
+
+  // GPT Settings
+  public String getGptApiKey();
+
+  public void setGptApiKey(String apiKey);
+
+  public boolean getGptShowAgain();
+
+  public void setGptShowAgain(boolean showAgain);
+
+  public String getGptPrompt();
+
+  public void setGptPrompt(String prompt);
 }

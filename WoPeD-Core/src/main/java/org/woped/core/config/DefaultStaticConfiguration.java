@@ -12,7 +12,7 @@ import org.woped.config.ApromoreServer;
 /**
  * Class that provides fallback configuration settings for the general WoPeD configuration part
  *
- * @author Philip Allgaier
+ * @autor Philip Allgaier
  */
 @SuppressWarnings("JavadocReference")
 public class DefaultStaticConfiguration implements IGeneralConfiguration {
@@ -189,6 +189,11 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private boolean yawlExportExplicitPlaces = false;
 
   private boolean yawlExportGroups = false;
+
+  // GPT settings
+  private String gptApiKey = "test";
+  private boolean gptShowAgain = true;
+  private String gptPrompt = "test";
 
   public DefaultStaticConfiguration() {
     initConfig();
@@ -919,29 +924,29 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   @Override
   public void addApromoreServer(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort) {}
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort) {}
 
   @Override
   public void changeApromoreServerSettings(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort) {}
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort) {}
 
   @Override
   public void removeApromoreServer(int index) {}
@@ -1082,5 +1087,36 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   public void setYAWLExportGroups(boolean exportGroups) {
     this.yawlExportGroups = exportGroups;
+  }
+
+  // GPT settings
+  @Override
+  public String getGptApiKey() {
+    return gptApiKey;
+  }
+
+  @Override
+  public void setGptApiKey(String apiKey) {
+    this.gptApiKey = apiKey;
+  }
+
+  @Override
+  public boolean getGptShowAgain() {
+    return gptShowAgain;
+  }
+
+  @Override
+  public void setGptShowAgain(boolean showAgain) {
+    this.gptShowAgain = showAgain;
+  }
+
+  @Override
+  public String getGptPrompt() {
+    return gptPrompt;
+  }
+
+  @Override
+  public void setGptPrompt(String prompt) {
+    this.gptPrompt = prompt;
   }
 }

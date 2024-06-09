@@ -78,6 +78,9 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       if (getConfDocument().getConfiguration().getMetrics() == null)
         getConfDocument().getConfiguration().addNewMetrics();
 
+      if(getConfDocument().getConfiguration().getGpt() == null)
+        getConfDocument().getConfiguration().addNewGpt();
+
       // Check if metrics configuration should be loaded
       // and react accordingly
       if (getConfDocument().getConfiguration().getMetrics().getUseMetrics()) {
@@ -1475,6 +1478,41 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       return getConfDocument().getConfiguration().getT2P().getT2PServerURI();
     } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI();
   }
+  @Override
+  public String getGptApiKey() {
+    if(getConfDocument().getConfiguration().getGpt().isSetGptApiKey()){
+      return getConfDocument().getConfiguration().getGpt().getGptApiKey();
+    }else return ConfigurationManager.getStandardConfiguration().getGptApiKey();
+  }
+
+  @Override
+  public void setGptApiKey(String apiKey) {
+    getConfDocument().getConfiguration().getGpt().setGptApiKey(apiKey);
+  }
+
+  @Override
+  public boolean getGptShowAgain() {
+    if(getConfDocument().getConfiguration().getGpt().isSetGptShowAgain()){
+      return getConfDocument().getConfiguration().getGpt().getGptShowAgain();
+    }else return ConfigurationManager.getStandardConfiguration().getGptShowAgain();
+  }
+
+  @Override
+  public void setGptShowAgain(boolean showAgain) {
+  getConfDocument().getConfiguration().getGpt().setGptShowAgain(showAgain);
+  }
+
+  @Override
+  public String getGptPrompt() {
+    if(getConfDocument().getConfiguration().getGpt().isSetGptPrompt()){
+      return getConfDocument().getConfiguration().getGpt().getGptPrompt();
+    }else return ConfigurationManager.getStandardConfiguration().getGptPrompt();
+  }
+
+  @Override
+  public void setGptPrompt(String prompt) {
+    getConfDocument().getConfiguration().getGpt().setGptPrompt(prompt);
+  }
 
   @Override
   public void setText2ProcessServerURI(String uri) {
@@ -1605,4 +1643,6 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
         .getExporting()
         .setYawlExportGroups(exportGroups);
   }
+
+
 }
