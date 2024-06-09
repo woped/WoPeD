@@ -39,6 +39,8 @@ public class P2TUI extends JDialog {
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
     private JCheckBox showAgainCheckBox; // New Checkbox
+    private JRadioButton newRadioButton = null;
+    private JRadioButton oldRadioButton = null;
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
     public P2TUI(AbstractApplicationMediator mediator) {
@@ -78,8 +80,8 @@ public class P2TUI extends JDialog {
         JPanel radioPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbcRadio = new GridBagConstraints();
 
-        JRadioButton oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
-        JRadioButton newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
+        oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
+        newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
         ButtonGroup group = new ButtonGroup();
         group.add(oldRadioButton);
         group.add(newRadioButton);
@@ -210,7 +212,14 @@ public class P2TUI extends JDialog {
 
         JButton singleButton = new JButton(new AbstractAction() {
             public void actionPerformed(ActionEvent arg0) {
-                validateAPIKey();
+                if (newRadioButton.isSelected()) {
+                    validateAPIKey();
+                    //GPT Aufrufen
+                }
+                else {
+                    //GPT Aufrufen
+                }
+
             }
         });
 
