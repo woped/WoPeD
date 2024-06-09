@@ -38,6 +38,7 @@ public class P2TUI extends JDialog {
     private JTextField apiKeyField;
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
+    private JCheckBox showAgainCheckBox; // New Checkbox
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
     public P2TUI(AbstractApplicationMediator mediator) {
@@ -66,7 +67,7 @@ public class P2TUI extends JDialog {
         this.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-        Dimension size = new Dimension(600, 300); // Adjusted size to accommodate new text field and checkbox
+        Dimension size = new Dimension(600, 350); // Adjusted size to accommodate new text field and checkbox
         this.setSize(size);
     }
 
@@ -126,11 +127,16 @@ public class P2TUI extends JDialog {
             }
         });
 
+        showAgainCheckBox = new JCheckBox("Don't show Again");
+        showAgainCheckBox.setSelected(true);
+        showAgainCheckBox.setToolTipText("Placeholder");
+
         apiKeyLabel.setVisible(false);
         apiKeyField.setVisible(false);
         promptLabel.setVisible(false);
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
+        showAgainCheckBox.setVisible(false); // Initially hidden
 
         newRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(true);
@@ -138,6 +144,7 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(true);
             promptScrollPane.setVisible(true);
             enablePromptCheckBox.setVisible(true);
+            showAgainCheckBox.setVisible(true); // Show when new service is selected
             apiKeyField.requestFocusInWindow();
         });
 
@@ -147,6 +154,7 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(false);
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
+            showAgainCheckBox.setVisible(false); // Hide when old service is selected
         });
 
         // Set "alt" as default selection
@@ -179,6 +187,12 @@ public class P2TUI extends JDialog {
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
         fieldsPanel.add(enablePromptCheckBox, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        fieldsPanel.add(showAgainCheckBox, gbc); // Add "Show Again" checkbox
 
         gbc.gridx = 0;
         gbc.gridy = 1;
