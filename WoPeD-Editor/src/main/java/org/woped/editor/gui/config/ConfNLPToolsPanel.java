@@ -128,7 +128,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
         // Save additional panel configurations
         ConfigurationManager.getConfiguration().setGptApiKey(getApiKeyText().getText());
-        ConfigurationManager.getConfiguration().setGptShowAgain(getShowAgainBox().isSelected());
+        ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
 
         return true;

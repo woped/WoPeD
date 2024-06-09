@@ -9,15 +9,13 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -28,6 +26,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.gui.translations.Messages;
 
@@ -38,7 +39,7 @@ public class P2TUI extends JDialog {
     private JTextField apiKeyField;
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
-    private JCheckBox showAgainCheckBox; // New Checkbox
+    private JCheckBox dontshowAgainCheckBox; // New Checkbox
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
@@ -129,16 +130,17 @@ public class P2TUI extends JDialog {
             }
         });
 
-        showAgainCheckBox = new JCheckBox("Don't show Again");
-        showAgainCheckBox.setSelected(true);
-        showAgainCheckBox.setToolTipText("Placeholder");
+        dontshowAgainCheckBox = new JCheckBox("Show Again");
+        dontshowAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
+        dontshowAgainCheckBox.setToolTipText("Placeholder");
 
         apiKeyLabel.setVisible(false);
+        apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
         promptLabel.setVisible(false);
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
-        showAgainCheckBox.setVisible(false); // Initially hidden
+        dontshowAgainCheckBox.setVisible(false); // Initially hidden
 
         newRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(true);
@@ -146,7 +148,7 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(true);
             promptScrollPane.setVisible(true);
             enablePromptCheckBox.setVisible(true);
-            showAgainCheckBox.setVisible(true); // Show when new service is selected
+            dontshowAgainCheckBox.setVisible(true); // Show when new service is selected
             apiKeyField.requestFocusInWindow();
         });
 
@@ -156,7 +158,7 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(false);
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
-            showAgainCheckBox.setVisible(false); // Hide when old service is selected
+            dontshowAgainCheckBox.setVisible(false); // Hide when old service is selected
         });
 
         // Set "alt" as default selection
@@ -194,7 +196,7 @@ public class P2TUI extends JDialog {
         gbc.gridy = 4;
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
-        fieldsPanel.add(showAgainCheckBox, gbc); // Add "Show Again" checkbox
+        fieldsPanel.add(dontshowAgainCheckBox, gbc); // Add "Show Again" checkbox
 
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -210,24 +212,29 @@ public class P2TUI extends JDialog {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JButton singleButton = new JButton(new AbstractAction() {
-            public void actionPerformed(ActionEvent arg0) {
-                if (newRadioButton.isSelected()) {
-                    validateAPIKey();
-                    //GPT Aufrufen
-                }
-                else {
-                    //GPT Aufrufen
-                }
-
-            }
-        });
+        JButton singleButton = new JButton();
 
         singleButton.setMnemonic(KeyEvent.VK_A);
         singleButton.setText(Messages.getString("P2T.text"));
 
         buttonPanel.add(singleButton, BorderLayout.CENTER);
+        singleButton.addActionListener(e -> {
+            if (newRadioButton.isSelected()) {
+                validateAPIKey();
 
+                ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
+                ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
+
+                if(!dontshowAgainCheckBox.isSelected()){
+                    ConfigurationManager.getConfiguration().setGptShowAgain(false);
+                }
+                //GPT Aufrufen
+            }
+            else {
+                //GPT Aufrufen
+            }
+
+        });
         return buttonPanel;
     }
 
