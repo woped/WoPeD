@@ -31,6 +31,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -482,12 +483,38 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     }
 
     private void testGPTConnection() {
-        // Implement connection test logic for GPT here
-        JOptionPane.showMessageDialog(
-                this.getAdditionalPanel(),
-                "GPT connection test not implemented.",
-                "Connection Test",
-                JOptionPane.INFORMATION_MESSAGE);
+        String apiKey = apiKeyText.getText();  // Annahme: Methode zum Abrufen des API-Schlüssels ist vorhanden
+        String urlString = "https://api.openai.com/v1/engines";
+
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+            String message;
+
+            if (responseCode == 200) {
+                message = "GPT connection successful. Response Code: " + responseCode;
+            } else {
+                message = "GPT connection failed. Response Code: " + responseCode;
+            }
+
+            JOptionPane.showMessageDialog(
+                    this.getAdditionalPanel(),
+                    message,
+                    "Connection Test",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(
+                    this.getAdditionalPanel(),
+                    "GPT connection test failed: " + e.getMessage(),
+                    "Connection Test",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void setDefaultValuesGPT() {
