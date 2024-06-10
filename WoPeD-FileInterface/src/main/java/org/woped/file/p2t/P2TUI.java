@@ -30,6 +30,9 @@ import javax.swing.JTextField;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.editor.action.ActionButtonListener;
+import org.woped.editor.controller.ActionFactory;
 import org.woped.gui.translations.Messages;
 
 public class P2TUI extends JDialog {
@@ -43,6 +46,7 @@ public class P2TUI extends JDialog {
     private JCheckBox dontshowAgainCheckBox; // New Checkbox
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
+    private AbstractApplicationMediator m_mediator = null;
 
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
@@ -249,7 +253,9 @@ public class P2TUI extends JDialog {
                 //GPT Aufrufen
             }
             else {
-                //GPT Aufrufen
+                singleButton.addActionListener(
+                    new ActionButtonListener(
+                        m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
             }
 
         });
