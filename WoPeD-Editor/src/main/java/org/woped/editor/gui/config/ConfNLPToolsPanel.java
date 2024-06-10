@@ -597,7 +597,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         if (useBox == null) {
             useBox = new JCheckBox(Messages.getString("Configuration.P2T.Label.Use"));
             useBox.setEnabled(true);
-            useBox.setToolTipText("<getUseBox>" + Messages.getString("Configuration.P2T.Label.Use") + "</html>");
+            useBox.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.Use") + "</html>");
             CheckboxListener cbl = new CheckboxListener();
             useBox.addItemListener(cbl);
         }
