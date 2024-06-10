@@ -407,6 +407,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             additionalPanel.add(getCheckConnectionButton(), c);
 
         }
+
+        additionalPanel.setVisible(getUseBox().isSelected());
         return additionalPanel;
     }
 
@@ -530,6 +532,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             if (jcb == useBox) {
                 getSettingsPanel().setVisible(jcb.isSelected());
                 getSettingsPanel_T2P().setVisible(jcb.isSelected());
+                getAdditionalPanel().setVisible(jcb.isSelected());
             }
         }
     }
@@ -594,7 +597,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         if (useBox == null) {
             useBox = new JCheckBox(Messages.getString("Configuration.P2T.Label.Use"));
             useBox.setEnabled(true);
-            useBox.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.Use") + "</html>");
+            useBox.setToolTipText("<getUseBox>" + Messages.getString("Configuration.P2T.Label.Use") + "</html>");
             CheckboxListener cbl = new CheckboxListener();
             useBox.addItemListener(cbl);
         }
