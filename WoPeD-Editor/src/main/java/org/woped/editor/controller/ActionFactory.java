@@ -63,6 +63,7 @@ public class ActionFactory {
 
   public static final String ACTIONID_P2T = "ToolBar.P2T";
 
+  public static final String ACTIONID_P2t_NEW = "Ausführen.Neu";
   public static final String ACTIONID_P2T_OLD = "Ausführen";
   public static final String ACTIONID_T2P = "ToolBar.T2P";
 
@@ -663,6 +664,18 @@ public class ActionFactory {
             VisualController.WITH_EDITOR,
             VisualController.WITH_EDITOR,
             VisualController.P2T);
+
+    STATIC_ACTION_MAP.put(
+            ACTIONID_P2t_NEW,
+            new WoPeDAction(
+                    am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2t_NEW));
+    VisualController.getInstance()
+            .addElement(
+                    STATIC_ACTION_MAP.get(ACTIONID_P2t_NEW),
+                    VisualController.WITH_EDITOR,
+                    VisualController.WITH_EDITOR,
+                    VisualController.P2T);
+
 
     STATIC_ACTION_MAP.put(
         ACTIONID_T2P,
