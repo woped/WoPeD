@@ -114,6 +114,7 @@ public class P2TUI extends JDialog {
         promptField.setWrapStyleWord(true);
         promptField.setRows(5); // Set initial number of rows
         promptField.setEnabled(false); // Initially disabled
+        promptField.setText(ConfigurationManager.getConfiguration().getGptPrompt());
 
         JScrollPane promptScrollPane = new JScrollPane(promptField);
         promptScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
