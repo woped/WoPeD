@@ -1515,6 +1515,19 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
+  public void setGptUseNew(boolean useNew){
+    getConfDocument().getConfiguration().getGpt().setGptUseNew(useNew);
+  }
+
+  @Override
+  public boolean getGptUseNew(){
+    if(getConfDocument().getConfiguration().getGpt().getGptUseNew()){
+  return getConfDocument().getConfiguration().getGpt().getGptUseNew();
+    } else return ConfigurationManager.getStandardConfiguration().getGptUseNew();
+  }
+
+
+  @Override
   public void setText2ProcessServerURI(String uri) {
     getConfDocument().getConfiguration().getT2P().setT2PServerURI(uri);
   }
