@@ -111,7 +111,7 @@ public class P2TUI extends JDialog {
         apiKeyField = new JTextField();
         apiKeyField.setPreferredSize(new Dimension(200, 25));
 
-        JLabel promptLabel = new JLabel("Prompt:");
+        JLabel promptLabel = new JLabel(Messages.getString("P2T.prompt.title") + ":");
         promptField = new JTextArea(DEFAULT_PROMPT);  // Changed to JTextArea
         promptField.setLineWrap(true);
         promptField.setWrapStyleWord(true);
@@ -126,7 +126,7 @@ public class P2TUI extends JDialog {
         promptScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         promptScrollPane.setPreferredSize(new Dimension(200, 100));
 
-        enablePromptCheckBox = new JCheckBox("Enable editing prompt");
+        enablePromptCheckBox = new JCheckBox(Messages.getString("P2T.prompt.checkbox.enable.title"));
         enablePromptCheckBox.setSelected(false);
         enablePromptCheckBox.addActionListener(e -> {
             promptField.setEnabled(enablePromptCheckBox.isSelected());
@@ -137,7 +137,7 @@ public class P2TUI extends JDialog {
         });
 
 
-        dontshowAgainCheckBox = new JCheckBox("Show Again");
+        dontshowAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         dontshowAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         dontshowAgainCheckBox.setToolTipText("Placeholder");
         apiKeyLabel.setVisible(false);

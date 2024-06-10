@@ -373,7 +373,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
-            additionalPanel.add(new JLabel("API-Key:"), c);
+            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.apikey.Title")), c);
 
             c.weightx = 1;
             c.gridx = 1;
@@ -383,7 +383,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 1;
-            additionalPanel.add(new JLabel("Prompt:"), c);
+            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.prompt.Title")), c);
 
             c.weightx = 1;
             c.gridx = 1;
@@ -441,7 +441,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JCheckBox getShowAgainBox() {
         if (showAgainBox == null) {
-            showAgainBox = new JCheckBox("Show Again");
+            showAgainBox = new JCheckBox(Messages.getString("Configuration.GPT.show.again.Title"));
             showAgainBox.setEnabled(true);
             showAgainBox.setToolTipText("Test");
         }
@@ -451,7 +451,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton getResetButton() {
         if (resetButton == null) {
             resetButton = new WopedButton();
-            resetButton.setText("Auf Standard zurücksetzen");
+            resetButton.setText(Messages.getString("Configuration.GPT.standard.Title"));
             resetButton.setPreferredSize(new Dimension(200, 25));
             resetButton.addActionListener(
                     new ActionListener() {
@@ -468,7 +468,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton getCheckConnectionButton() {
         if (checkConnectionButton == null) {
             checkConnectionButton = new WopedButton();
-            checkConnectionButton.setText("Verbindung überprüfen");
+            checkConnectionButton.setText(Messages.getString("Configuration.GPT.connection.Title"));
             checkConnectionButton.setIcon(Messages.getImageIcon("Button.TestConnection"));
             checkConnectionButton.setMnemonic(Messages.getMnemonic("Button.TestConnection"));
             checkConnectionButton.setPreferredSize(new Dimension(200, 25));
