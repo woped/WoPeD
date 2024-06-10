@@ -95,6 +95,16 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
           if(ConfigurationManager.getConfiguration().getGptShowAgain()){
             p2t.setVisible(true);
           }
+          if(!ConfigurationManager.getConfiguration().getGptShowAgain()){
+            if(ConfigurationManager.getConfiguration().getGptUseNew()){
+              System.out.println("neu");
+              //TODO: HIER NEUER API CALL
+            }
+            if(!ConfigurationManager.getConfiguration().getGptUseNew()){
+              System.out.println("alt");
+              //TODO: HIER ALTER API CALL
+            }
+          }
           break;
       case AbstractViewEvent.NEW:
         getMediator().createEditor(true);
