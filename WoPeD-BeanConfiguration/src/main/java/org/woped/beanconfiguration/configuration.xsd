@@ -3,17 +3,18 @@
 	<xs:element name="Configuration">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="gui" 				type="GUI"/>
-				<xs:element name="editor" 			type="Editor"/>
-				<xs:element name="general" 			type="General"/>
-				<xs:element name="tools" 			type="Tool"/>
-				<xs:element name="apromoreServers" 	type="ApromoreServers" 		minOccurs="0" 	maxOccurs="1"/>
-				<xs:element name="p2t" 				type="Process2Text"/>
-				<xs:element name="t2p" 				type="Text2Process"/>
-				<xs:element name="businessdashboard" type="BusinessDashboard"/>
-				<xs:element name="coloring" 		type="Coloring"/>
-				<xs:element name="metrics" 			type="Metrics"/>
-				<xs:element name="registration" 	type="Registration"/>
+				<xs:element name="gui"                 type="GUI"/>
+				<xs:element name="editor"              type="Editor"/>
+				<xs:element name="general"             type="General"/>
+				<xs:element name="tools"               type="Tool"/>
+				<xs:element name="apromoreServers"     type="ApromoreServers"      minOccurs="0"     maxOccurs="1"/>
+				<xs:element name="p2t"                 type="Process2Text"/>
+				<xs:element name="t2p"                 type="Text2Process"/>
+				<xs:element name="Gpt"                 type="GPTSettings"/>
+				<xs:element name="businessdashboard"   type="BusinessDashboard"/>
+				<xs:element name="coloring"            type="Coloring"/>
+				<xs:element name="metrics"             type="Metrics"/>
+				<xs:element name="registration"        type="Registration"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -101,22 +102,22 @@
 
 	<xs:complexType name="ApromoreServers">
 		<xs:sequence>
-			<xs:element name="apromoreServer" 	type="ApromoreServer" 	minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="apromoreServer"     type="ApromoreServer"    minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:complexType name="ApromoreServer">
 		<xs:sequence>
-			<xs:element name="apromoreServerID" 	type="xs:int" 		minOccurs="1" 		maxOccurs="1"/>
-			<xs:element name="apromoreServerName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreServerURL" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreServerPort" 	type="xs:int" 		minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreManagerPath" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreUserName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromorePassword" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreUseProxy" 	type="xs:boolean" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreProxyName" 	type="xs:string" 	minOccurs="0" 		maxOccurs="1"/>
-			<xs:element name="apromoreProxyPort" 	type="xs:int" 		minOccurs="0" 		maxOccurs="1"/>
+			<xs:element name="apromoreServerID"     type="xs:int"        minOccurs="1"         maxOccurs="1"/>
+			<xs:element name="apromoreServerName"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreServerURL"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreServerPort"     type="xs:int"        minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreManagerPath"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreUserName"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromorePassword"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreUseProxy"     type="xs:boolean"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreProxyName"     type="xs:string"     minOccurs="0"         maxOccurs="1"/>
+			<xs:element name="apromoreProxyPort"     type="xs:int"        minOccurs="0"         maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 
@@ -136,6 +137,15 @@
 			<xs:element name="t2pServerURI" type="xs:string" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:complexType name="GPTSettings">
+		<xs:sequence>
+			<xs:element name="GptApiKey" type="xs:string"  minOccurs="0" />
+			<xs:element name="GptShowAgain" type="xs:boolean"  minOccurs="0" />
+			<xs:element name="GptPrompt" type="xs:string"  minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
 	<xs:complexType name="BusinessDashboard">
 		<xs:sequence>
 			<xs:element name="usebydefault" type="xs:boolean" default="false" minOccurs="0" />
@@ -191,20 +201,20 @@
 	</xs:complexType>
 	<xs:complexType name="Metrics">
 		<xs:sequence>
-			<xs:element name="useMetrics" 					type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="variableDecimalPlaces" 		type="xs:int" 		minOccurs="0" maxOccurs="1"/>
-			<xs:element name="algorithmDecimalPlaces" 		type="xs:int" 		minOccurs="0" maxOccurs="1"/>
-			<xs:element name="useAlgorithmHighlighting" 	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="showNamesInBuilder" 			type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="showAdvancedErrorMessages"	type="xs:boolean" 	minOccurs="0" maxOccurs="1"/>
+			<xs:element name="useMetrics"                     type="xs:boolean"     minOccurs="0" maxOccurs="1"/>
+			<xs:element name="variableDecimalPlaces"         type="xs:int"         minOccurs="0" maxOccurs="1"/>
+			<xs:element name="algorithmDecimalPlaces"         type="xs:int"         minOccurs="0" maxOccurs="1"/>
+			<xs:element name="useAlgorithmHighlighting"     type="xs:boolean"     minOccurs="0" maxOccurs="1"/>
+			<xs:element name="showNamesInBuilder"             type="xs:boolean"     minOccurs="0" maxOccurs="1"/>
+			<xs:element name="showAdvancedErrorMessages"    type="xs:boolean"     minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Registration">
 		<xs:sequence>
-			<xs:element name="emailAddress"  type="xs:string" 	default=""		minOccurs="0" maxOccurs="1"/>
-			<xs:element name="launchCounter" type="xs:int" 		default="0" 	minOccurs="0" maxOccurs="1"/>
-			<xs:element name="showOnStartup" type="xs:boolean" 	default="true"  minOccurs="0" maxOccurs="1"/>
-			<xs:element name="registered" 	 type="xs:boolean" 	default="false" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="emailAddress"  type="xs:string"     default=""        minOccurs="0" maxOccurs="1"/>
+			<xs:element name="launchCounter" type="xs:int"         default="0"     minOccurs="0" maxOccurs="1"/>
+			<xs:element name="showOnStartup" type="xs:boolean"     default="true"  minOccurs="0" maxOccurs="1"/>
+			<xs:element name="registered"      type="xs:boolean"     default="false" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

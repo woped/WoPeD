@@ -87,11 +87,14 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
           P2TUI p2t;
           if (getMediator().getUi() != null
                   && getMediator().getUi().getComponent() instanceof JFrame) {
-            p2t = new P2TUI((JFrame) getMediator().getUi(), getMediator());
+            {
+            p2t = new P2TUI((JFrame) getMediator().getUi(), getMediator());}
           } else {
             p2t = new P2TUI(getMediator());
           }
-          p2t.setVisible(true);
+          if(ConfigurationManager.getConfiguration().getGptShowAgain()){
+            p2t.setVisible(true);
+          }
           break;
       case AbstractViewEvent.NEW:
         getMediator().createEditor(true);

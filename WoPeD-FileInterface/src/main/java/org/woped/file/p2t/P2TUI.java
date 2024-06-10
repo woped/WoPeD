@@ -9,15 +9,13 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -28,6 +26,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.gui.translations.Messages;
 
@@ -38,6 +39,11 @@ public class P2TUI extends JDialog {
     private JTextField apiKeyField;
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
+
+    private JCheckBox dontshowAgainCheckBox; // New Checkbox
+    private JRadioButton newRadioButton = null;
+    private JRadioButton oldRadioButton = null;
+
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
     public P2TUI(AbstractApplicationMediator mediator) {
@@ -66,7 +72,8 @@ public class P2TUI extends JDialog {
         this.pack();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-        Dimension size = new Dimension(600, 300); // Adjusted size to accommodate new text field and checkbox
+
+        Dimension size = new Dimension(600, 350); // Adjusted size to accommodate new text field and checkbox
         this.setSize(size);
     }
 
@@ -77,8 +84,8 @@ public class P2TUI extends JDialog {
         JPanel radioPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbcRadio = new GridBagConstraints();
 
-        JRadioButton oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
-        JRadioButton newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
+        oldRadioButton = new JRadioButton(Messages.getString("P2T.oldservice.title"));
+        newRadioButton = new JRadioButton(Messages.getString("P2T.newservice.title"));
         ButtonGroup group = new ButtonGroup();
         group.add(oldRadioButton);
         group.add(newRadioButton);
@@ -111,6 +118,9 @@ public class P2TUI extends JDialog {
         promptField.setRows(5); // Set initial number of rows
         promptField.setEnabled(false); // Initially disabled
 
+        promptField.setText(ConfigurationManager.getConfiguration().getGptPrompt());
+
+
         JScrollPane promptScrollPane = new JScrollPane(promptField);
         promptScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         promptScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -126,11 +136,19 @@ public class P2TUI extends JDialog {
             }
         });
 
+
+        dontshowAgainCheckBox = new JCheckBox("Show Again");
+        dontshowAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
+        dontshowAgainCheckBox.setToolTipText("Placeholder");
         apiKeyLabel.setVisible(false);
+        apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
         promptLabel.setVisible(false);
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
+
+        dontshowAgainCheckBox.setVisible(false); // Initially hidden
+
 
         newRadioButton.addActionListener(e -> {
             apiKeyLabel.setVisible(true);
@@ -138,6 +156,9 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(true);
             promptScrollPane.setVisible(true);
             enablePromptCheckBox.setVisible(true);
+
+            dontshowAgainCheckBox.setVisible(true); // Show when new service is selected
+
             apiKeyField.requestFocusInWindow();
         });
 
@@ -147,6 +168,10 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(false);
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
+
+            dontshowAgainCheckBox.setVisible(false); // Hide when old service is selected
+
+
         });
 
         // Set "alt" as default selection
@@ -181,6 +206,14 @@ public class P2TUI extends JDialog {
         fieldsPanel.add(enablePromptCheckBox, gbc);
 
         gbc.gridx = 0;
+
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        fieldsPanel.add(dontshowAgainCheckBox, gbc); // Add "Show Again" checkbox
+
+        gbc.gridx = 0;
+
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(10, 0, 0, 0);
@@ -194,19 +227,35 @@ public class P2TUI extends JDialog {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JButton singleButton = new JButton(new AbstractAction() {
-            public void actionPerformed(ActionEvent arg0) {
-                validateAPIKey();
-            }
-        });
+        JButton singleButton = new JButton();
 
         singleButton.setMnemonic(KeyEvent.VK_A);
         singleButton.setText(Messages.getString("P2T.text"));
 
         buttonPanel.add(singleButton, BorderLayout.CENTER);
 
+        singleButton.addActionListener(e -> {
+            if (newRadioButton.isSelected()) {
+                validateAPIKey();
+
+
+                ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
+                ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
+
+
+                if(!dontshowAgainCheckBox.isSelected()){
+                    ConfigurationManager.getConfiguration().setGptShowAgain(false);
+                }
+                //GPT Aufrufen
+            }
+            else {
+                //GPT Aufrufen
+            }
+
+        });
         return buttonPanel;
     }
+
 
     private void validateAPIKey() {
         String apiKey = apiKeyField.getText();
