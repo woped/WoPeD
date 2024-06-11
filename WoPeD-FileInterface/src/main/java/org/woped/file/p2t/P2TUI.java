@@ -35,6 +35,8 @@ import org.woped.core.controller.ViewEvent;
 import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.gui.translations.Messages;
+import org.woped.qualanalysis.p2t.P2TSideBar;
+import org.woped.qualanalysis.p2t.WebServiceThreadLLM;
 
 public class P2TUI extends JDialog {
     private JDialog loadDialog;
@@ -238,9 +240,10 @@ public class P2TUI extends JDialog {
         singleButton.setText(Messages.getString("P2T.text"));
 
         buttonPanel.add(singleButton, BorderLayout.CENTER);
+
         singleButton.addActionListener(
                 new ActionButtonListener(
-                        m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
+                        m_mediator, ActionFactory.ACTIONID_P2t_NEW, AbstractViewEvent.P2T, singleButton));
         singleButton.addActionListener(e -> {
             if (newRadioButton.isSelected()) {
                 validateAPIKey();
@@ -254,7 +257,7 @@ public class P2TUI extends JDialog {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
                     ConfigurationManager.getConfiguration().setGptUseNew(true);
                 }
-                //GPT Aufrufen
+
             } else {
                 if (!dontshowAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);

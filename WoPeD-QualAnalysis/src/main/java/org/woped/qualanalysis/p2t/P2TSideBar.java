@@ -35,7 +35,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
   private JButton buttonLoad = null;
   private JButton buttonExport = null;
   private JLabel labelLoading = null;
-  private WebServiceThread webService = null;
+  private WebServiceThreadLLM webService = null;
   private boolean threadInProgress = false;
   private boolean firstTimeDisplayed = false;
 
@@ -320,7 +320,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
   private void getText() {
     clean();
 
-    // Ensure their are no arc weights
+    // Ensure there are no arc weights
     if (editor.getModelProcessor().usesArcWeights()) {
       this.textpane.setText(Messages.getString("P2T.Error.ArcWeights.title"));
       showErrorMessage("P2T.Error.ArcWeights");
@@ -350,7 +350,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
 
     this.textpane.setText(Messages.getString("P2T.loading"));
     this.showLoadingAnimation(true);
-    webService = new WebServiceThread(this);
+    webService = new WebServiceThreadLLM(this);
     webService.start();
     while (!webService.getIsFinished()) {
       try {
