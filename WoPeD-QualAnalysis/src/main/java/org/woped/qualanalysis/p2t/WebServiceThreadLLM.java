@@ -48,14 +48,15 @@ public class WebServiceThreadLLM extends Thread {
                         + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
                         + "/generateTextLLM";
 
-        String fullTestUrl = testUrl + "?apiKey=" + apiKey + "&prompt=" + prompt + "&gptModel=" + gptModel;
-        String fullUrl = url + "?apiKey=" + apiKey + "&prompt=" + prompt + "&gptModel=" + gptModel;
+
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new PNMLExport().saveToStream(editor, stream);
         String text = stream.toString();
         System.out.println(text);
         String output;
+
+        //TODO Diese logik in die Buttons implementieren!!
 
         try {
             // URL-Parameter kodieren

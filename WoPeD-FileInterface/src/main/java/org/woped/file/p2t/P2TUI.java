@@ -9,7 +9,6 @@ import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -18,6 +17,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -143,6 +143,11 @@ public class P2TUI extends JDialog {
             }
         });
 
+        // Add JComboBox
+        JLabel gptModelLabel = new JLabel("GPT-Model:");
+        gptModelLabel.setVisible(false); // Inititally hidden
+        JComboBox<String> exampleComboBox = new JComboBox<>(new String[]{"Example 1", "Example 2", "Example 3"});
+        exampleComboBox.setVisible(false); // Initially hidden
 
         dontshowAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         dontshowAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
@@ -163,6 +168,8 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(true);
             promptScrollPane.setVisible(true);
             enablePromptCheckBox.setVisible(true);
+            gptModelLabel.setVisible(true); // Show when new service is selected
+            exampleComboBox.setVisible(true); // Show when new service is selected
 
             dontshowAgainCheckBox.setVisible(true); // Show when new service is selected
 
@@ -175,6 +182,8 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(false);
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
+            gptModelLabel.setVisible(false); // Hide when old service is selected
+            exampleComboBox.setVisible(false); // Hide when old service is selected
 
             dontshowAgainCheckBox.setVisible(true); // Hide when old service is selected
 
@@ -213,14 +222,25 @@ public class P2TUI extends JDialog {
         fieldsPanel.add(enablePromptCheckBox, gbc);
 
         gbc.gridx = 0;
-
         gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0;
+        fieldsPanel.add(gptModelLabel, gbc); // Add label before JComboBox
+
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(exampleComboBox, gbc); // Add JComboBox to the panel
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
         fieldsPanel.add(dontshowAgainCheckBox, gbc); // Add "Show Again" checkbox
 
         gbc.gridx = 0;
-
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(10, 0, 0, 0);
@@ -243,7 +263,7 @@ public class P2TUI extends JDialog {
 
         singleButton.addActionListener(
                 new ActionButtonListener(
-                        m_mediator, ActionFactory.ACTIONID_P2t_NEW, AbstractViewEvent.P2T, singleButton));
+                        m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
         singleButton.addActionListener(e -> {
             if (newRadioButton.isSelected()) {
                 validateAPIKey();
