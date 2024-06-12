@@ -361,7 +361,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
     }
     this.textpane.setText("");
 
-    if (naturalTextParser != null) this.textpane.setText(naturalTextParser.getHtmlText());
+    if (naturalTextParser != null) this.textpane.setText(webService.getText());
 
     setThreadInProgress(false);
     webService = null;

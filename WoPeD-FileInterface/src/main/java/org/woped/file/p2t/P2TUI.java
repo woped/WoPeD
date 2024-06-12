@@ -148,7 +148,7 @@ public class P2TUI extends JDialog {
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
 
-        showAgainCheckBox.setVisible(false); // Initially hidden
+        showAgainCheckBox.setVisible(true); 
 
 
         newRadioButton.addActionListener(e -> {
@@ -257,7 +257,7 @@ public class P2TUI extends JDialog {
 
         singleButton.addActionListener(
                 new ActionButtonListener(
-                        m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
+                       m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
         singleButton.addActionListener(e -> {
             if (newRadioButton.isSelected()) {
                 validateAPIKey();

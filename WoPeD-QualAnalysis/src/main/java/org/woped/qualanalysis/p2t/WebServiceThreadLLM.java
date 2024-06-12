@@ -21,6 +21,7 @@ public class WebServiceThreadLLM extends Thread {
     private String apiKey;
     private String prompt;
     private String gptModel;
+    private String text;
 
     public WebServiceThreadLLM(P2TSideBar paraphrasingPanel) {
         this.paraphrasingPanel = paraphrasingPanel;
@@ -89,6 +90,7 @@ public class WebServiceThreadLLM extends Thread {
                     output = output.replaceAll("\\s*\n\\s*", "");
                     paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
                     System.out.println(output);
+                    setText(output);
                 }
             } else {
                 output = "Request failed. Response Code: " + responseCode;
@@ -133,4 +135,7 @@ public class WebServiceThreadLLM extends Thread {
             paraphrasingPanel.setThreadInProgress(false);
         }
     }
+
+    public void setText(String output) {this.text = output;}
+    public String getText() {return this.text;}
 }

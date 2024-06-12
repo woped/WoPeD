@@ -15,6 +15,7 @@ public class WebServiceThread extends Thread {
     private boolean isFinished;
     private HttpRequest request;
     private HttpResponse response;
+    private String text;
 
 
     public WebServiceThread(P2TSideBar paraphrasingPanel) {
@@ -50,6 +51,7 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 
 
+
         switch (response.responseCode) {
             case HttpServletResponse.SC_NO_CONTENT:
             case HttpServletResponse.SC_REQUEST_TIMEOUT:
@@ -77,4 +79,6 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.enableButtons(true);
         paraphrasingPanel.setThreadInProgress(false);
     }
+
+
 }
