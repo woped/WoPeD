@@ -473,8 +473,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     }
 
     private void fetchAndFillModels() {
-
-
         new Thread(() -> {
             try {
                 List<String> models = ApiHelper.fetchModels();

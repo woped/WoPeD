@@ -8,35 +8,21 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.swing.AbstractAction;
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.util.List;
+import javax.swing.*;
 
+import org.json.simple.parser.ParseException;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.IConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.ViewEvent;
 import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.p2t.P2TSideBar;
-import org.woped.qualanalysis.p2t.WebServiceThreadLLM;
 
 public class P2TUI extends JDialog {
     private JDialog loadDialog;
@@ -46,10 +32,11 @@ public class P2TUI extends JDialog {
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
 
-    private JCheckBox dontshowAgainCheckBox; // New Checkbox
+    private JCheckBox showAgainCheckBox; // New Checkbox
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
     private AbstractApplicationMediator m_mediator = null;
+    JComboBox<String> modelComboBox;
 
     private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
@@ -80,8 +67,9 @@ public class P2TUI extends JDialog {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
 
-        Dimension size = new Dimension(600, 350); // Adjusted size to accommodate new text field and checkbox
+        Dimension size = new Dimension(600, 375);
         this.setSize(size);
+        fetchAndFillModels();
     }
 
     private JPanel initializeSwitchButtonPanel() {
@@ -119,11 +107,11 @@ public class P2TUI extends JDialog {
         apiKeyField.setPreferredSize(new Dimension(200, 25));
 
         JLabel promptLabel = new JLabel(Messages.getString("P2T.prompt.title") + ":");
-        promptField = new JTextArea(DEFAULT_PROMPT);  // Changed to JTextArea
+        promptField = new JTextArea(DEFAULT_PROMPT);
         promptField.setLineWrap(true);
         promptField.setWrapStyleWord(true);
-        promptField.setRows(5); // Set initial number of rows
-        promptField.setEnabled(false); // Initially disabled
+        promptField.setRows(5);
+        promptField.setEnabled(false);
 
         promptField.setText(ConfigurationManager.getConfiguration().getGptPrompt());
 
@@ -145,13 +133,12 @@ public class P2TUI extends JDialog {
 
         // Add JComboBox
         JLabel gptModelLabel = new JLabel("GPT-Model:");
-        gptModelLabel.setVisible(false); // Inititally hidden
-        JComboBox<String> exampleComboBox = new JComboBox<>(new String[]{"Example 1", "Example 2", "Example 3"});
-        exampleComboBox.setVisible(false); // Initially hidden
-
-        dontshowAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
-        dontshowAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
-        dontshowAgainCheckBox.setToolTipText("Placeholder");
+        gptModelLabel.setVisible(false); // Initially hidden
+        modelComboBox = new JComboBox<>();
+        modelComboBox.setVisible(false); // Initially hidden
+        showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
+        showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
+        showAgainCheckBox.setToolTipText("Placeholder");
         apiKeyLabel.setVisible(false);
         apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
@@ -159,7 +146,7 @@ public class P2TUI extends JDialog {
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
 
-        dontshowAgainCheckBox.setVisible(false); // Initially hidden
+        showAgainCheckBox.setVisible(false); // Initially hidden
 
 
         newRadioButton.addActionListener(e -> {
@@ -168,10 +155,10 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(true);
             promptScrollPane.setVisible(true);
             enablePromptCheckBox.setVisible(true);
-            gptModelLabel.setVisible(true); // Show when new service is selected
-            exampleComboBox.setVisible(true); // Show when new service is selected
-
-            dontshowAgainCheckBox.setVisible(true); // Show when new service is selected
+            gptModelLabel.setVisible(true);
+            modelComboBox.setVisible(true);
+            modelComboBox.setSelectedIndex(4);
+            showAgainCheckBox.setVisible(true);
 
             apiKeyField.requestFocusInWindow();
         });
@@ -183,9 +170,9 @@ public class P2TUI extends JDialog {
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
             gptModelLabel.setVisible(false); // Hide when old service is selected
-            exampleComboBox.setVisible(false); // Hide when old service is selected
+            modelComboBox.setVisible(false); // Hide when old service is selected
 
-            dontshowAgainCheckBox.setVisible(true); // Hide when old service is selected
+            showAgainCheckBox.setVisible(true); // Hide when old service is selected
 
 
         });
@@ -232,13 +219,13 @@ public class P2TUI extends JDialog {
         gbc.gridwidth = 1;
         gbc.weightx = 1.0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        fieldsPanel.add(exampleComboBox, gbc); // Add JComboBox to the panel
+        fieldsPanel.add(modelComboBox, gbc); // Add JComboBox to the panel
 
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
-        fieldsPanel.add(dontshowAgainCheckBox, gbc); // Add "Show Again" checkbox
+        fieldsPanel.add(showAgainCheckBox, gbc); // Add "Show Again" checkbox
 
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -273,13 +260,13 @@ public class P2TUI extends JDialog {
                 ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
 
 
-                if (!dontshowAgainCheckBox.isSelected()) {
+                if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
                     ConfigurationManager.getConfiguration().setGptUseNew(true);
                 }
 
             } else {
-                if (!dontshowAgainCheckBox.isSelected()) {
+                if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
                     ConfigurationManager.getConfiguration().setGptUseNew(false);
                 }
@@ -288,6 +275,27 @@ public class P2TUI extends JDialog {
 
         });
         return buttonPanel;
+    }
+
+    private void fetchAndFillModels() {
+        new Thread(() -> {
+            try {
+                List<String> models = ApiHelper.fetchModels();
+                SwingUtilities.invokeLater(() -> {
+                    for (String model : models) {
+                        modelComboBox.addItem(model);
+                    }
+                });
+            } catch (IOException | ParseException e) {
+                SwingUtilities.invokeLater(() -> {
+                    JOptionPane.showMessageDialog(
+                            this.initializeSwitchButtonPanel(),
+                            "Failed to fetch models: " + e.getMessage(),
+                            "Fetch Models",
+                            JOptionPane.ERROR_MESSAGE);
+                });
+            }
+        }).start();
     }
 
 
