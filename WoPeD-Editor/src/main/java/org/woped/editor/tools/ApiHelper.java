@@ -41,7 +41,7 @@ public class ApiHelper {
         } else {
             throw new IOException("Failed to fetch models. Response Code: " + responseCode);
         }
-
+        System.out.println(models);
         return models;
     }
 }

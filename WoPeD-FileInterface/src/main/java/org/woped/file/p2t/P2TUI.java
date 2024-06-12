@@ -8,6 +8,8 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -157,7 +159,12 @@ public class P2TUI extends JDialog {
             enablePromptCheckBox.setVisible(true);
             gptModelLabel.setVisible(true);
             modelComboBox.setVisible(true);
-            modelComboBox.setSelectedIndex(4);
+            for (int i = 0; i < modelComboBox.getItemCount(); i++){
+                if(modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
+                    modelComboBox.setSelectedIndex(i);
+                    break;
+                }
+            }
             showAgainCheckBox.setVisible(true);
 
             apiKeyField.requestFocusInWindow();
@@ -169,15 +176,15 @@ public class P2TUI extends JDialog {
             promptLabel.setVisible(false);
             promptScrollPane.setVisible(false);
             enablePromptCheckBox.setVisible(false);
-            gptModelLabel.setVisible(false); // Hide when old service is selected
-            modelComboBox.setVisible(false); // Hide when old service is selected
+            gptModelLabel.setVisible(false);
+            modelComboBox.setVisible(false);
 
-            showAgainCheckBox.setVisible(true); // Hide when old service is selected
+            showAgainCheckBox.setVisible(true);
 
 
         });
 
-        // Set "alt" as default selection
+
         oldRadioButton.setSelected(true);
 
         gbc.gridx = 0;
@@ -258,7 +265,8 @@ public class P2TUI extends JDialog {
 
                 ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
                 ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
-
+                ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
+                System.out.println(modelComboBox.getSelectedItem().toString());
 
                 if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);

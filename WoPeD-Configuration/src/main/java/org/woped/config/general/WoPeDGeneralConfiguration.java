@@ -1490,6 +1490,16 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
     getConfDocument().getConfiguration().getGpt().setGptApiKey(apiKey);
   }
 
+  public String getGptModel(){
+    if(getConfDocument().getConfiguration().getGpt().isSetGptModel()){
+      return getConfDocument().getConfiguration().getGpt().getGptModel();
+    } else return ConfigurationManager.getStandardConfiguration().getGptModel();
+  }
+
+  public void setGptModel(String model){
+    getConfDocument().getConfiguration().getGpt().setGptModel(model);
+  }
+
   @Override
   public boolean getGptShowAgain() {
     if(getConfDocument().getConfiguration().getGpt().isSetGptShowAgain()){

@@ -577,4 +577,8 @@ public interface IGeneralConfiguration extends IConfiguration {
   public void setGptUseNew(boolean useNew);
 
   public boolean getGptUseNew();
+
+  public void setGptModel(String model);
+
+  public String getGptModel();
 }

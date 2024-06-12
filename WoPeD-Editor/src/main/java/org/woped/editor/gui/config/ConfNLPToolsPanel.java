@@ -16,6 +16,7 @@ import java.net.URLConnection;
 import java.util.List;
 import javax.swing.*;
 
+import com.sun.codemodel.JCatchBlock;
 import org.json.simple.parser.ParseException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.tools.ApiHelper;
@@ -53,14 +54,24 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
     private WopedButton checkConnectionButton = null;
+    List<String> models;
+    {
+        try {
+            models = ApiHelper.fetchModels();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    private String[] models2 = models.toArray(new String[0]);
     // New components
-    private JComboBox<String> modelComboBox = null;
+    private JComboBox<String> modelComboBox = new JComboBox<String>(models2);
 
     public ConfNLPToolsPanel(String name) {
         super(name);
         initialize();
-        fetchAndFillModels();
     }
 
     public boolean applyConfiguration() {
@@ -95,10 +106,10 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             ConfigurationManager.getConfiguration()
                     .setText2ProcessServerPort(Integer.parseInt(getServerPortText_T2P().getText()));
         }
-
         ConfigurationManager.getConfiguration().setGptApiKey(getApiKeyText().getText());
         ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
+        ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
 
         return true;
     }
@@ -112,10 +123,11 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getServerURLText_T2P().setText(ConfigurationManager.getConfiguration().getText2ProcessServerHost());
         getManagerPathText_T2P().setText(ConfigurationManager.getConfiguration().getText2ProcessServerURI());
         getServerPortText_T2P().setText("" + ConfigurationManager.getConfiguration().getText2ProcessServerPort());
-
         getApiKeyText().setText(ConfigurationManager.getConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
+        System.out.println(ConfigurationManager.getConfiguration().getGptModel());
+
     }
 
     private void initialize() {
@@ -152,6 +164,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         contentPanel.add(new JPanel(), c);
 
         setMainPanel(contentPanel);
+
     }
 
     private JTextField getServerURLText() {
@@ -365,6 +378,13 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
 
         additionalPanel.setVisible(getUseBox().isSelected());
+        //fetchAndFillModels();
+        for (int i = 0; i < modelComboBox.getItemCount(); i++){
+            if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
+                modelComboBox.setSelectedIndex(i);
+                break;
+            }
+        }
         return additionalPanel;
     }
 
