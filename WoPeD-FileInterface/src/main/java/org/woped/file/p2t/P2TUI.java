@@ -259,7 +259,7 @@ public class P2TUI extends JDialog {
 
 
         singleButton.addActionListener(e -> {
-            dispose();
+            //dispose();
             if (newRadioButton.isSelected()) {
                 validateAPIKey();
 
@@ -267,6 +267,7 @@ public class P2TUI extends JDialog {
                 ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
                 ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
                 ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
+                ConfigurationManager.getConfiguration().setGptUseNew(true);
                 System.out.println(modelComboBox.getSelectedItem().toString());
 
                 if (!showAgainCheckBox.isSelected()) {
@@ -275,6 +276,7 @@ public class P2TUI extends JDialog {
                 }
 
             } else {
+                ConfigurationManager.getConfiguration().setGptUseNew(false);
                 if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
                     ConfigurationManager.getConfiguration().setGptUseNew(false);

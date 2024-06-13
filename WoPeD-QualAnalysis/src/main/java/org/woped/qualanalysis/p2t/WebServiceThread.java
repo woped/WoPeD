@@ -27,16 +27,11 @@ public class WebServiceThread extends Thread {
         return isFinished;
     }
 
+
     public void run() {
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
-        String url =
-                "http://"
-                        + ConfigurationManager.getConfiguration().getProcess2TextServerHost()
-                        + ":"
-                        + ConfigurationManager.getConfiguration().getProcess2TextServerPort()
-                        + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
-                        + "/generateText";
+        String url ="http://localhost:8080/p2t/generateText";
 
         String[] arg = {url, "P2T"};
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -47,9 +42,9 @@ public class WebServiceThread extends Thread {
         response = request.getResponse();
         output = response.getBody();
         output = output.replaceAll("\\s*\n\\s*", "");
+        setText(output);
         isFinished = true;
         paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
-
 
 
         switch (response.responseCode) {
@@ -78,6 +73,14 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.showLoadingAnimation(false);
         paraphrasingPanel.enableButtons(true);
         paraphrasingPanel.setThreadInProgress(false);
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
 

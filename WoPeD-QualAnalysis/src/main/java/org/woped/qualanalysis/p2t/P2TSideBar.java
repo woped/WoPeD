@@ -16,6 +16,8 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.text.BadLocationException;
+
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
@@ -36,6 +38,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
   private JButton buttonExport = null;
   private JLabel labelLoading = null;
   private WebServiceThreadLLM webService = null;
+  private WebServiceThread webServiceOld = null;
   private boolean threadInProgress = false;
   private boolean firstTimeDisplayed = false;
 
@@ -347,21 +350,42 @@ public class P2TSideBar extends JPanel implements ActionListener {
       this.textpane.setText(Messages.getString("P2T.SoundError"));
       return;
     }
+     //New LLM
+    if(ConfigurationManager.getConfiguration().getGptUseNew()){
+      System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
+      this.textpane.setText(Messages.getString("P2T.loading"));
+      this.showLoadingAnimation(true);
+      webService = new WebServiceThreadLLM(this);
+      webService.start();
+      while (!webService.getIsFinished()) {
+        try {
+          Thread.sleep(500);
+        } catch (InterruptedException e1) {
+          // ignore
+        }
+      }
+      this.textpane.setText("");
 
-    this.textpane.setText(Messages.getString("P2T.loading"));
-    this.showLoadingAnimation(true);
-    webService = new WebServiceThreadLLM(this);
-    webService.start();
-    while (!webService.getIsFinished()) {
-      try {
-        Thread.sleep(500);
-      } catch (InterruptedException e1) {
-        // ignore
+      if (naturalTextParser != null) this.textpane.setText(webService.getText());
+    }
+
+    if(!ConfigurationManager.getConfiguration().getGptUseNew()){
+      System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
+      this.textpane.setText(Messages.getString("P2T.loading"));
+      this.showLoadingAnimation(true);
+      webServiceOld = new WebServiceThread(this);
+      webServiceOld.start();
+      while (!webServiceOld.getIsFinished()) {
+        try{
+          Thread.sleep(500);
+        }catch (InterruptedException e1){
+          //ignore?
+        }
+        this.textpane.setText("");
+
+        if (naturalTextParser != null) this.textpane.setText(webServiceOld.getText());
       }
     }
-    this.textpane.setText("");
-
-    if (naturalTextParser != null) this.textpane.setText(webService.getText());
 
     setThreadInProgress(false);
     webService = null;

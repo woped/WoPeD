@@ -54,7 +54,6 @@ public class WebServiceThreadLLM extends Thread {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new PNMLExport().saveToStream(editor, stream);
         String text = stream.toString();
-        System.out.println(text);
         String output;
 
         //TODO Diese logik in die Buttons implementieren!!
@@ -89,12 +88,10 @@ public class WebServiceThreadLLM extends Thread {
                     output = scanner.useDelimiter("\\A").next();
                     output = output.replaceAll("\\s*\n\\s*", "");
                     paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
-                    System.out.println(output);
                     setText(output);
                 }
             } else {
                 output = "Request failed. Response Code: " + responseCode;
-                System.out.println(output);
             }
 
             // Fehlerbehandlung basierend auf Response Code
