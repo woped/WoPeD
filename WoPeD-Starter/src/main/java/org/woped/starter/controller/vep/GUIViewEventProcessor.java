@@ -41,6 +41,8 @@ import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.action.WoPeDAction;
+import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
@@ -98,10 +100,16 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
           if(!ConfigurationManager.getConfiguration().getGptShowAgain()){
             if(ConfigurationManager.getConfiguration().getGptUseNew()){
               System.out.println("neu");
+              WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
+              action.actionPerformed(
+                      new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
               //TODO: HIER NEUER API CALL
             }
             if(!ConfigurationManager.getConfiguration().getGptUseNew()){
               System.out.println("alt");
+              WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
+              action.actionPerformed(
+                      new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
               //TODO: HIER ALTER API CALL
             }
           }
