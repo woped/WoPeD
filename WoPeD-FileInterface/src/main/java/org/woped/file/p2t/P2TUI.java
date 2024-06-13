@@ -21,7 +21,9 @@ import org.json.simple.parser.ParseException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
 import org.woped.editor.action.ActionButtonListener;
+import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
@@ -148,7 +150,7 @@ public class P2TUI extends JDialog {
         promptScrollPane.setVisible(false);
         enablePromptCheckBox.setVisible(false);
 
-        showAgainCheckBox.setVisible(true); 
+        showAgainCheckBox.setVisible(true);
 
 
         newRadioButton.addActionListener(e -> {
@@ -255,10 +257,9 @@ public class P2TUI extends JDialog {
 
         buttonPanel.add(singleButton, BorderLayout.CENTER);
 
-        singleButton.addActionListener(
-                new ActionButtonListener(
-                       m_mediator, ActionFactory.ACTIONID_P2T_OLD, AbstractViewEvent.P2T, singleButton));
+
         singleButton.addActionListener(e -> {
+            dispose();
             if (newRadioButton.isSelected()) {
                 validateAPIKey();
 
@@ -280,10 +281,16 @@ public class P2TUI extends JDialog {
                 }
 
             }
-
+            executeAction();
         });
         return buttonPanel;
     }
+    private void executeAction() {
+        WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
+        action.actionPerformed(
+                new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
+    }
+
 
     private void fetchAndFillModels() {
         new Thread(() -> {

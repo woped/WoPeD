@@ -35,7 +35,7 @@ public class WebServiceThreadLLM extends Thread {
     public void run() {
         apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
-        gptModel = "gpt-4-turbo";
+        gptModel = ConfigurationManager.getConfiguration().getGptModel();
 
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
