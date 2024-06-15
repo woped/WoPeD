@@ -354,7 +354,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.weightx = 0;
             c.gridx = 0;
             c.gridy = 2;
-            additionalPanel.add(new JLabel("GPT-Model"), c);
+            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.Model")), c);
 
             c.weightx = 1;
             c.gridx = 1;
@@ -411,7 +411,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             promptText.setLineWrap(true);
             promptText.setWrapStyleWord(true);
             promptText.setEnabled(true);
-            promptText.setText("Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
+            promptText.setText(Messages.getString("Configuration.prompt.test"));
         }
         return promptText;
     }
@@ -472,22 +472,22 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             String message;
 
             if (responseCode == 200) {
-                message = "GPT connection successful. Response Code: " + responseCode;
+                message = Messages.getString("Configuration.GPT.successful.connection.title") + responseCode;
             } else {
-                message = "GPT connection failed. Response Code: " + responseCode;
+                message = Messages.getString("Configuration.GPT.failed.connection.title") + responseCode;
             }
 
             JOptionPane.showMessageDialog(
                     this.getGPTPanel(),
                     message,
-                    "Connection Test",
+                    Messages.getString("Configuration.GPT.connection.test.title"),
                     JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     this.getGPTPanel(),
-                    "GPT connection test failed: " + e.getMessage(),
-                    "Connection Test",
+                    Messages.getString("Configuration.GPT.connection.test.failed.title") + e.getMessage(),
+                    Messages.getString("Configuration.GPT.connection.test.title"),
                     JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -523,7 +523,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         if (modelComboBox == null) {
             modelComboBox = new JComboBox<>();
             modelComboBox.setEnabled(true);
-            modelComboBox.setToolTipText("Select a model");
+            modelComboBox.setToolTipText(Messages.getString("Configuration.P2T.get.model"));
         }
         return modelComboBox;
     }
