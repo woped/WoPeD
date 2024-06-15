@@ -136,13 +136,13 @@ public class P2TUI extends JDialog {
         });
 
         // Add JComboBox
-        JLabel gptModelLabel = new JLabel("GPT-Model:");
+        JLabel gptModelLabel = new JLabel(Messages.getString("P2T.get.GPTmodel.title"));
         gptModelLabel.setVisible(false); // Initially hidden
         modelComboBox = new JComboBox<>();
         modelComboBox.setVisible(false); // Initially hidden
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
-        showAgainCheckBox.setToolTipText("Placeholder");
+        showAgainCheckBox.setToolTipText(Messages.getString("P2T.popup.tool.tip.text"));
         apiKeyLabel.setVisible(false);
         apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
@@ -307,8 +307,8 @@ public class P2TUI extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     JOptionPane.showMessageDialog(
                             this.initializeSwitchButtonPanel(),
-                            "Failed to fetch models: " + e.getMessage(),
-                            "Fetch Models",
+                            Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(),
+                            Messages.getString("P2T.exception.fetch.models"),
                             JOptionPane.ERROR_MESSAGE);
                 });
             }
