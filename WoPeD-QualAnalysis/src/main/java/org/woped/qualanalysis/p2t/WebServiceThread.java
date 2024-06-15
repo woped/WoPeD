@@ -15,6 +15,7 @@ public class WebServiceThread extends Thread {
     private boolean isFinished;
     private HttpRequest request;
     private HttpResponse response;
+    private String text;
 
 
     public WebServiceThread(P2TSideBar paraphrasingPanel) {
@@ -26,6 +27,7 @@ public class WebServiceThread extends Thread {
         return isFinished;
     }
 
+
     public void run() {
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
@@ -36,7 +38,6 @@ public class WebServiceThread extends Thread {
                         + ConfigurationManager.getConfiguration().getProcess2TextServerPort()
                         + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
                         + "/generateText";
-
         String[] arg = {url, "P2T"};
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new PNMLExport().saveToStream(editor, stream);
@@ -46,6 +47,8 @@ public class WebServiceThread extends Thread {
         response = request.getResponse();
         output = response.getBody();
         output = output.replaceAll("\\s*\n\\s*", "");
+        System.out.println(output);
+        setText(output);
         isFinished = true;
         paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
 
@@ -77,4 +80,14 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.enableButtons(true);
         paraphrasingPanel.setThreadInProgress(false);
     }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+
 }

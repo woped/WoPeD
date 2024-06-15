@@ -1,25 +1,3 @@
-/*
- *
- * Copyright (C) 2004-2005, see @author in JavaDoc for the author
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * For contact information please visit http://woped.dhbw-karlsruhe.de
- *
- */
 package org.woped.editor.gui.config;
 
 import java.awt.Dimension;
@@ -35,23 +13,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import javax.swing.BorderFactory;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.util.List;
+import javax.swing.*;
 
+import com.sun.codemodel.JCatchBlock;
+import org.json.simple.parser.ParseException;
 import org.woped.core.config.ConfigurationManager;
+import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-/**
- * The <code>ConfLanguagePanel</code> is the <code>AbstractConfPanel</code> for the configuration
- * of the language. Created on: 26.11.2004 Last Change on: 14.11.2005
- */
 @SuppressWarnings("serial")
 public class ConfNLPToolsPanel extends AbstractConfPanel {
     private JCheckBox useBox = null;
@@ -83,18 +54,26 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
     private WopedButton checkConnectionButton = null;
+    List<String> models;
+    {
+        try {
+            models = ApiHelper.fetchModels();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    /**
-     * Constructor for ConfToolsPanel.
-     */
+    private String[] models2 = models.toArray(new String[0]);
+    // New components
+    private JComboBox<String> modelComboBox = new JComboBox<String>(models2);
+
     public ConfNLPToolsPanel(String name) {
         super(name);
         initialize();
     }
 
-    /**
-     * @see AbstractConfPanel#applyConfiguration()
-     */
     public boolean applyConfiguration() {
         boolean newsetting = useBox.isSelected();
         boolean oldsetting = ConfigurationManager.getConfiguration().getProcess2TextUse();
@@ -111,9 +90,10 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         ConfigurationManager.getConfiguration().setProcess2TextServerURI(getManagerPathText().getText());
         if (getServerPortText().getText().equals("")) {
             ConfigurationManager.getConfiguration().setProcess2TextServerPort(0);
-        } else
+        } else {
             ConfigurationManager.getConfiguration()
                     .setProcess2TextServerPort(Integer.parseInt(getServerPortText().getText()));
+        }
         ConfigurationManager.getConfiguration().setProcess2TextUse(useBox.isSelected());
 
         ConfigurationManager.getConfiguration().setText2ProcessServerHost(getServerURLText_T2P().getText());
@@ -122,23 +102,19 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
         if (getServerPortText_T2P().getText().equals("")) {
             ConfigurationManager.getConfiguration().setText2ProcessServerPort(0);
-        } else
+        } else {
             ConfigurationManager.getConfiguration()
                     .setText2ProcessServerPort(Integer.parseInt(getServerPortText_T2P().getText()));
-
-        // Save additional panel configurations
+        }
         ConfigurationManager.getConfiguration().setGptApiKey(getApiKeyText().getText());
         ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
+        ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
 
         return true;
     }
 
-    /**
-     * @see AbstractConfPanel#readConfiguration()
-     */
     public void readConfiguration() {
-
         getServerURLText().setText(ConfigurationManager.getConfiguration().getProcess2TextServerHost());
         getManagerPathText().setText(ConfigurationManager.getConfiguration().getProcess2TextServerURI());
         getServerPortText().setText("" + ConfigurationManager.getConfiguration().getProcess2TextServerPort());
@@ -146,13 +122,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
         getServerURLText_T2P().setText(ConfigurationManager.getConfiguration().getText2ProcessServerHost());
         getManagerPathText_T2P().setText(ConfigurationManager.getConfiguration().getText2ProcessServerURI());
-
         getServerPortText_T2P().setText("" + ConfigurationManager.getConfiguration().getText2ProcessServerPort());
-
-        // Load additional panel configurations
         getApiKeyText().setText(ConfigurationManager.getConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
+        System.out.println(ConfigurationManager.getConfiguration().getGptModel());
+
     }
 
     private void initialize() {
@@ -161,7 +136,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.NORTH;
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(2, 0, 2, 0); // Small vertical gap between elements
+        c.insets = new Insets(2, 0, 2, 0);
 
         c.weightx = 1;
         c.gridx = 0;
@@ -181,26 +156,23 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         c.weightx = 1;
         c.gridx = 0;
         c.gridy = 3;
-        contentPanel.add(getAdditionalPanel(), c);
+        contentPanel.add(getGPTPanel(), c);
 
-        // dummy
         c.fill = GridBagConstraints.VERTICAL;
         c.weighty = 1;
         c.gridy = 4;
         contentPanel.add(new JPanel(), c);
 
         setMainPanel(contentPanel);
-    }
 
-    // ################## GUI COMPONENTS #################### */
+    }
 
     private JTextField getServerURLText() {
         if (serverURLText == null) {
             serverURLText = new JTextField();
             serverURLText.setColumns(40);
             serverURLText.setEnabled(true);
-            serverURLText.setToolTipText(
-                    "<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
+            serverURLText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
         }
         return serverURLText;
     }
@@ -210,8 +182,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             serverURLText_T2P = new JTextField();
             serverURLText_T2P.setColumns(40);
             serverURLText_T2P.setEnabled(true);
-            serverURLText_T2P.setToolTipText(
-                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+            serverURLText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
         }
         return serverURLText_T2P;
     }
@@ -222,15 +193,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             enabledPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(2, 0, 2, 0); // Small vertical gap between elements
+            c.insets = new Insets(2, 0, 2, 0);
 
-            enabledPanel.setBorder(
-                    BorderFactory.createCompoundBorder(
-                            BorderFactory.createTitledBorder(Messages.getTitle("Configuration.P2T.Enabled.Panel")),
-                            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            enabledPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getTitle("Configuration.P2T.Enabled.Panel")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
-            c.gridx = 1;
+            c.gridx = 0; // Move further left
             c.gridy = 0;
             enabledPanel.add(getUseBox(), c);
         }
@@ -243,12 +211,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             settingsPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(2, 0, 2, 0); // Small vertical gap between elements
+            c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel.setBorder(
-                    BorderFactory.createCompoundBorder(
-                            BorderFactory.createTitledBorder(Messages.getString("Configuration.P2T.Settings.Panel.Title")),
-                            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.P2T.Settings.Panel.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -288,8 +253,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             settingsPanel.add(getManagerPathText(), c);
 
             c.weightx = 1;
-            c.gridx = 1;
-            c.gridy = 4;
+            c.gridx = 3;
+            c.gridy = 1;
             settingsPanel.add(getDefaultButton(), c);
         }
 
@@ -303,12 +268,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             settingsPanel_T2P.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(2, 0, 2, 0); // Small vertical gap between elements
+            c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel_T2P.setBorder(
-                    BorderFactory.createCompoundBorder(
-                            BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title")),
-                            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_T2P.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -348,8 +310,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             settingsPanel_T2P.add(getManagerPathText_T2P(), c);
 
             c.weightx = 1;
-            c.gridx = 1;
-            c.gridy = 4;
+            c.gridx = 3;
+            c.gridy = 1;
             settingsPanel_T2P.add(getDefaultButton_T2P(), c);
         }
 
@@ -357,18 +319,15 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         return settingsPanel_T2P;
     }
 
-    private JPanel getAdditionalPanel() {
+    private JPanel getGPTPanel() {
         if (additionalPanel == null) {
             additionalPanel = new JPanel();
             additionalPanel.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
-            c.insets = new Insets(2, 0, 2, 0); // Small vertical gap between elements
+            c.insets = new Insets(2, 0, 2, 0);
 
-            additionalPanel.setBorder(
-                    BorderFactory.createCompoundBorder(
-                            BorderFactory.createTitledBorder("GPT Settings"),
-                            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            additionalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("GPT Settings"), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 0;
@@ -391,24 +350,41 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.gridwidth = 2;
             additionalPanel.add(getPromptTextScrollPane(), c);
 
-            c.weightx = 1;
+            // Add the new row with the label and combo box
+            c.weightx = 0;
             c.gridx = 0;
             c.gridy = 2;
-            additionalPanel.add(getShowAgainBox(), c);
+            additionalPanel.add(new JLabel("GPT-Model"), c);
 
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 2;
-            additionalPanel.add(getResetButton(), c);
+            additionalPanel.add(getModelComboBox(), c);
+
+            c.weightx = 1;
+            c.gridx = 0;
+            c.gridy = 3;
+            additionalPanel.add(getShowAgainBox(), c);
 
             c.weightx = 1;
             c.gridx = 2;
-            c.gridy = 2;
-            additionalPanel.add(getCheckConnectionButton(), c);
+            c.gridy = 3;
+            additionalPanel.add(getResetButton(), c);
 
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 3;
+            additionalPanel.add(getCheckConnectionButton(), c);
         }
 
         additionalPanel.setVisible(getUseBox().isSelected());
+        //fetchAndFillModels();
+        for (int i = 0; i < modelComboBox.getItemCount(); i++){
+            if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
+                modelComboBox.setSelectedIndex(i);
+                break;
+            }
+        }
         return additionalPanel;
     }
 
@@ -435,8 +411,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             promptText.setLineWrap(true);
             promptText.setWrapStyleWord(true);
             promptText.setEnabled(true);
-            promptText.setText(
-                    "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
+            promptText.setText("Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
         }
         return promptText;
     }
@@ -455,14 +430,13 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             resetButton = new WopedButton();
             resetButton.setText(Messages.getString("Configuration.GPT.standard.Title"));
             resetButton.setPreferredSize(new Dimension(200, 25));
-            resetButton.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            setDefaultValuesGPT();
-                            System.out.println(ConfigurationManager.getConfiguration().getGptShowAgain());
-                            System.out.println(ConfigurationManager.getConfiguration().getGptPrompt());
-                        }
-                    });
+            resetButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    setDefaultValuesGPT();
+                    System.out.println(ConfigurationManager.getConfiguration().getGptShowAgain());
+                    System.out.println(ConfigurationManager.getConfiguration().getGptPrompt());
+                }
+            });
         }
         return resetButton;
     }
@@ -473,19 +447,18 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             checkConnectionButton.setText(Messages.getString("Configuration.GPT.connection.Title"));
             checkConnectionButton.setIcon(Messages.getImageIcon("Button.TestConnection"));
             checkConnectionButton.setMnemonic(Messages.getMnemonic("Button.TestConnection"));
-            checkConnectionButton.setPreferredSize(new Dimension(200, 25));
-            checkConnectionButton.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            testGPTConnection();
-                        }
-                    });
+            checkConnectionButton.setPreferredSize(new Dimension(170, 25));
+            checkConnectionButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    testGPTConnection();
+                }
+            });
         }
         return checkConnectionButton;
     }
 
     private void testGPTConnection() {
-        String apiKey = apiKeyText.getText();  // Annahme: Methode zum Abrufen des API-Schlüssels ist vorhanden
+        String apiKey = apiKeyText.getText();
         String urlString = "https://api.openai.com/v1/engines";
 
         try {
@@ -505,18 +478,39 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             }
 
             JOptionPane.showMessageDialog(
-                    this.getAdditionalPanel(),
+                    this.getGPTPanel(),
                     message,
                     "Connection Test",
                     JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
-                    this.getAdditionalPanel(),
+                    this.getGPTPanel(),
                     "GPT connection test failed: " + e.getMessage(),
                     "Connection Test",
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void fetchAndFillModels() {
+        new Thread(() -> {
+            try {
+                List<String> models = ApiHelper.fetchModels();
+                SwingUtilities.invokeLater(() -> {
+                    for (String model : models) {
+                        modelComboBox.addItem(model);
+                    }
+                });
+            } catch (IOException | ParseException e) {
+                SwingUtilities.invokeLater(() -> {
+                    JOptionPane.showMessageDialog(
+                            this.getGPTPanel(),
+                            "Failed to fetch models: " + e.getMessage(),
+                            "Fetch Models",
+                            JOptionPane.ERROR_MESSAGE);
+                });
+            }
+        }).start();
     }
 
     private void setDefaultValuesGPT() {
@@ -525,72 +519,13 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getPromptText().setText(ConfigurationManager.getStandardConfiguration().getGptPrompt());
     }
 
-    class CheckboxListener implements ItemListener {
-
-        public void itemStateChanged(ItemEvent ie) {
-            JCheckBox jcb = (JCheckBox) ie.getSource();
-            if (jcb == useBox) {
-                getSettingsPanel().setVisible(jcb.isSelected());
-                getSettingsPanel_T2P().setVisible(jcb.isSelected());
-                getAdditionalPanel().setVisible(jcb.isSelected());
-            }
+    private JComboBox<String> getModelComboBox() {
+        if (modelComboBox == null) {
+            modelComboBox = new JComboBox<>();
+            modelComboBox.setEnabled(true);
+            modelComboBox.setToolTipText("Select a model");
         }
-    }
-
-    private JLabel getServerURLLabel() {
-        if (serverURLLabel == null) {
-            serverURLLabel =
-                    new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
-            serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
-        }
-        return serverURLLabel;
-    }
-
-    private JLabel getServerURLLabel_T2P() {
-        if (serverURLLabel_T2P == null) {
-            serverURLLabel_T2P =
-                    new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
-            serverURLLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
-        }
-        return serverURLLabel_T2P;
-    }
-
-    private JLabel getServerPortLabel() {
-        if (serverPortLabel == null) {
-            serverPortLabel =
-                    new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
-            serverPortLabel.setHorizontalAlignment(JLabel.RIGHT);
-        }
-        return serverPortLabel;
-    }
-
-    private JLabel getServerPortLabel_T2P() {
-        if (serverPortLabel_T2P == null) {
-            serverPortLabel_T2P =
-                    new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
-            serverPortLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
-        }
-        return serverPortLabel_T2P;
-    }
-
-    private JTextField getServerPortText() {
-        if (serverPortText == null) {
-            serverPortText = new JTextField();
-            serverPortText.setColumns(4);
-            serverPortText.setEnabled(true);
-            serverPortText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
-        }
-        return serverPortText;
-    }
-
-    private JTextField getServerPortText_T2P() {
-        if (serverPortText_T2P == null) {
-            serverPortText_T2P = new JTextField();
-            serverPortText_T2P.setColumns(4);
-            serverPortText_T2P.setEnabled(true);
-            serverPortText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
-        }
-        return serverPortText_T2P;
+        return modelComboBox;
     }
 
     private JCheckBox getUseBox() {
@@ -619,8 +554,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getManagerPathLabel() {
         if (managerPathLabel == null) {
-            managerPathLabel =
-                    new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
+            managerPathLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
             managerPathLabel.setHorizontalAlignment(JLabel.RIGHT);
         }
         return managerPathLabel;
@@ -628,8 +562,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getManagerPathLabel_T2P() {
         if (managerPathLabel_T2P == null) {
-            managerPathLabel_T2P =
-                    new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
+            managerPathLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
             managerPathLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
         }
         return managerPathLabel_T2P;
@@ -662,12 +595,11 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             testButton.setIcon(Messages.getImageIcon("Button.TestConnection"));
             testButton.setMnemonic(Messages.getMnemonic("Button.TestConnection"));
             testButton.setPreferredSize(new Dimension(160, 25));
-            testButton.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            testProcess2TextConnection();
-                        }
-                    });
+            testButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    testProcess2TextConnection();
+                }
+            });
         }
 
         return testButton;
@@ -680,12 +612,11 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             testButton_T2P.setIcon(Messages.getImageIcon("Button.TestConnection"));
             testButton_T2P.setMnemonic(Messages.getMnemonic("Button.TestConnection"));
             testButton_T2P.setPreferredSize(new Dimension(160, 25));
-            testButton_T2P.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            testText2ProcessConnection();
-                        }
-                    });
+            testButton_T2P.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    testText2ProcessConnection();
+                }
+            });
         }
 
         return testButton_T2P;
@@ -696,12 +627,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             defaultButton = new WopedButton();
             defaultButton.setText(Messages.getTitle("Button.SetToDefault"));
             defaultButton.setPreferredSize(new Dimension(200, 25));
-            defaultButton.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            setDefaultValues();
-                        }
-                    });
+            defaultButton.addActionListener(e -> setDefaultValues());
         }
         return defaultButton;
     }
@@ -711,24 +637,14 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             defaultButton_T2P = new WopedButton();
             defaultButton_T2P.setText(Messages.getTitle("Button.SetToDefault"));
             defaultButton_T2P.setPreferredSize(new Dimension(200, 25));
-            defaultButton_T2P.addActionListener(
-                    new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            setDefaultValues_T2P();
-                        }
-                    });
+            defaultButton_T2P.addActionListener(e -> setDefaultValues_T2P());
         }
         return defaultButton_T2P;
     }
 
     private void testProcess2TextConnection() {
         URL url = null;
-        String connection =
-                "http://"
-                        + getServerURLText().getText()
-                        + ":"
-                        + getServerPortText().getText()
-                        + getManagerPathText().getText();
+        String connection = "http://" + getServerURLText().getText() + ":" + getServerPortText().getText() + getManagerPathText().getText();
         String arg[] = {connection, ""};
 
         try {
@@ -737,36 +653,18 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
             if (urlConnection.getContent() != null) {
                 arg[1] = "P2T";
-                JOptionPane.showMessageDialog(
-                        this.getSettingsPanel(),
-                        Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
-                        Messages.getString("Paraphrasing.Webservice.Success.Title"),
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (MalformedURLException mue) {
-            JOptionPane.showMessageDialog(
-                    this.getSettingsPanel(),
-                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
-                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(
-                    this.getSettingsPanel(),
-                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
-                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void testText2ProcessConnection() {
-        URL url = null;
-        String connection =
-                "http://"
-                        + getServerURLText_T2P().getText()
-                        + ":"
-                        + getServerPortText_T2P().getText()
-                        + getManagerPathText_T2P().getText()
-                        + "";
+        URL url;
+        String connection = "http://" + getServerURLText_T2P().getText() + ":" + getServerPortText_T2P().getText() + getManagerPathText_T2P().getText();
         String arg[] = {connection, ""};
 
         try {
@@ -774,42 +672,87 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             URLConnection urlConnection = url.openConnection();
             if (urlConnection.getContent() != null) {
                 arg[1] = "T2P";
-                JOptionPane.showMessageDialog(
-                        this.getSettingsPanel_T2P(),
-                        Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
-                        Messages.getString("Paraphrasing.Webservice.Success.Title"),
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (MalformedURLException mue) {
-            JOptionPane.showMessageDialog(
-                    this.getSettingsPanel_T2P(),
-                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
-                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(
-                    this.getSettingsPanel_T2P(),
-                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
-                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void setDefaultValues() {
-        getServerURLText()
-                .setText(ConfigurationManager.getStandardConfiguration().getProcess2TextServerHost());
-        getManagerPathText()
-                .setText(ConfigurationManager.getStandardConfiguration().getProcess2TextServerURI());
-        getServerPortText()
-                .setText("" + ConfigurationManager.getStandardConfiguration().getProcess2TextServerPort());
+        getServerURLText().setText(ConfigurationManager.getStandardConfiguration().getProcess2TextServerHost());
+        getManagerPathText().setText(ConfigurationManager.getStandardConfiguration().getProcess2TextServerURI());
+        getServerPortText().setText("" + ConfigurationManager.getStandardConfiguration().getProcess2TextServerPort());
     }
 
     private void setDefaultValues_T2P() {
-        getServerURLText_T2P()
-                .setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost());
-        getManagerPathText_T2P()
-                .setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI());
-        getServerPortText_T2P()
-                .setText("" + ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort());
+        getServerURLText_T2P().setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost());
+        getManagerPathText_T2P().setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI());
+        getServerPortText_T2P().setText("" + ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort());
+    }
+
+    class CheckboxListener implements ItemListener {
+        public void itemStateChanged(ItemEvent ie) {
+            JCheckBox jcb = (JCheckBox) ie.getSource();
+            if (jcb == useBox) {
+                getSettingsPanel().setVisible(jcb.isSelected());
+                getSettingsPanel_T2P().setVisible(jcb.isSelected());
+                getGPTPanel().setVisible(jcb.isSelected());
+            }
+        }
+    }
+
+    private JLabel getServerURLLabel() {
+        if (serverURLLabel == null) {
+            serverURLLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
+            serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serverURLLabel;
+    }
+
+    private JLabel getServerURLLabel_T2P() {
+        if (serverURLLabel_T2P == null) {
+            serverURLLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+            serverURLLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serverURLLabel_T2P;
+    }
+
+    private JLabel getServerPortLabel() {
+        if (serverPortLabel == null) {
+            serverPortLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
+            serverPortLabel.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serverPortLabel;
+    }
+
+    private JLabel getServerPortLabel_T2P() {
+        if (serverPortLabel_T2P == null) {
+            serverPortLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+            serverPortLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serverPortLabel_T2P;
+    }
+
+    private JTextField getServerPortText() {
+        if (serverPortText == null) {
+            serverPortText = new JTextField();
+            serverPortText.setColumns(4);
+            serverPortText.setEnabled(true);
+            serverPortText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
+        }
+        return serverPortText;
+    }
+
+    private JTextField getServerPortText_T2P() {
+        if (serverPortText_T2P == null) {
+            serverPortText_T2P = new JTextField();
+            serverPortText_T2P.setColumns(4);
+            serverPortText_T2P.setEnabled(true);
+            serverPortText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+        }
+        return serverPortText_T2P;
     }
 }

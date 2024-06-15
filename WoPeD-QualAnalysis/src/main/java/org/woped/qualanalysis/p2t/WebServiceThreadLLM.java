@@ -21,6 +21,7 @@ public class WebServiceThreadLLM extends Thread {
     private String apiKey;
     private String prompt;
     private String gptModel;
+    private String text;
 
     public WebServiceThreadLLM(P2TSideBar paraphrasingPanel) {
         this.paraphrasingPanel = paraphrasingPanel;
@@ -34,7 +35,7 @@ public class WebServiceThreadLLM extends Thread {
     public void run() {
         apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
-        gptModel = "gpt-4-turbo";
+        gptModel = ConfigurationManager.getConfiguration().getGptModel();
 
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
@@ -48,14 +49,14 @@ public class WebServiceThreadLLM extends Thread {
                         + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
                         + "/generateTextLLM";
 
-        String fullTestUrl = testUrl + "?apiKey=" + apiKey + "&prompt=" + prompt + "&gptModel=" + gptModel;
-        String fullUrl = url + "?apiKey=" + apiKey + "&prompt=" + prompt + "&gptModel=" + gptModel;
+
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new PNMLExport().saveToStream(editor, stream);
         String text = stream.toString();
-        System.out.println(text);
         String output;
+
+        //TODO Diese logik in die Buttons implementieren!!
 
         try {
             // URL-Parameter kodieren
@@ -87,11 +88,10 @@ public class WebServiceThreadLLM extends Thread {
                     output = scanner.useDelimiter("\\A").next();
                     output = output.replaceAll("\\s*\n\\s*", "");
                     paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
-                    System.out.println(output);
+                    setText(output);
                 }
             } else {
                 output = "Request failed. Response Code: " + responseCode;
-                System.out.println(output);
             }
 
             // Fehlerbehandlung basierend auf Response Code
@@ -132,4 +132,7 @@ public class WebServiceThreadLLM extends Thread {
             paraphrasingPanel.setThreadInProgress(false);
         }
     }
+
+    public void setText(String output) {this.text = output;}
+    public String getText() {return this.text;}
 }
