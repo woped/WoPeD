@@ -42,7 +42,7 @@ public class P2TUI extends JDialog {
     private AbstractApplicationMediator m_mediator = null;
     JComboBox<String> modelComboBox;
 
-    private static final String DEFAULT_PROMPT = Messages.getString("P2T.prompt.default");
+    private static final String DEFAULT_PROMPT = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
 
     public P2TUI(AbstractApplicationMediator mediator) {
         this(null, mediator);
@@ -136,13 +136,13 @@ public class P2TUI extends JDialog {
         });
 
         // Add JComboBox
-        JLabel gptModelLabel = new JLabel(Messages.getString("P2T.gptModel.title"));
+        JLabel gptModelLabel = new JLabel("GPT-Model:");
         gptModelLabel.setVisible(false); // Initially hidden
         modelComboBox = new JComboBox<>();
         modelComboBox.setVisible(false); // Initially hidden
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
-        showAgainCheckBox.setToolTipText(Messages.getString("P2T.popup.placeholder.title"));
+        showAgainCheckBox.setToolTipText("Placeholder");
         apiKeyLabel.setVisible(false);
         apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
@@ -307,8 +307,8 @@ public class P2TUI extends JDialog {
                 SwingUtilities.invokeLater(() -> {
                     JOptionPane.showMessageDialog(
                             this.initializeSwitchButtonPanel(),
-                            Messages.getString("P2T.exception.fail.title") + e.getMessage(),
-                            Messages.getString("P2T.exception.fetch.models.title"),
+                            "Failed to fetch models: " + e.getMessage(),
+                            "Fetch Models",
                             JOptionPane.ERROR_MESSAGE);
                 });
             }
