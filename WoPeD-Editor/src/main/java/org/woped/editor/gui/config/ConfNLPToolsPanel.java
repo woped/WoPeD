@@ -327,7 +327,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            additionalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder("GPT Settings"), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            additionalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.GPT.settings.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 0;
@@ -354,7 +354,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.weightx = 0;
             c.gridx = 0;
             c.gridy = 2;
-            additionalPanel.add(new JLabel("GPT-Model"), c);
+            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.model.Title")), c);
 
             c.weightx = 1;
             c.gridx = 1;
@@ -420,7 +420,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         if (showAgainBox == null) {
             showAgainBox = new JCheckBox(Messages.getString("Configuration.GPT.show.again.Title"));
             showAgainBox.setEnabled(true);
-            showAgainBox.setToolTipText("Test");
+            showAgainBox.setToolTipText(Messages.getString("Configuration.GPT.tool.tip.text.Title"));
         }
         return showAgainBox;
     }
@@ -472,22 +472,22 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             String message;
 
             if (responseCode == 200) {
-                message = "GPT connection successful. Response Code: " + responseCode;
+                message = Messages.getString("Configuration.GPT.connection.successful.Title") + responseCode;
             } else {
-                message = "GPT connection failed. Response Code: " + responseCode;
+                message = Messages.getString("Configuration.GPT.connection.failed.Title") + responseCode;
             }
 
             JOptionPane.showMessageDialog(
                     this.getGPTPanel(),
                     message,
-                    "Connection Test",
+                    Messages.getString("Configuration.GPT.connection.test.Title"),
                     JOptionPane.INFORMATION_MESSAGE);
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     this.getGPTPanel(),
-                    "GPT connection test failed: " + e.getMessage(),
-                    "Connection Test",
+                    Messages.getString("Configuration.GPT.connection.test.failed.Title") + e.getMessage(),
+                    Messages.getString("Configuration.GPT.connection.test.Title"),
                     JOptionPane.ERROR_MESSAGE);
         }
     }
