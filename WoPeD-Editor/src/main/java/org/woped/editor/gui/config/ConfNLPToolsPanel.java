@@ -13,10 +13,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.*;
 
-import com.sun.codemodel.JCatchBlock;
 import org.json.simple.parser.ParseException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.editor.tools.ApiHelper;
@@ -54,14 +54,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
     private WopedButton checkConnectionButton = null;
-    List<String> models;
+    List<String> models = Arrays.asList("") ;
     {
         try {
             models = ApiHelper.fetchModels();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        } catch (IOException | ParseException ignored) {
+
         }
     }
 

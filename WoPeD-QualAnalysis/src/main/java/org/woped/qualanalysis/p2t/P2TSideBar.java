@@ -31,15 +31,13 @@ import org.woped.qualanalysis.service.QualanalysisServiceImplement;
 /** The sidebar to be used for displaying of the natural text-presentation (Process2Text). */
 public class P2TSideBar extends JPanel implements ActionListener {
 
-  private IEditor editor;
+  private final IEditor editor;
   private JEditorPane textpane = null;
   private Process2Text naturalTextParser = null;
   private JButton buttonLoad = null;
   private JButton buttonExport = null;
   private JLabel labelLoading = null;
-  private WebServiceThreadLLM webService = null;
-  private WebServiceThread webServiceOld = null;
-  private boolean threadInProgress = false;
+    private boolean threadInProgress = false;
   private boolean firstTimeDisplayed = false;
 
   /**
@@ -230,7 +228,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
       // If we already have a text/process description, ask for overwrite
       // confirmation.
 
-      if (naturalTextParser != null && naturalTextParser.getXmlText().length() > 0) {
+      if (naturalTextParser != null && !naturalTextParser.getXmlText().isEmpty()) {
         if (JOptionPane.showConfirmDialog(
                 null,
                 Messages.getString("Paraphrasing.Load.Question.Content"),
@@ -256,7 +254,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
     if (e.getSource() == this.buttonExport) {
 
       boolean fileTypeOk = false;
-      if (this.textpane.getText().length() > 0) {
+      if (!this.textpane.getText().isEmpty()) {
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setFileFilter(
             new FileFilter() {
@@ -351,7 +349,8 @@ public class P2TSideBar extends JPanel implements ActionListener {
       return;
     }
      //New LLM
-    if(ConfigurationManager.getConfiguration().getGptUseNew()){
+      WebServiceThreadLLM webService = null;
+      if(ConfigurationManager.getConfiguration().getGptUseNew()){
       System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
       this.textpane.setText(Messages.getString("P2T.loading"));
       this.showLoadingAnimation(true);
@@ -373,7 +372,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
       System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
       this.textpane.setText(Messages.getString("P2T.loading"));
       this.showLoadingAnimation(true);
-      webServiceOld = new WebServiceThread(this);
+        WebServiceThread webServiceOld = new WebServiceThread(this);
       webServiceOld.start();
       while (!webServiceOld.getIsFinished()) {
         try{
