@@ -161,8 +161,8 @@ public class P2TUI extends JDialog {
             enablePromptCheckBox.setVisible(true);
             gptModelLabel.setVisible(true);
             modelComboBox.setVisible(true);
-            for (int i = 0; i < modelComboBox.getItemCount(); i++){
-                if(modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
+            for (int i = 0; i < modelComboBox.getItemCount(); i++) {
+                if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())) {
                     modelComboBox.setSelectedIndex(i);
                     break;
                 }
@@ -287,10 +287,10 @@ public class P2TUI extends JDialog {
         });
         return buttonPanel;
     }
+
     private void executeAction() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
-        action.actionPerformed(
-                new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
+        action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
     }
 
 
@@ -305,11 +305,7 @@ public class P2TUI extends JDialog {
                 });
             } catch (IOException | ParseException e) {
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(
-                            this.initializeSwitchButtonPanel(),
-                            Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(),
-                            Messages.getString("P2T.exception.fetch.models"),
-                            JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this.initializeSwitchButtonPanel(), Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(), Messages.getString("P2T.exception.fetch.models"), JOptionPane.ERROR_MESSAGE);
                 });
             }
         }).start();
