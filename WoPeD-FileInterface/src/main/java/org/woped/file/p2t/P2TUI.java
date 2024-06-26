@@ -32,7 +32,7 @@ public class P2TUI extends JDialog {
     private JDialog loadDialog;
     private AbstractApplicationMediator mediator;
     private boolean requested = false;
-    private JTextField apiKeyField;
+    JTextField apiKeyField;
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
 
