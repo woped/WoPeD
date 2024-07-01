@@ -30,12 +30,9 @@ import org.woped.gui.translations.Messages;
 
 public class P2TUI extends JDialog {
     private JDialog loadDialog;
-    private AbstractApplicationMediator mediator;
-    private boolean requested = false;
     JTextField apiKeyField;
     private JTextArea promptField;  // Changed to JTextArea for multiline
     private JCheckBox enablePromptCheckBox; // New Checkbox
-
     private JCheckBox showAgainCheckBox; // New Checkbox
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
@@ -49,7 +46,6 @@ public class P2TUI extends JDialog {
 
     public P2TUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
         super(owner, true);
-        this.mediator = mediator;
         initialize();
     }
 

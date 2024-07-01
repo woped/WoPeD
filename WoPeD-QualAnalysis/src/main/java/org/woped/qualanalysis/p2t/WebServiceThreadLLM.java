@@ -42,8 +42,7 @@ public class WebServiceThreadLLM extends Thread {
 
         String url = "http://localhost:8080/p2t/generateTextLLM";
 
-        // Dieser URL Parameter ist für den Livegang des LLM basierten Process2Text Services vorbereitet
-
+        // This URL parameter is prepared for the go-live of the LLM-based Process2Text service
         /*String url =
                 "http://"
                         + ConfigurationManager.getConfiguration().getProcess2TextServerHost()
@@ -60,29 +59,29 @@ public class WebServiceThreadLLM extends Thread {
 
 
         try {
-            // URL-Parameter kodieren
+            // Encode URL parameters
             String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
             String encodedPrompt = URLEncoder.encode(prompt, StandardCharsets.UTF_8);
             String encodedGptModel = URLEncoder.encode(gptModel, StandardCharsets.UTF_8);
 
-            // URL mit Parametern aufbauen
+            // Construct URL with parameters
             String urlWithParams = String.format("%s?apiKey=%s&prompt=%s&gptModel=%s",
                     url, encodedApiKey, encodedPrompt, encodedGptModel);
             URL urlObj = new URL(urlWithParams);
 
-            // Verbindung aufbauen
+            // Establish connection
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "text/plain");
 
-            // Request-Body senden
+            // Send request body
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = text.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
 
-            // Antwort lesen
+            // Read response
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 try (Scanner scanner = new Scanner(conn.getInputStream(), StandardCharsets.UTF_8)) {

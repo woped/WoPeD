@@ -86,7 +86,7 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.setThreadInProgress(false);
     }
 
-    // Setter- und Getter für das Ergebnis des Algorithmus
+    // Setter- und Getter for the result of the algorithm
 
     public String getText() {
         return text;
