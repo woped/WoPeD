@@ -140,8 +140,9 @@ public class P2TUI extends JDialog {
         modelComboBox = new JComboBox<>();
         modelComboBox.setVisible(false); // Initially hidden
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
+        showAgainCheckBox.setToolTipText("Durch das Entfernen dieses Hakens wird wird das Popup-Fenster nicht erneut angezeigt, der Client merkt sich jedoch den zuletzt ausgewählten Modus," +
+                "unter den NLP Einstellungen kann das Fenster wieder aktiviert werden");
         showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
-        showAgainCheckBox.setToolTipText(Messages.getString("P2T.popup.tool.tip.text"));
         apiKeyLabel.setVisible(false);
         apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
@@ -260,29 +261,30 @@ public class P2TUI extends JDialog {
         singleButton.addActionListener(e -> {
             //dispose();
             if (newRadioButton.isSelected()) {
-                validateAPIKey();
+                if (validateAPIKey()) {
 
-
-                ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
-                ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
-                ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
-                ConfigurationManager.getConfiguration().setGptUseNew(true);
-                System.out.println(modelComboBox.getSelectedItem().toString());
-
-                if (!showAgainCheckBox.isSelected()) {
-                    ConfigurationManager.getConfiguration().setGptShowAgain(false);
+                    ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
+                    ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
+                    ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
                     ConfigurationManager.getConfiguration().setGptUseNew(true);
-                }
 
+                    if (!showAgainCheckBox.isSelected()) {
+                        ConfigurationManager.getConfiguration().setGptShowAgain(false);
+                        ConfigurationManager.getConfiguration().setGptUseNew(true);
+                    }
+                    executeAction();
+                    dispose();
+                }
             } else {
                 ConfigurationManager.getConfiguration().setGptUseNew(false);
                 if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
                     ConfigurationManager.getConfiguration().setGptUseNew(false);
-                }
 
+                }
+                executeAction();
+                dispose();
             }
-            executeAction();
         });
         return buttonPanel;
     }
@@ -311,11 +313,13 @@ public class P2TUI extends JDialog {
     }
 
 
-    private void validateAPIKey() {
+    private boolean validateAPIKey() {
         String apiKey = apiKeyField.getText();
-        if (!isAPIKeyValid(apiKey)) {
+        boolean apiKeyValid = isAPIKeyValid(apiKey);
+        if (!apiKeyValid) {
             JOptionPane.showMessageDialog(this, Messages.getString("P2T.apikey.invalid"), Messages.getString("P2T.apikey.invalid.title"), JOptionPane.ERROR_MESSAGE);
         }
+        return apiKeyValid;
     }
 
     public static boolean isAPIKeyValid(String apiKey) {
