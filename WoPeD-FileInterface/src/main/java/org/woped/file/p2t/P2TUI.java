@@ -313,7 +313,7 @@ public class P2TUI extends JDialog {
     }
 
 
-    private boolean validateAPIKey() {
+    boolean validateAPIKey() {
         String apiKey = apiKeyField.getText();
         boolean apiKeyValid = isAPIKeyValid(apiKey);
         if (!apiKeyValid) {
