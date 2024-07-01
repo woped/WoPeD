@@ -490,27 +490,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
     }
 
-    private void fetchAndFillModels() {
-        new Thread(() -> {
-            try {
-                List<String> models = ApiHelper.fetchModels();
-                SwingUtilities.invokeLater(() -> {
-                    for (String model : models) {
-                        modelComboBox.addItem(model);
-                    }
-                });
-            } catch (IOException | ParseException e) {
-                SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(
-                            this.getGPTPanel(),
-                            "Failed to fetch models: " + e.getMessage(),
-                            "Fetch Models",
-                            JOptionPane.ERROR_MESSAGE);
-                });
-            }
-        }).start();
-    }
-
     private void setDefaultValuesGPT() {
         getApiKeyText().setText(ConfigurationManager.getStandardConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getStandardConfiguration().getGptShowAgain());
