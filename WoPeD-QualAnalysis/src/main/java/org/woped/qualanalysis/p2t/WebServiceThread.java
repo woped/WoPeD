@@ -11,7 +11,6 @@ import org.woped.gui.translations.Messages;
 public class WebServiceThread extends Thread {
 
     private P2TSideBar paraphrasingPanel;
-    private String[][] result = null;
     private boolean isFinished;
     private HttpRequest request;
     private HttpResponse response;
@@ -31,13 +30,19 @@ public class WebServiceThread extends Thread {
     public void run() {
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
-        String url =
+
+        String url = "http://localhost:8080/p2t/generateText";
+
+        /*String url =
                 "http://"
                         + ConfigurationManager.getConfiguration().getProcess2TextServerHost()
                         + ":"
                         + ConfigurationManager.getConfiguration().getProcess2TextServerPort()
                         + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
-                        + "/generateText";
+                        + "/generateText";*/
+
+
+
         String[] arg = {url, "P2T"};
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new PNMLExport().saveToStream(editor, stream);
@@ -80,6 +85,8 @@ public class WebServiceThread extends Thread {
         paraphrasingPanel.enableButtons(true);
         paraphrasingPanel.setThreadInProgress(false);
     }
+
+    // Setter- und Getter für das Ergebnis des Algorithmus
 
     public String getText() {
         return text;
