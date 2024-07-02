@@ -22,7 +22,6 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
-import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.tools.ApiHelper;
@@ -70,7 +69,7 @@ public class P2TUI extends JDialog {
         this.setSize(size);
 
         // Initialize models asynchronously
-        fetchAndFillModels();
+
     }
 
     private JPanel initializeSwitchButtonPanel() {
@@ -105,7 +104,7 @@ public class P2TUI extends JDialog {
 
         JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title") + ":");
         apiKeyField = new JTextField();
-        apiKeyField.setPreferredSize(new Dimension(200, 25));
+        apiKeyField.setPreferredSize(new Dimension(300, 25));
 
         JLabel promptLabel = new JLabel(Messages.getString("P2T.prompt.title") + ":");
         promptField = new JTextArea(DEFAULT_PROMPT);
@@ -135,7 +134,19 @@ public class P2TUI extends JDialog {
         JLabel gptModelLabel = new JLabel(Messages.getString("P2T.get.GPTmodel.title"));
         gptModelLabel.setVisible(false); // Initially hidden
         modelComboBox = new JComboBox<>();
+        modelComboBox.setPreferredSize(new Dimension(150, 25));
         modelComboBox.setVisible(false); // Initially hidden
+
+        // Add fetchModels Button
+        JButton fetchModelsButton = new JButton("fetchModels");
+        fetchModelsButton.setPreferredSize(new Dimension(120, 25));
+        fetchModelsButton.setVisible(false); // Initially hidden
+        fetchModelsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                fetchAndFillModels();
+            }}
+        );
+
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         showAgainCheckBox.setToolTipText("Durch das Entfernen dieses Hakens wird das Popup-Fenster nicht erneut angezeigt, der Client merkt sich jedoch den zuletzt ausgewählten Modus," +
                 "unter den NLP Einstellungen kann das Fenster wieder aktiviert werden");
@@ -157,6 +168,7 @@ public class P2TUI extends JDialog {
             enablePromptCheckBox.setVisible(true);
             gptModelLabel.setVisible(true);
             modelComboBox.setVisible(true);
+            fetchModelsButton.setVisible(true);
             for (int i = 0; i < modelComboBox.getItemCount(); i++) {
                 if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())) {
                     modelComboBox.setSelectedIndex(i);
@@ -176,6 +188,7 @@ public class P2TUI extends JDialog {
             enablePromptCheckBox.setVisible(false);
             gptModelLabel.setVisible(false);
             modelComboBox.setVisible(false);
+            fetchModelsButton.setVisible(false);
 
             showAgainCheckBox.setVisible(true);
         });
@@ -201,7 +214,7 @@ public class P2TUI extends JDialog {
 
         gbc.gridx = 1;
         gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.BOTH;
         fieldsPanel.add(promptScrollPane, gbc);
 
         gbc.gridx = 0;
@@ -219,9 +232,15 @@ public class P2TUI extends JDialog {
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        gbc.weightx = 1.0;
+        gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fieldsPanel.add(modelComboBox, gbc); // Add JComboBox to the panel
+
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0.5;
+        fieldsPanel.add(fetchModelsButton, gbc); // Add fetchModels button to the panel
 
         gbc.gridx = 0;
         gbc.gridy = 5;
@@ -233,7 +252,9 @@ public class P2TUI extends JDialog {
         gbc.gridy = 1;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(10, 0, 0, 0);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         switchButtonPanel.add(fieldsPanel, gbc);
 
         return switchButtonPanel;
@@ -288,11 +309,12 @@ public class P2TUI extends JDialog {
     private void fetchAndFillModels() {
         new Thread(() -> {
             try {
-                List<String> models = ApiHelper.fetchModels();
+                List<String> models = ApiHelper.fetchModels(apiKeyField.getText());
                 SwingUtilities.invokeLater(() -> {
                     for (String model : models) {
                         modelComboBox.addItem(model);
                     }
+                    modelComboBox.setSelectedItem(ConfigurationManager.getConfiguration().getGptModel());
                 });
             } catch (IOException | ParseException e) {
                 SwingUtilities.invokeLater(() -> {

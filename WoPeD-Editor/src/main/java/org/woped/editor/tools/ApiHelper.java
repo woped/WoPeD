@@ -14,8 +14,8 @@ import org.json.simple.parser.ParseException;
 
 public class ApiHelper {
 
-    public static List<String> fetchModels() throws IOException, ParseException {
-        String urlString = "http://localhost:8080/p2t/gptModels";
+    public static List<String> fetchModels(String apiKey) throws IOException, ParseException {
+        String urlString = "http://localhost:8080/p2t/gptModels?apiKey=" + apiKey;
         List<String> models = new ArrayList<>();
 
         URL url = new URL(urlString);
@@ -39,7 +39,8 @@ public class ApiHelper {
                 models.add(model.toString());
             }
         } else {
-            throw new IOException("Failed to fetch models. Response Code: " + responseCode);
+            throw new IOException("Failed to fetch models. Response Code: " + responseCode + "\n" +
+                    "please check your API Key");
         }
         System.out.println(models);
         return models;

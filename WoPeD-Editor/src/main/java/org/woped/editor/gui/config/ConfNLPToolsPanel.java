@@ -10,7 +10,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -51,19 +50,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private JCheckBox showAgainBox = null;
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
+    private WopedButton fetchGPTModelsButton = null;
     private WopedButton checkConnectionButton = null;
-    List<String> models = List.of("");
-    {
-        try {
-            models = ApiHelper.fetchModels();
-        } catch (IOException | ParseException ignored) {
-
-        }
-    }
-
-    private String[] models2 = models.toArray(new String[0]);
-    // New components
-    private JComboBox<String> modelComboBox = new JComboBox<String>(models2);
+    private JComboBox<String> modelComboBox = new JComboBox<String>();
 
     public ConfNLPToolsPanel(String name) {
         super(name);
@@ -350,29 +339,45 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.gridy = 2;
             additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.model.Title")), c);
 
+            // Adjust the constraints for the combo box
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 2;
+            c.gridwidth = 1;
+            c.insets = new Insets(2, 0, 2, 12); // Add padding to the right of the combo box
+            c.fill = GridBagConstraints.HORIZONTAL;
             additionalPanel.add(getModelComboBox(), c);
 
+            // Adjust the constraints for the fetchModels button
+            c.weightx = 0;
+            c.gridx = 2;
+            c.gridy = 2;
+            c.insets = new Insets(2, 0, 2, 10);
+            additionalPanel.add(getFetchGPTModelsButton(), c);
+
+            // Adjust the constraints for the show again checkbox
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 3;
+            c.insets = new Insets(2, 0, 2, 0);
             additionalPanel.add(getShowAgainBox(), c);
 
+            // Adjust the constraints for the reset button
             c.weightx = 1;
             c.gridx = 2;
             c.gridy = 3;
+            c.insets = new Insets(2, 0, 2, 10); // Add padding to the right of the checkbox
             additionalPanel.add(getResetButton(), c);
 
+            // Adjust the constraints for the check connection button
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 3;
+            c.insets = new Insets(2, 0, 2, 12); // Reset insets for the button
             additionalPanel.add(getCheckConnectionButton(), c);
         }
 
         additionalPanel.setVisible(getUseBox().isSelected());
-        //fetchAndFillModels();
         for (int i = 0; i < modelComboBox.getItemCount(); i++){
             if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
                 modelComboBox.setSelectedIndex(i);
@@ -431,6 +436,16 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             });
         }
         return resetButton;
+    }
+
+    private WopedButton getFetchGPTModelsButton(){
+        if (fetchGPTModelsButton == null){
+            fetchGPTModelsButton = new WopedButton();
+            fetchGPTModelsButton.setText("fetchModels");
+            fetchGPTModelsButton.setPreferredSize(new Dimension(200, 25));
+            fetchGPTModelsButton.addActionListener(e -> fetchAndFillModels());
+        }
+        return fetchGPTModelsButton;
     }
 
     private WopedButton getCheckConnectionButton() {
@@ -722,4 +737,22 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
         return serverPortText_T2P;
     }
+    private void fetchAndFillModels() {
+        new Thread(() -> {
+            try {
+                List<String> models = ApiHelper.fetchModels(apiKeyText.getText());
+                SwingUtilities.invokeLater(() -> {
+                    for (String model : models) {
+                        modelComboBox.addItem(model);
+                    }
+                    modelComboBox.setSelectedItem(ConfigurationManager.getConfiguration().getGptModel());
+                });
+            } catch (IOException | ParseException e) {
+                SwingUtilities.invokeLater(() -> {
+                    JOptionPane.showMessageDialog(this, Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(), Messages.getString("P2T.exception.fetch.models"), JOptionPane.ERROR_MESSAGE);
+                });
+            }
+        }).start();
+    }
+
 }
