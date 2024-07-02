@@ -122,8 +122,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getApiKeyText().setText(ConfigurationManager.getConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
-        System.out.println(ConfigurationManager.getConfiguration().getGptModel());
-
     }
 
     private void initialize() {
@@ -429,8 +427,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             resetButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     setDefaultValuesGPT();
-                    System.out.println(ConfigurationManager.getConfiguration().getGptShowAgain());
-                    System.out.println(ConfigurationManager.getConfiguration().getGptPrompt());
                 }
             });
         }
