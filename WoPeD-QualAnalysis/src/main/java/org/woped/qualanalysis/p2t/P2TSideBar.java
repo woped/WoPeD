@@ -351,7 +351,6 @@ public class P2TSideBar extends JPanel implements ActionListener {
      //New LLM
       WebServiceThreadLLM webService = null;
       if(ConfigurationManager.getConfiguration().getGptUseNew()){
-      System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
       this.textpane.setText(Messages.getString("P2T.loading"));
       this.showLoadingAnimation(true);
       webService = new WebServiceThreadLLM(this);
@@ -369,7 +368,6 @@ public class P2TSideBar extends JPanel implements ActionListener {
     }
 
     if(!ConfigurationManager.getConfiguration().getGptUseNew()){
-      System.out.println(ConfigurationManager.getConfiguration().getGptUseNew());
       this.textpane.setText(Messages.getString("P2T.loading"));
       this.showLoadingAnimation(true);
         WebServiceThread webServiceOld = new WebServiceThread(this);

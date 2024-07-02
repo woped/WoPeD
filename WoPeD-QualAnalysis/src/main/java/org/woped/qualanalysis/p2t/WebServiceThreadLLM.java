@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
+
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.gui.translations.Messages;
@@ -16,7 +17,6 @@ import org.woped.gui.translations.Messages;
 public class WebServiceThreadLLM extends Thread {
 
     private P2TSideBar paraphrasingPanel;
-    private String[][] result = null;
     private boolean isFinished;
     private String apiKey;
     private String prompt;
@@ -40,15 +40,16 @@ public class WebServiceThreadLLM extends Thread {
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
 
-        String testUrl = "http://localhost:8080/p2t/generateTextLLM";
-        String url =
+        String url = "http://localhost:8080/p2t/generateTextLLM";
+
+        // This URL parameter is prepared for the go-live of the LLM-based Process2Text service
+        /*String url =
                 "http://"
                         + ConfigurationManager.getConfiguration().getProcess2TextServerHost()
                         + ":"
                         + ConfigurationManager.getConfiguration().getProcess2TextServerPort()
                         + ConfigurationManager.getConfiguration().getProcess2TextServerURI()
-                        + "/generateTextLLM";
-
+                        + "/generateTextLLM";*/
 
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -56,35 +57,34 @@ public class WebServiceThreadLLM extends Thread {
         String text = stream.toString();
         String output;
 
-        //TODO Diese logik in die Buttons implementieren!!
 
         try {
-            // URL-Parameter kodieren
-            String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8.toString());
-            String encodedPrompt = URLEncoder.encode(prompt, StandardCharsets.UTF_8.toString());
-            String encodedGptModel = URLEncoder.encode(gptModel, StandardCharsets.UTF_8.toString());
+            // Encode URL parameters
+            String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
+            String encodedPrompt = URLEncoder.encode(prompt, StandardCharsets.UTF_8);
+            String encodedGptModel = URLEncoder.encode(gptModel, StandardCharsets.UTF_8);
 
-            // URL mit Parametern aufbauen
+            // Construct URL with parameters
             String urlWithParams = String.format("%s?apiKey=%s&prompt=%s&gptModel=%s",
-                    testUrl, encodedApiKey, encodedPrompt, encodedGptModel);
+                    url, encodedApiKey, encodedPrompt, encodedGptModel);
             URL urlObj = new URL(urlWithParams);
 
-            // Verbindung aufbauen
+            // Establish connection
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "text/plain");
 
-            // Request-Body senden
+            // Send request body
             try (OutputStream os = conn.getOutputStream()) {
                 byte[] input = text.getBytes(StandardCharsets.UTF_8);
                 os.write(input, 0, input.length);
             }
 
-            // Antwort lesen
+            // Read response
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                try (Scanner scanner = new Scanner(conn.getInputStream(), StandardCharsets.UTF_8.name())) {
+                try (Scanner scanner = new Scanner(conn.getInputStream(), StandardCharsets.UTF_8)) {
                     output = scanner.useDelimiter("\\A").next();
                     output = output.replaceAll("\\s*\n\\s*", "");
                     paraphrasingPanel.setNaturalTextParser(new Process2Text(output));
@@ -95,6 +95,7 @@ public class WebServiceThreadLLM extends Thread {
             }
 
             // Fehlerbehandlung basierend auf Response Code
+
             switch (responseCode) {
                 case HttpServletResponse.SC_NO_CONTENT:
                 case HttpServletResponse.SC_REQUEST_TIMEOUT:
@@ -133,6 +134,13 @@ public class WebServiceThreadLLM extends Thread {
         }
     }
 
-    public void setText(String output) {this.text = output;}
-    public String getText() {return this.text;}
+    // Setter- und Getter für das Ergebnis des LLM
+
+    public void setText(String output) {
+        this.text = output;
+    }
+
+    public String getText() {
+        return this.text;
+    }
 }

@@ -13,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.*;
 
@@ -23,7 +22,6 @@ import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-@SuppressWarnings("serial")
 public class ConfNLPToolsPanel extends AbstractConfPanel {
     private JCheckBox useBox = null;
     private JPanel enabledPanel = null;
@@ -54,7 +52,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
     private WopedButton checkConnectionButton = null;
-    List<String> models = Arrays.asList("") ;
+    List<String> models = List.of("");
     {
         try {
             models = ApiHelper.fetchModels();
@@ -86,7 +84,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
         ConfigurationManager.getConfiguration().setProcess2TextServerHost(getServerURLText().getText());
         ConfigurationManager.getConfiguration().setProcess2TextServerURI(getManagerPathText().getText());
-        if (getServerPortText().getText().equals("")) {
+        if (getServerPortText().getText().isEmpty()) {
             ConfigurationManager.getConfiguration().setProcess2TextServerPort(0);
         } else {
             ConfigurationManager.getConfiguration()
@@ -98,7 +96,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
         ConfigurationManager.getConfiguration().setText2ProcessServerURI(getManagerPathText_T2P().getText());
 
-        if (getServerPortText_T2P().getText().equals("")) {
+        if (getServerPortText_T2P().getText().isEmpty()) {
             ConfigurationManager.getConfiguration().setText2ProcessServerPort(0);
         } else {
             ConfigurationManager.getConfiguration()
@@ -486,27 +484,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
     }
 
-    private void fetchAndFillModels() {
-        new Thread(() -> {
-            try {
-                List<String> models = ApiHelper.fetchModels();
-                SwingUtilities.invokeLater(() -> {
-                    for (String model : models) {
-                        modelComboBox.addItem(model);
-                    }
-                });
-            } catch (IOException | ParseException e) {
-                SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(
-                            this.getGPTPanel(),
-                            "Failed to fetch models: " + e.getMessage(),
-                            "Fetch Models",
-                            JOptionPane.ERROR_MESSAGE);
-                });
-            }
-        }).start();
-    }
-
     private void setDefaultValuesGPT() {
         getApiKeyText().setText(ConfigurationManager.getStandardConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getStandardConfiguration().getGptShowAgain());
@@ -639,7 +616,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private void testProcess2TextConnection() {
         URL url = null;
         String connection = "http://" + getServerURLText().getText() + ":" + getServerPortText().getText() + getManagerPathText().getText();
-        String arg[] = {connection, ""};
+        String[] arg = {connection, ""};
 
         try {
             url = new URL(connection);
@@ -649,8 +626,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
                 arg[1] = "P2T";
                 JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (MalformedURLException mue) {
-            JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
@@ -659,7 +634,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private void testText2ProcessConnection() {
         URL url;
         String connection = "http://" + getServerURLText_T2P().getText() + ":" + getServerPortText_T2P().getText() + getManagerPathText_T2P().getText();
-        String arg[] = {connection, ""};
+        String[] arg = {connection, ""};
 
         try {
             url = new URL(connection);
@@ -668,8 +643,6 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
                 arg[1] = "T2P";
                 JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (MalformedURLException mue) {
-            JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
