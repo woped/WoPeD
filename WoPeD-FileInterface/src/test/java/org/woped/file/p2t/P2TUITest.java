@@ -43,7 +43,7 @@ class P2TUITest {
     public void testIsAPIKeyValid_withInvalidKey() {
         String invalidApiKey = "invalidApiKey";
 
-        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+        boolean isValid = P2TUI.isAPIKeyValid(invalidApiKey);
 
         assertFalse(isValid);
     }
