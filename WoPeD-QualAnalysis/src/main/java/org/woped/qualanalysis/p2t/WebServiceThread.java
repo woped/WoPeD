@@ -52,7 +52,6 @@ public class WebServiceThread extends Thread {
         response = request.getResponse();
         output = response.getBody();
         output = output.replaceAll("\\s*\n\\s*", "");
-        System.out.println(output);
         setText(output);
         isFinished = true;
         paraphrasingPanel.setNaturalTextParser(new Process2Text(output));

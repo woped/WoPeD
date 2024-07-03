@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 import org.json.simple.parser.ParseException;
@@ -22,12 +23,15 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.Constants;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
 
 public class P2TUI extends JDialog {
+
     private JDialog loadDialog;
     private JTextField apiKeyField;
     private JTextArea promptField;
@@ -68,7 +72,7 @@ public class P2TUI extends JDialog {
         Dimension size = new Dimension(600, 375);
         this.setSize(size);
 
-        // Initialize models asynchronously
+        LoggerManager.info(Constants.EDITOR_LOGGER, "P2TUI initialized");
 
     }
 
@@ -126,7 +130,11 @@ public class P2TUI extends JDialog {
             promptField.setEnabled(enablePromptCheckBox.isSelected());
             if (!enablePromptCheckBox.isSelected()) {
                 promptField.revalidate();
+                LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing Disabled");
+            } else {
+                LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing Enabled");
             }
+
         });
 
         // Add JComboBox
@@ -141,15 +149,27 @@ public class P2TUI extends JDialog {
         fetchModelsButton.setPreferredSize(new Dimension(120, 25));
         fetchModelsButton.setVisible(false); // Initially hidden
         fetchModelsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                fetchAndFillModels();
-            }}
+                                                public void actionPerformed(ActionEvent e) {
+                                                    fetchAndFillModels();
+                                                }
+                                            }
         );
 
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
         showAgainCheckBox.setToolTipText("Durch das Entfernen dieses Hakens wird das Popup-Fenster nicht erneut angezeigt, der Client merkt sich jedoch den zuletzt ausgewählten Modus," +
                 "unter den NLP Einstellungen kann das Fenster wieder aktiviert werden");
         showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
+        showAgainCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (showAgainCheckBox.isSelected()) {
+                    LoggerManager.info(Constants.EDITOR_LOGGER,"Show Again Checkbox Selected");
+                }
+                else {
+                    LoggerManager.info(Constants.EDITOR_LOGGER,"Show Again Checkbox not Selected");
+                }
+            }
+        });
         apiKeyLabel.setVisible(false);
         apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
         apiKeyField.setVisible(false);
@@ -177,6 +197,8 @@ public class P2TUI extends JDialog {
             showAgainCheckBox.setVisible(true);
 
             apiKeyField.requestFocusInWindow();
+
+            LoggerManager.info(Constants.EDITOR_LOGGER, "LLM Service Selected");
         });
 
         oldRadioButton.addActionListener(e -> {
@@ -190,6 +212,8 @@ public class P2TUI extends JDialog {
             fetchModelsButton.setVisible(false);
 
             showAgainCheckBox.setVisible(true);
+
+            LoggerManager.info(Constants.EDITOR_LOGGER, "Algorithm Service Selected");
         });
 
         oldRadioButton.setSelected(true);

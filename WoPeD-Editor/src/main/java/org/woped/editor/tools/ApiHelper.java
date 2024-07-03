@@ -11,10 +11,14 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.Constants;
 
 public class ApiHelper {
 
     public static List<String> fetchModels(String apiKey) throws IOException, ParseException {
+        LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
+
         String urlString = "http://localhost:8080/p2t/gptModels?apiKey=" + apiKey;
         List<String> models = new ArrayList<>();
 
@@ -38,11 +42,13 @@ public class ApiHelper {
             for (Object model : modelsArray) {
                 models.add(model.toString());
             }
+
+            LoggerManager.info(Constants.EDITOR_LOGGER,"Finished Fetching GPT Models");
         } else {
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Failed to Fetch GPT Models");
             throw new IOException("Failed to fetch models. Response Code: " + responseCode + "\n" +
                     "please check your API Key");
         }
-        System.out.println(models);
         return models;
     }
 }
