@@ -125,7 +125,6 @@ public class P2TUI extends JDialog {
         enablePromptCheckBox.addActionListener(e -> {
             promptField.setEnabled(enablePromptCheckBox.isSelected());
             if (!enablePromptCheckBox.isSelected()) {
-                promptField.setText(DEFAULT_PROMPT); // Reset text when disabled
                 promptField.revalidate();
             }
         });
