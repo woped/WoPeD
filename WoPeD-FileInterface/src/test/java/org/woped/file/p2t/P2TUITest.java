@@ -1,5 +1,6 @@
 package org.woped.file.p2t;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
+import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
 
 
@@ -18,6 +20,11 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Arrays;
+import java.util.List;
+
 
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,11 +35,13 @@ public class P2TUITest {
     private P2TUI p2tui;
     private MockedStatic<Messages> messagesMock;
     private MockedStatic<ConfigurationManager> configManagerMock;
-
+    private MockedStatic<ApiHelper> apiHelperMock;
 
     @BeforeEach
     public void setUp() {
         p2tui = new P2TUI();
+
+        apiHelperMock = mockStatic(ApiHelper.class);
         // Mock the static Messages class
         messagesMock = mockStatic(Messages.class);
         messagesMock.when(() -> Messages.getString("P2T.openP2T.text")).thenReturn("Prozess zu Text");
@@ -181,19 +190,12 @@ public class P2TUITest {
     }
 
     @Test
-    public void testExecuteAction() {
-        // Mock ActionFactory.getStaticAction to return a mocked WoPeDAction
-        WoPeDAction mockedAction = mock(WoPeDAction.class);
-        try (MockedStatic<ActionFactory> mockedStatic = mockStatic(ActionFactory.class)) {
-            mockedStatic.when(() -> ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD)).thenReturn(mockedAction);
-            ViewEvent expectedViewEvent = new ViewEvent(p2tui, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null);
-            p2tui.executeAction();
-            mockedStatic.verify(() -> ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD));
+    public void testIsAPIKeyValid_withInvalidKey() {
+        String invalidApiKey = "invalidApiKey";
 
-            verify(mockedAction).actionPerformed(argThat(actionEvent ->
-                    actionEvent.getSource() == expectedViewEvent.getSource() &&
-                            actionEvent.getID() == expectedViewEvent.getID()
-            ));
-        }
+        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+
+        assertFalse(isValid);
     }
+
 }

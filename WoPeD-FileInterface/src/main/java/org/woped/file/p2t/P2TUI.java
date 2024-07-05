@@ -336,7 +336,7 @@ public class P2TUI extends JDialog {
         action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
     }
 
-    private void fetchAndFillModels() {
+    void fetchAndFillModels() {
         new Thread(() -> {
             try {
                 List<String> models = ApiHelper.fetchModels(apiKeyField.getText());
@@ -402,6 +402,5 @@ public class P2TUI extends JDialog {
 
         JOptionPane.showOptionDialog(null, msg, title, optionType, messageType, null, text, text[0]);
     }
-
 
 }
