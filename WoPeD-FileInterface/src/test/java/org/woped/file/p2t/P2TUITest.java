@@ -48,8 +48,7 @@ public class P2TUITest {
 
         assertEquals(Messages.getString("P2T.openP2T.text"), p2tui.getTitle(), "P2TUI title should be 'Open P2T'");
 
-        // Überprüfe die Größe des Dialogs
         assertEquals(new Dimension(600, 375), p2tui.getSize(), "Dialog should have size 600x375");
 
     }
-i}
+}
