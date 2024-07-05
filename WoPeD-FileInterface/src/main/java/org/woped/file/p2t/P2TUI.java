@@ -55,6 +55,14 @@ public class P2TUI extends JDialog {
         initialize();
     }
 
+    /**
+     * Initialize the dialog
+     * <p>
+     *     The dialog is initialized with a switch button panel at the top and a single button panel at the bottom.
+     *     The switch button panel contains a radio button group to switch between the old and new services.
+     *     The single button panel contains a single button to execute the action.
+     *     The dialog is initially hidden.
+     */
     void initialize() {
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
@@ -79,6 +87,19 @@ public class P2TUI extends JDialog {
 
     }
 
+    /**
+     * Initialize the switch button panel
+     * <p>
+     *     The switch button panel contains a radio button group to switch between the old and new services.
+     *     The new service requires an API key and a prompt text.
+     *     The prompt text is disabled by default and can be enabled by checking the enable prompt checkbox.
+     *     The prompt text is a text area with a default text.
+     *     The panel also contains a JComboBox to select the GPT model.
+     *     The panel also contains a button to fetch the available models.
+     *     The panel also contains a checkbox to show the popup again.
+     *     The panel is initially hidden.
+     * @return JPanel containing the switch button panel
+     */
     JPanel initializeSwitchButtonPanel() {
         JPanel switchButtonPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -286,6 +307,12 @@ public class P2TUI extends JDialog {
         return switchButtonPanel;
     }
 
+    /**
+     * Initialize the single button panel
+     * <p>
+     *     The single button panel contains a single button to execute the action.
+     * @return JPanel containing the single button panel
+     */
     JPanel initializeSingleButtonPanel() {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -327,11 +354,22 @@ public class P2TUI extends JDialog {
         return buttonPanel;
     }
 
+    /**
+     * Execute the action
+     * <p>
+     *     The action is executed based on the selected radio button.
+     */
     void executeAction() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
         action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
     }
 
+    /**
+     * Fetch and fill the models
+     * <p>
+     *     Fetch the models from the API and fill the models in the JComboBox.
+     *     If the models cannot be fetched, an error message is displayed.
+     */
     void fetchAndFillModels() {
         new Thread(() -> {
             try {
@@ -350,6 +388,14 @@ public class P2TUI extends JDialog {
         }).start();
     }
 
+    /**
+     * Validate the API key
+     * <p>
+     *     Validate the API key by sending a request to the API.
+     *     If the API key is invalid, an error message is displayed.
+     *     If the API key is valid, return true.
+     * @return
+     */
     boolean validateAPIKey() {
         String apiKey = apiKeyField.getText();
         boolean apiKeyValid = isAPIKeyValid(apiKey);
@@ -359,6 +405,11 @@ public class P2TUI extends JDialog {
         return apiKeyValid;
     }
 
+    /**
+     * Check if the API key is valid
+     * @param apiKey API key
+     * @return true if the API key is valid, false otherwise
+     */
     public static boolean isAPIKeyValid(String apiKey) {
         final String TEST_URL = "https://api.openai.com/v1/engines";
         try {

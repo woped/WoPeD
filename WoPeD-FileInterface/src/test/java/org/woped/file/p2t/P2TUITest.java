@@ -18,6 +18,7 @@ public class P2TUITest {
     private P2TUI p2tui;
     private MockedStatic<Messages> messagesMock;
 
+    // This method is called before each test
     @BeforeEach
     public void setUp() {
         p2tui = new P2TUI();
@@ -25,6 +26,7 @@ public class P2TUITest {
         initializeMockMessages();
     }
 
+    // This method initializes the mock for the Messages class
     private void initializeMockMessages() {
         messagesMock = mockStatic(Messages.class);
         messagesMock.when(() -> Messages.getString("P2T.openP2T.text")).thenReturn("Prozess zu Text");
@@ -37,12 +39,14 @@ public class P2TUITest {
         messagesMock.when(() -> Messages.getString("P2T.popup.show.again.title")).thenReturn("Erneut anzeigen");
     }
 
+    // This method is called after each test
     @AfterEach
     public void tearDown() {
         // Close the static mock
         messagesMock.close();
     }
 
+    // This method tests the initialize method
     @Test
     public void testInitialize() {
         assertFalse(p2tui.isVisible(), "P2TUI should be visible");
@@ -56,6 +60,7 @@ public class P2TUITest {
 
     }
 
+    // This method tests the initializeSwitchButtonPanel method
     @Test
     public void initializeSwitchButtonPanel() {
         JPanel switchButtonPanel = p2tui.initializeSwitchButtonPanel();
@@ -144,6 +149,7 @@ public class P2TUITest {
         assertFalse(modelComboBox.isVisible(), "modelComboBox should be hidden after selecting old service");
         assertFalse(fetchModelsButton.isVisible(), "fetchModelsButton should be hidden after selecting old service");
 
+        // Simulate clicking the showAgainCheckBox
         showAgainCheckBox.doClick();
         assertFalse(showAgainCheckBox.isSelected(), "showAgainCheckBox should be unchecked after click");
         showAgainCheckBox.doClick();
@@ -158,6 +164,7 @@ public class P2TUITest {
         assertFalse(promptField.isEnabled(), "promptField should be disabled after unchecking enablePromptCheckBox");
     }
 
+    // This method tests the initializeButtonPanel method
     @Test
     public void testInitializeSingleButtonPanel(){
         JPanel buttonPanel = p2tui.initializeSingleButtonPanel();
@@ -171,6 +178,7 @@ public class P2TUITest {
 
     }
 
+    // This method tests the isAPIKeyValid method with an invalid key
     @Test
     public void testIsAPIKeyValid_withInvalidKey() {
         String invalidApiKey = "invalidApiKey";
