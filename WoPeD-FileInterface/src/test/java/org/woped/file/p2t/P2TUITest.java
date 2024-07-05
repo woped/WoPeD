@@ -9,10 +9,12 @@ import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.gui.translations.Messages;
 
+
 import javax.swing.*;
 
 import java.awt.*;
 
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -51,4 +53,63 @@ public class P2TUITest {
         assertEquals(new Dimension(600, 375), p2tui.getSize(), "Dialog should have size 600x375");
 
     }
+
+    @Test
+    public void initializeSwitchButtonPanel() {
+        JPanel switchButtonPanel = p2tui.initializeSwitchButtonPanel();
+        assertNotNull(switchButtonPanel, "SwitchButtonPanel should be null");
+        assertTrue(switchButtonPanel.getLayout() instanceof GridBagLayout, "Layout should be GridBagLayout");
+
+        Component[] components = switchButtonPanel.getComponents();
+        assertEquals(2, components.length, "SwitchButtonPanel should have 2 components");
+
+        JPanel radioPanel = (JPanel) components[0];
+        assertEquals(2, radioPanel.getComponentCount());
+
+        JRadioButton oldRadioButton = (JRadioButton) radioPanel.getComponent(0);
+        JRadioButton newRadioButton = (JRadioButton) radioPanel.getComponent(1);
+
+        assertEquals(Messages.getString("P2T.oldservice.title"), oldRadioButton.getText(), "Old service radio button should have text 'Algorithmus'");
+        assertEquals(Messages.getString("P2T.newservice.title"), newRadioButton.getText(), "New service radio button should have text 'LLM'");
+
+        JPanel fieldsPanel = (JPanel) components[1];
+        assertTrue(fieldsPanel.getComponentCount() > 0, "Fields panel should have at least one component");
+
+        JLabel apiKeyLabel = (JLabel) fieldsPanel.getComponent(0);
+        assertNotNull(apiKeyLabel, "apiKeyLabel should not be null");
+        assertEquals(Messages.getString("P2T.apikey.title") + ":", apiKeyLabel.getText(), "apiKeyLabel text should be correct");
+
+        JTextField apiKeyField = (JTextField) fieldsPanel.getComponent(1);
+        assertNotNull(apiKeyField, "apiKeyField should not be null");
+        assertEquals(new Dimension(300, 25), apiKeyField.getPreferredSize(), "apiKeyField preferred size should be correct");
+
+        JLabel promptLabel = (JLabel) fieldsPanel.getComponent(2);
+        assertNotNull(promptLabel, "promptLabel should not be null");
+        assertEquals(Messages.getString("P2T.prompt.title") + ":", promptLabel.getText(), "promptLabel text should be correct");
+
+        JScrollPane promptScrollPane = (JScrollPane) fieldsPanel.getComponent(3);
+        assertNotNull(promptScrollPane, "promptScrollPane should not be null");
+        assertEquals(new Dimension(200, 100), promptScrollPane.getPreferredSize(), "promptScrollPane preferred size should be correct");
+
+        JCheckBox enablePromptCheckBox = (JCheckBox) fieldsPanel.getComponent(4);
+        assertNotNull(enablePromptCheckBox, "enablePromptCheckBox should not be null");
+        assertFalse(enablePromptCheckBox.isSelected(), "enablePromptCheckBox should not be selected");
+
+        JLabel gptModelLabel = (JLabel) fieldsPanel.getComponent(5);
+        assertNotNull(gptModelLabel, "gptModelLabel should not be null");
+
+        JComboBox<?> modelComboBox = (JComboBox<?>) fieldsPanel.getComponent(6);
+        assertNotNull(modelComboBox, "modelComboBox should not be null");
+
+        JButton fetchModelsButton = (JButton) fieldsPanel.getComponent(7);
+        assertNotNull(fetchModelsButton, "fetchModelsButton should not be null");
+        assertEquals("fetchModels", fetchModelsButton.getText(), "fetchModelsButton text should be correct");
+
+        JCheckBox showAgainCheckBox = (JCheckBox) fieldsPanel.getComponent(8);
+        assertNotNull(showAgainCheckBox, "showAgainCheckBox should not be null");
+        assertEquals(Messages.getString("P2T.popup.show.again.title"), showAgainCheckBox.getText(), "showAgainCheckBox text should be correct");
+        assertEquals(ConfigurationManager.getConfiguration().getGptShowAgain(), showAgainCheckBox.isSelected(), "showAgainCheckBox selected state should be correct");
+    }
+
+
 }
