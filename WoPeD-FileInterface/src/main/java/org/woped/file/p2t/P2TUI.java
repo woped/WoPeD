@@ -55,10 +55,6 @@ public class P2TUI extends JDialog {
         initialize();
     }
 
-    public Object getApiKeyField() {
-        return apiKeyField;
-    }
-
     void initialize() {
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
@@ -378,29 +374,6 @@ public class P2TUI extends JDialog {
             e.printStackTrace();
             return false;
         }
-    }
-
-    private void showLoadingBox() {
-        JOptionPane jop = new JOptionPane();
-        jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        jop.setMessage(Messages.getString("P2TUI.Loading.Text"));
-
-        loadDialog = jop.createDialog(this, Messages.getString("P2TUI.Loading.Title"));
-        jop.setOptions(new String[]{Messages.getString("P2TUI.Loading.Cancel")});
-        loadDialog.setVisible(true);
-
-        // Thread gets blocked and awaits an UI action.
-    }
-
-    private void showErrorPopUp(String titleId, String msgId) {
-        String text[] = {Messages.getString("Dialog.Ok")};
-
-        String msg = Messages.getStringReplaced(msgId, null);
-        String title = Messages.getString(titleId);
-        int optionType = JOptionPane.YES_NO_CANCEL_OPTION;
-        int messageType = JOptionPane.ERROR_MESSAGE;
-
-        JOptionPane.showOptionDialog(null, msg, title, optionType, messageType, null, text, text[0]);
     }
 
 }
