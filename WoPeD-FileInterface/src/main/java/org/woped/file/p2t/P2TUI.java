@@ -42,6 +42,10 @@ public class P2TUI extends JDialog {
 
     private static final String DEFAULT_PROMPT = Messages.getString("P2T.prompt.text");
 
+    public P2TUI() {
+        initialize();
+    }
+
     public P2TUI(AbstractApplicationMediator mediator) {
         this(null, mediator);
     }
@@ -51,7 +55,7 @@ public class P2TUI extends JDialog {
         initialize();
     }
 
-    private void initialize() {
+    void initialize() {
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
         this.setUndecorated(false);
@@ -75,7 +79,7 @@ public class P2TUI extends JDialog {
 
     }
 
-    private JPanel initializeSwitchButtonPanel() {
+    JPanel initializeSwitchButtonPanel() {
         JPanel switchButtonPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -394,4 +398,10 @@ public class P2TUI extends JDialog {
 
         JOptionPane.showOptionDialog(null, msg, title, optionType, messageType, null, text, text[0]);
     }
+
+    public Object getApiKeyField() {
+        return apiKeyField;
+    }
+
+
 }
