@@ -290,7 +290,7 @@ public class P2TUI extends JDialog {
         return switchButtonPanel;
     }
 
-    private JPanel initializeSingleButtonPanel() {
+    JPanel initializeSingleButtonPanel() {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 

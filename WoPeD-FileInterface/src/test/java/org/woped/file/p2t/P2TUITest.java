@@ -166,4 +166,17 @@ public class P2TUITest {
         enablePromptCheckBox.doClick();
         assertFalse(promptField.isEnabled(), "promptField should be disabled after unchecking enablePromptCheckBox");
     }
+
+    @Test
+    public void testInitializeSingleButtonPanel(){
+        JPanel buttonPanel = p2tui.initializeSingleButtonPanel();
+        assertNotNull(buttonPanel, "ButtonPanel should not be null");
+        assertTrue(buttonPanel.getLayout() instanceof BorderLayout, "ButtonPanel layout should be BorderLayout");
+
+        JButton singleButton = (JButton) buttonPanel.getComponent(0);
+        assertNotNull(singleButton, "SingleButton should not be null");
+        assertTrue(singleButton.getMnemonic() == KeyEvent.VK_A, "SingleButton mnemonic should be correct");
+        assertEquals(Messages.getString("P2T.text"), singleButton.getText(), "SingleButton text should be correct");
+
+    }
 }
