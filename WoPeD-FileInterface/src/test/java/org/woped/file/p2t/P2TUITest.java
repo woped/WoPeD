@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
 import javax.swing.*;
 import java.awt.*;
