@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
+import org.woped.core.utilities.LoggerManager;
 import org.woped.gui.translations.Messages;
 
 public class WebServiceThreadLLM extends Thread {
@@ -36,6 +37,8 @@ public class WebServiceThreadLLM extends Thread {
         apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
         gptModel = ConfigurationManager.getConfiguration().getGptModel();
+
+        LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
 
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
