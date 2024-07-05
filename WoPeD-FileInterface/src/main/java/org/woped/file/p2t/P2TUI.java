@@ -55,6 +55,10 @@ public class P2TUI extends JDialog {
         initialize();
     }
 
+    public Object getApiKeyField() {
+        return apiKeyField;
+    }
+
     void initialize() {
         this.setVisible(false);
         this.getContentPane().setLayout(new BorderLayout());
@@ -397,10 +401,6 @@ public class P2TUI extends JDialog {
         int messageType = JOptionPane.ERROR_MESSAGE;
 
         JOptionPane.showOptionDialog(null, msg, title, optionType, messageType, null, text, text[0]);
-    }
-
-    public Object getApiKeyField() {
-        return apiKeyField;
     }
 
 
