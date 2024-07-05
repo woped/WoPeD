@@ -25,6 +25,8 @@ public class P2TUITest {
     private P2TUI p2tui;
     private MockedStatic<Messages> messagesMock;
     private MockedStatic<ConfigurationManager> configManagerMock;
+    @Mock
+    private JTextField mockApiKeyField;
 
 
     @BeforeEach
@@ -178,6 +180,24 @@ public class P2TUITest {
         String invalidApiKey = "invalidApiKey";
 
         boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+
+        assertFalse(isValid);
+    }
+
+    @Test
+    public void testValidateAPIKey_withValidKey() {
+        when(mockApiKeyField.getText()).thenReturn("your_actual_valid_api_key");
+
+        boolean isValid = p2tui.validateAPIKey();
+
+        assertTrue(isValid);
+    }
+
+    @Test
+    public void testValidateAPIKey_withInvalidKey() {
+        when(mockApiKeyField.getText()).thenReturn("invalidApiKey");
+
+        boolean isValid = p2tui.validateAPIKey();
 
         assertFalse(isValid);
     }
