@@ -3,6 +3,7 @@ package org.woped.file.p2t;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.woped.core.config.ConfigurationManager;
@@ -162,6 +163,26 @@ public class P2TUITest {
         enablePromptCheckBox.doClick();
         assertFalse(promptField.isEnabled(), "promptField should be disabled after unchecking enablePromptCheckBox");
     }
+
+    @Test
+    public void testIsAPIKeyValid_withValidKey() {
+        String validApiKey = "your_actual_valid_api_key";
+
+        boolean isValid = p2tui.isAPIKeyValid(validApiKey);
+
+        assertTrue(isValid);
+    }
+
+    @Test
+    public void testIsAPIKeyValid_withInvalidKey() {
+        String invalidApiKey = "invalidApiKey";
+
+        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+
+        assertFalse(isValid);
+    }
+
+
 
 
 }
