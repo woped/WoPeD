@@ -29,6 +29,11 @@ import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
 
+/**
+ * P2TUI
+ * <p>
+ *     The P2TUI class is a dialog to select the P2T service.
+ */
 public class P2TUI extends JDialog {
 
     private JDialog loadDialog;
