@@ -179,4 +179,21 @@ public class P2TUITest {
         assertEquals(Messages.getString("P2T.text"), singleButton.getText(), "SingleButton text should be correct");
 
     }
+
+    @Test
+    public void testExecuteAction() {
+        // Mock ActionFactory.getStaticAction to return a mocked WoPeDAction
+        WoPeDAction mockedAction = mock(WoPeDAction.class);
+        try (MockedStatic<ActionFactory> mockedStatic = mockStatic(ActionFactory.class)) {
+            mockedStatic.when(() -> ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD)).thenReturn(mockedAction);
+            ViewEvent expectedViewEvent = new ViewEvent(p2tui, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null);
+            p2tui.executeAction();
+            mockedStatic.verify(() -> ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD));
+
+            verify(mockedAction).actionPerformed(argThat(actionEvent ->
+                    actionEvent.getSource() == expectedViewEvent.getSource() &&
+                            actionEvent.getID() == expectedViewEvent.getID()
+            ));
+        }
+    }
 }

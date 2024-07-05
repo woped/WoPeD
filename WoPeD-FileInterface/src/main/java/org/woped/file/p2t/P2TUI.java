@@ -331,7 +331,7 @@ public class P2TUI extends JDialog {
         return buttonPanel;
     }
 
-    private void executeAction() {
+    void executeAction() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
         action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
     }
