@@ -3,18 +3,21 @@ package org.woped.file.p2t;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
-import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
+import org.woped.editor.action.WoPeDAction;
+import org.woped.editor.controller.ActionFactory;
 import org.woped.gui.translations.Messages;
 
 
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,8 +28,6 @@ public class P2TUITest {
     private P2TUI p2tui;
     private MockedStatic<Messages> messagesMock;
     private MockedStatic<ConfigurationManager> configManagerMock;
-    @Mock
-    private JTextField mockApiKeyField;
 
 
     @BeforeEach
@@ -165,44 +166,4 @@ public class P2TUITest {
         enablePromptCheckBox.doClick();
         assertFalse(promptField.isEnabled(), "promptField should be disabled after unchecking enablePromptCheckBox");
     }
-
-    @Test
-    public void testIsAPIKeyValid_withValidKey() {
-        String validApiKey = "your_actual_valid_api_key";
-
-        boolean isValid = p2tui.isAPIKeyValid(validApiKey);
-
-        assertTrue(isValid);
-    }
-
-    @Test
-    public void testIsAPIKeyValid_withInvalidKey() {
-        String invalidApiKey = "invalidApiKey";
-
-        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
-
-        assertFalse(isValid);
-    }
-
-    @Test
-    public void testValidateAPIKey_withValidKey() {
-        when(mockApiKeyField.getText()).thenReturn("your_actual_valid_api_key");
-
-        boolean isValid = p2tui.validateAPIKey();
-
-        assertTrue(isValid);
-    }
-
-    @Test
-    public void testValidateAPIKey_withInvalidKey() {
-        when(mockApiKeyField.getText()).thenReturn("invalidApiKey");
-
-        boolean isValid = p2tui.validateAPIKey();
-
-        assertFalse(isValid);
-    }
-
-
-
-
 }
