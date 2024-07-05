@@ -1,32 +1,16 @@
 package org.woped.file.p2t;
 
-import org.junit.Assert;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.config.IGeneralConfiguration;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.ViewEvent;
-import org.woped.editor.action.WoPeDAction;
-import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.tools.ApiHelper;
 import org.woped.gui.translations.Messages;
-
-
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
-
-
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -34,15 +18,15 @@ public class P2TUITest {
 
     private P2TUI p2tui;
     private MockedStatic<Messages> messagesMock;
-    private MockedStatic<ConfigurationManager> configManagerMock;
-    private MockedStatic<ApiHelper> apiHelperMock;
 
     @BeforeEach
     public void setUp() {
         p2tui = new P2TUI();
 
-        apiHelperMock = mockStatic(ApiHelper.class);
-        // Mock the static Messages class
+        initializeMockMessages();
+    }
+
+    private void initializeMockMessages() {
         messagesMock = mockStatic(Messages.class);
         messagesMock.when(() -> Messages.getString("P2T.openP2T.text")).thenReturn("Prozess zu Text");
         messagesMock.when(() -> Messages.getString("P2T.oldservice.title")).thenReturn("Algorithmus");
@@ -52,7 +36,6 @@ public class P2TUITest {
         messagesMock.when(() -> Messages.getString("P2T.prompt.checkbox.enable.title")).thenReturn("Bearbeitung aktivieren");
         messagesMock.when(() -> Messages.getString("P2T.get.GPTmodel.title")).thenReturn("GPT-Model:");
         messagesMock.when(() -> Messages.getString("P2T.popup.show.again.title")).thenReturn("Erneut anzeigen");
-
     }
 
     @AfterEach
