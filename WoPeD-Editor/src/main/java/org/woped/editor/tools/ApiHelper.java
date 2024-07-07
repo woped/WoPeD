@@ -47,7 +47,7 @@ public class ApiHelper {
         } else {
             LoggerManager.error(Constants.EDITOR_LOGGER, "Failed to Fetch GPT Models");
             throw new IOException("Failed to fetch models. Response Code: " + responseCode + "\n" +
-                    "please check your API Key");
+                    "Please check your API Key");
         }
         return models;
     }
