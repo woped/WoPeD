@@ -26,7 +26,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private JPanel enabledPanel = null;
     private JPanel settingsPanel = null;
     private JPanel settingsPanel_T2P = null;
-    private JPanel additionalPanel = null;
+    private JPanel settingsPanel_GPT = null;
 
     private JTextField serverURLText = null;
     private JLabel serverURLLabel = null;
@@ -303,41 +303,41 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     }
 
     private JPanel getGPTPanel() {
-        if (additionalPanel == null) {
-            additionalPanel = new JPanel();
-            additionalPanel.setLayout(new GridBagLayout());
+        if (settingsPanel_GPT == null) {
+            settingsPanel_GPT = new JPanel();
+            settingsPanel_GPT.setLayout(new GridBagLayout());
             GridBagConstraints c = new GridBagConstraints();
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            additionalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.GPT.settings.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_GPT.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.GPT.settings.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
-            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.apikey.Title")), c);
+            settingsPanel_GPT.add(new JLabel(Messages.getString("Configuration.GPT.apikey.Title")), c);
 
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 0;
-            additionalPanel.add(getApiKeyText(), c);
+            settingsPanel_GPT.add(getApiKeyText(), c);
 
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 1;
-            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.prompt.Title")), c);
+            settingsPanel_GPT.add(new JLabel(Messages.getString("Configuration.GPT.prompt.Title")), c);
 
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 1;
             c.gridwidth = 2;
-            additionalPanel.add(getPromptTextScrollPane(), c);
+            settingsPanel_GPT.add(getPromptTextScrollPane(), c);
 
             // Add the new row with the label and combo box
             c.weightx = 0;
             c.gridx = 0;
             c.gridy = 2;
-            additionalPanel.add(new JLabel(Messages.getString("Configuration.GPT.model.Title")), c);
+            settingsPanel_GPT.add(new JLabel(Messages.getString("Configuration.GPT.model.Title")), c);
 
             // Adjust the constraints for the combo box
             c.weightx = 1;
@@ -346,45 +346,45 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.gridwidth = 1;
             c.insets = new Insets(2, 0, 2, 12); // Add padding to the right of the combo box
             c.fill = GridBagConstraints.HORIZONTAL;
-            additionalPanel.add(getModelComboBox(), c);
+            settingsPanel_GPT.add(getModelComboBox(), c);
 
             // Adjust the constraints for the fetchModels button
             c.weightx = 0;
             c.gridx = 2;
             c.gridy = 2;
             c.insets = new Insets(2, 0, 2, 10);
-            additionalPanel.add(getFetchGPTModelsButton(), c);
+            settingsPanel_GPT.add(getFetchGPTModelsButton(), c);
 
             // Adjust the constraints for the show again checkbox
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 3;
             c.insets = new Insets(2, 0, 2, 0);
-            additionalPanel.add(getShowAgainBox(), c);
+            settingsPanel_GPT.add(getShowAgainBox(), c);
 
             // Adjust the constraints for the reset button
             c.weightx = 1;
             c.gridx = 2;
             c.gridy = 3;
             c.insets = new Insets(2, 0, 2, 10); // Add padding to the right of the checkbox
-            additionalPanel.add(getResetButton(), c);
+            settingsPanel_GPT.add(getResetButton(), c);
 
             // Adjust the constraints for the check connection button
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 3;
             c.insets = new Insets(2, 0, 2, 12); // Reset insets for the button
-            additionalPanel.add(getCheckConnectionButton(), c);
+            settingsPanel_GPT.add(getCheckConnectionButton(), c);
         }
 
-        additionalPanel.setVisible(getUseBox().isSelected());
+        settingsPanel_GPT.setVisible(getUseBox().isSelected());
         for (int i = 0; i < modelComboBox.getItemCount(); i++){
             if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
                 modelComboBox.setSelectedIndex(i);
                 break;
             }
         }
-        return additionalPanel;
+        return settingsPanel_GPT;
     }
 
     private JScrollPane getPromptTextScrollPane() {
@@ -441,7 +441,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private WopedButton getFetchGPTModelsButton(){
         if (fetchGPTModelsButton == null){
             fetchGPTModelsButton = new WopedButton();
-            fetchGPTModelsButton.setText("fetchModels");
+            fetchGPTModelsButton.setText(Messages.getString("P2T.fetchmodels.button"));
             fetchGPTModelsButton.setPreferredSize(new Dimension(200, 25));
             fetchGPTModelsButton.addActionListener(e -> fetchAndFillModels());
         }

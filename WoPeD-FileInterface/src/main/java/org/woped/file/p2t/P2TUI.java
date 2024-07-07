@@ -174,7 +174,7 @@ public class P2TUI extends JDialog {
         modelComboBox.setVisible(false); // Initially hidden
 
         // Add fetchModels Button
-        JButton fetchModelsButton = new JButton("fetchModels");
+        JButton fetchModelsButton = new JButton(Messages.getString("P2T.fetchmodels.button"));
         fetchModelsButton.setPreferredSize(new Dimension(120, 25));
         fetchModelsButton.setVisible(false); // Initially hidden
         fetchModelsButton.addActionListener(new ActionListener() {

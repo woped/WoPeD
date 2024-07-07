@@ -38,7 +38,8 @@ public class WebServiceThreadLLM extends Thread {
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
         gptModel = ConfigurationManager.getConfiguration().getGptModel();
 
-        LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
+        // LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
+
 
         IEditor editor = paraphrasingPanel.getEditor();
         paraphrasingPanel.showLoadingAnimation(true);
