@@ -36,7 +36,7 @@
     ·
     <a href="https://github.com/woped/WoPeD/issues">Request Feature</a>
 	·
-    <a href="mailto:thomas.freytag@dhbw-karlsruhe.de">Contact the responsible person (Thomas Freytag)</a>
+    <a href="mailto:thomas.freytag@dhbw-karlsruhe.de">Contact me</a>
   </p>
 </div>
 
