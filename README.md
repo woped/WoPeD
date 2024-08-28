@@ -96,13 +96,6 @@ The main goal is to provide an easy-to-use software for modelling, simulating an
 <img src=".github/img/4.jpeg" width="30%"></img>
 <img src=".github/img/5.jpeg" width="30%"></img>
 <img src=".github/img/6.jpeg" width="30%"></img>
-<img src=".github/img/7.jpeg" width="30%"></img>
-<img src=".github/img/8.jpeg" width="30%"></img>
-<img src=".github/img/9.jpeg" width="30%"></img>
-<img src=".github/img/10.jpeg" width="30%"></img>
-<img src=".github/img/11.jpeg" width="30%"></img>
-<img src=".github/img/12.jpeg" width="30%"></img>
-<img src=".github/img/13.jpeg" width="30%"></img>
 
 
 <!-- GETTING STARTED -->
