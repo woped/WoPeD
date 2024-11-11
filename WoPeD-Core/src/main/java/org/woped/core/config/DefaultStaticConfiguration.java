@@ -12,7 +12,7 @@ import org.woped.config.ApromoreServer;
 /**
  * Class that provides fallback configuration settings for the general WoPeD configuration part
  *
- * @author Philip Allgaier
+ * @autor Philip Allgaier
  */
 @SuppressWarnings("JavadocReference")
 public class DefaultStaticConfiguration implements IGeneralConfiguration {
@@ -189,6 +189,32 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private boolean yawlExportExplicitPlaces = false;
 
   private boolean yawlExportGroups = false;
+
+  // GPT settings
+  private String gptApiKey = "";
+  private boolean gptShowAgain = true;
+  private String gptPrompt = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
+  private boolean gptUseNew = false;
+  private String gptModel = null;
+
+  public boolean isGptUseNew() {
+    return gptUseNew;
+  }
+
+  public void setGptUseNew(boolean gptUseNew) {
+    this.gptUseNew = gptUseNew;
+  }
+  public boolean getGptUseNew(){
+    return gptUseNew;
+  }
+
+  public void setGptModel(String gptModel) {
+    this.gptModel = gptModel;
+  }
+
+  public String getGptModel() {
+    return gptModel;
+  }
 
   public DefaultStaticConfiguration() {
     initConfig();
@@ -919,29 +945,29 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   @Override
   public void addApromoreServer(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort) {}
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort) {}
 
   @Override
   public void changeApromoreServerSettings(
-      int ID,
-      String name,
-      String url,
-      int port,
-      String path,
-      String user,
-      String pwd,
-      boolean useProxy,
-      String proxyUrl,
-      int proxyPort) {}
+          int ID,
+          String name,
+          String url,
+          int port,
+          String path,
+          String user,
+          String pwd,
+          boolean useProxy,
+          String proxyUrl,
+          int proxyPort) {}
 
   @Override
   public void removeApromoreServer(int index) {}
@@ -1082,5 +1108,36 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   public void setYAWLExportGroups(boolean exportGroups) {
     this.yawlExportGroups = exportGroups;
+  }
+
+  // GPT settings
+  @Override
+  public String getGptApiKey() {
+    return gptApiKey;
+  }
+
+  @Override
+  public void setGptApiKey(String apiKey) {
+    this.gptApiKey = apiKey;
+  }
+
+  @Override
+  public boolean getGptShowAgain() {
+    return gptShowAgain;
+  }
+
+  @Override
+  public void setGptShowAgain(boolean showAgain) {
+    this.gptShowAgain = showAgain;
+  }
+
+  @Override
+  public String getGptPrompt() {
+    return gptPrompt;
+  }
+
+  @Override
+  public void setGptPrompt(String prompt) {
+    this.gptPrompt = prompt;
   }
 }

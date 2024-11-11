@@ -16,6 +16,8 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.text.BadLocationException;
+
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.utilities.LoggerManager;
@@ -29,14 +31,13 @@ import org.woped.qualanalysis.service.QualanalysisServiceImplement;
 /** The sidebar to be used for displaying of the natural text-presentation (Process2Text). */
 public class P2TSideBar extends JPanel implements ActionListener {
 
-  private IEditor editor;
+  private final IEditor editor;
   private JEditorPane textpane = null;
   private Process2Text naturalTextParser = null;
   private JButton buttonLoad = null;
   private JButton buttonExport = null;
   private JLabel labelLoading = null;
-  private WebServiceThread webService = null;
-  private boolean threadInProgress = false;
+    private boolean threadInProgress = false;
   private boolean firstTimeDisplayed = false;
 
   /**
@@ -227,7 +228,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
       // If we already have a text/process description, ask for overwrite
       // confirmation.
 
-      if (naturalTextParser != null && naturalTextParser.getXmlText().length() > 0) {
+      if (naturalTextParser != null && !naturalTextParser.getXmlText().isEmpty()) {
         if (JOptionPane.showConfirmDialog(
                 null,
                 Messages.getString("Paraphrasing.Load.Question.Content"),
@@ -253,7 +254,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
     if (e.getSource() == this.buttonExport) {
 
       boolean fileTypeOk = false;
-      if (this.textpane.getText().length() > 0) {
+      if (!this.textpane.getText().isEmpty()) {
         JFileChooser jFileChooser = new JFileChooser();
         jFileChooser.setFileFilter(
             new FileFilter() {
@@ -320,7 +321,7 @@ public class P2TSideBar extends JPanel implements ActionListener {
   private void getText() {
     clean();
 
-    // Ensure their are no arc weights
+    // Ensure there are no arc weights
     if (editor.getModelProcessor().usesArcWeights()) {
       this.textpane.setText(Messages.getString("P2T.Error.ArcWeights.title"));
       showErrorMessage("P2T.Error.ArcWeights");
@@ -347,21 +348,41 @@ public class P2TSideBar extends JPanel implements ActionListener {
       this.textpane.setText(Messages.getString("P2T.SoundError"));
       return;
     }
+     //New LLM
+      WebServiceThreadLLM webService = null;
+      if(ConfigurationManager.getConfiguration().getGptUseNew()){
+      this.textpane.setText(Messages.getString("P2T.loading"));
+      this.showLoadingAnimation(true);
+      webService = new WebServiceThreadLLM(this);
+      webService.start();
+      while (!webService.getIsFinished()) {
+        try {
+          Thread.sleep(500);
+        } catch (InterruptedException e1) {
+          // ignore
+        }
+      }
+      this.textpane.setText("");
 
-    this.textpane.setText(Messages.getString("P2T.loading"));
-    this.showLoadingAnimation(true);
-    webService = new WebServiceThread(this);
-    webService.start();
-    while (!webService.getIsFinished()) {
-      try {
-        Thread.sleep(500);
-      } catch (InterruptedException e1) {
-        // ignore
+      if (naturalTextParser != null) this.textpane.setText(webService.getText());
+    }
+
+    if(!ConfigurationManager.getConfiguration().getGptUseNew()){
+      this.textpane.setText(Messages.getString("P2T.loading"));
+      this.showLoadingAnimation(true);
+        WebServiceThread webServiceOld = new WebServiceThread(this);
+      webServiceOld.start();
+      while (!webServiceOld.getIsFinished()) {
+        try{
+          Thread.sleep(500);
+        }catch (InterruptedException e1){
+          //ignore?
+        }
+        this.textpane.setText("");
+
+        if (naturalTextParser != null) this.textpane.setText(webServiceOld.getText());
       }
     }
-    this.textpane.setText("");
-
-    if (naturalTextParser != null) this.textpane.setText(naturalTextParser.getHtmlText());
 
     setThreadInProgress(false);
     webService = null;
