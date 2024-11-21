@@ -164,17 +164,17 @@ jobs:
       # Download installers
     - id: download-linux-installer
       name: Download Linux installer
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: linux-installer
     - id: download-windows-installer
       name: Download Windows installer
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: windows-installer
     - id: download-macos-installer
       name: Download macOS installer
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4.1.7
       with:
         name: macos-installer
       # Prepare version
