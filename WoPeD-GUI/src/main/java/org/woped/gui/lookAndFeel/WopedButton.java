@@ -28,7 +28,7 @@ public class WopedButton extends JButton {
 
   /**
    * setText(String text) Sets the button's text. This method overrides the default setText method
-   * and changes the font on a mac to the OSX default font face and size
+   * and changes the font on a mac to the OSX default font face and size test
    *
    * @param text the string used to set the text
    */
