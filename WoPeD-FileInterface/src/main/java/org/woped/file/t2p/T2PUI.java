@@ -75,6 +75,9 @@ public class T2PUI extends JDialog {
   private SwingWorker<HttpResponse, Void> bgTaskHttp;
 
   private String inputText;
+  private JComboBox<String> approachBox;
+  static final String CLASSIC_APPROACH = "Classic NLP";
+  static final String LLM_APPROACH = "LLM-based";
 
   public T2PUI(AbstractApplicationMediator mediator) {
     this(null, mediator);
@@ -112,7 +115,7 @@ public class T2PUI extends JDialog {
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     this.setLocation(
-        (screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
+            (screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
     Dimension size = new Dimension(600, 440);
     this.setSize(size);
 
@@ -131,9 +134,9 @@ public class T2PUI extends JDialog {
 
     if (doesContain) {
       String lastTextInput =
-          ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index))
-              .getEditorPanel()
-              .getT2PText();
+              ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index))
+                      .getEditorPanel()
+                      .getT2PText();
       textArea.setText(lastTextInput);
     }
   }
@@ -171,66 +174,77 @@ public class T2PUI extends JDialog {
     JComboBox<String> langBox = new JComboBox<String>(lang);
     langBox.setSelectedIndex(1);
 
-    // TODO: Listener for ComboBox Changes
+    // Approach selection dropdown
+    String[] approaches = {CLASSIC_APPROACH, LLM_APPROACH};
+    approachBox = new JComboBox<String>(approaches);
+    approachBox.setSelectedIndex(0);
 
     WopedButton btnGenerate =
-        new WopedButton(
-            new AbstractAction() {
-              public void actionPerformed(ActionEvent arg0) {
-                request();
-              }
-            });
+            new WopedButton(
+                    new AbstractAction() {
+                      public void actionPerformed(ActionEvent arg0) {
+                        request();
+                      }
+                    });
 
     btnGenerate.setMnemonic(KeyEvent.VK_A);
     btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text"));
     btnGenerate.setIcon(
-        new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
-
-    WopedButton btnErase =
-        new WopedButton(
-            new AbstractAction() {
-              public void actionPerformed(ActionEvent arg0) {
-                clearTextArea();
-              }
-            });
-
-    btnErase.setMnemonic(KeyEvent.VK_L);
-    btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
-    btnErase.setIcon(
-        new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
+            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
 
     WopedButton btnUpload =
-        new WopedButton(
-            new AbstractAction() {
-              public void actionPerformed(ActionEvent arg0) {
-                readFile();
-              }
-            });
+            new WopedButton(
+                    new AbstractAction() {
+                      public void actionPerformed(ActionEvent arg0) {
+                        readFile();
+                      }
+                    });
 
     btnUpload.setMnemonic(KeyEvent.VK_C);
     btnUpload.setText(Messages.getString("T2PUI.Button.Read.Text"));
     btnUpload.setIcon(
-        new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
+            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
 
     buttonPanel.add(btnUpload);
-    buttonPanel.add(btnErase);
     buttonPanel.add(langBox);
     buttonPanel.add(Box.createHorizontalGlue());
+    buttonPanel.add(approachBox);
+    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
     buttonPanel.add(btnGenerate);
 
     return buttonPanel;
   }
 
-  private void request() {
+  void request() {
     if (requested) return;
     requested = true;
 
     inputText = textArea.getText();
 
     if (!inputText.isEmpty()) {
-      jsonBackgroundWorker(inputText);
-      showLoadingBox();
+      String selectedApproach = (String) approachBox.getSelectedItem();
 
+      if (selectedApproach.equals(LLM_APPROACH)) {
+        String apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
+
+        // Prompt and validate API key
+        while (apiKey.equals("test") || apiKey.isEmpty() || !isApiKeyValid(apiKey)) {
+          apiKey = promptForApiKey();
+          if (apiKey == null || apiKey.isEmpty()) {
+            requested = false;
+            return;
+          }
+          ConfigurationManager.getConfiguration().setGptApiKey(apiKey);
+        }
+
+        // Process with LLM approach
+        llmBackgroundWorker(inputText, apiKey);
+      } else {
+        // Process with classic approach
+        jsonBackgroundWorker(inputText);
+      }
+
+      showLoadingBox();
     } else {
       showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
     }
@@ -238,7 +252,35 @@ public class T2PUI extends JDialog {
     requested = false;
   }
 
-  private void showLoadingBox() {
+
+  String promptForApiKey() {
+    String apiKey = JOptionPane.showInputDialog(
+            this,
+            "Please enter your GPT API key:\n(This will be stored in your configuration)",
+            "API Key Required",
+            JOptionPane.QUESTION_MESSAGE);
+
+    return apiKey;
+  }
+
+  private boolean isApiKeyValid(String apiKey) {
+    try {
+      HttpURLConnection connection = (HttpURLConnection) new URL("https://api.openai.com/v1/models").openConnection();
+      connection.setRequestMethod("GET");
+      connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+      connection.connect();
+
+      int responseCode = connection.getResponseCode();
+      connection.disconnect();
+
+      return responseCode == 200;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  void showLoadingBox() {
     JOptionPane jop = new JOptionPane();
     jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
     jop.setMessage(Messages.getString("T2PUI.Loading.Text"));
@@ -254,7 +296,7 @@ public class T2PUI extends JDialog {
     }
   }
 
-  private void displayPNML(String pnml) {
+  void displayPNML(String pnml) {
     PNMLImport pnmlImport = new PNMLImport(mediator);
     InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
 
@@ -280,7 +322,7 @@ public class T2PUI extends JDialog {
     close();
   }
 
-  private void showErrorPopUp(String titleId, String msgId) {
+  void showErrorPopUp(String titleId, String msgId) {
     String text[] = {Messages.getString("Dialog.Ok")};
 
     String msg = Messages.getStringReplaced(msgId, null);
@@ -289,8 +331,112 @@ public class T2PUI extends JDialog {
     int messageType = JOptionPane.ERROR_MESSAGE;
 
     int value =
-        JOptionPane.showOptionDialog(
-            null, msg, title, optionType, messageType, null, text, text[0]);
+            JOptionPane.showOptionDialog(
+                    null, msg, title, optionType, messageType, null, text, text[0]);
+  }
+
+  /**
+   * This method calls the LLM API to generate a PNML from text using the t2p 2.0 endpoint
+   *
+   * @param text The input text to process
+   * @param apiKey The API key for the GPT service
+   */
+  void llmBackgroundWorker(String text, String apiKey) {
+    String connectionStr =
+            "http://"
+                    + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
+                    + ":"
+                    + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
+                    + "/api_call";
+
+    bgTask =
+            new SwingWorker<HttpURLConnection, Void>() {
+              @Override
+              protected HttpURLConnection doInBackground() throws IOException {
+                // Forming the URL
+                HttpURLConnection connection;
+                connection = (HttpURLConnection) new URL(connectionStr).openConnection();
+
+                // Setting the connection properties
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json; UTF-8");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoOutput(true);
+
+                // Create the JSON request body
+                String jsonInputString = "{\"text\":\"" + text.replace("\"", "\\\"") + "\",\"api_key\":\"" + apiKey + "\"}";
+
+                // Establishing an output stream and write the text as json
+                OutputStream outputStream = connection.getOutputStream();
+                byte[] input = jsonInputString.getBytes("utf-8");
+                outputStream.write(input, 0, input.length);
+
+                return connection;
+              }
+
+              @Override
+              protected void done() {
+                try {
+                  if (loadDialog != null) loadDialog.dispose();
+                  HttpURLConnection connection = get();
+                  int responseCode = connection.getResponseCode();
+                  if (responseCode == 200) {
+                    // Reading the response
+                    BufferedReader bufferedReader =
+                            new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder responseJson = new StringBuilder();
+                    String responseLine;
+                    // Reading the incoming json line by line and transforming it to a single String
+                    while ((responseLine = bufferedReader.readLine()) != null) {
+                      responseJson.append(responseLine.trim());
+                    }
+                    String responseStr = responseJson.toString();
+
+                    // Extract the PNML from the response
+                    // The response format is expected to be {"result": "pnml_string"}
+                    int resultStart = responseStr.indexOf("\"result\":") + 10;
+                    int resultEnd = responseStr.lastIndexOf("\"");
+                    if (resultStart > 0 && resultEnd > resultStart) {
+                      String pnml = responseStr.substring(resultStart, resultEnd);
+                      if (!pnml.isEmpty()) {
+                        displayPNML(pnml);
+                      } else {
+                        showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
+                      }
+                    } else {
+                      showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
+                    }
+                  } else {
+                    // Handle error responses
+                    BufferedReader errorReader =
+                            new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+                    StringBuilder errorJson = new StringBuilder();
+                    String errorLine;
+                    while ((errorLine = errorReader.readLine()) != null) {
+                      errorJson.append(errorLine.trim());
+                    }
+                    String errorMessage = errorJson.toString();
+
+                    if (responseCode == 400) {
+                      showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
+                    } else if (responseCode == 500) {
+                      showErrorPopUp("T2PUI.500Error.Title", "T2PUI.LLMProcessingError.Text");
+                    } else {
+                      showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
+                    }
+                  }
+                } catch (Exception e) {
+                  String[] arg = {e.getMessage()};
+                  JOptionPane.showMessageDialog(
+                          null,
+                          "Error connecting to LLM service: " + e.getMessage(),
+                          "LLM Connection Error",
+                          JOptionPane.ERROR_MESSAGE);
+                }
+              }
+            };
+
+    bgTask.execute();
   }
 
   /**
@@ -300,124 +446,124 @@ public class T2PUI extends JDialog {
    * @author <a href="mailto:kanzler.benjamin@student.dhbe-karlsruhe.de">Benjamin Kanzler</a>
    * @param text
    */
-  private void jsonBackgroundWorker(String text) {
+  void jsonBackgroundWorker(String text) {
 
     String connectionStr =
-        "http://"
-            + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
-            + ":"
-            + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
-            + ConfigurationManager.getConfiguration().getText2ProcessServerURI()
-            + "/generatePNML";
+            "http://"
+                    + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
+                    + ":"
+                    + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
+                    + ConfigurationManager.getConfiguration().getText2ProcessServerURI()
+                    + "/generatePNML";
 
     bgTask =
-        new SwingWorker<HttpURLConnection, Void>() {
-          @Override
-          protected HttpURLConnection doInBackground() throws IOException {
-            // Forming the Url out of the configuration
-            HttpURLConnection connection;
-            connection = (HttpURLConnection) new URL(connectionStr).openConnection();
+            new SwingWorker<HttpURLConnection, Void>() {
+              @Override
+              protected HttpURLConnection doInBackground() throws IOException {
+                // Forming the Url out of the configuration
+                HttpURLConnection connection;
+                connection = (HttpURLConnection) new URL(connectionStr).openConnection();
 
-            // Setting the connection properties
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/json; UTF-8");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setDoOutput(true);
+                // Setting the connection properties
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json; UTF-8");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoOutput(true);
 
-            // Establishing an output stream and write the text as json
-            OutputStream outputStream = connection.getOutputStream();
-            byte[] input = text.getBytes("utf-8");
-            outputStream.write(input, 0, input.length);
+                // Establishing an output stream and write the text as json
+                OutputStream outputStream = connection.getOutputStream();
+                byte[] input = text.getBytes("utf-8");
+                outputStream.write(input, 0, input.length);
 
-            return connection;
-          }
-
-          @Override
-          protected void done() {
-            try {
-              if (loadDialog != null) loadDialog.dispose();
-              HttpURLConnection connection = get();
-              switch (connection.getResponseCode()) {
-                case 200:
-                case 201:
-                case 202:
-                case 204:
-                  // Reading the response
-                  BufferedReader bufferedReader =
-                      new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                  StringBuilder responseJson = new StringBuilder();
-                  String responseLine;
-                  // Reading the incoming json line by line and transforming it to a single String
-                  while ((responseLine = bufferedReader.readLine()) != null) {
-                    responseJson.append(responseLine.trim());
-                  }
-                  String pnml = responseJson.toString();
-                  // Extracting the pnml-xml from the json body
-                  if (!pnml.isEmpty()) {
-                    displayPNML(pnml);
-                  } else {
-                    // TODO: error handling
-
-                  }
-                  break;
-                case 400:
-                  showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
-                  break;
-                case 500:
-                  showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
-                  break;
-                case 503:
-                  showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
-                  break;
-                default:
-                  showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-                  break;
+                return connection;
               }
-            } catch (MalformedURLException e) {
-              String[] arg = {connectionStr};
-              JOptionPane.showMessageDialog(
-                  null,
-                  Messages.getString("T2PUI.500Error.Text", arg)
-                      + Messages.getString("T2PUI.Webservice.Settings"),
-                  Messages.getString("T2PUI.500Error.Title"),
-                  JOptionPane.ERROR_MESSAGE);
-              return;
-            } catch (IOException e) {
-              String[] arg = {connectionStr};
-              JOptionPane.showMessageDialog(
-                  null,
-                  Messages.getString("T2PUI.500Error.Text", arg)
-                      + Messages.getString("T2PUI.Webservice.Settings"),
-                  Messages.getString("T2PUI.500Error.Title"),
-                  JOptionPane.ERROR_MESSAGE);
-              return;
-            } catch (InterruptedException e) {
-              String[] arg = {connectionStr};
-              JOptionPane.showMessageDialog(
-                  null,
-                  Messages.getString("T2PUI.500Error.Text", arg)
-                      + Messages.getString("T2PUI.Webservice.Settings"),
-                  Messages.getString("T2PUI.500Error.Title"),
-                  JOptionPane.ERROR_MESSAGE);
-              return;
-            } catch (ExecutionException e) {
-              String[] arg = {connectionStr};
-              JOptionPane.showMessageDialog(
-                  null,
-                  Messages.getString("T2PUI.500Error.Text", arg)
-                      + "\n"
-                      + Messages.getString("T2PUI.Webservice.Settings"),
-                  Messages.getString("T2PUI.500Error.Title"),
-                  JOptionPane.ERROR_MESSAGE);
-              return;
-            }
-          }
-        };
+
+              @Override
+              protected void done() {
+                try {
+                  if (loadDialog != null) loadDialog.dispose();
+                  HttpURLConnection connection = get();
+                  switch (connection.getResponseCode()) {
+                    case 200:
+                    case 201:
+                    case 202:
+                    case 204:
+                      // Reading the response
+                      BufferedReader bufferedReader =
+                              new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                      StringBuilder responseJson = new StringBuilder();
+                      String responseLine;
+                      // Reading the incoming json line by line and transforming it to a single String
+                      while ((responseLine = bufferedReader.readLine()) != null) {
+                        responseJson.append(responseLine.trim());
+                      }
+                      String pnml = responseJson.toString();
+                      // Extracting the pnml-xml from the json body
+                      if (!pnml.isEmpty()) {
+                        displayPNML(pnml);
+                      } else {
+                        // TODO: error handling
+
+                      }
+                      break;
+                    case 400:
+                      showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
+                      break;
+                    case 500:
+                      showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
+                      break;
+                    case 503:
+                      showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
+                      break;
+                    default:
+                      showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
+                      break;
+                  }
+                } catch (MalformedURLException e) {
+                  String[] arg = {connectionStr};
+                  JOptionPane.showMessageDialog(
+                          null,
+                          Messages.getString("T2PUI.500Error.Text", arg)
+                                  + Messages.getString("T2PUI.Webservice.Settings"),
+                          Messages.getString("T2PUI.500Error.Title"),
+                          JOptionPane.ERROR_MESSAGE);
+                  return;
+                } catch (IOException e) {
+                  String[] arg = {connectionStr};
+                  JOptionPane.showMessageDialog(
+                          null,
+                          Messages.getString("T2PUI.500Error.Text", arg)
+                                  + Messages.getString("T2PUI.Webservice.Settings"),
+                          Messages.getString("T2PUI.500Error.Title"),
+                          JOptionPane.ERROR_MESSAGE);
+                  return;
+                } catch (InterruptedException e) {
+                  String[] arg = {connectionStr};
+                  JOptionPane.showMessageDialog(
+                          null,
+                          Messages.getString("T2PUI.500Error.Text", arg)
+                                  + Messages.getString("T2PUI.Webservice.Settings"),
+                          Messages.getString("T2PUI.500Error.Title"),
+                          JOptionPane.ERROR_MESSAGE);
+                  return;
+                } catch (ExecutionException e) {
+                  String[] arg = {connectionStr};
+                  JOptionPane.showMessageDialog(
+                          null,
+                          Messages.getString("T2PUI.500Error.Text", arg)
+                                  + "\n"
+                                  + Messages.getString("T2PUI.Webservice.Settings"),
+                          Messages.getString("T2PUI.500Error.Title"),
+                          JOptionPane.ERROR_MESSAGE);
+                  return;
+                }
+              }
+            };
 
     bgTask.execute();
   }
 
-  private void close() {
+  void close() {
     this.dispose();
   }
 
