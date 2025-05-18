@@ -252,7 +252,7 @@ public class T2PUI extends JDialog {
     requested = false;
   }
 
-
+//TODO: Figure out how to add the texts to translation interfaces
   String promptForApiKey() {
     String apiKey = JOptionPane.showInputDialog(
             this,
