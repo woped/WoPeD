@@ -48,6 +48,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
@@ -341,13 +344,10 @@ public class T2PUI extends JDialog {
    * @param text The input text to process
    * @param apiKey The API key for the GPT service
    */
+  //TODO: Ask how to add this to config and not hardcode it
   void llmBackgroundWorker(String text, String apiKey) {
     String connectionStr =
-            "http://"
-                    + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
-                    + ":"
-                    + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
-                    + "/api_call";
+            "http://localhost:5000/api_call";
 
     bgTask =
             new SwingWorker<HttpURLConnection, Void>() {
@@ -380,24 +380,18 @@ public class T2PUI extends JDialog {
                   if (loadDialog != null) loadDialog.dispose();
                   HttpURLConnection connection = get();
                   int responseCode = connection.getResponseCode();
+                  Gson gson = new Gson(); // Create a Gson instance
+
                   if (responseCode == 200) {
                     // Reading the response
                     BufferedReader bufferedReader =
                             new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    StringBuilder responseJson = new StringBuilder();
-                    String responseLine;
-                    // Reading the incoming json line by line and transforming it to a single String
-                    while ((responseLine = bufferedReader.readLine()) != null) {
-                      responseJson.append(responseLine.trim());
-                    }
-                    String responseStr = responseJson.toString();
+                    // Use GSON to parse the response directly from the reader
+                    LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
+                    bufferedReader.close(); // Close the reader
 
-                    // Extract the PNML from the response
-                    // The response format is expected to be {"result": "pnml_string"}
-                    int resultStart = responseStr.indexOf("\"result\":") + 10;
-                    int resultEnd = responseStr.lastIndexOf("\"");
-                    if (resultStart > 0 && resultEnd > resultStart) {
-                      String pnml = responseStr.substring(resultStart, resultEnd);
+                    if (llmResponse != null && llmResponse.getResult() != null) {
+                      String pnml = llmResponse.getResult();
                       if (!pnml.isEmpty()) {
                         displayPNML(pnml);
                       } else {
@@ -415,7 +409,9 @@ public class T2PUI extends JDialog {
                     while ((errorLine = errorReader.readLine()) != null) {
                       errorJson.append(errorLine.trim());
                     }
+                    errorReader.close(); // Close the reader
                     String errorMessage = errorJson.toString();
+                    // You could potentially parse the error JSON with GSON too if it has a known structure
 
                     if (responseCode == 400) {
                       showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
@@ -425,6 +421,9 @@ public class T2PUI extends JDialog {
                       showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
                     }
                   }
+                } catch (JsonSyntaxException e) { // Catch GSON parsing errors
+                  showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
+                  // Log e.getMessage() for debugging if needed
                 } catch (Exception e) {
                   String[] arg = {e.getMessage()};
                   JOptionPane.showMessageDialog(
@@ -578,4 +577,18 @@ public class T2PUI extends JDialog {
     String txt = r.read();
     if (txt != null) textArea.setText(txt);
   }
+
+  //TODO: move to a model folder
+  class LlmResponse {
+    private String result;
+
+    public String getResult() {
+      return result;
+    }
+
+    public void setResult(String result) {
+      this.result = result;
+    }
+  }
+
 }
