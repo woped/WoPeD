@@ -1,0 +1,17 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  linting:
+   uses: woped/devops/.github/workflows/linting.yaml@main
+  testing_maven:
+    uses: woped/devops/.github/workflows/testing_maven.yaml@feature/main
+  sonar_maven:
+    needs: testing_maven
+    uses: woped/devops/.github/workflows/sonar_maven.yaml@feature/main
+    secrets: inherit
