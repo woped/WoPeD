@@ -53,9 +53,9 @@ public class P2TUI extends JDialog {
     private JScrollPane promptScrollPane;
 
     private static final String DEFAULT_PROMPT = Messages.getString("P2T.prompt.text");
-    private static final String PROVIDER_OPENAI = "OpenAI";
-    private static final String PROVIDER_GEMINI = "Gemini";
-    private static final String PROVIDER_LMSTUDIO = "LMStudio";
+    private static final String PROVIDER_OPENAI = "openAI";
+    private static final String PROVIDER_GEMINI = "gemini";
+    private static final String PROVIDER_LMSTUDIO = "lmStudio";
 
     public P2TUI() {
         initialize();
@@ -455,11 +455,11 @@ public class P2TUI extends JDialog {
                 List<String> models;
                 
                 if (PROVIDER_LMSTUDIO.equals(selectedProvider)) {
-                    models = ApiHelper.fetchModels(null);
+                    models = ApiHelper.fetchModels(null, selectedProvider);
                 } else if (PROVIDER_OPENAI.equals(selectedProvider)) {
-                    models = ApiHelper.fetchModels(apiKeyField.getText());
+                    models = ApiHelper.fetchModels(apiKeyField.getText(), selectedProvider);
                 } else if (PROVIDER_GEMINI.equals(selectedProvider)) {
-                    models = ApiHelper.fetchModels(apiKeyField.getText());
+                    models = ApiHelper.fetchModels(apiKeyField.getText(), selectedProvider);
                 } else {
                     throw new IOException("Unsupported provider: " + selectedProvider);
                 }
