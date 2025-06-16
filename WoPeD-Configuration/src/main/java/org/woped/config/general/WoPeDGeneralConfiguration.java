@@ -1419,6 +1419,18 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
+  public void setT2P2ServerHost(String host) {
+    getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
+  }
+
+  @Override
+  public String getT2PLLMServerHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
+    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
+  }
+
+  @Override
   public int getProcess2TextServerPort() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TServerPort()) {
       return getConfDocument().getConfiguration().getP2T().getP2TServerPort();
