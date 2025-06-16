@@ -7,6 +7,9 @@ on:
     branches: [ main, master ]
 
 jobs:
+  validate_commit_messages:
+    uses: woped/devops/.github/workflows/validate-commit-msg.yaml@main
+
   linting:
    uses: woped/devops/.github/workflows/linting.yaml@main
   testing_maven:
