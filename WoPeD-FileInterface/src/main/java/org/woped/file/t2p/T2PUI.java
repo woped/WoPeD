@@ -360,93 +360,96 @@ public class T2PUI extends JDialog {
    */
   //TODO: Ask how to add this to config and not hardcode it
   void llmBackgroundWorker(String text, String apiKey) {
-    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":5000";
+    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":5000/generate_PNML";
+    System.out.println("Connecting to LLM service at: " + connectionStr);
 
-    bgTask =
-            new SwingWorker<HttpURLConnection, Void>() {
-              @Override
-              protected HttpURLConnection doInBackground() throws IOException {
-                // Forming the URL
-                HttpURLConnection connection;
-                connection = (HttpURLConnection) new URL(connectionStr).openConnection();
+    bgTask = new SwingWorker<HttpURLConnection, Void>() {
+      @Override
+      protected HttpURLConnection doInBackground() throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL(connectionStr).openConnection();
 
-                // Setting the connection properties
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Content-Type", "application/json; UTF-8");
-                connection.setRequestProperty("Accept", "application/json");
-                connection.setDoOutput(true);
+        // Setting the connection properties
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setDoOutput(true);
+        connection.setConnectTimeout(30000);
+        connection.setReadTimeout(60000);
 
-                // Create the JSON request body
-                String jsonInputString = "{\"text\":\"" + text.replace("\"", "\\\"") + "\",\"api_key\":\"" + apiKey + "\"}";
+        // Create the JSON request body with better escaping
+        String escapedText = text.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
+        String jsonInputString = "{\"text\":\"" + escapedText + "\",\"api_key\":\"" + apiKey + "\"}";
 
-                // Establishing an output stream and write the text as json
-                OutputStream outputStream = connection.getOutputStream();
-                byte[] input = jsonInputString.getBytes("utf-8");
-                outputStream.write(input, 0, input.length);
+        // Send the request
+        try (OutputStream outputStream = connection.getOutputStream()) {
+          byte[] input = jsonInputString.getBytes("utf-8");
+          outputStream.write(input, 0, input.length);
+          outputStream.flush();
+        }
 
-                return connection;
-              }
+        return connection;
+      }
 
-              @Override
-              protected void done() {
-                try {
-                  if (loadDialog != null) loadDialog.dispose();
-                  HttpURLConnection connection = get();
-                  int responseCode = connection.getResponseCode();
-                  Gson gson = new Gson(); // Create a Gson instance
+      @Override
+      protected void done() {
+        HttpURLConnection connection = null;
+        try {
+          if (loadDialog != null) loadDialog.dispose();
 
-                  if (responseCode == 200) {
-                    // Reading the response
-                    BufferedReader bufferedReader =
-                            new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    // Use GSON to parse the response directly from the reader
-                    LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
-                    bufferedReader.close(); // Close the reader
+          connection = get();
+          int responseCode = connection.getResponseCode();
+          Gson gson = new Gson();
 
-                    if (llmResponse != null && llmResponse.getResult() != null) {
-                      String pnml = llmResponse.getResult();
-                      if (!pnml.isEmpty()) {
-                        displayPNML(pnml);
-                      } else {
-                        showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
-                      }
-                    } else {
-                      showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
-                    }
-                  } else {
-                    // Handle error responses
-                    BufferedReader errorReader =
-                            new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-                    StringBuilder errorJson = new StringBuilder();
-                    String errorLine;
-                    while ((errorLine = errorReader.readLine()) != null) {
-                      errorJson.append(errorLine.trim());
-                    }
-                    errorReader.close(); // Close the reader
-                    String errorMessage = errorJson.toString();
-                    // You could potentially parse the error JSON with GSON too if it has a known structure
+          if (responseCode == 200) {
+            // Reading the response
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+              LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
 
-                    if (responseCode == 400) {
-                      showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
-                    } else if (responseCode == 500) {
-                      showErrorPopUp("T2PUI.500Error.Title", "T2PUI.LLMProcessingError.Text");
-                    } else {
-                      showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-                    }
-                  }
-                } catch (JsonSyntaxException e) { // Catch GSON parsing errors
-                  showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
-                  // Log e.getMessage() for debugging if needed
-                } catch (Exception e) {
-                  String[] arg = {e.getMessage()};
-                  JOptionPane.showMessageDialog(
-                          null,
-                          "Error connecting to LLM service: " + e.getMessage(),
-                          "LLM Connection Error",
-                          JOptionPane.ERROR_MESSAGE);
+              if (llmResponse != null && llmResponse.getResult() != null) {
+                String pnml = llmResponse.getResult();
+                if (!pnml.isEmpty()) {
+                  displayPNML(pnml);
+                } else {
+                  showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
                 }
+              } else {
+                showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
               }
-            };
+            }
+          } else {
+            // Handle error responses
+            try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
+              StringBuilder errorJson = new StringBuilder();
+              String errorLine;
+              while ((errorLine = errorReader.readLine()) != null) {
+                errorJson.append(errorLine.trim());
+              }
+              String errorMessage = errorJson.toString();
+
+              if (responseCode == 400) {
+                showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
+              } else if (responseCode == 500) {
+                showErrorPopUp("T2PUI.500Error.Title", "T2PUI.LLMProcessingError.Text");
+              } else {
+                showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
+              }
+            }
+          }
+        } catch (JsonSyntaxException e) {
+          showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(
+                  null,
+                  "Error connecting to LLM service: " + e.getMessage(),
+                  "LLM Connection Error",
+                  JOptionPane.ERROR_MESSAGE);
+        } finally {
+          if (connection != null) {
+            connection.disconnect();
+          }
+        }
+      }
+    };
 
     bgTask.execute();
   }
