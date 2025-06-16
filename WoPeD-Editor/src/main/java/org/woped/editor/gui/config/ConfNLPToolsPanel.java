@@ -103,8 +103,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         ConfigurationManager.getConfiguration().setGptApiKey(getApiKeyText().getText());
         ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
-        ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
-        ConfigurationManager.getConfiguration().setT2P2ServerHost(getServerURLText_LLM().getText());
+        ConfigurationManager.getConfiguration().setT2PLLMServerHost(getServerURLText_LLM().getText());
         return true;
     }
 

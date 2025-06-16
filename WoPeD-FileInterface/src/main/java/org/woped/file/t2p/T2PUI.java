@@ -358,7 +358,6 @@ public class T2PUI extends JDialog {
    * @param text The input text to process
    * @param apiKey The API key for the GPT service
    */
-  //TODO: Ask how to add this to config and not hardcode it
   void llmBackgroundWorker(String text, String apiKey) {
     String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":5000/generate_PNML";
     System.out.println("Connecting to LLM service at: " + connectionStr);

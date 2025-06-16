@@ -986,7 +986,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   }
 
   @Override
-  public void setT2P2ServerHost(String host){
+  public void setT2PLLMServerHost(String host){
     this.text2process_llm_serverHost = host;
   }
 

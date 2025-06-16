@@ -1407,27 +1407,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
-  public String getText2ProcessServerHost() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
-      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
-  }
-
-  @Override
   public void setProcess2TextServerHost(String host) {
     getConfDocument().getConfiguration().getP2T().setP2TServerHost(host);
-  }
-
-  @Override
-  public void setT2P2ServerHost(String host) {
-    getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
-  }
-
-  @Override
-  public String getT2PLLMServerHost() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
-      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
   }
 
   @Override
@@ -1470,6 +1451,26 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   @Override
   public void setText2ProcessServerHost(String host) {
     getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
+  }
+
+  @Override
+  public String getText2ProcessServerHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
+    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
+  }
+
+  //TODO: Fix
+  @Override
+  public void setT2PLLMServerHost(String host) {
+    getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
+  }
+
+  @Override
+  public String getT2PLLMServerHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
+    } else return ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost();
   }
 
   @Override
