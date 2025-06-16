@@ -253,7 +253,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel_T2P.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_T2P.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title_NLP")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
