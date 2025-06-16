@@ -208,7 +208,21 @@ public class T2PUI extends JDialog {
     btnUpload.setIcon(
             new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
 
+    WopedButton btnErase =
+            new WopedButton(
+                    new AbstractAction() {
+                      public void actionPerformed(ActionEvent arg0) {
+                        clearTextArea();
+                      }
+                    });
+
+    btnErase.setMnemonic(KeyEvent.VK_L);
+    btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
+    btnErase.setIcon(
+            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
+
     buttonPanel.add(btnUpload);
+    buttonPanel.add(btnErase);
     buttonPanel.add(langBox);
     buttonPanel.add(Box.createHorizontalGlue());
     buttonPanel.add(approachBox);
