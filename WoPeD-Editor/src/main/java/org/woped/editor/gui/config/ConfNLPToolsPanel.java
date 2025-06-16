@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -720,21 +722,45 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         }
         return defaultButton_LLM;
     }
-    //TODO: proper conn test memthod
+
     private void testLLMConnection() {
-        URL url;
         String connection = getServerURLText_LLM().getText();
         String[] arg = {connection, ""};
-
+        //TODO: Port from config
         try {
-            url = new URL(connection);
-            URLConnection urlConnection = url.openConnection();
-            if (urlConnection.getContent() != null) {
-                arg[1] = "LLM";
-                JOptionPane.showMessageDialog(this.getSettingsPanel_LLM(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
+            URL url = new URL("http://" + connection + ":5000/test_connection");
+            HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
+            httpConnection.setRequestMethod("GET");
+            httpConnection.setConnectTimeout(10000);
+            httpConnection.setReadTimeout(10000);
+
+            int responseCode = httpConnection.getResponseCode();
+
+            if (responseCode == 200) {
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(httpConnection.getInputStream()));
+                String response = reader.readLine();
+                reader.close();
+
+                if (response != null && response.contains("Successful")) {
+                    arg[1] = "LLM";
+                    JOptionPane.showMessageDialog(
+                            this.getSettingsPanel_LLM(),
+                            Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
+                            Messages.getString("Paraphrasing.Webservice.Success.Title"),
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
             }
+
+            throw new IOException("Server returned unexpected response: " + responseCode);
+
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this.getSettingsPanel_LLM(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    this.getSettingsPanel_LLM(),
+                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
+                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

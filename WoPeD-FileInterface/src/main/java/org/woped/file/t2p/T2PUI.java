@@ -360,8 +360,7 @@ public class T2PUI extends JDialog {
    */
   //TODO: Ask how to add this to config and not hardcode it
   void llmBackgroundWorker(String text, String apiKey) {
-    String connectionStr =
-            "http://localhost:5000/api_call";
+    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":5000";
 
     bgTask =
             new SwingWorker<HttpURLConnection, Void>() {

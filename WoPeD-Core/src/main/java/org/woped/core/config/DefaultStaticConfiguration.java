@@ -72,6 +72,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
   public static String DEFAULT_TEXT2PROCESS_HOST = "woped.dhbw-karlsruhe.de";
+  public static String DEFAULT_TEXT2PROCESS_LLMSERVER_HOST = "localhost";
   public static int DEFAULT_TEXT2PROCESS_PORT = 8081;
   public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
   public static boolean DEFAULT_TEXT2PROCESS_USE = false;
@@ -136,8 +137,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private int text2process_serverPort = DEFAULT_TEXT2PROCESS_PORT;
   private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
   private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
-
-  private String text2process_llm_serverHost = DEFAULT_TEXT2PROCESS_HOST;
+  private String text2process_llm_serverHost = DEFAULT_TEXT2PROCESS_LLMSERVER_HOST;
 
   // Dashboard
   private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
