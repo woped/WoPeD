@@ -138,8 +138,6 @@ jobs:
     with:
       VERSION: ${{ needs.semver.outputs.VERSION }}
       RELEASE_NOTES: ${{ needs.semver.outputs.RELEASE_NOTES }}
-    secrets:
-      inherit: true
 
   upload-release-assets:
     name: Upload Release Assets
