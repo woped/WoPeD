@@ -134,9 +134,7 @@ jobs:
 
   create-release:
     uses: woped/devops/.github/workflows/github-release.yaml@main
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    needs: [semver, build-linux-installer, build-windows-installer, build-macos-installer]
+    needs: [ semver, build-linux-installer, build-windows-installer, build-macos-installer ]
     with:
       VERSION: ${{ needs.semver.outputs.VERSION }}
       RELEASE_NOTES: ${{ needs.semver.outputs.RELEASE_NOTES }}
