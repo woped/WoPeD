@@ -1008,7 +1008,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   @Override
   public void setT2PLLMServerPort(int port) {
-    this.text2process_serverPort = port;
+    this.text2processllm_serverPort = port;
   }
 
   @Override
