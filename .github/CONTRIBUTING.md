@@ -19,7 +19,7 @@ Before starting any development work, create a new feature branch from the `main
 
 Branch names should follow this pattern:
 
-```
+``` 
 feature/<short-description>
 ```
 ![GitHub Flow Branching Strategy](img/GitHubFlow.png)
