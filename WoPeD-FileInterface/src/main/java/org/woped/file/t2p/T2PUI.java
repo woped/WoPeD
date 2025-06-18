@@ -359,7 +359,7 @@ public class T2PUI extends JDialog {
    * @param apiKey The API key for the GPT service
    */
   void llmBackgroundWorker(String text, String apiKey) {
-    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":5000/generate_PNML";
+    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":" + ConfigurationManager.getConfiguration().getT2pLLMServerPort();
     System.out.println("Connecting to LLM service at: " + connectionStr);
 
     bgTask = new SwingWorker<HttpURLConnection, Void>() {

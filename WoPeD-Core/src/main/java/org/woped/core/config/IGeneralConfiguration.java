@@ -508,6 +508,8 @@ public interface IGeneralConfiguration extends IConfiguration {
   public void setProcess2TextServerHost(String host);
 
 
+  void setT2PLLMServerPort(int port);
+
   public int getProcess2TextServerPort();
 
   public void setProcess2TextServerPort(int port);
@@ -527,6 +529,10 @@ public interface IGeneralConfiguration extends IConfiguration {
   public String getT2PLLMServerHost();
 
   public void setText2ProcessServerHost(String host);
+
+  int getT2pLLMServerPort();
+
+  void setT2pLLMServerPort(int port);
 
   public int getText2ProcessServerPort();
 

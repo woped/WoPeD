@@ -1412,6 +1412,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
+  public void setT2PLLMServerPort(int port) {
+
+  }
+
+  @Override
   public int getProcess2TextServerPort() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TServerPort()) {
       return getConfDocument().getConfiguration().getP2T().getP2TServerPort();
@@ -1471,6 +1476,18 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
     if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerHost()) {
       return getConfDocument().getConfiguration().getT2P().getT2PLLMServerHost();
     } else return ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost();
+  }
+
+  @Override
+  public int getT2pLLMServerPort() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerPort()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLLMServerPort();
+    } else return ConfigurationManager.getStandardConfiguration().getT2pLLMServerPort();
+  }
+
+  @Override
+  public void setT2pLLMServerPort(int port) {
+    getConfDocument().getConfiguration().getT2P().setT2PLLMServerPort(port);
   }
 
   @Override

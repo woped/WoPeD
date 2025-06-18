@@ -60,6 +60,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private JPanel settingsPanel_LLM = null;
     private JTextField serverURLText_LLM = null;
     private JLabel serverURLLabel_LLM = null;
+    private JLabel serverPortLabel_LLM = null;
+    private JTextField serverPortText_LLM = null;
     private WopedButton testButton_LLM = null;
     private WopedButton defaultButton_LLM = null;
 
@@ -104,6 +106,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
         ConfigurationManager.getConfiguration().setT2PLLMServerHost(getServerURLText_LLM().getText());
+        if (getServerPortText_LLM().getText().isEmpty()) {
+            ConfigurationManager.getConfiguration().setT2PLLMServerPort(0);
+        } else {
+            ConfigurationManager.getConfiguration()
+                    .setT2PLLMServerPort(Integer.parseInt(getServerPortText_LLM().getText()));
+        }
         return true;
     }
 
@@ -120,6 +128,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
         getServerURLText_LLM().setText(ConfigurationManager.getConfiguration().getT2PLLMServerHost());
+        getServerPortText_LLM().setText("" + ConfigurationManager.getConfiguration().getT2pLLMServerPort());
     }
 
     private void initialize() {
@@ -337,9 +346,19 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             settingsPanel_LLM.add(getServerURLText_LLM(), c);
 
             c.weightx = 1;
-            c.gridx = 2;
+            c.gridx = 0;
             c.gridy = 1;
             c.gridwidth = 1;
+            settingsPanel_LLM.add(getServerPortLabel_LLM(), c);
+
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 1;
+            settingsPanel_LLM.add(getServerPortText_LLM(), c);
+
+            c.weightx = 1;
+            c.gridx = 2;
+            c.gridy = 1;
             settingsPanel_LLM.add(getTestButton_LLM(), c);
 
             c.weightx = 1;
@@ -696,6 +715,24 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         return serverURLLabel_LLM;
     }
 
+    private JLabel getServerPortLabel_LLM() {
+        if (serverPortLabel_LLM == null) {
+            serverPortLabel_LLM = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+            serverPortLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serverPortLabel_LLM;
+    }
+
+    private JTextField getServerPortText_LLM() {
+        if (serverPortText_LLM == null) {
+            serverPortText_LLM = new JTextField();
+            serverPortText_LLM.setColumns(4);
+            serverPortText_LLM.setEnabled(true);
+            serverPortText_LLM.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+        }
+        return serverPortText_LLM;
+    }
+
     private WopedButton getTestButton_LLM() {
         if (testButton_LLM == null) {
             testButton_LLM = new WopedButton();
@@ -727,7 +764,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         String[] arg = {connection, ""};
         //TODO: Port from config
         try {
-            URL url = new URL("http://" + connection + ":5000/test_connection");
+            String port = getServerPortText_LLM().getText().isEmpty() ? "5000" : getServerPortText_LLM().getText();
+            URL url = new URL("http://" + connection + ":" + port + "/test_connection");
             HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
             httpConnection.setRequestMethod("GET");
             httpConnection.setConnectTimeout(10000);
@@ -765,6 +803,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private void setDefaultValues_LLM() {
         getServerURLText_LLM().setText(ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost());
+        getServerPortText_LLM().setText("" + ConfigurationManager.getStandardConfiguration().getT2pLLMServerPort());
     }
 
     private void testProcess2TextConnection() {
