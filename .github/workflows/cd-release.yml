@@ -51,7 +51,7 @@ jobs:
       # Upload installer
     - id: upload-installer
       name: Upload installer
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: ./woped-installer/build/distributions/WoPeD.deb
         name: linux-installer
@@ -89,7 +89,7 @@ jobs:
       # Upload installer
     - id: upload-installer
       name: Upload installer
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: C:\WoPeD.msi
         name: windows-installer
@@ -126,7 +126,7 @@ jobs:
       # Upload Installer
     - id: upload-installer
       name: Upload installer
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: /Users/runner/.m2/WoPeD.dmg
         name: macos-installer
