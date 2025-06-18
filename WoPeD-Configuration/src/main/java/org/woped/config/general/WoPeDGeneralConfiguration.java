@@ -1407,15 +1407,13 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
-  public String getText2ProcessServerHost() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
-      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
+  public void setProcess2TextServerHost(String host) {
+    getConfDocument().getConfiguration().getP2T().setP2TServerHost(host);
   }
 
   @Override
-  public void setProcess2TextServerHost(String host) {
-    getConfDocument().getConfiguration().getP2T().setP2TServerHost(host);
+  public void setT2PLLMServerPort(int port) {
+
   }
 
   @Override
@@ -1458,6 +1456,38 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   @Override
   public void setText2ProcessServerHost(String host) {
     getConfDocument().getConfiguration().getT2P().setT2PServerHost(host);
+  }
+
+  @Override
+  public String getText2ProcessServerHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
+    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
+  }
+
+  //TODO: Fix
+  @Override
+  public void setT2PLLMServerHost(String host) {
+    getConfDocument().getConfiguration().getT2P().setT2PLLMServerHost(host);
+  }
+
+  @Override
+  public String getT2PLLMServerHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLLMServerHost();
+    } else return ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost();
+  }
+
+  @Override
+  public int getT2pLLMServerPort() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerPort()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLLMServerPort();
+    } else return ConfigurationManager.getStandardConfiguration().getT2pLLMServerPort();
+  }
+
+  @Override
+  public void setT2pLLMServerPort(int port) {
+    getConfDocument().getConfiguration().getT2P().setT2PLLMServerPort(port);
   }
 
   @Override
