@@ -45,7 +45,7 @@ jobs:
     - id: build
       name: Build for linux
       run: |
-        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress
         jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         ls ./woped-installer/build/distributions
       # Upload installer
@@ -83,7 +83,7 @@ jobs:
     - id: build
       name: Build for Windows
       run: |
-        mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=true' '--no-transfer-progress'
+        mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=true' '-Drevision=$RELEASE_VERSION' '--no-transfer-progress'
         jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\$env:RELEASE_VERSION\WoPeD-Starter-$env:RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
         dir C:\
       # Upload installer
@@ -121,7 +121,7 @@ jobs:
     - id: build
       name: Build for MacOS
       run: |
-        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true --no-transfer-progress
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress
         jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/$RELEASE_VERSION/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
       # Upload Installer
     - id: upload-installer
