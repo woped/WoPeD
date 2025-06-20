@@ -153,6 +153,8 @@ jobs:
     name: Upload Release Assets
     runs-on: ubuntu-latest
     needs: create-release
+    env:
+      RELEASE_VERSION: ${{ needs.semver.outputs.VERSION }}
     steps:
     - uses: actions/checkout@v4
       # Download installers
