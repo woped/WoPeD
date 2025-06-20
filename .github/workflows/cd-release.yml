@@ -45,8 +45,8 @@ jobs:
     - id: build
       name: Build for linux
       run: |
-        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress \
-        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions \
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
         ls ./woped-installer/build/distributions
     - name: Rename artefact
       run: |
