@@ -21,6 +21,8 @@ jobs:
   # Linux Installer
   build-linux-installer:
     name: Build Installer on Linux
+    # run only if a new version is detected
+    if: ${{ needs.semver.outputs.VERSION != '' && needs.semver.outputs.VERSION != '0.0.0' }}
     runs-on: ubuntu-latest
     needs: [ semver, approval ]
     permissions: write-all
@@ -64,6 +66,8 @@ jobs:
   # Windows Installer
   build-windows-installer:
     name: Build Installer on Windows
+    # run only if a new version is detected
+    if: ${{ needs.semver.outputs.VERSION != '' && needs.semver.outputs.VERSION != '0.0.0' }}
     runs-on: windows-latest
     needs: [ semver, approval ]
     env:
@@ -102,6 +106,8 @@ jobs:
   # MacOS Installer
   build-macos-installer:
     name: Build Installer on macOS
+    # run only if a new version is detected
+    if: ${{ needs.semver.outputs.VERSION != '' && needs.semver.outputs.VERSION != '0.0.0' }}
     runs-on: macos-latest
     needs: [ semver, approval ]
     env:
