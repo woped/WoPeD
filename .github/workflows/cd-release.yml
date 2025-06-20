@@ -152,7 +152,7 @@ jobs:
   upload-release-assets:
     name: Upload Release Assets
     runs-on: ubuntu-latest
-    needs: create-release
+    needs: [ semver, create-release ]
     env:
       RELEASE_VERSION: ${{ needs.semver.outputs.VERSION }}
     steps:
