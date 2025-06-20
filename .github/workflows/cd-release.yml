@@ -45,8 +45,8 @@ jobs:
     - id: build
       name: Build for linux
       run: |
-        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress
-        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress \
+        jpackage --input /home/runner/work/WoPeD/WoPeD --name WoPeD --main-jar /home/runner/work/WoPeD/WoPeD/WoPeD-Starter/target/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest ./woped-installer/build/distributions \
         ls ./woped-installer/build/distributions
     - name: Rename artefact
       run: |
@@ -57,7 +57,7 @@ jobs:
       name: Upload installer
       uses: actions/upload-artifact@v4
       with:
-        path: ./woped-installer/build/distributions/WoPeD-$RELEASE_VERSION.deb
+        path: ./woped-installer/build/distributions/WoPeD-${{ env.RELEASE_VERSION }}.deb
         name: linux-installer
         retention-days: 1
 
@@ -87,15 +87,15 @@ jobs:
     - id: build
       name: Build for Windows
       run: |
-        mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=false' '-Drevision=$RELEASE_VERSION' '--no-transfer-progress'
-        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --app-version $RELEASE_VERSION --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\$env:RELEASE_VERSION\WoPeD-Starter-$env:RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi
+        mvn -U -pl !WoPeD-Installer clean install '-Dmaven.test.skip=false' '-Drevision=$RELEASE_VERSION' '--no-transfer-progress' \
+        jpackage --input C:\Users\runneradmin\.m2\repository\de\dhbw\woped --name WoPeD --app-version $RELEASE_VERSION --main-jar C:\Users\runneradmin\.m2\repository\de\dhbw\woped\WoPeD-Starter\$env:RELEASE_VERSION\WoPeD-Starter-$env:RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest C:\ --type msi \
         dir C:\
       # Upload installer
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v4
       with:
-        path: C:\WoPeD-$RELEASE_VERSION.msi
+        path: C:\WoPeD-${{ env.RELEASE_VERSION }}.msi
         name: windows-installer
         retention-days: 1
 
@@ -125,14 +125,14 @@ jobs:
     - id: build
       name: Build for MacOS
       run: |
-        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress
+        mvn -U -pl !WoPeD-Installer clean install -Dmaven.test.skip=true -Drevision=$RELEASE_VERSION --no-transfer-progress \
         jpackage --input /Users/runner/.m2/repository/de/dhbw/woped/ --name WoPeD --app-version $RELEASE_VERSION --main-jar /Users/runner/.m2/repository/de/dhbw/woped/WoPeD-Starter/$RELEASE_VERSION/WoPeD-Starter-$RELEASE_VERSION.jar --main-class org.woped.starter.RunWoPeD --dest /Users/runner/.m2/ --type dmg
       # Upload Installer
     - id: upload-installer
       name: Upload installer
       uses: actions/upload-artifact@v4
       with:
-        path: /Users/runner/.m2/WoPeD-$RELEASE_VERSION.dmg
+        path: /Users/runner/.m2/WoPeD-${{ env.RELEASE_VERSION }}.dmg
         name: macos-installer
         retention-days: 1
 
@@ -173,8 +173,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.create-release.outputs.UPLOAD_URL }}
-        asset_path: WoPeD-$RELEASE_VERSION.deb
-        asset_name: WoPeD-$RELEASE_VERSION.deb
+        asset_path: WoPeD-${{ env.RELEASE_VERSION }}.deb
+        asset_name: WoPeD-${{ env.RELEASE_VERSION }}.deb
         asset_content_type: application/x-binary
     - id: release-windows-installer
       name: Release Windows installer
@@ -183,8 +183,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.create-release.outputs.UPLOAD_URL }}
-        asset_path: WoPeD-$RELEASE_VERSION.msi
-        asset_name: WoPeD-$RELEASE_VERSION.msi
+        asset_path: WoPeD-${{ env.RELEASE_VERSION }}.msi
+        asset_name: WoPeD-${{ env.RELEASE_VERSION }}.msi
         asset_content_type: application/x-binary
     - id: release-macos-installer
       name: Release macOS installer
@@ -193,6 +193,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ needs.create-release.outputs.UPLOAD_URL }}
-        asset_path: WoPeD-$RELEASE_VERSION.dmg
-        asset_name: WoPeD-$RELEASE_VERSION.dmg
+        asset_path: WoPeD-${{ env.RELEASE_VERSION }}.dmg
+        asset_name: WoPeD-${{ env.RELEASE_VERSION }}.dmg
         asset_content_type: application/x-binary
