@@ -53,7 +53,7 @@ public class P2TUI extends JDialog {
     private JScrollPane promptScrollPane;
 
     private static final String DEFAULT_PROMPT = Messages.getString("P2T.prompt.text");
-    private static final String PROVIDER_OPENAI = "openAI";
+    private static final String PROVIDER_OPENAI = "openAi";
     private static final String PROVIDER_GEMINI = "gemini";
     private static final String PROVIDER_LMSTUDIO = "lmStudio";
 
