@@ -740,7 +740,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private void fetchAndFillModels() {
         new Thread(() -> {
             try {
-                List<String> models = ApiHelper.fetchModels(apiKeyText.getText());
+                String provider = ConfigurationManager.getConfiguration().getLlmProvider();
+                List<String> models = ApiHelper.fetchModels(apiKeyText.getText(), provider);
                 SwingUtilities.invokeLater(() -> {
                     for (String model : models) {
                         modelComboBox.addItem(model);
