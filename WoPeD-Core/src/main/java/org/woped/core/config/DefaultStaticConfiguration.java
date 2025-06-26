@@ -227,7 +227,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   }
 
   public boolean getRagOption(){
-    return ragEnabled;
+    return ragOption;
   }
 
   public void setRagOption(boolean ragOption) {
