@@ -586,4 +586,9 @@ public interface IGeneralConfiguration extends IConfiguration {
   public String getLlmProvider();
 
   public void setLlmProvider(String llmProvider);
+
+  // RAG Settings
+  public boolean getRagOption();
+
+  public void setRagOption(boolean ragOption);
 }

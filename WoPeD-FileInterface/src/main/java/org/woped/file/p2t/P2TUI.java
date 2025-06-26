@@ -41,6 +41,7 @@ public class P2TUI extends JDialog {
     private JTextArea promptField;
     private JCheckBox enablePromptCheckBox;
     private JCheckBox showAgainCheckBox;
+    private JCheckBox ragEnabledCheckBox;
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
     private JComboBox<String> modelComboBox;
@@ -172,6 +173,14 @@ public class P2TUI extends JDialog {
             LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing " + (enablePromptCheckBox.isSelected() ? "Enabled" : "Disabled"));
         });
 
+        // RAG enabled checkbox
+        ragEnabledCheckBox = new JCheckBox("Enable RAG (Retrieval-Augmented Generation)");
+        ragEnabledCheckBox.setSelected(ConfigurationManager.getConfiguration().getRagOption());
+        ragEnabledCheckBox.addActionListener(e -> {
+            ConfigurationManager.getConfiguration().setRagOption(ragEnabledCheckBox.isSelected());
+            LoggerManager.info(Constants.EDITOR_LOGGER, "RAG " + (ragEnabledCheckBox.isSelected() ? "Enabled" : "Disabled"));
+        });
+        
         // Model selection
         gptModelLabel = new JLabel(Messages.getString("P2T.get.GPTmodel.title"));
         modelComboBox = new JComboBox<>();
@@ -262,6 +271,14 @@ public class P2TUI extends JDialog {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fieldsPanel.add(enablePromptCheckBox, gbc);
 
+        // RAG enabled checkbox row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(ragEnabledCheckBox, gbc);
+
         // Model selection row
         row++;
         gbc.gridx = 0; gbc.gridy = row;
@@ -323,6 +340,9 @@ public class P2TUI extends JDialog {
         }
         if (enablePromptCheckBox != null) {
             enablePromptCheckBox.setVisible(visible);
+        }
+        if (ragEnabledCheckBox != null) {
+            ragEnabledCheckBox.setVisible(visible);
         }
         if (gptModelLabel != null) {
             gptModelLabel.setVisible(visible);
