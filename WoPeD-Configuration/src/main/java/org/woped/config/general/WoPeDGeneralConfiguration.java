@@ -1557,8 +1557,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
   @Override
   public boolean getRagOption() {
-    if(getConfDocument().getConfiguration().getGpt().isSetRagEnabled()){
-      return getConfDocument().getConfiguration().getGpt().getRagEnabled();
+    if(getConfDocument().getConfiguration().getGpt().isSetRagOption()){
+      return getConfDocument().getConfiguration().getGpt().getRagOption();
     } else {
       return ConfigurationManager.getStandardConfiguration().getRagOption();
     }
@@ -1566,7 +1566,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
   @Override
   public void setRagOption(boolean ragOption) {
-    getConfDocument().getConfiguration().getGpt().setRagEnabled(ragOption);
+    getConfDocument().getConfiguration().getGpt().setRagOption(ragOption);
   }
 
   @Override
