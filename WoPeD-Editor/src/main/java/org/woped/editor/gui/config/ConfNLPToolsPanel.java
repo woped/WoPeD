@@ -48,6 +48,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     // Components for additionalPanel
     private JTextField apiKeyText = null;
     private JCheckBox showAgainBox = null;
+    private JCheckBox ragOptionBox = null;
     private WopedButton resetButton = null;
     private JTextArea promptText = null;
     private WopedButton fetchGPTModelsButton = null;
@@ -95,6 +96,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         ConfigurationManager.getConfiguration().setGptShowAgain(true);
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
         ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
+        ConfigurationManager.getConfiguration().setRagOption(getRagOptionBox().isSelected());
 
         return true;
     }
@@ -111,6 +113,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getApiKeyText().setText(ConfigurationManager.getConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
+        getRagOptionBox().setSelected(ConfigurationManager.getConfiguration().getRagOption());
     }
 
     private void initialize() {
@@ -330,8 +333,16 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 1;
-            c.gridwidth = 2;
+            c.gridwidth = 1;
             settingsPanel_GPT.add(getPromptTextScrollPane(), c);
+
+            // Add RAG checkbox to the right of prompt field
+            c.weightx = 0;
+            c.gridx = 2;
+            c.gridy = 1;
+            c.gridwidth = 1;
+            c.insets = new Insets(2, 10, 2, 10);
+            settingsPanel_GPT.add(getRagOptionBox(), c);
 
             // Add the new row with the label and combo box
             c.weightx = 0;
@@ -413,6 +424,15 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             promptText.setText("Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
         }
         return promptText;
+    }
+
+    public JCheckBox getRagOptionBox() {
+        if (ragOptionBox == null) {
+            ragOptionBox = new JCheckBox(Messages.getString("Configuration.GPT.rag.option"));
+            ragOptionBox.setEnabled(true);
+            ragOptionBox.setToolTipText(Messages.getString("Configuration.GPT.rag.option.tooltip"));
+        }
+        return ragOptionBox;
     }
 
     private JCheckBox getShowAgainBox() {

@@ -174,7 +174,7 @@ public class P2TUI extends JDialog {
         });
 
         // RAG enabled checkbox
-        ragEnabledCheckBox = new JCheckBox("Enable RAG (Retrieval-Augmented Generation)");
+        ragEnabledCheckBox = new JCheckBox(Messages.getString("P2T.rag.checkbox.enable.title"));
         ragEnabledCheckBox.setSelected(ConfigurationManager.getConfiguration().getRagOption());
         ragEnabledCheckBox.addActionListener(e -> {
             ConfigurationManager.getConfiguration().setRagOption(ragEnabledCheckBox.isSelected());
@@ -263,20 +263,16 @@ public class P2TUI extends JDialog {
         gbc.fill = GridBagConstraints.BOTH;
         fieldsPanel.add(promptScrollPane, gbc);
 
-        // Enable prompt checkbox row
+        // Enable prompt & rag checkbox row
         row++;
         gbc.gridx = 0; gbc.gridy = row;
-        gbc.gridwidth = 2;
-        gbc.weightx = 1.0;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fieldsPanel.add(enablePromptCheckBox, gbc);
 
-        // RAG enabled checkbox row
-        row++;
-        gbc.gridx = 0; gbc.gridy = row;
-        gbc.gridwidth = 2;
-        gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1; 
+        gbc.weightx = 0.5;
         fieldsPanel.add(ragEnabledCheckBox, gbc);
 
         // Model selection row
@@ -446,6 +442,7 @@ public class P2TUI extends JDialog {
         ConfigurationManager.getConfiguration().setLlmProvider(selectedProvider);
         ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
         ConfigurationManager.getConfiguration().setGptUseNew(true);
+        ConfigurationManager.getConfiguration().setRagOption(ragEnabledCheckBox.isSelected());
         
         if (modelComboBox.getSelectedItem() != null) {
             ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
