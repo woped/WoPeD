@@ -740,7 +740,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private void fetchAndFillModels() {
         new Thread(() -> {
             try {
-                List<String> models = ApiHelper.fetchModels(apiKeyText.getText());
+                //Get provider from ConfigurationManager, default is OpenAI
+                String provider = ConfigurationManager.getConfiguration().getLlmProvider();
+                if (provider == null || provider.isEmpty()) {
+                    provider = "OpenAI"; // Default to OpenAI if not set
+                }
+                List<String> models = ApiHelper.fetchModels(apiKeyText.getText(),provider);
                 SwingUtilities.invokeLater(() -> {
                     for (String model : models) {
                         modelComboBox.addItem(model);
