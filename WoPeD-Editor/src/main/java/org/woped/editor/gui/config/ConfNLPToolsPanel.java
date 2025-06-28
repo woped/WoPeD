@@ -571,7 +571,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         // Provider-spezifische URLs
         switch (provider) {
             case "openAi":
-                urlString = "https://api.openai.com/v1/engines";
+                urlString = "https://api.openai.com/v1/models";
                 break;
             case "gemini":
                 urlString = "https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey;
