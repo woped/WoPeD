@@ -16,10 +16,10 @@ import org.woped.editor.Constants;
 
 public class ApiHelper {
 
-    public static List<String> fetchModels(String apiKey) throws IOException, ParseException {
+    public static List<String> fetchModels(String apiKey, String provider) throws IOException, ParseException {
         LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
-
-        String urlString = "http://localhost:8080/p2t/gptModels?apiKey=" + apiKey;
+ 
+        String urlString = "http://localhost:8080/p2t/gptModels?apiKey=" + apiKey  + "&provider=" + provider;
         List<String> models = new ArrayList<>();
 
         URL url = new URL(urlString);
