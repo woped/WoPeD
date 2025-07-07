@@ -269,11 +269,10 @@ public class T2PUI extends JDialog {
     requested = false;
   }
 
-//TODO: Figure out how to add the texts to translation interfaces
   String promptForApiKey() {
     String apiKey = JOptionPane.showInputDialog(
             this,
-            "Please enter your GPT API key:\n(This will be stored in your configuration)",
+            Messages.getString("T2PUI.LLM.NoKey"),
             "API Key Required",
             JOptionPane.QUESTION_MESSAGE);
 
