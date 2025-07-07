@@ -1,0 +1,20 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [ main, master ]
+  push:
+    branches: [ main, master ]
+
+jobs:
+  validate_commit_messages:
+    uses: woped/devops/.github/workflows/validate-commit-msg.yaml@main
+
+  linting:
+   uses: woped/devops/.github/workflows/linting.yaml@main
+  testing_maven:
+    uses: woped/devops/.github/workflows/testing_maven.yaml@main
+  sonar_maven:
+    needs: testing_maven
+    uses: woped/devops/.github/workflows/sonar_maven.yaml@main
+    secrets: inherit
