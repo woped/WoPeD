@@ -8,8 +8,6 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -41,11 +39,22 @@ public class P2TUI extends JDialog {
     private JTextArea promptField;
     private JCheckBox enablePromptCheckBox;
     private JCheckBox showAgainCheckBox;
+    private JCheckBox ragEnabledCheckBox;
     private JRadioButton newRadioButton = null;
     private JRadioButton oldRadioButton = null;
-    JComboBox<String> modelComboBox;
+    private JComboBox<String> modelComboBox;
+    private JComboBox<String> providerComboBox;
+    private JLabel apiKeyLabel;
+    private JLabel promptLabel;
+    private JLabel gptModelLabel;
+    private JLabel providerLabel; 
+    private JButton fetchModelsButton;
+    private JScrollPane promptScrollPane;
 
     private static final String DEFAULT_PROMPT = Messages.getString("P2T.prompt.text");
+    private static final String PROVIDER_OPENAI = "openAi";
+    private static final String PROVIDER_GEMINI = "gemini";
+    private static final String PROVIDER_LMSTUDIO = "lmStudio";
 
     public P2TUI() {
         initialize();
@@ -62,11 +71,6 @@ public class P2TUI extends JDialog {
 
     /**
      * Initialize the dialog
-     * <p>
-     *     The dialog is initialized with a switch button panel at the top and a single button panel at the bottom.
-     *     The switch button panel contains a radio button group to switch between the old and new services.
-     *     The single button panel contains a single button to execute the action.
-     *     The dialog is initially hidden.
      */
     void initialize() {
         this.setVisible(false);
@@ -85,15 +89,14 @@ public class P2TUI extends JDialog {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
 
-        Dimension size = new Dimension(600, 375);
+        Dimension size = new Dimension(650, 500);
         this.setSize(size);
 
         LoggerManager.info(Constants.EDITOR_LOGGER, "P2TUI initialized");
-
     }
 
     /**
-     * Initialize the switch button panel
+     * Initialize the switch button panel with provider selection
      * <p>
      *     The switch button panel contains a radio button group to switch between the old and new services.
      *     The new service requires an API key and a prompt text.
@@ -135,11 +138,19 @@ public class P2TUI extends JDialog {
 
         JPanel fieldsPanel = new JPanel(new GridBagLayout());
 
-        JLabel apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title") + ":");
+        // Provider selection
+        providerLabel = new JLabel("Provider:"); // Zu Klassenfeld machen
+        providerComboBox = new JComboBox<>();
+        providerComboBox.addItem(PROVIDER_OPENAI);
+        providerComboBox.addItem(PROVIDER_GEMINI);
+        providerComboBox.addItem(PROVIDER_LMSTUDIO);
+        providerComboBox.setPreferredSize(new Dimension(150, 25));
+
+        apiKeyLabel = new JLabel(Messages.getString("P2T.apikey.title") + ":");
         apiKeyField = new JTextField();
         apiKeyField.setPreferredSize(new Dimension(300, 25));
 
-        JLabel promptLabel = new JLabel(Messages.getString("P2T.prompt.title") + ":");
+        promptLabel = new JLabel(Messages.getString("P2T.prompt.title") + ":");
         promptField = new JTextArea(DEFAULT_PROMPT);
         promptField.setLineWrap(true);
         promptField.setWrapStyleWord(true);
@@ -148,7 +159,7 @@ public class P2TUI extends JDialog {
 
         promptField.setText(ConfigurationManager.getConfiguration().getGptPrompt());
 
-        JScrollPane promptScrollPane = new JScrollPane(promptField);
+        promptScrollPane = new JScrollPane(promptField);
         promptScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         promptScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         promptScrollPane.setPreferredSize(new Dimension(200, 100));
@@ -157,100 +168,80 @@ public class P2TUI extends JDialog {
         enablePromptCheckBox.setSelected(false);
         enablePromptCheckBox.addActionListener(e -> {
             promptField.setEnabled(enablePromptCheckBox.isSelected());
-            if (!enablePromptCheckBox.isSelected()) {
-                promptField.revalidate();
-                LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing Disabled");
-            } else {
-                LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing Enabled");
-            }
-
+            LoggerManager.info(Constants.EDITOR_LOGGER, "Prompt Editing " + (enablePromptCheckBox.isSelected() ? "Enabled" : "Disabled"));
         });
 
-        // Add JComboBox
-        JLabel gptModelLabel = new JLabel(Messages.getString("P2T.get.GPTmodel.title"));
-        gptModelLabel.setVisible(false); // Initially hidden
+        // RAG enabled checkbox
+        ragEnabledCheckBox = new JCheckBox(Messages.getString("P2T.rag.checkbox.enable.title"));
+        ragEnabledCheckBox.setSelected(ConfigurationManager.getConfiguration().getRagOption());
+        ragEnabledCheckBox.addActionListener(e -> {
+            ConfigurationManager.getConfiguration().setRagOption(ragEnabledCheckBox.isSelected());
+            LoggerManager.info(Constants.EDITOR_LOGGER, "RAG " + (ragEnabledCheckBox.isSelected() ? "Enabled" : "Disabled"));
+        });
+        
+        // Model selection
+        gptModelLabel = new JLabel(Messages.getString("P2T.get.GPTmodel.title"));
         modelComboBox = new JComboBox<>();
         modelComboBox.setPreferredSize(new Dimension(150, 25));
-        modelComboBox.setVisible(false); // Initially hidden
 
-        // Add fetchModels Button
-        JButton fetchModelsButton = new JButton(Messages.getString("P2T.fetchmodels.button"));
+        // Fetch models button
+        fetchModelsButton = new JButton(Messages.getString("P2T.fetchmodels.button"));
         fetchModelsButton.setPreferredSize(new Dimension(120, 25));
-        fetchModelsButton.setVisible(false); // Initially hidden
-        fetchModelsButton.addActionListener(new ActionListener() {
-                                                public void actionPerformed(ActionEvent e) {
-                                                    fetchAndFillModels();
-                                                }
-                                            }
-        );
+        fetchModelsButton.addActionListener(e -> fetchAndFillModels());
 
         showAgainCheckBox = new JCheckBox(Messages.getString("P2T.popup.show.again.title"));
-        showAgainCheckBox.setToolTipText("Durch das Entfernen dieses Hakens wird das Popup-Fenster nicht erneut angezeigt, der Client merkt sich jedoch den zuletzt ausgewählten Modus," +
-                "unter den NLP Einstellungen kann das Fenster wieder aktiviert werden");
+        showAgainCheckBox.setToolTipText("Durch das Entfernen dieses Hakens wird das Popup-Fenster nicht erneut angezeigt");
         showAgainCheckBox.setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
-        showAgainCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (showAgainCheckBox.isSelected()) {
-                    LoggerManager.info(Constants.EDITOR_LOGGER,"Show Again Checkbox Selected");
-                }
-                else {
-                    LoggerManager.info(Constants.EDITOR_LOGGER,"Show Again Checkbox not Selected");
-                }
-            }
-        });
-        apiKeyLabel.setVisible(false);
-        apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
-        apiKeyField.setVisible(false);
-        promptLabel.setVisible(false);
-        promptScrollPane.setVisible(false);
-        enablePromptCheckBox.setVisible(false);
 
-        showAgainCheckBox.setVisible(true);
+        // Initialize visibility - hide LLM fields initially
+        setLLMFieldsVisibility(false);
 
+        // Provider selection listener
+        providerComboBox.addActionListener(e -> updateProviderDependentFields());
+
+        // Radio button listeners
         newRadioButton.addActionListener(e -> {
-            apiKeyLabel.setVisible(true);
-            apiKeyField.setVisible(true);
-            promptLabel.setVisible(true);
-            promptScrollPane.setVisible(true);
-            enablePromptCheckBox.setVisible(true);
-            gptModelLabel.setVisible(true);
-            modelComboBox.setVisible(true);
-            fetchModelsButton.setVisible(true);
-            for (int i = 0; i < modelComboBox.getItemCount(); i++) {
-                if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())) {
-                    modelComboBox.setSelectedIndex(i);
-                    break;
-                }
+            setLLMFieldsVisibility(true);
+            updateProviderDependentFields();
+            
+            // Load saved provider
+            String savedProvider = ConfigurationManager.getConfiguration().getLlmProvider();
+            if (savedProvider != null && !savedProvider.isEmpty()) {
+                providerComboBox.setSelectedItem(savedProvider);
             }
-            showAgainCheckBox.setVisible(true);
-
-            apiKeyField.requestFocusInWindow();
-
+            
             LoggerManager.info(Constants.EDITOR_LOGGER, "LLM Service Selected");
         });
 
         oldRadioButton.addActionListener(e -> {
-            apiKeyLabel.setVisible(false);
-            apiKeyField.setVisible(false);
-            promptLabel.setVisible(false);
-            promptScrollPane.setVisible(false);
-            enablePromptCheckBox.setVisible(false);
-            gptModelLabel.setVisible(false);
-            modelComboBox.setVisible(false);
-            fetchModelsButton.setVisible(false);
-
-            showAgainCheckBox.setVisible(true);
-
+            setLLMFieldsVisibility(false);
             LoggerManager.info(Constants.EDITOR_LOGGER, "Algorithm Service Selected");
         });
 
         oldRadioButton.setSelected(true);
+        setLLMFieldsVisibility(false); // Hierhin verschieben
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
+        // Layout components
+        int row = 0;
+        
+        // Provider row
+        gbc.gridx = 0; gbc.gridy = row;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0;
+        fieldsPanel.add(providerLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1.0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(providerComboBox, gbc);
+
+        // API Key row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0;
         fieldsPanel.add(apiKeyLabel, gbc);
 
         gbc.gridx = 1;
@@ -258,8 +249,9 @@ public class P2TUI extends JDialog {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         fieldsPanel.add(apiKeyField, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
+        // Prompt row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0;
         fieldsPanel.add(promptLabel, gbc);
@@ -269,36 +261,41 @@ public class P2TUI extends JDialog {
         gbc.fill = GridBagConstraints.BOTH;
         fieldsPanel.add(promptScrollPane, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.gridwidth = 2;
-        gbc.weightx = 1.0;
-        fieldsPanel.add(enablePromptCheckBox, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.gridwidth = 1;
-        gbc.weightx = 0;
-        fieldsPanel.add(gptModelLabel, gbc); // Add label before JComboBox
-
-        gbc.gridx = 1;
-        gbc.gridy = 4;
+        // Enable prompt & rag checkbox row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
         gbc.gridwidth = 1;
         gbc.weightx = 0.5;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        fieldsPanel.add(modelComboBox, gbc); // Add JComboBox to the panel
+        fieldsPanel.add(enablePromptCheckBox, gbc);
+
+        gbc.gridx = 1; 
+        gbc.weightx = 0.5;
+        fieldsPanel.add(ragEnabledCheckBox, gbc);
+
+        // Model selection row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
+        gbc.gridwidth = 1;
+        gbc.weightx = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        fieldsPanel.add(gptModelLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 0.5;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        fieldsPanel.add(modelComboBox, gbc);
 
         gbc.gridx = 2;
-        gbc.gridy = 4;
-        gbc.gridwidth = 1;
         gbc.weightx = 0.5;
-        fieldsPanel.add(fetchModelsButton, gbc); // Add fetchModels button to the panel
+        fieldsPanel.add(fetchModelsButton, gbc);
 
-        gbc.gridx = 0;
-        gbc.gridy = 5;
+        // Show again checkbox row
+        row++;
+        gbc.gridx = 0; gbc.gridy = row;
         gbc.gridwidth = 2;
         gbc.weightx = 1.0;
-        fieldsPanel.add(showAgainCheckBox, gbc); // Add "Show Again" checkbox
+        fieldsPanel.add(showAgainCheckBox, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -313,56 +310,149 @@ public class P2TUI extends JDialog {
     }
 
     /**
+     * Set visibility of LLM-specific fields
+     */
+    private void setLLMFieldsVisibility(boolean visible) {
+        // Alle Komponenten direkt referenzieren
+        if (providerLabel != null) {
+            providerLabel.setVisible(visible);
+        }
+        if (providerComboBox != null) {
+            providerComboBox.setVisible(visible);
+        }
+        if (apiKeyLabel != null) {
+            apiKeyLabel.setVisible(visible);
+        }
+        if (apiKeyField != null) {
+            apiKeyField.setVisible(visible);
+        }
+        if (promptLabel != null) {
+            promptLabel.setVisible(visible);
+        }
+        if (promptScrollPane != null) {
+            promptScrollPane.setVisible(visible);
+        }
+        if (enablePromptCheckBox != null) {
+            enablePromptCheckBox.setVisible(visible);
+        }
+        if (ragEnabledCheckBox != null) {
+            ragEnabledCheckBox.setVisible(visible);
+        }
+        if (gptModelLabel != null) {
+            gptModelLabel.setVisible(visible);
+        }
+        if (modelComboBox != null) {
+            modelComboBox.setVisible(visible);
+        }
+        if (fetchModelsButton != null) {
+            fetchModelsButton.setVisible(visible);
+        }
+        if (showAgainCheckBox != null) {
+            showAgainCheckBox.setVisible(true); // Always visible
+        }
+        
+        // UI aktualisieren
+        if (this.isDisplayable()) {
+            revalidate();
+            repaint();
+        }
+    }
+
+    /**
+     * Update fields based on selected provider
+     */
+    private void updateProviderDependentFields() {
+        String selectedProvider = (String) providerComboBox.getSelectedItem();
+        boolean needsApiKey = !PROVIDER_LMSTUDIO.equals(selectedProvider);
+        
+        apiKeyLabel.setVisible(needsApiKey);
+        apiKeyField.setVisible(needsApiKey);
+        
+        if (needsApiKey) {
+            // Load provider-specific API key
+            if (PROVIDER_OPENAI.equals(selectedProvider)) {
+                apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
+            } else if (PROVIDER_GEMINI.equals(selectedProvider)) {
+                apiKeyField.setText(ConfigurationManager.getConfiguration().getGptApiKey());
+            }
+        }
+        
+        // Clear and enable model selection for all providers
+        modelComboBox.removeAllItems();
+        modelComboBox.setEnabled(true);
+        
+        revalidate();
+        repaint();
+    }
+
+    /**
      * Initialize the single button panel
-     * <p>
-     *     The single button panel contains a single button to execute the action.
-     * @return JPanel containing the single button panel
      */
     JPanel initializeSingleButtonPanel() {
         JPanel buttonPanel = new JPanel(new BorderLayout());
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JButton singleButton = new JButton();
-
         singleButton.setMnemonic(KeyEvent.VK_A);
         singleButton.setText(Messages.getString("P2T.text"));
-
         buttonPanel.add(singleButton, BorderLayout.CENTER);
 
         singleButton.addActionListener(e -> {
             if (newRadioButton.isSelected()) {
-                if (validateAPIKey()) {
-
-                    ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
-                    ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
-                    ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
-                    ConfigurationManager.getConfiguration().setGptUseNew(true);
-
-                    if (!showAgainCheckBox.isSelected()) {
-                        ConfigurationManager.getConfiguration().setGptShowAgain(false);
-                        ConfigurationManager.getConfiguration().setGptUseNew(true);
-                    }
-                    executeAction();
-                    dispose();
+                String selectedProvider = (String) providerComboBox.getSelectedItem();
+                
+                // Validate API key for providers that need it
+                if (!PROVIDER_LMSTUDIO.equals(selectedProvider) && !validateAPIKey()) {
+                    return;
                 }
+
+                // Save configuration
+                saveConfiguration();
+                executeAction();
+                dispose();
             } else {
                 ConfigurationManager.getConfiguration().setGptUseNew(false);
                 if (!showAgainCheckBox.isSelected()) {
                     ConfigurationManager.getConfiguration().setGptShowAgain(false);
-                    ConfigurationManager.getConfiguration().setGptUseNew(false);
-
                 }
                 executeAction();
                 dispose();
             }
         });
+        
         return buttonPanel;
     }
 
     /**
+     * Save current configuration
+     */
+    private void saveConfiguration() {
+        String selectedProvider = (String) providerComboBox.getSelectedItem();
+        
+        // Save provider-specific API key
+        if (PROVIDER_OPENAI.equals(selectedProvider)) {
+            ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
+        } else if (PROVIDER_GEMINI.equals(selectedProvider)) {
+            ConfigurationManager.getConfiguration().setGptApiKey(apiKeyField.getText());
+        }
+        
+        // Save other settings
+        ConfigurationManager.getConfiguration().setLlmProvider(selectedProvider);
+        ConfigurationManager.getConfiguration().setGptPrompt(promptField.getText());
+        ConfigurationManager.getConfiguration().setGptUseNew(true);
+        ConfigurationManager.getConfiguration().setRagOption(ragEnabledCheckBox.isSelected());
+        
+        if (modelComboBox.getSelectedItem() != null) {
+            ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
+        }
+        
+        if (!showAgainCheckBox.isSelected()) {
+            ConfigurationManager.getConfiguration().setGptShowAgain(false);
+        }
+    }
+
+    /**
      * Execute the action
-     * <p>
-     *     The action is executed based on the selected radio button.
      */
     void executeAction() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
@@ -370,53 +460,83 @@ public class P2TUI extends JDialog {
     }
 
     /**
-     * Fetch and fill the models
-     * <p>
-     *     Fetch the models from the API and fill the models in the JComboBox.
-     *     If the models cannot be fetched, an error message is displayed.
+     * Fetch and fill the models based on selected provider
      */
     void fetchAndFillModels() {
+        String selectedProvider = (String) providerComboBox.getSelectedItem();
+        
         new Thread(() -> {
             try {
-                List<String> models = ApiHelper.fetchModels(apiKeyField.getText());
+                List<String> models;
+                
+                if (PROVIDER_LMSTUDIO.equals(selectedProvider)) {
+                    models = ApiHelper.fetchModels(null, selectedProvider);
+                } else if (PROVIDER_OPENAI.equals(selectedProvider)) {
+                    models = ApiHelper.fetchModels(apiKeyField.getText(), selectedProvider);
+                } else if (PROVIDER_GEMINI.equals(selectedProvider)) {
+                    models = ApiHelper.fetchModels(apiKeyField.getText(), selectedProvider);
+                } else {
+                    throw new IOException("Unsupported provider: " + selectedProvider);
+                }
+                
                 SwingUtilities.invokeLater(() -> {
+                    modelComboBox.removeAllItems();
                     for (String model : models) {
                         modelComboBox.addItem(model);
                     }
-                    modelComboBox.setSelectedItem(ConfigurationManager.getConfiguration().getGptModel());
+                    String savedModel = ConfigurationManager.getConfiguration().getGptModel();
+                    if (savedModel != null) {
+                        modelComboBox.setSelectedItem(savedModel);
+                    }
                 });
             } catch (IOException | ParseException e) {
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(this, Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(), Messages.getString("P2T.exception.fetch.models"), JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, 
+                        "Failed to fetch models: " + e.getMessage(), 
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE);
                 });
             }
         }).start();
     }
 
     /**
-     * Validate the API key
-     * <p>
-     *     Validate the API key by sending a request to the API.
-     *     If the API key is invalid, an error message is displayed.
-     *     If the API key is valid, return true.
-     * @return
+     * Validate the API key based on selected provider
      */
     boolean validateAPIKey() {
+        String selectedProvider = (String) providerComboBox.getSelectedItem();
         String apiKey = apiKeyField.getText();
-        boolean apiKeyValid = isAPIKeyValid(apiKey);
-        if (!apiKeyValid) {
-            JOptionPane.showMessageDialog(this, Messages.getString("P2T.apikey.invalid"), Messages.getString("P2T.apikey.invalid.title"), JOptionPane.ERROR_MESSAGE);
+        
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "API Key is required for " + selectedProvider, 
+                "Missing API Key", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+        
+        boolean apiKeyValid = false;
+        
+        if (PROVIDER_OPENAI.equals(selectedProvider)) {
+            apiKeyValid = isOpenAiAPIKeyValid(apiKey);
+        } else if (PROVIDER_GEMINI.equals(selectedProvider)) {
+            apiKeyValid = isGeminiAPIKeyValid(apiKey);
+        }
+        
+        if (!apiKeyValid) {
+            JOptionPane.showMessageDialog(this, 
+                Messages.getString("P2T.apikey.invalid"), 
+                Messages.getString("P2T.apikey.invalid.title"), 
+                JOptionPane.ERROR_MESSAGE);
+        }
+        
         return apiKeyValid;
     }
 
     /**
-     * Check if the API key is valid
-     * @param apiKey API key
-     * @return true if the API key is valid, false otherwise
+     * Check if OpenAI API key is valid
      */
-    public static boolean isAPIKeyValid(String apiKey) {
-        final String TEST_URL = "https://api.openai.com/v1/engines";
+    public static boolean isOpenAiAPIKeyValid(String apiKey) {
+        final String TEST_URL = "https://api.openai.com/v1/models";
         try {
             URL url = new URL(TEST_URL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -424,7 +544,6 @@ public class P2TUI extends JDialog {
             connection.setRequestProperty("Authorization", "Bearer " + apiKey);
 
             int responseCode = connection.getResponseCode();
-
             return responseCode == 200;
         } catch (Exception e) {
             e.printStackTrace();
@@ -432,4 +551,28 @@ public class P2TUI extends JDialog {
         }
     }
 
+    /**
+     * Check if Gemini API key is valid
+     */
+    public static boolean isGeminiAPIKeyValid(String apiKey) {
+        final String TEST_URL = "https://generativelanguage.googleapis.com/v1beta/models?key=" + apiKey;
+        try {
+            URL url = new URL(TEST_URL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            return responseCode == 200;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Legacy method for backward compatibility
+     */
+    public static boolean isAPIKeyValid(String apiKey) {
+        return isOpenAiAPIKeyValid(apiKey);
+    }
 }
