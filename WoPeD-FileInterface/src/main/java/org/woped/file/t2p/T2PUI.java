@@ -56,6 +56,7 @@ import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLImport;
+import org.woped.file.t2p.model.LlmResponse;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -144,6 +145,12 @@ public class T2PUI extends JDialog {
     }
   }
 
+  /**
+   * Initializes the given JTextAreaWithHint with font, hint text, wrapping, focus, and margin.
+   *
+   * @param ta The JTextAreaWithHint to initialize
+   * @return The initialized JTextAreaWithHint
+   */
   private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
 
     Font f = new Font("Lucia Grande", Font.PLAIN, 13);
@@ -161,6 +168,12 @@ public class T2PUI extends JDialog {
     return ta;
   }
 
+  /**
+   * Wraps the given JTextAreaWithHint in a JScrollPane with no horizontal scrollbar.
+   *
+   * @param ta The JTextAreaWithHint to wrap
+   * @return JScrollPane containing the text area
+   */
   private JScrollPane wrapTextArea(JTextAreaWithHint ta) {
     JScrollPane scrollPane = new JScrollPane(ta);
     scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -172,16 +185,17 @@ public class T2PUI extends JDialog {
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
 
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
-
+    // Language selection dropdown
     String[] lang = {Messages.getString("T2PUI.Lang"), Messages.getString("T2PUI.Lang.English")};
     JComboBox<String> langBox = new JComboBox<String>(lang);
     langBox.setSelectedIndex(1);
 
-    // Approach selection dropdown
+    /// Approach selection dropdown (Classic or LLM)
     String[] approaches = {CLASSIC_APPROACH, LLM_APPROACH};
     approachBox = new JComboBox<String>(approaches);
     approachBox.setSelectedIndex(0);
 
+    // Generate button: triggers the request() method
     WopedButton btnGenerate =
             new WopedButton(
                     new AbstractAction() {
@@ -195,6 +209,7 @@ public class T2PUI extends JDialog {
     btnGenerate.setIcon(
             new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
 
+    // Upload button: triggers the readFile() method
     WopedButton btnUpload =
             new WopedButton(
                     new AbstractAction() {
@@ -208,6 +223,7 @@ public class T2PUI extends JDialog {
     btnUpload.setIcon(
             new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
 
+    // Erase button: clears the text area
     WopedButton btnErase =
             new WopedButton(
                     new AbstractAction() {
@@ -224,14 +240,17 @@ public class T2PUI extends JDialog {
     buttonPanel.add(btnUpload);
     buttonPanel.add(btnErase);
     buttonPanel.add(langBox);
-    buttonPanel.add(Box.createHorizontalGlue());
+    buttonPanel.add(Box.createHorizontalGlue()); // Pushes following components to the right
     buttonPanel.add(approachBox);
-    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Spacing before generate button
     buttonPanel.add(btnGenerate);
 
     return buttonPanel;
   }
-
+  /**
+   * Handles the main request logic when the generate button is pressed.
+   * Validates input, prompts for API key if needed, and starts background processing.
+   */
   void request() {
     if (requested) return;
     requested = true;
@@ -254,10 +273,10 @@ public class T2PUI extends JDialog {
           ConfigurationManager.getConfiguration().setGptApiKey(apiKey);
         }
 
-        // Process with LLM approach
+        // Start LLM background worker with validated API key
         llmBackgroundWorker(inputText, apiKey);
       } else {
-        // Process with classic approach
+        // Start classic background worker
         jsonBackgroundWorker(inputText);
       }
 
@@ -269,6 +288,12 @@ public class T2PUI extends JDialog {
     requested = false;
   }
 
+  /**
+   * Prompts the user to enter an API key using a dialog box.
+   *
+   * @return the API key entered by the user, or null if canceled
+   */
+
   String promptForApiKey() {
     String apiKey = JOptionPane.showInputDialog(
             this,
@@ -278,6 +303,13 @@ public class T2PUI extends JDialog {
 
     return apiKey;
   }
+
+  /**
+   * Checks if the provided API key is valid by making a test request to the OpenAI API.
+   *
+   * @param apiKey the API key to validate
+   * @return true if the API key is valid (response code 200), false otherwise
+   */
 
   private boolean isApiKeyValid(String apiKey) {
     try {
@@ -312,29 +344,38 @@ public class T2PUI extends JDialog {
     }
   }
 
+  /**
+   * Displays the given PNML string graphically in a new window within the WoPeD client. BPMN is not possible.
+   *
+   * @param pnml The PNML content to display
+   */
   void displayPNML(String pnml) {
     PNMLImport pnmlImport = new PNMLImport(mediator);
+
+    // Convert the PNML string to an InputStream using UTF-8 encoding
     InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
 
     pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
 
+    // Retrieve the editor instance created by the import
     IEditor[] editor = pnmlImport.getEditor();
 
     EditorVC evc = ((EditorVC) editor[0]);
 
     try {
+      // If inputText is available, show the T2P bar with the original input
       if (inputText != null) {
         evc.getEditorPanel().showT2PBar(inputText);
       }
 
+      // Beautify the layout of the imported PNML
       evc.startBeautify(0, 0, 0);
 
     } catch (ArithmeticException exc) {
+      // Close the window and handle any arithmetic errors (e.g., layout issues)
       close();
-
-      // error popup
+      // Error popup could be shown here
     }
-
     close();
   }
 
@@ -352,7 +393,7 @@ public class T2PUI extends JDialog {
   }
 
   /**
-   * This method calls the LLM API to generate a PNML from text using the t2p 2.0 endpoint
+   * This method calls the T2P2.0 LLM API to generate a PNML from text using the t2p 2.0 endpoint
    *
    * @param text The input text to process
    * @param apiKey The API key for the GPT service
@@ -392,8 +433,9 @@ public class T2PUI extends JDialog {
       protected void done() {
         HttpURLConnection connection = null;
         try {
+          // Dispose of the loading dialog if it exists
           if (loadDialog != null) loadDialog.dispose();
-
+          // Retrieve the HttpURLConnection object from doInBackground()
           connection = get();
           int responseCode = connection.getResponseCode();
           Gson gson = new Gson();
@@ -402,10 +444,11 @@ public class T2PUI extends JDialog {
             // Reading the response
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
               LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
-
+              // Check if the response is valid and contains a result
               if (llmResponse != null && llmResponse.getResult() != null) {
                 String pnml = llmResponse.getResult();
                 if (!pnml.isEmpty()) {
+                  // Display the generated PNML if not empty
                   displayPNML(pnml);
                 } else {
                   showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
@@ -415,7 +458,7 @@ public class T2PUI extends JDialog {
               }
             }
           } else {
-            // Handle error responses
+            // If the response is an error, read and handle the error response
             try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
               StringBuilder errorJson = new StringBuilder();
               String errorLine;
@@ -423,7 +466,7 @@ public class T2PUI extends JDialog {
                 errorJson.append(errorLine.trim());
               }
               String errorMessage = errorJson.toString();
-
+              // Show specific error popups based on HTTP status code
               if (responseCode == 400) {
                 showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
               } else if (responseCode == 500) {
@@ -434,8 +477,10 @@ public class T2PUI extends JDialog {
             }
           }
         } catch (JsonSyntaxException e) {
+          // Handle JSON parsing errors
           showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
         } catch (Exception e) {
+          // Handle all other exceptions and show a generic error dialog
           JOptionPane.showMessageDialog(
                   null,
                   "Error connecting to LLM service: " + e.getMessage(),
@@ -590,19 +635,6 @@ public class T2PUI extends JDialog {
     PlainTextFileReader r = new PlainTextFileReader();
     String txt = r.read();
     if (txt != null) textArea.setText(txt);
-  }
-
-  //TODO: move to a model folder
-  class LlmResponse {
-    private String result;
-
-    public String getResult() {
-      return result;
-    }
-
-    public void setResult(String result) {
-      this.result = result;
-    }
   }
 
 }
