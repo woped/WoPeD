@@ -62,6 +62,9 @@ public class ActionFactory {
   public static final String ACTIONID_UPDATENETS = "Action.UpdateNets";
 
   public static final String ACTIONID_P2T = "ToolBar.P2T";
+
+  public static final String ACTIONID_P2T_NEW = "Ausführen.Neu";
+  public static final String ACTIONID_P2T_OLD = "Ausführen";
   public static final String ACTIONID_T2P = "ToolBar.T2P";
 
   public static final String ACTIONID_DRAWMODE_PLACE = "ToolBar.DrawPlace";
@@ -643,13 +646,36 @@ public class ActionFactory {
     STATIC_ACTION_MAP.put(
         ACTIONID_P2T,
         new WoPeDAction(
-            am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
+            am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null, ACTIONID_P2T));
     VisualController.getInstance()
         .addElement(
             STATIC_ACTION_MAP.get(ACTIONID_P2T),
             VisualController.WITH_EDITOR,
             VisualController.WITH_EDITOR,
             VisualController.P2T);
+
+    STATIC_ACTION_MAP.put(
+        ACTIONID_P2T_OLD,
+        new WoPeDAction(
+            am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T_OLD));
+    VisualController.getInstance()
+        .addElement(
+            STATIC_ACTION_MAP.get(ACTIONID_P2T_OLD),
+            VisualController.WITH_EDITOR,
+            VisualController.WITH_EDITOR,
+            VisualController.P2T);
+
+    STATIC_ACTION_MAP.put(
+            ACTIONID_P2T_NEW,
+            new WoPeDAction(
+                    am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T_NEW));
+    VisualController.getInstance()
+            .addElement(
+                    STATIC_ACTION_MAP.get(ACTIONID_P2T_NEW),
+                    VisualController.WITH_EDITOR,
+                    VisualController.WITH_EDITOR,
+                    VisualController.P2T);
+
 
     STATIC_ACTION_MAP.put(
         ACTIONID_T2P,

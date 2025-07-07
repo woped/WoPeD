@@ -40,7 +40,7 @@ public class Process2Text {
       }
     }
 
-    return temptexts.toArray(new String[temptexts.size()]);
+    return temptexts.toArray(new String[0]);
   }
 
   private void parseXmlToHtml() {

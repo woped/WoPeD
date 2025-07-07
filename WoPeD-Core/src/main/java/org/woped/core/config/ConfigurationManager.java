@@ -33,4 +33,5 @@ public class ConfigurationManager {
     if (metricsConfiguration != null) return true;
     else return false;
   }
+
 }
