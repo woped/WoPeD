@@ -144,6 +144,7 @@ Since some of our dependencies are available via `GitHub Packages`, the followin
 2. Create file `~/.m2/settings.xml`
 3. Copy content of [GitHub Guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry) into the xml file of step 2 and replace the username and token with your data.
 
+After running `mvn install`, it's essential to [set up git hooks](https://github.com/woped/woped-git-hooks/blob/main/README.md#activating-git-hooks-after-cloning-a-repository) to ensure project standards.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
