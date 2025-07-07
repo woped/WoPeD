@@ -31,9 +31,8 @@ public class P2TUITest {
     // This method is called before each test
     @BeforeEach
     public void setUp() {
-        p2tui = new P2TUI();
-
         initializeMockMessages();
+        p2tui = new P2TUI();
     }
 
     // This method initializes the mock for the Messages class
