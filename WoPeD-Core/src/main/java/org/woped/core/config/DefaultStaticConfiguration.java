@@ -72,6 +72,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
   public static String DEFAULT_TEXT2PROCESS_HOST = "woped.dhbw-karlsruhe.de";
+  public static String DEFAULT_TEXT2PROCESS_LLMSERVER_HOST = "localhost";
   public static int DEFAULT_TEXT2PROCESS_PORT = 8081;
   public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
   public static boolean DEFAULT_TEXT2PROCESS_USE = false;
@@ -136,6 +137,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private int text2process_serverPort = DEFAULT_TEXT2PROCESS_PORT;
   private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
   private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
+  private String text2process_llm_serverHost = DEFAULT_TEXT2PROCESS_LLMSERVER_HOST;
 
   // Dashboard
   private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
@@ -196,6 +198,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private String gptPrompt = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
   private boolean gptUseNew = false;
   private String gptModel = null;
+  private int text2processllm_serverPort;
 
   public boolean isGptUseNew() {
     return gptUseNew;
@@ -981,6 +984,31 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   @Override
   public void setProcess2TextServerHost(String host) {
     this.process2text_serverHost = host;
+  }
+
+  @Override
+  public void setT2PLLMServerHost(String host){
+    this.text2process_llm_serverHost = host;
+  }
+
+  @Override
+  public String getT2PLLMServerHost(){
+    return this.text2process_llm_serverHost;
+  }
+
+  @Override
+  public int getT2pLLMServerPort() {
+    return this.text2processllm_serverPort;
+  }
+
+  @Override
+  public void setT2pLLMServerPort(int port) {
+    this.text2processllm_serverPort = port;
+  }
+
+  @Override
+  public void setT2PLLMServerPort(int port) {
+    this.text2processllm_serverPort = port;
   }
 
   @Override
