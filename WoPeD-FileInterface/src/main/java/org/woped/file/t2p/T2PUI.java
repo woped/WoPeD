@@ -44,6 +44,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -80,8 +81,14 @@ public class T2PUI extends JDialog {
 
   private String inputText;
   private JComboBox<String> approachBox;
+  private JComboBox<String> llmProviderBox;
+
   static final String CLASSIC_APPROACH = "Classic NLP";
   static final String LLM_APPROACH = "LLM-based";
+
+  // LLM Provider constants
+  static final String OPENAI_PROVIDER = "OpenAI";
+  static final String GEMINI_PROVIDER = "Gemini";
 
   public T2PUI(AbstractApplicationMediator mediator) {
     this(null, mediator);
@@ -185,15 +192,28 @@ public class T2PUI extends JDialog {
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
 
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+
     // Language selection dropdown
     String[] lang = {Messages.getString("T2PUI.Lang"), Messages.getString("T2PUI.Lang.English")};
     JComboBox<String> langBox = new JComboBox<String>(lang);
     langBox.setSelectedIndex(1);
 
-    /// Approach selection dropdown (Classic or LLM)
+    // Approach selection dropdown (Classic or LLM)
     String[] approaches = {CLASSIC_APPROACH, LLM_APPROACH};
     approachBox = new JComboBox<String>(approaches);
     approachBox.setSelectedIndex(0);
+
+    // LLM Provider selection dropdown
+    String[] llmProviders = {OPENAI_PROVIDER, GEMINI_PROVIDER};
+    llmProviderBox = new JComboBox<String>(llmProviders);
+    llmProviderBox.setSelectedIndex(0);
+    llmProviderBox.setEnabled(false); // Initially disabled
+
+    // Add listener to enable/disable LLM provider selection based on approach
+    approachBox.addActionListener(e -> {
+      String selectedApproach = (String) approachBox.getSelectedItem();
+      llmProviderBox.setEnabled(LLM_APPROACH.equals(selectedApproach));
+    });
 
     // Generate button: triggers the request() method
     WopedButton btnGenerate =
@@ -241,12 +261,36 @@ public class T2PUI extends JDialog {
     buttonPanel.add(btnErase);
     buttonPanel.add(langBox);
     buttonPanel.add(Box.createHorizontalGlue()); // Pushes following components to the right
+    buttonPanel.add(new JLabel("Approach:"));
+    buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
     buttonPanel.add(approachBox);
+    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+    buttonPanel.add(new JLabel("LLM Provider:"));
+    buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+    buttonPanel.add(llmProviderBox);
     buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Spacing before generate button
     buttonPanel.add(btnGenerate);
 
     return buttonPanel;
   }
+
+  /**
+   * Maps the UI display name to the backend API value for LLM providers.
+   *
+   * @param displayName The display name from the combobox
+   * @return The corresponding API value
+   */
+  private String mapLlmProviderToApiValue(String displayName) {
+    switch (displayName) {
+      case OPENAI_PROVIDER:
+        return "openai";
+      case GEMINI_PROVIDER:
+        return "gemini";
+      default:
+        return "openai"; // Default fallback
+    }
+  }
+
   /**
    * Handles the main request logic when the generate button is pressed.
    * Validates input, prompts for API key if needed, and starts background processing.
@@ -262,10 +306,11 @@ public class T2PUI extends JDialog {
 
       if (selectedApproach.equals(LLM_APPROACH)) {
         String apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
+        String selectedProvider = (String) llmProviderBox.getSelectedItem();
 
         // Prompt and validate API key
-        while (apiKey.equals("test") || apiKey.isEmpty() || !isApiKeyValid(apiKey)) {
-          apiKey = promptForApiKey();
+        while (apiKey.equals("test") || apiKey.isEmpty() || !isApiKeyValid(apiKey, selectedProvider)) {
+          apiKey = promptForApiKey(selectedProvider);
           if (apiKey == null || apiKey.isEmpty()) {
             requested = false;
             return;
@@ -273,8 +318,8 @@ public class T2PUI extends JDialog {
           ConfigurationManager.getConfiguration().setGptApiKey(apiKey);
         }
 
-        // Start LLM background worker with validated API key
-        llmBackgroundWorker(inputText, apiKey);
+        // Start LLM background worker with validated API key and selected provider
+        llmBackgroundWorker(inputText, apiKey, selectedProvider);
       } else {
         // Start classic background worker
         jsonBackgroundWorker(inputText);
@@ -291,13 +336,14 @@ public class T2PUI extends JDialog {
   /**
    * Prompts the user to enter an API key using a dialog box.
    *
+   * @param provider The LLM provider name for display purposes
    * @return the API key entered by the user, or null if canceled
    */
-
-  String promptForApiKey() {
+  String promptForApiKey(String provider) {
+    String message = String.format("Please enter your %s API key:", provider);
     String apiKey = JOptionPane.showInputDialog(
             this,
-            Messages.getString("T2PUI.LLM.NoKey"),
+            message,
             "API Key Required",
             JOptionPane.QUESTION_MESSAGE);
 
@@ -305,17 +351,35 @@ public class T2PUI extends JDialog {
   }
 
   /**
-   * Checks if the provided API key is valid by making a test request to the OpenAI API.
+   * Checks if the provided API key is valid by making a test request to the appropriate API.
    *
    * @param apiKey the API key to validate
+   * @param provider the LLM provider
    * @return true if the API key is valid (response code 200), false otherwise
    */
-
-  private boolean isApiKeyValid(String apiKey) {
+  private boolean isApiKeyValid(String apiKey, String provider) {
     try {
-      HttpURLConnection connection = (HttpURLConnection) new URL("https://api.openai.com/v1/models").openConnection();
+      String testUrl;
+      switch (provider) {
+        case OPENAI_PROVIDER:
+          testUrl = "https://api.openai.com/v1/models";
+          break;
+        case GEMINI_PROVIDER:
+          testUrl = "https://generativelanguage.googleapis.com/v1/models?key=" + apiKey;
+          break;
+        default:
+          testUrl = "https://api.openai.com/v1/models";
+          break;
+      }
+
+      HttpURLConnection connection = (HttpURLConnection) new URL(testUrl).openConnection();
       connection.setRequestMethod("GET");
-      connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+
+      if (provider.equals(OPENAI_PROVIDER)) {
+        connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+      }
+      // For Gemini, the API key is already in the URL
+
       connection.connect();
 
       int responseCode = connection.getResponseCode();
@@ -397,8 +461,9 @@ public class T2PUI extends JDialog {
    *
    * @param text The input text to process
    * @param apiKey The API key for the GPT service
+   * @param provider The LLM provider to use
    */
-  void llmBackgroundWorker(String text, String apiKey) {
+  void llmBackgroundWorker(String text, String apiKey, String provider) {
     String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":" + ConfigurationManager.getConfiguration().getT2pLLMServerPort() + "/generate_PNML";
     System.out.println("Connecting to LLM service at: " + connectionStr);
 
@@ -415,9 +480,13 @@ public class T2PUI extends JDialog {
         connection.setConnectTimeout(30000);
         connection.setReadTimeout(60000);
 
-        // Create the JSON request body with better escaping
+        // Create the JSON request body with better escaping and include llm_provider
         String escapedText = text.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
-        String jsonInputString = "{\"text\":\"" + escapedText + "\",\"api_key\":\"" + apiKey + "\"}";
+        String llmProviderApiValue = mapLlmProviderToApiValue(provider);
+        String jsonInputString = String.format(
+                "{\"text\":\"%s\",\"api_key\":\"%s\",\"llm_provider\":\"%s\"}",
+                escapedText, apiKey, llmProviderApiValue
+        );
 
         // Send the request
         try (OutputStream outputStream = connection.getOutputStream()) {
@@ -636,5 +705,4 @@ public class T2PUI extends JDialog {
     String txt = r.read();
     if (txt != null) textArea.setText(txt);
   }
-
 }
