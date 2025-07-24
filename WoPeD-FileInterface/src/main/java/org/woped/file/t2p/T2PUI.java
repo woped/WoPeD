@@ -127,7 +127,7 @@ public class T2PUI extends JDialog {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     this.setLocation(
             (screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-    Dimension size = new Dimension(600, 440);
+    Dimension size = new Dimension(800, 440);
     this.setSize(size);
 
     // set prev text if available
