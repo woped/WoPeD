@@ -194,6 +194,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private String gptApiKey = "";
   private boolean gptShowAgain = true;
   private String gptPrompt = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
+  private String gptProvider = "openAi";
   private boolean gptUseNew = false;
   private String gptModel = null;
 
@@ -214,6 +215,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   public String getGptModel() {
     return gptModel;
+  }
+
+  public String getLlmProvider(){
+    return gptProvider;
+  }
+
+  public void setLlmProvider(String gptProvider) {
+    this.gptProvider = gptProvider;
   }
 
   public DefaultStaticConfiguration() {
