@@ -197,6 +197,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private String gptProvider = "openAi";
   private boolean gptUseNew = false;
   private String gptModel = null;
+  private boolean ragOption = false;
 
   public boolean isGptUseNew() {
     return gptUseNew;
@@ -223,6 +224,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   public void setLlmProvider(String gptProvider) {
     this.gptProvider = gptProvider;
+  }
+
+  public boolean getRagOption(){
+    return ragOption;
+  }
+
+  public void setRagOption(boolean ragOption) {
+    this.ragOption = ragOption;
   }
 
   public DefaultStaticConfiguration() {

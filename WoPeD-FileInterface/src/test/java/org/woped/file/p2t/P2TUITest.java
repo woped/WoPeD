@@ -6,8 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.gui.translations.Messages;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -20,9 +31,8 @@ public class P2TUITest {
     // This method is called before each test
     @BeforeEach
     public void setUp() {
-        p2tui = new P2TUI();
-
         initializeMockMessages();
+        p2tui = new P2TUI();
     }
 
     // This method initializes the mock for the Messages class
@@ -34,6 +44,7 @@ public class P2TUITest {
         messagesMock.when(() -> Messages.getString("P2T.apikey.title")).thenReturn("API Schl\\u00FCssel");
         messagesMock.when(() -> Messages.getString("P2T.prompt.title")).thenReturn("Prompt");
         messagesMock.when(() -> Messages.getString("P2T.prompt.checkbox.enable.title")).thenReturn("Bearbeitung aktivieren");
+        messagesMock.when(() -> Messages.getString("P2T.rag.checkbox.enable.title")).thenReturn("RAG aktivieren");
         messagesMock.when(() -> Messages.getString("P2T.get.GPTmodel.title")).thenReturn("GPT-Model:");
         messagesMock.when(() -> Messages.getString("P2T.popup.show.again.title")).thenReturn("Erneut anzeigen");
         messagesMock.when(() -> Messages.getString("P2T.fetchmodels.button")).thenReturn("Modelle laden");
@@ -127,21 +138,27 @@ public class P2TUITest {
         assertFalse(enablePromptCheckBox.isSelected(), "enablePromptCheckBox should not be selected initially");
         assertEquals(Messages.getString("P2T.prompt.checkbox.enable.title"), enablePromptCheckBox.getText(), "enablePromptCheckBox text should be correct");
 
-        // GPT Model label and combo (components 7, 8)
-        JLabel gptModelLabel = (JLabel) fieldsPanel.getComponent(7);
+        // RAG enabled checkbox (component 7)
+        JCheckBox ragEnabledCheckBox = (JCheckBox) fieldsPanel.getComponent(7);
+        assertNotNull(ragEnabledCheckBox, "ragEnabledCheckBox should not be null");
+        assertEquals(Messages.getString("P2T.rag.checkbox.enable.title"), ragEnabledCheckBox.getText(), "ragEnabledCheckBox text should be correct");
+        assertEquals(ConfigurationManager.getConfiguration().getRagOption(), ragEnabledCheckBox.isSelected(), "ragEnabledCheckBox initial state should match configuration");
+
+        // GPT Model label and combo (components 8, 9)
+        JLabel gptModelLabel = (JLabel) fieldsPanel.getComponent(8);
         assertNotNull(gptModelLabel, "gptModelLabel should not be null");
         assertEquals(Messages.getString("P2T.get.GPTmodel.title"), gptModelLabel.getText(), "gptModelLabel text should be correct");
 
-        JComboBox<?> modelComboBox = (JComboBox<?>) fieldsPanel.getComponent(8);
+        JComboBox<?> modelComboBox = (JComboBox<?>) fieldsPanel.getComponent(9);
         assertNotNull(modelComboBox, "modelComboBox should not be null");
 
-        // Fetch models button (component 9)
-        JButton fetchModelsButton = (JButton) fieldsPanel.getComponent(9);
+        // Fetch models button (component 10)
+        JButton fetchModelsButton = (JButton) fieldsPanel.getComponent(10);
         assertNotNull(fetchModelsButton, "fetchModelsButton should not be null");
         assertEquals(Messages.getString("P2T.fetchmodels.button"), fetchModelsButton.getText(), "fetchModelsButton text should be correct");
 
-        // Show again checkbox (component 10)
-        JCheckBox showAgainCheckBox = (JCheckBox) fieldsPanel.getComponent(10);
+        // Show again checkbox (component 11)
+        JCheckBox showAgainCheckBox = (JCheckBox) fieldsPanel.getComponent(11);
         assertNotNull(showAgainCheckBox, "showAgainCheckBox should not be null");
         assertEquals(Messages.getString("P2T.popup.show.again.title"), showAgainCheckBox.getText(), "showAgainCheckBox text should be correct");
         assertEquals(ConfigurationManager.getConfiguration().getGptShowAgain(), showAgainCheckBox.isSelected(), "showAgainCheckBox selected state should be correct");
@@ -154,6 +171,7 @@ public class P2TUITest {
         assertFalse(promptLabel.isVisible(), "promptLabel should be hidden initially");
         assertFalse(promptScrollPane.isVisible(), "promptScrollPane should be hidden initially");
         assertFalse(enablePromptCheckBox.isVisible(), "enablePromptCheckBox should be hidden initially");
+        assertFalse(ragEnabledCheckBox.isVisible(), "ragEnabledCheckBox should be hidden initially");
         assertFalse(gptModelLabel.isVisible(), "gptModelLabel should be hidden initially");
         assertFalse(modelComboBox.isVisible(), "modelComboBox should be hidden initially");
         assertFalse(fetchModelsButton.isVisible(), "fetchModelsButton should be hidden initially");
@@ -168,6 +186,7 @@ public class P2TUITest {
         assertTrue(promptLabel.isVisible(), "promptLabel should be visible after selecting LLM");
         assertTrue(promptScrollPane.isVisible(), "promptScrollPane should be visible after selecting LLM");
         assertTrue(enablePromptCheckBox.isVisible(), "enablePromptCheckBox should be visible after selecting LLM");
+        assertTrue(ragEnabledCheckBox.isVisible(), "ragEnabledCheckBox should be visible after selecting LLM");
         assertTrue(gptModelLabel.isVisible(), "gptModelLabel should be visible after selecting LLM");
         assertTrue(modelComboBox.isVisible(), "modelComboBox should be visible after selecting LLM");
         assertTrue(fetchModelsButton.isVisible(), "fetchModelsButton should be visible after selecting LLM");
@@ -181,6 +200,7 @@ public class P2TUITest {
         assertFalse(promptLabel.isVisible(), "promptLabel should be hidden after selecting Algorithm");
         assertFalse(promptScrollPane.isVisible(), "promptScrollPane should be hidden after selecting Algorithm");
         assertFalse(enablePromptCheckBox.isVisible(), "enablePromptCheckBox should be hidden after selecting Algorithm");
+        assertFalse(ragEnabledCheckBox.isVisible(), "ragEnabledCheckBox should be hidden after selecting Algorithm");
         assertFalse(gptModelLabel.isVisible(), "gptModelLabel should be hidden after selecting Algorithm");
         assertFalse(modelComboBox.isVisible(), "modelComboBox should be hidden after selecting Algorithm");
         assertFalse(fetchModelsButton.isVisible(), "fetchModelsButton should be hidden after selecting Algorithm");
@@ -199,6 +219,17 @@ public class P2TUITest {
         assertTrue(promptField.isEnabled(), "promptField should be enabled after checking enablePromptCheckBox");
         enablePromptCheckBox.doClick();
         assertFalse(promptField.isEnabled(), "promptField should be disabled after unchecking enablePromptCheckBox");
+
+        // Test ragEnabledCheckBox functionality
+        boolean initialRagState = ragEnabledCheckBox.isSelected();
+        ragEnabledCheckBox.doClick();
+        assertEquals(!initialRagState, ragEnabledCheckBox.isSelected(), "ragEnabledCheckBox state should toggle after click");
+        assertEquals(ragEnabledCheckBox.isSelected(), ConfigurationManager.getConfiguration().getRagOption(), "Configuration should be updated after ragEnabledCheckBox click");
+        
+        // Toggle back to verify state is persisted
+        ragEnabledCheckBox.doClick();
+        assertEquals(initialRagState, ragEnabledCheckBox.isSelected(), "ragEnabledCheckBox state should return to initial after second click");
+        assertEquals(ragEnabledCheckBox.isSelected(), ConfigurationManager.getConfiguration().getRagOption(), "Configuration should be reverted after second ragEnabledCheckBox click");
     }
 
     // This method tests the initializeButtonPanel method
@@ -219,7 +250,7 @@ public class P2TUITest {
     public void testIsAPIKeyValid_withInvalidKey() {
         String invalidApiKey = "invalidApiKey";
 
-        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+        boolean isValid = P2TUI.isAPIKeyValid(invalidApiKey);
 
         assertFalse(isValid, "Invalid API key should return false");
     }

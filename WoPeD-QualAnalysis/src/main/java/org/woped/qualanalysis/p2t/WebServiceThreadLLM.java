@@ -22,7 +22,7 @@ public class WebServiceThreadLLM extends Thread {
     private String prompt;
     private String gptModel;
     private String provider;
-    private String useRag = "false"; // Default value, can be modified as needed
+    private String useRag;
     private String text;
 
     public WebServiceThreadLLM(P2TSideBar paraphrasingPanel) {
@@ -39,6 +39,7 @@ public class WebServiceThreadLLM extends Thread {
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
         gptModel = ConfigurationManager.getConfiguration().getGptModel();
         provider = ConfigurationManager.getConfiguration().getLlmProvider();
+        useRag = String.valueOf(ConfigurationManager.getConfiguration().getRagOption());
 
         // LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
 

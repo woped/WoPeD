@@ -1556,6 +1556,20 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
+  public boolean getRagOption() {
+    if(getConfDocument().getConfiguration().getGpt().isSetRagOption()){
+      return getConfDocument().getConfiguration().getGpt().getRagOption();
+    } else {
+      return ConfigurationManager.getStandardConfiguration().getRagOption();
+    }
+  }
+
+  @Override
+  public void setRagOption(boolean ragOption) {
+    getConfDocument().getConfiguration().getGpt().setRagOption(ragOption);
+  }
+
+  @Override
   public boolean getText2ProcessUse() {
     if (getConfDocument().getConfiguration().getT2P().isSetT2PUse()) {
       return getConfDocument().getConfiguration().getT2P().getT2PUse();

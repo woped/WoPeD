@@ -63,37 +63,43 @@
 			<plugin>
 				<groupId>com.diffplug.spotless</groupId>
 				<artifactId>spotless-maven-plugin</artifactId>
-				<version>2.44.4</version>
+				<version>2.22.8</version>
 				<configuration>
-				<formats>
-					<format>
-					<includes>
-						<include>*.md</include>
-						<include>.gitignore</include>
-					</includes>
-					<excludes>
-						<exclude>LICENSE.md</exclude>
-						<exclude>README.md</exclude>
-					</excludes>
-					<trimTrailingWhitespace />
-					<endWithNewline />
-					<indent>
-						<tabs>true</tabs>
-						<spacesPerTab>4</spacesPerTab>
-					</indent>
-					</format>
-				</formats>
-				<java>
-					<importOrder />
-					<removeUnusedImports />
-					<googleJavaFormat>
-					<version>1.27.0</version>
-					<style>GOOGLE</style>
-					<reflowLongStrings>true</reflowLongStrings>
-					<groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact>
-					</googleJavaFormat>
-				</java>
+					<formats>
+						<format>
+							<includes>
+								<include>*.md</include>
+								<include>.gitignore</include>
+							</includes>
+							<excludes>
+								<exclude>LICENSE.md</exclude>
+								<exclude>README.md</exclude>
+							</excludes>
+							<trimTrailingWhitespace />
+							<endWithNewline />
+							<indent>
+								<tabs>true</tabs>
+								<spacesPerTab>4</spacesPerTab>
+							</indent>
+						</format>
+					</formats>
+					<java>
+						<importOrder />
+						<removeUnusedImports />
+						<googleJavaFormat>
+							<version>1.15.0</version>
+							<style>GOOGLE</style>
+							<reflowLongStrings>true</reflowLongStrings>
+							<groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact>
+						</googleJavaFormat>
+					</java>
 				</configuration>
+				<executions>
+					<execution>
+						<id>spotless-check</id>
+						<phase>compile</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
