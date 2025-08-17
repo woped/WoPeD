@@ -892,8 +892,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
                 modelComboBox.removeAllItems(); // Zuerst alte Modelle entfernen
                 List<String> models = ApiHelper.fetchModels(apiKey, provider);
-                String provider = ConfigurationManager.getConfiguration().getLlmProvider();
-                List<String> models = ApiHelper.fetchModels(apiKeyText.getText(), provider);
+//                String provider = ConfigurationManager.getConfiguration().getLlmProvider();
+//                List<String> models = ApiHelper.fetchModels(apiKeyText.getText(), provider);
                 SwingUtilities.invokeLater(() -> {
                     for (String model : models) {
                         modelComboBox.addItem(model);
