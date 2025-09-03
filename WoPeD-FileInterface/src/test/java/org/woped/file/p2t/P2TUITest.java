@@ -21,9 +21,8 @@ public class P2TUITest {
     // This method is called before each test
     @BeforeEach
     public void setUp() {
-        p2tui = new P2TUI();
-
         initializeMockMessages();
+        p2tui = new P2TUI();
     }
 
     // This method initializes the mock for the Messages class
@@ -37,6 +36,7 @@ public class P2TUITest {
         messagesMock.when(() -> Messages.getString("P2T.prompt.checkbox.enable.title")).thenReturn("Bearbeitung aktivieren");
         messagesMock.when(() -> Messages.getString("P2T.get.GPTmodel.title")).thenReturn("GPT-Model:");
         messagesMock.when(() -> Messages.getString("P2T.popup.show.again.title")).thenReturn("Erneut anzeigen");
+        messagesMock.when(() -> Messages.getString("P2T.fetchmodels.button")).thenReturn("fetchModels");
     }
 
     // This method is called after each test
@@ -183,7 +183,7 @@ public class P2TUITest {
     public void testIsAPIKeyValid_withInvalidKey() {
         String invalidApiKey = "invalidApiKey";
 
-        boolean isValid = p2tui.isAPIKeyValid(invalidApiKey);
+        boolean isValid = P2TUI.isAPIKeyValid(invalidApiKey);
 
         assertFalse(isValid);
     }
