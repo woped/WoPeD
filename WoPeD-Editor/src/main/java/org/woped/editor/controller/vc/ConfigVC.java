@@ -146,7 +146,7 @@ public class ConfigVC extends JDialog implements IViewController {
     //			aproPanel.addApromoreServer(aproPanel.getApromoreServerID());
     //		}}
     if (confOK) {
-      // ConfigurationManager.getConfiguration().saveConfig();
+      ConfigurationManager.getConfiguration().saveConfig();
       fireViewEvent(
           new EditorViewEvent(
               this, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, AbstractViewEvent.UPDATE));

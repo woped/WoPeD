@@ -592,4 +592,14 @@ public interface IGeneralConfiguration extends IConfiguration {
   public void setGptModel(String model);
 
   public String getGptModel();
+
+  // New LLM Provider Settings
+  public String getLlmProvider();
+
+  public void setLlmProvider(String llmProvider);
+
+  // RAG Settings
+  public boolean getRagOption();
+
+  public void setRagOption(boolean ragOption);
 }

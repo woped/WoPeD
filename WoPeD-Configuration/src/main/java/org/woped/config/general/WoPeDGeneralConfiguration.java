@@ -1566,10 +1566,37 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
     } else return ConfigurationManager.getStandardConfiguration().getGptUseNew();
   }
 
+  @Override
+  public String getLlmProvider() {
+    if(getConfDocument().getConfiguration().getGpt().isSetLlmProvider()){
+      return getConfDocument().getConfiguration().getGpt().getLlmProvider();
+    } else {
+      return ConfigurationManager.getStandardConfiguration().getLlmProvider();
+    }
+  }
+
+  @Override
+  public void setLlmProvider(String llmProvider) {
+    getConfDocument().getConfiguration().getGpt().setLlmProvider(llmProvider);
+  }
 
   @Override
   public void setText2ProcessServerURI(String uri) {
     getConfDocument().getConfiguration().getT2P().setT2PServerURI(uri);
+  }
+
+  @Override
+  public boolean getRagOption() {
+    if(getConfDocument().getConfiguration().getGpt().isSetRagOption()){
+      return getConfDocument().getConfiguration().getGpt().getRagOption();
+    } else {
+      return ConfigurationManager.getStandardConfiguration().getRagOption();
+    }
+  }
+
+  @Override
+  public void setRagOption(boolean ragOption) {
+    getConfDocument().getConfiguration().getGpt().setRagOption(ragOption);
   }
 
   @Override

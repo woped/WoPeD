@@ -21,6 +21,8 @@ public class WebServiceThreadLLM extends Thread {
     private String apiKey;
     private String prompt;
     private String gptModel;
+    private String provider;
+    private String useRag;
     private String text;
 
     public WebServiceThreadLLM(P2TSideBar paraphrasingPanel) {
@@ -36,6 +38,8 @@ public class WebServiceThreadLLM extends Thread {
         apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
         prompt = ConfigurationManager.getConfiguration().getGptPrompt();
         gptModel = ConfigurationManager.getConfiguration().getGptModel();
+        provider = ConfigurationManager.getConfiguration().getLlmProvider();
+        useRag = String.valueOf(ConfigurationManager.getConfiguration().getRagOption());
 
         // LoggerManager.info(Constants.EDITOR_LOGGER,"Started Fetching GPT Models");
 
@@ -63,10 +67,11 @@ public class WebServiceThreadLLM extends Thread {
             String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
             String encodedPrompt = URLEncoder.encode(prompt, StandardCharsets.UTF_8);
             String encodedGptModel = URLEncoder.encode(gptModel, StandardCharsets.UTF_8);
-
+            String encodedProvider = URLEncoder.encode(provider, StandardCharsets.UTF_8);
+            String encodeduseRag = URLEncoder.encode(useRag, StandardCharsets.UTF_8); 
             // Construct URL with parameters
-            String urlWithParams = String.format("%s?apiKey=%s&prompt=%s&gptModel=%s",
-                    url, encodedApiKey, encodedPrompt, encodedGptModel);
+            String urlWithParams = String.format("%s?apiKey=%s&prompt=%s&gptModel=%s&provider=%s&useRag=%s",
+                    url, encodedApiKey, encodedPrompt, encodedGptModel, encodedProvider, encodeduseRag);
             URL urlObj = new URL(urlWithParams);
 
             // Establish connection
