@@ -24,7 +24,8 @@ import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.utilities.LoggerManager;
 
 /**
- * Class that provides access to the general WoPeD configuration settings. Access to it at runtime
+ * Class that provides access to the general WoPeD configuration settings.
+ * Access to it at runtime
  * is to be gained through ConfigurationManager.
  *
  * @see ConfigurationManager
@@ -39,8 +40,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   private Locale locale = null;
 
   private static int RECENTFILES_SIZE = 10;
-  private Vector<WoPeDRecentFile> runtimeRecentFiles =
-      new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
+  private Vector<WoPeDRecentFile> runtimeRecentFiles = new Vector<WoPeDRecentFile>(RECENTFILES_SIZE);
 
   public String getConfigFilePath() {
     return getUserdir() + CONFIG_FILE;
@@ -58,7 +58,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       xmlOptions.setSavePrettyPrintIndent(2);
       setDefaultHomedir(getUserdir() + "nets" + File.separator);
 
-      if (!readConfig()) return false;
+      if (!readConfig())
+        return false;
 
       isLoaded = true;
 
@@ -78,7 +79,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       if (getConfDocument().getConfiguration().getMetrics() == null)
         getConfDocument().getConfiguration().addNewMetrics();
 
-      if(getConfDocument().getConfiguration().getGpt() == null)
+      if (getConfDocument().getConfiguration().getGpt() == null)
         getConfDocument().getConfiguration().addNewGpt();
 
       // Check if metrics configuration should be loaded
@@ -135,10 +136,12 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
     }
 
     File ud = new File(getUserdir());
-    if (!ud.exists()) ud.mkdir();
+    if (!ud.exists())
+      ud.mkdir();
 
     File hd = new File(getHomedir());
-    if (!hd.exists()) hd.mkdir();
+    if (!hd.exists())
+      hd.mkdir();
 
     return confOk;
   }
@@ -214,11 +217,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
       // Recent
       runtimeRecentFiles = new Vector<WoPeDRecentFile>();
-      for (int i = 0;
-          i < getConfDocument().getConfiguration().getGeneral().getRecentFilesArray().length;
-          i++) {
-        if (getConfDocument().getConfiguration().getGeneral().getRecentFilesArray()[i].getName()
-            != null)
+      for (int i = 0; i < getConfDocument().getConfiguration().getGeneral().getRecentFilesArray().length; i++) {
+        if (getConfDocument().getConfiguration().getGeneral().getRecentFilesArray()[i].getName() != null)
           runtimeRecentFiles.addElement(
               new WoPeDRecentFile(
                   getConfDocument()
@@ -234,8 +234,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       }
 
       // Homedir
-      if (isHomedirSet()) setHomedir(config.getGeneral().getHomedir());
-      else setHomedir(getDefaultHomedir());
+      if (isHomedirSet())
+        setHomedir(config.getGeneral().getHomedir());
+      else
+        setHomedir(getDefaultHomedir());
 
       LoggerManager.info(
           Constants.CONFIG_LOGGER,
@@ -243,7 +245,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
       // Current working dir for file operations
       setCurrentWorkingdir(config.getGeneral().getCurrentWorkingdir());
-      if (!isCurrentWorkingdirSet()) setCurrentWorkingdir(config.getGeneral().getHomedir());
+      if (!isCurrentWorkingdirSet())
+        setCurrentWorkingdir(config.getGeneral().getHomedir());
 
       // Import
       setImportToolspecific(config.getTools().getImporting().getToolspecific());
@@ -290,7 +293,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
       // Map the recent file!
       getConfDocument().getConfiguration().getGeneral().setRecentFilesArray(new RecentFile[0]);
       RecentFile xmlRecent;
-      for (Iterator<WoPeDRecentFile> iter = runtimeRecentFiles.iterator(); iter.hasNext(); ) {
+      for (Iterator<WoPeDRecentFile> iter = runtimeRecentFiles.iterator(); iter.hasNext();) {
         WoPeDRecentFile recent = (WoPeDRecentFile) iter.next();
         xmlRecent = getConfDocument().getConfiguration().getGeneral().addNewRecentFiles();
         xmlRecent.setName(recent.getName());
@@ -440,9 +443,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
    * Sets the recentFiles.
    *
    * @param path
-   * @param name The recentFiles to set / public void setRecentFiles(Vector recentFiles) {
-   *     getConfDocument().getConfiguration().getGeneral ().setRecentFilesArray
-   *     ((RecentFile[])recentFiles.toArray()); }
+   * @param name The recentFiles to set / public void setRecentFiles(Vector
+   *             recentFiles) {
+   *             getConfDocument().getConfiguration().getGeneral
+   *             ().setRecentFilesArray
+   *             ((RecentFile[])recentFiles.toArray()); }
    */
   public void removeRecentFile(String name, String path) {
     // delete the old entry if exists.
@@ -624,8 +629,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   public boolean isTpnSaveElementAsName() {
-    boolean b =
-        getConfDocument().getConfiguration().getTools().getExporting().getTpnExportElementAsName();
+    boolean b = getConfDocument().getConfiguration().getTools().getExporting().getTpnExportElementAsName();
     return b;
   }
 
@@ -656,7 +660,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public int getArrowWidth() {
     if (getConfDocument().getConfiguration().getEditor().isSetArrowWidth())
       return getConfDocument().getConfiguration().getEditor().getArrowWidth();
-    else return ConfigurationManager.getStandardConfiguration().getArrowWidth();
+    else
+      return ConfigurationManager.getStandardConfiguration().getArrowWidth();
   }
 
   public void setArrowheadSize(int headSize) {
@@ -666,13 +671,15 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public int getArrowheadSize() {
     if (getConfDocument().getConfiguration().getEditor().isSetArrowheadSize())
       return getConfDocument().getConfiguration().getEditor().getArrowheadSize();
-    else return ConfigurationManager.getStandardConfiguration().getArrowheadSize();
+    else
+      return ConfigurationManager.getStandardConfiguration().getArrowheadSize();
   }
 
   public boolean isFillArrowHead() {
     if (getConfDocument().getConfiguration().getEditor().isSetArrowFilledHead())
       return getConfDocument().getConfiguration().getEditor().getArrowFilledHead();
-    else return ConfigurationManager.getStandardConfiguration().isFillArrowHead();
+    else
+      return ConfigurationManager.getStandardConfiguration().isFillArrowHead();
   }
 
   public void setFillArrowHead(boolean fill) {
@@ -682,7 +689,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public boolean isRoundRouting() {
     if (getConfDocument().getConfiguration().getEditor().isSetRoundRouting())
       return getConfDocument().getConfiguration().getEditor().getRoundRouting();
-    else return false;
+    else
+      return false;
   }
 
   public void setRoundRouting(boolean round) {
@@ -802,7 +810,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public boolean getColorOn() {
     if (getConfDocument().getConfiguration().getColoring() != null)
       return getConfDocument().getConfiguration().getColoring().getColorOn();
-    else return false;
+    else
+      return false;
   }
 
   public void setColorOn(boolean b) {
@@ -1048,7 +1057,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public int getAlgorithmMode() {
     if (getConfDocument().getConfiguration().getColoring() != null)
       return getConfDocument().getConfiguration().getColoring().getAlgorithmMode();
-    else return 0;
+    else
+      return 0;
   }
 
   public void setAlgorithmMode(int n) {
@@ -1134,13 +1144,15 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public String getApromoreServerName() {
     if (getConfDocument().getConfiguration().getTools().isSetAproServerName())
       return getConfDocument().getConfiguration().getTools().getAproServerName();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreServerName();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreServerName();
   }
 
   public String getApromoreServerURL() {
     if (getConfDocument().getConfiguration().getTools().isSetAproServerURL())
       return getConfDocument().getConfiguration().getTools().getAproServerURL();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreServerURL();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreServerURL();
   }
 
   @Override
@@ -1149,7 +1161,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (getConfDocument().getConfiguration().getTools().isSetAproManagerPath())
       return getConfDocument().getConfiguration().getTools().getAproManagerPath();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreManagerPath();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreManagerPath();
   }
 
   @Override
@@ -1157,7 +1170,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (getConfDocument().getConfiguration().getTools().isSetAproUserName())
       return getConfDocument().getConfiguration().getTools().getAproUserName();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreUsername();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreUsername();
   }
 
   @Override
@@ -1165,7 +1179,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (getConfDocument().getConfiguration().getTools().isSetAproPassword())
       return getConfDocument().getConfiguration().getTools().getAproPassword();
-    else return ConfigurationManager.getStandardConfiguration().getApromorePassword();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromorePassword();
   }
 
   @Override
@@ -1173,7 +1188,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (getConfDocument().getConfiguration().getTools().isSetAproProxyName())
       return getConfDocument().getConfiguration().getTools().getAproProxyName();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreProxyName();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreProxyName();
   }
 
   @Override
@@ -1181,21 +1197,24 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (getConfDocument().getConfiguration().getTools().isSetAproProxyPort())
       return getConfDocument().getConfiguration().getTools().getAproProxyPort();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreProxyPort();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreProxyPort();
   }
 
   @Override
   public int getApromoreServerPort() {
     if (getConfDocument().getConfiguration().getTools().isSetAproServerPort())
       return getConfDocument().getConfiguration().getTools().getAproServerPort();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreServerPort();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreServerPort();
   }
 
   @Override
   public boolean getApromoreUseProxy() {
     if (getConfDocument().getConfiguration().getTools().isSetAproUseProxy())
       return getConfDocument().getConfiguration().getTools().getAproUseProxy();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreUseProxy();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreUseProxy();
   }
 
   @Override
@@ -1227,14 +1246,16 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public boolean getApromoreUse() {
     if (getConfDocument().getConfiguration().getTools().isSetAproUse())
       return getConfDocument().getConfiguration().getTools().getAproUse();
-    else return ConfigurationManager.getStandardConfiguration().getApromoreUse();
+    else
+      return ConfigurationManager.getStandardConfiguration().getApromoreUse();
   }
 
   @Override
   public int getCurrentApromoreIndex() {
     if (getConfDocument().getConfiguration().getTools().isSetAproUse())
       return getConfDocument().getConfiguration().getTools().getAproCurrentIndex();
-    else return ConfigurationManager.getStandardConfiguration().getCurrentApromoreIndex();
+    else
+      return ConfigurationManager.getStandardConfiguration().getCurrentApromoreIndex();
   }
 
   @Override
@@ -1296,10 +1317,10 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   @Override
   public String[] getApromoreServerNames() {
     String[] serverNames = new String[getApromoreServerListLength()];
-    ApromoreServer[] servers =
-        getConfDocument().getConfiguration().getApromoreServers().getApromoreServerArray();
+    ApromoreServer[] servers = getConfDocument().getConfiguration().getApromoreServers().getApromoreServerArray();
     for (ApromoreServer server : servers) {
-      for (int i = 0; i < servers.length; i++) serverNames[i] = server.getApromoreServerName();
+      for (int i = 0; i < servers.length; i++)
+        serverNames[i] = server.getApromoreServerName();
     }
     return serverNames;
   }
@@ -1403,7 +1424,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public String getProcess2TextServerHost() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TServerHost()) {
       return getConfDocument().getConfiguration().getP2T().getP2TServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getProcess2TextServerHost();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getProcess2TextServerHost();
   }
 
   @Override
@@ -1412,15 +1434,11 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
-  public void setT2PLLMServerPort(int port) {
-
-  }
-
-  @Override
   public int getProcess2TextServerPort() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TServerPort()) {
       return getConfDocument().getConfiguration().getP2T().getP2TServerPort();
-    } else return ConfigurationManager.getStandardConfiguration().getProcess2TextServerPort();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getProcess2TextServerPort();
   }
 
   @Override
@@ -1432,7 +1450,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public String getProcess2TextServerURI() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TServerURI()) {
       return getConfDocument().getConfiguration().getP2T().getP2TServerURI();
-    } else return ConfigurationManager.getStandardConfiguration().getProcess2TextServerURI();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getProcess2TextServerURI();
   }
 
   @Override
@@ -1444,7 +1463,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public boolean getProcess2TextUse() {
     if (getConfDocument().getConfiguration().getP2T().isSetP2TUse()) {
       return getConfDocument().getConfiguration().getP2T().getP2TUse();
-    } else return ConfigurationManager.getStandardConfiguration().getProcess2TextUse();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getProcess2TextUse();
   }
 
   @Override
@@ -1462,39 +1482,55 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public String getText2ProcessServerHost() {
     if (getConfDocument().getConfiguration().getT2P().isSetT2PServerHost()) {
       return getConfDocument().getConfiguration().getT2P().getT2PServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
-  }
-
-  //TODO: Fix
-  @Override
-  public void setT2PLLMServerHost(String host) {
-    getConfDocument().getConfiguration().getT2P().setT2PLLMServerHost(host);
+    } else
+      return ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost();
   }
 
   @Override
-  public String getT2PLLMServerHost() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerHost()) {
-      return getConfDocument().getConfiguration().getT2P().getT2PLLMServerHost();
-    } else return ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost();
+  public void setT2pLlmServiceHost(String host) {
+    getConfDocument().getConfiguration().getT2P().setT2pLlmServiceHost(host);
   }
 
   @Override
-  public int getT2pLLMServerPort() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2PLLMServerPort()) {
-      return getConfDocument().getConfiguration().getT2P().getT2PLLMServerPort();
-    } else return ConfigurationManager.getStandardConfiguration().getT2pLLMServerPort();
+  public String getT2pLlmServiceHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServiceHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2pLlmServiceHost();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getT2pLlmServiceHost();
   }
 
   @Override
-  public void setT2pLLMServerPort(int port) {
-    getConfDocument().getConfiguration().getT2P().setT2PLLMServerPort(port);
+  public int getT2pLlmServicePort() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServicePort()) {
+      return getConfDocument().getConfiguration().getT2P().getT2pLlmServicePort();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getT2pLlmServicePort();
+  }
+
+  @Override
+  public void setT2pLlmServicePort(int port) {
+    getConfDocument().getConfiguration().getT2P().setT2pLlmServicePort(port);
+  }
+
+  @Override
+  public String getT2pLlmServiceUri() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServiceUri()) {
+      return getConfDocument().getConfiguration().getT2P().getT2pLlmServiceUri();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getT2pLlmServiceUri();
+  }
+
+  @Override
+  public void setT2pLlmServiceUri(String uri) {
+    getConfDocument().getConfiguration().getT2P().setT2pLlmServiceUri(uri);
   }
 
   @Override
   public int getText2ProcessServerPort() {
     if (getConfDocument().getConfiguration().getT2P().isSetT2PServerPort()) {
       return getConfDocument().getConfiguration().getT2P().getT2PServerPort();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort();
   }
 
   @Override
@@ -1504,15 +1540,18 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
   @Override
   public String getText2ProcessServerURI() {
-    if (getConfDocument().getConfiguration().getP2T().isSetP2TUse()) {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PServerURI()) {
       return getConfDocument().getConfiguration().getT2P().getT2PServerURI();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI();
   }
+
   @Override
   public String getGptApiKey() {
-    if(getConfDocument().getConfiguration().getGpt().isSetGptApiKey()){
+    if (getConfDocument().getConfiguration().getGpt().isSetGptApiKey()) {
       return getConfDocument().getConfiguration().getGpt().getGptApiKey();
-    }else return ConfigurationManager.getStandardConfiguration().getGptApiKey();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getGptApiKey();
   }
 
   @Override
@@ -1520,33 +1559,36 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
     getConfDocument().getConfiguration().getGpt().setGptApiKey(apiKey);
   }
 
-  public String getGptModel(){
-    if(getConfDocument().getConfiguration().getGpt().isSetGptModel()){
+  public String getGptModel() {
+    if (getConfDocument().getConfiguration().getGpt().isSetGptModel()) {
       return getConfDocument().getConfiguration().getGpt().getGptModel();
-    } else return ConfigurationManager.getStandardConfiguration().getGptModel();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getGptModel();
   }
 
-  public void setGptModel(String model){
+  public void setGptModel(String model) {
     getConfDocument().getConfiguration().getGpt().setGptModel(model);
   }
 
   @Override
   public boolean getGptShowAgain() {
-    if(getConfDocument().getConfiguration().getGpt().isSetGptShowAgain()){
+    if (getConfDocument().getConfiguration().getGpt().isSetGptShowAgain()) {
       return getConfDocument().getConfiguration().getGpt().getGptShowAgain();
-    }else return ConfigurationManager.getStandardConfiguration().getGptShowAgain();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getGptShowAgain();
   }
 
   @Override
   public void setGptShowAgain(boolean showAgain) {
-  getConfDocument().getConfiguration().getGpt().setGptShowAgain(showAgain);
+    getConfDocument().getConfiguration().getGpt().setGptShowAgain(showAgain);
   }
 
   @Override
   public String getGptPrompt() {
-    if(getConfDocument().getConfiguration().getGpt().isSetGptPrompt()){
+    if (getConfDocument().getConfiguration().getGpt().isSetGptPrompt()) {
       return getConfDocument().getConfiguration().getGpt().getGptPrompt();
-    }else return ConfigurationManager.getStandardConfiguration().getGptPrompt();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getGptPrompt();
   }
 
   @Override
@@ -1555,20 +1597,21 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
-  public void setGptUseNew(boolean useNew){
+  public void setGptUseNew(boolean useNew) {
     getConfDocument().getConfiguration().getGpt().setGptUseNew(useNew);
   }
 
   @Override
-  public boolean getGptUseNew(){
-    if(getConfDocument().getConfiguration().getGpt().getGptUseNew()){
-  return getConfDocument().getConfiguration().getGpt().getGptUseNew();
-    } else return ConfigurationManager.getStandardConfiguration().getGptUseNew();
+  public boolean getGptUseNew() {
+    if (getConfDocument().getConfiguration().getGpt().getGptUseNew()) {
+      return getConfDocument().getConfiguration().getGpt().getGptUseNew();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getGptUseNew();
   }
 
   @Override
   public String getLlmProvider() {
-    if(getConfDocument().getConfiguration().getGpt().isSetLlmProvider()){
+    if (getConfDocument().getConfiguration().getGpt().isSetLlmProvider()) {
       return getConfDocument().getConfiguration().getGpt().getLlmProvider();
     } else {
       return ConfigurationManager.getStandardConfiguration().getLlmProvider();
@@ -1587,7 +1630,7 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
   @Override
   public boolean getRagOption() {
-    if(getConfDocument().getConfiguration().getGpt().isSetRagOption()){
+    if (getConfDocument().getConfiguration().getGpt().isSetRagOption()) {
       return getConfDocument().getConfiguration().getGpt().getRagOption();
     } else {
       return ConfigurationManager.getStandardConfiguration().getRagOption();
@@ -1603,7 +1646,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   public boolean getText2ProcessUse() {
     if (getConfDocument().getConfiguration().getT2P().isSetT2PUse()) {
       return getConfDocument().getConfiguration().getT2P().getT2PUse();
-    } else return ConfigurationManager.getStandardConfiguration().getText2ProcessUse();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getText2ProcessUse();
   }
 
   @Override
@@ -1618,7 +1662,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (bd.isSetServerport()) {
       return getConfDocument().getConfiguration().getBusinessdashboard().getServerport();
-    } else return ConfigurationManager.getStandardConfiguration().getBusinessDashboardServerPort();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getBusinessDashboardServerPort();
   }
 
   @Override
@@ -1648,7 +1693,8 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
 
     if (bd.isSetMaxvalues()) {
       return getConfDocument().getConfiguration().getBusinessdashboard().getMaxvalues();
-    } else return ConfigurationManager.getStandardConfiguration().getBusinessDashboardMaxValues();
+    } else
+      return ConfigurationManager.getStandardConfiguration().getBusinessDashboardMaxValues();
   }
 
   @Override
@@ -1723,6 +1769,5 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
         .getExporting()
         .setYawlExportGroups(exportGroups);
   }
-
 
 }
