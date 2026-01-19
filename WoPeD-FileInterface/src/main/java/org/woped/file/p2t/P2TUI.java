@@ -73,26 +73,32 @@ public class P2TUI extends JDialog {
      * Initialize the dialog
      */
     void initialize() {
-        this.setVisible(false);
-        this.getContentPane().setLayout(new BorderLayout());
-        this.setUndecorated(false);
-        this.setResizable(true);
-        this.setTitle(Messages.getString("P2T.openP2T.text"));
+        try {
+            this.setVisible(false);
+            this.getContentPane().setLayout(new BorderLayout());
+            this.setUndecorated(false);
+            this.setResizable(true);
+            this.setTitle(Messages.getString("P2T.openP2T.text"));
 
-        // Add switch button panel to the top
-        this.getContentPane().add(initializeSwitchButtonPanel(), BorderLayout.NORTH);
+            // Add switch button panel to the top
+            this.getContentPane().add(initializeSwitchButtonPanel(), BorderLayout.NORTH);
 
-        // Add a single button to the bottom center
-        this.getContentPane().add(initializeSingleButtonPanel(), BorderLayout.SOUTH);
+            // Add a single button to the bottom center
+            this.getContentPane().add(initializeSingleButtonPanel(), BorderLayout.SOUTH);
 
-        this.pack();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
+            this.pack();
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation((screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
 
-        Dimension size = new Dimension(650, 500);
-        this.setSize(size);
+            Dimension size = new Dimension(650, 500);
+            this.setSize(size);
 
-        LoggerManager.info(Constants.EDITOR_LOGGER, "P2TUI initialized");
+            LoggerManager.info(Constants.EDITOR_LOGGER, "P2TUI initialized successfully");
+        } catch (Exception e) {
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Error initializing P2TUI: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     /**
@@ -456,9 +462,9 @@ public class P2TUI extends JDialog {
     /**
      * Execute the action
      */
-    void executeAction() {
+    public void executeAction() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
-        action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
+        action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null));
     }
 
     /**
