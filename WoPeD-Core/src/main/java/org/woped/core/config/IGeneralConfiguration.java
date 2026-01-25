@@ -523,17 +523,17 @@ public interface IGeneralConfiguration extends IConfiguration {
 
     public void setText2ProcessServerHost(String host);
 
-    public void setT2pLlmServiceHost(String host);
+    public void setT2PLlmServiceHost(String host);
 
-    public String getT2pLlmServiceHost();
+    public String getT2PLlmServiceHost();
 
-    public void setT2pLlmServicePort(int port);
+    public void setT2PLlmServicePort(int port);
 
-    public int getT2pLlmServicePort();
-    
-    public void setT2pLlmServiceUri(String uri);
-    
-    public String getT2pLlmServiceUri();
+    public int getT2PLlmServicePort();
+
+    public void setT2PLlmServiceUri(String uri);
+
+    public String getT2PLlmServiceUri();
 
     public int getText2ProcessServerPort();
 

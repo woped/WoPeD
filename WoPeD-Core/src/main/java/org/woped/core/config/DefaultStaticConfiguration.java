@@ -77,7 +77,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public static int DEFAULT_T2PLLMSERVICE_PORT = 443;
 
   public static String DEFAULT_TEXT2PROCESS_HOST = "woped.dhbw-karlsruhe.de";
-  public static int DEFAULT_TEXT2PROCESS_PORT = 8081;
+  public static int DEFAULT_TEXT2PROCESS_PORT = 443;
   public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
   public static boolean DEFAULT_TEXT2PROCESS_USE = false;
 
@@ -1030,32 +1030,32 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   }
 
   @Override
-  public void setT2pLlmServiceHost(String host) {
+  public void setT2PLlmServiceHost(String host) {
     this.t2pLlmServiceHost = host;
   }
 
   @Override
-  public String getT2pLlmServiceHost() {
+  public String getT2PLlmServiceHost() {
     return this.t2pLlmServiceHost;
   }
 
   @Override
-  public int getT2pLlmServicePort() {
+  public int getT2PLlmServicePort() {
     return this.t2pLlmServicePort;
   }
 
   @Override
-  public void setT2pLlmServicePort(int port) {
+  public void setT2PLlmServicePort(int port) {
     this.t2pLlmServicePort = port;
   }
 
   @Override
-  public String getT2pLlmServiceUri() {
+  public String getT2PLlmServiceUri() {
     return this.t2pLlmServiceUri;
   }
 
   @Override
-  public void setT2pLlmServiceUri(String uri) {
+  public void setT2PLlmServiceUri(String uri) {
     this.t2pLlmServiceUri = uri;
   }
 

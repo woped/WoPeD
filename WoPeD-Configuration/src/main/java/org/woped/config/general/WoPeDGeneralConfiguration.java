@@ -1487,42 +1487,42 @@ public class WoPeDGeneralConfiguration extends WoPeDConfiguration implements IGe
   }
 
   @Override
-  public void setT2pLlmServiceHost(String host) {
-    getConfDocument().getConfiguration().getT2P().setT2pLlmServiceHost(host);
+  public void setT2PLlmServiceHost(String host) {
+    getConfDocument().getConfiguration().getT2P().setT2PLlmServiceHost(host);
   }
 
   @Override
-  public String getT2pLlmServiceHost() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServiceHost()) {
-      return getConfDocument().getConfiguration().getT2P().getT2pLlmServiceHost();
+  public String getT2PLlmServiceHost() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLlmServiceHost()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLlmServiceHost();
     } else
-      return ConfigurationManager.getStandardConfiguration().getT2pLlmServiceHost();
+      return ConfigurationManager.getStandardConfiguration().getT2PLlmServiceHost();
   }
 
   @Override
-  public int getT2pLlmServicePort() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServicePort()) {
-      return getConfDocument().getConfiguration().getT2P().getT2pLlmServicePort();
+  public int getT2PLlmServicePort() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLlmServicePort()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLlmServicePort();
     } else
-      return ConfigurationManager.getStandardConfiguration().getT2pLlmServicePort();
+      return ConfigurationManager.getStandardConfiguration().getT2PLlmServicePort();
   }
 
   @Override
-  public void setT2pLlmServicePort(int port) {
-    getConfDocument().getConfiguration().getT2P().setT2pLlmServicePort(port);
+  public void setT2PLlmServicePort(int port) {
+    getConfDocument().getConfiguration().getT2P().setT2PLlmServicePort(port);
   }
 
   @Override
-  public String getT2pLlmServiceUri() {
-    if (getConfDocument().getConfiguration().getT2P().isSetT2pLlmServiceUri()) {
-      return getConfDocument().getConfiguration().getT2P().getT2pLlmServiceUri();
+  public String getT2PLlmServiceUri() {
+    if (getConfDocument().getConfiguration().getT2P().isSetT2PLlmServiceUri()) {
+      return getConfDocument().getConfiguration().getT2P().getT2PLlmServiceUri();
     } else
-      return ConfigurationManager.getStandardConfiguration().getT2pLlmServiceUri();
+      return ConfigurationManager.getStandardConfiguration().getT2PLlmServiceUri();
   }
 
   @Override
-  public void setT2pLlmServiceUri(String uri) {
-    getConfDocument().getConfiguration().getT2P().setT2pLlmServiceUri(uri);
+  public void setT2PLlmServiceUri(String uri) {
+    getConfDocument().getConfiguration().getT2P().setT2PLlmServiceUri(uri);
   }
 
   @Override
