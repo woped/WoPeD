@@ -16,7 +16,7 @@
   <a href="https://github.com/woped/WoPeD/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/woped/WoPeD.svg?style=for-the-badge">
   </a>
-  
+   
   <!-- PROJECT LOGO -->
   <br />
   <br />
