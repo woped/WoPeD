@@ -11,9 +11,22 @@ jobs:
     uses: woped/devops/.github/workflows/validate-commit-msg.yaml@main
 
   linting:
-   uses: woped/devops/.github/workflows/linting.yaml@main
+    uses: woped/devops/.github/workflows/linting.yaml@main
+
   testing_maven:
-    uses: woped/devops/.github/workflows/testing_maven.yaml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build and Test
+        run: mvn -B clean verify -pl '!WoPeD-Installer' --no-transfer-progress
+
   sonar_maven:
     needs: testing_maven
     uses: woped/devops/.github/workflows/sonar_maven.yaml@main
