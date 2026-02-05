@@ -135,6 +135,24 @@
 						</execution>
 						<!-- Step 4: Installer-Exe für Windows in /Windows erzeugen -->
 						<!-- Wird erst nach izpack-maven-plugin in Step 4 ausgeführt, muss jedoch hier aufgeführt werden. -->
+						<execution>
+							<id>l4j-clui2</id>
+							<phase>package</phase>
+							<goals>
+								<goal>launch4j</goal>
+							</goals>
+							<configuration>
+								<headerType>gui</headerType>
+								<jar>target/stagingOutput/WoPeD-Installer-${project.version}.jar</jar>
+								<outfile>target/Windows/WoPeD-install-windows-${project.version}.exe</outfile>
+								<priority>normal</priority>
+								<stayAlive>false</stayAlive>
+								<icon>WoPeD.ico</icon>
+								<jre>
+									<path>%JAVA_HOME%</path>
+								</jre>
+							</configuration>
+						</execution>
 					</executions>
 				</plugin>
 
@@ -145,7 +163,35 @@
 					<version>5.1.3</version>
 					<executions>
 						<!-- Step 3.1: Installer für Windows erzeugen -> Wird im nächsten Schritt in eine Exe gepackt-->
+						<execution>
+							<phase>prepare-package</phase>
+							<id>windows</id>
+							<goals>
+								<goal>izpack</goal>
+							</goals>
+							<configuration>
+								<baseDir>./target/staging</baseDir>
+								<installFile>./target/staging/install_windows.xml</installFile>
+								<output>./target/stagingOutput/WoPeD-Installer-${project.version}.jar</output>
+								<!-- Benötigt für Update auf IzPack 5.1.3 https://stackoverflow.com/questions/52870386/an-attached-artifact-must-have-a-different-id-than-its-corresponding-main-artifa/53132888 -->
+								<classifier>BugFix</classifier>
+							</configuration>
+						</execution>
 						<!-- Step 3.2: Installer für Linux erzeugen und direkt in dem Linux-Output-Ordner ablegen -->
+						<execution>
+							<phase>prepare-package</phase>
+							<id>linux</id>
+							<goals>
+								<goal>izpack</goal>
+							</goals>
+							<configuration>
+								<baseDir>./target/staging</baseDir>
+								<installFile>./target/staging/install_linux.xml</installFile>
+								<output>./target/Linux/WoPeD-install-linux-${project.version}.jar</output>
+								<!-- Benötigt für Update auf IzPack 5.1.3 https://stackoverflow.com/questions/52870386/an-attached-artifact-must-have-a-different-id-than-its-corresponding-main-artifa/53132888 -->
+								<classifier>BugFix</classifier>
+							</configuration>
+						</execution>
 					</executions>
 					<dependencies>
 						<dependency>
@@ -157,6 +203,27 @@
 				</plugin>
 
 				<!-- Step 5: Installer-Jar für Linux nach /Linux verschieben -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.8</version>
+					<executions>
+						<execution>
+							<id>step5</id>
+							<phase>package</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<copy tofile="target/Linux/WoPeD-install-linux-${project.version}.jar">
+										<fileset
+												file="./target/stagingOutput/WoPeD-Installer-${project.version}.jar" />
+									</copy>
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 
 				<!-- Step 6: Create MacOS package installer -->
 				<plugin>
@@ -263,6 +330,10 @@
 									<copy todir="dist/WoPeD.app/Contents">
 										<fileset file="dist/Info.plist"/>
 									</copy>
+
+									<exec dir="dist" executable="cmd.exe">
+										<arg line="makepackage"/>
+									</exec>
 
 									<move todir="target/MacOS">
 										<fileset file="dist/*.pkg"/>
