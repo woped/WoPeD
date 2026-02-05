@@ -29,5 +29,20 @@ jobs:
 
   sonar_maven:
     needs: testing_maven
-    uses: woped/devops/.github/workflows/sonar_maven.yaml@main
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build and analyze with SonarCloud
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify -pl '!WoPeD-Installer' org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=woped_WoPeD --no-transfer-progress
