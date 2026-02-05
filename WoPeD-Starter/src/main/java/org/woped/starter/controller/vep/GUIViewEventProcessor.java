@@ -87,29 +87,29 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
                 t2p.setVisible(true);
                 break;
             case AbstractViewEvent.P2T:
-                P2TUI p2t;
-                if (getMediator().getUi() != null
-                        && getMediator().getUi().getComponent() instanceof JFrame) {
-                    {
-                        p2t = new P2TUI((JFrame) getMediator().getUi(), getMediator());
+                try {
+                    P2TUI p2t;
+                    if (getMediator().getUi() != null
+                            && getMediator().getUi().getComponent() instanceof JFrame) {
+                        p2t = new P2TUI((JFrame) getMediator().getUi().getComponent(), getMediator());
+                    } else {
+                        p2t = new P2TUI(getMediator());
                     }
-                } else {
-                    p2t = new P2TUI(getMediator());
-                }
-                if (ConfigurationManager.getConfiguration().getGptShowAgain()) {
-                    p2t.setVisible(true);
-                }
-                if (!ConfigurationManager.getConfiguration().getGptShowAgain()) {
-                    if (ConfigurationManager.getConfiguration().getGptUseNew()) {
-                        WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
-                        action.actionPerformed(
-                                new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
+                    if (ConfigurationManager.getConfiguration().getGptShowAgain()) {
+                        p2t.setVisible(true);
+                    } else {
+                        // User has disabled the dialog, so directly open the sidebar
+                        p2t.executeAction();
                     }
-                    if (!ConfigurationManager.getConfiguration().getGptUseNew()) {
-                        WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
-                        action.actionPerformed(
-                                new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.P2T, null));
-                    }
+                } catch (Exception e) {
+                    LoggerManager.error(
+                            org.woped.editor.Constants.EDITOR_LOGGER,
+                            "Error opening P2T UI: " + e.getMessage());
+                    e.printStackTrace();
+                    // Fallback: directly open the sidebar
+                    WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_P2T_OLD);
+                    action.actionPerformed(
+                            new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null));
                 }
                 break;
             case AbstractViewEvent.NEW:

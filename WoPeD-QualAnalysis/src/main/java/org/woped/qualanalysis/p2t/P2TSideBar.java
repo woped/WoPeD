@@ -370,22 +370,22 @@ public class P2TSideBar extends JPanel implements ActionListener {
     if(!ConfigurationManager.getConfiguration().getGptUseNew()){
       this.textpane.setText(Messages.getString("P2T.loading"));
       this.showLoadingAnimation(true);
-        WebServiceThread webServiceOld = new WebServiceThread(this);
+      WebServiceThread webServiceOld = new WebServiceThread(this);
       webServiceOld.start();
       while (!webServiceOld.getIsFinished()) {
         try{
           Thread.sleep(500);
         }catch (InterruptedException e1){
-          //ignore?
+          //ignore
         }
-        this.textpane.setText("");
-
-        if (naturalTextParser != null) this.textpane.setText(webServiceOld.getText());
       }
+      this.textpane.setText("");
+
+      if (naturalTextParser != null) this.textpane.setText(webServiceOld.getText());
     }
 
     setThreadInProgress(false);
-    webService = null;
+    this.showLoadingAnimation(false);
   }
 
   private void showErrorMessage(String resourceKey) {
