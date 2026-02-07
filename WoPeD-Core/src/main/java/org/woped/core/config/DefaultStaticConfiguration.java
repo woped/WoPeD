@@ -10,7 +10,8 @@ import java.util.Vector;
 import org.woped.config.ApromoreServer;
 
 /**
- * Class that provides fallback configuration settings for the general WoPeD configuration part
+ * Class that provides fallback configuration settings for the general WoPeD
+ * configuration part
  *
  * @autor Philip Allgaier
  */
@@ -71,9 +72,12 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public static String DEFAULT_PROCESS2TEXT_URI = "/p2t";
   public static boolean DEFAULT_PROCESS2TEXT_USE = false;
 
+  public static String DEFAULT_T2PLLMSERVICE_HOST = "woped.dhbw-karlsruhe.de";
+  public static String DEFAULT_T2PLLMSERVICE_URI = "/t2p-2.0";
+  public static int DEFAULT_T2PLLMSERVICE_PORT = 443;
+
   public static String DEFAULT_TEXT2PROCESS_HOST = "woped.dhbw-karlsruhe.de";
-  public static String DEFAULT_TEXT2PROCESS_LLMSERVER_HOST = "localhost";
-  public static int DEFAULT_TEXT2PROCESS_PORT = 8081;
+  public static int DEFAULT_TEXT2PROCESS_PORT = 443;
   public static String DEFAULT_TEXT2PROCESS_URI = "/t2p";
   public static boolean DEFAULT_TEXT2PROCESS_USE = false;
 
@@ -137,7 +141,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private int text2process_serverPort = DEFAULT_TEXT2PROCESS_PORT;
   private String text2process_serverUri = DEFAULT_TEXT2PROCESS_URI;
   private boolean text2process_use = DEFAULT_TEXT2PROCESS_USE;
-  private String text2process_llm_serverHost = DEFAULT_TEXT2PROCESS_LLMSERVER_HOST;
+  private String t2pLlmServiceHost = DEFAULT_T2PLLMSERVICE_HOST;
+  private String t2pLlmServiceUri = DEFAULT_T2PLLMSERVICE_URI;
+  private int t2pLlmServicePort = DEFAULT_T2PLLMSERVICE_PORT;
 
   // Dashboard
   private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
@@ -199,7 +205,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private String gptProvider = "openAi";
   private boolean gptUseNew = false;
   private String gptModel = null;
-  private int text2processllm_serverPort;
   private boolean ragOption = false;
 
   public boolean isGptUseNew() {
@@ -209,7 +214,8 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   public void setGptUseNew(boolean gptUseNew) {
     this.gptUseNew = gptUseNew;
   }
-  public boolean getGptUseNew(){
+
+  public boolean getGptUseNew() {
     return gptUseNew;
   }
 
@@ -221,7 +227,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     return gptModel;
   }
 
-  public String getLlmProvider(){
+  public String getLlmProvider() {
     return gptProvider;
   }
 
@@ -229,7 +235,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     this.gptProvider = gptProvider;
   }
 
-  public boolean getRagOption(){
+  public boolean getRagOption() {
     return ragOption;
   }
 
@@ -552,31 +558,36 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     return new Dimension(800, 600);
   }
 
-  public void setWindowSize(Dimension windowSize) {}
+  public void setWindowSize(Dimension windowSize) {
+  }
 
   public boolean isMaximizeWindow() {
     return true;
   }
 
-  public void setMaximizeWindow(boolean maximize) {}
+  public void setMaximizeWindow(boolean maximize) {
+  }
 
   public int getWindowX() {
     return 0;
   }
 
-  public void setWindowX(int windowX) {}
+  public void setWindowX(int windowX) {
+  }
 
   public int getWindowY() {
     return 0;
   }
 
-  public void setWindowY(int windowY) {}
+  public void setWindowY(int windowY) {
+  }
 
   public String getWoflanPath() {
     return "";
   }
 
-  public void setWoflanPath(String woflanPath) {}
+  public void setWoflanPath(String woflanPath) {
+  }
 
   public boolean isEditingOnCreation() {
     return editoncreation;
@@ -658,23 +669,28 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     return false;
   }
 
-  public void setTpnSaveElementAsName(boolean b) {}
+  public void setTpnSaveElementAsName(boolean b) {
+  }
 
   public boolean isUseWoflan() {
     return false;
   }
 
-  public void setUseWoflan(boolean useWoflan) {}
+  public void setUseWoflan(boolean useWoflan) {
+  }
 
   public boolean isUseWoflanDLL() {
     return false;
   }
 
-  public void setUseWoflanDLL(boolean useWoflanDLL) {}
+  public void setUseWoflanDLL(boolean useWoflanDLL) {
+  }
 
-  public void removeAllRecentFiles() {}
+  public void removeAllRecentFiles() {
+  }
 
-  public void removeRecentFile(String name, String path) {}
+  public void removeRecentFile(String name, String path) {
+  }
 
   public String getUserdir() {
     return this.userdir;
@@ -751,37 +767,43 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
     return true;
   }
 
-  public void setUseMetrics(boolean loadMetrics) {}
+  public void setUseMetrics(boolean loadMetrics) {
+  }
 
   public int getAlgorithmDecimalPlaces() {
     return 2;
   }
 
-  public void setAlgorithmDecimalPlaces(int n) {}
+  public void setAlgorithmDecimalPlaces(int n) {
+  }
 
   public int getVariableDecimalPlaces() {
     return 0;
   }
 
-  public void setVariableDecimalPlaces(int n) {}
+  public void setVariableDecimalPlaces(int n) {
+  }
 
   public boolean isUseAlgorithmHighlighting() {
     return false;
   }
 
-  public void setUseAlgorithmHighlighting(boolean useHighlighting) {}
+  public void setUseAlgorithmHighlighting(boolean useHighlighting) {
+  }
 
   public boolean isShowNamesInBuilder() {
     return false;
   }
 
-  public void setShowNamesInBuilder(boolean showNames) {}
+  public void setShowNamesInBuilder(boolean showNames) {
+  }
 
   public boolean isShowAdvancedErrorMessages() {
     return false;
   }
 
-  public void setShowAdvancedErrorMessages(boolean showAdvanced) {}
+  public void setShowAdvancedErrorMessages(boolean showAdvanced) {
+  }
 
   @Override
   public int getCurrentApromoreIndex() {
@@ -966,32 +988,35 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 
   @Override
   public void addApromoreServer(
-          int ID,
-          String name,
-          String url,
-          int port,
-          String path,
-          String user,
-          String pwd,
-          boolean useProxy,
-          String proxyUrl,
-          int proxyPort) {}
+      int ID,
+      String name,
+      String url,
+      int port,
+      String path,
+      String user,
+      String pwd,
+      boolean useProxy,
+      String proxyUrl,
+      int proxyPort) {
+  }
 
   @Override
   public void changeApromoreServerSettings(
-          int ID,
-          String name,
-          String url,
-          int port,
-          String path,
-          String user,
-          String pwd,
-          boolean useProxy,
-          String proxyUrl,
-          int proxyPort) {}
+      int ID,
+      String name,
+      String url,
+      int port,
+      String path,
+      String user,
+      String pwd,
+      boolean useProxy,
+      String proxyUrl,
+      int proxyPort) {
+  }
 
   @Override
-  public void removeApromoreServer(int index) {}
+  public void removeApromoreServer(int index) {
+  }
 
   // Process 2 Text
   @Override
@@ -1005,28 +1030,33 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   }
 
   @Override
-  public void setT2PLLMServerHost(String host){
-    this.text2process_llm_serverHost = host;
+  public void setT2PLlmServiceHost(String host) {
+    this.t2pLlmServiceHost = host;
   }
 
   @Override
-  public String getT2PLLMServerHost(){
-    return this.text2process_llm_serverHost;
+  public String getT2PLlmServiceHost() {
+    return this.t2pLlmServiceHost;
   }
 
   @Override
-  public int getT2pLLMServerPort() {
-    return this.text2processllm_serverPort;
+  public int getT2PLlmServicePort() {
+    return this.t2pLlmServicePort;
   }
 
   @Override
-  public void setT2pLLMServerPort(int port) {
-    this.text2processllm_serverPort = port;
+  public void setT2PLlmServicePort(int port) {
+    this.t2pLlmServicePort = port;
   }
 
   @Override
-  public void setT2PLLMServerPort(int port) {
-    this.text2processllm_serverPort = port;
+  public String getT2PLlmServiceUri() {
+    return this.t2pLlmServiceUri;
+  }
+
+  @Override
+  public void setT2PLlmServiceUri(String uri) {
+    this.t2pLlmServiceUri = uri;
   }
 
   @Override

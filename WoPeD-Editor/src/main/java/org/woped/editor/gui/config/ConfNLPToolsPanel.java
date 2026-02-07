@@ -11,11 +11,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.KeyStore;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
 import javax.swing.*;
 
 import org.json.simple.parser.ParseException;
@@ -25,6 +31,19 @@ import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 public class ConfNLPToolsPanel extends AbstractConfPanel {
+    
+    // Enable automatic intermediate certificate fetching
+    static {
+        // Enable AIA (Authority Information Access) certificate fetching
+        // This allows Java to download missing intermediate certificates automatically
+        System.setProperty("com.sun.security.enableAIAcaIssuers", "true");
+        // Also enable CRL checking if needed
+        System.setProperty("com.sun.net.ssl.checkRevocation", "false");
+        
+        // Load custom truststore as fallback
+        loadCustomTruststore();
+    }
+    
     private JCheckBox useBox = null;
     private JPanel enabledPanel = null;
     private JPanel settingsPanel = null;
@@ -60,10 +79,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     // Components for LLM Panel
     private JPanel settingsPanel_LLM = null;
-    private JTextField serverURLText_LLM = null;
-    private JLabel serverURLLabel_LLM = null;
-    private JLabel serverPortLabel_LLM = null;
-    private JTextField serverPortText_LLM = null;
+    private JTextField serviceUrlText_LLM = null;
+    private JLabel serviceUrlLabel_LLM = null;
+    private JTextField servicePortText_LLM = null;
+    private JLabel servicePortLabel_LLM = null;
+    private JTextField serviceUriText_LLM = null;
+    private JLabel serviceUriLabel_LLM = null;
     private WopedButton testButton_LLM = null;
     private WopedButton defaultButton_LLM = null;
     // Neue Felder hinzufügen (nach den anderen privaten Feldern):
@@ -112,14 +133,14 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         ConfigurationManager.getConfiguration().setGptApiKey(getApiKeyText().getText());
         ConfigurationManager.getConfiguration().setGptShowAgain(getShowAgainBox().isSelected());
         ConfigurationManager.getConfiguration().setGptPrompt(getPromptText().getText());
-        ConfigurationManager.getConfiguration().setT2PLLMServerHost(getServerURLText_LLM().getText());
-        if (getServerPortText_LLM().getText().isEmpty()) {
-            ConfigurationManager.getConfiguration().setT2PLLMServerPort(0);
+        ConfigurationManager.getConfiguration().setT2PLlmServiceHost(getServiceUrlText_LLM().getText());
+        if (getServicePortText_LLM().getText().isEmpty()) {
+            ConfigurationManager.getConfiguration().setT2PLlmServicePort(0);
         } else {
             ConfigurationManager.getConfiguration()
-                    .setT2PLLMServerPort(Integer.parseInt(getServerPortText_LLM().getText()));
+                    .setT2PLlmServicePort(Integer.parseInt(getServicePortText_LLM().getText()));
         }
-        ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
+        ConfigurationManager.getConfiguration().setT2PLlmServiceUri(getServiceUriText_LLM().getText());
         ConfigurationManager.getConfiguration().setRagOption(getRagOptionBox().isSelected());
         if (modelComboBox.getSelectedItem() != null) {
             ConfigurationManager.getConfiguration().setGptModel(modelComboBox.getSelectedItem().toString());
@@ -149,8 +170,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getApiKeyText().setText(ConfigurationManager.getConfiguration().getGptApiKey());
         getShowAgainBox().setSelected(ConfigurationManager.getConfiguration().getGptShowAgain());
         getPromptText().setText(ConfigurationManager.getConfiguration().getGptPrompt());
-        getServerURLText_LLM().setText(ConfigurationManager.getConfiguration().getT2PLLMServerHost());
-        getServerPortText_LLM().setText("" + ConfigurationManager.getConfiguration().getT2pLLMServerPort());
+        getServiceUrlText_LLM().setText(ConfigurationManager.getConfiguration().getT2PLlmServiceHost());
+        getServicePortText_LLM().setText("" + ConfigurationManager.getConfiguration().getT2PLlmServicePort());
+        getServiceUriText_LLM().setText(ConfigurationManager.getConfiguration().getT2PLlmServiceUri());
         getRagOptionBox().setSelected(ConfigurationManager.getConfiguration().getRagOption());
     }
 
@@ -201,7 +223,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             serverURLText = new JTextField();
             serverURLText.setColumns(40);
             serverURLText.setEnabled(true);
-            serverURLText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
+            serverURLText
+                    .setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
         }
         return serverURLText;
     }
@@ -211,7 +234,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             serverURLText_T2P = new JTextField();
             serverURLText_T2P.setColumns(40);
             serverURLText_T2P.setEnabled(true);
-            serverURLText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+            serverURLText_T2P
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
         }
         return serverURLText_T2P;
     }
@@ -224,7 +248,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            enabledPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getTitle("Configuration.P2T.Enabled.Panel")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            enabledPanel.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getTitle("Configuration.P2T.Enabled.Panel")),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 0; // Move further left
@@ -242,7 +268,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.P2T.Settings.Panel.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getString("Configuration.P2T.Settings.Panel.Title")),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -299,7 +327,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel_T2P.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title_NLP")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_T2P.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title_NLP")),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
@@ -347,6 +377,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         settingsPanel_T2P.setVisible(getUseBox_T2P().isSelected());
         return settingsPanel_T2P;
     }
+
     private JPanel getSettingsPanel_LLM() {
         if (settingsPanel_LLM == null) {
             settingsPanel_LLM = new JPanel();
@@ -355,38 +386,53 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel_LLM.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title_LLM")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_LLM.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getString("Configuration.T2P.Settings.Panel.Title_LLM")),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 0;
-            settingsPanel_LLM.add(getServerURLLabel_LLM(), c);
+            settingsPanel_LLM.add(getServiceUrlLabel_LLM(), c);
 
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 0;
             c.gridwidth = 2;
-            settingsPanel_LLM.add(getServerURLText_LLM(), c);
+            settingsPanel_LLM.add(getServiceUrlText_LLM(), c);
 
             c.weightx = 1;
             c.gridx = 0;
             c.gridy = 1;
             c.gridwidth = 1;
-            settingsPanel_LLM.add(getServerPortLabel_LLM(), c);
+            settingsPanel_LLM.add(getServicePortLabel_LLM(), c);
 
             c.weightx = 1;
             c.gridx = 1;
             c.gridy = 1;
-            settingsPanel_LLM.add(getServerPortText_LLM(), c);
+            settingsPanel_LLM.add(getServicePortText_LLM(), c);
 
             c.weightx = 1;
-            c.gridx = 2;
-            c.gridy = 1;
+            c.gridx = 0;
+            c.gridy = 2;
+            c.gridwidth = 1;
+            settingsPanel_LLM.add(getServiceUriLabel_LLM(), c);
+
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 2;
+            c.gridwidth = 2;
+            settingsPanel_LLM.add(getServiceUriText_LLM(), c);
+
+            c.weightx = 1;
+            c.gridx = 1;
+            c.gridy = 3;
+            c.gridwidth = 1;
             settingsPanel_LLM.add(getTestButton_LLM(), c);
 
             c.weightx = 1;
-            c.gridx = 3;
-            c.gridy = 1;
+            c.gridx = 2;
+            c.gridy = 3;
             settingsPanel_LLM.add(getDefaultButton_LLM(), c);
         }
 
@@ -396,7 +442,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JComboBox<String> getProviderComboBox() {
         if (providerComboBox == null) {
-            providerComboBox = new JComboBox<>(new String[]{"openAi", "gemini", "lmStudio"});
+            providerComboBox = new JComboBox<>(new String[] { "openAi", "gemini", "lmStudio" });
             providerComboBox.setEnabled(true);
             providerComboBox.setToolTipText("Select LLM Provider");
             providerComboBox.addActionListener(e -> {
@@ -424,7 +470,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
                 getGPTPanel().revalidate();
                 getGPTPanel().repaint();
 
-                // ENTFERNT: fetchAndFillModels(); - Modelle werden nicht mehr automatisch geladen
+                // ENTFERNT: fetchAndFillModels(); - Modelle werden nicht mehr automatisch
+                // geladen
             });
         }
         return providerComboBox;
@@ -446,7 +493,9 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             c.anchor = GridBagConstraints.WEST;
             c.insets = new Insets(2, 0, 2, 0);
 
-            settingsPanel_GPT.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(Messages.getString("Configuration.GPT.settings.Title")), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            settingsPanel_GPT.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createTitledBorder(Messages.getString("Configuration.GPT.settings.Title")),
+                    BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
             // Provider Selection (Row 0)
             c.weightx = 0;
@@ -559,8 +608,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         getApiKeyText().setVisible(showApiKey);
 
         // Model selection basierend auf gespeicherter Konfiguration setzen
-        for (int i = 0; i < modelComboBox.getItemCount(); i++){
-            if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())){
+        for (int i = 0; i < modelComboBox.getItemCount(); i++) {
+            if (modelComboBox.getItemAt(i).equals(ConfigurationManager.getConfiguration().getGptModel())) {
                 modelComboBox.setSelectedIndex(i);
                 break;
             }
@@ -591,7 +640,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             promptText.setLineWrap(true);
             promptText.setWrapStyleWord(true);
             promptText.setEnabled(true);
-            promptText.setText("Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
+            promptText.setText(
+                    "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!");
         }
         return promptText;
     }
@@ -628,8 +678,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         return resetButton;
     }
 
-    private WopedButton getFetchGPTModelsButton(){
-        if (fetchGPTModelsButton == null){
+    private WopedButton getFetchGPTModelsButton() {
+        if (fetchGPTModelsButton == null) {
             fetchGPTModelsButton = new WopedButton();
             fetchGPTModelsButton.setText(Messages.getString("P2T.fetchmodels.button"));
             fetchGPTModelsButton.setPreferredSize(new Dimension(200, 25));
@@ -748,7 +798,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getManagerPathLabel() {
         if (managerPathLabel == null) {
-            managerPathLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
+            managerPathLabel = new JLabel(
+                    "<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
             managerPathLabel.setHorizontalAlignment(JLabel.RIGHT);
         }
         return managerPathLabel;
@@ -756,7 +807,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getManagerPathLabel_T2P() {
         if (managerPathLabel_T2P == null) {
-            managerPathLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
+            managerPathLabel_T2P = new JLabel(
+                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
             managerPathLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
         }
         return managerPathLabel_T2P;
@@ -767,7 +819,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             managerPathText = new JTextField();
             managerPathText.setColumns(40);
             managerPathText.setEnabled(true);
-            managerPathText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
+            managerPathText
+                    .setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerURI") + "</html>");
         }
         return managerPathText;
     }
@@ -777,7 +830,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             managerPathText_T2P = new JTextField();
             managerPathText_T2P.setColumns(40);
             managerPathText_T2P.setEnabled(true);
-            managerPathText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
+            managerPathText_T2P
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
         }
         return managerPathText_T2P;
     }
@@ -836,40 +890,63 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
         return defaultButton_T2P;
     }
 
-    private JTextField getServerURLText_LLM() {
-        if (serverURLText_LLM == null) {
-            serverURLText_LLM = new JTextField();
-            serverURLText_LLM.setColumns(40);
-            serverURLText_LLM.setEnabled(true);
-            serverURLText_LLM.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+    private JTextField getServiceUrlText_LLM() {
+        if (serviceUrlText_LLM == null) {
+            serviceUrlText_LLM = new JTextField();
+            serviceUrlText_LLM.setColumns(40);
+            serviceUrlText_LLM.setEnabled(true);
+            serviceUrlText_LLM
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
         }
-        return serverURLText_LLM;
+        return serviceUrlText_LLM;
     }
 
-    private JLabel getServerURLLabel_LLM() {
-        if (serverURLLabel_LLM == null) {
-            serverURLLabel_LLM = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
-            serverURLLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
+    private JLabel getServiceUrlLabel_LLM() {
+        if (serviceUrlLabel_LLM == null) {
+            serviceUrlLabel_LLM = new JLabel(
+                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+            serviceUrlLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
         }
-        return serverURLLabel_LLM;
+        return serviceUrlLabel_LLM;
     }
 
-    private JLabel getServerPortLabel_LLM() {
-        if (serverPortLabel_LLM == null) {
-            serverPortLabel_LLM = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
-            serverPortLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
+    private JLabel getServicePortLabel_LLM() {
+        if (servicePortLabel_LLM == null) {
+            servicePortLabel_LLM = new JLabel(
+                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+            servicePortLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
         }
-        return serverPortLabel_LLM;
+        return servicePortLabel_LLM;
     }
 
-    private JTextField getServerPortText_LLM() {
-        if (serverPortText_LLM == null) {
-            serverPortText_LLM = new JTextField();
-            serverPortText_LLM.setColumns(4);
-            serverPortText_LLM.setEnabled(true);
-            serverPortText_LLM.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+    private JTextField getServicePortText_LLM() {
+        if (servicePortText_LLM == null) {
+            servicePortText_LLM = new JTextField();
+            servicePortText_LLM.setColumns(4);
+            servicePortText_LLM.setEnabled(true);
+            servicePortText_LLM
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
         }
-        return serverPortText_LLM;
+        return servicePortText_LLM;
+    }
+
+    private JLabel getServiceUriLabel_LLM() {
+        if (serviceUriLabel_LLM == null) {
+            serviceUriLabel_LLM = new JLabel(Messages.getString("Configuration.T2P.Label.ServerURI"));
+            serviceUriLabel_LLM.setHorizontalAlignment(JLabel.RIGHT);
+        }
+        return serviceUriLabel_LLM;
+    }
+
+    private JTextField getServiceUriText_LLM() {
+        if (serviceUriText_LLM == null) {
+            serviceUriText_LLM = new JTextField();
+            serviceUriText_LLM.setColumns(40);
+            serviceUriText_LLM.setEnabled(true);
+            serviceUriText_LLM
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerURI") + "</html>");
+        }
+        return serviceUriText_LLM;
     }
 
     private WopedButton getTestButton_LLM() {
@@ -899,12 +976,30 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     }
 
     private void testLLMConnection() {
-        String connection = getServerURLText_LLM().getText();
-        String[] arg = {connection, ""};
-        //TODO: Port from config
+        String rawHost = getServiceUrlText_LLM().getText().trim();
+        String rawPort = getServicePortText_LLM().getText().trim();
+        String rawPath = getServiceUriText_LLM().getText().trim();
+        String[] arg = { rawHost, "" };
+
         try {
-            String port = getServerPortText_LLM().getText().isEmpty() ? "5000" : getServerPortText_LLM().getText();
-            URL url = new URL("http://" + connection + ":" + port + "/test_connection");
+            // Respect an explicit scheme in the host field; default to https for port 443
+            // otherwise http.
+            boolean hostHasScheme = rawHost.startsWith("http://") || rawHost.startsWith("https://");
+            String scheme = hostHasScheme ? "" : (":443".equals(":" + rawPort) ? "https://" : "http://");
+            String hostPart = rawHost;
+            if (!hostHasScheme) {
+                hostPart = rawHost;
+            }
+
+            String portPart = rawPort.isEmpty() ? "" : ":" + rawPort;
+
+            // Normalize path and append test endpoint only once.
+            String normalizedPath = rawPath.isEmpty() ? "" : (rawPath.startsWith("/") ? rawPath : "/" + rawPath);
+            if (!normalizedPath.endsWith("/test_connection")) {
+                normalizedPath = normalizedPath + (normalizedPath.endsWith("/") ? "" : "/") + "test_connection";
+            }
+
+            URL url = new URL(scheme + hostPart + portPart + normalizedPath);
             HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
             httpConnection.setRequestMethod("GET");
             httpConnection.setConnectTimeout(10000);
@@ -913,8 +1008,7 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             int responseCode = httpConnection.getResponseCode();
 
             if (responseCode == 200) {
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(httpConnection.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
                 String response = reader.readLine();
                 reader.close();
 
@@ -931,24 +1025,43 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
             throw new IOException("Server returned unexpected response: " + responseCode);
 
+        } catch (javax.net.ssl.SSLHandshakeException ex) {
+            String errorMsg = Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg)
+                    + "\n\nSSL Certificate Error: " + ex.getMessage()
+                    + "\n\nPossible causes:"
+                    + "\n- Certificate not trusted (self-signed or missing CA)"
+                    + "\n- Certificate expired or not yet valid"
+                    + "\n- Hostname mismatch"
+                    + "\n- Java version: " + System.getProperty("java.version");
+            JOptionPane.showMessageDialog(
+                    this.getSettingsPanel_LLM(),
+                    errorMsg,
+                    Messages.getString("Paraphrasing.Webservice.Error.Title"),
+                    JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(
                     this.getSettingsPanel_LLM(),
-                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
+                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg)
+                            + "\n\n" + ex.getMessage(),
                     Messages.getString("Paraphrasing.Webservice.Error.Title"),
                     JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void setDefaultValues_LLM() {
-        getServerURLText_LLM().setText(ConfigurationManager.getStandardConfiguration().getT2PLLMServerHost());
-        getServerPortText_LLM().setText("" + ConfigurationManager.getStandardConfiguration().getT2pLLMServerPort());
+        getServiceUrlText_LLM().setText(ConfigurationManager.getStandardConfiguration().getT2PLlmServiceHost());
+        getServicePortText_LLM().setText("" + ConfigurationManager.getStandardConfiguration().getT2PLlmServicePort());
+        getServiceUriText_LLM().setText("" + ConfigurationManager.getStandardConfiguration().getT2PLlmServiceUri());
     }
 
     private void testProcess2TextConnection() {
         URL url = null;
-        String connection = "http://" + getServerURLText().getText() + ":" + getServerPortText().getText() + getManagerPathText().getText();
-        String[] arg = {connection, ""};
+        String port = getServerPortText().getText().isEmpty() ? "" : ":" + getServerPortText().getText();
+        String protocol = getServerPortText().getText().isEmpty() || !port.equals(":443") ? "http://" : "https://";
+        String host = getServerURLText().getText().trim();
+        String connection = protocol.trim() + host.trim() + port.trim()
+                + getManagerPathText().getText().trim();
+        String[] arg = { connection, "" };
 
         try {
             url = new URL(connection);
@@ -956,27 +1069,39 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
             if (urlConnection.getContent() != null) {
                 arg[1] = "P2T";
-                JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.getSettingsPanel(),
+                        Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
+                        Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this.getSettingsPanel(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel(),
+                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
+                    Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void testText2ProcessConnection() {
         URL url;
-        String connection = "http://" + getServerURLText_T2P().getText() + ":" + getServerPortText_T2P().getText() + getManagerPathText_T2P().getText();
-        String[] arg = {connection, ""};
+        String port = getServerPortText_T2P().getText().isEmpty() ? "" : ":" + getServerPortText_T2P().getText();
+        String protocol = getServerPortText_T2P().getText().isEmpty() || !port.equals(":443") ? "http://" : "https://";
+        String host = getServerURLText_T2P().getText().trim();
+        String connection = protocol.trim() + host.trim() + port.trim()
+                + getManagerPathText_T2P().getText().trim();
+        String[] arg = { connection, "" };
 
         try {
             url = new URL(connection);
             URLConnection urlConnection = url.openConnection();
             if (urlConnection.getContent() != null) {
                 arg[1] = "T2P";
-                JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Success.Message", arg), Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(),
+                        Messages.getString("Paraphrasing.Webservice.Success.Message", arg),
+                        Messages.getString("Paraphrasing.Webservice.Success.Title"), JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(), Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg), Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.getSettingsPanel_T2P(),
+                    Messages.getString("Paraphrasing.Webservice.Error.WebserviceException.Message", arg),
+                    Messages.getString("Paraphrasing.Webservice.Error.Title"), JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -989,7 +1114,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
     private void setDefaultValues_T2P() {
         getServerURLText_T2P().setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerHost());
         getManagerPathText_T2P().setText(ConfigurationManager.getStandardConfiguration().getText2ProcessServerURI());
-        getServerPortText_T2P().setText("" + ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort());
+        getServerPortText_T2P()
+                .setText("" + ConfigurationManager.getStandardConfiguration().getText2ProcessServerPort());
     }
 
     class CheckboxListener implements ItemListener {
@@ -1006,7 +1132,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getServerURLLabel() {
         if (serverURLLabel == null) {
-            serverURLLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
+            serverURLLabel = new JLabel(
+                    "<html>" + Messages.getString("Configuration.P2T.Label.ServerHost") + "</html>");
             serverURLLabel.setHorizontalAlignment(JLabel.RIGHT);
         }
         return serverURLLabel;
@@ -1014,7 +1141,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getServerURLLabel_T2P() {
         if (serverURLLabel_T2P == null) {
-            serverURLLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
+            serverURLLabel_T2P = new JLabel(
+                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerHost") + "</html>");
             serverURLLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
         }
         return serverURLLabel_T2P;
@@ -1022,7 +1150,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getServerPortLabel() {
         if (serverPortLabel == null) {
-            serverPortLabel = new JLabel("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
+            serverPortLabel = new JLabel(
+                    "<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
             serverPortLabel.setHorizontalAlignment(JLabel.RIGHT);
         }
         return serverPortLabel;
@@ -1030,7 +1159,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
     private JLabel getServerPortLabel_T2P() {
         if (serverPortLabel_T2P == null) {
-            serverPortLabel_T2P = new JLabel("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+            serverPortLabel_T2P = new JLabel(
+                    "<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
             serverPortLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
         }
         return serverPortLabel_T2P;
@@ -1041,7 +1171,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             serverPortText = new JTextField();
             serverPortText.setColumns(4);
             serverPortText.setEnabled(true);
-            serverPortText.setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
+            serverPortText
+                    .setToolTipText("<html>" + Messages.getString("Configuration.P2T.Label.ServerPort") + "</html>");
         }
         return serverPortText;
     }
@@ -1051,10 +1182,12 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
             serverPortText_T2P = new JTextField();
             serverPortText_T2P.setColumns(4);
             serverPortText_T2P.setEnabled(true);
-            serverPortText_T2P.setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
+            serverPortText_T2P
+                    .setToolTipText("<html>" + Messages.getString("Configuration.T2P.Label.ServerPort") + "</html>");
         }
         return serverPortText_T2P;
     }
+
     private void fetchAndFillModels() {
         new Thread(() -> {
             try {
@@ -1072,8 +1205,8 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
 
                 modelComboBox.removeAllItems(); // Zuerst alte Modelle entfernen
                 List<String> models = ApiHelper.fetchModels(apiKey, provider);
-//                String provider = ConfigurationManager.getConfiguration().getLlmProvider();
-//                List<String> models = ApiHelper.fetchModels(apiKeyText.getText(), provider);
+                // String provider = ConfigurationManager.getConfiguration().getLlmProvider();
+                // List<String> models = ApiHelper.fetchModels(apiKeyText.getText(), provider);
                 SwingUtilities.invokeLater(() -> {
                     for (String model : models) {
                         modelComboBox.addItem(model);
@@ -1082,10 +1215,53 @@ public class ConfNLPToolsPanel extends AbstractConfPanel {
                 });
             } catch (IOException | ParseException e) {
                 SwingUtilities.invokeLater(() -> {
-                    JOptionPane.showMessageDialog(this, Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(), Messages.getString("P2T.exception.fetch.models"), JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this,
+                            Messages.getString("P2T.exception.fail.fetch.models") + e.getMessage(),
+                            Messages.getString("P2T.exception.fetch.models"), JOptionPane.ERROR_MESSAGE);
                 });
             }
         }).start();
+    }
+
+    /**
+     * Load custom truststore from resources to support GEANT CA and other certificates
+     * not in the default Java truststore. This ensures the JAR works on any system
+     * without requiring manual certificate imports.
+     */
+    private static void loadCustomTruststore() {
+        try {
+            // Try to load bundled truststore from resources
+            InputStream truststoreStream = ConfNLPToolsPanel.class
+                    .getResourceAsStream("/woped-truststore.jks");
+            
+            if (truststoreStream != null) {
+                // Load the custom truststore
+                KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+                char[] password = "woped123".toCharArray(); // Consider externalizing this
+                trustStore.load(truststoreStream, password);
+                truststoreStream.close();
+
+                // Initialize TrustManager with custom truststore
+                TrustManagerFactory tmf = TrustManagerFactory.getInstance(
+                        TrustManagerFactory.getDefaultAlgorithm());
+                tmf.init(trustStore);
+
+                // Create SSL context with custom trust managers
+                SSLContext sslContext = SSLContext.getInstance("TLS");
+                sslContext.init(null, tmf.getTrustManagers(), null);
+                
+                // Set as default for all HTTPS connections
+                HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+                
+                System.out.println("Custom truststore loaded successfully");
+            } else {
+                // Fallback: merge with system truststore
+                System.out.println("Custom truststore not found, using system default");
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to load custom truststore: " + e.getMessage());
+            // Continue with default truststore - connection may fail but app won't crash
+        }
     }
 
 }

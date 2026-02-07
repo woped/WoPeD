@@ -63,530 +63,545 @@ import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:freytag@dhbw-karlsruhe.de">Thomas Freytag </a> <br>
- *     <br>
- *     TODO: DOCUMENTATION (tfreytag)
- *     <p>17.01.2005
+ *         <br>
+ *         TODO: DOCUMENTATION (tfreytag)
+ *         <p>
+ *         17.01.2005
  */
 @SuppressWarnings("serial")
 public class T2PUI extends JDialog {
-  private JTextAreaWithHint textArea;
+    private JTextAreaWithHint textArea;
 
-  private JDialog loadDialog;
+    private JDialog loadDialog;
 
-  private AbstractApplicationMediator mediator;
+    private AbstractApplicationMediator mediator;
 
-  private boolean requested = false;
-  private SwingWorker<HttpURLConnection, Void> bgTask;
-  private SwingWorker<HttpResponse, Void> bgTaskHttp;
+    private boolean requested = false;
+    private SwingWorker<HttpURLConnection, Void> bgTask;
+    private SwingWorker<HttpResponse, Void> bgTaskHttp;
 
-  private String inputText;
-  private JComboBox<String> approachBox;
-  private JComboBox<String> llmProviderBox;
+    private String inputText;
+    private JComboBox<String> approachBox;
+    private JComboBox<String> llmProviderBox;
 
-  static final String CLASSIC_APPROACH = "Classic NLP";
-  static final String LLM_APPROACH = "LLM-based";
+    static final String CLASSIC_APPROACH = "Classic NLP";
+    static final String LLM_APPROACH = "LLM-based";
 
-  // LLM Provider constants
-  static final String OPENAI_PROVIDER = "OpenAI";
-  static final String GEMINI_PROVIDER = "Gemini";
+    // LLM Provider constants
+    static final String OPENAI_PROVIDER = "OpenAI";
+    static final String GEMINI_PROVIDER = "Gemini";
 
-  public T2PUI(AbstractApplicationMediator mediator) {
-    this(null, mediator);
-  }
-
-  /**
-   * Constructor for AboutUI.
-   *
-   * @param owner
-   * @throws HeadlessException
-   */
-  public T2PUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
-    super(owner, true);
-    this.mediator = mediator;
-    initialize();
-  }
-  /**
-   * This method initializes and layouts the about information
-   *
-   * @return void
-   */
-  private void initialize() {
-    this.setVisible(false);
-    this.getContentPane().setLayout(new BorderLayout());
-    this.setUndecorated(false);
-    this.setResizable(true);
-
-    textArea = new JTextAreaWithHint();
-
-    this.setTitle(Messages.getString("T2P.tooltip"));
-    this.getContentPane().add(wrapTextArea(initializeTextArea(textArea)), BorderLayout.CENTER);
-    this.getContentPane().add(initializeButtonsPanel(), BorderLayout.SOUTH);
-
-    this.pack();
-
-    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    this.setLocation(
-            (screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
-    Dimension size = new Dimension(800, 440);
-    this.setSize(size);
-
-    // set prev text if available
-
-    int index = 0;
-    boolean doesContain = false;
-
-    if (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
-      doesContain = true;
-      while (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
-        index++;
-      }
-      index--;
+    public T2PUI(AbstractApplicationMediator mediator) {
+        this(null, mediator);
     }
 
-    if (doesContain) {
-      String lastTextInput =
-              ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index))
-                      .getEditorPanel()
-                      .getT2PText();
-      textArea.setText(lastTextInput);
+    /**
+     * Constructor for AboutUI.
+     *
+     * @param owner
+     * @throws HeadlessException
+     */
+    public T2PUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
+        super(owner, true);
+        this.mediator = mediator;
+        initialize();
     }
-  }
 
-  /**
-   * Initializes the given JTextAreaWithHint with font, hint text, wrapping, focus, and margin.
-   *
-   * @param ta The JTextAreaWithHint to initialize
-   * @return The initialized JTextAreaWithHint
-   */
-  private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
+    /**
+     * This method initializes and layouts the about information
+     *
+     * @return void
+     */
+    private void initialize() {
+        this.setVisible(false);
+        this.getContentPane().setLayout(new BorderLayout());
+        this.setUndecorated(false);
+        this.setResizable(true);
 
-    Font f = new Font("Lucia Grande", Font.PLAIN, 13);
-    String hint = Messages.getString("T2PUI.HowTo");
+        textArea = new JTextAreaWithHint();
 
-    ta.setFont(f);
-    ta.changeHintText(hint);
-    ta.setLineWrap(true);
-    ta.setWrapStyleWord(true);
+        this.setTitle(Messages.getString("T2P.tooltip"));
+        this.getContentPane().add(wrapTextArea(initializeTextArea(textArea)), BorderLayout.CENTER);
+        this.getContentPane().add(initializeButtonsPanel(), BorderLayout.SOUTH);
 
-    ta.requestFocus();
-    ta.requestFocusInWindow();
-    ta.setMargin(new Insets(10, 10, 10, 10));
+        this.pack();
 
-    return ta;
-  }
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(
+                (screenSize.width - this.getWidth()) / 3, (screenSize.height - this.getHeight()) / 3);
+        Dimension size = new Dimension(800, 440);
+        this.setSize(size);
 
-  /**
-   * Wraps the given JTextAreaWithHint in a JScrollPane with no horizontal scrollbar.
-   *
-   * @param ta The JTextAreaWithHint to wrap
-   * @return JScrollPane containing the text area
-   */
-  private JScrollPane wrapTextArea(JTextAreaWithHint ta) {
-    JScrollPane scrollPane = new JScrollPane(ta);
-    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    return scrollPane;
-  }
+        // set prev text if available
 
-  private JPanel initializeButtonsPanel() {
-    JPanel buttonPanel = new JPanel();
-    buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
+        int index = 0;
+        boolean doesContain = false;
 
-    buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+        if (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
+            doesContain = true;
+            while (mediator.getViewControllers().containsKey("EDITOR_VC_" + index)) {
+                index++;
+            }
+            index--;
+        }
 
-    // Language selection dropdown
-    String[] lang = {Messages.getString("T2PUI.Lang"), Messages.getString("T2PUI.Lang.English")};
-    JComboBox<String> langBox = new JComboBox<String>(lang);
-    langBox.setSelectedIndex(1);
+        if (doesContain) {
+            String lastTextInput = ((EditorVC) mediator.getViewControllers().get("EDITOR_VC_" + index))
+                    .getEditorPanel()
+                    .getT2PText();
+            textArea.setText(lastTextInput);
+        }
+    }
 
-    // Approach selection dropdown (Classic or LLM)
-    String[] approaches = {CLASSIC_APPROACH, LLM_APPROACH};
-    approachBox = new JComboBox<String>(approaches);
-    approachBox.setSelectedIndex(0);
+    /**
+     * Initializes the given JTextAreaWithHint with font, hint text, wrapping,
+     * focus, and margin.
+     *
+     * @param ta The JTextAreaWithHint to initialize
+     * @return The initialized JTextAreaWithHint
+     */
+    private JTextAreaWithHint initializeTextArea(JTextAreaWithHint ta) {
 
-    // LLM Provider selection dropdown
-    String[] llmProviders = {OPENAI_PROVIDER, GEMINI_PROVIDER};
-    llmProviderBox = new JComboBox<String>(llmProviders);
-    llmProviderBox.setSelectedIndex(0);
-    llmProviderBox.setEnabled(false); // Initially disabled
+        Font f = new Font("Lucia Grande", Font.PLAIN, 13);
+        String hint = Messages.getString("T2PUI.HowTo");
 
-    // Add listener to enable/disable LLM provider selection based on approach
-    approachBox.addActionListener(e -> {
-      String selectedApproach = (String) approachBox.getSelectedItem();
-      llmProviderBox.setEnabled(LLM_APPROACH.equals(selectedApproach));
-    });
+        ta.setFont(f);
+        ta.changeHintText(hint);
+        ta.setLineWrap(true);
+        ta.setWrapStyleWord(true);
 
-    // Generate button: triggers the request() method
-    WopedButton btnGenerate =
-            new WopedButton(
-                    new AbstractAction() {
-                      public void actionPerformed(ActionEvent arg0) {
+        ta.requestFocus();
+        ta.requestFocusInWindow();
+        ta.setMargin(new Insets(10, 10, 10, 10));
+
+        return ta;
+    }
+
+    /**
+     * Wraps the given JTextAreaWithHint in a JScrollPane with no horizontal
+     * scrollbar.
+     *
+     * @param ta The JTextAreaWithHint to wrap
+     * @return JScrollPane containing the text area
+     */
+    private JScrollPane wrapTextArea(JTextAreaWithHint ta) {
+        JScrollPane scrollPane = new JScrollPane(ta);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        return scrollPane;
+    }
+
+    private JPanel initializeButtonsPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
+
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
+
+        // Language selection dropdown
+        String[] lang = { Messages.getString("T2PUI.Lang"), Messages.getString("T2PUI.Lang.English") };
+        JComboBox<String> langBox = new JComboBox<String>(lang);
+        langBox.setSelectedIndex(1);
+
+        // Approach selection dropdown (Classic or LLM)
+        String[] approaches = { CLASSIC_APPROACH, LLM_APPROACH };
+        approachBox = new JComboBox<String>(approaches);
+        approachBox.setSelectedIndex(0);
+
+        // LLM Provider selection dropdown
+        String[] llmProviders = { OPENAI_PROVIDER, GEMINI_PROVIDER };
+        llmProviderBox = new JComboBox<String>(llmProviders);
+        llmProviderBox.setSelectedIndex(0);
+        llmProviderBox.setEnabled(false); // Initially disabled
+
+        // Add listener to enable/disable LLM provider selection based on approach
+        approachBox.addActionListener(e -> {
+            String selectedApproach = (String) approachBox.getSelectedItem();
+            llmProviderBox.setEnabled(LLM_APPROACH.equals(selectedApproach));
+        });
+
+        // Generate button: triggers the request() method
+        WopedButton btnGenerate = new WopedButton(
+                new AbstractAction() {
+                    public void actionPerformed(ActionEvent arg0) {
                         request();
-                      }
-                    });
+                    }
+                });
 
-    btnGenerate.setMnemonic(KeyEvent.VK_A);
-    btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text"));
-    btnGenerate.setIcon(
-            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
+        btnGenerate.setMnemonic(KeyEvent.VK_A);
+        btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text"));
+        btnGenerate.setIcon(
+                new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Generate.Icon"))));
 
-    // Upload button: triggers the readFile() method
-    WopedButton btnUpload =
-            new WopedButton(
-                    new AbstractAction() {
-                      public void actionPerformed(ActionEvent arg0) {
+        // Upload button: triggers the readFile() method
+        WopedButton btnUpload = new WopedButton(
+                new AbstractAction() {
+                    public void actionPerformed(ActionEvent arg0) {
                         readFile();
-                      }
-                    });
+                    }
+                });
 
-    btnUpload.setMnemonic(KeyEvent.VK_C);
-    btnUpload.setText(Messages.getString("T2PUI.Button.Read.Text"));
-    btnUpload.setIcon(
-            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
+        btnUpload.setMnemonic(KeyEvent.VK_C);
+        btnUpload.setText(Messages.getString("T2PUI.Button.Read.Text"));
+        btnUpload.setIcon(
+                new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Read.Icon"))));
 
-    // Erase button: clears the text area
-    WopedButton btnErase =
-            new WopedButton(
-                    new AbstractAction() {
-                      public void actionPerformed(ActionEvent arg0) {
+        // Erase button: clears the text area
+        WopedButton btnErase = new WopedButton(
+                new AbstractAction() {
+                    public void actionPerformed(ActionEvent arg0) {
                         clearTextArea();
-                      }
-                    });
+                    }
+                });
 
-    btnErase.setMnemonic(KeyEvent.VK_L);
-    btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
-    btnErase.setIcon(
-            new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
+        btnErase.setMnemonic(KeyEvent.VK_L);
+        btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text"));
+        btnErase.setIcon(
+                new ImageIcon(getClass().getResource(Messages.getString("T2PUI.Button.Clear.Icon"))));
 
-    buttonPanel.add(btnUpload);
-    buttonPanel.add(btnErase);
-    buttonPanel.add(langBox);
-    buttonPanel.add(Box.createHorizontalGlue()); // Pushes following components to the right
-    buttonPanel.add(new JLabel("Approach:"));
-    buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-    buttonPanel.add(approachBox);
-    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
-    buttonPanel.add(new JLabel("LLM Provider:"));
-    buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-    buttonPanel.add(llmProviderBox);
-    buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Spacing before generate button
-    buttonPanel.add(btnGenerate);
+        buttonPanel.add(btnUpload);
+        buttonPanel.add(btnErase);
+        buttonPanel.add(langBox);
+        buttonPanel.add(Box.createHorizontalGlue()); // Pushes following components to the right
+        buttonPanel.add(new JLabel("Approach:"));
+        buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+        buttonPanel.add(approachBox);
+        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+        buttonPanel.add(new JLabel("LLM Provider:"));
+        buttonPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+        buttonPanel.add(llmProviderBox);
+        buttonPanel.add(Box.createRigidArea(new Dimension(10, 0))); // Spacing before generate button
+        buttonPanel.add(btnGenerate);
 
-    return buttonPanel;
-  }
-
-  /**
-   * Maps the UI display name to the backend API value for LLM providers.
-   *
-   * @param displayName The display name from the combobox
-   * @return The corresponding API value
-   */
-  private String mapLlmProviderToApiValue(String displayName) {
-    switch (displayName) {
-      case OPENAI_PROVIDER:
-        return "openai";
-      case GEMINI_PROVIDER:
-        return "gemini";
-      default:
-        return "openai"; // Default fallback
+        return buttonPanel;
     }
-  }
 
-  /**
-   * Handles the main request logic when the generate button is pressed.
-   * Validates input, prompts for API key if needed, and starts background processing.
-   */
-  void request() {
-    if (requested) return;
-    requested = true;
+    /**
+     * Maps the UI display name to the backend API value for LLM providers.
+     *
+     * @param displayName The display name from the combobox
+     * @return The corresponding API value
+     */
+    private String mapLlmProviderToApiValue(String displayName) {
+        switch (displayName) {
+            case OPENAI_PROVIDER:
+                return "openai";
+            case GEMINI_PROVIDER:
+                return "gemini";
+            default:
+                return "openai"; // Default fallback
+        }
+    }
 
-    inputText = textArea.getText();
-
-    if (!inputText.isEmpty()) {
-      String selectedApproach = (String) approachBox.getSelectedItem();
-
-      if (selectedApproach.equals(LLM_APPROACH)) {
-        String apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
-        String selectedProvider = (String) llmProviderBox.getSelectedItem();
-
-        // Prompt and validate API key
-        while (apiKey.equals("test") || apiKey.isEmpty() || !isApiKeyValid(apiKey, selectedProvider)) {
-          apiKey = promptForApiKey(selectedProvider);
-          if (apiKey == null || apiKey.isEmpty()) {
-            requested = false;
+    /**
+     * Handles the main request logic when the generate button is pressed.
+     * Validates input, prompts for API key if needed, and starts background
+     * processing.
+     */
+    void request() {
+        if (requested)
             return;
-          }
-          ConfigurationManager.getConfiguration().setGptApiKey(apiKey);
-        }
+        requested = true;
 
-        // Start LLM background worker with validated API key and selected provider
-        llmBackgroundWorker(inputText, apiKey, selectedProvider);
-      } else {
-        // Start classic background worker
-        jsonBackgroundWorker(inputText);
-      }
+        inputText = textArea.getText();
 
-      showLoadingBox();
-    } else {
-      showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
-    }
+        if (!inputText.isEmpty()) {
+            String selectedApproach = (String) approachBox.getSelectedItem();
 
-    requested = false;
-  }
+            if (selectedApproach.equals(LLM_APPROACH)) {
+                String apiKey = ConfigurationManager.getConfiguration().getGptApiKey();
+                String selectedProvider = (String) llmProviderBox.getSelectedItem();
 
-  /**
-   * Prompts the user to enter an API key using a dialog box.
-   *
-   * @param provider The LLM provider name for display purposes
-   * @return the API key entered by the user, or null if canceled
-   */
-  String promptForApiKey(String provider) {
-    String message = String.format("Please enter your %s API key:", provider);
-    String apiKey = JOptionPane.showInputDialog(
-            this,
-            message,
-            "API Key Required",
-            JOptionPane.QUESTION_MESSAGE);
-
-    return apiKey;
-  }
-
-  /**
-   * Checks if the provided API key is valid by making a test request to the appropriate API.
-   *
-   * @param apiKey the API key to validate
-   * @param provider the LLM provider
-   * @return true if the API key is valid (response code 200), false otherwise
-   */
-  private boolean isApiKeyValid(String apiKey, String provider) {
-    try {
-      String testUrl;
-      switch (provider) {
-        case OPENAI_PROVIDER:
-          testUrl = "https://api.openai.com/v1/models";
-          break;
-        case GEMINI_PROVIDER:
-          testUrl = "https://generativelanguage.googleapis.com/v1/models?key=" + apiKey;
-          break;
-        default:
-          testUrl = "https://api.openai.com/v1/models";
-          break;
-      }
-
-      HttpURLConnection connection = (HttpURLConnection) new URL(testUrl).openConnection();
-      connection.setRequestMethod("GET");
-
-      if (provider.equals(OPENAI_PROVIDER)) {
-        connection.setRequestProperty("Authorization", "Bearer " + apiKey);
-      }
-      // For Gemini, the API key is already in the URL
-
-      connection.connect();
-
-      int responseCode = connection.getResponseCode();
-      connection.disconnect();
-
-      return responseCode == 200;
-    } catch (IOException e) {
-      e.printStackTrace();
-      return false;
-    }
-  }
-
-  void showLoadingBox() {
-    JOptionPane jop = new JOptionPane();
-    jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-    jop.setMessage(Messages.getString("T2PUI.Loading.Text"));
-
-    loadDialog = jop.createDialog(this, Messages.getString("T2PUI.Loading.Title"));
-    jop.setOptions(new String[] {Messages.getString("T2PUI.Loading.Cancel")});
-    loadDialog.setVisible(true);
-
-    // Thread gets blocked and awaits an UI action.
-
-    if (bgTask != null && !bgTask.isDone() && !bgTask.isCancelled()) {
-      bgTask.cancel(true);
-    }
-  }
-
-  /**
-   * Displays the given PNML string graphically in a new window within the WoPeD client. BPMN is not possible.
-   *
-   * @param pnml The PNML content to display
-   */
-  void displayPNML(String pnml) {
-    PNMLImport pnmlImport = new PNMLImport(mediator);
-
-    // Convert the PNML string to an InputStream using UTF-8 encoding
-    InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
-
-    pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
-
-    // Retrieve the editor instance created by the import
-    IEditor[] editor = pnmlImport.getEditor();
-
-    EditorVC evc = ((EditorVC) editor[0]);
-
-    try {
-      // If inputText is available, show the T2P bar with the original input
-      if (inputText != null) {
-        evc.getEditorPanel().showT2PBar(inputText);
-      }
-
-      // Beautify the layout of the imported PNML
-      evc.startBeautify(0, 0, 0);
-
-    } catch (ArithmeticException exc) {
-      // Close the window and handle any arithmetic errors (e.g., layout issues)
-      close();
-      // Error popup could be shown here
-    }
-    close();
-  }
-
-  void showErrorPopUp(String titleId, String msgId) {
-    String text[] = {Messages.getString("Dialog.Ok")};
-
-    String msg = Messages.getStringReplaced(msgId, null);
-    String title = Messages.getString(titleId);
-    int optionType = JOptionPane.YES_NO_CANCEL_OPTION;
-    int messageType = JOptionPane.ERROR_MESSAGE;
-
-    int value =
-            JOptionPane.showOptionDialog(
-                    null, msg, title, optionType, messageType, null, text, text[0]);
-  }
-
-  /**
-   * This method calls the T2P2.0 LLM API to generate a PNML from text using the t2p 2.0 endpoint
-   *
-   * @param text The input text to process
-   * @param apiKey The API key for the GPT service
-   * @param provider The LLM provider to use
-   */
-  void llmBackgroundWorker(String text, String apiKey, String provider) {
-    String connectionStr = "http://" + ConfigurationManager.getConfiguration().getT2PLLMServerHost() + ":" + ConfigurationManager.getConfiguration().getT2pLLMServerPort() + "/generate_PNML";
-    System.out.println("Connecting to LLM service at: " + connectionStr);
-
-    bgTask = new SwingWorker<HttpURLConnection, Void>() {
-      @Override
-      protected HttpURLConnection doInBackground() throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(connectionStr).openConnection();
-
-        // Setting the connection properties
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setDoOutput(true);
-        connection.setConnectTimeout(30000);
-        connection.setReadTimeout(60000);
-
-        // Create the JSON request body with better escaping and include llm_provider
-        String escapedText = text.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
-        String llmProviderApiValue = mapLlmProviderToApiValue(provider);
-        String jsonInputString = String.format(
-                "{\"text\":\"%s\",\"api_key\":\"%s\",\"llm_provider\":\"%s\"}",
-                escapedText, apiKey, llmProviderApiValue
-        );
-
-        // Send the request
-        try (OutputStream outputStream = connection.getOutputStream()) {
-          byte[] input = jsonInputString.getBytes("utf-8");
-          outputStream.write(input, 0, input.length);
-          outputStream.flush();
-        }
-
-        return connection;
-      }
-
-      @Override
-      protected void done() {
-        HttpURLConnection connection = null;
-        try {
-          // Dispose of the loading dialog if it exists
-          if (loadDialog != null) loadDialog.dispose();
-          // Retrieve the HttpURLConnection object from doInBackground()
-          connection = get();
-          int responseCode = connection.getResponseCode();
-          Gson gson = new Gson();
-
-          if (responseCode == 200) {
-            // Reading the response
-            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-              LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
-              // Check if the response is valid and contains a result
-              if (llmResponse != null && llmResponse.getResult() != null) {
-                String pnml = llmResponse.getResult();
-                if (!pnml.isEmpty()) {
-                  // Display the generated PNML if not empty
-                  displayPNML(pnml);
-                } else {
-                  showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
+                // Prompt and validate API key
+                while (apiKey.equals("test") || apiKey.isEmpty() || !isApiKeyValid(apiKey, selectedProvider)) {
+                    apiKey = promptForApiKey(selectedProvider);
+                    if (apiKey == null || apiKey.isEmpty()) {
+                        requested = false;
+                        return;
+                    }
+                    ConfigurationManager.getConfiguration().setGptApiKey(apiKey);
                 }
-              } else {
-                showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
-              }
+
+                // Start LLM background worker with validated API key and selected provider
+                llmBackgroundWorker(inputText, apiKey, selectedProvider);
+            } else {
+                // Start classic background worker
+                jsonBackgroundWorker(inputText);
             }
-          } else {
-            // If the response is an error, read and handle the error response
-            try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
-              StringBuilder errorJson = new StringBuilder();
-              String errorLine;
-              while ((errorLine = errorReader.readLine()) != null) {
-                errorJson.append(errorLine.trim());
-              }
-              String errorMessage = errorJson.toString();
-              // Show specific error popups based on HTTP status code
-              if (responseCode == 400) {
-                showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
-              } else if (responseCode == 500) {
-                showErrorPopUp("T2PUI.500Error.Title", "T2PUI.LLMProcessingError.Text");
-              } else {
-                showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-              }
-            }
-          }
-        } catch (JsonSyntaxException e) {
-          // Handle JSON parsing errors
-          showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
-        } catch (Exception e) {
-          // Handle all other exceptions and show a generic error dialog
-          JOptionPane.showMessageDialog(
-                  null,
-                  "Error connecting to LLM service: " + e.getMessage(),
-                  "LLM Connection Error",
-                  JOptionPane.ERROR_MESSAGE);
-        } finally {
-          if (connection != null) {
-            connection.disconnect();
-          }
+
+            showLoadingBox();
+        } else {
+            showErrorPopUp("T2PUI.NoText.Title", "T2PUI.NoText.Text");
         }
-      }
-    };
 
-    bgTask.execute();
-  }
+        requested = false;
+    }
 
-  /**
-   * This method is tailored to connect WoPeD-TextAnalyzer to a SpringBootServer providing the T2P
-   * pnml string as json object.
-   *
-   * @author <a href="mailto:kanzler.benjamin@student.dhbe-karlsruhe.de">Benjamin Kanzler</a>
-   * @param text
-   */
-  void jsonBackgroundWorker(String text) {
+    /**
+     * Prompts the user to enter an API key using a dialog box.
+     *
+     * @param provider The LLM provider name for display purposes
+     * @return the API key entered by the user, or null if canceled
+     */
+    String promptForApiKey(String provider) {
+        String message = String.format("Please enter your %s API key:", provider);
+        String apiKey = JOptionPane.showInputDialog(
+                this,
+                message,
+                "API Key Required",
+                JOptionPane.QUESTION_MESSAGE);
 
-    String connectionStr =
-            "http://"
-                    + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
-                    + ":"
-                    + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
-                    + ConfigurationManager.getConfiguration().getText2ProcessServerURI()
-                    + "/generatePNML";
+        return apiKey;
+    }
 
-    bgTask =
-            new SwingWorker<HttpURLConnection, Void>() {
-              @Override
-              protected HttpURLConnection doInBackground() throws IOException {
+    /**
+     * Checks if the provided API key is valid by making a test request to the
+     * appropriate API.
+     *
+     * @param apiKey   the API key to validate
+     * @param provider the LLM provider
+     * @return true if the API key is valid (response code 200), false otherwise
+     */
+    private boolean isApiKeyValid(String apiKey, String provider) {
+        try {
+            String testUrl;
+            switch (provider) {
+                case OPENAI_PROVIDER:
+                    testUrl = "https://api.openai.com/v1/models";
+                    break;
+                case GEMINI_PROVIDER:
+                    testUrl = "https://generativelanguage.googleapis.com/v1/models?key=" + apiKey;
+                    break;
+                default:
+                    testUrl = "https://api.openai.com/v1/models";
+                    break;
+            }
+
+            HttpURLConnection connection = (HttpURLConnection) new URL(testUrl).openConnection();
+            connection.setRequestMethod("GET");
+
+            if (provider.equals(OPENAI_PROVIDER)) {
+                connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+            }
+            // For Gemini, the API key is already in the URL
+
+            connection.connect();
+
+            int responseCode = connection.getResponseCode();
+            connection.disconnect();
+
+            return responseCode == 200;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    void showLoadingBox() {
+        JOptionPane jop = new JOptionPane();
+        jop.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        jop.setMessage(Messages.getString("T2PUI.Loading.Text"));
+
+        loadDialog = jop.createDialog(this, Messages.getString("T2PUI.Loading.Title"));
+        jop.setOptions(new String[] { Messages.getString("T2PUI.Loading.Cancel") });
+        loadDialog.setVisible(true);
+
+        // Thread gets blocked and awaits an UI action.
+
+        if (bgTask != null && !bgTask.isDone() && !bgTask.isCancelled()) {
+            bgTask.cancel(true);
+        }
+    }
+
+    /**
+     * Displays the given PNML string graphically in a new window within the WoPeD
+     * client. BPMN is not possible.
+     *
+     * @param pnml The PNML content to display
+     */
+    void displayPNML(String pnml) {
+        PNMLImport pnmlImport = new PNMLImport(mediator);
+
+        // Convert the PNML string to an InputStream using UTF-8 encoding
+        InputStream stream = new ByteArrayInputStream(pnml.getBytes(StandardCharsets.UTF_8));
+
+        pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
+
+        // Retrieve the editor instance created by the import
+        IEditor[] editor = pnmlImport.getEditor();
+
+        EditorVC evc = ((EditorVC) editor[0]);
+
+        try {
+            // If inputText is available, show the T2P bar with the original input
+            if (inputText != null) {
+                evc.getEditorPanel().showT2PBar(inputText);
+            }
+
+            // Beautify the layout of the imported PNML
+            evc.startBeautify(0, 0, 0);
+
+        } catch (ArithmeticException exc) {
+            // Close the window and handle any arithmetic errors (e.g., layout issues)
+            close();
+            // Error popup could be shown here
+        }
+        close();
+    }
+
+    void showErrorPopUp(String titleId, String msgId) {
+        String text[] = { Messages.getString("Dialog.Ok") };
+
+        String msg = Messages.getStringReplaced(msgId, null);
+        String title = Messages.getString(titleId);
+        int optionType = JOptionPane.YES_NO_CANCEL_OPTION;
+        int messageType = JOptionPane.ERROR_MESSAGE;
+
+        int value = JOptionPane.showOptionDialog(
+                null, msg, title, optionType, messageType, null, text, text[0]);
+    }
+
+    /**
+     * This method calls the T2P2.0 LLM API to generate a PNML from text using the
+     * t2p 2.0 endpoint
+     *
+     * @param text     The input text to process
+     * @param apiKey   The API key for the GPT service
+     * @param provider The LLM provider to use
+     */
+    void llmBackgroundWorker(String text, String apiKey, String provider) {
+        String port = (Integer.toString(ConfigurationManager.getConfiguration().getT2PLlmServicePort()).isEmpty() ? ""
+                : ":" + ConfigurationManager.getConfiguration().getT2PLlmServicePort());
+        String protocol = ConfigurationManager.getConfiguration().getT2PLlmServicePort() == 443
+                || Integer.toString(ConfigurationManager.getConfiguration().getT2PLlmServicePort()).isEmpty()
+                        ? "https://"
+                        : "http://";
+        String host = ConfigurationManager.getConfiguration().getT2PLlmServiceHost().trim();
+        String connectionStr = protocol.trim() + host.trim() + port.trim()
+                + ConfigurationManager.getConfiguration().getT2PLlmServiceUri();
+        System.out.println("Connecting to LLM service at: " + connectionStr);
+
+        bgTask = new SwingWorker<HttpURLConnection, Void>() {
+            @Override
+            protected HttpURLConnection doInBackground() throws IOException {
+                HttpURLConnection connection = (HttpURLConnection) new URL(connectionStr).openConnection();
+
+                // Setting the connection properties
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                connection.setRequestProperty("Accept", "application/json");
+                connection.setDoOutput(true);
+                connection.setConnectTimeout(30000);
+                connection.setReadTimeout(60000);
+
+                // Create the JSON request body with better escaping and include llm_provider
+                String escapedText = text.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r",
+                        "\\r");
+                String llmProviderApiValue = mapLlmProviderToApiValue(provider);
+                String jsonInputString = String.format(
+                        "{\"text\":\"%s\",\"api_key\":\"%s\",\"llm_provider\":\"%s\"}",
+                        escapedText, apiKey, llmProviderApiValue);
+
+                // Send the request
+                try (OutputStream outputStream = connection.getOutputStream()) {
+                    byte[] input = jsonInputString.getBytes("utf-8");
+                    outputStream.write(input, 0, input.length);
+                    outputStream.flush();
+                }
+
+                return connection;
+            }
+
+            @Override
+            protected void done() {
+                HttpURLConnection connection = null;
+                try {
+                    // Dispose of the loading dialog if it exists
+                    if (loadDialog != null)
+                        loadDialog.dispose();
+                    // Retrieve the HttpURLConnection object from doInBackground()
+                    connection = get();
+                    int responseCode = connection.getResponseCode();
+                    Gson gson = new Gson();
+
+                    if (responseCode == 200) {
+                        // Reading the response
+                        try (BufferedReader bufferedReader = new BufferedReader(
+                                new InputStreamReader(connection.getInputStream()))) {
+                            LlmResponse llmResponse = gson.fromJson(bufferedReader, LlmResponse.class);
+                            // Check if the response is valid and contains a result
+                            if (llmResponse != null && llmResponse.getResult() != null) {
+                                String pnml = llmResponse.getResult();
+                                if (!pnml.isEmpty()) {
+                                    // Display the generated PNML if not empty
+                                    displayPNML(pnml);
+                                } else {
+                                    showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.EmptyResponse.Text");
+                                }
+                            } else {
+                                showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
+                            }
+                        }
+                    } else {
+                        // If the response is an error, read and handle the error response
+                        try (BufferedReader errorReader = new BufferedReader(
+                                new InputStreamReader(connection.getErrorStream()))) {
+                            StringBuilder errorJson = new StringBuilder();
+                            String errorLine;
+                            while ((errorLine = errorReader.readLine()) != null) {
+                                errorJson.append(errorLine.trim());
+                            }
+                            String errorMessage = errorJson.toString();
+                            // Show specific error popups based on HTTP status code
+                            if (responseCode == 400) {
+                                showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
+                            } else if (responseCode == 500) {
+                                showErrorPopUp("T2PUI.500Error.Title", "T2PUI.LLMProcessingError.Text");
+                            } else {
+                                showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
+                            }
+                        }
+                    }
+                } catch (JsonSyntaxException e) {
+                    // Handle JSON parsing errors
+                    showErrorPopUp("T2PUI.LLMError.Title", "T2PUI.InvalidResponse.Text");
+                } catch (Exception e) {
+                    // Handle all other exceptions and show a generic error dialog
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Error connecting to LLM service: " + e.getMessage(),
+                            "LLM Connection Error",
+                            JOptionPane.ERROR_MESSAGE);
+                } finally {
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+            }
+        };
+
+        bgTask.execute();
+    }
+
+    /**
+     * This method is tailored to connect WoPeD-TextAnalyzer to a SpringBootServer
+     * providing the T2P
+     * pnml string as json object.
+     *
+     * @author <a href="mailto:kanzler.benjamin@student.dhbe-karlsruhe.de">Benjamin
+     *         Kanzler</a>
+     * @param text
+     */
+    void jsonBackgroundWorker(String text) {
+
+        String connectionStr = "http://"
+                + ConfigurationManager.getConfiguration().getText2ProcessServerHost()
+                + ":"
+                + ConfigurationManager.getConfiguration().getText2ProcessServerPort()
+                + ConfigurationManager.getConfiguration().getText2ProcessServerURI()
+                + "/generatePNML";
+
+        bgTask = new SwingWorker<HttpURLConnection, Void>() {
+            @Override
+            protected HttpURLConnection doInBackground() throws IOException {
                 // Forming the Url out of the configuration
                 HttpURLConnection connection;
                 connection = (HttpURLConnection) new URL(connectionStr).openConnection();
@@ -603,106 +618,108 @@ public class T2PUI extends JDialog {
                 outputStream.write(input, 0, input.length);
 
                 return connection;
-              }
+            }
 
-              @Override
-              protected void done() {
+            @Override
+            protected void done() {
                 try {
-                  if (loadDialog != null) loadDialog.dispose();
-                  HttpURLConnection connection = get();
-                  switch (connection.getResponseCode()) {
-                    case 200:
-                    case 201:
-                    case 202:
-                    case 204:
-                      // Reading the response
-                      BufferedReader bufferedReader =
-                              new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                      StringBuilder responseJson = new StringBuilder();
-                      String responseLine;
-                      // Reading the incoming json line by line and transforming it to a single String
-                      while ((responseLine = bufferedReader.readLine()) != null) {
-                        responseJson.append(responseLine.trim());
-                      }
-                      String pnml = responseJson.toString();
-                      // Extracting the pnml-xml from the json body
-                      if (!pnml.isEmpty()) {
-                        displayPNML(pnml);
-                      } else {
-                        // TODO: error handling
+                    if (loadDialog != null)
+                        loadDialog.dispose();
+                    HttpURLConnection connection = get();
+                    switch (connection.getResponseCode()) {
+                        case 200:
+                        case 201:
+                        case 202:
+                        case 204:
+                            // Reading the response
+                            BufferedReader bufferedReader = new BufferedReader(
+                                    new InputStreamReader(connection.getInputStream()));
+                            StringBuilder responseJson = new StringBuilder();
+                            String responseLine;
+                            // Reading the incoming json line by line and transforming it to a single String
+                            while ((responseLine = bufferedReader.readLine()) != null) {
+                                responseJson.append(responseLine.trim());
+                            }
+                            String pnml = responseJson.toString();
+                            // Extracting the pnml-xml from the json body
+                            if (!pnml.isEmpty()) {
+                                displayPNML(pnml);
+                            } else {
+                                // TODO: error handling
 
-                      }
-                      break;
-                    case 400:
-                      showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
-                      break;
-                    case 500:
-                      showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
-                      break;
-                    case 503:
-                      showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
-                      break;
-                    default:
-                      showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
-                      break;
-                  }
+                            }
+                            break;
+                        case 400:
+                            showErrorPopUp("T2PUI.400Error.Title", "T2PUI.400Error.Text");
+                            break;
+                        case 500:
+                            showErrorPopUp("T2PUI.500Error.Title", "T2PUI.GeneralError.Text");
+                            break;
+                        case 503:
+                            showErrorPopUp("T2PUI.503Error.Title", "T2PUI.503Error.Text");
+                            break;
+                        default:
+                            showErrorPopUp("T2PUI.GeneralError.Title", "T2PUI.GeneralError.Text");
+                            break;
+                    }
                 } catch (MalformedURLException e) {
-                  String[] arg = {connectionStr};
-                  JOptionPane.showMessageDialog(
-                          null,
-                          Messages.getString("T2PUI.500Error.Text", arg)
-                                  + Messages.getString("T2PUI.Webservice.Settings"),
-                          Messages.getString("T2PUI.500Error.Title"),
-                          JOptionPane.ERROR_MESSAGE);
-                  return;
+                    String[] arg = { connectionStr };
+                    JOptionPane.showMessageDialog(
+                            null,
+                            Messages.getString("T2PUI.500Error.Text", arg)
+                                    + Messages.getString("T2PUI.Webservice.Settings"),
+                            Messages.getString("T2PUI.500Error.Title"),
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 } catch (IOException e) {
-                  String[] arg = {connectionStr};
-                  JOptionPane.showMessageDialog(
-                          null,
-                          Messages.getString("T2PUI.500Error.Text", arg)
-                                  + Messages.getString("T2PUI.Webservice.Settings"),
-                          Messages.getString("T2PUI.500Error.Title"),
-                          JOptionPane.ERROR_MESSAGE);
-                  return;
+                    String[] arg = { connectionStr };
+                    JOptionPane.showMessageDialog(
+                            null,
+                            Messages.getString("T2PUI.500Error.Text", arg)
+                                    + Messages.getString("T2PUI.Webservice.Settings"),
+                            Messages.getString("T2PUI.500Error.Title"),
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 } catch (InterruptedException e) {
-                  String[] arg = {connectionStr};
-                  JOptionPane.showMessageDialog(
-                          null,
-                          Messages.getString("T2PUI.500Error.Text", arg)
-                                  + Messages.getString("T2PUI.Webservice.Settings"),
-                          Messages.getString("T2PUI.500Error.Title"),
-                          JOptionPane.ERROR_MESSAGE);
-                  return;
+                    String[] arg = { connectionStr };
+                    JOptionPane.showMessageDialog(
+                            null,
+                            Messages.getString("T2PUI.500Error.Text", arg)
+                                    + Messages.getString("T2PUI.Webservice.Settings"),
+                            Messages.getString("T2PUI.500Error.Title"),
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 } catch (ExecutionException e) {
-                  String[] arg = {connectionStr};
-                  JOptionPane.showMessageDialog(
-                          null,
-                          Messages.getString("T2PUI.500Error.Text", arg)
-                                  + "\n"
-                                  + Messages.getString("T2PUI.Webservice.Settings"),
-                          Messages.getString("T2PUI.500Error.Title"),
-                          JOptionPane.ERROR_MESSAGE);
-                  return;
+                    String[] arg = { connectionStr };
+                    JOptionPane.showMessageDialog(
+                            null,
+                            Messages.getString("T2PUI.500Error.Text", arg)
+                                    + "\n"
+                                    + Messages.getString("T2PUI.Webservice.Settings"),
+                            Messages.getString("T2PUI.500Error.Title"),
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
-              }
-            };
+            }
+        };
 
-    bgTask.execute();
-  }
-
-  void close() {
-    this.dispose();
-  }
-
-  public void clearTextArea() {
-    if (textArea.getText() != null) {
-      textArea.setText(null);
+        bgTask.execute();
     }
-  }
 
-  public void readFile() {
-    PlainTextFileReader r = new PlainTextFileReader();
-    String txt = r.read();
-    if (txt != null) textArea.setText(txt);
-  }
+    void close() {
+        this.dispose();
+    }
+
+    public void clearTextArea() {
+        if (textArea.getText() != null) {
+            textArea.setText(null);
+        }
+    }
+
+    public void readFile() {
+        PlainTextFileReader r = new PlainTextFileReader();
+        String txt = r.read();
+        if (txt != null)
+            textArea.setText(txt);
+    }
 }
