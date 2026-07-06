@@ -199,9 +199,37 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   private boolean yawlExportGroups = false;
 
   // GPT settings
+  /** WFC-US34: default P2T prompt sent as the {@code prompt} query parameter to the LLM service. */
+  public static final String DEFAULT_P2T_PROMPT =
+      "Describe ONLY the PNML workflow Petri net provided in the input. "
+          + "Do not reuse activities or patterns from these instructions or from a previous example. "
+          + "Write one continuous business prose text for a non-expert reader. "
+          + "Naming: Use exact transition labels from the input PNML. "
+          + "For operators, use their labels (e.g. and-split, and-join, xor-split, xor-join) and explain their meaning. "
+          + "Mention meaningful places only (e.g. start, end, granted, rejected, incomplete, ok). "
+          + "Ignore generic places (p1, p2, ...). Include roles or resources only if present in PNML. "
+          + "Control flow: AND-split / AND-join: parallel paths, then one synchronization after all finish. "
+          + "XOR-split / XOR-join: exclusive choice (either ... or ...), then reunite. "
+          + "OR-split: one or more branches may be taken. "
+          + "Loops: describe immediately in that path (repeats until, is performed again); never in a separate closing paragraph. "
+          + "Rules: Every transition and branch from start to end; chronological order; nothing skipped, nothing invented. "
+          + "No business reasons or conditions not in the model. "
+          + "No numbered lists, bullets, headers, or closing summary. "
+          + "Stop after the end state; no final commentary. "
+          + "Output <phrase ids=\"...\"> with real PNML IDs for WoPeD highlighting. No markdown.";
+
+  // WFC-US22 (#27): default for the T2P (Text -> Prozess) prompt sent in the
+  // JSON body of the T2P LLM call. Server may have its own template — this is
+  // what the client proposes if the user doesn't override it.
+  public static final String DEFAULT_T2P_PROMPT =
+      "Convert the following text describing a business process into a workflow Petri net. "
+          + "Identify activities (transitions), states (places), and the control flow. "
+          + "Output strictly valid PNML XML only - no markdown, no commentary, no code fences.";
+
   private String gptApiKey = "";
   private boolean gptShowAgain = true;
-  private String gptPrompt = "Create a clearly structured and comprehensible continuous text from the given BPMN that is understandable for an uninformed reader. The text should be easy to read in the summary and contain all important content; if there are subdivided points, these are integrated into the text with suitable sentence beginnings in order to obtain a well-structured and easy-to-read text. Under no circumstances should the output contain sub-items or paragraphs, but should cover all processes in one piece!";
+  private String gptPrompt = DEFAULT_P2T_PROMPT;
+  private String gptPromptT2P = DEFAULT_T2P_PROMPT;
   private String gptProvider = "openAi";
   private boolean gptUseNew = false;
   private String gptModel = null;
@@ -1215,5 +1243,15 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
   @Override
   public void setGptPrompt(String prompt) {
     this.gptPrompt = prompt;
+  }
+
+  @Override
+  public String getGptPromptT2P() {
+    return gptPromptT2P;
+  }
+
+  @Override
+  public void setGptPromptT2P(String prompt) {
+    this.gptPromptT2P = prompt;
   }
 }

@@ -74,6 +74,11 @@ public abstract class AbstractConfPanel extends JPanel {
   protected void setMainPanel(JPanel mainPanel) {
     JScrollPane scrollPanel = new JScrollPane(mainPanel);
     scrollPanel.setPreferredSize(ConfigVC.SCROLL_DIM);
+    // WFC-US14 (#22): Swing's default unit increment is 1px which makes
+    // mouse-wheel scrolling feel laggy in dense panels (e.g. the LLM Tools tab).
+    // 16px per unit matches typical line height and produces smooth scrolling.
+    scrollPanel.getVerticalScrollBar().setUnitIncrement(16);
+    scrollPanel.getHorizontalScrollBar().setUnitIncrement(16);
     this.add(scrollPanel, BorderLayout.CENTER);
   }
 

@@ -113,7 +113,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor {
                 }
                 break;
             case AbstractViewEvent.NEW:
-                getMediator().createEditor(true);
+                EditorVC newEditor = (EditorVC) getMediator().createEditor(true);
+                newEditor.getEditorPanel().openDefaultSidebar();
                 break;
             case AbstractViewEvent.OPEN_SUBPROCESS:
                 if (event.getSource() instanceof EditorVC) {

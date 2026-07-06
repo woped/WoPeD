@@ -62,6 +62,7 @@ import org.woped.editor.controller.bpel.Invoke;
 import org.woped.editor.controller.bpel.Receive;
 import org.woped.editor.controller.bpel.Reply;
 import org.woped.editor.controller.bpel.Wait;
+import org.woped.editor.controller.vc.EditorPanel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.translations.Messages;
 import org.woped.pnml.AnnotationGraphisType;
@@ -414,7 +415,7 @@ public class PNMLImport {
                     layout.setOverviewPanelVisible(
                         currentNet.getToolspecificArray(j).getOverviewPanelVisible());
                   } else {
-                    layout.setOverviewPanelVisible(true);
+                    layout.setOverviewPanelVisible(false);
                   }
 
                   if (currentNet.getToolspecificArray(j).isSetTreeHeightOverview()) {
@@ -434,10 +435,11 @@ public class PNMLImport {
                         currentNet.getToolspecificArray(j).getTreePanelVisible());
 
                   } else {
-                    layout.setTreePanelVisible(true);
+                    layout.setTreePanelVisible(false);
                   }
 
-                  ((EditorVC) editor[i]).getEditorPanel().setSavedLayoutInfo(layout);
+                  EditorPanel editorPanel = ((EditorVC) editor[i]).getEditorPanel();
+                  editorPanel.setSavedLayoutInfo(layout);
                 }
               }
               if (currentNet.getToolspecificArray(j).isSetResources()) {
@@ -586,6 +588,10 @@ public class PNMLImport {
           editor[i].setName(editorName);
           editor[i].setSaved(false);
         } else editor[i].setSaved(savedFlag);
+
+        if (editor[i] instanceof EditorVC) {
+          ((EditorVC) editor[i]).getEditorPanel().openDefaultSidebar();
+        }
       }
     }
   }
@@ -1002,7 +1008,7 @@ public class PNMLImport {
                             layout.setOverviewPanelVisible(
                                 subProcessNet.getToolspecificArray(j).getOverviewPanelVisible());
                           } else {
-                            layout.setOverviewPanelVisible(true);
+                            layout.setOverviewPanelVisible(false);
                           }
 
                           if (subProcessNet.getToolspecificArray(j).isSetTreeHeightOverview()) {
@@ -1014,7 +1020,7 @@ public class PNMLImport {
                             layout.setTreePanelVisible(
                                 subProcessNet.getToolspecificArray(j).getTreePanelVisible());
                           } else {
-                            layout.setTreePanelVisible(true);
+                            layout.setTreePanelVisible(false);
                           }
 
                           container.setEditorLayoutInfo(layout);

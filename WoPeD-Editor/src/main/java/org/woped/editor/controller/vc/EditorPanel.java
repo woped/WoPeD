@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import org.woped.core.config.ConfigurationManager;
@@ -57,6 +60,11 @@ public class EditorPanel extends JPanel {
   private static final int m_splitPosition = 600;
   private static final int m_splitSize = 10;
   private final int m_splitHeightOverviewPosition = 100;
+  private static final double DEFAULT_FRAME_WIDTH_RATIO = 0.85;
+  private static final double DEFAULT_FRAME_HEIGHT_RATIO = 0.85;
+  private static final int DEFAULT_FRAME_MIN_WIDTH = 900;
+  private static final int DEFAULT_FRAME_MIN_HEIGHT = 600;
+  private static final int DEFAULT_FRAME_INSET = 12;
   /**
    * TODO: These members are public for now while we are still in the process or factoring out their
    * uses from EditorVC
@@ -154,12 +162,143 @@ public class EditorPanel extends JPanel {
       m_rightSideTreeView.setMinimumSize(d);
       m_mainSplitPane.setResizeWeight(0.85);
 
-      // NetColorScheme
-      m_understandColoring = new NetColorScheme();
+      // WFC-US28: overview and tree view hidden by default; PNML may restore saved visibility.
+      setOverviewPanelVisible(false);
+      setTreeviewPanelVisible(false);
     }
+
+    // NetColorScheme
+    m_understandColoring = new NetColorScheme();
 
     initializeAnalysisSideBar();
     initializeP2TSideBar();
+  }
+
+  /**
+   * Applies default editor layout after creation or PNML import: frame size and P2T panel when
+   * enabled. Overview and tree view are always hidden on open (WFC-US28).
+   */
+  public void openDefaultSidebar() {
+    if (m_mainSplitPane == null) {
+      return;
+    }
+
+    applyDefaultFrameSize();
+
+    if (ConfigurationManager.getConfiguration().getProcess2TextUse()) {
+      if (p2tSideBar != null) {
+        p2tSideBar.prepareForNetOpen();
+      }
+      if (!p2TBarVisible) {
+        showP2TBar(false);
+      } else {
+        p2tSideBar.onSideBarShown(true, false);
+        int dividerLocation = resolveSidebarDividerLocation();
+        if (mainsplitPaneWithP2TBar != null) {
+          mainsplitPaneWithP2TBar.setDividerLocation(dividerLocation);
+        }
+      }
+    } else if (isOverviewPanelVisible() || isTreeviewPanelVisible()) {
+      int dividerLocation = resolveSidebarDividerLocation();
+      m_mainSplitPane.setDividerLocation(dividerLocation);
+      m_mainSplitPane.setLastDividerLocation(dividerLocation);
+      m_mainSplitPane.setOneTouchExpandable(true);
+      m_mainSplitPane.setEnabled(true);
+      m_mainSplitPane.setResizeWeight(0.85);
+    }
+
+    // WFC-US28: showP2TBar can re-expose the overview/tree container; force hidden again.
+    setOverviewPanelVisible(false);
+    setTreeviewPanelVisible(false);
+
+    revalidate();
+    checkMainSplitPaneDivider();
+  }
+
+  private int resolveSidebarDividerLocation() {
+    int width = getWidth();
+    if (width <= 0 && getParent() != null) {
+      width = getParent().getWidth();
+    }
+    if (width <= 0 && m_mainSplitPane != null) {
+      width = m_mainSplitPane.getWidth();
+    }
+    JInternalFrame frame = findInternalFrame();
+    if (width <= 0 && frame != null) {
+      width = frame.getWidth();
+    }
+    if (width > editorSize.SIDEBAR_WIDTH + 100) {
+      return width - editorSize.SIDEBAR_WIDTH;
+    }
+    return m_splitPosition;
+  }
+
+  /** Expands the main horizontal split to the default sidebar width (e.g. when toggling from ribbon). */
+  private void expandMainSplitPaneForSidebar() {
+    if (m_mainSplitPane == null) {
+      return;
+    }
+    Runnable expand =
+        () -> {
+          int dividerLocation = resolveSidebarDividerLocation();
+          m_mainSplitPane.setDividerLocation(dividerLocation);
+          m_mainSplitPane.setLastDividerLocation(dividerLocation);
+          m_mainSplitPane.setOneTouchExpandable(true);
+          m_mainSplitPane.setEnabled(true);
+          m_mainSplitPane.setResizeWeight(0.85);
+          checkMainSplitPaneDivider();
+        };
+    if (SwingUtilities.isEventDispatchThread()) {
+      expand.run();
+    } else {
+      SwingUtilities.invokeLater(expand);
+    }
+  }
+
+  /** Sizes the editor internal frame to a comfortable share of the available desktop area. */
+  private void applyDefaultFrameSize() {
+    JInternalFrame frame = findInternalFrame();
+    if (frame == null) {
+      return;
+    }
+
+    Dimension desktopSize = resolveDesktopSize(frame);
+    int targetWidth =
+        Math.max(
+            DEFAULT_FRAME_MIN_WIDTH,
+            (int) (desktopSize.width * DEFAULT_FRAME_WIDTH_RATIO) - DEFAULT_FRAME_INSET);
+    int targetHeight =
+        Math.max(
+            Math.max(DEFAULT_FRAME_MIN_HEIGHT, editorSize.SIDEBAR_MINHEIGHT),
+            (int) (desktopSize.height * DEFAULT_FRAME_HEIGHT_RATIO) - DEFAULT_FRAME_INSET);
+
+    targetWidth = Math.min(targetWidth, desktopSize.width - DEFAULT_FRAME_INSET);
+    targetHeight = Math.min(targetHeight, desktopSize.height - DEFAULT_FRAME_INSET);
+
+    frame.setSize(targetWidth, targetHeight);
+    frame.setLocation(DEFAULT_FRAME_INSET, DEFAULT_FRAME_INSET);
+  }
+
+  private JInternalFrame findInternalFrame() {
+    Container currentParent = getParent();
+    while (currentParent != null && !(currentParent instanceof JInternalFrame)) {
+      currentParent = currentParent.getParent();
+    }
+    return (currentParent instanceof JInternalFrame) ? (JInternalFrame) currentParent : null;
+  }
+
+  private Dimension resolveDesktopSize(JInternalFrame frame) {
+    Container parent = frame.getParent();
+    while (parent != null && !(parent instanceof JDesktopPane)) {
+      parent = parent.getParent();
+    }
+    if (parent != null) {
+      Dimension size = parent.getSize();
+      if (size.width > 0 && size.height > 0) {
+        return size;
+      }
+    }
+    return Toolkit.getDefaultToolkit().getScreenSize();
   }
 
   /**
@@ -365,9 +504,7 @@ public class EditorPanel extends JPanel {
           && !isMetricsBarVisible()
           && !isTreeviewPanelVisible()
           && !isP2TBarVisible()) {
-        m_mainSplitPane.setDividerLocation(m_mainSplitPane.getLastDividerLocation());
-        m_mainSplitPane.setOneTouchExpandable(true);
-        m_mainSplitPane.setEnabled(true);
+        expandMainSplitPaneForSidebar();
       }
       if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
         m_rightSideTreeViewWithAnalysisBar.setEnabled(true);
@@ -423,9 +560,7 @@ public class EditorPanel extends JPanel {
           && !isAnalysisBarVisible()
           && !isMetricsBarVisible()
           && !isP2TBarVisible()) {
-        m_mainSplitPane.setDividerLocation(m_mainSplitPane.getLastDividerLocation());
-        m_mainSplitPane.setOneTouchExpandable(true);
-        m_mainSplitPane.setEnabled(true);
+        expandMainSplitPaneForSidebar();
       }
       if (isAnalysisBarVisible() || isMetricsBarVisible() || isP2TBarVisible()) {
         if (isOverviewPanelVisible()) {
@@ -532,8 +667,11 @@ public class EditorPanel extends JPanel {
         // }//else{
         // divLoc = layoutInfo.getTreeViewWidth();
         // }
-        m_mainSplitPane.setDividerLocation(divLoc);
         if (divLoc <= 1) {
+          divLoc = m_splitPosition;
+        }
+        m_mainSplitPane.setDividerLocation(divLoc);
+        if (divLoc <= m_splitPosition) {
           m_mainSplitPane.setLastDividerLocation(m_splitPosition);
         }
       }
@@ -547,10 +685,11 @@ public class EditorPanel extends JPanel {
       }
 
       if (overviewPanel != null) {
-        setOverviewPanelVisible(layoutInfo.getOverviewPanelVisible());
+        // WFC-US28: ignore saved overview visibility from PNML; always hidden on open.
+        setOverviewPanelVisible(false);
       }
       if (treeviewPanel != null) {
-        setTreeviewPanelVisible(layoutInfo.getTreePanelVisible());
+        setTreeviewPanelVisible(false);
       }
       // Size
       Dimension d = layoutInfo.getSavedSize();
@@ -1011,6 +1150,13 @@ public class EditorPanel extends JPanel {
   }
 
   public void showP2TBar() {
+    showP2TBar(true);
+  }
+
+  /**
+   * @param autoGenerate when true, triggers LLM text generation once (ribbon/dialog); false on net open
+   */
+  public void showP2TBar(boolean autoGenerate) {
     if (p2TBarVisible) {
       hideP2TBar();
     }
@@ -1051,11 +1197,12 @@ public class EditorPanel extends JPanel {
       p2TBarVisible = true;
       revalidate();
       editorSize.resize(false);
-      mainsplitPaneWithP2TBar.setDividerLocation(getWidth() - editorSize.SIDEBAR_WIDTH);
+      int dividerLocation = resolveSidebarDividerLocation();
+      mainsplitPaneWithP2TBar.setDividerLocation(dividerLocation);
       mainsplitPaneWithP2TBar.setResizeWeight(1);
 
       // Trigger callback on P2T side bar.
-      p2tSideBar.onSideBarShown(true);
+      p2tSideBar.onSideBarShown(true, autoGenerate);
     }
   }
 
@@ -1084,7 +1231,7 @@ public class EditorPanel extends JPanel {
       revalidate();
 
       // Trigger callback on P2T side bar.
-      p2tSideBar.onSideBarShown(false);
+      p2tSideBar.onSideBarShown(false, false);
     }
   }
 

@@ -16,7 +16,7 @@
   <a href="https://github.com/woped/WoPeD/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/woped/WoPeD.svg?style=for-the-badge">
   </a>
-  
+   
   <!-- PROJECT LOGO -->
   <br />
   <br />
@@ -27,7 +27,7 @@
   <h3 align="center">WoPeD<br/>(Workflow Petri Net Designer)</h3>
   
   <p align="center">
-    An easy-to-use software for modelling, simulating and analyzing processes described by workflow nets, a Petri net class initially introduced by Wil van der Aalst (TU Eindhoven).
+    An easy-to-use software for modelling, simulating and analyzing processes described by workflow nets, a Petri net class initially introduced by Wil van der Aalst (TU Eindhoven). 
     <br />
     <a href="https://woped.dhbw-karlsruhe.de/"><strong>Go to woped.dhbw-karlsruhe.de »</strong></a>
     <br />

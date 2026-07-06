@@ -586,6 +586,10 @@ public interface IGeneralConfiguration extends IConfiguration {
 
     public void setGptPrompt(String prompt);
 
+    public String getGptPromptT2P();
+
+    public void setGptPromptT2P(String prompt);
+
     public void setGptUseNew(boolean useNew);
 
     public boolean getGptUseNew();

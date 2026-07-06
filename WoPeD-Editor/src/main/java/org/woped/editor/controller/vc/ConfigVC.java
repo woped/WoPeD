@@ -68,8 +68,8 @@ public class ConfigVC extends JDialog implements IViewController {
   private String id = null;
   public static final String ID_PREFIX = "CONFIG_VC_";
   private HashMap<String, AbstractConfPanel> confPanels = new HashMap<String, AbstractConfPanel>();
-  public static final Dimension CONF_DIM = new Dimension(750, 600);
-  public static final Dimension SCROLL_DIM = new Dimension(750, 600);
+  public static final Dimension CONF_DIM = new Dimension(1350, 950);
+  public static final Dimension SCROLL_DIM = new Dimension(1350, 950);
   public static final Color BACK_COLOR = new Color(255, 255, 255);
   private static JFileChooser jfc = null;
   private static Vector<String> xmlExtensions = new Vector<String>();
@@ -114,8 +114,13 @@ public class ConfigVC extends JDialog implements IViewController {
   private void initialize() {
     /* init GUI */
     this.setTitle(Messages.getString("Configuration.Title"));
-    this.setSize(CONF_DIM);
+    // WFC-US26: clamp the dialog to the usable screen area so it still fits on
+    // small displays (e.g. 1366x768 laptops); the JScrollPane handles any overflow.
+    java.awt.Rectangle screen =
+        java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+    this.setSize(Math.min(CONF_DIM.width, screen.width), Math.min(CONF_DIM.height, screen.height));
     this.setResizable(true);
+    this.setLocationRelativeTo(getOwner());
     this.getContentPane().setLayout(new BorderLayout());
     this.getContentPane().add(getTabbedPane(), BorderLayout.CENTER);
     this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);

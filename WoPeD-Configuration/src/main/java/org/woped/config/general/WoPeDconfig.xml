@@ -120,8 +120,8 @@
 		<t2pLLMServiceURI>/t2p-2.0</t2pLLMServiceURI>
   	</t2p>
 <Gpt>
-	<GptApiKey>test</GptApiKey>
-	<GptPrompt>test</GptPrompt>
+	<GptPrompt>Describe ONLY the PNML workflow Petri net provided in the input. Do not reuse activities or patterns from these instructions or from a previous example. Write one continuous business prose text for a non-expert reader. Naming: Use exact transition labels from the input PNML. For operators, use their labels (e.g. and-split, and-join, xor-split, xor-join) and explain their meaning. Mention meaningful places only (e.g. start, end, granted, rejected, incomplete, ok). Ignore generic places (p1, p2, ...). Include roles or resources only if present in PNML. Control flow: AND-split / AND-join: parallel paths, then one synchronization after all finish. XOR-split / XOR-join: exclusive choice (either ... or ...), then reunite. OR-split: one or more branches may be taken. Loops: describe immediately in that path (repeats until, is performed again); never in a separate closing paragraph. Rules: Every transition and branch from start to end; chronological order; nothing skipped, nothing invented. No business reasons or conditions not in the model. No numbered lists, bullets, headers, or closing summary. Stop after the end state; no final commentary. Output &lt;phrase ids="..."&gt; with real PNML IDs for WoPeD highlighting. No markdown.</GptPrompt>
+	<GptPromptT2P>Convert the following text describing a business process into a workflow Petri net. Identify activities (transitions), states (places), and the control flow. Output strictly valid PNML XML only - no markdown, no commentary, no code fences.</GptPromptT2P>
 	<GptUseNew>true</GptUseNew>
 </Gpt>
 

@@ -79,6 +79,8 @@ public class RunWoPeD extends JFrame {
     if (forceGerman) Locale.setDefault(Locale.GERMANY);
     if (forceEnglish) Locale.setDefault(Locale.ENGLISH);
 
+    org.woped.core.utilities.SslTrustStoreInitializer.initialize();
+
     m_instance = new RunWoPeD(args);
 
     if (startDelayed) {
